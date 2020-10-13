@@ -230,7 +230,7 @@ typedef void * PVOID;
 
 
 
-#define WINBOOL int
+#define int_bool int
 
 
 
