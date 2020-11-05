@@ -3,28 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\app\draw2d_cairo\nord_draw2d_cairo.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\..\source\$1.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_aura.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\$1.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeimage_imaging", "..\..\app\freeimage_imaging\nord_freeimage_imaging.vcxproj", "{3C4A93D3-9B9B-4EA9-8BCF-A53BE3A0F9B5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeimage_imaging", "..\..\..\source\$1.vcxproj", "{3C4A93D3-9B9B-4EA9-8BCF-A53BE3A0F9B5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app", "..\app\android_app.androidproj", "{48185620-E3EC-4BFB-BC89-E3F8321679C1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_form", "..\..\app-simple\form\nord_app_simple_form.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_form", "..\..\..\source\$1.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_simple_form", "..\..\seed-android\app-simple\form\android_app_simple_form.androidproj", "{5AECC00E-3633-43EE-B432-E43DD3F21B79}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "experience_core", "..\..\app\experience_tranquillum\nord_experience_tranquillum.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "experience_core", "..\..\..\source\$1.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
