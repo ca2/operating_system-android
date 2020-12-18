@@ -3,26 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\..\source\$1.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\app\draw2d_cairo\nord_draw2d_cairo.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\$1.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_aura.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "experience_core", "..\..\..\source\$1.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "experience_core", "..\..\app\experience_core\nord_experience_core.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_application", "..\..\..\source\$1.vcxproj", "{02E544AB-AA7C-4DB5-A078-657DF991214F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_application", "..\..\app-simple\application\nord_app_simple_application.vcxproj", "{02E544AB-AA7C-4DB5-A078-657DF991214F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_drawing", "..\..\..\source\$1.vcxproj", "{37E67AE3-A9A2-47A6-A9C6-BD4795039431}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_drawing", "..\..\app-simple\drawing\nord_app_simple_drawing.vcxproj", "{37E67AE3-A9A2-47A6-A9C6-BD4795039431}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_app", "..\..\..\source\$1.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_app", "..\..\app-simple\app\nord_app_simple_app.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
@@ -35,7 +35,7 @@ Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_simple_drawing"
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app", "..\..\seed-android\platform-android\app\android_app.androidproj", "{48185620-E3EC-4BFB-BC89-E3F8321679C1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acme", "..\..\..\source\$1.vcxproj", "{ECB0620D-BFA8-4F9B-B2AD-9D9C20A44FE9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acme", "..\..\app\acme\nord_acme.vcxproj", "{ECB0620D-BFA8-4F9B-B2AD-9D9C20A44FE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

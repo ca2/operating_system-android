@@ -3,48 +3,48 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mpg123", "..\..\..\source\$1.vcxproj", "{8888D0AE-822C-48A7-AECF-5CE65D7F8FA7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mpg123", "..\..\third\libmpg123\nord_veriwell_libmpg123.vcxproj", "{8888D0AE-822C-48A7-AECF-5CE65D7F8FA7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winpr", "..\..\..\source\$1.vcxproj", "{C6A1ECCC-F929-4553-A72F-8FCB605744A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winpr", "..\..\third\winpr\nord_winpr.vcxproj", "{C6A1ECCC-F929-4553-A72F-8FCB605744A3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixman", "..\..\..\source\$1.vcxproj", "{005C309D-5880-4431-A65B-F04F6A6895B3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixman", "..\..\third\pixman\nord_pixman.vcxproj", "{005C309D-5880-4431-A65B-F04F6A6895B3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idn", "..\..\..\source\$1.vcxproj", "{7B1C236B-2382-40A4-8AF6-2DFC0A551275}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idn", "..\..\third\idn\nord_idn.vcxproj", "{7B1C236B-2382-40A4-8AF6-2DFC0A551275}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "..\..\..\source\$1.vcxproj", "{AD0A44D0-7716-439B-AED5-48C654569171}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "..\..\third\freetype\nord_freetype.vcxproj", "{AD0A44D0-7716-439B-AED5-48C654569171}"
 	ProjectSection(ProjectDependencies) = postProject
 		{04238890-C8DF-43C8-A90C-4D19FA21286F} = {04238890-C8DF-43C8-A90C-4D19FA21286F}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freerdp", "..\..\..\source\$1.vcxproj", "{949CC34A-39EE-4A2A-BDE7-2ACE8C2FC97A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freerdp", "..\..\third\freerdp\nord_freerdp.vcxproj", "{949CC34A-39EE-4A2A-BDE7-2ACE8C2FC97A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C6A1ECCC-F929-4553-A72F-8FCB605744A3} = {C6A1ECCC-F929-4553-A72F-8FCB605744A3}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clientchannels", "..\..\..\source\$1.vcxproj", "{BD2B9602-AC0C-4366-AA09-B83FCD2F1F2D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clientchannels", "..\..\third\clientchannels\nord_clientchannels.vcxproj", "{BD2B9602-AC0C-4366-AA09-B83FCD2F1F2D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{949CC34A-39EE-4A2A-BDE7-2ACE8C2FC97A} = {949CC34A-39EE-4A2A-BDE7-2ACE8C2FC97A}
 		{C6A1ECCC-F929-4553-A72F-8FCB605744A3} = {C6A1ECCC-F929-4553-A72F-8FCB605744A3}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "..\..\..\source\$1.vcxproj", "{0D31523B-0C88-474F-A5C8-4091BB3D10AC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "..\..\third\cairo\nord_cairo.vcxproj", "{0D31523B-0C88-474F-A5C8-4091BB3D10AC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{04238890-C8DF-43C8-A90C-4D19FA21286F} = {04238890-C8DF-43C8-A90C-4D19FA21286F}
 		{005C309D-5880-4431-A65B-F04F6A6895B3} = {005C309D-5880-4431-A65B-F04F6A6895B3}
 		{AD0A44D0-7716-439B-AED5-48C654569171} = {AD0A44D0-7716-439B-AED5-48C654569171}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2", "..\..\..\source\$1.vcxproj", "{8FA09539-41BF-4E5B-A16A-EA4586690593}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2", "..\..\third\bzip2\nord_bzip2.vcxproj", "{8FA09539-41BF-4E5B-A16A-EA4586690593}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite", "..\..\..\source\$1.vcxproj", "{FCFE40C7-EEE9-43BE-8BA2-61CDEFD6B4BD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite", "..\..\third\sqlite\nord_sqlite.vcxproj", "{FCFE40C7-EEE9-43BE-8BA2-61CDEFD6B4BD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcre", "..\..\..\source\$1.vcxproj", "{E3ED74CC-506F-424F-AD39-25FBEDD98C7C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcre", "..\..\third\pcre\nord_pcre.vcxproj", "{E3ED74CC-506F-424F-AD39-25FBEDD98C7C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iconv", "..\..\..\source\$1.vcxproj", "{A9D5FC74-A2D7-49BC-B658-CCD5610C5A96}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iconv", "..\..\third\iconv\nord_iconv.vcxproj", "{A9D5FC74-A2D7-49BC-B658-CCD5610C5A96}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "expat", "..\..\..\source\$1.vcxproj", "{818AD226-AAAE-454B-80AB-10F4A504448B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "expat", "..\..\third\expat\nord_expat.vcxproj", "{818AD226-AAAE-454B-80AB-10F4A504448B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeimage", "..\..\..\source\$1.vcxproj", "{D8E2B9C3-5079-43FE-9520-47C8B66B29A9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeimage", "..\..\third\freeimage\nord_freeimage.vcxproj", "{D8E2B9C3-5079-43FE-9520-47C8B66B29A9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FA69DB21-CDF2-494D-87AF-5A1B58D994D0} = {FA69DB21-CDF2-494D-87AF-5A1B58D994D0}
 		{666A3143-2D66-436F-988F-7D6DD006BA84} = {666A3143-2D66-436F-988F-7D6DD006BA84}
@@ -55,21 +55,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeimage", "..\..\..\sourc
 		{048418E2-3848-4A81-B8D1-53B62CBBCE8F} = {048418E2-3848-4A81-B8D1-53B62CBBCE8F}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_rawlite", "..\..\..\source\$1.vcxproj", "{7A62306C-AB61-4820-8D6D-8406D117257B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_rawlite", "..\..\third\rawlite\_nord_rawlite.vcxproj", "{7A62306C-AB61-4820-8D6D-8406D117257B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_tiff4", "..\..\..\source\$1.vcxproj", "{C0AE7585-5F76-4C1A-A95C-A4B2B6CFC2FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_tiff4", "..\..\third\tiff4\_nord_tiff4.vcxproj", "{C0AE7585-5F76-4C1A-A95C-A4B2B6CFC2FC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_webp", "..\..\..\source\$1.vcxproj", "{FA69DB21-CDF2-494D-87AF-5A1B58D994D0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_webp", "..\..\third\webp\_nord_webp.vcxproj", "{FA69DB21-CDF2-494D-87AF-5A1B58D994D0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_openjpeg", "..\..\..\source\$1.vcxproj", "{666A3143-2D66-436F-988F-7D6DD006BA84}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_openjpeg", "..\..\third\openjpeg\_nord_openjpeg.vcxproj", "{666A3143-2D66-436F-988F-7D6DD006BA84}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_openexr", "..\..\..\source\$1.vcxproj", "{048418E2-3848-4A81-B8D1-53B62CBBCE8F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_openexr", "..\..\third\openexr\_nord_openexr.vcxproj", "{048418E2-3848-4A81-B8D1-53B62CBBCE8F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "..\..\..\source\$1.vcxproj", "{032BD6DD-0DA1-4A1F-9D36-6512B4127F7A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "..\..\third\zlib\nord_zlib.vcxproj", "{032BD6DD-0DA1-4A1F-9D36-6512B4127F7A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png", "..\..\..\source\$1.vcxproj", "{04238890-C8DF-43C8-A90C-4D19FA21286F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png", "..\..\third\png\nord_png.vcxproj", "{04238890-C8DF-43C8-A90C-4D19FA21286F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jpeg", "..\..\..\source\$1.vcxproj", "{C07D1D57-669A-4302-B835-EA52557F15C8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jpeg", "..\..\third\jpeg\nord_jpeg.vcxproj", "{C07D1D57-669A-4302-B835-EA52557F15C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

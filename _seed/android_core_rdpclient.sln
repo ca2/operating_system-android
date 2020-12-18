@@ -3,37 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aqua", "..\..\..\source\$1.vcxproj", "{BD207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aqua", "..\..\app\aqua\nord_aqua.vcxproj", "{BD207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\$1.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_aura.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BD207BC4-C08B-4A2D-B754-F3BD46AD3098} = {BD207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis", "..\..\..\source\$1.vcxproj", "{03207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis", "..\..\app\axis\nord_axis.vcxproj", "{03207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "..\..\..\source\$1.vcxproj", "{04207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "..\..\app\base\nord_base.vcxproj", "{04207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{03207BC4-C08B-4A2D-B754-F3BD46AD3098} = {03207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\$1.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_core.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{03207BC4-C08B-4A2D-B754-F3BD46AD3098} = {03207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{04207BC4-C08B-4A2D-B754-F3BD46AD3098} = {04207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\..\source\$1.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\app\draw2d_cairo\nord_draw2d_cairo.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndfrm_core", "..\..\..\source\$1.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndfrm_core", "..\..\app-core\wndfrm_core\nord_wndfrm_core.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
@@ -59,27 +59,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ace", "..\..\..\source\$1.vcxproj", "{E99C9D52-0709-4ED7-9F14-180B18F66C46}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ace", "..\..\app\ace\nord_ace.vcxproj", "{E99C9D52-0709-4ED7-9F14-180B18F66C46}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tesseract", "..\..\..\source\$1.vcxproj", "{F1616539-19C9-48FF-831A-FC7B2C0525A8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tesseract", "..\..\app-core\tesseract\nord_tesseract.vcxproj", "{F1616539-19C9-48FF-831A-FC7B2C0525A8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_addressbook", "..\..\..\source\$1.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_addressbook", "..\..\app-core\addressbook\nord_core_addressbook.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F1616539-19C9-48FF-831A-FC7B2C0525A8} = {F1616539-19C9-48FF-831A-FC7B2C0525A8}
 	EndProjectSection
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "nord_app_core_addressbook", "..\..\app-core\addressbook\nord_app_core_addressbook.androidproj", "{19841115-1951-0422-AF6D-98A0656F2704}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_verifile", "..\..\..\source\$1.vcxproj", "{875B2C65-4A72-4DB6-8D79-4658DAEFD446}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_verifile", "..\..\app-core\verifile\nord_core_verifile.vcxproj", "{875B2C65-4A72-4DB6-8D79-4658DAEFD446}"
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "nord_app_core_verifile", "..\..\app-core\verifile\nord_app_core_verifile.androidproj", "{33A74A7B-A562-4703-B452-1E5B0326F12B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_veriedit", "..\..\..\source\$1.vcxproj", "{3B4C0A08-12DB-447C-9B22-6A216CD4AB76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_veriedit", "..\..\app-core\veriedit\nord_core_veriedit.vcxproj", "{3B4C0A08-12DB-447C-9B22-6A216CD4AB76}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F1616539-19C9-48FF-831A-FC7B2C0525A8} = {F1616539-19C9-48FF-831A-FC7B2C0525A8}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_verilux", "..\..\..\source\$1.vcxproj", "{5CCC9E0F-1E82-4018-96A0-5CB5F6291F23}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_verilux", "..\..\app-core\verilux\nord_core_verilux.vcxproj", "{5CCC9E0F-1E82-4018-96A0-5CB5F6291F23}"
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "nord_app_core_verilux", "..\..\app-core\verilux\nord_app_core_verilux.androidproj", "{118F2054-D9F2-4B58-958F-883259BE85BE}"
 EndProject
