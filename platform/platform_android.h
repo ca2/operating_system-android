@@ -20,6 +20,7 @@
 
 
 #include <wchar.h>
+#include <ctype.h>
 
 
 #include <sys/resource.h>

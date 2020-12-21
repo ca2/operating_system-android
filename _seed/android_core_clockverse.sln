@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aqua", "..\..\app\aqua\nord_aqua.vcxproj", "{BD207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aqua", "..\..\..\source\app\aqua\nord_aqua.vcxproj", "{BD207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E99C9D52-0709-4ED7-9F14-180B18F66C46} = {E99C9D52-0709-4ED7-9F14-180B18F66C46}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_aura.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\app\aura\nord_aura.vcxproj", "{02207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A9D5FC74-A2D7-49BC-B658-CCD5610C5A96} = {A9D5FC74-A2D7-49BC-B658-CCD5610C5A96}
 		{BD207BC4-C08B-4A2D-B754-F3BD46AD3098} = {BD207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis", "..\..\app\axis\nord_axis.vcxproj", "{03207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis", "..\..\..\source\app\axis\nord_axis.vcxproj", "{03207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8FA09539-41BF-4E5B-A16A-EA4586690593} = {8FA09539-41BF-4E5B-A16A-EA4586690593}
 		{7B1C236B-2382-40A4-8AF6-2DFC0A551275} = {7B1C236B-2382-40A4-8AF6-2DFC0A551275}
@@ -26,23 +26,23 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis", "..\..\app\axis\nord
 		{AD0A44D0-7716-439B-AED5-48C654569171} = {AD0A44D0-7716-439B-AED5-48C654569171}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "..\..\app\base\nord_base.vcxproj", "{04207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "..\..\..\source\app\base\nord_base.vcxproj", "{04207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{03207BC4-C08B-4A2D-B754-F3BD46AD3098} = {03207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "auracharguess", "..\..\app\aura\charguess\nord_auracharguess.vcxproj", "{05207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "auracharguess", "..\..\..\source\app\aura\charguess\nord_auracharguess.vcxproj", "{05207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aurasqlite", "..\..\app\aura\sqlite\nord_aurasqlite.vcxproj", "{FCFE40C7-EEE9-43BE-8BA2-61CDEFD6B4BD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aurasqlite", "..\..\..\source\app\aura\sqlite\nord_aurasqlite.vcxproj", "{FCFE40C7-EEE9-43BE-8BA2-61CDEFD6B4BD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord_core.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\..\source\app\aura\nord_core.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{03207BC4-C08B-4A2D-B754-F3BD46AD3098} = {03207BC4-C08B-4A2D-B754-F3BD46AD3098}
@@ -50,37 +50,37 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aura", "..\..\app\aura\nord
 		{05207BC4-C08B-4A2D-B754-F3BD46AD3098} = {05207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axispixman", "..\..\app\axis\pixman\nord_axispixman.vcxproj", "{005C309D-5880-4431-A65B-F04F6A6895B3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axispixman", "..\..\..\source\app\axis\pixman\nord_axispixman.vcxproj", "{005C309D-5880-4431-A65B-F04F6A6895B3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisopenssl", "..\..\app\axis\openssl\nord_axisopenssl.vcxproj", "{A2E70E72-5407-4131-AD91-881A861114ED}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisopenssl", "..\..\..\source\app\axis\openssl\nord_axisopenssl.vcxproj", "{A2E70E72-5407-4131-AD91-881A861114ED}"
 	ProjectSection(ProjectDependencies) = postProject
 		{640771CD-A0ED-4E2E-AFBA-4D1A84AE485B} = {640771CD-A0ED-4E2E-AFBA-4D1A84AE485B}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisidn", "..\..\app\axis\idn\nord_axisidn.vcxproj", "{7B1C236B-2382-40A4-8AF6-2DFC0A551275}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisidn", "..\..\..\source\app\axis\idn\nord_axisidn.vcxproj", "{7B1C236B-2382-40A4-8AF6-2DFC0A551275}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisfreetype", "..\..\app\axis\freetype\nord_freetype.vcxproj", "{AD0A44D0-7716-439B-AED5-48C654569171}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisfreetype", "..\..\..\source\app\axis\freetype\nord_freetype.vcxproj", "{AD0A44D0-7716-439B-AED5-48C654569171}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8FA09539-41BF-4E5B-A16A-EA4586690593} = {8FA09539-41BF-4E5B-A16A-EA4586690593}
 		{CD2A80BB-5B55-45FD-932D-404D2D76729B} = {CD2A80BB-5B55-45FD-932D-404D2D76729B}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisfreeimage", "..\..\app\axis\freeimage\nord_axisfreeimage.vcxproj", "{3F63B8BA-14B8-4147-A78A-0894B7207E37}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisfreeimage", "..\..\..\source\app\axis\freeimage\nord_axisfreeimage.vcxproj", "{3F63B8BA-14B8-4147-A78A-0894B7207E37}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axiscairo", "..\..\app\axis\cairo\nord_axiscairo.vcxproj", "{0D31523B-0C88-474F-A5C8-4091BB3D10AC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axiscairo", "..\..\..\source\app\axis\cairo\nord_axiscairo.vcxproj", "{0D31523B-0C88-474F-A5C8-4091BB3D10AC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CD2A80BB-5B55-45FD-932D-404D2D76729B} = {CD2A80BB-5B55-45FD-932D-404D2D76729B}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{AD0A44D0-7716-439B-AED5-48C654569171} = {AD0A44D0-7716-439B-AED5-48C654569171}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisbzip2", "..\..\app\axis\bzip2\nord_axisbzip2.vcxproj", "{8FA09539-41BF-4E5B-A16A-EA4586690593}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisbzip2", "..\..\..\source\app\axis\bzip2\nord_axisbzip2.vcxproj", "{8FA09539-41BF-4E5B-A16A-EA4586690593}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\app\draw2d_cairo\nord_draw2d_cairo.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\..\source\app\draw2d_cairo\nord_draw2d_cairo.vcxproj", "{06207BC4-C08B-4A2D-B754-F3BD46AD3098}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0D31523B-0C88-474F-A5C8-4091BB3D10AC} = {0D31523B-0C88-474F-A5C8-4091BB3D10AC}
 		{005C309D-5880-4431-A65B-F04F6A6895B3} = {005C309D-5880-4431-A65B-F04F6A6895B3}
@@ -89,7 +89,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw2d_cairo", "..\..\app\d
 		{04207BC4-C08B-4A2D-B754-F3BD46AD3098} = {04207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndfrm_core", "..\..\app-core\wndfrm_core\nord_wndfrm_core.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndfrm_core", "..\..\..\source\app-core\wndfrm_core\nord_wndfrm_core.vcxproj", "{0365BD5F-5C57-4DB4-9270-D850D2A84FBB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
@@ -97,9 +97,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndfrm_core", "..\..\app-co
 		{04207BC4-C08B-4A2D-B754-F3BD46AD3098} = {04207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "atomiconv", "..\..\app\atom\iconv\nord_iconv.vcxproj", "{A9D5FC74-A2D7-49BC-B658-CCD5610C5A96}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "atomiconv", "..\..\..\source\app\atom\iconv\nord_iconv.vcxproj", "{A9D5FC74-A2D7-49BC-B658-CCD5610C5A96}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axiscrypto", "..\..\app\axis\crypto\nord_axiscrypto.vcxproj", "{640771CD-A0ED-4E2E-AFBA-4D1A84AE485B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axiscrypto", "..\..\..\source\app\axis\crypto\nord_axiscrypto.vcxproj", "{640771CD-A0ED-4E2E-AFBA-4D1A84AE485B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
@@ -117,7 +117,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app.launcher", "..\app.laun
 		{04207BC4-C08B-4A2D-B754-F3BD46AD3098} = {04207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_hellomultiverse", "..\..\app-core\hellomultiverse\nord_core_hellomultiverse.vcxproj", "{A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_hellomultiverse", "..\..\..\source\app-core\hellomultiverse\nord_core_hellomultiverse.vcxproj", "{A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
@@ -126,7 +126,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_hellomultiverse", 
 		{E3ED74CC-506F-424F-AD39-25FBEDD98C7C} = {E3ED74CC-506F-424F-AD39-25FBEDD98C7C}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_flag", "..\..\app-core\flag\nord_core_flag.vcxproj", "{19841115-2E02-4BC0-BF89-D11F8409C8DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_flag", "..\..\..\source\app-core\flag\nord_core_flag.vcxproj", "{19841115-2E02-4BC0-BF89-D11F8409C8DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF} = {A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF}
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
@@ -135,7 +135,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_flag", "..\..\app-
 		{04207BC4-C08B-4A2D-B754-F3BD46AD3098} = {04207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_cidadedecuritiba_alphaclock", "..\..\app-cidadedecuritiba\alphaclock\nord_cidadedecuritiba_alphaclock.vcxproj", "{19841115-1951-1977-0422-021F8409C8DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_cidadedecuritiba_alphaclock", "..\..\..\source\app-cidadedecuritiba\alphaclock\nord_cidadedecuritiba_alphaclock.vcxproj", "{19841115-1951-1977-0422-021F8409C8DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{19841115-2E02-4BC0-BF89-D11F8409C8DF} = {19841115-2E02-4BC0-BF89-D11F8409C8DF}
 		{A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF} = {A9EFFD1E-2E02-4BC0-BF89-D11F8409C8DF}
@@ -146,32 +146,32 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_cidadedecuritiba_alphac
 		{7F61A6F3-4ED9-4460-9270-4EA7CB00E634} = {7F61A6F3-4ED9-4460-9270-4EA7CB00E634}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis_image_jpeg", "..\..\app\axis\image_jpeg\nord_axis_image_jpeg.vcxproj", "{3C4A93D3-9B9B-4EA9-8BCF-A53BE3A0F9B5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis_image_jpeg", "..\..\..\source\app\axis\image_jpeg\nord_axis_image_jpeg.vcxproj", "{3C4A93D3-9B9B-4EA9-8BCF-A53BE3A0F9B5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C07D1D57-669A-4302-B835-EA52557F15C8} = {C07D1D57-669A-4302-B835-EA52557F15C8}
 		{3F63B8BA-14B8-4147-A78A-0894B7207E37} = {3F63B8BA-14B8-4147-A78A-0894B7207E37}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis_image_png", "..\..\app\axis\image_png\nord_axis_image_png.vcxproj", "{CD2A80BB-5B55-45FD-932D-404D2D76729B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axis_image_png", "..\..\..\source\app\axis\image_png\nord_axis_image_png.vcxproj", "{CD2A80BB-5B55-45FD-932D-404D2D76729B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{04238890-C8DF-43C8-A90C-4D19FA21286F} = {04238890-C8DF-43C8-A90C-4D19FA21286F}
 		{3F63B8BA-14B8-4147-A78A-0894B7207E37} = {3F63B8BA-14B8-4147-A78A-0894B7207E37}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aurapcre", "..\..\app\aura\pcre\nord_aurapcre.vcxproj", "{E3ED74CC-506F-424F-AD39-25FBEDD98C7C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aurapcre", "..\..\..\source\app\aura\pcre\nord_aurapcre.vcxproj", "{E3ED74CC-506F-424F-AD39-25FBEDD98C7C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcre", "..\..\app\pcre\nord_pcre.vcxproj", "{7EE7598E-8C77-4D1A-B248-6E65BD72A8F6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcre", "..\..\..\source\app\pcre\nord_pcre.vcxproj", "{7EE7598E-8C77-4D1A-B248-6E65BD72A8F6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 		{E3ED74CC-506F-424F-AD39-25FBEDD98C7C} = {E3ED74CC-506F-424F-AD39-25FBEDD98C7C}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gcom", "..\..\app-core\gcom\nord_gcom.vcxproj", "{7F61A6F3-4ED9-4460-9270-4EA7CB00E634}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gcom", "..\..\..\source\app-core\gcom\nord_gcom.vcxproj", "{7F61A6F3-4ED9-4460-9270-4EA7CB00E634}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
@@ -180,45 +180,45 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gcom", "..\..\app-core\gcom
 		{BD207BC4-C08B-4A2D-B754-F3BD46AD3098} = {BD207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ace", "..\..\app\ace\nord_ace.vcxproj", "{E99C9D52-0709-4ED7-9F14-180B18F66C46}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ace", "..\..\..\source\app\ace\nord_ace.vcxproj", "{E99C9D52-0709-4ED7-9F14-180B18F66C46}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisjpeg", "..\..\app\axis\jpeg\nord_axisjpeg.vcxproj", "{C07D1D57-669A-4302-B835-EA52557F15C8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axisjpeg", "..\..\..\source\app\axis\jpeg\nord_axisjpeg.vcxproj", "{C07D1D57-669A-4302-B835-EA52557F15C8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E99C9D52-0709-4ED7-9F14-180B18F66C46} = {E99C9D52-0709-4ED7-9F14-180B18F66C46}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axispng", "..\..\app\axis\png\nord_axispng.vcxproj", "{04238890-C8DF-43C8-A90C-4D19FA21286F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axispng", "..\..\..\source\app\axis\png\nord_axispng.vcxproj", "{04238890-C8DF-43C8-A90C-4D19FA21286F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E99C9D52-0709-4ED7-9F14-180B18F66C46} = {E99C9D52-0709-4ED7-9F14-180B18F66C46}
 	EndProjectSection
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "nord_app_core_clockverse", "..\..\app\nord_app_core_clockverse.androidproj", "{8C0A2756-D897-444D-94EC-8DAF4D1825C2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_clockverse", "..\..\app-core\clockverse\nord_core_clockverse.vcxproj", "{590F57D2-68FB-4197-BA30-E8FE47089A88}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_clockverse", "..\..\..\source\app-core\clockverse\nord_core_clockverse.vcxproj", "{590F57D2-68FB-4197-BA30-E8FE47089A88}"
 	ProjectSection(ProjectDependencies) = postProject
 		{19841115-1951-1977-0422-021F8409C8DF} = {19841115-1951-1977-0422-021F8409C8DF}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multimedia", "..\..\app-core\multimedia\nord_multimedia.vcxproj", "{80499837-2589-411A-BA75-5A6EE85F7CD1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multimedia", "..\..\..\source\app-core\multimedia\nord_multimedia.vcxproj", "{80499837-2589-411A-BA75-5A6EE85F7CD1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16AB3478-F401-43C0-8BF1-A19F28802711} = {16AB3478-F401-43C0-8BF1-A19F28802711}
 		{A2A4118F-5D46-489E-90BE-7A7F29FA51C9} = {A2A4118F-5D46-489E-90BE-7A7F29FA51C9}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_decode_wave", "..\..\app-core\audio_decode_wave\nord_audio_decode_wave.vcxproj", "{7E704D66-4B0E-4404-947B-0E494B0980BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_decode_wave", "..\..\..\source\app-core\audio_decode_wave\nord_audio_decode_wave.vcxproj", "{7E704D66-4B0E-4404-947B-0E494B0980BC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{80499837-2589-411A-BA75-5A6EE85F7CD1} = {80499837-2589-411A-BA75-5A6EE85F7CD1}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "baseid3lib", "..\..\app-core\id3lib\nord_core_id3lib.vcxproj", "{A2A4118F-5D46-489E-90BE-7A7F29FA51C9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "baseid3lib", "..\..\..\source\app-core\id3lib\nord_core_id3lib.vcxproj", "{A2A4118F-5D46-489E-90BE-7A7F29FA51C9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E99C9D52-0709-4ED7-9F14-180B18F66C46} = {E99C9D52-0709-4ED7-9F14-180B18F66C46}
 		{02207BC4-C08B-4A2D-B754-F3BD46AD3098} = {02207BC4-C08B-4A2D-B754-F3BD46AD3098}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basempg123", "..\..\app-veriwell\libmpg123\nord_veriwell_libmpg123.vcxproj", "{8888D0AE-822C-48A7-AECF-5CE65D7F8FA7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basempg123", "..\..\..\source\app-veriwell\libmpg123\nord_veriwell_libmpg123.vcxproj", "{8888D0AE-822C-48A7-AECF-5CE65D7F8FA7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_decode_libmpg123", "..\..\app-veriwell\audio_decode_libmpg123\nord_veriwell_audio_decode_libmpg123.vcxproj", "{FEFE13D1-3F9A-4B56-BEB9-51A844FB87D5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_decode_libmpg123", "..\..\..\source\app-veriwell\audio_decode_libmpg123\nord_veriwell_audio_decode_libmpg123.vcxproj", "{FEFE13D1-3F9A-4B56-BEB9-51A844FB87D5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{80499837-2589-411A-BA75-5A6EE85F7CD1} = {80499837-2589-411A-BA75-5A6EE85F7CD1}
 		{A2A4118F-5D46-489E-90BE-7A7F29FA51C9} = {A2A4118F-5D46-489E-90BE-7A7F29FA51C9}

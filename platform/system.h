@@ -29,9 +29,10 @@ typedef unsigned char BYTE;
 typedef uint32_t UINT;
 
 
-
 #define __cdecl
 #define _stdcall
+#define c_cdecl
+
 
 // dbg alloc MS VC CRT
 #define _NORMAL_BLOCK  1
@@ -230,7 +231,7 @@ typedef void * PVOID;
 
 
 
-#define int_bool int
+//#define int_bool int
 
 
 

@@ -45,6 +45,7 @@ CLASS_DECL_AURA int_bool ScreenToClient(oswindow window, LPPOINT lppoint);
 CLASS_DECL_AURA int32_t IsIconic(oswindow window);
 CLASS_DECL_AURA int32_t IsWindowVisible(oswindow window);
 
+
 #define GetWindowLong GetWindowLongA
 #define SetWindowLong SetWindowLongA
 

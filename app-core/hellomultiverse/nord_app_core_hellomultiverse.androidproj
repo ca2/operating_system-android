@@ -130,13 +130,13 @@
     <AntProjectPropertiesFile Include="project.properties" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\app-core\appseed\gcom\nord_gcom.vcxproj" />
-    <ProjectReference Include="..\..\..\app-core\appseed\hellomultiverse\nord_core_hellomultiverse.vcxproj" />
-    <ProjectReference Include="..\..\..\app\appseed\aura\nord_aura.vcxproj" />
-    <ProjectReference Include="..\..\..\app\appseed\core\nord_core.vcxproj" />
-    <ProjectReference Include="..\..\..\app\appseed\draw2d_cairo\nord_draw2d_cairo.vcxproj" />
-    <ProjectReference Include="..\..\..\app\appseed\experience_core\nord_experience_core.vcxproj" />
-    <ProjectReference Include="..\..\..\app\appseed\freeimage_imaging\nord_freeimage_imaging.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app-core\appseed\gcom\nord_gcom.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app-core\appseed\hellomultiverse\nord_core_hellomultiverse.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app\appseed\aura\nord_aura.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app\appseed\core\nord_core.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app\appseed\draw2d_cairo\nord_draw2d_cairo.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app\appseed\experience_core\nord_experience_core.vcxproj" />
+    <ProjectReference Include="..\..\..\..\source\app\appseed\imaging_freeimage\nord_imaging_freeimage.vcxproj" />
     <ProjectReference Include="..\..\appseed\app.activity\app.activity.vcxproj" />
     <ProjectReference Include="..\..\appseed\app.launcher\app.launcher.vcxproj" />
   </ItemGroup>
