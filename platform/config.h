@@ -97,7 +97,7 @@
 #endif
 
 
-#define __ANDROID_API__ 19
+//#define __ANDROID_API__ 19
 
 
 #define _strdup strdup
