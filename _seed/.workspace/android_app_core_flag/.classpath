@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/Microsoft/AndroidSDK/25/platforms/android-25/android.jar"/>
+	<classpathentry kind="lib" path="C:/basis/archive/seed-android/app-core/flag/app/build/intermediates/exploded-aar/android_app/jars/classes.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
