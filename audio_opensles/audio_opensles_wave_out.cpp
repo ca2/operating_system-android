@@ -20,7 +20,7 @@ namespace multimedia
 
       {
 
-         m_estate             = state_initial;
+         m_estate             = e_state_initial;
          m_pthreadCallback    = NULL;
          m_iBufferedCount     = 0;
          m_mmr                = result_success;
@@ -84,12 +84,12 @@ namespace multimedia
       {
          single_lock sLock(m_pmutex, TRUE);
          if(engineObject != NULL &&
-            m_estate != state_initial)
+            m_estate != e_state_initial)
             return result_success;
          m_pthreadCallback = pthreadCallback;
          ::multimedia::e_result mmr;
          ASSERT(engineObject == NULL);
-         ASSERT(m_estate == state_initial);
+         ASSERT(m_estate == e_state_initial);
 
          //m_pwaveformat->wFormatTag = WAVE_FORMAT_PCM;
          m_pwaveformat->wFormatTag = 0;
@@ -211,7 +211,7 @@ namespace multimedia
 
          //}
 
-         m_estate = state_opened;
+         m_estate = e_state_opened;
          return result_success;
       }
 
@@ -224,7 +224,7 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         if(engineObject != NULL && m_estate != state_initial)
+         if(engineObject != NULL && m_estate != e_state_initial)
             return result_success;
 
          m_pthreadCallback = pthreadCallback;
@@ -233,7 +233,7 @@ namespace multimedia
          int period_size = 2048;
          ASSERT(engineObject == NULL);
 
-         ASSERT(m_estate == state_initial);
+         ASSERT(m_estate == e_state_initial);
 
          m_pwaveformat->wFormatTag        = 0;
          m_pwaveformat->nChannels         = (WORD) uiChannelCount;
@@ -429,7 +429,7 @@ namespace multimedia
 
 
 
-         m_estate = state_opened;
+         m_estate = e_state_opened;
 
          m_epurpose = epurpose;
       end_openaudio:
@@ -453,12 +453,12 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         if(m_estate == state_playing)
+         if(m_estate == e_state_playing)
          {
             wave_out_stop();
          }
 
-         if(m_estate != state_opened)
+         if(m_estate != e_state_opened)
             return result_success;
 
          ::multimedia::e_result mmr;
@@ -485,7 +485,7 @@ namespace multimedia
 
          ::multimedia::audio::wave_out::wave_out_close();
 
-         m_estate = state_initial;
+         m_estate = e_state_initial;
 
          return result_success;
 
@@ -500,14 +500,14 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         if(m_estate != state_playing && m_estate != state_paused)
+         if(m_estate != e_state_playing && m_estate != e_state_paused)
             return result_error;
 
          m_eventStopped.ResetEvent();
 
          m_pprebuffer->Stop();
 
-         m_estate = state_stopping;
+         m_estate = e_state_stopping;
 
          // waveOutReset
          // The waveOutReset function stops playback on the given
@@ -520,7 +520,7 @@ namespace multimedia
          //if(m_mmr == result_success)
          //{
 
-            m_estate = state_opened;
+            m_estate = e_state_opened;
 
 //         }
 
@@ -533,9 +533,9 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         ASSERT(m_estate == state_playing);
+         ASSERT(m_estate == e_state_playing);
 
-         if(m_estate != state_playing)
+         if(m_estate != e_state_playing)
             return result_error;
 
          // waveOutReset
@@ -549,7 +549,7 @@ namespace multimedia
 
          if(m_mmr == result_success)
          {
-            m_estate = state_paused;
+            m_estate = e_state_paused;
          }
 
          return m_mmr;
@@ -561,9 +561,9 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         ASSERT(m_estate == state_paused);
+         ASSERT(m_estate == e_state_paused);
 
-         if(m_estate != state_paused)
+         if(m_estate != e_state_paused)
             return result_error;
 
          // waveOutReset
@@ -577,7 +577,7 @@ namespace multimedia
 
          if(m_mmr == result_success)
          {
-            m_estate = state_playing;
+            m_estate = e_state_playing;
          }
 
          return m_mmr;
@@ -694,7 +694,7 @@ namespace multimedia
       void wave_out::OnReady(::signal_details * pobj)
       {
 
-         SCAST_PTR(::message::base, pbase, pobj);
+         __pointer(::message::base) pbase(pobj);
 
          int iBuffer = pbase->m_wparam;
 
@@ -706,7 +706,7 @@ namespace multimedia
       void wave_out::OnFree(::signal_details * pobj)
       {
 
-         SCAST_PTR(::message::base, pbase, pobj);
+         __pointer(::message::base) pbase(pobj);
 
          int iBuffer = pbase->m_wparam;
 
@@ -720,8 +720,8 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         if(m_estate != audio::wave_out::state_playing
-         && m_estate != audio::wave_out::state_stopping)
+         if(m_estate != audio::wave_out::e_state_playing
+         && m_estate != audio::wave_out::e_state_stopping)
          {
 
             goto finalize;
@@ -753,10 +753,10 @@ namespace multimedia
 
          single_lock sLock(m_pmutex, TRUE);
 
-         if(m_estate == state_playing)
+         if(m_estate == e_state_playing)
             return result_success;
 
-         if(m_estate != state_opened && m_estate != state_stopped)
+         if(m_estate != e_state_opened && m_estate != state_stopped)
             return result_error;
 
          int err = 0;
@@ -812,7 +812,7 @@ return false;
          //if(verbose)
            //printf("stream recovery\n");
 
-         if(m_pprebuffer->IsEOF() || wave_out_get_state() == state_stopping)
+         if(m_pprebuffer->IsEOF() || wave_out_get_state() == e_state_stopping)
          {
 
             return 0;

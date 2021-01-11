@@ -35,7 +35,7 @@ typedef struct oswindow_data * oswindow;
 #define HWND_MESSAGE ((::oswindow_data *) (int_ptr) 1)
 
 CLASS_DECL_AURA int_bool IsChild(oswindow windowParent, oswindow windowCandidateChildOrDescendant);
-CLASS_DECL_AURA oswindow GetParent(oswindow window);
+CLASS_DECL_AURA oswindow get_parent(oswindow window);
 CLASS_DECL_AURA oswindow SetParent(oswindow window, oswindow windowNewParent);
 CLASS_DECL_AURA int_bool ShowWindow(oswindow window, int32_t nCmdShow);
 CLASS_DECL_AURA LONG GetWindowLongA(oswindow window, int32_t nIndex);

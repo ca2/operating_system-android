@@ -18,7 +18,7 @@ namespace multimedia
       {
 
          m_pencoder = NULL;
-         m_estate = state_initial;
+         m_estate = e_state_initial;
          m_bResetting = false;
 
 
@@ -50,7 +50,7 @@ namespace multimedia
 
          return result_success;
 
-         if(m_ppcm != NULL && m_estate != state_initial)
+         if(m_ppcm != NULL && m_estate != e_state_initial)
          {
 
             wave_in_initialize_encoder();
@@ -65,7 +65,7 @@ namespace multimedia
 
          ASSERT(m_ppcm == NULL);
 
-         ASSERT(m_estate == state_initial);
+         ASSERT(m_estate == e_state_initial);
 
          m_pwaveformat->wFormatTag = 0;
          m_pwaveformat->nChannels = 2;
@@ -208,7 +208,7 @@ Opened:
          if(m_pencoder != NULL && !wave_in_initialize_encoder())
          {
 
-            m_estate = state_opened;
+            m_estate = e_state_opened;
 
             wave_in_close();
 
@@ -216,7 +216,7 @@ Opened:
 
          }
 
-         m_estate = state_opened;
+         m_estate = e_state_opened;
 
          return result_success;
 
@@ -230,7 +230,7 @@ Opened:
 
          ::multimedia::e_result mmr;
 
-         if(m_estate != state_opened && m_estate != state_stopped)
+         if(m_estate != e_state_opened && m_estate != state_stopped)
             return result_success;
 
          mmr = wave_in_reset();
@@ -256,7 +256,7 @@ Opened:
 
          m_ppcm = NULL;
 
-         m_estate = state_initial;
+         m_estate = e_state_initial;
 
          return result_success;
 
@@ -271,7 +271,7 @@ Opened:
          if(m_estate == state_recording)
             return result_success;
 
-         if(m_estate != state_opened && m_estate != state_stopped)
+         if(m_estate != e_state_opened && m_estate != state_stopped)
             return result_success;
 
          ::multimedia::e_result mmr;
@@ -296,7 +296,7 @@ Opened:
 
          ::multimedia::e_result mmr;
 
-         m_estate = state_stopping;
+         m_estate = e_state_stopping;
 
          try
          {
@@ -422,7 +422,7 @@ Opened:
          {
          }
 
-         m_estate = state_opened;
+         m_estate = e_state_opened;
 
          m_bResetting = false;
 
