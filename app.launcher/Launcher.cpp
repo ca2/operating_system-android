@@ -228,7 +228,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
    initialize.m_rect.right = pinitdata->m_iScreenWidth;
    initialize.m_rect.bottom = pinitdata->m_iScreenHeight;
 
-	::user::create_struct createstruct;
+	::user::system_struct createstruct;
 
 	psystem->get_context_session()->m_puiHost->create_window_ex(createstruct);
 
