@@ -161,7 +161,7 @@ static void engine_term_display(oswindow window) {
 //extern unichar * g_pwszCommandLine;
 
 /**
-* This is the main entry point of a native application that is using
+* This is the main entry point_i32 of a native application that is using
 * android_native_app_glue.  It runs in its own thread, with its own
 * event loop for receiving input events and doing other things.
 */
@@ -223,10 +223,10 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
    ::user::native_window_initialize initialize;
 
-   initialize.m_rect.left = 0;
-   initialize.m_rect.top = 0;
-   initialize.m_rect.right = pinitdata->m_iScreenWidth;
-   initialize.m_rect.bottom = pinitdata->m_iScreenHeight;
+   initialize.m_rectangle.left = 0;
+   initialize.m_rectangle.top = 0;
+   initialize.m_rectangle.right = pinitdata->m_iScreenWidth;
+   initialize.m_rectangle.bottom = pinitdata->m_iScreenHeight;
 
 	::user::system_struct createstruct;
 
