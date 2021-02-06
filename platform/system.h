@@ -128,9 +128,9 @@ inline void debug_break() { throw 3; }
 
 #define MAX_DWORD_PTR ((dword_ptr)(-1))
 
-#define TRUE 1
+#define true 1
 
-#define FALSE 0
+#define false 0
 
 typedef unsigned char   u_char;
 typedef unsigned short  u_short;

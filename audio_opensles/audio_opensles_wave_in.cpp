@@ -59,7 +59,7 @@ namespace multimedia
 
          }
 
-         single_lock sLock(&m_mutex, TRUE);
+         single_lock sLock(&m_mutex, true);
 
          ::multimedia::e_result mmr = result_success;
 
@@ -226,7 +226,7 @@ Opened:
       ::multimedia::e_result wave_in::wave_in_close()
       {
 
-         single_lock sLock(&m_mutex, TRUE);
+         single_lock sLock(&m_mutex, true);
 
          ::multimedia::e_result mmr;
 
@@ -266,7 +266,7 @@ Opened:
       {
          return result_success;
 
-         single_lock sLock(&m_mutex, TRUE);
+         single_lock sLock(&m_mutex, true);
 
          if(m_estate == state_recording)
             return result_success;
@@ -289,7 +289,7 @@ Opened:
       ::multimedia::e_result wave_in::wave_in_stop()
       {
 
-         single_lock sLock(&m_mutex, TRUE);
+         single_lock sLock(&m_mutex, true);
 
          if(m_estate != state_recording)
             return result_error;
@@ -394,7 +394,7 @@ Opened:
 
       ::multimedia::e_result wave_in::wave_in_reset()
       {
-         single_lock sLock(&m_mutex, TRUE);
+         single_lock sLock(&m_mutex, true);
          m_bResetting = true;
          if(m_ppcm == NULL)
          {
