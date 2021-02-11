@@ -694,9 +694,9 @@ namespace multimedia
       void wave_out::OnReady(::signal_details * pobj)
       {
 
-         __pointer(::message::base) pbase(pobj);
+         __pointer(::user::message) pusermessage(pobj);
 
-         int iBuffer = pbase->m_wparam;
+         int iBuffer = pusermessage->m_wparam;
 
          opensles_out_buffer_ready(iBuffer);
 
@@ -706,9 +706,9 @@ namespace multimedia
       void wave_out::OnFree(::signal_details * pobj)
       {
 
-         __pointer(::message::base) pbase(pobj);
+         __pointer(::user::message) pusermessage(pobj);
 
-         int iBuffer = pbase->m_wparam;
+         int iBuffer = pusermessage->m_wparam;
 
          opensles_out_free(iBuffer);
 
