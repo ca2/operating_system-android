@@ -194,7 +194,7 @@ namespace multimedia
          //if (err < 0)
          //{
 
-         //   TRACE("Unable to set avail min for playback: %s\n", snd_strerror(err));
+         //   TRACE("Unable to set avail minimum for playback: %s\n", snd_strerror(err));
 
          //   return result_error;
 
