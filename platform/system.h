@@ -18,7 +18,7 @@
 
 
 
-#define sync base_sync
+#define synchronization_object base_sync
 
 
 #include "platform_android.h"
@@ -219,7 +219,7 @@ typedef void * PVOID;
 
 #undef index
 #undef user
-#undef sync
+#undef synchronization_object
 
 
 // unichar should 16 bit wide - if wchar_t is 16 bit wide in the platform
