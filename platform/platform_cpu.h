@@ -10,9 +10,9 @@
 #ifdef _AFX_NO_DEBUG_CRT
 extern "C" void _BPT();
 #pragma intrinsic(_BPT)
-#define __debug_break() _BPT()
+#define DEBUG_BREAK _BPT()
 #else
-#define __debug_break() _CrtDbgBreak()
+#define DEBUG_BREAK _CrtDbgBreak()
 #endif
 #endif  //_ALPHA_
 

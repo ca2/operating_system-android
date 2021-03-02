@@ -14,7 +14,7 @@
 #ifndef _AFX_PORTABLE
 #pragma component(browser, off, references, "ASSERT")
 #pragma component(browser, off, references, "AfxAssertFailedLine")
-#pragma component(browser, off, references, "__debug_break")
+#pragma component(browser, off, references, "DEBUG_BREAK")
 #pragma component(browser, off, references, "BOOL")
 #pragma component(browser, off, references, "BYTE")
 #pragma component(browser, off, references, "DECLSPEC_IMPORT")
@@ -86,16 +86,11 @@
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// Special __debug_break: used to break into debugger at critical times
+// Special DEBUG_BREAK: used to break into debugger at critical times
 
 #define debug_break() _asm { int 3 }
 
-/*#ifndef DEBUG
-#ifdef __debug_break
-#undef __debug_break
-#endif
-#define __debug_break()
-#endif  // DEBUG*/
+
 
 /////////////////////////////////////////////////////////////////////////////
 // Standard preprocessor symbols if not already defined
