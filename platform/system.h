@@ -90,13 +90,13 @@ typedef union _XEvent XEvent;
 #include "platform_cpu.h"
 
 
-#ifdef __cplusplus
+// #ifdef __cplusplus
 
 
-inline void debug_break() { throw 3; }
+// inline void debug_break() { throw 3; }
 
 
-#endif
+// #endif
 
 
 // SIZE_T_MAX is used by the collection classes
