@@ -219,7 +219,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	}
 
-   psystem->get_context_session()->m_puiHost = new ::user::interaction();
+   psystem->get_session()->m_puserinteractionHost = new ::user::interaction();
 
    ::user::native_window_initialize initialize;
 
@@ -230,7 +230,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	::user::system_struct createstruct;
 
-	psystem->get_context_session()->m_puiHost->create_window_ex(createstruct);
+	psystem->get_session()->m_puserinteractionHost->create_window_ex(createstruct);
 
    //::oswindow_data * pwindow = new oswindow_data;
 

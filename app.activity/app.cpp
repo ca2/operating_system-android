@@ -67,7 +67,7 @@ void start(int iScreenWidth, int iScreenHeight, const char * pszCommandLine, con
       if (!handle)
       {
 
-         LOGE("Fatal: Unable to reload shared library libbase.so. It should be already be loaded thorugh Java System->loadLibrary call (explicitly or implicitly)");
+         LOGE("Fatal: Unable to reload shared library libbase.so. It should be already be loaded thorugh Java psystem->loadLibrary call (explicitly or implicitly)");
 
          exit(1);
 
@@ -160,7 +160,7 @@ void start(int iScreenWidth, int iScreenHeight, const char * pszCommandLine, con
       if (!handle)
       {
 
-         LOGE("Fatal: Unable to reload shared library liblauncher.so. It should be already be loaded thorugh Java System->loadLibrary call (explicitly or implicitly)");
+         LOGE("Fatal: Unable to reload shared library liblauncher.so. It should be already be loaded thorugh Java psystem->loadLibrary call (explicitly or implicitly)");
 
          exit(1);
 

@@ -89,7 +89,7 @@ namespace multimedia
          //m_pwaveformat->nBlockAlign = m_pwaveformat->wBitsPerSample * m_pwaveformat->nChannels / 8;
          //m_pwaveformat->nAvgBytesPerSec = m_pwaveformat->nSamplesPerSec * m_pwaveformat->nBlockAlign;
          //m_pwaveformat->cbSize = 0;
-         //sp(::multimedia::audio::wave) audiowave = Application.audiowave();
+         //sp(::multimedia::audio::wave) audiowave = papplication->audiowave();
          //m_iBuffer = 0;
 
          /*if(result_success == (mmr = waveInOpen(
@@ -372,7 +372,7 @@ Opened:
 
          m_iBuffer--;
 
-         uint32_t msSampleTime = Application.multimedia_get_time();
+         uint32_t msSampleTime = papplication->multimedia_get_time();
 
          int iBuffer = dwParam1;
 
