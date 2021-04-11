@@ -67,8 +67,8 @@ namespace multimedia
          virtual bool initialize_thread() override;
          virtual int32_t exit_thread() override;
 
-         DECL_GEN_SIGNAL(OnReady);
-         DECL_GEN_SIGNAL(OnFree);
+         DECLARE_MESSAGE_HANDLER(OnReady);
+         DECLARE_MESSAGE_HANDLER(OnFree);
 
          virtual ::multimedia::e_result wave_out_start(const imedia_position & position);
 

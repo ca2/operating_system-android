@@ -631,7 +631,7 @@ FT_BEGIN_HEADER
    *
    * Value 2:
    *   The new default mode for the TrueType driver.  The Infinality code
-   *   base was stripped to the bare minimum and all configurability removed
+   *   base was stripped to the bare minimum and all configurability erased
    *   in the name of speed and simplicity.  The configurability was mainly
    *   aimed at legacy fonts like 'Arial', 'Times New Roman', or 'Courier'.
    *   Legacy fonts are fonts that modify vertical stems to achieve clean
@@ -921,7 +921,7 @@ FT_BEGIN_HEADER
 
 
   /*
-   * This macro is obsolete.  Support has been removed in FreeType version
+   * This macro is obsolete.  Support has been erased in FreeType version
    * 2.5.
    */
 /* #define FT_CONFIG_OPTION_OLD_INTERNALS */
