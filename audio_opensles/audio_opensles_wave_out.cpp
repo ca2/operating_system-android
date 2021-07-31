@@ -724,7 +724,7 @@ namespace multimedia
          && m_estate != audio::wave_out::e_state_stopping)
          {
 
-            goto finalize;
+            goto destroy;
 
          }
 
@@ -739,7 +739,7 @@ namespace multimedia
 
          //output_debug_string("buffer_size"+::str::from((uint_ptr) wave_out_get_buffer_size()));
 
-         finalize:
+         destroy:
 
          sLock.unlock();
 
