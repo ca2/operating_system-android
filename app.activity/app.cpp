@@ -6,7 +6,7 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 extern "C"
-void android_set_cache_dir(const char * pszDir);
+void android_set_cache_dir(const ::string & pszDir);
 extern "C"
 const char * android_get_cache_dir();
 
@@ -29,7 +29,7 @@ PFN_text on_text = NULL;
 
 
 
-void * load_lib(const char * l)
+void * load_lib(const ::string & l)
 {
 
    void * handle = dlopen(l, RTLD_NOW | RTLD_GLOBAL);
@@ -53,7 +53,7 @@ void * load_lib(const char * l)
 
 
 
-void start(int iScreenWidth, int iScreenHeight, const char * pszCommandLine, const char * pszCacheDir)
+void start(int iScreenWidth, int iScreenHeight, const ::string & pszCommandLine, const ::string & pszCacheDir)
 {
 	
     LOGI("start(%d, %d)", iScreenWidth, iScreenHeight);

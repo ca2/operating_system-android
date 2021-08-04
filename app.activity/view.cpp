@@ -8,7 +8,7 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 
-void start(int iScreenWidth, int iScreenHeight, const char * pszCommandLine, const char * pszCacheDir);
+void start(int iScreenWidth, int iScreenHeight, const ::string & pszCommandLine, const ::string & pszCacheDir);
 
 
 
