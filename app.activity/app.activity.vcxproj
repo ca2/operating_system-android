@@ -192,7 +192,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
-    <ClCompile Include="view.cpp" />
+    <ClCompile Include="impact.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h" />
