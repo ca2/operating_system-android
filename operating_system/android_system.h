@@ -40,8 +40,8 @@ typedef unsigned int UINT;
 
 
 #if ! defined(lint)
-#define UNREFERENCED_PARAMETER(P)          (P)
-#define DBG_UNREFERENCED_PARAMETER(P)      (P)
+#define __UNREFERENCED_PARAMETER(P)          (P)
+#define DBG___UNREFERENCED_PARAMETER(P)      (P)
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
 
 #else // lint
@@ -50,13 +50,13 @@ typedef unsigned int UINT;
 // this varible.  Error 527 has to do with unreachable code.
 // -restore restores checking to the -save state
 
-#define UNREFERENCED_PARAMETER(P)          \
+#define __UNREFERENCED_PARAMETER(P)          \
     /*lint -save -e527 -e530 */ \
     { \
         (P) = (P); \
     } \
     /*lint -restore */
-#define DBG_UNREFERENCED_PARAMETER(P)      \
+#define DBG___UNREFERENCED_PARAMETER(P)      \
     /*lint -save -e527 -e530 */ \
     { \
         (P) = (P); \
