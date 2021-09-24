@@ -62,7 +62,7 @@ namespace multimedia
       }*/
 
 
-      CLASS_DECL_AUDIO_MMSYSTEM ::multimedia::e_result translate_alsa(int err)
+      CLASS_DECL_AUDIO_MMSYSTEM ::e_status translate_alsa(int err)
       {
 
          if(err < 0)

@@ -50,12 +50,12 @@ namespace multimedia
          virtual imedia_time wave_out_get_position_millis();
          imedia_position wave_out_get_position();
 
-         virtual ::multimedia::e_result wave_out_open(::thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount) override;
-         virtual ::multimedia::e_result wave_out_open_ex(::thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount, uint32_t uiSamplesPerSec, uint32_t uiChannelCount, uint32_t uiBitsPerSample, ::multimedia::audio::e_purpose epurpose) override;
-         virtual ::multimedia::e_result wave_out_stop() override;
-         virtual ::multimedia::e_result wave_out_close() override;
-         virtual ::multimedia::e_result wave_out_pause() override;
-         virtual ::multimedia::e_result wave_out_restart() override;
+         virtual ::e_status wave_out_open(::thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount) override;
+         virtual ::e_status wave_out_open_ex(::thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount, uint32_t uiSamplesPerSec, uint32_t uiChannelCount, uint32_t uiBitsPerSample, ::multimedia::audio::e_purpose epurpose) override;
+         virtual ::e_status wave_out_stop() override;
+         virtual ::e_status wave_out_close() override;
+         virtual ::e_status wave_out_pause() override;
+         virtual ::e_status wave_out_restart() override;
          virtual void * get_os_data();
 
          virtual void wave_out_on_playback_end() override;
@@ -70,7 +70,7 @@ namespace multimedia
          DECLARE_MESSAGE_HANDLER(OnReady);
          DECLARE_MESSAGE_HANDLER(OnFree);
 
-         virtual ::multimedia::e_result wave_out_start(const imedia_position & position);
+         virtual ::e_status wave_out_start(const imedia_position & position);
 
          virtual bool on_run_step();
 

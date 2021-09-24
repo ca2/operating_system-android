@@ -80,14 +80,14 @@ namespace multimedia
 
       }
 
-      ::multimedia::e_result wave_out::wave_out_open(thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount)
+      ::e_status wave_out::wave_out_open(thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount)
       {
          single_lock sLock(m_mutex, true);
          if(engineObject != NULL &&
             m_estate != e_state_initial)
             return result_success;
          m_pthreadCallback = pthreadCallback;
-         ::multimedia::e_result mmr;
+         ::e_status mmr;
          ASSERT(engineObject == NULL);
          ASSERT(m_estate == e_state_initial);
 
@@ -219,7 +219,7 @@ namespace multimedia
 
 
 
-      ::multimedia::e_result wave_out::wave_out_open_ex(thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount, uint32_t uiSamplesPerSec, uint32_t uiChannelCount, uint32_t uiBitsPerSample, ::multimedia::audio::e_purpose epurpose)
+      ::e_status wave_out::wave_out_open_ex(thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount, uint32_t uiSamplesPerSec, uint32_t uiChannelCount, uint32_t uiBitsPerSample, ::multimedia::audio::e_purpose epurpose)
       {
 
          single_lock sLock(m_mutex, true);
@@ -254,7 +254,7 @@ namespace multimedia
          uint32_t uiSkippedSamplesCount;
          int err;
          if (create() != SL_RESULT_SUCCESS)
-            return ::multimedia::result_error;
+            return ::error_failed;
 
             // configure audio source
             SLDataLocator_AndroidSimpleBufferQueue loc_bufq =
@@ -302,7 +302,7 @@ namespace multimedia
                sr = SL_SAMPLINGRATE_192;
                break;
             default:
-               return ::multimedia::result_error;
+               return ::error_failed;
             }
 
             {
@@ -436,19 +436,19 @@ namespace multimedia
          if (result == SL_RESULT_SUCCESS)
          {
             output_debug_string("wave_out::wave_out_open_ex success");
-            return ::multimedia::result_success;
+            return ::success;
          }
          else
          {
             output_debug_string("wave_out::wave_out_open_ex error");
-            return ::multimedia::result_error;
+            return ::error_failed;
          }
 
       }
 
 
 
-      ::multimedia::e_result wave_out::wave_out_close()
+      ::e_status wave_out::wave_out_close()
       {
 
          single_lock sLock(m_mutex, true);
@@ -461,7 +461,7 @@ namespace multimedia
          if(m_estate != e_state_opened)
             return result_success;
 
-         ::multimedia::e_result mmr;
+         ::e_status mmr;
 
 
          // destroy buffer queue audio player object, and invalidate all associated interfaces
@@ -495,7 +495,7 @@ namespace multimedia
 
 
 
-      ::multimedia::e_result wave_out::wave_out_stop()
+      ::e_status wave_out::wave_out_stop()
       {
 
          single_lock sLock(m_mutex, true);
@@ -528,7 +528,7 @@ namespace multimedia
 
       }
 
-      ::multimedia::e_result wave_out::wave_out_pause()
+      ::e_status wave_out::wave_out_pause()
       {
 
          single_lock sLock(m_mutex, true);
@@ -556,7 +556,7 @@ namespace multimedia
 
       }
 
-      ::multimedia::e_result wave_out::wave_out_restart()
+      ::e_status wave_out::wave_out_restart()
       {
 
          single_lock sLock(m_mutex, true);
@@ -748,7 +748,7 @@ namespace multimedia
       }
 
 
-      ::multimedia::e_result wave_out::wave_out_start(const imedia_position & position)
+      ::e_status wave_out::wave_out_start(const imedia_position & position)
       {
 
          single_lock sLock(m_mutex, true);
@@ -789,7 +789,7 @@ namespace multimedia
          //ASSERT(!result);
 
          if (result != SL_RESULT_SUCCESS)
-            return ::multimedia::result_error;
+            return ::error_failed;
 
 
          return result_success;
