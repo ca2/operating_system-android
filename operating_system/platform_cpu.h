@@ -1,4 +1,4 @@
-#ifdef _MIPS_
+﻿#ifdef _MIPS_
 // specific overrides for MIPS...
 #define _AFX_PACKING    8       // default MIPS alignment (required)
 #endif //_MIPS_

@@ -1,4 +1,4 @@
-#include "activity.h"
+﻿#include "activity.h"
 
 
 #define  LOG_TAG    "app.activity (app.cpp)"
