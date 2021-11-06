@@ -1,4 +1,4 @@
-#ifndef CAIRO_FEATURES_H
+﻿#ifndef CAIRO_FEATURES_H
 #define CAIRO_FEATURES_H 1
 
 

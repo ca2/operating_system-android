@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 //#include <android/native_activity.h>
 #include <android/log.h>

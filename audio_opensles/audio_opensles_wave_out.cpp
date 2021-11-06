@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context);
