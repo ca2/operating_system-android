@@ -1,4 +1,4 @@
-﻿#include "acme_android.h"
+#include "acme_android.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "acme_android", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "acme_android", __VA_ARGS__))

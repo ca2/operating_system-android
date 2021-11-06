@@ -1,4 +1,4 @@
-﻿
+
 
 #ifdef _LP64
 #define OS64BIT

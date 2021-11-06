@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 
 #undef HAVE_STDINT_H

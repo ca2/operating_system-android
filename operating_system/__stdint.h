@@ -1,4 +1,4 @@
-﻿#include <stdint.h>
+#include <stdint.h>
 
 
 #define ulong32       	unsigned int
