@@ -31,7 +31,7 @@ namespace multimedia
 
 
 extern "C"
-void ca2_factory_exchange(::aura::application * papp)
+void ca2_factory(::aura::application * papp)
 {
 
    ::multimedia::audio_opensles::factory_exchange factoryexchange(papp);

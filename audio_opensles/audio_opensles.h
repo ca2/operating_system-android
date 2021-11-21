@@ -24,4 +24,4 @@
 //#include "audio_opensles_wave_in.h"
 
 
-#include "audio_opensles_factory_exchange.h"
+#include "([a-z0-9_]+)_factory.h"
