@@ -26,7 +26,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aqua", "..\..\..\source\app
 		{9D102BB4-2054-4D90-A3E7-DD63BDF83982} = {9D102BB4-2054-4D90-A3E7-DD63BDF83982}
 	EndProjectSection
 EndProject
-Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app", "..\..\seed-android\platform-android\app\android_app.androidproj", "{48185620-E3EC-4BFB-BC89-E3F8321679C1}"
+Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app", "..\..\seed-android\operating-system-android\app\android_app.androidproj", "{48185620-E3EC-4BFB-BC89-E3F8321679C1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acme_android", "..\acme_android\acme_android.vcxproj", "{C296392C-DC67-41F2-BADC-7AD2F2F0FB3E}"
 	ProjectSection(ProjectDependencies) = postProject

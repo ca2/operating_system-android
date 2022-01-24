@@ -18,12 +18,12 @@
 		<link>
 			<name>src0</name>
 			<type>2</type>
-			<location>C:/basis/archive/seed-android/platform-android/app/app/src/main/java</location>
+			<location>C:/basis/archive/seed-android/operating-system-android/app/app/src/main/java</location>
 		</link>
 		<link>
 			<name>src1</name>
 			<type>2</type>
-			<location>C:/basis/archive/seed-android/platform-android/app/app/build/generated/source/r/x86/debug</location>
+			<location>C:/basis/archive/seed-android/operating-system-android/app/app/build/generated/source/r/x86/debug</location>
 		</link>
 	</linkedResources>
 </projectDescription>

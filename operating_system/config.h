@@ -133,7 +133,7 @@
 
 
 
-#define PLATFORM_NAME   "android"
+#define OPERATING_SYSTEM_NAME   "android"
 
 
 

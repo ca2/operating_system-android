@@ -16,7 +16,7 @@
       <Value>$(TimeDir)</Value>
     </BuildMacro>
     <BuildMacro Include="__archive">
-      <Value>$(__archive)</Value>
+      <Value>$(__operating_system)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>
