@@ -19,7 +19,7 @@
 #endif
 
 
-#define PLATFORM_NAMESPACE android
+#define OPERATING_SYSTEM_NAMESPACE android
 
 #define stricmp strcasecmp
 
