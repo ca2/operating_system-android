@@ -1,0 +1,49 @@
+#include "framework.h"
+//#include "_android.h"
+
+
+namespace android
+{
+
+
+   dir_system::dir_system()
+   {
+
+   }
+
+
+   dir_system::~dir_system()
+   {
+
+   }
+
+
+   void dir_system::initialize(::object * pobject)
+   {
+
+      //auto estatus = 
+      
+      ::dir_system::initialize(pobject);
+
+      //if (!estatus)
+      //{
+
+      //   return estatus;
+
+      //}
+
+      //m_pathInstall = ::dir::install();
+
+      m_pathHome = m_psystem->m_pathCacheDirectory / "home";
+
+      //return estatus;
+
+   }
+
+
+
+
+} // namespace android
+
+
+

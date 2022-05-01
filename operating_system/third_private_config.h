@@ -1,16 +1,10 @@
 #pragma once
 
 
-#define THIRD_PRIVATE_CONFIG_H
+#define __DEBUG_POWER
 
 
-#include "platform/config.h"
-
-
-// #undef IN
-// #undef OUT
-
-
+#include "operating_system/config.h"
 
 
 

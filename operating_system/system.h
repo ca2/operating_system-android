@@ -9,6 +9,9 @@
 #endif
 
 
+#define PARALLELIZATION_PTHREAD
+
+
 #ifdef _DEBUG
 #ifndef DEBUG
 #define DEBUG
@@ -18,12 +21,80 @@
 
 
 
-#define synchronization_object base_sync
+//#define synchronization_object base_sync
+
+#ifdef __cplusplus
+
+#ifdef __arm__
+
+#define DEBUG_BREAK __asm__("BKPT")
+
+#else
+
+#define DEBUG_BREAK asm("int $3")
+
+#endif
+
+#endif
 
 
-#include "platform_android.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdarg.h>
 
 
+#include <string.h>
+
+#include <strings.h>
+#include <inttypes.h>
+#include <errno.h>
+
+
+#include <semaphore.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+
+#include <wchar.h>
+#include <ctype.h>
+
+
+#include <sys/resource.h>
+
+
+#include <time.h>
+
+int timespec_get(timespec * ts, int);
+
+
+
+#undef user
+
+
+#define user android_user
+
+
+#ifdef __cplusplus
+
+
+#include <typeinfo>
+#include <initializer_list>
+
+
+#endif
+
+
+#include <pthread.h>
+
+
+#undef user
+
+
+
+
+
+
+#include <concepts>
 
 typedef unsigned char BYTE;
 typedef uint32_t UINT;
@@ -47,7 +118,7 @@ typedef uint32_t UINT;
 //typedef uint_ptr                 WPARAM;
 //typedef long_ptr                 LPARAM;
 //typedef long_ptr                 LRESULT;
-typedef struct oswindow_data *   oswindow;
+//typedef struct oswindow_data *   oswindow;
 
 //#include <pthread.h>
 
@@ -146,22 +217,12 @@ typedef unsigned long   u_long;
 #define THROWS // gnucc null throw statement means that the function can throw any exception
 
 
-#ifdef DEBUG
-
-#define RELEASENOTHROW
-
-#else
-
-#define RELEASENOTHROW throw()
-
-#endif
-
 
 #define DWORD     uint32_t
 
 #define BYTE      uint8_t
 
-#define _stricmp strcasecmp
+//#define _stricmp strcasecmp
 
 
 #define __forceinline inline
@@ -196,44 +257,125 @@ typedef unsigned long   u_long;
 typedef uint8_t byte;
 #endif
 
-typedef void * PVOID;
 
+// for global data that should be in COMDATs (packaged data)
+#ifndef __COMDAT
+#define __COMDAT // __declspec(selectany)
+#endif
+
+
+#define NO_ANSIUNI_ONLY
+
+#define MAX_DWORD_PTR ((dword_ptr)(-1))
+
+#define TRUE 1
+
+#define FALSE 0
+
+
+
+
+typedef unsigned short  wd16char;
+typedef wchar_t         wd32char;
+typedef wd32char        widechar;
+
+#define DECL_C
+
+
+#define _PRE_WIDEN(x) L##x
+#define _WIDEN(x) _PRE_WIDEN(x)
+
+#define NOTHROW throw()
+#define THROWS // gnucc null throw statement means that the function can throw any exception
+
+
+#ifdef _DEBUG
+
+#define RELEASENOTHROW
+
+#else
+
+#define RELEASENOTHROW throw()
+
+#endif
+
+
+//#define ::u32     ::u32
+//
+//#define byte      ::u328_t
+
+//#define NULL 0
 
 #define _strcmpi strcasecmp
+
+
+#define __forceinline inline
+
+
+
+
+//typedef ::u328_t byte;
+
+
+typedef void * PVOID;
 
 
 #define PURE = 0
 
 
 #define __stdcall
+#define _gmtime64 gmtime
 
 
+#define stricmp strcasecmp
 #define strnicmp strncasecmp
 
 
+#define _stricmp  stricmp
+#define _strnicmp  strnicmp
 
 
 
+
+
+#define MOVE_SEMANTICS
+
+
+
+
+
+
+
+
+
+
+#define wcsicmp wcscasecmp
+#define wcsnicmp wcsncasecmp
+
+
+#define _strlwr __ansilwr
+#define _strupr __ansiupr
 
 
 
 #undef index
-#undef user
-#undef synchronization_object
-
-
-// unichar should 16 bit wide - if wchar_t is 16 bit wide in the platform
-// the wchar_t can be used instead of unsigned short or uint16_t
-// unichar32 should 32 bit wide - if wchar_t is 32 bit wide in the platform
-// the wchar_t can be used instead of unsigned int or uint32_t
-// typedef unsigned short  unichar;
-// typedef wchar_t         unichar32;
 
 
 
-//#define int_bool int
+
+#define WINBOOL int
 
 
+#define INFINITE_TIMEOUT UINT_MAX
+
+//#define offsetof(type, member)  __builtin_offsetof (type, member)
+
+
+
+
+typedef wchar_t unichar;
+
+using platform_char = char;
 
 
 

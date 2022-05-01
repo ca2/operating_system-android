@@ -1,0 +1,35 @@
+// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardSørensen!!
+#pragma once
+
+
+namespace android
+{
+
+
+   class CLASS_DECL_APEX file_context :
+      virtual public ::file_context
+   {
+   public:
+
+
+
+      __reference(dir_system)       m_pdirsystem;
+      __reference(file_system)      m_pfilesystem;
+
+
+      file_context();
+      ~file_context() override;
+
+
+      void initialize(::object * pobject) override;
+
+
+      //void update_module_path() override;
+
+
+   };
+
+
+} // namespace ca2
+
+

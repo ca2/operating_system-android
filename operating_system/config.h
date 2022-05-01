@@ -89,6 +89,9 @@
 #define __API_IMPORT
 #endif
 
+#define __FACTORY_EXPORT extern "C"
+#define __FACTORY_IMPORT extern "C"
+
 // The following macros are used on data declarations/definitions
 //  (they are redefined for extension DLLs and the shared MFC DLL)
 #define __DATADEF
@@ -191,8 +194,9 @@ typedef int int_bool;
 
 #define FONT_MONO "mono"
 #define FONT_SANS "sans-serif"
-#define FONT_SANS_UI "sans-serif"
 #define FONT_SERIF "FreeSerif"
+#define FONT_SANS_UI "sans-serif"
+#define FONT_SERIF_UI "serif"
 #define FONT_SANS_EX "Liberation Sans"
 #define FONT_SERIF_EX "Liberation Serif"
 #define FONT_SANS_FX "Ubuntu"
