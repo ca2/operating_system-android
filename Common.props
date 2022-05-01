@@ -4,7 +4,8 @@
   <PropertyGroup Label="UserMacros">
     <BaseDir>$(SolutionDir)..\..\..\</BaseDir>
     <TimeDir>$(BaseDir)time-android\</TimeDir>
-    <__archive>$(BaseDir)archive\</__archive>
+    <__operating_system>$(BaseDir)operating-system\</__operating_system>
+    <__toolsbin>$(__operating_system)tool-windows\bin\</__toolsbin>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup />
@@ -15,8 +16,11 @@
     <BuildMacro Include="TimeDir">
       <Value>$(TimeDir)</Value>
     </BuildMacro>
-    <BuildMacro Include="__archive">
+    <BuildMacro Include="__operating_system">
       <Value>$(__operating_system)</Value>
+    </BuildMacro>
+    <BuildMacro Include="__toolsbin">
+      <Value>$(__toolsbin)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>
