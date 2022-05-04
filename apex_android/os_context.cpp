@@ -1,16 +1,10 @@
 #include "framework.h"
-//#include "_android.h"
-//#include "apex/platform/static_start.h"
-//#include "apex/xml/_.h"
-//#include "apex/graphics/draw2d/ttf_util.h"
 
 
 #undef USERNAME_LENGTH // mysql one
 
 
-
-
-namespace android
+namespace apex_android
 {
 
 
@@ -933,10 +927,7 @@ namespace android
 //   }
 
 
-} // namespace android
-
-
-
+} // namespace apex_android
 
 
 

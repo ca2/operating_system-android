@@ -476,8 +476,15 @@ namespace windowing_android
    }
 
 
+   ::windowing::text_editor_interface * windowing::get_text_editor_interface()
+   {
 
-} // namespace windowing
+      return ::operating_system_driver::get();
+
+   }
+
+
+} // namespace windowing_android
 
 
 
@@ -1840,6 +1847,9 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 
    }
 
+
+   
+
    //});
 
 }
@@ -1951,7 +1961,13 @@ void android_on_text(e_os_text etext, const wchar_t * pwch, size_t len)
 
       //   });
 
+
+
    }
+
+
+   
+
 
    //});
 
@@ -2089,7 +2105,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //CLASS_DECL_AURA void _android_os_message_box(const ::string & pText, const ::string & lpCaption, const ::e_message_box & emessagebox)
 //{
 //
-//   while (::oslocal()->m_iMessageBoxResult > 0)
+//   while (::operating_system_driver::get()->m_iMessageBoxResult > 0)
 //   {
 //
 //      if (!task_sleep(100_ms))
@@ -2135,22 +2151,22 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //   if (::is_set(pText))
 //   {
 //
-//      ::oslocal()->m_strMessageBox = ansi_dup(pText);
+//      ::operating_system_driver::get()->m_strMessageBox = ansi_dup(pText);
 //
 //   }
 //
 //   if (::is_set(lpCaption))
 //   {
 //
-//      ::oslocal()->m_strMessageBoxCaption = ansi_dup(lpCaption);
+//      ::operating_system_driver::get()->m_strMessageBoxCaption = ansi_dup(lpCaption);
 //
 //   }
 //
-//   ::oslocal()->m_iMessageBoxButton = iButton;
+//   ::operating_system_driver::get()->m_iMessageBoxButton = iButton;
 //
-//   ::oslocal()->m_bMessageBox = true;
+//   ::operating_system_driver::get()->m_bMessageBox = true;
 //
-//   while (::oslocal()->m_iMessageBoxResult <= 0)
+//   while (::operating_system_driver::get()->m_iMessageBoxResult <= 0)
 //   {
 //
 //      if (!task_sleep(100_ms))
@@ -2162,9 +2178,9 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //
 //   }
 //
-//   int iResult = ::oslocal()->m_iMessageBoxResult;
+//   int iResult = ::operating_system_driver::get()->m_iMessageBoxResult;
 //
-//   ::oslocal()->m_iMessageBoxResult = 0;
+//   ::operating_system_driver::get()->m_iMessageBoxResult = 0;
 //
 //   if (iResult == 1)
 //   {

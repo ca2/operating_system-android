@@ -7,10 +7,10 @@
 //  match OPERATING_SYSTEM_NAMESPACE::create_*host*_window() naming.)
 //
 #include "framework.h"
-//#include "_android.h"
+#include "operating_system/driver.h"
 
 
-namespace android
+namespace windowing_android
 {
 
 
@@ -64,6 +64,7 @@ namespace android
    void host_interaction::_001OnNcDraw(::draw2d::graphics_pointer & pgraphics)
    {
 
+
    }
 
 
@@ -74,6 +75,13 @@ namespace android
 
    }
 
+
+   void host_interaction::post_redraw(bool bAscendants)
+   {
+
+      ::operating_system_driver::get()->m_bRedraw = true;
+
+   }
 
    //bool host_interaction::is_this_visible()
    //{
@@ -91,7 +99,7 @@ namespace android
    }
 
 
-} // namespace android
+} // namespace windowing_android
 
 
 

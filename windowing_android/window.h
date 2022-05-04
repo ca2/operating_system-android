@@ -215,7 +215,6 @@ namespace windowing_android
       bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
 
 
-
       //virtual comparable_array < Atom > wm_get_list_raw(windowing_android_WINDOW_MEMBER Atom atomList);
       //virtual int wm_test_state(windowing_android_WINDOW_MEMBER const char * pszNetStateFlag);
       //virtual int wm_test_state_raw(windowing_android_WINDOW_MEMBER const char * pszNetStateFlag);
@@ -277,6 +276,11 @@ namespace windowing_android
 
 
       void bring_to_front() override;
+
+      
+      //virtual void on_touch_down(int x, int y);
+      //virtual void on_touch_drag(int x, int y);
+      //virtual void on_touch_up(int x, int y);
 
 
    };

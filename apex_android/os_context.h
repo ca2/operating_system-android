@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace android
+namespace apex_android
 {
 
 
@@ -55,14 +55,11 @@ namespace android
 
       bool is_remote_session() override;
 
-      //virtual void enum_draw2d_fonts(::write_text::font_enumeration_item_array& itema) override;
-
-      //virtual void post_to_all_threads(const ::atom & atom, WPARAM wParam, LPARAM lParam) override;
 
    };
 
 
-} // namespace android
+} // namespace apex_android
 
 
 

@@ -5,17 +5,10 @@ class FileException;
 struct FileStatus;
 
 
-//void CLASS_DECL_ACME vfxGetRoot(const unichar* pszPath, string& wstrRoot);
-//
-//void CLASS_DECL_ACME vfxGetRoot(wstring& wstrRoot, const wstring& wstrPath);
-
-
-/////////////////////////////////////////////////////////////////////////////
-// File - raw unbuffered disk file I/O
-
 #define INVALID_FILE -1
 
-namespace android
+
+namespace acme_android
 {
 
 
@@ -23,7 +16,6 @@ namespace android
       virtual public ::file::file
    {
    public:
-
 
 
       enum Attribute
@@ -106,22 +98,7 @@ namespace android
    };
 
 
-   //namespace file_exception
-   //{
-
-
-   //   void PASCAL OsErrorToException(::i32 lOsError);
-   //   void PASCAL ErrnoToException(i32 nErrno);
-   //   void PASCAL ThrowOsError(::matter * pobject, ::i32 lOsError, const char * lpszFileName = nullptr);
-   //   void PASCAL ThrowErrno(::matter * pobject, i32 nErrno, const char * lpszFileName = nullptr);
-
-
-   //}  // namespace file_exception
-
-
-} // namepsace android
-
-
+} // namespace acme_android
 
 
 bool CLASS_DECL_ACME windows_full_path(wstring & wstrFullPath, const wstring & wstrPath);

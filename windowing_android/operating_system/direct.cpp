@@ -1,0 +1,70 @@
+#include "framework.h"
+#include "acme/id.h"
+#include "_operating_system.h"
+
+
+operating_system_direct * g_pandroiddirect;
+
+
+CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
+{
+
+   string strMessage;
+
+   strMessage += "Failed to initialize application\n";
+   strMessage += "\n";
+   strMessage += exception.m_strMessage + "\n";
+   strMessage += "(" + __string(exception.m_estatus) + ")";
+
+   string strTitle;
+
+   strTitle = "Exception during initialization";
+
+   string strDetails;
+
+   strDetails += strMessage + "\n";
+   strDetails += exception.m_strDetails + "\n\n";
+   strDetails += "\n";
+   strDetails += "PID: " + __string(::get_current_process_id()) + "\n";
+   //strDetails += "Working Directory: " + string(GetCurrentDirectory()) + "\n\n";
+
+   if (strMoreDetails.has_char())
+   {
+
+      strDetails += strMoreDetails + "\n";
+
+   }
+
+   if (exception.m_strCallstack)
+   {
+
+      strDetails += "\n\n" + string(exception.m_strCallstack);
+
+   }
+
+   // message_box_synchronous(pobject, strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
+
+
+   __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);
+
+}
+
+
+operating_system_direct* operating_system_direct::get()
+{
+
+   return g_pandroiddirect;
+
+}
+
+
+
+void operating_system_direct::set(operating_system_direct* pdirect)
+{
+
+   g_pandroiddirect = pdirect;
+
+}
+
+
+

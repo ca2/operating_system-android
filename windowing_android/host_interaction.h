@@ -7,7 +7,7 @@
 #pragma once
 
 
-namespace android
+namespace windowing_android
 {
 
 
@@ -28,13 +28,15 @@ namespace android
       virtual void _001OnDraw(::draw2d::graphics_pointer & pgraphics) override;
 
 
+
+      void post_redraw(bool bAscendants = true) override;
       //virtual bool is_this_visible() override;
 
 
    };
 
 
-} // namespace android
+} // namespace windowing_android
 
 
 

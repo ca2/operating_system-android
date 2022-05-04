@@ -1,23 +1,23 @@
 #include "framework.h"
-#include <jni.h>
-#include "acme/operating_system/android/_os_object.h"
-#include "acme/operating_system/android/_os_remote.h"
+#include "_operating_system.h"
 
 
 void android_aura_main()
 {
 
-   auto premote = osremote();
+   auto pdirect = operating_system_direct::get();
 
-   auto plocal = oslocal();
+   auto pdriver = operating_system_driver::get();
 
-   string strApplicationIdentifier = plocal->m_strApplicationIdentifier;
+   string strApplicationIdentifier = pdriver->m_strApplicationIdentifier;
 
    auto psystem = platform_create_system(strApplicationIdentifier);
 
-   psystem->m_pathCacheDirectory = premote->getCacheDirectory();
+   psystem->m_pathCacheDirectory = pdirect->getCacheDirectory();
 
-   psystem->system_construct(plocal, e_display_default);
+   psystem->system_construct("", e_display_default);
+
+   //psystem->system_construct(plocal, e_display_default);
 
    //::e_status estatus = psystem->m_papexsystem->os_application_system_run();
    //
@@ -34,8 +34,8 @@ void android_aura_main()
 
    rectangle.left = 0;
    rectangle.top = 0;
-   rectangle.right = premote->getWidth();
-   rectangle.bottom = premote->getHeight();
+   rectangle.right = pdirect->getWidth();
+   rectangle.bottom = pdirect->getHeight();
 
    auto psession = psystem->get_session();
 
@@ -60,7 +60,7 @@ void android_aura_main()
 
    //   pimpl->m_pprodevian->prodevian_update_buffer(true);
 
-   //   //oslocal()->m_bRedraw = true;
+   //   //operating_system_driver::get()->m_bRedraw = true;
 
    //}
 
@@ -75,14 +75,14 @@ void android_exchange()
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::oslocal();
+   auto plocal = ::operating_system_driver::get();
 
-   auto premote = ::osremote();
+   auto pdirect = ::operating_system_direct::get();
 
    if (plocal->m_bHideKeyboard)
    {
 
-      premote->setHideKeyboard(true);
+      pdirect->setHideKeyboard(true);
 
       plocal->m_bHideKeyboard = false;
 
@@ -91,7 +91,7 @@ void android_exchange()
    if (plocal->m_strOpenUrl.has_char())
    {
 
-      premote->setOpenUrl(plocal->m_strOpenUrl);
+      pdirect->setOpenUrl(plocal->m_strOpenUrl);
 
       plocal->m_strOpenUrl.Empty();
 
@@ -100,7 +100,7 @@ void android_exchange()
    if (plocal->m_bMessageBoxOn)
    {
 
-      int iResult = premote->getMessageBoxResult();
+      int iResult = pdirect->getMessageBoxResult();
 
       if (iResult > 0)
       {
@@ -119,7 +119,7 @@ void android_exchange()
          if (plocal->m_strMessageBox.has_char())
          {
 
-            premote->setMessageBox(plocal->m_strMessageBox);
+            pdirect->setMessageBox(plocal->m_strMessageBox);
 
             plocal->m_strMessageBox.Empty();
 
@@ -128,17 +128,17 @@ void android_exchange()
          if (plocal->m_strMessageBoxCaption.is_empty())
          {
 
-            premote->setMessageBoxCaption(plocal->m_strMessageBoxCaption);
+            pdirect->setMessageBoxCaption(plocal->m_strMessageBoxCaption);
 
             plocal->m_strMessageBoxCaption.Empty();
 
          }
 
-         premote->setMessageBoxButton(plocal->m_iMessageBoxButton);
+         pdirect->setMessageBoxButton(plocal->m_iMessageBoxButton);
 
          plocal->m_iMessageBoxButton = 0;
 
-         premote->setShowMessageBox(1);
+         pdirect->setShowMessageBox(1);
 
          plocal->m_bMessageBoxOn = true;
 
@@ -151,7 +151,7 @@ void android_exchange()
    if (plocal->m_strSetUserWallpaper.has_char())
    {
 
-      premote->setUserWallpaper(plocal->m_strSetUserWallpaper);
+      pdirect->setUserWallpaper(plocal->m_strSetUserWallpaper);
 
       plocal->m_strSetUserWallpaper.Empty();
 
@@ -160,7 +160,7 @@ void android_exchange()
    if (plocal->m_bGetUserWallpaper)
    {
 
-      plocal->m_strGetUserWallpaper = premote->getUserWallpaper();
+      plocal->m_strGetUserWallpaper = pdirect->getUserWallpaper();
 
       plocal->m_bGetUserWallpaper = false;
 
@@ -171,11 +171,11 @@ void android_exchange()
 
       plocal->m_bEditorSelectionUpdated = false;
 
-      premote->setEditorSelectionStart(plocal->m_iEditorSelectionStart);
+      pdirect->setEditorSelectionStart(plocal->m_iEditorSelectionStart);
 
-      premote->setEditorSelectionEnd(plocal->m_iEditorSelectionEnd);
+      pdirect->setEditorSelectionEnd(plocal->m_iEditorSelectionEnd);
 
-      premote->setEditorSelectionUpdated(true);
+      pdirect->setEditorSelectionUpdated(true);
 
    }
 
@@ -184,9 +184,9 @@ void android_exchange()
 
       plocal->m_bEditorTextUpdated = false;
 
-      premote->setEditorText(plocal->m_strEditorText);
+      pdirect->setEditorText(plocal->m_strEditorText);
 
-      premote->setEditorTextUpdated(true);
+      pdirect->setEditorTextUpdated(true);
 
    }
 
@@ -195,15 +195,15 @@ void android_exchange()
 
       plocal->m_bEditFocusSet = false;
 
-      premote->setEditFocusSet(true);
+      pdirect->setEditFocusSet(true);
 
-      premote->setEditFocusLeft(plocal->m_rectangleEditFocus.left);
+      pdirect->setEditFocusLeft(plocal->m_rectangleEditFocus.left);
 
-      premote->setEditFocusTop(plocal->m_rectangleEditFocus.top);
+      pdirect->setEditFocusTop(plocal->m_rectangleEditFocus.top);
 
-      premote->setEditFocusRight(plocal->m_rectangleEditFocus.right);
+      pdirect->setEditFocusRight(plocal->m_rectangleEditFocus.right);
 
-      premote->setEditFocusBottom(plocal->m_rectangleEditFocus.bottom);
+      pdirect->setEditFocusBottom(plocal->m_rectangleEditFocus.bottom);
 
    }
 
@@ -212,7 +212,7 @@ void android_exchange()
 
       plocal->m_bEditFocusKill = false;
 
-      premote->setEditFocusKill(true);
+      pdirect->setEditFocusKill(true);
 
    }
 
@@ -221,7 +221,7 @@ void android_exchange()
 
       plocal->m_bRedraw = false;
 
-      premote->setRedraw(true);
+      pdirect->setRedraw(true);
 
    }
 
@@ -230,15 +230,15 @@ void android_exchange()
 
       plocal->m_bInputMethodManagerUpdateSelection = false;
 
-      premote->setInputMethodManagerSelectionStart(plocal->m_iInputMethodManagerSelectionStart);
+      pdirect->setInputMethodManagerSelectionStart(plocal->m_iInputMethodManagerSelectionStart);
 
-      premote->setInputMethodManagerSelectionEnd(plocal->m_iInputMethodManagerSelectionEnd);
+      pdirect->setInputMethodManagerSelectionEnd(plocal->m_iInputMethodManagerSelectionEnd);
 
-      premote->setInputMethodManagerCandidateStart(plocal->m_iInputMethodManagerCandidateStart);
+      pdirect->setInputMethodManagerCandidateStart(plocal->m_iInputMethodManagerCandidateStart);
 
-      premote->setInputMethodManagerCandidateEnd(plocal->m_iInputMethodManagerCandidateEnd);
+      pdirect->setInputMethodManagerCandidateEnd(plocal->m_iInputMethodManagerCandidateEnd);
 
-      premote->setInputMethodManagerUpdateSelection(true);
+      pdirect->setInputMethodManagerUpdateSelection(true);
 
    }
 
@@ -246,7 +246,7 @@ void android_exchange()
    if (plocal->m_bShowKeyboard)
    {
 
-      premote->setShowKeyboard(true);
+      pdirect->setShowKeyboard(true);
 
       plocal->m_bShowKeyboard = false;
 
@@ -260,7 +260,7 @@ void android_edit_on_set_focus(int l, int t, int r, int b, const ::string & pszT
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::oslocal();
+   auto plocal = ::operating_system_driver::get();
 
    plocal->m_bEditFocusKill = false;
 
@@ -286,7 +286,7 @@ void android_edit_on_kill_focus()
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::oslocal();
+   auto plocal = ::operating_system_driver::get();
 
    plocal->m_bEditFocusKill = true;
 
@@ -294,5 +294,58 @@ void android_edit_on_kill_focus()
 
 }
 
+//
+//pinputmethodmanager->sync_candidate_with_sel_end();
+//operating_system_driver::get()->m_iInputMethodManagerCandidateStart = operating_system_driver::get()->m_iInputMethodManagerSelectionEnd;
+//
+//operating_system_driver::get()->m_iInputMethodManagerCandidateEnd = operating_system_driver::get()->m_iInputMethodManagerSelectionEnd;
+//
+//
+//
+//
+//
+//operating_system_driver::get()->m_strEditorText = strText;
+//
+//operating_system_driver::get()->m_bEditorTextUpdated = true;
+//
+//#endif
 
 
+//
+//
+//
+//
+//
+//void set_operating_system_direct(operating_system_direct* pdirect)
+//{
+//
+//   g_pandroiddirect = pdirect;
+//
+//}
+//
+//
+//operating_system_direct* operating_system_direct::get()
+//{
+//
+//   return g_pandroiddirect;
+//
+//}
+//
+//
+//__pointer(operating_system_driver) g_pandroiddriver;
+//
+//
+//void set_operating_system_driver(operating_system_driver* poslocal)
+//{
+//
+//   g_pandroiddriver = poslocal;
+//
+//}
+//
+//
+//operating_system_driver* operating_system_driver::get()
+//{
+//
+//   return g_pandroiddriver;
+//
+//}

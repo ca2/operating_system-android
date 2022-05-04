@@ -1,14 +1,19 @@
 #include "framework.h"
-#include "_os_impl.h"
-//#include "aura/user/interaction_thread.h"
-//#include "aura/user/interaction_prodevian.h"
+#include "_operating_system.h"
+#include <android/bitmap.h>
+
+
+#define LOG_TAG "com.ace.impact(native)"
 
 
 void set_jni_context(JNIEnv * penv);
 
 
+extern class ::system* g_psystem;
+
+
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
 {
 
    set_jni_context(env);
@@ -46,7 +51,15 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_render_1impact(JNIEnv * env,
    try
    {
 
-      android_fill_plasma(&info, pixels, time_ms);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      //auto puserinteraction = pwindowApplicationHost->m_puserinteractionimpl->m_puserinteraction;
+
+      auto puserinteractionimpl = pwindowApplicationHost->m_puserinteractionimpl;
+
+      puserinteractionimpl->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
+
+      //android_fill_plasma(&info, pixels, time_ms);
 
    }
    catch (...)
@@ -62,7 +75,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_render_1impact(JNIEnv * env,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_com_ace_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -82,29 +95,29 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_native_1on_1timer(JNIEnv * e
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_com_ace_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    set_jni_context(env);
 
-   LOGI("%s\n", "Java_com_android_1app_impact_keyDown");
+   LOGI("%s\n", "Java_com_ace_impact_keyDown");
 
 }
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_com_ace_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    set_jni_context(env);
 
-   LOGI("%s\n", "Java_com_android_1app_impact_keyUp");
+   LOGI("%s\n", "Java_com_ace_impact_keyUp");
 
 }
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    set_jni_context(env);
@@ -124,7 +137,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_keyPreImeDown(JNIEnv * env, 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    set_jni_context(env);
@@ -144,7 +157,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_keyPreImeUp(JNIEnv * env, jo
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -153,7 +166,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_onReceivedShowKeyboard(JNIEn
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -162,7 +175,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_onReceivedHideKeyboard(JNIEn
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    set_jni_context(env);
@@ -170,7 +183,11 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_lButtonDown(JNIEnv * env, jo
    try
    {
 
-      android_mouse(e_message_left_button_down, x, y);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      auto puserinteractionimpl = pwindowApplicationHost;
+
+      pwindowApplicationHost->on_touch_down(x, y);
 
    }
    catch (...)
@@ -185,7 +202,7 @@ extern class ::system * g_psystem;
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionBeginBatchEdit(JNIEnv * env, jobject  obj)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionBeginBatchEdit(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -223,7 +240,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionBeginBatc
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionEndBatchEdit(JNIEnv * env, jobject  obj)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionEndBatchEdit(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -261,7 +278,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionEndBatchE
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition)
 {
 
    set_jni_context(env);
@@ -317,7 +334,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetCompos
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end)
 {
 
    set_jni_context(env);
@@ -353,7 +370,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetCompos
 }
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetSelection(JNIEnv * env, jobject obj, jint start, jint end)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetSelection(JNIEnv * env, jobject obj, jint start, jint end)
 {
 
    set_jni_context(env);
@@ -392,7 +409,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionSetSelect
 // This behaves like calling setComposingText(text, newCursorPosition) then finishComposingText().
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionCommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionCommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition)
 {
 
    set_jni_context(env);
@@ -448,7 +465,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionCommitTex
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionFinishComposingText(JNIEnv * env, jobject  obj)
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionFinishComposingText(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
@@ -485,7 +502,7 @@ JNIEXPORT jboolean JNICALL Java_com_android_1app_impact_InputConnectionFinishCom
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ace_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    set_jni_context(env);
@@ -493,7 +510,11 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_mouseMove(JNIEnv * env, jobj
    try
    {
 
-      android_mouse(e_message_mouse_move, x, y);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      auto puserinteractionimpl = pwindowApplicationHost;
+
+      pwindowApplicationHost->on_touch_drag(x, y);
 
    }
    catch (...)
@@ -505,7 +526,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_mouseMove(JNIEnv * env, jobj
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ace_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    set_jni_context(env);
@@ -513,7 +534,11 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_lButtonUp(JNIEnv * env, jobj
    try
    {
 
-      android_mouse(e_message_left_button_up, x, y);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      auto puserinteractionimpl = pwindowApplicationHost;
+
+      pwindowApplicationHost->on_touch_up(x, y);
 
    }
    catch (...)
@@ -525,7 +550,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_lButtonUp(JNIEnv * env, jobj
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
+JNIEXPORT void JNICALL Java_com_ace_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
 {
 
    set_jni_context(env);
@@ -551,7 +576,12 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_onText(JNIEnv * env, jobject
    try
    {
 
-      android_on_text(os_text_keyboard, utf16, length);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      auto puserinteractionimpl = pwindowApplicationHost;
+
+      pwindowApplicationHost->on_text(utf16, length);
+      //      android_on_text(os_text_keyboard, utf16, length);
 
    }
    catch (...)
@@ -565,28 +595,49 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_onText(JNIEnv * env, jobject
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_android_1app_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
 {
 
    set_jni_context(env);
 
-   ::rectangle_i32 rectangle;
+   //::rectangle_i32 rectangle;
 
-   rectangle.left = 0;
-   rectangle.top = 0;
-   rectangle.right = g_posremote->getWidth();
-   rectangle.bottom = g_posremote->getHeight();
+   //rectangle.left = 0;
+   //rectangle.top = 0;
+   //rectangle.right = ::operating_system_direct::get()->getWidth();
+   //rectangle.bottom = ::operating_system_direct::get()->getHeight();
+
+   auto w = ::operating_system_direct::get()->getWidth();
+   auto h = ::operating_system_direct::get()->getHeight();
+
+   //android_on_size(0, 0, w, h);
 
    try
    {
 
-      SetMainScreenRect(rectangle);
+      auto pwindowApplicationHost = g_psystem->m_paurasystem->m_paurasession->m_puser->m_pwindowing->get_application_host_window();
+
+      auto puserinteractionimpl = pwindowApplicationHost;
+
+      pwindowApplicationHost->on_size(w, h);
+      //      android_on_text(os_text_keyboard, utf16, length);
 
    }
    catch (...)
    {
 
    }
+
+   //try
+   //{
+
+      //g_psystem->m_paurasystem->m_puser->(rectangle);
+
+   //}
+   //catch (...)
+   //{
+
+   //}
 
    //auto pimpl = puserinteraction->m_pimpl.cast < ::user::interaction_impl >();
 
@@ -595,7 +646,7 @@ JNIEXPORT void JNICALL Java_com_android_1app_impact_aura_1size_1changed(JNIEnv *
 
    //   pimpl->m_pprodevian->prodevian_update_buffer(true);
 
-   //   //oslocal()->m_bRedraw = true;
+   //   //operating_system_driver::get()->m_bRedraw = true;
 
    //}
 

@@ -1,13 +1,10 @@
 #include "framework.h"
-//#include "_android.h"
 #include "acme/operating_system/cross.h"
 #include "aura/operating_system/android/windowing.h"
+#include "aura/windowing/text_editor_interface.h"
 
 
 CLASS_DECL_AURA ::mutex * osmutex();
-
-
-extern __pointer(os_local) g_poslocal;
 
 
 void android_edit_on_set_focus(int l, int t, int r, int b, const ::string & pszText, int iBeg, int iEnd);
@@ -15,20 +12,9 @@ void android_edit_on_kill_focus();
 
 
 CLASS_DECL_AURA int g_iMouseDown = 0;
-//
-//CLASS_DECL_AURA thread_int_ptr < DWORD_PTR > t_time1;
-//CLASS_DECL_AURA thread_int_ptr < DWORD_PTR > t_time2;
-//
-//
-//extern CLASS_DECL_AURA thread_int_ptr < DWORD_PTR > t_time1;
-//
-//
-//
 
 
-
-
-namespace android
+namespace aura_android
 {
 
 
@@ -4545,29 +4531,6 @@ namespace android
       ::user::interaction_impl::_001OnTriggerMouseInside();
 
    }
-//
-
-} // namespace android
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// The WndProc for all interaction_impl's and derived classes
-
-
-
-
-
-
-
-
-
-
-
-namespace android
-{
-
-
 
 
    //void interaction_impl::set_viewport_org(::draw2d::graphics_pointer & pgraphics)
@@ -4628,17 +4591,20 @@ namespace android
 
       synchronous_lock synchronouslock(osmutex());
 
-      ::oslocal()->m_iEditorSelectionStart = iBeg;
+      auto pwindowing = m_puserinteraction->windowing();
 
-      ::oslocal()->m_iEditorSelectionEnd = iEnd;
+      auto ptexteditorinterface = pwindowing->get_text_editor_interface();
 
-      ::oslocal()->m_strEditorText = strText;
+      if (::is_set(ptexteditorinterface))
+      {
 
-      ::oslocal()->m_bEditorSelectionUpdated = true;
+         ptexteditorinterface->set_editor_selection(iBeg, iEnd);
 
-      ::oslocal()->m_bEditorTextUpdated = true;
+         ptexteditorinterface->set_editor_text(strText);
 
-      ::oslocal()->m_bShowKeyboard = true;
+         ptexteditorinterface->show_software_keyboard();
+
+      }
 
       return true;
 
@@ -4650,7 +4616,16 @@ namespace android
 
       output_debug_string("::android::interaction_impl::keyboard_focus_OnKillFocus() (1) \n");
 
-      ::oslocal()->m_bHideKeyboard = true;
+      auto pwindowing = m_puserinteraction->windowing();
+
+      auto ptexteditorinterface = pwindowing->get_text_editor_interface();
+
+      if (::is_set(ptexteditorinterface))
+      {
+
+         ptexteditorinterface->hide_software_keyboard();
+
+      }
 
       return true;
 
@@ -4661,7 +4636,16 @@ namespace android
 
       output_debug_string("::android::interaction_impl::keyboard_focus_OnChildKillFocus() (2) \n");
 
-      ::oslocal()->m_bHideKeyboard = true;
+      auto pwindowing = m_puserinteraction->windowing();
+
+      auto ptexteditorinterface = pwindowing->get_text_editor_interface();
+
+      if (::is_set(ptexteditorinterface))
+      {
+
+         ptexteditorinterface->hide_software_keyboard();
+
+      }
 
       return true;
 
@@ -4787,9 +4771,16 @@ namespace android
    void interaction_impl::show_software_keyboard(::user::primitive * pprimitive, string str, strsize iBeg, strsize iEnd)
    {
 
-      auto plocal = g_poslocal;
+      auto pwindowing = m_puserinteraction->windowing();
 
-      plocal->m_bShowKeyboard = true;
+      auto ptexteditorinterface = pwindowing->get_text_editor_interface();
+
+      if (::is_set(ptexteditorinterface))
+      {
+
+         ptexteditorinterface->show_software_keyboard();
+
+      }
 
       m_pprimitiveSoftwareKeyboard = pprimitive;
 
@@ -4810,16 +4801,41 @@ namespace android
 
       m_pprimitiveSoftwareKeyboard = nullptr;
 
-      auto plocal = g_poslocal;
+      auto pwindowing = m_puserinteraction->windowing();
 
-      plocal->m_bHideKeyboard = true;
+      auto ptexteditorinterface = pwindowing->get_text_editor_interface();
+
+      if (::is_set(ptexteditorinterface))
+      {
+
+         ptexteditorinterface->hide_software_keyboard();
+
+      }
+
 
       //return ::success;
 
    }
 
+   
+   void interaction_impl::on_after_graphical_update()
+   {
 
-} // namespace android
+      auto pwindowing = m_puserinteraction->windowing();
+
+      auto papplicationhostwindow = pwindowing->get_application_host_window();
+
+      if (::is_set(papplicationhostwindow))
+      {
+
+         papplicationhostwindow->m_puserinteractionimpl->m_puserinteraction->set_need_redraw();
+
+      }
+
+   }
+
+
+} // namespace aura_android
 
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace android
+namespace aura_android
 {
 
 
@@ -614,10 +614,14 @@ namespace android
 
       virtual bool has_pending_graphical_update()override;
 
+
+      void on_after_graphical_update() override;
+
+
    };
 
 
-} // namespace android
+} // namespace aura_android
 
 
 

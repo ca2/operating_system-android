@@ -16,12 +16,9 @@ namespace windowing_android
 {
 
 
-      class window;
+   class window;
 
-      class windowing;
-
-
-   //} // namespace android
+   class windowing;
 
 
 } // namespace aura

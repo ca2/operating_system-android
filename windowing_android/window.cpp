@@ -2486,6 +2486,13 @@ namespace windowing_android
    }
 
 
+   //void window::set_need_redraw()
+   //{
+
+
+   //}
+
+
    //   int_bool window::show_window(
    //                        const ::e_display &edisplay,
    //                        const ::e_activation &eactivation
@@ -3805,6 +3812,12 @@ namespace windowing_android
 
    }
 
+
+   //void window::on_touch_drag(int x, int y)
+   //{
+
+
+   //}
 
 
 } // namespace windowing_android

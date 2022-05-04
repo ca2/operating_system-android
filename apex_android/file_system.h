@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace android
+namespace apex_android
 {
 
 
@@ -26,6 +26,6 @@ namespace android
    };
 
 
-} // namespace ca2
+} // namespace apex_android
 
 

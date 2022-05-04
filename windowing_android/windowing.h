@@ -131,6 +131,8 @@ namespace windowing_android
 //
 //#endif
 
+      ::windowing::text_editor_interface * get_text_editor_interface() override;
+
 
    };
 
