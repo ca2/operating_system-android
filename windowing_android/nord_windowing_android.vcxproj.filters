@@ -71,7 +71,7 @@
     <ClCompile Include="operating_system\_.cpp">
       <Filter>Source Files\operating_system</Filter>
     </ClCompile>
-    <ClCompile Include="operating_system\java_ace_app.cpp">
+    <ClCompile Include="operating_system\java_ace_ace.cpp">
       <Filter>Source Files\operating_system</Filter>
     </ClCompile>
     <ClCompile Include="operating_system\java_ace_impact.cpp">

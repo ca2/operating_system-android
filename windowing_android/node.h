@@ -16,6 +16,9 @@ namespace windowing_android
       ~node() override;
 
 
+      void on_initialize_object() override;
+
+
       void report_exception_to_user(::object* pobject, ::exception& exception, const ::string& strMoreDetails) override;
 
 

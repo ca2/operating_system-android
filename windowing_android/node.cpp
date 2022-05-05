@@ -21,6 +21,16 @@ namespace windowing_android
    }
 
 
+   void node::on_initialize_object()
+   {
+
+      m_psystem->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
+
+      ::aura_android::node::on_initialize_object();
+
+   }
+
+
    void node::report_exception_to_user(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
    {
 

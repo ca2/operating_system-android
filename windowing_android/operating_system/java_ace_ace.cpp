@@ -36,7 +36,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_ace_aura_1is_1started(JNIEnv * env, jobj
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, jobject os)
+JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect)
 {
 
    set_jni_context(penv);
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
    if (!::operating_system_direct::get())
    {
 
-      ::operating_system_direct::set(new operating_system_direct(obj));
+      ::operating_system_direct::set(new operating_system_direct(jobjectDirect));
 
    }
 
@@ -103,6 +103,8 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
    //papp->m_strCommandLine = ::GetCommandLineW();
 
    //papp->m_nCmdShow = nCmdShow;
+
+//   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 
    papp->m_bConsole = false;
 
