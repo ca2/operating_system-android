@@ -16,6 +16,12 @@ namespace acme_android
       ~node() override;
 
 
+      void system_main() override;
+
+
+      void set_last_run_application_path(const ::string& strAppId) override;
+
+
    };
 
 

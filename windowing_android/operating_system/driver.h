@@ -4,6 +4,11 @@
 #include "aura/windowing/text_editor_interface.h"
 
 
+class asset_manager;
+
+class asset;
+
+
 class operating_system_driver :
    virtual public ::windowing::text_editor_interface
 
@@ -56,15 +61,22 @@ public:
    int            m_iInputMethodManagerCandidateStart;
    int            m_iInputMethodManagerCandidateEnd;
 
+   asset_manager *      m_passetmanager;
+
+   __pointer(asset)     m_passetResourceFolder;
+
+
+   operating_system_driver();
+   ~operating_system_driver() override;
 
    // windowing::text_editor_interface
-   virtual void set_input_method_manager_selection(strsize iStart, strsize iEnd);
-   virtual void set_input_method_manager_candidate_position(strsize iStart, strsize iEnd);
-   virtual void synchronize_input_method_manager_with_selection_end();
-   virtual void set_editor_selection(strsize iStart, strsize iEnd);
-   virtual void set_editor_text(const ::string& strText);
-   virtual void show_software_keyboard();
-   virtual void hide_software_keyboard();
+   void set_input_method_manager_selection(strsize iStart, strsize iEnd) override;
+   void set_input_method_manager_candidate_position(strsize iStart, strsize iEnd) override;
+   void synchronize_input_method_manager_with_selection_end() override;
+   void set_editor_selection(strsize iStart, strsize iEnd) override;
+   void set_editor_text(const ::string& strText) override;
+   void show_software_keyboard() override;
+   void hide_software_keyboard() override;
 
 
    static operating_system_driver* get();

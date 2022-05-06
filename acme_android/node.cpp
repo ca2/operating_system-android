@@ -20,6 +20,24 @@ namespace acme_android
    }
 
 
+   void node::system_main()
+   {
+
+      m_psystem->increment_reference_count();
+
+      m_psystem->branch();
+
+      m_psystem->post_initial_request();
+
+
+   }
+
+   void node::set_last_run_application_path(const ::string& strAppId)
+   {
+
+
+   }
+
 } // namespace acme_android
 
 

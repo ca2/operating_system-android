@@ -117,17 +117,7 @@ typedef struct gdi_object * HGDIOBJ;
 #endif //_MIPS_
 
 
-#ifdef _ALPHA_
-// specific overrides for ALPHA...
-#define _AFX_PACKING    8       // default AXP alignment (required)
-#ifdef _AFX_NO_DEBUG_CRT
-extern "C" void _BPT();
-#pragma intrinsic(_BPT)
-#define __debug_break() _BPT()
-#else
-#define __debug_break() _CrtDbgBreak()
-#endif
-#endif  //_ALPHA_
+void debug_break();
 
 
 #ifdef _PPC_

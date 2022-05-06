@@ -78,6 +78,8 @@ namespace apex_android
 
       path = "/";
 
+      path.m_iDir = 1;
+
       listing.defer_add(path);
 
       listing.m_straTitle.add("File ::apex::get_system()");

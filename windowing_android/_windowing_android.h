@@ -11,6 +11,12 @@
 #include "host_interaction.h"
 
 
+#include "monitor.h"
+
+
+#include "display.h"
+
+
 #include "window.h"
 
 

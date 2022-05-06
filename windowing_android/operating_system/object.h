@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include <jni.h>
-
-
 class CLASS_DECL_ACME jni_object
 {
 public:

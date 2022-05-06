@@ -1,0 +1,46 @@
+// created from windowing::display by camilo 2022-05-06 18:55 <3ThomasBorregaardSoerensen(ThomasLikesNumber5!!)
+// created by Camilo 2021-01-31 05:13 BRT <3CamiloSasukeThomasBorregaardSoerensen
+#pragma once
+
+
+namespace windowing_android
+{
+
+
+   class CLASS_DECL_AURA monitor :
+      virtual public ::windowing::monitor
+   {
+   public:
+
+
+      //::index                                               m_iIndex;
+      //::rectangle_i32                                       m_rectangle;
+      //::rectangle_i32                                       m_rectangleWorkspace;
+      //__pointer(::windowing::display)                       m_pdisplay;
+
+
+      monitor();
+      ~monitor() override;
+
+
+      //virtual void update_cache();
+
+      //virtual ::u32 get_monitor_color_temperature();
+      //virtual bool adjust_monitor(::u32 dwTemperature, double dBrightness, double dwGamma);
+
+
+      //virtual void get_monitor_rectangle(::RECTANGLE_I32* prectangle);
+      //virtual void get_workspace_rectangle(::RECTANGLE_I32* prectangle);
+
+      ::e_status _get_monitor_rectangle();
+
+   };
+
+
+   //using monitor_map = iptr_map < __pointer(monitor) >;
+
+
+} // namespace windowing_android
+
+
+

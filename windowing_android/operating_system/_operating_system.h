@@ -3,6 +3,7 @@
 
 
 #include <jni.h>
+#include <android/asset_manager.h>
 #include <android/log.h>
 
 
@@ -66,6 +67,8 @@ extern int g_iScreenH;
 extern const char* g_pszCommandLine;
 
 extern const char* g_pszCacheDir;
+
+class asset_manager;
 
 //extern __pointer(operating_system_direct) g_pandroidcontext;
 

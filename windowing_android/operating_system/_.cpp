@@ -30,16 +30,25 @@ void android_aura_main()
 
    //}
 
-   ::rectangle_i32 rectangle;
 
-   rectangle.left = 0;
-   rectangle.top = 0;
-   rectangle.right = pdirect->getWidth();
-   rectangle.bottom = pdirect->getHeight();
+   ::procedure procedure([psystem,pdirect]()
+      {
+         ::rectangle_i32 rectangle;
 
-   auto psession = psystem->get_session();
+         rectangle.left = 0;
+         rectangle.top = 0;
+         rectangle.right = pdirect->getWidth();
+         rectangle.bottom = pdirect->getHeight();
 
-   psession->defer_initialize_host_window(rectangle);
+         auto psession = psystem->get_session();
+
+         psession->defer_initialize_host_window(rectangle);
+
+      });
+
+   psystem->payload("on_finish_launching1") = procedure.m_p;
+
+
 
    //psession->set_main_screen_rect(rectangle);
 

@@ -17,7 +17,7 @@ namespace windowing_android
       bool                                            m_bRootSelectInput : 1;
       bool                                            m_bFirstWindowMap : 1;
 
-      //__pointer(::windowing_x11::display)             m_pdisplay;
+      __pointer(::windowing_android::display)         m_pdisplay;
       //bool                                            m_bFinishX11Thread;
       //bool                                            m_bInitX11Thread;
 
@@ -55,7 +55,7 @@ namespace windowing_android
 
       //void _libsn_start_context()  override;
 
-      //::windowing::display * display() override;
+      ::windowing::display * display() override;
 
       //void windowing_main() override;
 

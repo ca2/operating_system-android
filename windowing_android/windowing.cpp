@@ -127,7 +127,7 @@ namespace windowing_android
       //
       //      }
 
-      //m_pdisplay = pdisplay;
+      m_pdisplay = pdisplay;
 
       //if (!pdisplay)
       //{
@@ -262,12 +262,12 @@ namespace windowing_android
    }
 
 
-   //::windowing::display * windowing::display()
-   //{
+   ::windowing::display * windowing::display()
+   {
 
-   //   return m_pdisplay;
+      return m_pdisplay;
 
-   //}
+   }
 
 
    //::windowing_x11::window * windowing::_window(Window window)

@@ -19,23 +19,7 @@
 #endif
 
 
-
-
-//#define synchronization_object base_sync
-
-#ifdef __cplusplus
-
-#ifdef __arm__
-
-#define DEBUG_BREAK __asm__("BKPT")
-
-#else
-
-#define DEBUG_BREAK asm("int $3")
-
-#endif
-
-#endif
+void debug_break();
 
 
 #include <stdlib.h>

@@ -1,9 +1,31 @@
 #include "framework.h"
 #include "acme/id.h"
 #include "_operating_system.h"
+#include "_asset_manager.h"
 
 
 __pointer(operating_system_driver) g_pandroiddriver;
+
+
+operating_system_driver::operating_system_driver()
+{
+
+   m_passetmanager = nullptr;
+
+}
+
+
+operating_system_driver::~operating_system_driver()
+{
+
+   if (::is_set(m_passetmanager))
+   {
+    
+      delete m_passetmanager;
+
+   }
+
+}
 
 
 void operating_system_driver::set_input_method_manager_selection(strsize iStart, strsize iEnd)

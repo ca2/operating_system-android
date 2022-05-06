@@ -124,11 +124,11 @@ namespace acme_android
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
 
-                  auto psystem = m_psystem;
+         auto psystem = m_psystem;
 
          auto pacmedirectory = psystem->m_pacmedirectory;
 
-pacmedirectory->create(path.folder());
+         pacmedirectory->create(path.folder());
 
       }
 
@@ -149,7 +149,7 @@ pacmedirectory->create(path.folder());
          dwFlags |=  O_RDONLY;
          break;
       case ::file::e_open_write:
-         dwFlags |=  O_WRONLY ;
+         dwFlags |=  O_WRONLY;
          break;
       case ::file::e_open_read_write:
          dwFlags |=  O_RDWR;
@@ -173,7 +173,7 @@ pacmedirectory->create(path.folder());
          //dwFlags |= O_SHLOCK;
          break;
       case ::file::e_open_share_deny_read:
-//         dwFlags |= O_EXLOCK;
+         //dwFlags |= O_EXLOCK;
          break;
       case ::file::e_open_share_deny_none:
          //dwFlags = FILE_SHARE_WRITE|FILE_SHARE_READ;
@@ -198,11 +198,28 @@ pacmedirectory->create(path.folder());
       if(hFile == -1)
       {
 
-         set_last_errno_status();
+//         set_last_errno_status();
+         int iErrNo = errno;
 
-         auto estatusLast = ::get_last_status();
+         m_estatus = errno_to_status(iErrNo);
 
-         if(estatusLast != error_not_found && estatusLast != error_path_not_found)
+         if (eopen & ::file::e_open_no_exception_on_open)
+         {
+
+            if (!::failed(m_estatus))
+            {
+
+               m_estatus = error_failed;
+
+            }
+
+            //set_nok();
+
+            return;
+
+         }
+
+         if(m_estatus != error_not_found && m_estatus != error_path_not_found)
          {
 
             /*         if (pException != nullptr)
@@ -222,7 +239,7 @@ pacmedirectory->create(path.folder());
 
 
             //return __new(::file::exception(::error_os_error_to_exception(dwLastError), dwLastError, m_strFileName, nOpenFlags));
-            throw ::file_open_exception(estatusLast, path);
+            throw ::file_open_exception(m_estatus, path);
 
             //}
 
@@ -259,7 +276,7 @@ pacmedirectory->create(path.folder());
             {*/
 
 
-            throw ::file_open_exception(estatusLast, path);
+            throw ::file_open_exception(m_estatus, path);
 
             //}
 
@@ -270,6 +287,8 @@ pacmedirectory->create(path.folder());
       m_iFile = (i32)hFile;
 
       m_estatus = ::success;
+
+      //set_ok();
 
       //return ::success;
 
