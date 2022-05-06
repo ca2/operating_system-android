@@ -17,7 +17,6 @@ __FACTORY_EXPORT void aura_android_factory(::factory::factory * pfactory)
    aura_posix_factory( pfactory);
 
 
-   //pfactory->add_factory_item < ::aura::android::node, ::acme::node >();
    pfactory->add_factory_item < ::aura_android::interaction_impl, ::user::interaction_impl >();
 
 

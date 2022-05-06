@@ -1,8 +1,9 @@
 #include "framework.h"
 #include <sys/utsname.h>
 
+
 __FACTORY_IMPORT void windowing_android_factory(::factory::factory* pfactory);
-//__FACTORY_IMPORT void aura_android_factory(::factory::factory* pfactory);
+
 
 __FACTORY_EXPORT void node_android_factory(::factory::factory * pfactory)
 {

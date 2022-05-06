@@ -1032,7 +1032,7 @@ namespace apex_android
 
       m_pdirsystem->m_strCommonAppData = pathInstall / "commonappdata";
 
-      this->create(m_pdirsystem->m_strCommonAppData);
+      create(m_pdirsystem->m_strCommonAppData);
 
       if (!is(m_pdirsystem->m_strCommonAppData))
       {
