@@ -31,7 +31,7 @@ namespace windowing_android
 
       //virtual void get_monitor_rectangle(::RECTANGLE_I32* prectangle);
       //virtual void get_workspace_rectangle(::RECTANGLE_I32* prectangle);
-
+      void get_monitor_rectangle(::RECTANGLE_I32* prectangle) override;
       ::e_status _get_monitor_rectangle();
 
    };

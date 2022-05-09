@@ -210,6 +210,165 @@ namespace aura_android
    }
 
 
+   void interaction_impl::native_create_host()
+   {
+
+      //      auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
+      //
+      //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
+      //      {
+      //
+      //         m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
+      //
+      //         m_pwindow->m_puserinteractionimpl = this;
+      //
+      //         m_puserinteraction->m_pinteractionimpl = this;
+      //
+      //      }
+      //      else
+      //      {
+      //
+      //         //auto estatus =
+      //
+      //         __construct(m_pwindow);
+      //
+      //         //if (!estatus)
+      //         //{
+      //
+      //         //   return estatus;
+      //
+      //         //}
+      //
+      //         if (!m_psystem->m_paurasystem->m_pwindowMain)
+      //         {
+      //
+      //            m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
+      //
+      //         }
+      //
+      //      }
+      //
+      //      //auto estatus =
+      //
+      //      m_pwindow->create_window(this);
+      //
+      //      //if (!estatus)
+      //      //{
+      //
+      //      //   return estatus;
+      //
+      //      //}
+      //
+      //      //return true;
+
+      __pointer(::user::system) pusersystem;
+
+      if (m_puserinteraction->m_pusersystem)
+      {
+
+         pusersystem = m_puserinteraction->m_pusersystem;
+
+      }
+      else
+      {
+
+         pusersystem = __new(::user::system);
+
+      }
+
+      //      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
+      //
+      if (!m_puserinteraction->pre_create_window(pusersystem))
+      {
+
+         //return false;
+
+         throw ::exception(error_failed);
+
+      }
+
+      __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
+
+      //m_pthreadUserImpl = m_puserinteraction->m_pthreadUserInteraction;
+
+      install_message_routing(m_puserinteraction);
+
+      bool bOk = true;
+
+      //      if(pusersystem->m_createstruct.hwndParent == (oswindow) MESSAGE_WINDOW_PARENT)
+      //      {
+      //
+      //         auto pwindowing = m_pwindowwindowing();
+      //
+      //         m_oswindow = pwindowing->new_message_window(this);
+      //
+      //         m_puserinteraction->m_bMessageWindow = true;
+      //
+      //         //send_message(e_message_create, 0, (LPARAM) &cs);
+      //
+      //      }
+      //      else
+      {
+
+         m_puserinteraction->m_bMessageWindow = false;
+
+         auto psession = get_session();
+
+         auto puser = psession->user();
+
+         auto pwindowing = puser->windowing();
+
+         //pwindowing->windowing_send([&]()
+         //   {
+
+         //      auto psession = get_session();
+
+         //      auto puser = psession->user();
+
+         //      auto pwindowing = puser->windowing();
+
+               m_pwindow = pwindowing->new_window(this);
+
+               if (m_pwindow)
+               {
+
+                  output_debug_string("window created");
+
+               }
+               else
+               {
+
+                  output_debug_string("window not created");
+
+               }
+
+            //});
+
+      }
+
+      //      if(bOk)
+      //      {
+      //
+      //         m_puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
+      //
+      //         m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+      //
+      //      }
+
+      if (!bOk)
+      {
+
+         throw ::exception(error_failed);
+
+      }
+
+
+
+
+
+   }
+
+
 //   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::primitive * puiParent, atom atom)
 //   {
 //
@@ -1062,284 +1221,289 @@ namespace aura_android
    void interaction_impl::message_handler(::message::message * pmessage)
    {
 
-
-      if(pmessage->m_atom == e_message_size || pmessage->m_atom == e_message_move)
-      {
-
-         //win_update_graphics();
-
-      }
-
-      if(pmessage->m_atom == e_message_key_down ||
-            pmessage->m_atom == e_message_key_up ||
-            pmessage->m_atom == e_message_char ||
-            pmessage->m_atom == e_message_sys_key_down ||
-            pmessage->m_atom == e_message_sys_key_up ||
-            pmessage->m_atom == e_message_sys_char)
-      {
-
-         auto pkey = pmessage->m_union.m_pkey;
-
-         auto psession = get_session();
-
-         if(pmessage->m_atom == e_message_key_down || pmessage->m_atom == e_message_sys_key_down)
-         {
-            try
-            {
-               psession->set_key_pressed(pkey->m_ekey,true);
-            }
-            catch(...)
-            {
-            }
-         }
-         else if(pmessage->m_atom == e_message_key_up || pmessage->m_atom == e_message_sys_key_up)
-         {
-            try
-            {
-               psession->set_key_pressed(pkey->m_ekey,false);
-            }
-            catch(...)
-            {
-            }
-         }
-      }
-
-
-
-      if(m_puserinteraction != nullptr)
-      {
-         if(m_puserinteraction->layout().is_moving())
-         {
-            //TRACE("moving: skip pre translate message");
-         }
-         else if(m_puserinteraction->layout().is_sizing())
-         {
-            //TRACE("sizing: skip pre translate message");
-         }
-         else
-         {
-            m_puserinteraction->pre_translate_message(pmessage);
-            if(pmessage->m_bRet)
-               return;
-
-         }
-      }
-
-      auto psession = get_session();
-
-      if(pmessage->m_atom == e_message_timer)
-      {
-//         m_puserinteraction->get_app()->step_timer();
-      }
-      else if(pmessage->m_atom == e_message_left_button_down)
-      {
-         //::rectangle_i32 rectangleClient;
-         //::get_client_rect(get_handle(),rectangleClient);
-         //::rectangle_i32 rectangleWindow;
-         //::get_window_rect(get_handle(),rectangleWindow);
-         //::rectangle_i32 rectangleRegion;
-         //HRGN hrgn = CreateRectRgn(0,0,0,0);
-         //int regionType = ::GetWindowRgn(get_handle(),hrgn);
-         //if(regionType != ERROR)
-         //{
-         //   ::GetRgnBox(hrgn,rectangleRegion);
-         //}
-         //::DeleteObject(hrgn); /* finished with region */
-         //WINDOWPLACEMENT wp;
-         //__zero(wp);
-         //wp.length = sizeof(WINDOWPLACEMENT);
-         //::GetWindowPlacement(get_handle(),&wp);
-         //bool bZoomed = ::IsZoomed(get_handle()) != false;
-         //bool bIconic = ::IsIconic(get_handle()) != false;
-         psession->m_puiLastLButtonDown = m_puserinteraction;
-      }
-      /*      else if(pusermessage->m_atom == CA2M_BERGEDGE)
-      {
-      if(pusermessage->m_wparam == BERGEDGE_GETAPP)
-      {
-      __pointer(::aura::application)* ppapp= (__pointer(::aura::application)*) pusermessage->m_lparam;
-      *ppapp = get_app();
-      pusermessage->m_bRet = true;
-      return;
-      }
-      }*/
-      pmessage->set_lresult(0);
-
-      if(pmessage->m_atom == e_message_mouse_leave)
-      {
-
-         _000OnMouseLeave(pmessage);
-
-         return;
-
-      }
-
-      if(pmessage->m_atom == e_message_left_button_down ||
-            pmessage->m_atom == e_message_left_button_up ||
-            pmessage->m_atom == e_message_middle_button_down ||
-            pmessage->m_atom == e_message_middle_button_up ||
-            pmessage->m_atom == e_message_right_button_down ||
-            pmessage->m_atom == e_message_right_button_up ||
-            pmessage->m_atom == e_message_left_button_double_click ||
-            pmessage->m_atom == e_message_mouse_move ||
-            pmessage->m_atom == e_message_non_client_mouse_move ||
-            pmessage->m_atom == e_message_mouse_wheel)
-      {
-
-         message::mouse * pmouse = (::message::mouse *) pmessage->m_union.m_pmouse;
-
-         psession->on_ui_mouse_message(pmouse);
-
-         if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
-         {
-            pmouse->m_bTranslated = true;
-            rectangle_i32 rectangleWindow;
-            if(m_bScreenRelativeMouseMessagePosition)
-            {
-               rectangleWindow.Null();
-               //::rectangle_i32 rectangleWindow32;
-               //::get_window_rect(get_handle(), rectangleWindow32);
-               //::copy(rectangleWindow,rectangleWindow32);
-            }
-            else
-            {
-               m_puserinteraction->get_window_rect(rectangleWindow);
-            }
-            /*if(::aura::get_system()->get_monitor_count() > 0)
-            {
-            ::rectangle_i32 rcMonitor;
-            ::aura::get_system()->get_monitor_rectangle(0,&rcMonitor);
-            if(rectangleWindow.left >= rcMonitor.left)
-            pmouse->m_point.x += (::i32)rectangleWindow.left;
-            if(rectangleWindow.top >= rcMonitor.top)
-            pmouse->m_point.y += (::i32)rectangleWindow.top;
-            }
-            else*/
-            //if(rectangleWindow.left >= 0)
-            pmouse->m_point.x += (::i32)rectangleWindow.left;
-            //if(rectangleWindow.top >= 0)
-            pmouse->m_point.y += (::i32)rectangleWindow.top;
-         }
-
-         if(pmessage->m_atom == e_message_mouse_move)
-         {
-            // We are at the message handler procedure.
-            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
-            // So the procedure starts by setting to the default cursor,
-            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
-            // handler has set it to another one.
-            //pmouse->m_ecursor = cursor_default;
-            //pmouse->m_pcursor = cursor_default;
-         }
-         else if(pmessage->m_atom == e_message_non_client_mouse_move)
-         {
-            // We are at the message handler procedure.
-            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
-            // So the procedure starts by setting to the default cursor,
-            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
-            // handler has set it to another one.
-            //pmouse->m_ecursor = cursor_default;
-         }
-
-         //_008OnMouse(pmouse);
-
-         return;
-
-      }
-
-      //if(pusermessage->m_atom == MESSAGE_OLE_DRAGENTER ||
-      //   pusermessage->m_atom == MESSAGE_OLE_DRAGOVER ||
-      //   pusermessage->m_atom == MESSAGE_OLE_DRAGLEAVE ||
-      //   pusermessage->m_atom == MESSAGE_OLE_DRAGDROP)
-      //{
-
-      //   message::drag_and_drop * pdrag = (::message::drag_and_drop *) pusermessage;
-
-
-      //   user::oswindow_array oswindowa;
-      //   user::interaction_ptra wnda;
-      //   wnda = ::aura::get_system()->m_uiptraFrame;
-      //   oswindowa = wnda.get_hwnda();
-      //   user::window_util::SortByZOrder(oswindowa);
-      //   for(i32 i = 0; i < oswindowa.get_size(); i++)
-      //   {
-      //      __pointer(::user::interaction) pinteraction = wnda.find_first(oswindowa[i]);
-      //      if(pinteraction != nullptr)
-      //      {
-      //         pinteraction->_000OnDrag(pdrag);
-      //         if(pdrag->m_bRet)
-      //            return;
-      //      }
-      //   }
-      //   return;
-      //}
-      if(pmessage->m_atom == e_message_key_down ||
-            pmessage->m_atom == e_message_key_up ||
-            pmessage->m_atom == e_message_char ||
-            pmessage->m_atom == e_message_sys_key_down ||
-            pmessage->m_atom == e_message_sys_key_up ||
-            pmessage->m_atom == e_message_sys_char)
-      {
-
-         message::key * pkey = (::message::key *) pmessage->m_union.m_pkey;
-
-         auto puserinteractionHost = m_puserinteraction->get_host_window();
-
-         __pointer(::user::interaction) puiFocus = puserinteractionHost->get_keyboard_focus();
-
-         if(puiFocus != nullptr && puiFocus->is_window() && puiFocus != m_puserinteraction)
-         {
-
-            puiFocus->send(pkey);
-
-            if(pmessage->m_bRet)
-               return;
-
-         }
-         else if(!pkey->m_bRet)
-         {
-
-            if(m_puserinteraction != nullptr)
-            {
-
-               m_puserinteraction->_000OnKey(pkey);
-
-               if(pmessage->m_bRet)
-                  pmessage;
-
-            }
-
-         }
-
-         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
-
-         return;
-
-      }
-      //if(pmessage->m_atom == e_message_event)
-      //{
-      //   if(m_puserinteraction != nullptr)
-      //   {
-
-      //      m_puserinteraction->handle_event((::user::control_event *) pmessage->m_lparam.m_lparam);
-
-      //   }
-      //   return;
-      //}
-
       ::user::interaction_impl::message_handler(pmessage);
 
-      //if(pmessage->m_bRet && !pmessage->m_bDoSystemDefault)
-      if(pmessage->m_bRet)
-         return;
-      if(m_puserinteraction != nullptr)
-      {
-         m_puserinteraction->default_message_handler(pmessage);
-      }
-      else
-      {
-         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
-      }
+      return;
+
+//      if(pmessage->m_atom == e_message_size || pmessage->m_atom == e_message_move)
+//      {
+//
+//         //win_update_graphics();
+//
+//      }
+//
+//      if(pmessage->m_atom == e_message_key_down ||
+//            pmessage->m_atom == e_message_key_up ||
+//            pmessage->m_atom == e_message_char ||
+//            pmessage->m_atom == e_message_sys_key_down ||
+//            pmessage->m_atom == e_message_sys_key_up ||
+//            pmessage->m_atom == e_message_sys_char)
+//      {
+//
+//         auto pkey = pmessage->m_union.m_pkey;
+//
+//         auto psession = get_session();
+//
+//         if(pmessage->m_atom == e_message_key_down || pmessage->m_atom == e_message_sys_key_down)
+//         {
+//            try
+//            {
+//               psession->set_key_pressed(pkey->m_ekey,true);
+//            }
+//            catch(...)
+//            {
+//            }
+//         }
+//         else if(pmessage->m_atom == e_message_key_up || pmessage->m_atom == e_message_sys_key_up)
+//         {
+//            try
+//            {
+//               psession->set_key_pressed(pkey->m_ekey,false);
+//            }
+//            catch(...)
+//            {
+//            }
+//         }
+//      }
+//
+//
+//
+//      if(m_puserinteraction != nullptr)
+//      {
+//         if(m_puserinteraction->layout().is_moving())
+//         {
+//            //TRACE("moving: skip pre translate message");
+//         }
+//         else if(m_puserinteraction->layout().is_sizing())
+//         {
+//            //TRACE("sizing: skip pre translate message");
+//         }
+//         else
+//         {
+//            m_puserinteraction->pre_translate_message(pmessage);
+//            if(pmessage->m_bRet)
+//               return;
+//
+//         }
+//      }
+//
+//      auto psession = get_session();
+//
+//      if(pmessage->m_atom == e_message_timer)
+//      {
+////         m_puserinteraction->get_app()->step_timer();
+//      }
+//      else if(pmessage->m_atom == e_message_left_button_down)
+//      {
+//         //::rectangle_i32 rectangleClient;
+//         //::get_client_rect(get_handle(),rectangleClient);
+//         //::rectangle_i32 rectangleWindow;
+//         //::get_window_rect(get_handle(),rectangleWindow);
+//         //::rectangle_i32 rectangleRegion;
+//         //HRGN hrgn = CreateRectRgn(0,0,0,0);
+//         //int regionType = ::GetWindowRgn(get_handle(),hrgn);
+//         //if(regionType != ERROR)
+//         //{
+//         //   ::GetRgnBox(hrgn,rectangleRegion);
+//         //}
+//         //::DeleteObject(hrgn); /* finished with region */
+//         //WINDOWPLACEMENT wp;
+//         //__zero(wp);
+//         //wp.length = sizeof(WINDOWPLACEMENT);
+//         //::GetWindowPlacement(get_handle(),&wp);
+//         //bool bZoomed = ::IsZoomed(get_handle()) != false;
+//         //bool bIconic = ::IsIconic(get_handle()) != false;
+//         psession->m_puiLastLButtonDown = m_puserinteraction;
+//      }
+//      /*      else if(pusermessage->m_atom == CA2M_BERGEDGE)
+//      {
+//      if(pusermessage->m_wparam == BERGEDGE_GETAPP)
+//      {
+//      __pointer(::aura::application)* ppapp= (__pointer(::aura::application)*) pusermessage->m_lparam;
+//      *ppapp = get_app();
+//      pusermessage->m_bRet = true;
+//      return;
+//      }
+//      }*/
+//      pmessage->set_lresult(0);
+//
+//      if(pmessage->m_atom == e_message_mouse_leave)
+//      {
+//
+//         _000OnMouseLeave(pmessage);
+//
+//         return;
+//
+//      }
+//
+//      if(pmessage->m_atom == e_message_left_button_down ||
+//            pmessage->m_atom == e_message_left_button_up ||
+//            pmessage->m_atom == e_message_middle_button_down ||
+//            pmessage->m_atom == e_message_middle_button_up ||
+//            pmessage->m_atom == e_message_right_button_down ||
+//            pmessage->m_atom == e_message_right_button_up ||
+//            pmessage->m_atom == e_message_left_button_double_click ||
+//            pmessage->m_atom == e_message_mouse_move ||
+//            pmessage->m_atom == e_message_non_client_mouse_move ||
+//            pmessage->m_atom == e_message_mouse_wheel)
+//      {
+//
+//         message::mouse * pmouse = (::message::mouse *) pmessage->m_union.m_pmouse;
+//
+//         psession->on_ui_mouse_message(pmouse);
+//
+//         if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
+//         {
+//            pmouse->m_bTranslated = true;
+//            rectangle_i32 rectangleWindow;
+//            if(m_bScreenRelativeMouseMessagePosition)
+//            {
+//               rectangleWindow.Null();
+//               //::rectangle_i32 rectangleWindow32;
+//               //::get_window_rect(get_handle(), rectangleWindow32);
+//               //::copy(rectangleWindow,rectangleWindow32);
+//            }
+//            else
+//            {
+//               m_puserinteraction->get_window_rect(rectangleWindow);
+//            }
+//            /*if(::aura::get_system()->get_monitor_count() > 0)
+//            {
+//            ::rectangle_i32 rcMonitor;
+//            ::aura::get_system()->get_monitor_rectangle(0,&rcMonitor);
+//            if(rectangleWindow.left >= rcMonitor.left)
+//            pmouse->m_point.x += (::i32)rectangleWindow.left;
+//            if(rectangleWindow.top >= rcMonitor.top)
+//            pmouse->m_point.y += (::i32)rectangleWindow.top;
+//            }
+//            else*/
+//            //if(rectangleWindow.left >= 0)
+//            pmouse->m_point.x += (::i32)rectangleWindow.left;
+//            //if(rectangleWindow.top >= 0)
+//            pmouse->m_point.y += (::i32)rectangleWindow.top;
+//         }
+//
+//         if(pmessage->m_atom == e_message_mouse_move)
+//         {
+//            // We are at the message handler procedure.
+//            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
+//            // So the procedure starts by setting to the default cursor,
+//            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
+//            // handler has set it to another one.
+//            //pmouse->m_ecursor = cursor_default;
+//            //pmouse->m_pcursor = cursor_default;
+//         }
+//         else if(pmessage->m_atom == e_message_non_client_mouse_move)
+//         {
+//            // We are at the message handler procedure.
+//            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
+//            // So the procedure starts by setting to the default cursor,
+//            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
+//            // handler has set it to another one.
+//            //pmouse->m_ecursor = cursor_default;
+//         }
+//
+//         //_008OnMouse(pmouse);
+//
+//         return;
+//
+//      }
+//
+//      //if(pusermessage->m_atom == MESSAGE_OLE_DRAGENTER ||
+//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGOVER ||
+//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGLEAVE ||
+//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGDROP)
+//      //{
+//
+//      //   message::drag_and_drop * pdrag = (::message::drag_and_drop *) pusermessage;
+//
+//
+//      //   user::oswindow_array oswindowa;
+//      //   user::interaction_ptra wnda;
+//      //   wnda = ::aura::get_system()->m_uiptraFrame;
+//      //   oswindowa = wnda.get_hwnda();
+//      //   user::window_util::SortByZOrder(oswindowa);
+//      //   for(i32 i = 0; i < oswindowa.get_size(); i++)
+//      //   {
+//      //      __pointer(::user::interaction) pinteraction = wnda.find_first(oswindowa[i]);
+//      //      if(pinteraction != nullptr)
+//      //      {
+//      //         pinteraction->_000OnDrag(pdrag);
+//      //         if(pdrag->m_bRet)
+//      //            return;
+//      //      }
+//      //   }
+//      //   return;
+//      //}
+//      if(pmessage->m_atom == e_message_key_down ||
+//            pmessage->m_atom == e_message_key_up ||
+//            pmessage->m_atom == e_message_char ||
+//            pmessage->m_atom == e_message_sys_key_down ||
+//            pmessage->m_atom == e_message_sys_key_up ||
+//            pmessage->m_atom == e_message_sys_char)
+//      {
+//
+//         message::key * pkey = (::message::key *) pmessage->m_union.m_pkey;
+//
+//         auto puserinteractionHost = m_puserinteraction->get_host_window();
+//
+//         __pointer(::user::interaction) puiFocus = puserinteractionHost->get_keyboard_focus();
+//
+//         if(puiFocus != nullptr && puiFocus->is_window() && puiFocus != m_puserinteraction)
+//         {
+//
+//            puiFocus->send(pkey);
+//
+//            if(pmessage->m_bRet)
+//               return;
+//
+//         }
+//         else if(!pkey->m_bRet)
+//         {
+//
+//            if(m_puserinteraction != nullptr)
+//            {
+//
+//               m_puserinteraction->_000OnKey(pkey);
+//
+//               if(pmessage->m_bRet)
+//                  pmessage;
+//
+//            }
+//
+//         }
+//
+//         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
+//
+//         return;
+//
+//      }
+//      //if(pmessage->m_atom == e_message_event)
+//      //{
+//      //   if(m_puserinteraction != nullptr)
+//      //   {
+//
+//      //      m_puserinteraction->handle_event((::user::control_event *) pmessage->m_lparam.m_lparam);
+//
+//      //   }
+//      //   return;
+//      //}
+//
+//      ::user::interaction_impl::message_handler(pmessage);
+//
+//      //if(pmessage->m_bRet && !pmessage->m_bDoSystemDefault)
+//      if(pmessage->m_bRet)
+//         return;
+//      if(m_puserinteraction != nullptr)
+//      {
+//         m_puserinteraction->default_message_handler(pmessage);
+//      }
+//      else
+//      {
+//         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
+//      }
+
+
    }
 
 

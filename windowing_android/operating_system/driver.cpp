@@ -118,3 +118,32 @@ void operating_system_driver::set(operating_system_driver* pdriver)
 
 
 
+void operating_system_driver::add_message_box_sequence(::sequence < ::conversation >* psequence)
+{
+
+   synchronous_lock synchronouslock(&m_mutexMessageBoxSequence);
+
+   m_sequenceaMessageBox.add(psequence);
+
+}
+
+
+__pointer(::sequence < ::conversation >) operating_system_driver::pick_message_box_sequence()
+{
+
+   synchronous_lock synchronouslock(&m_mutexMessageBoxSequence);
+
+   if (m_sequenceaMessageBox.is_empty())
+   {
+
+      return nullptr;
+
+   }
+
+   auto psequence = m_sequenceaMessageBox.pop_first();
+
+   return psequence;
+
+}
+
+

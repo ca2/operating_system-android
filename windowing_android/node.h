@@ -22,6 +22,12 @@ namespace windowing_android
       void report_exception_to_user(::object* pobject, ::exception& exception, const ::string& strMoreDetails) override;
 
 
+      void on_start_system() override;
+
+
+      __pointer(::conversation) create_new_message_box_conversation() override;
+
+
    };
 
 

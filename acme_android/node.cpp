@@ -27,8 +27,7 @@ namespace acme_android
 
       m_psystem->branch();
 
-      m_psystem->post_initial_request();
-
+//      m_psystem->post_initial_request();
 
    }
 

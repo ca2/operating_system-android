@@ -46,6 +46,12 @@
     <ClInclude Include="monitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="operating_system\message_box.h">
+      <Filter>Header Files\operating_system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -112,6 +118,15 @@
     </ClCompile>
     <ClCompile Include="monitor.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="operating_system\_android.cpp">
+      <Filter>Source Files\operating_system</Filter>
+    </ClCompile>
+    <ClCompile Include="operating_system\message_box.cpp">
+      <Filter>Source Files\operating_system</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

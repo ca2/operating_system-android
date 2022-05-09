@@ -75,6 +75,8 @@ namespace aura_android
       //bool SubclassDlgItem(::u32 nID,::user::interaction * pParent);
       //oswindow unsubclass_window();
 
+      void native_create_host() override;
+
       // handling of RT_DLGINIT resource (extension to RT_DIALOG)
       //bool ExecuteDlgInit(const ::string & lpszResourceName);
       //bool ExecuteDlgInit(LPVOID lpResource);

@@ -3,7 +3,7 @@
 #include <android/bitmap.h>
 
 
-#define LOG_TAG "com.ace.impact(native)"
+#define LOG_TAG "ace.impact(native)"
 
 
 void set_jni_context(JNIEnv* penv);
@@ -42,8 +42,6 @@ extern class ::system* g_psystem;
 
                   auto pwindowApplicationHost = pwindowing->get_application_host_window();
 
-                  //auto puserinteraction = pwindowApplicationHost->m_puserinteractionimpl->m_puserinteraction;
-
                   if (::is_set(pwindowApplicationHost))
                   {
 
@@ -64,6 +62,7 @@ extern class ::system* g_psystem;
    return nullptr;
 
 }
+
 
 ::user::interaction_impl* __get_host_user_impl()
 {
@@ -98,6 +97,7 @@ extern class ::system* g_psystem;
 
 }
 
+
 extern "C"
 JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
 {
@@ -108,6 +108,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
       set_jni_context(env);
 
       AndroidBitmapInfo    info = {};
+
       int                  ret;
 
       if ((ret = AndroidBitmap_getInfo(env, bitmap, &info)) < 0)
@@ -145,7 +146,13 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
          if (::is_set(puserinteractionimpl))
          {
 
+            ::duration duration;
+
+            duration.Now();
+
             puserinteractionimpl->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
+
+            LOGE("render_impact: %lld ms duration=%f ms", time_ms, duration.elapsed().floating_millisecond().m_d);
 
          }
 
@@ -165,10 +172,9 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "render_impact exception");
+      LOGW("render_impact exception");
 
    }
-
 
 }
 
@@ -184,6 +190,8 @@ JNIEXPORT void JNICALL Java_com_ace_impact_native_1on_1timer(JNIEnv * env, jobje
 
       try
       {
+
+         //LOGI("native_on_timer");
 
          android_exchange();
 
@@ -347,36 +355,6 @@ JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedHideKeyboard(JNIEnv * env, 
 }
 
 
-extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
-{
-
-   try
-   {
-
-      set_jni_context(env);
-
-      auto pwindowHost = __get_host_window();
-
-      if (::is_set(pwindowHost))
-      {
-
-         pwindowHost->on_touch_down(x, y);
-
-      }
-
-   }
-   catch (...)
-   {
-
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonDown exception");
-
-   }
-
-
-}
-
-
 extern class ::system* g_psystem;
 
 
@@ -473,8 +451,6 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionEndBatchEdit(JNIEn
          //android_on_text(os_text_keyboard, utf16, length);
 
       }
-
-
 
    }
    catch (...)
@@ -616,6 +592,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingRegion
    return true;
 
 }
+
 
 extern "C"
 JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetSelection(JNIEnv * env, jobject obj, jint start, jint end)
@@ -826,6 +803,36 @@ JNIEXPORT void JNICALL Java_com_ace_impact_mouseMove(JNIEnv * env, jobject  obj,
    {
 
       __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "mouseMove exception");
+
+   }
+
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+{
+
+   try
+   {
+
+      set_jni_context(env);
+
+      auto pwindowHost = __get_host_window();
+
+      if (::is_set(pwindowHost))
+      {
+
+         pwindowHost->on_touch_down(x, y);
+
+      }
+
+   }
+   catch (...)
+   {
+
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonDown exception");
 
    }
 

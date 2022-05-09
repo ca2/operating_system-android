@@ -17,6 +17,9 @@
 #include "display.h"
 
 
+#include "buffer.h"
+
+
 #include "window.h"
 
 

@@ -32,6 +32,10 @@ namespace windowing_android
 
       ::procedure_list                                m_procedurelist;
 
+      __pointer(host_interaction)                     m_phostinteraction;
+
+      __pointer(::windowing::window)                  m_pwindowApplicationHost;
+
 
       windowing();
       ~windowing() override;
@@ -46,6 +50,10 @@ namespace windowing_android
       virtual void initialize_windowing();
 
       virtual void terminate_windowing();
+
+      void defer_initialize_host_window(const RECTANGLE_I32* lpcrect) override;
+
+      ::windowing::window* get_application_host_window() override;
 
       ////virtual void post_ui_message(const MESSAGE & message);
 
@@ -83,6 +91,7 @@ namespace windowing_android
 
       //virtual ::windowing_android::window * _window(Window window);
 
+      ::windowing::window* window(oswindow oswindow) override;
 
       virtual void _message_handler(void * p) override;
 
@@ -132,6 +141,12 @@ namespace windowing_android
 //#endif
 
       ::windowing::text_editor_interface * get_text_editor_interface() override;
+
+
+      using ::windowing::windowing::get_cursor;
+
+
+      __pointer(::windowing::cursor) get_cursor(enum_cursor ecursor) override;
 
 
    };

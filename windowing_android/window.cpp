@@ -3820,6 +3820,22 @@ namespace windowing_android
    //}
 
 
+   float window::get_dpi_for_window()
+   {
+
+      return ::operating_system_driver::get()->m_fDpiX;
+
+   }
+
+   
+   float window::get_density_for_window()
+   {
+
+      return ::operating_system_driver::get()->m_fDensity;
+
+   }
+
+
 } // namespace windowing_android
 
 

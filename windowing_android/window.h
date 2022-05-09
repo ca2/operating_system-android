@@ -277,6 +277,10 @@ namespace windowing_android
 
       void bring_to_front() override;
 
+
+      float get_dpi_for_window() override;
+
+      float get_density_for_window() override;
       
       //virtual void on_touch_down(int x, int y);
       //virtual void on_touch_drag(int x, int y);

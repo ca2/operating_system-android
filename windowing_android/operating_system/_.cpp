@@ -2,6 +2,9 @@
 #include "_operating_system.h"
 
 
+extern class ::system* g_psystem;
+
+
 void android_aura_main()
 {
 
@@ -9,15 +12,15 @@ void android_aura_main()
 
    auto pdriver = operating_system_driver::get();
 
-   string strApplicationIdentifier = pdriver->m_strApplicationIdentifier;
+   //string strApplicationIdentifier = pdriver->m_strApplicationIdentifier;
 
-   auto psystem = platform_create_system(strApplicationIdentifier);
+   //auto psystem = platform_create_system(strApplicationIdentifier);
 
-   psystem->m_pathCacheDirectory = pdirect->getCacheDirectory();
+   //psystem->m_pathCacheDirectory = pdirect->getCacheDirectory();
 
-   psystem->system_construct("", e_display_default);
+   //psystem->system_construct("", e_display_default);
 
-   //psystem->system_construct(plocal, e_display_default);
+   //psystem->system_construct(pdriver, e_display_default);
 
    //::e_status estatus = psystem->m_papexsystem->os_application_system_run();
    //
@@ -30,23 +33,6 @@ void android_aura_main()
 
    //}
 
-
-   ::procedure procedure([psystem,pdirect]()
-      {
-         ::rectangle_i32 rectangle;
-
-         rectangle.left = 0;
-         rectangle.top = 0;
-         rectangle.right = pdirect->getWidth();
-         rectangle.bottom = pdirect->getHeight();
-
-         auto psession = psystem->get_session();
-
-         psession->defer_initialize_host_window(rectangle);
-
-      });
-
-   psystem->payload("on_finish_launching1") = procedure.m_p;
 
 
 
@@ -74,6 +60,135 @@ void android_aura_main()
    //}
 
 
+
+//psystem->post_initial_request();
+
+}
+
+
+int e_message_box_to_button(const ::e_message_box& emessagebox)
+{
+
+   auto emessageboxType = emessagebox & e_message_box_type_mask;
+
+//   e_message_box_ok = 0x00000000L,
+  //    e_message_box_ok_cancel = 0x00000001L,
+    //  e_message_box_abort_retry_ignore = 0x00000002L,
+      //e_message_box_yes_no_cancel = 0x00000003L,
+      //e_message_box_yes_no = 0x00000004L,
+      //e_message_box_retry_cancel = 0x00000005L,
+      //e_message_box_cancel_try_continue = 0x00000006L,
+
+   bool bOk = false; // 16
+   bool bYes = false; // 32
+   bool bNo = false; // 64
+   bool bAbort = false; // 128
+   bool bRetry = false; // 256
+   bool bIgnore = false; // 512
+   bool bCancel = false; // 1024
+   bool bTry = false; // 2048
+   bool bContinue = false; // 4096
+
+   switch (emessageboxType)
+   {
+   case e_message_box_ok_cancel:
+      bOk = true;
+      bCancel = true;
+      break;
+   case e_message_box_abort_retry_ignore:
+      bAbort = true;
+      bRetry = true;
+      bIgnore = true;
+      break;
+   case e_message_box_yes_no_cancel:
+      bYes = true;
+      bNo = true;
+      bCancel = true;
+      break;
+   case e_message_box_yes_no:
+      bYes = true;
+      bNo = true;
+      break;
+   case e_message_box_retry_cancel:
+      bRetry = true;
+      bCancel = true;
+      break;
+   case e_message_box_cancel_try_continue:
+      bCancel = true;
+      bTry = true;
+      bContinue = true;
+      break;
+   default:
+      break;
+   }
+   
+   int iButton = 0;
+
+   if (bOk)
+   {
+
+      iButton |= 16;
+
+   }
+
+   if (bYes)
+   {
+
+      iButton |= 32;
+
+   }
+
+   if (bNo)
+   {
+
+      iButton |= 64;
+
+   }
+
+   if (bAbort)
+   {
+
+      iButton |= 128;
+
+   }
+
+   if (bRetry)
+   {
+
+      iButton |= 256;
+
+   }
+
+   if (bIgnore)
+   {
+
+      iButton |= 512;
+
+   }
+
+   if (bCancel)
+   {
+
+      iButton |= 1024;
+
+   }
+
+   if (bTry)
+   {
+
+      iButton |= 2048;
+
+   }
+   
+   if (bContinue)
+   {
+
+      iButton |= 4096;
+
+   }
+
+   return iButton;
+
 }
 
 
@@ -84,180 +199,164 @@ void android_exchange()
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::operating_system_driver::get();
+   auto pdriver = ::operating_system_driver::get();
 
    auto pdirect = ::operating_system_direct::get();
 
-   if (plocal->m_bHideKeyboard)
+   if (pdriver->m_bHideKeyboard)
    {
 
       pdirect->setHideKeyboard(true);
 
-      plocal->m_bHideKeyboard = false;
+      pdriver->m_bHideKeyboard = false;
 
    }
 
-   if (plocal->m_strOpenUrl.has_char())
+   if (pdriver->m_strOpenUrl.has_char())
    {
 
-      pdirect->setOpenUrl(plocal->m_strOpenUrl);
+      pdirect->setOpenUrl(pdriver->m_strOpenUrl);
 
-      plocal->m_strOpenUrl.Empty();
+      pdriver->m_strOpenUrl.Empty();
 
    }
 
-   if (plocal->m_bMessageBoxOn)
+   //if (pdriver->m_bMessageBoxOn)
+   //{
+
+   //   int iResult = pdirect->getMessageBoxResult();
+
+   //   if (iResult > 0)
+   //   {
+
+   //      pdriver->m_bMessageBoxOn = false;
+
+   //   }
+
+   //}
+   //else
+   //{
+
+   auto psequence = pdriver->pick_message_box_sequence();
+
+   if (::is_set(psequence))
    {
 
-      int iResult = pdirect->getMessageBoxResult();
+      psequence->increment_reference_count();
 
-      if (iResult > 0)
-      {
+      pdirect->setMessageBoxSequence((::iptr)psequence.m_p);
 
-         plocal->m_bMessageBoxOn = false;
+      auto& sequence = *psequence;
 
-      }
+      pdirect->setMessageBox(sequence->get_message_box_message());
 
-   }
-   else
-   {
+      pdirect->setMessageBoxCaption(sequence->get_message_box_title());
 
-      if (plocal->m_bMessageBox)
-      {
-
-         if (plocal->m_strMessageBox.has_char())
-         {
-
-            pdirect->setMessageBox(plocal->m_strMessageBox);
-
-            plocal->m_strMessageBox.Empty();
-
-         }
-
-         if (plocal->m_strMessageBoxCaption.is_empty())
-         {
-
-            pdirect->setMessageBoxCaption(plocal->m_strMessageBoxCaption);
-
-            plocal->m_strMessageBoxCaption.Empty();
-
-         }
-
-         pdirect->setMessageBoxButton(plocal->m_iMessageBoxButton);
-
-         plocal->m_iMessageBoxButton = 0;
-
-         pdirect->setShowMessageBox(1);
-
-         plocal->m_bMessageBoxOn = true;
-
-         plocal->m_bMessageBox = false;
-
-      }
+      pdirect->setMessageBoxButton(e_message_box_to_button(sequence->get_message_box_flags()));
 
    }
 
-   if (plocal->m_strSetUserWallpaper.has_char())
+   if (pdriver->m_strSetUserWallpaper.has_char())
    {
 
-      pdirect->setUserWallpaper(plocal->m_strSetUserWallpaper);
+      pdirect->setUserWallpaper(pdriver->m_strSetUserWallpaper);
 
-      plocal->m_strSetUserWallpaper.Empty();
+      pdriver->m_strSetUserWallpaper.Empty();
 
    }
 
-   if (plocal->m_bGetUserWallpaper)
+   if (pdriver->m_bGetUserWallpaper)
    {
 
-      plocal->m_strGetUserWallpaper = pdirect->getUserWallpaper();
+      pdriver->m_strGetUserWallpaper = pdirect->getUserWallpaper();
 
-      plocal->m_bGetUserWallpaper = false;
+      pdriver->m_bGetUserWallpaper = false;
 
    }
 
-   if (plocal->m_bEditorSelectionUpdated)
+   if (pdriver->m_bEditorSelectionUpdated)
    {
 
-      plocal->m_bEditorSelectionUpdated = false;
+      pdriver->m_bEditorSelectionUpdated = false;
 
-      pdirect->setEditorSelectionStart(plocal->m_iEditorSelectionStart);
+      pdirect->setEditorSelectionStart(pdriver->m_iEditorSelectionStart);
 
-      pdirect->setEditorSelectionEnd(plocal->m_iEditorSelectionEnd);
+      pdirect->setEditorSelectionEnd(pdriver->m_iEditorSelectionEnd);
 
       pdirect->setEditorSelectionUpdated(true);
 
    }
 
-   if (plocal->m_bEditorTextUpdated)
+   if (pdriver->m_bEditorTextUpdated)
    {
 
-      plocal->m_bEditorTextUpdated = false;
+      pdriver->m_bEditorTextUpdated = false;
 
-      pdirect->setEditorText(plocal->m_strEditorText);
+      pdirect->setEditorText(pdriver->m_strEditorText);
 
       pdirect->setEditorTextUpdated(true);
 
    }
 
-   if (plocal->m_bEditFocusSet)
+   if (pdriver->m_bEditFocusSet)
    {
 
-      plocal->m_bEditFocusSet = false;
+      pdriver->m_bEditFocusSet = false;
 
       pdirect->setEditFocusSet(true);
 
-      pdirect->setEditFocusLeft(plocal->m_rectangleEditFocus.left);
+      pdirect->setEditFocusLeft(pdriver->m_rectangleEditFocus.left);
 
-      pdirect->setEditFocusTop(plocal->m_rectangleEditFocus.top);
+      pdirect->setEditFocusTop(pdriver->m_rectangleEditFocus.top);
 
-      pdirect->setEditFocusRight(plocal->m_rectangleEditFocus.right);
+      pdirect->setEditFocusRight(pdriver->m_rectangleEditFocus.right);
 
-      pdirect->setEditFocusBottom(plocal->m_rectangleEditFocus.bottom);
+      pdirect->setEditFocusBottom(pdriver->m_rectangleEditFocus.bottom);
 
    }
 
-   if (plocal->m_bEditFocusKill)
+   if (pdriver->m_bEditFocusKill)
    {
 
-      plocal->m_bEditFocusKill = false;
+      pdriver->m_bEditFocusKill = false;
 
       pdirect->setEditFocusKill(true);
 
    }
 
-   if (plocal->m_bRedraw)
+   if (pdriver->m_bRedraw)
    {
 
-      plocal->m_bRedraw = false;
+      pdriver->m_bRedraw = false;
 
       pdirect->setRedraw(true);
 
    }
 
-   if (plocal->m_bInputMethodManagerUpdateSelection)
+   if (pdriver->m_bInputMethodManagerUpdateSelection)
    {
 
-      plocal->m_bInputMethodManagerUpdateSelection = false;
+      pdriver->m_bInputMethodManagerUpdateSelection = false;
 
-      pdirect->setInputMethodManagerSelectionStart(plocal->m_iInputMethodManagerSelectionStart);
+      pdirect->setInputMethodManagerSelectionStart(pdriver->m_iInputMethodManagerSelectionStart);
 
-      pdirect->setInputMethodManagerSelectionEnd(plocal->m_iInputMethodManagerSelectionEnd);
+      pdirect->setInputMethodManagerSelectionEnd(pdriver->m_iInputMethodManagerSelectionEnd);
 
-      pdirect->setInputMethodManagerCandidateStart(plocal->m_iInputMethodManagerCandidateStart);
+      pdirect->setInputMethodManagerCandidateStart(pdriver->m_iInputMethodManagerCandidateStart);
 
-      pdirect->setInputMethodManagerCandidateEnd(plocal->m_iInputMethodManagerCandidateEnd);
+      pdirect->setInputMethodManagerCandidateEnd(pdriver->m_iInputMethodManagerCandidateEnd);
 
       pdirect->setInputMethodManagerUpdateSelection(true);
 
    }
 
 
-   if (plocal->m_bShowKeyboard)
+   if (pdriver->m_bShowKeyboard)
    {
 
       pdirect->setShowKeyboard(true);
 
-      plocal->m_bShowKeyboard = false;
+      pdriver->m_bShowKeyboard = false;
 
    }
 
@@ -269,23 +368,23 @@ void android_edit_on_set_focus(int l, int t, int r, int b, const ::string & pszT
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::operating_system_driver::get();
+   auto pdriver = ::operating_system_driver::get();
 
-   plocal->m_bEditFocusKill = false;
+   pdriver->m_bEditFocusKill = false;
 
-   plocal->m_rectangleEditFocus.left = l;
-   plocal->m_rectangleEditFocus.top = t;
-   plocal->m_rectangleEditFocus.right = r;
-   plocal->m_rectangleEditFocus.bottom = b;
+   pdriver->m_rectangleEditFocus.left = l;
+   pdriver->m_rectangleEditFocus.top = t;
+   pdriver->m_rectangleEditFocus.right = r;
+   pdriver->m_rectangleEditFocus.bottom = b;
 
-   plocal->m_iEditorSelectionStart = iBeg;
-   plocal->m_iEditorSelectionEnd = iEnd;
-   plocal->m_bEditorSelectionUpdated = true;
+   pdriver->m_iEditorSelectionStart = iBeg;
+   pdriver->m_iEditorSelectionEnd = iEnd;
+   pdriver->m_bEditorSelectionUpdated = true;
 
-   plocal->m_strEditorText = pszText;
-   plocal->m_bEditorTextUpdated = true;
+   pdriver->m_strEditorText = pszText;
+   pdriver->m_bEditorTextUpdated = true;
 
-   plocal->m_bEditFocusSet = true;
+   pdriver->m_bEditFocusSet = true;
 
 }
 
@@ -295,11 +394,11 @@ void android_edit_on_kill_focus()
 
    synchronous_lock synchronouslock(osmutex());
 
-   auto plocal = ::operating_system_driver::get();
+   auto pdriver = ::operating_system_driver::get();
 
-   plocal->m_bEditFocusKill = true;
+   pdriver->m_bEditFocusKill = true;
 
-   plocal->m_bEditFocusSet = false;
+   pdriver->m_bEditFocusSet = false;
 
 }
 

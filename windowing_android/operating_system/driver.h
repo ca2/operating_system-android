@@ -32,12 +32,14 @@ public:
    string         m_strGetUserWallpaper;
    bool           m_bGetUserWallpaper;
 
-   int            m_iMessageBoxButton;
-   string         m_strMessageBox;
-   string         m_strMessageBoxCaption;
-   bool           m_bMessageBox;
-   bool           m_bMessageBoxOn;
-   bool           m_iMessageBoxResult;
+   //::iptr         m_iptrMessageBoxSequence;
+      // int            m_iMessageBoxButton;
+   //string         m_strMessageBox;
+   //string         m_strMessageBoxCaption;
+   //int            m_iMessageBoxButton;
+   //bool           m_bMessageBox;
+   //bool           m_bMessageBoxOn;
+   //bool           m_iMessageBoxResult;
    long long      m_lMemFreeAvailableKb;
 
 
@@ -65,6 +67,9 @@ public:
 
    __pointer(asset)     m_passetResourceFolder;
 
+   ::mutex                                         m_mutexMessageBoxSequence;
+   __pointer_array(::sequence < ::conversation >)  m_sequenceaMessageBox;
+
 
    operating_system_driver();
    ~operating_system_driver() override;
@@ -81,6 +86,10 @@ public:
 
    static operating_system_driver* get();
    static void set(operating_system_driver* pdriver);
+
+
+   virtual void add_message_box_sequence(::sequence < ::conversation >* psequence);
+   virtual __pointer(::sequence < ::conversation >) pick_message_box_sequence();
 
 
 };

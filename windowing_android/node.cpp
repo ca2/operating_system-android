@@ -50,6 +50,53 @@ namespace windowing_android
    }
 
 
+   void node::on_start_system()
+   {
+
+      auto pdriver = ::operating_system_driver::get();
+
+      ::rectangle_i32 rectangle;
+
+      rectangle.left = 0;
+      rectangle.top = 0;
+      rectangle.right = pdriver->m_iWidth;
+      rectangle.bottom = pdriver->m_iHeight;
+
+      auto psession = m_psystem->get_session();
+
+      psession->defer_initialize_host_window(rectangle);
+
+      m_psystem->post_initial_request();
+
+   }
+
+
+   //__pointer(::conversation) node::create_new_message_box_conversation()
+   //{
+
+   //   return __new(::windowing_android::message_box());
+
+   //}
+
+
+   //__pointer(::sequence < ::conversation >) node::get_new_conversation_sequence()
+   //{
+
+   //   auto psequence = __new(windowing_android::message_box);
+
+   //   return psequence;
+
+   //}
+
+
+   //__pointer(::sequence < ::conversation >) node::message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox)
+   //{
+
+   //   return nullptr;
+
+   //}
+
+
 } // namespace windowing_android
 
 

@@ -10,7 +10,7 @@ __FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
 
    aura_android_factory(pfactory);
 
-   //pfactory->add_factory_item < ::windowing_android::buffer, ::graphics::graphics > ();
+   pfactory->add_factory_item < ::windowing_android::buffer, ::graphics::graphics > ();
 
    pfactory->add_factory_item < ::windowing_android::monitor, ::windowing::monitor >();
 

@@ -63,7 +63,15 @@ namespace windowing_android
    //   //      return true;
 
    //}
+   void monitor::get_monitor_rectangle(::RECTANGLE_I32* prectangle)
+   {
+      _get_monitor_rectangle();
 
+      __copy(prectangle, m_rectangle);
+
+      //      return true;
+
+   }
 
    ::e_status monitor::_get_monitor_rectangle()
    {

@@ -40,15 +40,15 @@ public:
    //String m_strUserWallpaper;
    JX(str, UserWallpaper);
    //int m_iShowMessageBox;
-   JX(i, ShowMessageBox);
+   JX(l, MessageBoxSequence);
    //String m_strMessageBox;
    JX(str, MessageBox);
    //String m_strMessageBoxCaption;
    JX(str, MessageBoxCaption);
    //int m_iMessageBoxButton;
    JX(i, MessageBoxButton);
-   //int m_iMessageBoxResult;
-   JX(i, MessageBoxResult);
+   ////int m_iMessageBoxResult;
+   //JX(i, MessageBoxResult);
    //long m_lMemFreeAvailableKb;
    JX(l, MemFreeAvailableKb);
    //boolean m_bEditFocusSet;
