@@ -210,163 +210,163 @@ namespace aura_android
    }
 
 
-   void interaction_impl::native_create_host()
-   {
+   //void interaction_impl::native_create_host()
+   //{
 
-      //      auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
-      //
-      //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
-      //      {
-      //
-      //         m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
-      //
-      //         m_pwindow->m_puserinteractionimpl = this;
-      //
-      //         m_puserinteraction->m_pinteractionimpl = this;
-      //
-      //      }
-      //      else
-      //      {
-      //
-      //         //auto estatus =
-      //
-      //         __construct(m_pwindow);
-      //
-      //         //if (!estatus)
-      //         //{
-      //
-      //         //   return estatus;
-      //
-      //         //}
-      //
-      //         if (!m_psystem->m_paurasystem->m_pwindowMain)
-      //         {
-      //
-      //            m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
-      //
-      //         }
-      //
-      //      }
-      //
-      //      //auto estatus =
-      //
-      //      m_pwindow->create_window(this);
-      //
-      //      //if (!estatus)
-      //      //{
-      //
-      //      //   return estatus;
-      //
-      //      //}
-      //
-      //      //return true;
+   //   //      auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
+   //   //
+   //   //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
+   //   //      {
+   //   //
+   //   //         m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
+   //   //
+   //   //         m_pwindow->m_puserinteractionimpl = this;
+   //   //
+   //   //         m_puserinteraction->m_pinteractionimpl = this;
+   //   //
+   //   //      }
+   //   //      else
+   //   //      {
+   //   //
+   //   //         //auto estatus =
+   //   //
+   //   //         __construct(m_pwindow);
+   //   //
+   //   //         //if (!estatus)
+   //   //         //{
+   //   //
+   //   //         //   return estatus;
+   //   //
+   //   //         //}
+   //   //
+   //   //         if (!m_psystem->m_paurasystem->m_pwindowMain)
+   //   //         {
+   //   //
+   //   //            m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
+   //   //
+   //   //         }
+   //   //
+   //   //      }
+   //   //
+   //   //      //auto estatus =
+   //   //
+   //   //      m_pwindow->create_window(this);
+   //   //
+   //   //      //if (!estatus)
+   //   //      //{
+   //   //
+   //   //      //   return estatus;
+   //   //
+   //   //      //}
+   //   //
+   //   //      //return true;
 
-      __pointer(::user::system) pusersystem;
+   //   __pointer(::user::system) pusersystem;
 
-      if (m_puserinteraction->m_pusersystem)
-      {
+   //   if (m_puserinteraction->m_pusersystem)
+   //   {
 
-         pusersystem = m_puserinteraction->m_pusersystem;
+   //      pusersystem = m_puserinteraction->m_pusersystem;
 
-      }
-      else
-      {
+   //   }
+   //   else
+   //   {
 
-         pusersystem = __new(::user::system);
+   //      pusersystem = __new(::user::system);
 
-      }
+   //   }
 
-      //      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
-      //
-      if (!m_puserinteraction->pre_create_window(pusersystem))
-      {
+   //   //      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
+   //   //
+   //   if (!m_puserinteraction->pre_create_window(pusersystem))
+   //   {
 
-         //return false;
+   //      //return false;
 
-         throw ::exception(error_failed);
+   //      throw ::exception(error_failed);
 
-      }
+   //   }
 
-      __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
+   //   __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
 
-      //m_pthreadUserImpl = m_puserinteraction->m_pthreadUserInteraction;
+   //   //m_pthreadUserImpl = m_puserinteraction->m_pthreadUserInteraction;
 
-      install_message_routing(m_puserinteraction);
+   //   install_message_routing(m_puserinteraction);
 
-      bool bOk = true;
+   //   bool bOk = true;
 
-      //      if(pusersystem->m_createstruct.hwndParent == (oswindow) MESSAGE_WINDOW_PARENT)
-      //      {
-      //
-      //         auto pwindowing = m_pwindowwindowing();
-      //
-      //         m_oswindow = pwindowing->new_message_window(this);
-      //
-      //         m_puserinteraction->m_bMessageWindow = true;
-      //
-      //         //send_message(e_message_create, 0, (LPARAM) &cs);
-      //
-      //      }
-      //      else
-      {
+   //   //      if(pusersystem->m_createstruct.hwndParent == (oswindow) MESSAGE_WINDOW_PARENT)
+   //   //      {
+   //   //
+   //   //         auto pwindowing = m_pwindowwindowing();
+   //   //
+   //   //         m_oswindow = pwindowing->new_message_window(this);
+   //   //
+   //   //         m_puserinteraction->m_bMessageWindow = true;
+   //   //
+   //   //         //send_message(e_message_create, 0, (LPARAM) &cs);
+   //   //
+   //   //      }
+   //   //      else
+   //   {
 
-         m_puserinteraction->m_bMessageWindow = false;
+   //      m_puserinteraction->m_bMessageWindow = false;
 
-         auto psession = get_session();
+   //      auto psession = get_session();
 
-         auto puser = psession->user();
+   //      auto puser = psession->user();
 
-         auto pwindowing = puser->windowing();
+   //      auto pwindowing = puser->windowing();
 
-         //pwindowing->windowing_send([&]()
-         //   {
+   //      //pwindowing->windowing_send([&]()
+   //      //   {
 
-         //      auto psession = get_session();
+   //      //      auto psession = get_session();
 
-         //      auto puser = psession->user();
+   //      //      auto puser = psession->user();
 
-         //      auto pwindowing = puser->windowing();
+   //      //      auto pwindowing = puser->windowing();
 
-               m_pwindow = pwindowing->new_window(this);
+   //            m_pwindow = pwindowing->new_window(this);
 
-               if (m_pwindow)
-               {
+   //            if (m_pwindow)
+   //            {
 
-                  output_debug_string("window created");
+   //               output_debug_string("window created");
 
-               }
-               else
-               {
+   //            }
+   //            else
+   //            {
 
-                  output_debug_string("window not created");
+   //               output_debug_string("window not created");
 
-               }
+   //            }
 
-            //});
+   //         //});
 
-      }
+   //   }
 
-      //      if(bOk)
-      //      {
-      //
-      //         m_puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
-      //
-      //         m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
-      //
-      //      }
+   //   //      if(bOk)
+   //   //      {
+   //   //
+   //   //         m_puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
+   //   //
+   //   //         m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+   //   //
+   //   //      }
 
-      if (!bOk)
-      {
+   //   if (!bOk)
+   //   {
 
-         throw ::exception(error_failed);
+   //      throw ::exception(error_failed);
 
-      }
-
-
+   //   }
 
 
 
-   }
+
+
+   //}
 
 
 //   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::primitive * puiParent, atom atom)

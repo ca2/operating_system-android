@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include "aura/user/micro/message_box.h"
+//#include "aura/user/micro/message_box.h"
 
 
 namespace windowing_android
@@ -10,7 +10,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_AURA message_box :
-      virtual public micro_message_box
+      virtual public ::conversation
    {
    public:
 
@@ -20,9 +20,7 @@ namespace windowing_android
       e_message_box           m_emessagebox;
 
 
-      using micro_message_box::micro_message_box;
-
-
+      
       void do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox) override;
 
       ::string get_message_box_message() override;
