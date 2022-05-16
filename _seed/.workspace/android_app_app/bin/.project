@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>android_app_simple_form</name>
+	<name>android_app_app</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -18,12 +18,12 @@
 		<link>
 			<name>src0</name>
 			<type>2</type>
-			<location>C:/basis/operating-system/seed-android/app-simple/form/app/src/main/java</location>
+			<location>C:/basis/archive/seed-android/app/app/app/src/main/java</location>
 		</link>
 		<link>
 			<name>src1</name>
 			<type>2</type>
-			<location>C:/basis/operating-system/seed-android/app-simple/form/app/build/generated/source/r/x86-64/debug</location>
+			<location>C:/basis/archive/seed-android/app/app/app/build/generated/source/r/x86/debug</location>
 		</link>
 	</linkedResources>
 </projectDescription>

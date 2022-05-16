@@ -451,18 +451,16 @@ namespace windowing_android
    ::windowing::window * windowing::get_keyboard_focus(::thread *)
    {
 
-      //if (!m_pdisplay)
-      //{
+      auto pwindowApplicationHost = get_application_host_window();
 
-      //   return nullptr;
+      if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionFocus1)
+      {
 
-      //}
+         return nullptr;
 
-      //auto pwindow = m_pdisplay->get_keyboard_focus();
+      }
 
-      //return pwindow;
-
-      return nullptr;
+      return pwindowApplicationHost;
 
    }
 
