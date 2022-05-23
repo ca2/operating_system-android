@@ -11,6 +11,9 @@
 #include "host_interaction.h"
 
 
+#include "text_composition_client.h"
+
+
 #include "monitor.h"
 
 

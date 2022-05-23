@@ -4932,7 +4932,7 @@ namespace aura_android
    }
    
 
-   void interaction_impl::show_software_keyboard(::user::primitive * pprimitive, string str, strsize iBeg, strsize iEnd)
+   void interaction_impl::show_software_keyboard(::user::element * pelement)
    {
 
       auto pwindowing = m_puserinteraction->windowing();
@@ -4946,24 +4946,24 @@ namespace aura_android
 
       }
 
-      m_pprimitiveSoftwareKeyboard = pprimitive;
+      m_pelementSoftwareKeyboard = pelement;
 
       //return ::success;
 
    }
 
 
-   void interaction_impl::hide_software_keyboard(::user::primitive * pprimitive)
+   void interaction_impl::hide_software_keyboard(::user::element * pelement)
    {
 
-      if (!::is_null(pprimitive) && pprimitive != m_pprimitiveSoftwareKeyboard)
+      if (!::is_null(pelement) && pelement != m_pelementSoftwareKeyboard)
       {
 
          throw ::exception(::error_bad_argument);
 
       }
 
-      m_pprimitiveSoftwareKeyboard = nullptr;
+      m_pelementSoftwareKeyboard = nullptr;
 
       auto pwindowing = m_puserinteraction->windowing();
 
@@ -4975,9 +4975,6 @@ namespace aura_android
          ptexteditorinterface->hide_software_keyboard();
 
       }
-
-
-      //return ::success;
 
    }
 

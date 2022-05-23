@@ -453,7 +453,7 @@ namespace windowing_android
 
       auto pwindowApplicationHost = get_application_host_window();
 
-      if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionFocus1)
+      if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionKeyboardFocus)
       {
 
          return nullptr;
@@ -494,6 +494,88 @@ namespace windowing_android
 
    void windowing::release_mouse_capture()
    {
+
+      if (!m_pwindowMouseCapture)
+      {
+
+         return;
+
+      }
+
+      auto puserinteractionimpl = m_pwindowMouseCapture->m_puserinteractionimpl;
+
+      if (puserinteractionimpl)
+      {
+
+         puserinteractionimpl->m_puserinteractionMouseCapture.release();
+
+      }
+
+      m_pwindowMouseCapture.release();
+
+      //auto estatus =
+      //
+      //m_pdisplay->release_mouse_capture();
+
+      //      if(!estatus)
+      //      {
+      //
+      //         return estatus;
+      //
+      //      }
+      //
+      //      return estatus;
+
+   }
+
+
+   void windowing::clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny)
+   {
+
+      if (!m_pwindowKeyboardFocus)
+      {
+
+         return;
+
+      }
+
+      auto puserinteractionimpl = m_pwindowKeyboardFocus->m_puserinteractionimpl;
+
+      if (puserinteractionimpl)
+      {
+
+         if (puserinteractionimpl->m_puserinteractionKeyboardFocus)
+         {
+
+            puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
+
+            //puserinteractionimpl->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+
+         }
+
+         auto puserinteraction = puserinteractionimpl->m_puserinteraction;
+
+         if (puserinteraction)
+         {
+
+            puserinteraction->post_message(e_message_kill_focus);
+
+         }
+
+         //if (puserinteractionimpl->m_puserinteractionKeyboardFocus)
+         //{
+
+         //   puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
+
+         //   puserinteractionimpl->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+
+         //}
+
+         puserinteractionimpl->m_puserinteractionKeyboardFocus.release();
+
+      }
+
+      m_pwindowKeyboardFocus.release();
 
       //auto estatus =
       //

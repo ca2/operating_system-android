@@ -12,6 +12,8 @@ operating_system_driver::operating_system_driver()
 
    m_passetmanager = nullptr;
 
+   m_bLastShowSoftwareKeyboard = false;
+
 }
 
 
@@ -89,13 +91,17 @@ void operating_system_driver::show_software_keyboard()
 
    m_bShowKeyboard = true;
 
+   m_bLastShowSoftwareKeyboard = true;
+
 }
 
 
 void operating_system_driver::hide_software_keyboard()
 {
 
-   m_bShowKeyboard = true;
+   m_bHideKeyboard = true;
+
+   m_bLastShowSoftwareKeyboard = false;
 
 }
 

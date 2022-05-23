@@ -12,6 +12,41 @@ void set_jni_context(JNIEnv* penv);
 extern class ::system* g_psystem;
 
 
+void input_connection_synchronize_selection(::user::element * pelementFocus)
+{
+
+   try
+   {
+
+      strsize iSelectionStart = 0;
+
+      strsize iSelectionEnd = 0;
+
+      strsize iComposingStart = 0;
+
+      strsize iComposingEnd = 0;
+
+      pelementFocus->_001GetSel(iSelectionStart, iSelectionEnd, iComposingStart, iComposingEnd);
+
+      auto pdirect = ::operating_system_direct::get();
+
+      pdirect->setInputMethodManagerSelectionStart(iSelectionStart);
+
+      pdirect->setInputMethodManagerSelectionEnd(iSelectionEnd);
+
+      pdirect->setInputMethodManagerCandidateStart(iComposingStart);
+
+      pdirect->setInputMethodManagerCandidateEnd(iComposingEnd);
+
+   }
+   catch (...)
+   {
+
+   }
+
+}
+
+
 ::windowing::window* __get_host_window()
 {
 
@@ -372,15 +407,15 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionBeginBatchEdit(JNI
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
             try
             {
 
-               pprimitiveFocus->InputConnectionBeginBatchEdit();
+               pelementFocus->InputConnectionBeginBatchEdit();
 
             }
             catch (...)
@@ -426,15 +461,15 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionEndBatchEdit(JNIEn
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
             try
             {
 
-               pprimitiveFocus->InputConnectionEndBatchEdit();
+               pelementFocus->InputConnectionEndBatchEdit();
 
             }
             catch (...)
@@ -468,6 +503,60 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionEndBatchEdit(JNIEn
 
 
 extern "C"
+JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionDeleteSurroundingText(JNIEnv * env, jobject  obj, jint beforeLength, jint afterLength)
+{
+
+   try
+   {
+
+      set_jni_context(env);
+
+      auto pinteraction = __get_host_interaction();
+
+      if (::is_set(pinteraction))
+      {
+
+         auto pelementFocus = pinteraction->get_keyboard_focus();
+
+         if (pelementFocus)
+         {
+
+            try
+            {
+
+               pelementFocus->InputConnectionDeleteSurroundingText(beforeLength, afterLength);
+
+            }
+            catch (...)
+            {
+
+            }
+
+         }
+         else
+         {
+
+            //android_on_text(os_text_keyboard, utf16, length);
+
+         }
+
+      }
+
+   }
+   catch (...)
+   {
+
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "InputConnectionSetComposingText exception");
+
+   }
+
+
+   return true;
+
+}
+
+
+extern "C"
 JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition)
 {
 
@@ -492,9 +581,9 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingText(J
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
             wd16string wstr(utf16, length);
@@ -506,13 +595,15 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingText(J
             try
             {
 
-               pprimitiveFocus->InputConnectionSetComposingText(str, newCursorPosition);
+               pelementFocus->InputConnectionSetComposingText(str, newCursorPosition);
 
             }
             catch (...)
             {
 
             }
+
+            input_connection_synchronize_selection(pelementFocus);
 
          }
          else
@@ -554,15 +645,15 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetComposingRegion
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
             try
             {
 
-               pprimitiveFocus->InputConnectionSetComposingRegion(start, end);
+               pelementFocus->InputConnectionSetComposingRegion(start, end);
 
             }
             catch (...)
@@ -608,16 +699,16 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionSetSelection(JNIEn
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
 
             try
             {
 
-               pprimitiveFocus->InputConnectionSetSelection(start, end);
+               pelementFocus->InputConnectionSetSelection(start, end);
 
             }
             catch (...)
@@ -676,9 +767,9 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionCommitText(JNIEnv 
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
 
@@ -686,18 +777,20 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionCommitText(JNIEnv 
 
             string str(wstr);
 
-            const char* pszComposingText = str;
+            const char* pszCommittingText = str;
 
             try
             {
 
-               pprimitiveFocus->InputConnectionCommitText(str, newCursorPosition);
+               pelementFocus->InputConnectionCommitText(str, newCursorPosition);
 
             }
             catch (...)
             {
 
             }
+
+            input_connection_synchronize_selection(pelementFocus);
 
          }
          else
@@ -739,16 +832,16 @@ JNIEXPORT jboolean JNICALL Java_com_ace_impact_InputConnectionFinishComposingTex
       if (::is_set(pinteraction))
       {
 
-         auto pprimitiveFocus = pinteraction->get_keyboard_focus();
+         auto pelementFocus = pinteraction->get_keyboard_focus();
 
-         if (pprimitiveFocus)
+         if (pelementFocus)
          {
 
 
             try
             {
 
-               pprimitiveFocus->InputConnectionFinishComposingText();
+               pelementFocus->InputConnectionFinishComposingText();
 
             }
             catch (...)

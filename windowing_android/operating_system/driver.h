@@ -57,6 +57,9 @@ public:
    string         m_strEditorText;
 
 
+   bool           m_bLastShowSoftwareKeyboard;
+
+
    bool           m_bInputMethodManagerUpdateSelection;
    int            m_iInputMethodManagerSelectionStart;
    int            m_iInputMethodManagerSelectionEnd;

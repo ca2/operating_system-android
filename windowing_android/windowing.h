@@ -21,6 +21,9 @@ namespace windowing_android
       //bool                                            m_bFinishX11Thread;
       //bool                                            m_bInitX11Thread;
 
+      __pointer(::windowing_android::window)          m_pwindowKeyboardFocus;
+      __pointer(::windowing_android::window)          m_pwindowMouseCapture;
+
       itask_t                                         m_itask;
 
 //#ifdef WITH_XI
@@ -72,6 +75,9 @@ namespace windowing_android
 
 
       void release_mouse_capture() override;
+
+
+      void clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny = nullptr) override;
 
 
       //virtual void x11_main();

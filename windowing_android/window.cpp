@@ -312,6 +312,8 @@ namespace windowing_android
 
       }
 
+
+
 //#ifndef RASPBIAN
 //
 //      if (pwindowing->m_pSnLauncheeContext != nullptr && !papp->m_bSnLauncheeSetup)
@@ -532,6 +534,23 @@ namespace windowing_android
          throw ::exception(error_failed);
 
       }
+
+   }
+
+
+   ::windowing_android::windowing* window::windowing()
+   {
+
+      auto pwindowing = ::windowing::window::windowing();
+
+      if (!pwindowing)
+      {
+
+         return nullptr;
+
+      }
+
+      return (::windowing_android::windowing*)pwindowing->m_pWindowing;
 
    }
 
@@ -3434,23 +3453,23 @@ namespace windowing_android
    bool window::has_keyboard_focus() const
    {
 
-      //auto pdisplay = x11_display();
+      auto pwindowing = ((window*)this)->windowing();
 
-      //if (::is_null(pdisplay))
-      //{
+      if (!pwindowing)
+      {
 
-      //   return false;
+         return false;
 
-      //}
+      }
 
-      //auto pwindowFocus = pdisplay->m_pwindowKeyboardFocus;
+      auto pwindowKeyboardFocus = pwindowing->m_pwindowKeyboardFocus;
 
-      //if (::is_null(pwindowFocus))
-      //{
+      if (::is_null(pwindowKeyboardFocus))
+      {
 
-      //   return false;
+         return false;
 
-      //}
+      }
 
       //auto pimplFocus = pwindowFocus->m_puserinteractionimpl;
 
@@ -3476,6 +3495,15 @@ namespace windowing_android
       //   return false;
 
       //}
+
+      bool bHasKeyboardFocus = pwindowKeyboardFocus == this;
+
+      if (!bHasKeyboardFocus)
+      {
+
+         return false;
+
+      }
 
       return true;
 
@@ -3687,6 +3715,34 @@ namespace windowing_android
 
       synchronous_lock synchronouslock(user_mutex());
 
+      auto pwindowing = (::windowing_android::windowing*)m_pwindowing->m_pWindowing;
+
+      if (!pwindowing)
+      {
+
+         throw ::exception(error_wrong_state);
+
+      }
+
+      if (pwindowing->m_pwindowMouseCapture)
+      {
+
+         if (pwindowing->m_pwindowMouseCapture != this)
+         {
+
+            if (pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl)
+            {
+
+               pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
+
+            }
+
+         }
+
+      }
+
+      pwindowing->m_pwindowMouseCapture = this;
+
       //if (Display() == nullptr)
       //{
 
@@ -3745,6 +3801,40 @@ namespace windowing_android
    {
 
       synchronous_lock synchronouslock(user_mutex());
+
+      auto pwindowing = windowing();
+
+      if (!pwindowing)
+      {
+
+         throw ::exception(error_wrong_state);
+
+      }
+
+      if (pwindowing->m_pwindowKeyboardFocus && pwindowing->m_pwindowKeyboardFocus != this)
+      {
+
+         pwindowing->clear_keyboard_focus(this);
+
+      }
+
+      pwindowing->m_pwindowKeyboardFocus = this;
+
+      auto puserinteractionimpl = m_puserinteractionimpl;
+
+      if (puserinteractionimpl)
+      {
+
+         auto puserinteraction = puserinteractionimpl->m_puserinteraction;
+
+         if (puserinteraction)
+         {
+
+            puserinteraction->post_message(e_message_set_focus);
+
+         }
+
+      }
 
       //if (Window() == 0)
       //{

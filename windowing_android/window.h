@@ -79,6 +79,9 @@ namespace windowing_android
       //}
 
 
+      ::windowing_android::windowing* windowing();
+
+
       //virtual ::Display * Display();
 
       //virtual ::Display * Display() const;
