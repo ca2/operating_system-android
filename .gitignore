@@ -4,6 +4,7 @@
 **/.git
 **/.svn
 **/CVS
+**/.workspace
 _seed/packages
 .metadata
 .DS_Store
