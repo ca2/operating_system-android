@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src0</name>
+			<type>2</type>
+			<location>C:/basis/operating-system/seed-android/app-core/hellomultiverse/app/src/main/java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

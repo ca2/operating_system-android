@@ -29,5 +29,14 @@ namespace acme_android
    }
 
 
+   ::file::path acme_directory::roaming()
+   {
+
+      return m_psystem->m_pathCacheDirectory / ".config";
+
+   }
+
+
+
 } // namespace acme_android
 

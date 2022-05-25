@@ -195,6 +195,7 @@ namespace acme_android
       // attempt file creation
       //HANDLE hFile = shell::CreateFile(::str::international::utf8_to_unicode(m_strFileName), dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
       i32 hFile = ::open(m_strFileName, dwFlags, dwPermission); //::open(m_strFileName, dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
+
       if(hFile == -1)
       {
 
@@ -202,6 +203,8 @@ namespace acme_android
          int iErrNo = errno;
 
          m_estatus = errno_to_status(iErrNo);
+
+         set_nok();
 
          if (eopen & ::file::e_open_no_exception_on_open)
          {
@@ -288,7 +291,7 @@ namespace acme_android
 
       m_estatus = ::success;
 
-      //set_ok();
+      set_ok();
 
       //return ::success;
 

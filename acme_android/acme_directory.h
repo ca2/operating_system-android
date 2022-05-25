@@ -19,6 +19,9 @@ namespace acme_android
       ::file::path home() override;
 
 
+      ::file::path roaming() override;
+
+
    };
 
 

@@ -54,9 +54,9 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::android::ip_enum, ::net::ip_enum >();
 
 
-//   pfactory->add_factory_item < ::android::interprocess_communication_base, ::interprocess_communication::base >();
-//   pfactory->add_factory_item < ::android::interprocess_communication_rx, ::interprocess_communication::rx >();
-//   pfactory->add_factory_item < ::android::interprocess_communication_tx, ::interprocess_communication::tx >();
+   pfactory->add_factory_item < ::apex_android::interprocess_communication_base, ::interprocess_communication::base >();
+   pfactory->add_factory_item < ::apex_android::interprocess_communication_rx, ::interprocess_communication::rx >();
+   pfactory->add_factory_item < ::apex_android::interprocess_communication_tx, ::interprocess_communication::tx >();
    //create_factory < ::android::interprocess_communication, ::interprocess_communication::interprocess_communication >();
 
 
