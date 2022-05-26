@@ -3,7 +3,7 @@
 #include "_operating_system.h"
 
 
-operating_system_direct * g_pandroiddirect;
+operating_system_bind * g_pandroiddirect;
 
 
 CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
@@ -50,7 +50,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobje
 }
 
 
-operating_system_direct* operating_system_direct::get()
+operating_system_bind* operating_system_bind::get()
 {
 
    return g_pandroiddirect;
@@ -59,7 +59,7 @@ operating_system_direct* operating_system_direct::get()
 
 
 
-void operating_system_direct::set(operating_system_direct* pdirect)
+void operating_system_bind::set(operating_system_bind* pdirect)
 {
 
    g_pandroiddirect = pdirect;

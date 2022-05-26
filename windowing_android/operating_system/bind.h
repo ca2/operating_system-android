@@ -4,7 +4,7 @@
 #include "object.h"
 
 
-class operating_system_direct :
+class operating_system_bind :
    public jni_object
 {
 public:
@@ -87,8 +87,8 @@ public:
    JX(i, InputMethodManagerCandidateEnd);
 
    
-   static operating_system_direct* get();
-   static void set(operating_system_direct* pdirect);
+   static operating_system_bind* get();
+   static void set(operating_system_bind* pdirect);
 
 
  

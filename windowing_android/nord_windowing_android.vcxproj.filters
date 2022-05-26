@@ -28,7 +28,7 @@
     <ClInclude Include="operating_system\driver.h">
       <Filter>Header Files\operating_system</Filter>
     </ClInclude>
-    <ClInclude Include="operating_system\direct.h">
+    <ClInclude Include="operating_system\bind.h">
       <Filter>Header Files\operating_system</Filter>
     </ClInclude>
     <ClInclude Include="operating_system\_operating_system.h">
@@ -101,7 +101,7 @@
     <ClCompile Include="operating_system\object.cpp">
       <Filter>Source Files\operating_system</Filter>
     </ClCompile>
-    <ClCompile Include="operating_system\direct.cpp">
+    <ClCompile Include="operating_system\bind.cpp">
       <Filter>Source Files\operating_system</Filter>
     </ClCompile>
     <ClCompile Include="operating_system\driver.cpp">

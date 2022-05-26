@@ -8,7 +8,7 @@ extern class ::system* g_psystem;
 void android_aura_main()
 {
 
-   auto pdirect = operating_system_direct::get();
+   auto pdirect = operating_system_bind::get();
 
    auto pdriver = operating_system_driver::get();
 
@@ -197,168 +197,9 @@ int e_message_box_to_button(const ::e_message_box& emessagebox)
 void android_exchange()
 {
 
-   synchronous_lock synchronouslock(osmutex());
-
    auto pdriver = ::operating_system_driver::get();
 
-   auto pdirect = ::operating_system_direct::get();
-
-   if (pdriver->m_bHideKeyboard)
-   {
-
-      pdirect->setHideKeyboard(true);
-
-      pdriver->m_bHideKeyboard = false;
-
-   }
-
-   if (pdriver->m_strOpenUrl.has_char())
-   {
-
-      pdirect->setOpenUrl(pdriver->m_strOpenUrl);
-
-      pdriver->m_strOpenUrl.Empty();
-
-   }
-
-   //if (pdriver->m_bMessageBoxOn)
-   //{
-
-   //   int iResult = pdirect->getMessageBoxResult();
-
-   //   if (iResult > 0)
-   //   {
-
-   //      pdriver->m_bMessageBoxOn = false;
-
-   //   }
-
-   //}
-   //else
-   //{
-
-   auto psequence = pdriver->pick_message_box_sequence();
-
-   if (::is_set(psequence))
-   {
-
-      psequence->increment_reference_count();
-
-      pdirect->setMessageBoxSequence((::iptr)psequence.m_p);
-
-      auto& sequence = *psequence;
-
-      pdirect->setMessageBox(sequence->get_message_box_message());
-
-      pdirect->setMessageBoxCaption(sequence->get_message_box_title());
-
-      pdirect->setMessageBoxButton(e_message_box_to_button(sequence->get_message_box_flags()));
-
-   }
-
-   if (pdriver->m_strSetUserWallpaper.has_char())
-   {
-
-      pdirect->setUserWallpaper(pdriver->m_strSetUserWallpaper);
-
-      pdriver->m_strSetUserWallpaper.Empty();
-
-   }
-
-   if (pdriver->m_bGetUserWallpaper)
-   {
-
-      pdriver->m_strGetUserWallpaper = pdirect->getUserWallpaper();
-
-      pdriver->m_bGetUserWallpaper = false;
-
-   }
-
-   if (pdriver->m_bEditorSelectionUpdated)
-   {
-
-      pdriver->m_bEditorSelectionUpdated = false;
-
-      pdirect->setEditorSelectionStart(pdriver->m_iEditorSelectionStart);
-
-      pdirect->setEditorSelectionEnd(pdriver->m_iEditorSelectionEnd);
-
-      pdirect->setEditorSelectionUpdated(true);
-
-   }
-
-   if (pdriver->m_bEditorTextUpdated)
-   {
-
-      pdriver->m_bEditorTextUpdated = false;
-
-      pdirect->setEditorText(pdriver->m_strEditorText);
-
-      pdirect->setEditorTextUpdated(true);
-
-   }
-
-   if (pdriver->m_bEditFocusSet)
-   {
-
-      pdriver->m_bEditFocusSet = false;
-
-      pdirect->setEditFocusSet(true);
-
-      pdirect->setEditFocusLeft(pdriver->m_rectangleEditFocus.left);
-
-      pdirect->setEditFocusTop(pdriver->m_rectangleEditFocus.top);
-
-      pdirect->setEditFocusRight(pdriver->m_rectangleEditFocus.right);
-
-      pdirect->setEditFocusBottom(pdriver->m_rectangleEditFocus.bottom);
-
-   }
-
-   if (pdriver->m_bEditFocusKill)
-   {
-
-      pdriver->m_bEditFocusKill = false;
-
-      pdirect->setEditFocusKill(true);
-
-   }
-
-   if (pdriver->m_bRedraw)
-   {
-
-      pdriver->m_bRedraw = false;
-
-      pdirect->setRedraw(true);
-
-   }
-
-   if (pdriver->m_bInputMethodManagerUpdateSelection)
-   {
-
-      pdriver->m_bInputMethodManagerUpdateSelection = false;
-
-      pdirect->setInputMethodManagerSelectionStart(pdriver->m_iInputMethodManagerSelectionStart);
-
-      pdirect->setInputMethodManagerSelectionEnd(pdriver->m_iInputMethodManagerSelectionEnd);
-
-      pdirect->setInputMethodManagerCandidateStart(pdriver->m_iInputMethodManagerCandidateStart);
-
-      pdirect->setInputMethodManagerCandidateEnd(pdriver->m_iInputMethodManagerCandidateEnd);
-
-      pdirect->setInputMethodManagerUpdateSelection(true);
-
-   }
-
-
-   if (pdriver->m_bShowKeyboard)
-   {
-
-      pdirect->setShowKeyboard(true);
-
-      pdriver->m_bShowKeyboard = false;
-
-   }
+   pdriver->exchange();
 
 }
 
@@ -424,7 +265,7 @@ void android_edit_on_kill_focus()
 //
 //
 //
-//void set_operating_system_direct(operating_system_direct* pdirect)
+//void set_operating_system_direct(operating_system_bind* pdirect)
 //{
 //
 //   g_pandroiddirect = pdirect;
@@ -432,7 +273,7 @@ void android_edit_on_kill_focus()
 //}
 //
 //
-//operating_system_direct* operating_system_direct::get()
+//operating_system_bind* operating_system_bind::get()
 //{
 //
 //   return g_pandroiddirect;

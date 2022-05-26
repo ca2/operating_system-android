@@ -50,21 +50,21 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
       }
 
-      if (::operating_system_direct::get())
+      if (::operating_system_bind::get())
       {
 
-         delete ::operating_system_direct::get();
+         delete ::operating_system_bind::get();
 
       }
 
-      ::operating_system_direct::set(new operating_system_direct(jobjectDirect));
+      ::operating_system_bind::set(new operating_system_bind(jobjectDirect));
 
       if (!::operating_system_driver::get())
       {
 
          ::operating_system_driver::set(new operating_system_driver());
 
-         auto pdirect = ::operating_system_direct::get();
+         auto pdirect = ::operating_system_bind::get();
 
          auto pdriver = ::operating_system_driver::get();
 
@@ -126,7 +126,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
       else
       {
 
-         auto pdirect = ::operating_system_direct::get();
+         auto pdirect = ::operating_system_bind::get();
 
          ::rectangle_i32 r;
 
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_sync_1mem_1free_1available(JNIEnv * env,
    
       set_jni_context(env);
 
-      ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::operating_system_direct::get()->getMemFreeAvailableKb();
+      ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
 
    }
    catch (...)

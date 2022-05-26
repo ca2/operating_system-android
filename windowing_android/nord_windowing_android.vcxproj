@@ -185,7 +185,7 @@
     <ClCompile Include="operating_system\_android.cpp" />
     <ClCompile Include="operating_system\_asset.cpp" />
     <ClCompile Include="operating_system\_asset_manager.cpp" />
-    <ClCompile Include="operating_system\direct.cpp" />
+    <ClCompile Include="operating_system\bind.cpp" />
     <ClCompile Include="operating_system\driver.cpp" />
     <ClCompile Include="operating_system\java_ace_ace.cpp" />
     <ClCompile Include="operating_system\java_ace_impact.cpp" />
@@ -207,7 +207,7 @@
     <ClInclude Include="operating_system\message_box.h" />
     <ClInclude Include="operating_system\_asset.h" />
     <ClInclude Include="operating_system\_asset_manager.h" />
-    <ClInclude Include="operating_system\direct.h" />
+    <ClInclude Include="operating_system\bind.h" />
     <ClInclude Include="operating_system\driver.h" />
     <ClInclude Include="operating_system\object.h" />
     <ClInclude Include="operating_system\_operating_system.h" />

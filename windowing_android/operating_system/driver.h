@@ -26,7 +26,7 @@ public:
    float          m_fDensity;
    bool           m_bShowKeyboard;
    bool           m_bHideKeyboard;
-   string         m_strOpenUrl;
+   string_array   m_straOpenUrl;
    
    string         m_strSetUserWallpaper;
    string         m_strGetUserWallpaper;
@@ -93,6 +93,12 @@ public:
 
    virtual void add_message_box_sequence(::sequence < ::conversation >* psequence);
    virtual __pointer(::sequence < ::conversation >) pick_message_box_sequence();
+
+
+   virtual void open_url(const ::string& strOpenUrl);
+
+
+   virtual void exchange();
 
 
 };

@@ -4,11 +4,16 @@
 #include "_asset_manager.h"
 
 
+int e_message_box_to_button(const ::e_message_box& emessagebox);
+
+
 __pointer(operating_system_driver) g_pandroiddriver;
 
 
 operating_system_driver::operating_system_driver()
 {
+
+   defer_create_mutex();
 
    m_passetmanager = nullptr;
 
@@ -153,3 +158,200 @@ __pointer(::sequence < ::conversation >) operating_system_driver::pick_message_b
 }
 
 
+void operating_system_driver::open_url(const ::string& strOpenUrl)
+{
+
+   synchronous_lock lock(mutex());
+
+   m_straOpenUrl.add(strOpenUrl);
+
+}
+
+
+void operating_system_driver::exchange()
+{
+
+   synchronous_lock synchronouslock(mutex());
+
+   auto pdriver = ::operating_system_driver::get();
+
+   auto pdirect = ::operating_system_bind::get();
+
+   if (m_bHideKeyboard)
+   {
+
+      pdirect->setHideKeyboard(true);
+
+      m_bHideKeyboard = false;
+
+   }
+
+   string strOpenUrl;
+
+   {
+
+      //synchronous_lock lock(mutex());
+
+      while (m_straOpenUrl.has_element())
+      {
+
+         strOpenUrl = m_straOpenUrl.pick_first();
+
+         if (strOpenUrl.has_char())
+         {
+
+            break;
+
+         }
+
+      }
+
+   }
+
+   if (strOpenUrl.has_char())
+   {
+
+      pdirect->setOpenUrl(strOpenUrl);
+
+   }
+
+   //if (m_bMessageBoxOn)
+   //{
+
+   //   int iResult = pdirect->getMessageBoxResult();
+
+   //   if (iResult > 0)
+   //   {
+
+   //      m_bMessageBoxOn = false;
+
+   //   }
+
+   //}
+   //else
+   //{
+
+   auto psequence = pick_message_box_sequence();
+
+   if (::is_set(psequence))
+   {
+
+      psequence->increment_reference_count();
+
+      pdirect->setMessageBoxSequence((::iptr)psequence.m_p);
+
+      auto& sequence = *psequence;
+
+      pdirect->setMessageBox(sequence->get_message_box_message());
+
+      pdirect->setMessageBoxCaption(sequence->get_message_box_title());
+
+      pdirect->setMessageBoxButton(e_message_box_to_button(sequence->get_message_box_flags()));
+
+   }
+
+   if (m_strSetUserWallpaper.has_char())
+   {
+
+      pdirect->setUserWallpaper(m_strSetUserWallpaper);
+
+      m_strSetUserWallpaper.Empty();
+
+   }
+
+   if (m_bGetUserWallpaper)
+   {
+
+      m_strGetUserWallpaper = pdirect->getUserWallpaper();
+
+      m_bGetUserWallpaper = false;
+
+   }
+
+   if (m_bEditorSelectionUpdated)
+   {
+
+      m_bEditorSelectionUpdated = false;
+
+      pdirect->setEditorSelectionStart(m_iEditorSelectionStart);
+
+      pdirect->setEditorSelectionEnd(m_iEditorSelectionEnd);
+
+      pdirect->setEditorSelectionUpdated(true);
+
+   }
+
+   if (m_bEditorTextUpdated)
+   {
+
+      m_bEditorTextUpdated = false;
+
+      pdirect->setEditorText(m_strEditorText);
+
+      pdirect->setEditorTextUpdated(true);
+
+   }
+
+   if (m_bEditFocusSet)
+   {
+
+      m_bEditFocusSet = false;
+
+      pdirect->setEditFocusSet(true);
+
+      pdirect->setEditFocusLeft(m_rectangleEditFocus.left);
+
+      pdirect->setEditFocusTop(m_rectangleEditFocus.top);
+
+      pdirect->setEditFocusRight(m_rectangleEditFocus.right);
+
+      pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom);
+
+   }
+
+   if (m_bEditFocusKill)
+   {
+
+      m_bEditFocusKill = false;
+
+      pdirect->setEditFocusKill(true);
+
+   }
+
+   if (m_bRedraw)
+   {
+
+      m_bRedraw = false;
+
+      pdirect->setRedraw(true);
+
+   }
+
+   if (m_bInputMethodManagerUpdateSelection)
+   {
+
+      m_bInputMethodManagerUpdateSelection = false;
+
+      pdirect->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
+
+      pdirect->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
+
+      pdirect->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
+
+      pdirect->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
+
+      pdirect->setInputMethodManagerUpdateSelection(true);
+
+   }
+
+
+   if (m_bShowKeyboard)
+   {
+
+      pdirect->setShowKeyboard(true);
+
+      m_bShowKeyboard = false;
+
+   }
+
+}

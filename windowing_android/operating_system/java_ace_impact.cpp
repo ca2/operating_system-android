@@ -28,7 +28,7 @@ void input_connection_synchronize_selection(::user::element * pelementFocus)
 
       pelementFocus->_001GetSel(iSelectionStart, iSelectionEnd, iComposingStart, iComposingEnd);
 
-      auto pdirect = ::operating_system_direct::get();
+      auto pdirect = ::operating_system_bind::get();
 
       pdirect->setInputMethodManagerSelectionStart(iSelectionStart);
 
@@ -1038,11 +1038,11 @@ JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, job
 
       //rectangle.left = 0;
       //rectangle.top = 0;
-      //rectangle.right = ::operating_system_direct::get()->getWidth();
-      //rectangle.bottom = ::operating_system_direct::get()->getHeight();
+      //rectangle.right = ::operating_system_bind::get()->getWidth();
+      //rectangle.bottom = ::operating_system_bind::get()->getHeight();
 
-      auto w = ::operating_system_direct::get()->getWidth();
-      auto h = ::operating_system_direct::get()->getHeight();
+      auto w = ::operating_system_bind::get()->getWidth();
+      auto h = ::operating_system_bind::get()->getHeight();
 
       //android_on_size(0, 0, w, h);
 
