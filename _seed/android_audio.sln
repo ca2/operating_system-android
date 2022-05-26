@@ -110,6 +110,8 @@ Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_core_todo", "..
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio", "..\..\..\source\app-core\audio\nord_audio.vcxproj", "{80499837-2589-411A-BA75-5A6EE85F7CD1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_opensles", "..\audio_opensles\nord_audio_opensles.vcxproj", "{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		basis|Android = basis|Android
@@ -2428,6 +2430,46 @@ Global
 		{80499837-2589-411A-BA75-5A6EE85F7CD1}.stage|x64.Build.0 = Release|x86
 		{80499837-2589-411A-BA75-5A6EE85F7CD1}.stage|x86.ActiveCfg = Release|x86
 		{80499837-2589-411A-BA75-5A6EE85F7CD1}.stage|x86.Build.0 = Release|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|Android.ActiveCfg = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|Android.Build.0 = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|ARM.ActiveCfg = basis|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|ARM.Build.0 = basis|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|ARM64.ActiveCfg = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|ARM64.Build.0 = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|x64.ActiveCfg = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|x64.Build.0 = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|x86.ActiveCfg = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.basis|x86.Build.0 = basis|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|Android.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|Android.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|ARM.ActiveCfg = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|ARM.Build.0 = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|ARM64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|ARM64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|x64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|x64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|x86.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Debug|x86.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|Android.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|Android.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|ARM.ActiveCfg = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|ARM.Build.0 = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|ARM64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|ARM64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|x64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|x64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|x86.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.Release|x86.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|Android.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|Android.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|ARM.ActiveCfg = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|ARM.Build.0 = stage|ARM
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|ARM64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|ARM64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|x64.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|x64.Build.0 = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|x86.ActiveCfg = stage|x86
+		{33EFB6A4-50AA-469A-97B5-EEEC49F30AD3}.stage|x86.Build.0 = stage|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,7 @@
 #define default_draw2d draw2d_cairo
 #define default_write_text write_text_android
 #define default_imaging imaging_freeimage
+#define default_audio audio_opensles
 
 
 
