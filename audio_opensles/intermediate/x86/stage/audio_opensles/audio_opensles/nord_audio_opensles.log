@@ -1,0 +1,1 @@
+﻿C:\basis\operating-system\operating-system-android\audio_opensles\nord_audio_opensles.vcxproj(89,5): error MSB4019: The imported project "C:\basis\operating-system\Common.props" was not found. Confirm that the expression in the Import declaration "..\..\Common.props" is correct, and that the file exists on disk.

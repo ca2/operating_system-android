@@ -9,10 +9,7 @@ namespace multimedia
    {
 
 
-      engine::engine(sp(::base::application) papp) :
-         object(papp),
-         thread(papp),
-         wave_base(papp)
+      engine::engine()
       {
          engineObject = NULL;
          engineEngine = NULL;

@@ -7,20 +7,20 @@ namespace multimedia
    namespace audio_opensles
    {
 
-      void translate(WAVEFORMATEX & waveformatex, ::multimedia::audio::wave_format * pwaveformat)
-      {
+      //void translate(WAVEFORMATEX & waveformatex, ::multimedia::audio::wave_format * pwaveformat)
+      //{
 
 
-         waveformatex.wFormatTag        = pwaveformat->wFormatTag;           /* format type */
-         waveformatex.nChannels         = pwaveformat->nChannels;            /* number of channels (i.e. mono, stereo...) */
-         waveformatex.nSamplesPerSec    = pwaveformat->nSamplesPerSec;       /* sample rate */
-         waveformatex.nAvgBytesPerSec   = pwaveformat->nAvgBytesPerSec;      /* for buffer estimation */
-         waveformatex.nBlockAlign       = pwaveformat->nBlockAlign;          /* block size_i32 of data */
-         waveformatex.wBitsPerSample    = pwaveformat->wBitsPerSample;       /* number of bits per sample of mono data */
-         waveformatex.cbSize            = pwaveformat->cbSize;               /* the count in bytes of the size_i32 of */
-                                                                                 /* extra information (after cbSize) */
+      //   waveformatex.wFormatTag        = pwaveformat->wFormatTag;           /* format type */
+      //   waveformatex.nChannels         = pwaveformat->nChannels;            /* number of channels (i.e. mono, stereo...) */
+      //   waveformatex.nSamplesPerSec    = pwaveformat->nSamplesPerSec;       /* sample rate */
+      //   waveformatex.nAvgBytesPerSec   = pwaveformat->nAvgBytesPerSec;      /* for buffer estimation */
+      //   waveformatex.nBlockAlign       = pwaveformat->nBlockAlign;          /* block size_i32 of data */
+      //   waveformatex.wBitsPerSample    = pwaveformat->wBitsPerSample;       /* number of bits per sample of mono data */
+      //   waveformatex.cbSize            = pwaveformat->cbSize;               /* the count in bytes of the size_i32 of */
+      //                                                                           /* extra information (after cbSize) */
 
-      }
+      //}
 
 
 /*      void translate(WAVEHDR & wavehdr, ::multimedia::audio::wave_buffer * pwavebuffer, int iBuffer)
@@ -62,19 +62,19 @@ namespace multimedia
       }*/
 
 
-      CLASS_DECL_AUDIO_MMSYSTEM ::e_status translate_alsa(int err)
+      CLASS_DECL_AUDIO_OPENSLES ::e_status translate_alsa(int err)
       {
 
          if(err < 0)
          {
 
-            return result_error;
+            return error_failed;
 
          }
          else
          {
 
-            return result_success;
+            return ::success;
 
          };
 

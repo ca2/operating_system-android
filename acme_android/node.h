@@ -21,6 +21,9 @@ namespace acme_android
 
       void set_last_run_application_path(const ::string& strAppId) override;
 
+      
+      string audio_get_default_library_name() override;
+
 
    };
 

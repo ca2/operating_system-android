@@ -9,24 +9,24 @@ namespace multimedia
    {
 
 
-      class CLASS_DECL_AUDIO_MMSYSTEM engine :
-         virtual public ::multimedia::audio::wave_base
+      class CLASS_DECL_AUDIO_OPENSLES engine :
+         virtual public ::wave::base
       {
       public:
-
 
 
          SLObjectItf engineObject;
          SLEngineItf engineEngine;
 
          
+         engine();
+         ~engine() override;
 
-         engine(sp(::base::application) papp);
-         virtual ~engine();
-
+         
          // creates the OpenSL ES audio engine
          SLresult create();
-         void destroy();
+         void destroy() override;
+
 
       };
 

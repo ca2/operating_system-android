@@ -37,6 +37,15 @@ namespace acme_android
 
    }
 
+   
+   string node::audio_get_default_library_name()
+   {
+
+      return "audio_opensles";
+
+   }
+
+
 } // namespace acme_android
 
 
