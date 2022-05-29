@@ -22,24 +22,6 @@
     <ClInclude Include="node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="operating_system\object.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
-    <ClInclude Include="operating_system\driver.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
-    <ClInclude Include="operating_system\bind.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
-    <ClInclude Include="operating_system\_operating_system.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
-    <ClInclude Include="operating_system\_asset.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
-    <ClInclude Include="operating_system\_asset_manager.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
     <ClInclude Include="display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,11 +31,32 @@
     <ClInclude Include="buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="operating_system\message_box.h">
-      <Filter>Header Files\operating_system</Filter>
-    </ClInclude>
     <ClInclude Include="text_composition_client.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_asset.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_asset_manager.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_android.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\bind.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\driver.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\media_library.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\message_box.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\object.h">
+      <Filter>Header Files\android</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +66,11 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{1d25a7cf-2192-483c-bd1d-e25ec34c9be0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\operating_system">
-      <UniqueIdentifier>{ece1b0de-f0f1-4c44-af47-fa20b48e7db4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\operating_system">
+    <Filter Include="Source Files\android">
       <UniqueIdentifier>{c817fd27-017e-4258-9dbf-5f1311065f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\android">
+      <UniqueIdentifier>{ece1b0de-f0f1-4c44-af47-fa20b48e7db4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -89,33 +92,6 @@
     <ClCompile Include="node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="operating_system\_.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\java_ace_ace.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\java_ace_impact.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\object.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\bind.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\driver.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\jni_environment.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\_asset.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\_asset_manager.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
     <ClCompile Include="display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -125,14 +101,50 @@
     <ClCompile Include="buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="operating_system\_android.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
-    <ClCompile Include="operating_system\message_box.cpp">
-      <Filter>Source Files\operating_system</Filter>
-    </ClCompile>
     <ClCompile Include="text_composition_client.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_android.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_asset.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_asset_manager.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_jni_environment.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\bind.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\driver.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\java_ace_ace.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\java_ace_impact.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\java_enumerate.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\media_library.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\message_box.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\object.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\java_ace_input_connection.cpp">
+      <Filter>Source Files\android</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

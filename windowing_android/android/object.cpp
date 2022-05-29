@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "_operating_system.h"
+#include "_android.h"
 
 
 extern thread_local JNIEnv* t_pjnienv;

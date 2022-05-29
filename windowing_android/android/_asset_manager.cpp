@@ -1,6 +1,6 @@
 // Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardSørensen!!
 #include "framework.h"
-#include "_operating_system.h"
+#include "_android.h"
 #include <android/asset_manager_jni.h>
 #include "_asset_manager.h"
 #include "_asset.h"

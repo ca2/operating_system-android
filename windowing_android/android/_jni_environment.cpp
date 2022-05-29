@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "_operating_system.h"
+#include "_android.h"
 
 
 extern operating_system_driver* g_pandroiddriver;
@@ -65,3 +65,33 @@ JNIEnv* get_jni_env()
    return t_pjnienv;
 
 }
+
+
+::string __string(const jstring& jstring)
+{
+
+   auto env = get_jni_env();
+
+   const wd16char* utf16 = (wd16char*)env->GetStringChars(jstring, NULL);
+
+   if (utf16 == NULL)
+   {
+
+      return "";
+
+   }
+
+   size_t length = (size_t)env->GetStringLength(jstring);
+
+   wd16string wstr(utf16, length);
+
+   string str(wstr);
+
+   env->ReleaseStringChars(jstring, (jchar*)utf16);
+
+   return str;
+
+}
+
+
+

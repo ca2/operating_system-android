@@ -175,42 +175,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="android\bind.cpp" />
+    <ClCompile Include="android\driver.cpp" />
+    <ClCompile Include="android\java_ace_ace.cpp" />
+    <ClCompile Include="android\java_ace_impact.cpp" />
+    <ClCompile Include="android\java_ace_input_connection.cpp" />
+    <ClCompile Include="android\java_enumerate.cpp" />
+    <ClCompile Include="android\media_library.cpp" />
+    <ClCompile Include="android\message_box.cpp" />
+    <ClCompile Include="android\object.cpp" />
+    <ClCompile Include="android\_.cpp" />
+    <ClCompile Include="android\_android.cpp" />
+    <ClCompile Include="android\_asset.cpp" />
+    <ClCompile Include="android\_asset_manager.cpp" />
+    <ClCompile Include="android\_jni_environment.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="host_interaction.cpp" />
     <ClCompile Include="text_composition_client.cpp" />
     <ClCompile Include="monitor.cpp" />
     <ClCompile Include="node.cpp" />
-    <ClCompile Include="operating_system\message_box.cpp" />
-    <ClCompile Include="operating_system\_android.cpp" />
-    <ClCompile Include="operating_system\_asset.cpp" />
-    <ClCompile Include="operating_system\_asset_manager.cpp" />
-    <ClCompile Include="operating_system\bind.cpp" />
-    <ClCompile Include="operating_system\driver.cpp" />
-    <ClCompile Include="operating_system\java_ace_ace.cpp" />
-    <ClCompile Include="operating_system\java_ace_impact.cpp" />
-    <ClCompile Include="operating_system\jni_environment.cpp" />
-    <ClCompile Include="operating_system\object.cpp" />
-    <ClCompile Include="operating_system\_.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowing.cpp" />
     <ClCompile Include="_.cpp" />
     <ClCompile Include="_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="android\bind.h" />
+    <ClInclude Include="android\driver.h" />
+    <ClInclude Include="android\media_library.h" />
+    <ClInclude Include="android\message_box.h" />
+    <ClInclude Include="android\object.h" />
+    <ClInclude Include="android\_asset.h" />
+    <ClInclude Include="android\_asset_manager.h" />
+    <ClInclude Include="android\_android.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="host_interaction.h" />
     <ClInclude Include="text_composition_client.h" />
     <ClInclude Include="monitor.h" />
     <ClInclude Include="node.h" />
-    <ClInclude Include="operating_system\message_box.h" />
-    <ClInclude Include="operating_system\_asset.h" />
-    <ClInclude Include="operating_system\_asset_manager.h" />
-    <ClInclude Include="operating_system\bind.h" />
-    <ClInclude Include="operating_system\driver.h" />
-    <ClInclude Include="operating_system\object.h" />
-    <ClInclude Include="operating_system\_operating_system.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="windowing.h" />
     <ClInclude Include="_.h" />

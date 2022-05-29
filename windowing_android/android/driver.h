@@ -74,6 +74,10 @@ public:
    __pointer_array(::sequence < ::conversation >)  m_sequenceaMessageBox;
 
 
+   ::mutex                                         m_mutexListFileEnumerate;
+   ::string_array                                  m_straListFileEnumerate;
+
+
    operating_system_driver();
    ~operating_system_driver() override;
 
@@ -99,6 +103,9 @@ public:
 
 
    virtual void exchange();
+
+
+   virtual void list_file_enumerate(const ::string & strListFileEnumerate);
 
 
 };

@@ -116,6 +116,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_resample_swresample",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_decode_wave", "..\..\..\source\app-core\audio_decode_wave\nord_audio_decode_wave.vcxproj", "{50106337-A994-43DF-BE29-BE6A9A84D3ED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "userdatetime", "..\..\..\source\app-core\userdatetime\nord_userdatetime.vcxproj", "{84742E4D-2C09-491A-BAE0-6907659C575D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		basis|Android = basis|Android
@@ -2554,6 +2556,46 @@ Global
 		{50106337-A994-43DF-BE29-BE6A9A84D3ED}.stage|x64.Build.0 = Release|x86
 		{50106337-A994-43DF-BE29-BE6A9A84D3ED}.stage|x86.ActiveCfg = Release|x86
 		{50106337-A994-43DF-BE29-BE6A9A84D3ED}.stage|x86.Build.0 = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|Android.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|Android.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|ARM.ActiveCfg = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|ARM.Build.0 = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|ARM64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|ARM64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|x64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|x64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|x86.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.basis|x86.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|Android.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|Android.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|ARM.Build.0 = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|ARM64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|ARM64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|x64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|x64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|x86.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Debug|x86.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|Android.ActiveCfg = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|Android.Build.0 = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|ARM.ActiveCfg = Release|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|ARM.Build.0 = Release|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|ARM64.ActiveCfg = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|ARM64.Build.0 = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|x64.ActiveCfg = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|x64.Build.0 = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|x86.ActiveCfg = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.Release|x86.Build.0 = Release|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|Android.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|Android.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|ARM.ActiveCfg = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|ARM.Build.0 = Debug|ARM
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|ARM64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|ARM64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|x64.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|x64.Build.0 = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|x86.ActiveCfg = Debug|x86
+		{84742E4D-2C09-491A-BAE0-6907659C575D}.stage|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

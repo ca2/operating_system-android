@@ -655,7 +655,12 @@ namespace multimedia
 
          //return 0;
 
-         return 0_ms;
+         SLmillisecond nPositionMs;
+         SLresult result = (*bqPlayerPlay)->GetPosition(bqPlayerPlay,
+            &nPositionMs);
+
+
+         return INTEGRAL_MILLISECOND{ nPositionMs };
 
       }
 

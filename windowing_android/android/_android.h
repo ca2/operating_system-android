@@ -38,6 +38,9 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobje
 #include <stdlib.h>
 #include <math.h>
 
+
+::string __string(const jstring& jstring);
+
 //#include "_os_object.h"
 //#include "_os_local.h"
 //#include "_os_remote.h"

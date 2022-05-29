@@ -1,6 +1,6 @@
 // Created by camilo on 2022-05-04 00:00 <3ThomasBorregaardSorensen(ThomasLikesNumber5)
 #include "framework.h"
-#include "operating_system/_operating_system.h"
+#include "android/_android.h"
 
 
 namespace windowing_android
@@ -95,6 +95,37 @@ namespace windowing_android
    //   return nullptr;
 
    //}
+
+   
+   void node::on_change_application_capability()
+   {
+
+      ::aura_android::node::on_change_application_capability();
+
+      if (has_application_capability(e_application_capability_music_library))
+      {
+
+         ::operating_system_driver::get()->list_file_enumerate("music");
+
+      }
+      
+      
+      if (has_application_capability(e_application_capability_image_library))
+      {
+
+         ::operating_system_driver::get()->list_file_enumerate("image");
+
+      }
+      
+      
+      if (has_application_capability(e_application_capability_video_library))
+      {
+
+         ::operating_system_driver::get()->list_file_enumerate("video");
+
+      }
+
+   }
 
 
 } // namespace windowing_android

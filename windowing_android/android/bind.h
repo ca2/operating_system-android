@@ -85,6 +85,10 @@ public:
    JX(i, InputMethodManagerCandidateStart);
    //int m_iInputMethodManagerCandidateEnd;
    JX(i, InputMethodManagerCandidateEnd);
+   //boolean m_bLockListFileEnumerate;
+   JX(b, LockListFileEnumerate);
+   //String m_strListFileEnumerate;
+   JX(str, ListFileEnumerate);
 
    
    static operating_system_bind* get();

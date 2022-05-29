@@ -1,7 +1,8 @@
 #include "framework.h"
-#include "_operating_system.h"
+#include "_android.h"
 #include "_asset_manager.h"
 #include "_asset.h"
+#include "acme/user/nano/_nano.h"
 
 
 extern ::mutex * g_pmutexOs;
@@ -120,7 +121,36 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          papp->m_bConsole = false;
 
-         int iExitCode = papp->main_loop();
+         try
+         {
+
+            int iExitCode = papp->main_loop();
+
+         }
+         catch (const ::exception& exception)
+         {
+
+            //message_box_asynchronous(nullptr, papp, "Failed to load library?", "Failed to Load Library?", e_message_box_ok);
+
+            auto pdriver = ::operating_system_driver::get();
+
+            auto psequence = __new(::sequence < ::conversation >);
+
+            auto pnanomessagebox = __new(nano_message_box);
+
+            psequence->m_p = pnanomessagebox;
+
+            pnanomessagebox->m_psequence = psequence;
+
+            pnanomessagebox->m_strMessage = "Failed to load library?";
+
+            pnanomessagebox->m_strTitle = "Failed to Load Library?";
+
+            pnanomessagebox->m_emessagebox = e_message_box_ok;
+
+            pdriver->add_message_box_sequence(psequence);
+
+         }
 
       }
       else
