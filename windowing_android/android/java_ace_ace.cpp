@@ -3,6 +3,7 @@
 #include "_asset_manager.h"
 #include "_asset.h"
 #include "acme/user/nano/_nano.h"
+#include "acme/platform/system_setup.h"
 
 
 extern ::mutex * g_pmutexOs;
@@ -91,7 +92,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          pdriver->m_passetResourceFolder = pdriver->m_passetmanager->get_asset("_matter.zip");
 
-         ::app* papp = ::app::g_p;
+         auto papp = ::app_factory::new_app();
 
          //papp->m_argc = __argc;
 
