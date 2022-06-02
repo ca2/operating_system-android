@@ -18,7 +18,7 @@ namespace windowing_android
 
       m_itask = -1;
 
-      m_pWindowing = this;
+      m_pWindowing2 = this;
 
       m_bFirstWindowMap = false;
 
@@ -448,40 +448,40 @@ namespace windowing_android
    }
 
 
-   ::windowing::window * windowing::get_keyboard_focus(::thread *)
-   {
+   //::windowing::window * windowing::get_keyboard_focus(::thread *)
+   //{
 
-      auto pwindowApplicationHost = get_application_host_window();
+   //   auto pwindowApplicationHost = get_application_host_window();
 
-      if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionKeyboardFocus)
-      {
+   //   if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionKeyboardFocus)
+   //   {
 
-         return nullptr;
+   //      return nullptr;
 
-      }
+   //   }
 
-      return pwindowApplicationHost;
+   //   return pwindowApplicationHost;
 
-   }
+   //}
 
 
-   ::windowing::window * windowing::get_mouse_capture(::thread *)
-   {
+   //::windowing::window * windowing::get_mouse_capture(::thread *)
+   //{
 
-      //if (!m_pdisplay)
-      //{
+   //   //if (!m_pdisplay)
+   //   //{
 
-      //   return nullptr;
+   //   //   return nullptr;
 
-      //}
+   //   //}
 
-      ////auto pwindow = m_pdisplay->get_mouse_capture();
+   //   ////auto pwindow = m_pdisplay->get_mouse_capture();
 
-      ////return pwindow;
+   //   ////return pwindow;
 
-      return nullptr;
+   //   return nullptr;
 
-   }
+   //}
 
 
    //::windowing::window * windowing::window(oswindow oswindow)

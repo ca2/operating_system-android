@@ -28,7 +28,7 @@ namespace windowing_android
    window::window()
    {
 
-      m_pWindow = this;
+      m_pWindow2 = this;
 
       //m_iXic = 0;
 
@@ -81,7 +81,7 @@ namespace windowing_android
 
       pimpl->m_puserinteraction->m_bMessageWindow = false;
 
-      auto pwindowing = android_windowing();
+      auto pwindowing = windowing();
 
       auto pwindowingdisplay = pwindowing->display();
 
@@ -538,7 +538,7 @@ namespace windowing_android
    }
 
 
-   ::windowing_android::windowing* window::windowing()
+   /*::windowing_android::windowing* window::windowing()
    {
 
       auto pwindowing = ::windowing::window::windowing();
@@ -552,461 +552,23 @@ namespace windowing_android
 
       return (::windowing_android::windowing*)pwindowing->m_pWindowing;
 
-   }
+   }*/
 
 
    void windowing::initialize_windowing()
    {
 
+
    }
+
 
    void windowing::terminate_windowing()
    {
 
+
    }
 
 
-
-   //void window::set_wm_class(const char * psz)
-   //{
-
-   //   synchronous_lock synchronouslock(user_mutex());
-
-   //   m_strWMClass = psz;
-
-   //   display_lock displaylock(x11_display()->Display());
-
-   //   XClassHint classHint;
-
-   //   classHint.res_name = m_strWMClass;
-
-   //   classHint.res_class = m_strWMClass;
-
-   //   XSetClassHint(Display(), Window(), &classHint);
-
-   //}
-
-
-   //i32 window::map_window()
-   //{
-
-   //   int i = 0;
-
-   //   synchronous_lock synchronouslock(user_mutex());
-
-   //   {
-
-   //      windowing_output_debug_string("\nwindow::map_window");
-
-   //      display_lock displaylock(x11_display()->Display());
-
-   //      i = XMapWindow(Display(), Window());
-
-   //   }
-
-   //   //#ifdef WITH_SN
-
-   //   auto pwindowing = x11_windowing();
-
-   //   //  if (pwindowing->m_pSnLauncheeContext != nullptr)
-   //   if (!pwindowing->m_bFirstWindowMap)
-   //   {
-
-   //      pwindowing->m_bFirstWindowMap = true;
-
-   //      auto psystem = m_psystem->m_papexsystem;
-
-   //      auto pnode = psystem->node();
-
-   //      pnode->defer_notify_startup_complete();
-
-   //      on_sn_launch_complete(pwindowing->m_pSnLauncheeContext);
-
-   //      pwindowing->m_pSnLauncheeContext = nullptr;
-
-   //   }
-
-   //   //#endif // RASPBIAN
-
-   //   windowing_output_debug_string("\nwindow::map_window END");
-
-   //   return i;
-
-   //}
-
-
-   //i32 window::unmap_window(bool bWithdraw)
-   //{
-
-   //   synchronous_lock synchronouslock(user_mutex());
-
-   //   windowing_output_debug_string("\nwindow::unmap_window");
-
-   //   display_lock displaylock(x11_display()->Display());
-
-   //   int i;
-
-   //   if (bWithdraw)
-   //   {
-
-   //      i = XWithdrawWindow(Display(), Window(), x11_display()->m_iScreen);
-
-   //   }
-   //   else
-   //   {
-
-   //      i = XUnmapWindow(Display(), Window());
-
-   //   }
-
-   //   windowing_output_debug_string("\nwindow::unmap_window END");
-
-   //   return i;
-
-   //}
-
-
-   //   oswindow_dataptra *window::s_pdataptra = nullptr;
-   //
-   //
-   //   ::mutex *window::s_pmutex = nullptr;
-
-
-   //   i32 oswindow_find_message_only_window(::user::interaction_impl *pimpl)
-   //   {
-   //
-   //      if (pimpl == nullptr)
-   //      {
-   //
-   //         return -1;
-   //
-   //      }
-   //
-   //      single_lock slOsWindow(window::s_pmutex, true);
-   //
-   //      for (i32 i = 0; i < ::window::s_pdataptra->get_count(); i++)
-   //      {
-   //
-   //         if (::window::s_pdataptra->element_at(i)->m_bMessageOnlyWindow
-   //             && ::window::s_pdataptra->element_at(i)->m_puserinteractionimpl == pimpl)
-   //         {
-   //
-   //            return i;
-   //
-   //         }
-   //
-   //      }
-   //
-   //      return -1;
-   //
-   //   }
-
-   //   i32 oswindow_find(Display *Display(), Window window)
-   //   {
-   //
-   //      single_lock slOsWindow(::window::s_pmutex, true);
-   //
-   //      for (i32 i = 0; i < ::window::s_pdataptra->get_count(); i++)
-   //      {
-   //         if (!::window::s_pdataptra->element_at(i)->m_bMessageOnlyWindow
-   //             && ::window::s_pdataptra->element_at(i)->m_osdisplay->display() == Display()
-   //             && ::window::s_pdataptra->element_at(i)->m_window == window)
-   //         {
-   //            return i;
-   //         }
-   //      }
-   //
-   //      return -1;
-   //
-   //   }
-
-   //   i32 oswindow_find(Window window)
-   //   {
-   //
-   //      single_lock slOsWindow(::window::s_pmutex, true);
-   //
-   //      for (i32 i = 0; i < ::window::s_pdataptra->get_count(); i++)
-   //      {
-   //         if (!::window::s_pdataptra->element_at(i)->m_bMessageOnlyWindow
-   //             && ::window::s_pdataptra->element_at(i)->m_window == window)
-   //         {
-   //            return i;
-   //         }
-   //      }
-   //
-   //      return -1;
-   //
-   //   }
-
-   //
-   //   window *oswindow_get_message_only_window(::user::interaction_impl *pinteraction)
-   //   {
-   //
-   //      if (pinteraction == nullptr)
-   //      {
-   //
-   //         return nullptr;
-   //
-   //      }
-   //
-   //      single_lock slOsWindow(::window::s_pmutex, true);
-   //
-   //      iptr iFind = oswindow_find_message_only_window(pinteraction);
-   //
-   //      if (iFind >= 0)
-   //      {
-   //
-   //         return ::window::s_pdataptra->element_at(iFind);
-   //
-   //      }
-   //
-   //      ::window *pdata = new window;
-   //
-   //      pdata->m_bMessageOnlyWindow = true;
-   //      pdata->m_window = None;
-   //      pdata->m_puserinteractionimpl = pinteraction;
-   //      pdata->m_osdisplay = nullptr;
-   //      pdata->m_parent = 0;
-   //      pdata->m_pmq = pinteraction->m_puserinteraction->m_pthreadUserInteraction->get_mq();
-   //
-   //      ::window::s_pdataptra->add(pdata);
-   //
-   //      return pdata;
-   //
-   //   }
-
-   //
-   //   window *oswindow_defer_get(Display *Display(), Window window)
-   //   {
-   //
-   //      single_lock slOsWindow(::window::s_pmutex, true);
-   //
-   //      iptr iFind = oswindow_find(Display(), window);
-   //
-   //      if (iFind < 0)
-   //      {
-   //
-   //         return nullptr;
-   //
-   //      }
-   //
-   //      return ::window::s_pdataptra->element_at(iFind);
-   //
-   //   }
-
-
-   //::e_status
-   //   window::initialize_x11_window(::windowing_android::display * pdisplay, ::Window window, ::Visual * pvisual, int iDepth,
-   //      int iScreen, Colormap colormap)
-   //{
-
-   //   //single_lock slOsWindow(::window::s_pmutex, true);
-
-   //   //      iptr iFind = oswindow_find(Display(), window);
-   //   //
-   //   //      if (iFind >= 0)
-   //   //      {
-   //   //
-   //   //         return ::window::s_pdataptra->element_at(iFind);
-   //   //
-   //   //      }
-   //   //
-   //   //      ::window *pdata = new ::window;
-
-   //   m_bMessageOnlyWindow = false;
-   //   //m_osdisplay = osdisplay_get(Display());
-   //   m_pdisplay = pdisplay;
-   //   m_window = window;
-
-   //   if (pvisual != nullptr)
-   //   {
-
-   //      m_visual = *pvisual;
-
-   //   }
-
-   //   m_iDepth = iDepth;
-   //   //m_iScreen = iScreen;
-   //   //m_colormap = colormap;
-   //   //m_parent = 0;
-
-   //   //::window::s_pdataptra->add(pdata);
-
-   //   x11_display()->m_windowmap[m_window] = this;
-
-   //   return ::success;
-
-   //}
-
-
-   //void x11_on_start_session()
-   //{
-
-   //   Display * dpy = x11_get_display();
-   //
-   //   g_oswindowDesktop = oswindow_get(dpy, DefaultRootWindow(dpy));
-   //
-   //   g_oswindowDesktop->m_puserinteractionimpl = nullptr;
-   //
-   //   XSelectInput(g_oswindowDesktop->Display(), g_oswindowDesktop->Window(), StructureNotifyMask);
-   //
-   //}
-
-   //Display * window::Display()
-   //{
-
-   //   return x11_display()->Display();
-
-   //}
-
-   //Display * window::Display() const
-   //{
-
-   //   return x11_display()->Display();
-
-   //}
-
-
-   //int window::Screen()
-   //{
-
-   //   return x11_display()->Screen();
-
-   //}
-
-
-   //int window::Screen() const
-   //{
-
-   //   return x11_display()->Screen();
-
-   //}
-
-
-   //Window window::Window()
-   //{
-
-   //   return m_window;
-
-   //}
-
-
-   //Window window::Window() const
-   //{
-
-   //   return m_window;
-
-   //}
-
-
-   //Visual * window::Visual()
-   //{
-
-   //   return &m_visual;
-
-   //}
-
-
-   //const Visual * window::Visual() const
-   //{
-
-   //   return &m_visual;
-
-   //}
-
-   //   window *oswindow_get(Window window)
-   //   {
-   //
-   //      single_lock slOsWindow(::window::s_pmutex, true);
-   //
-   //      iptr iFind = oswindow_find(window);
-   //
-   //      if (iFind < 0)
-   //      {
-   //
-   //         return nullptr;
-   //
-   //      }
-   //
-   //      return ::window::s_pdataptra->element_at(iFind);
-   //
-   //   }
-
-
-   //bool window::bamf_set_icon()
-   //{
-
-   //   synchronous_lock synchronouslock(user_mutex());
-
-   //   auto psystem = m_psystem->m_papexsystem;
-
-   //   auto pnode = psystem->node();
-
-   //   auto papp = get_app();
-
-   //   ::file::path path = pnode->get_desktop_file_path(papp);
-
-   //   output_debug_string("\nfreebsd::interaction_impl::set_window_text");
-
-   //   fflush(stdout);
-
-   //   display_lock displaylock(x11_display()->Display());
-
-   //   Atom net_wm_icon = x11_display()->intern_atom("_BAMF_DESKTOP_FILE", False);
-
-   //   Atom cardinal = x11_display()->intern_atom("STRING", False);
-
-   //   int ixa = XA_STRING;
-
-   //   int status = XChangeProperty(
-   //      Display(),
-   //      Window(),
-   //      net_wm_icon,
-   //      ixa,
-   //      8,
-   //      PropModeReplace,
-   //      (const unsigned char *)(const char *)path,
-   //      path.get_length());
-
-   //   output_debug_string("\nfreebsd::interaction_impl::bamf_set_icon END");
-
-   //   fflush(stdout);
-
-   //   if (status != 0)
-   //   {
-
-   //      return false;
-
-   //   }
-
-   //   return true;
-
-   //}
-
-
-   //int
-   //   window::x_change_property(Atom property, Atom type, int format, int mode, const unsigned char * data, int nelements)
-   //{
-
-   //   return XChangeProperty(Display(), Window(), property, type, format, mode, data, nelements);
-
-   //}
-
-
-   //   Atom window::x11_display()->intern_atom(const char *pszAtomName, bool bCreate)
-   //   {
-   //
-   //      return m_osdisplay->x11_display()->intern_atom(pszAtomName, bCreate);
-   //
-   //   }
-
-
-   //   Atom window::x11_display()->intern_atom(e_net_wm_state estate, bool bCreate)
-   //   {
-   //
-   //      return m_osdisplay->x11_display()->intern_atom(estate, bCreate);
-   //
-   //   }
 
 
    bool window::set_icon(::image * pimage)
@@ -2285,225 +1847,225 @@ namespace windowing_android
    //}
 
 
-   bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
-   {
-
-      synchronous_lock sl(user_mutex());
-
-      windowing_output_debug_string("\n::window::set_window_pos 1");
-
-//      display_lock displaylock(x11_display()->Display());
+//   bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
+//   {
+//
+//      synchronous_lock sl(user_mutex());
+//
+//      windowing_output_debug_string("\n::window::set_window_pos 1");
+//
+////      display_lock displaylock(x11_display()->Display());
+////
+////      XWindowAttributes attrs = {};
+////
+////      if (!XGetWindowAttributes(Display(), Window(), &attrs))
+////      {
+////
+////         windowing_output_debug_string("\n::window::set_window_pos 1.1 xgetwindowattr failed");
+////
+////         return false;
+////
+////      }
+////
+////      if (nFlags & SWP_SHOWWINDOW)
+////      {
+////
+////         if (attrs.map_state == IsUnmapped)
+////         {
+////
+////            windowing_output_debug_string("\n::window::set_window_pos Mapping Window 1.2");
+////
+////            XMapWindow(Display(), Window());
+////
+////         }
+////
+////         if (!XGetWindowAttributes(Display(), Window(), &attrs))
+////         {
+////
+////            windowing_output_debug_string("\n::window::set_window_pos 1.3 xgetwindowattr failed");
+////
+////            return false;
+////
+////         }
+////
+////      }
+////
+////      bool bMove = !(nFlags & SWP_NOMOVE);
+////
+////      bool bSize = !(nFlags & SWP_NOSIZE);
+////
+////      if (bMove)
+////      {
+////
+////         if (bSize)
+////         {
+////
+////            windowing_output_debug_string("\n::window::set_window_pos Move Resize Window 1.4");
+////
+////#ifdef SET_WINDOW_POS_LOG
+////
+////            FORMATTED_INFORMATION("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////
+////#endif
+////
+////            if (cx <= 0 || cy <= 0)
+////            {
+////
+////               cx = 1;
+////
+////               cy = 1;
+////
+////#ifdef SET_WINDOW_POS_LOG
+////
+////               FORMATTED_INFORMATION("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////
+////#endif
+////
+////            }
+////
+////            XMoveResizeWindow(Display(), Window(), x, y, cx, cy);
+////
+////         }
+////         else
+////         {
+////
+////            windowing_output_debug_string("\n::window::set_window_pos Move Window 1.4.1");
+////
+////            XMoveWindow(Display(), Window(), x, y);
+////
+////         }
+////
+////      }
+////      else if (bSize)
+////      {
+////
+////         windowing_output_debug_string("\n::window::set_window_pos Resize Window 1.4.2");
+////
+////         XResizeWindow(Display(), Window(), cx, cy);
+////
+////      }
+////
+////      //   if(bMove || bSize)
+////      //   {
+////      //
+////      //      if(attrs.override_redirect)
+////      //      {
+////      //
+////      //         if(!(m_puserinteractionimpl->m_puserinteraction->m_ewindowflag & e_window_flag_arbitrary_positioning))
+////      //         {
+////      //
+////      //            XSetWindowAttributes set;
+////      //
+////      //            set.override_redirect = False;
+////      //
+////      //            if(!XChangeWindowAttributes(Display(), Window(), CWOverrideRedirect, &set))
+////      //            {
+////      //
+////      //               INFORMATION("freebsd::interaction_impl::_native_create_window_ex failed to clear override_redirect");
+////      //
+////      //            }
+////      //
+////      //         }
+////      //
+////      //      }
+////      //
+////      //   }
+////
+////
+////      if ((nFlags & SWP_HIDEWINDOW) != 0U)
+////      {
+////
+////         if (attrs.map_state == IsViewable)
+////         {
+////
+////            windowing_output_debug_string("\n::window::set_window_pos Withdraw Window 1.4.3");
+////
+////            XWithdrawWindow(Display(), Window(), Screen());
+////
+////         }
+////
+////      }
+////
+////      if (XGetWindowAttributes(Display(), Window(), &attrs) == 0)
+////      {
+////
+////         windowing_output_debug_string("\n::window::set_window_pos xgetwndattr 1.4.4");
+////
+////         return false;
+////
+////      }
+////
+////      if (attrs.map_state == IsViewable || ((nFlags & SWP_SHOWWINDOW) != 0U))
+////      {
+////
+////         if ((nFlags & SWP_NOZORDER) == 0U)
+////         {
+////
+////            if (zorder.m_ezorder == e_zorder_top_most)
+////            {
+////
+////               if (net_wm_state(::x11::e_atom_net_wm_state_above) != 1)
+////               {
+////
+////                  wm_state_above_raw(true);
+////
+////               }
+////
+////               XRaiseWindow(Display(), Window());
+////
+////            }
+////            else if (zorder.m_ezorder == e_zorder_top)
+////            {
+////
+////               if (net_wm_state(::x11::e_atom_net_wm_state_above) != 0
+////                  || net_wm_state(::x11::e_atom_net_wm_state_below) != 0
+////                  || net_wm_state(::x11::e_atom_net_wm_state_hidden) != 0
+////                  || net_wm_state(::x11::e_atom_net_wm_state_maximized_horz) != 0
+////                  || net_wm_state(::x11::e_atom_net_wm_state_maximized_vert) != 0
+////                  || net_wm_state(::x11::e_atom_net_wm_state_fullscreen) != 0)
+////               {
+////
+////                  wm_state_clear_raw(false);
+////
+////               }
+////
+////               XRaiseWindow(Display(), Window());
+////
+////            }
+////            else if (zorder.m_ezorder == e_zorder_bottom)
+////            {
+////
+////               if (net_wm_state(::x11::e_atom_net_wm_state_below) != 1)
+////               {
+////
+////                  wm_state_below_raw(true);
+////
+////               }
+////
+////               XLowerWindow(Display(), Window());
+////
+////            }
+////
+////         }
+////
+////         //m_puserinteractionimpl->m_puserinteraction->ModifyStyle(0, WS_VISIBLE, 0);
+////
+////      }
+////      //      else
+////      //      {
+////      //
+////      //         //m_puserinteractionimpl->m_puserinteraction->ModifyStyle(WS_VISIBLE, 0, 0);
+////      //
+////      //      }
+////
+////            //m_puserinteractionimpl->on_change_visibility();
+////
+////      windowing_output_debug_string("\n::window::set_window_pos 2");
+//
+//      return true;
+//
+//   }
 //
-//      XWindowAttributes attrs = {};
-//
-//      if (!XGetWindowAttributes(Display(), Window(), &attrs))
-//      {
-//
-//         windowing_output_debug_string("\n::window::set_window_pos 1.1 xgetwindowattr failed");
-//
-//         return false;
-//
-//      }
-//
-//      if (nFlags & SWP_SHOWWINDOW)
-//      {
-//
-//         if (attrs.map_state == IsUnmapped)
-//         {
-//
-//            windowing_output_debug_string("\n::window::set_window_pos Mapping Window 1.2");
-//
-//            XMapWindow(Display(), Window());
-//
-//         }
-//
-//         if (!XGetWindowAttributes(Display(), Window(), &attrs))
-//         {
-//
-//            windowing_output_debug_string("\n::window::set_window_pos 1.3 xgetwindowattr failed");
-//
-//            return false;
-//
-//         }
-//
-//      }
-//
-//      bool bMove = !(nFlags & SWP_NOMOVE);
-//
-//      bool bSize = !(nFlags & SWP_NOSIZE);
-//
-//      if (bMove)
-//      {
-//
-//         if (bSize)
-//         {
-//
-//            windowing_output_debug_string("\n::window::set_window_pos Move Resize Window 1.4");
-//
-//#ifdef SET_WINDOW_POS_LOG
-//
-//            FORMATTED_INFORMATION("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
-//
-//#endif
-//
-//            if (cx <= 0 || cy <= 0)
-//            {
-//
-//               cx = 1;
-//
-//               cy = 1;
-//
-//#ifdef SET_WINDOW_POS_LOG
-//
-//               FORMATTED_INFORMATION("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
-//
-//#endif
-//
-//            }
-//
-//            XMoveResizeWindow(Display(), Window(), x, y, cx, cy);
-//
-//         }
-//         else
-//         {
-//
-//            windowing_output_debug_string("\n::window::set_window_pos Move Window 1.4.1");
-//
-//            XMoveWindow(Display(), Window(), x, y);
-//
-//         }
-//
-//      }
-//      else if (bSize)
-//      {
-//
-//         windowing_output_debug_string("\n::window::set_window_pos Resize Window 1.4.2");
-//
-//         XResizeWindow(Display(), Window(), cx, cy);
-//
-//      }
-//
-//      //   if(bMove || bSize)
-//      //   {
-//      //
-//      //      if(attrs.override_redirect)
-//      //      {
-//      //
-//      //         if(!(m_puserinteractionimpl->m_puserinteraction->m_ewindowflag & e_window_flag_arbitrary_positioning))
-//      //         {
-//      //
-//      //            XSetWindowAttributes set;
-//      //
-//      //            set.override_redirect = False;
-//      //
-//      //            if(!XChangeWindowAttributes(Display(), Window(), CWOverrideRedirect, &set))
-//      //            {
-//      //
-//      //               INFORMATION("freebsd::interaction_impl::_native_create_window_ex failed to clear override_redirect");
-//      //
-//      //            }
-//      //
-//      //         }
-//      //
-//      //      }
-//      //
-//      //   }
-//
-//
-//      if ((nFlags & SWP_HIDEWINDOW) != 0U)
-//      {
-//
-//         if (attrs.map_state == IsViewable)
-//         {
-//
-//            windowing_output_debug_string("\n::window::set_window_pos Withdraw Window 1.4.3");
-//
-//            XWithdrawWindow(Display(), Window(), Screen());
-//
-//         }
-//
-//      }
-//
-//      if (XGetWindowAttributes(Display(), Window(), &attrs) == 0)
-//      {
-//
-//         windowing_output_debug_string("\n::window::set_window_pos xgetwndattr 1.4.4");
-//
-//         return false;
-//
-//      }
-//
-//      if (attrs.map_state == IsViewable || ((nFlags & SWP_SHOWWINDOW) != 0U))
-//      {
-//
-//         if ((nFlags & SWP_NOZORDER) == 0U)
-//         {
-//
-//            if (zorder.m_ezorder == e_zorder_top_most)
-//            {
-//
-//               if (net_wm_state(::x11::e_atom_net_wm_state_above) != 1)
-//               {
-//
-//                  wm_state_above_raw(true);
-//
-//               }
-//
-//               XRaiseWindow(Display(), Window());
-//
-//            }
-//            else if (zorder.m_ezorder == e_zorder_top)
-//            {
-//
-//               if (net_wm_state(::x11::e_atom_net_wm_state_above) != 0
-//                  || net_wm_state(::x11::e_atom_net_wm_state_below) != 0
-//                  || net_wm_state(::x11::e_atom_net_wm_state_hidden) != 0
-//                  || net_wm_state(::x11::e_atom_net_wm_state_maximized_horz) != 0
-//                  || net_wm_state(::x11::e_atom_net_wm_state_maximized_vert) != 0
-//                  || net_wm_state(::x11::e_atom_net_wm_state_fullscreen) != 0)
-//               {
-//
-//                  wm_state_clear_raw(false);
-//
-//               }
-//
-//               XRaiseWindow(Display(), Window());
-//
-//            }
-//            else if (zorder.m_ezorder == e_zorder_bottom)
-//            {
-//
-//               if (net_wm_state(::x11::e_atom_net_wm_state_below) != 1)
-//               {
-//
-//                  wm_state_below_raw(true);
-//
-//               }
-//
-//               XLowerWindow(Display(), Window());
-//
-//            }
-//
-//         }
-//
-//         //m_puserinteractionimpl->m_puserinteraction->ModifyStyle(0, WS_VISIBLE, 0);
-//
-//      }
-//      //      else
-//      //      {
-//      //
-//      //         //m_puserinteractionimpl->m_puserinteraction->ModifyStyle(WS_VISIBLE, 0, 0);
-//      //
-//      //      }
-//
-//            //m_puserinteractionimpl->on_change_visibility();
-//
-//      windowing_output_debug_string("\n::window::set_window_pos 2");
-
-      return true;
-
-   }
-
 
    //void window::set_need_redraw()
    //{
@@ -2555,139 +2117,139 @@ namespace windowing_android
    //   }
 
 
-   void window::set_window_text(const char * pszString)
-   {
+   //void window::set_window_text(const char * pszString)
+   //{
 
-      //      m_strWindowText = pszString;
+   //   //      m_strWindowText = pszString;
 
-            //windowing_output_debug_string("\nfreebsd::interaction_impl::set_window_text");
+   //         //windowing_output_debug_string("\nfreebsd::interaction_impl::set_window_text");
 
-            //fflush(stdout);
+   //         //fflush(stdout);
 
-            //x11_store_name(m_oswindow, m_strWindowText);
+   //         //x11_store_name(m_oswindow, m_strWindowText);
 
-      //x11_store_name(pszString);
+   //   //x11_store_name(pszString);
 
-      //windowing_output_debug_string("\nfreebsd::interaction_impl::set_window_text END");
+   //   //windowing_output_debug_string("\nfreebsd::interaction_impl::set_window_text END");
 
-      //fflush(stdout);
+   //   //fflush(stdout);
 
-   }
-
-
-   void window::set_tool_window(bool bSet)
-   {
-
-      //wm_toolwindow(bSet);
-
-      //return ::success;
-
-   }
+   //}
 
 
-   void window::set_mouse_cursor2(::windowing::cursor * pcursor)
-   {
+   //void window::set_tool_window(bool bSet)
+   //{
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   //wm_toolwindow(bSet);
 
-      //display_lock displaylock(x11_display()->Display());
+   //   //return ::success;
 
-      //Atom net_wm_icon = x11_display()->intern_atom("_BAMF_DESKTOP_FILE", False);
-
-      //Atom cardinal = x11_display()->intern_atom("STRING", False);
-
-      //int ixa = XA_STRING;
-
-      //::file::path path = pcursor->get_file_path();
-
-      //int status = XChangeProperty(
-      //   Display(),
-      //   Window(),
-      //   net_wm_icon,
-      //   ixa,
-      //   8,
-      //   PropModeReplace,
-      //   (const unsigned char *)(const char *)path,
-      //   path.get_length());
-
-      //output_debug_string("\nfreebsd::interaction_impl::bamf_set_icon END");
-
-      //fflush(stdout);
-
-      //if (status != 0)
-      //{
-
-      //   throw ::exception(error_failed);
-
-      //}
-
-      ////return true;
-
-   }
+   //}
 
 
-   void window::set_mouse_cursor(::windowing::cursor * pcursor)
-   {
+   //void window::set_mouse_cursor2(::windowing::cursor * pcursor)
+   //{
 
-      if (::is_null(pcursor))
-      {
+   //   synchronous_lock synchronouslock(user_mutex());
 
-         throw ::exception(error_null_pointer);
+   //   //display_lock displaylock(x11_display()->Display());
 
-      }
+   //   //Atom net_wm_icon = x11_display()->intern_atom("_BAMF_DESKTOP_FILE", False);
 
-      //auto pcursorx11 = dynamic_cast <::windowing_android::cursor *>(pcursor);
+   //   //Atom cardinal = x11_display()->intern_atom("STRING", False);
 
-      //if (::is_null(pcursorx11))
-      //{
+   //   //int ixa = XA_STRING;
 
-      //   throw ::exception(error_null_pointer);
+   //   //::file::path path = pcursor->get_file_path();
 
-      //}
+   //   //int status = XChangeProperty(
+   //   //   Display(),
+   //   //   Window(),
+   //   //   net_wm_icon,
+   //   //   ixa,
+   //   //   8,
+   //   //   PropModeReplace,
+   //   //   (const unsigned char *)(const char *)path,
+   //   //   path.get_length());
 
-      //if (!pcursorx11->m_cursor)
-      //{
+   //   //output_debug_string("\nfreebsd::interaction_impl::bamf_set_icon END");
 
-      //   //auto estatus =
-      //   //
-      //   pcursorx11->_create_os_cursor();
+   //   //fflush(stdout);
 
-      //   //         if(!estatus)
-      //   //         {
-      //   //
-      //   //            return estatus;
-      //   //
-      //   //         }
+   //   //if (status != 0)
+   //   //{
 
-      //}
+   //   //   throw ::exception(error_failed);
 
-      //if (m_cursorLast == pcursorx11->m_cursor)
-      //{
+   //   //}
 
-      //   //return true;
+   //   ////return true;
 
-      //   return;
+   //}
 
-      //}
 
-      //m_pwindowing->windowing_post([this, pcursorx11]()
-      //   {
+   //void window::set_mouse_cursor(::windowing::cursor * pcursor)
+   //{
 
-      //      synchronous_lock sl(user_mutex());
+   //   if (::is_null(pcursor))
+   //   {
 
-      //      windowing_output_debug_string("\n::SetCursor 1");
+   //      throw ::exception(error_null_pointer);
 
-      //      display_lock displaylock(x11_display()->Display());;
+   //   }
 
-      //      XDefineCursor(Display(), Window(), pcursorx11->m_cursor);
+   //   //auto pcursorx11 = dynamic_cast <::windowing_android::cursor *>(pcursor);
 
-      //      m_cursorLast = pcursorx11->m_cursor;
+   //   //if (::is_null(pcursorx11))
+   //   //{
 
-      //   });
+   //   //   throw ::exception(error_null_pointer);
 
-      ////return true;
+   //   //}
 
-   }
+   //   //if (!pcursorx11->m_cursor)
+   //   //{
+
+   //   //   //auto estatus =
+   //   //   //
+   //   //   pcursorx11->_create_os_cursor();
+
+   //   //   //         if(!estatus)
+   //   //   //         {
+   //   //   //
+   //   //   //            return estatus;
+   //   //   //
+   //   //   //         }
+
+   //   //}
+
+   //   //if (m_cursorLast == pcursorx11->m_cursor)
+   //   //{
+
+   //   //   //return true;
+
+   //   //   return;
+
+   //   //}
+
+   //   //m_pwindowing->windowing_post([this, pcursorx11]()
+   //   //   {
+
+   //   //      synchronous_lock sl(user_mutex());
+
+   //   //      windowing_output_debug_string("\n::SetCursor 1");
+
+   //   //      display_lock displaylock(x11_display()->Display());;
+
+   //   //      XDefineCursor(Display(), Window(), pcursorx11->m_cursor);
+
+   //   //      m_cursorLast = pcursorx11->m_cursor;
+
+   //   //   });
+
+   //   ////return true;
+
+   //}
 
 
    //string window::x11_get_name()
@@ -2796,10 +2358,10 @@ namespace windowing_android
 //   }
 //
 //
-   void window::set_active_window()
-   {
+   //void window::set_active_window()
+   //{
 
-   }
+   //}
 
    //   synchronous_lock synchronouslock(user_mutex());
 
@@ -3100,96 +2662,96 @@ namespace windowing_android
    //}
 
 
-   void window::destroy_window()
-   {
+   //void window::destroy_window()
+   //{
 
-      bool bOk = false;
+   //   bool bOk = false;
 
-      if (::is_set(m_puserinteractionimpl))
-      {
+   //   if (::is_set(m_puserinteractionimpl))
+   //   {
 
-         __pointer(::user::interaction) pinteraction = m_puserinteractionimpl->m_puserinteraction;
+   //      __pointer(::user::interaction) pinteraction = m_puserinteractionimpl->m_puserinteraction;
 
-         if (pinteraction.is_set())
-         {
+   //      if (pinteraction.is_set())
+   //      {
 
-            pinteraction->send_message(e_message_destroy, 0, 0);
+   //         pinteraction->send_message(e_message_destroy, 0, 0);
 
-            //mq_remove_window_from_all_queues();
+   //         //mq_remove_window_from_all_queues();
 
-            pinteraction->send_message(e_message_non_client_destroy, 0, 0);
+   //         pinteraction->send_message(e_message_non_client_destroy, 0, 0);
 
-         }
-         else
-         {
+   //      }
+   //      else
+   //      {
 
-            try
-            {
+   //         try
+   //         {
 
-               //window->m_puserinteractionimpl->release();
+   //            //window->m_puserinteractionimpl->release();
 
-            }
-            catch (...)
-            {
+   //         }
+   //         catch (...)
+   //         {
 
-            }
+   //         }
 
-         }
+   //      }
 
-         //oswindow_remove_impl(window->m_puserinteractionimpl);
+   //      //oswindow_remove_impl(window->m_puserinteractionimpl);
 
-         m_pwindowing->erase_window(this);
+   //      m_pwindowing->erase_window(this);
 
-      }
+   //   }
 
-      //      x11_fork([window]()
-      //               {
+   //   //      x11_fork([window]()
+   //   //               {
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(user_mutex());
 
-      //Display *Display() = Display();
+   //   //Display *Display() = Display();
 
-      //Window win = window->window();
+   //   //Window win = window->window();
 
-      //oswindow_data * pdata = (oswindow_data * )(void * )
-      //window;
+   //   //oswindow_data * pdata = (oswindow_data * )(void * )
+   //   //window;
 
-      bool bIs = is_window();
+   //   bool bIs = is_window();
 
-      m_pwindowing->erase_window(this);
+   //   m_pwindowing->erase_window(this);
 
-      windowing_output_debug_string("\n::DestroyWindow 1");
+   //   windowing_output_debug_string("\n::DestroyWindow 1");
 
-      //display_lock displaylock(x11_display()->Display());
+   //   //display_lock displaylock(x11_display()->Display());
 
-      //XUnmapWindow(Display(), Window());
+   //   //XUnmapWindow(Display(), Window());
 
-      //XDestroyWindow(Display(), Window());
+   //   //XDestroyWindow(Display(), Window());
 
-      //windowing_output_debug_string("\n::DestroyWindow 2");
-      ////
-      ////               });
+   //   //windowing_output_debug_string("\n::DestroyWindow 2");
+   //   ////
+   //   ////               });
 
-      //      //return ::success;
+   //   //      //return ::success;
 
-   }
+   //}
 
 
-   bool window::is_window()
-   {
+   //bool window::is_window()
+   //{
 
-      //      if (::oswindow_data::s_pdataptra->find_first(oswindow) < 0)
-      //      {
-      //
-      //         return false;
-      //
-      //      }
+   //   //      if (::oswindow_data::s_pdataptra->find_first(oswindow) < 0)
+   //   //      {
+   //   //
+   //   //         return false;
+   //   //
+   //   //      }
 
-            //return true;
+   //         //return true;
 
-      return true;
+   //   return true;
 
-   }
+   //}
 
 
    //comparable_array < Atom > window::wm_get_list_raw(Atom atomList)
@@ -3400,114 +2962,114 @@ namespace windowing_android
    //}
 
 
-   /// should be run at user_thread
-   void window::set_foreground_window()
-   {
+   ///// should be run at user_thread
+   //void window::set_foreground_window()
+   //{
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(user_mutex());
 
-      //display_lock displaylock(x11_display()->Display());
+   //   //display_lock displaylock(x11_display()->Display());
 
-      //XRaiseWindow(Display(), Window());
+   //   //XRaiseWindow(Display(), Window());
 
-      //XSetInputFocus(Display(), Window(), RevertToNone, CurrentTime);
+   //   //XSetInputFocus(Display(), Window(), RevertToNone, CurrentTime);
 
-      ////return true;
+   //   ////return true;
 
-   }
-
-
-   bool window::has_mouse_capture() const
-   {
-
-      //auto pdisplay = x11_display();
-
-      //if (::is_null(pdisplay))
-      //{
-
-      //   return false;
-
-      //}
-
-      //auto pwindowCapture = pdisplay->m_pwindowMouseCapture;
-
-      //if (::is_null(pwindowCapture))
-      //{
-
-      //   return false;
-
-      //}
-
-      //if (pwindowCapture != this)
-      //{
-
-      //   return false;
-
-      //}
-
-      return true;
-
-   }
+   //}
 
 
-   bool window::has_keyboard_focus() const
-   {
+   //bool window::has_mouse_capture() const
+   //{
 
-      auto pwindowing = ((window*)this)->windowing();
+   //   //auto pdisplay = x11_display();
 
-      if (!pwindowing)
-      {
+   //   //if (::is_null(pdisplay))
+   //   //{
 
-         return false;
+   //   //   return false;
 
-      }
+   //   //}
 
-      auto pwindowKeyboardFocus = pwindowing->m_pwindowKeyboardFocus;
+   //   //auto pwindowCapture = pdisplay->m_pwindowMouseCapture;
 
-      if (::is_null(pwindowKeyboardFocus))
-      {
+   //   //if (::is_null(pwindowCapture))
+   //   //{
 
-         return false;
+   //   //   return false;
 
-      }
+   //   //}
 
-      //auto pimplFocus = pwindowFocus->m_puserinteractionimpl;
+   //   //if (pwindowCapture != this)
+   //   //{
 
-      //if (::is_null(pimplFocus))
-      //{
+   //   //   return false;
 
-      //   return false;
+   //   //}
 
-      //}
+   //   return true;
 
-      //auto pinteractionFocus = pimplFocus->m_puserinteraction;
+   //}
 
-      //if (::is_null(pinteractionFocus))
-      //{
 
-      //   return false;
+   //bool window::has_keyboard_focus() const
+   //{
 
-      //}
+   //   auto pwindowing = ((window*)this)->windowing();
 
-      //if (!(pinteractionFocus->m_ewindowflag & ::e_window_flag_focus))
-      //{
+   //   if (!pwindowing)
+   //   {
 
-      //   return false;
+   //      return false;
 
-      //}
+   //   }
 
-      bool bHasKeyboardFocus = pwindowKeyboardFocus == this;
+   //   auto pwindowKeyboardFocus = pwindowing->m_pwindowKeyboardFocus;
 
-      if (!bHasKeyboardFocus)
-      {
+   //   if (::is_null(pwindowKeyboardFocus))
+   //   {
 
-         return false;
+   //      return false;
 
-      }
+   //   }
 
-      return true;
+   //   //auto pimplFocus = pwindowFocus->m_puserinteractionimpl;
 
-   }
+   //   //if (::is_null(pimplFocus))
+   //   //{
+
+   //   //   return false;
+
+   //   //}
+
+   //   //auto pinteractionFocus = pimplFocus->m_puserinteraction;
+
+   //   //if (::is_null(pinteractionFocus))
+   //   //{
+
+   //   //   return false;
+
+   //   //}
+
+   //   //if (!(pinteractionFocus->m_ewindowflag & ::e_window_flag_focus))
+   //   //{
+
+   //   //   return false;
+
+   //   //}
+
+   //   bool bHasKeyboardFocus = pwindowKeyboardFocus == this;
+
+   //   if (!bHasKeyboardFocus)
+   //   {
+
+   //      return false;
+
+   //   }
+
+   //   return true;
+
+   //}
 
 
    ///// should be run in user thread
@@ -3625,282 +3187,282 @@ namespace windowing_android
    //   }
 
 
-   void window::update_screen()
-   {
+   //void window::update_screen()
+   //{
 
-      window_post([this]()
-         {
+   //   window_post([this]()
+   //      {
 
-            auto pimpl = m_puserinteractionimpl;
+   //         auto pimpl = m_puserinteractionimpl;
 
-            if (::is_set(pimpl))
-            {
+   //         if (::is_set(pimpl))
+   //         {
 
-               auto puserinteraction = pimpl->m_puserinteraction;
+   //            auto puserinteraction = pimpl->m_puserinteraction;
 
-               if (::is_set(puserinteraction))
-               {
+   //            if (::is_set(puserinteraction))
+   //            {
 
-                  string strType = __type_name(puserinteraction);
+   //               string strType = __type_name(puserinteraction);
 
-                  if (strType.contains("menu"))
-                  {
+   //               if (strType.contains("menu"))
+   //               {
 
-                     output_debug_string("menu");
+   //                  output_debug_string("menu");
 
-                  }
+   //               }
 
-                  auto pimpl2 = puserinteraction->m_pinteractionimpl;
+   //               auto pimpl2 = puserinteraction->m_pinteractionimpl;
 
-                  if (::is_set(pimpl2))
-                  {
+   //               if (::is_set(pimpl2))
+   //               {
 
-                     auto pprodevian = pimpl2->m_pprodevian;
+   //                  auto pprodevian = pimpl2->m_pprodevian;
 
-                     if (::is_set(pprodevian))
-                     {
+   //                  if (::is_set(pprodevian))
+   //                  {
 
-                        pprodevian->update_screen();
+   //                     pprodevian->update_screen();
 
-                     }
+   //                  }
 
-                  }
+   //               }
 
-               }
+   //            }
 
-            }
+   //         }
 
-         });
+   //      });
 
-   }
+   //}
 
 
-   void window::window_show()
-   {
+   //void window::window_show()
+   //{
 
-      m_pwindowing->windowing_post([this]()
-         {
+   //   m_pwindowing->windowing_post([this]()
+   //      {
 
-            auto pimpl = m_puserinteractionimpl;
+   //         auto pimpl = m_puserinteractionimpl;
 
-            if (::is_set(pimpl))
-            {
+   //         if (::is_set(pimpl))
+   //         {
 
-               auto puserinteraction = pimpl->m_puserinteraction;
+   //            auto puserinteraction = pimpl->m_puserinteraction;
 
-               if (::is_set(puserinteraction))
-               {
+   //            if (::is_set(puserinteraction))
+   //            {
 
-                  auto pimpl2 = puserinteraction->m_pinteractionimpl;
+   //               auto pimpl2 = puserinteraction->m_pinteractionimpl;
 
-                  if (::is_set(pimpl2))
-                  {
+   //               if (::is_set(pimpl2))
+   //               {
 
-                     pimpl2->window_show();
+   //                  pimpl2->window_show();
 
-                  }
+   //               }
 
-               }
+   //            }
 
-            }
+   //         }
 
-         });
+   //      });
 
 
-   }
+   //}
 
 
-   void window::set_mouse_capture()
-   {
+   //void window::set_mouse_capture()
+   //{
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(user_mutex());
 
-      auto pwindowing = (::windowing_android::windowing*)m_pwindowing->m_pWindowing;
+   //   auto pwindowing = (::windowing_android::windowing*)m_pwindowing->m_pWindowing;
 
-      if (!pwindowing)
-      {
+   //   if (!pwindowing)
+   //   {
 
-         throw ::exception(error_wrong_state);
+   //      throw ::exception(error_wrong_state);
 
-      }
+   //   }
 
-      if (pwindowing->m_pwindowMouseCapture)
-      {
+   //   if (pwindowing->m_pwindowMouseCapture)
+   //   {
 
-         if (pwindowing->m_pwindowMouseCapture != this)
-         {
+   //      if (pwindowing->m_pwindowMouseCapture != this)
+   //      {
 
-            if (pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl)
-            {
+   //         if (pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl)
+   //         {
 
-               pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
+   //            pwindowing->m_pwindowMouseCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
 
-            }
+   //         }
 
-         }
+   //      }
 
-      }
+   //   }
 
-      pwindowing->m_pwindowMouseCapture = this;
+   //   pwindowing->m_pwindowMouseCapture = this;
 
-      //if (Display() == nullptr)
-      //{
+   //   //if (Display() == nullptr)
+   //   //{
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //if (Window() == None)
-      //{
+   //   //if (Window() == None)
+   //   //{
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //windowing_output_debug_string("\noswindow_data::SetCapture 1");
+   //   //windowing_output_debug_string("\noswindow_data::SetCapture 1");
 
-      //m_pwindowing->windowing_post([this]()
-      //   {
+   //   //m_pwindowing->windowing_post([this]()
+   //   //   {
 
-      //      display_lock displaylock(x11_display()->Display());
+   //   //      display_lock displaylock(x11_display()->Display());
 
-      //      auto grabStatus = XGrabPointer(Display(), Window(), False,
-      //         ButtonPressMask | ButtonReleaseMask |
-      //         PointerMotionMask,
-      //         GrabModeAsync, GrabModeAsync, None, None,
-      //         CurrentTime);
+   //   //      auto grabStatus = XGrabPointer(Display(), Window(), False,
+   //   //         ButtonPressMask | ButtonReleaseMask |
+   //   //         PointerMotionMask,
+   //   //         GrabModeAsync, GrabModeAsync, None, None,
+   //   //         CurrentTime);
 
-      //      if (grabStatus != GrabSuccess)
-      //      {
+   //   //      if (grabStatus != GrabSuccess)
+   //   //      {
 
-      //         windowing_output_debug_string("\noswindow_data::SetCapture 2.1");
+   //   //         windowing_output_debug_string("\noswindow_data::SetCapture 2.1");
 
-      //         return;
+   //   //         return;
 
-      //      }
+   //   //      }
 
-      //      auto pdisplay = x11_display();
+   //   //      auto pdisplay = x11_display();
 
-      //      if (pdisplay)
-      //      {
+   //   //      if (pdisplay)
+   //   //      {
 
-      //         pdisplay->_on_capture_changed_to(this);
+   //   //         pdisplay->_on_capture_changed_to(this);
 
-      //      }
+   //   //      }
 
-      //      windowing_output_debug_string("\noswindow_data::SetCapture 2");
+   //   //      windowing_output_debug_string("\noswindow_data::SetCapture 2");
 
-      //   });
+   //   //   });
 
-      //return ::success;
+   //   //return ::success;
 
-   }
+   //}
 
 
-   void window::set_keyboard_focus()
-   {
+   //void window::set_keyboard_focus()
+   //{
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(user_mutex());
 
-      auto pwindowing = windowing();
+   //   auto pwindowing = windowing();
 
-      if (!pwindowing)
-      {
+   //   if (!pwindowing)
+   //   {
 
-         throw ::exception(error_wrong_state);
+   //      throw ::exception(error_wrong_state);
 
-      }
+   //   }
 
-      if (pwindowing->m_pwindowKeyboardFocus && pwindowing->m_pwindowKeyboardFocus != this)
-      {
+   //   if (pwindowing->m_pwindowKeyboardFocus && pwindowing->m_pwindowKeyboardFocus != this)
+   //   {
 
-         pwindowing->clear_keyboard_focus(this);
+   //      pwindowing->clear_keyboard_focus(this);
 
-      }
+   //   }
 
-      pwindowing->m_pwindowKeyboardFocus = this;
+   //   pwindowing->m_pwindowKeyboardFocus = this;
 
-      auto puserinteractionimpl = m_puserinteractionimpl;
+   //   auto puserinteractionimpl = m_puserinteractionimpl;
 
-      if (puserinteractionimpl)
-      {
+   //   if (puserinteractionimpl)
+   //   {
 
-         auto puserinteraction = puserinteractionimpl->m_puserinteraction;
+   //      auto puserinteraction = puserinteractionimpl->m_puserinteraction;
 
-         if (puserinteraction)
-         {
+   //      if (puserinteraction)
+   //      {
 
-            puserinteraction->post_message(e_message_set_focus);
+   //         puserinteraction->post_message(e_message_set_focus);
 
-         }
+   //      }
 
-      }
+   //   }
 
-      //if (Window() == 0)
-      //{
+   //   //if (Window() == 0)
+   //   //{
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //windowing_output_debug_string("\noswindow_data::SetFocus 1");
+   //   //windowing_output_debug_string("\noswindow_data::SetFocus 1");
 
-      //display_lock displaylock(x11_display()->Display());
+   //   //display_lock displaylock(x11_display()->Display());
 
-      //if (!is_window())
-      //{
+   //   //if (!is_window())
+   //   //{
 
-      //   windowing_output_debug_string("\noswindow_data::SetFocus 1.1");
+   //   //   windowing_output_debug_string("\noswindow_data::SetFocus 1.1");
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //if (!XSetInputFocus(Display(), Window(), RevertToNone, CurrentTime))
-      //{
+   //   //if (!XSetInputFocus(Display(), Window(), RevertToNone, CurrentTime))
+   //   //{
 
-      //   windowing_output_debug_string("\noswindow_data::SetFocus 1.3");
+   //   //   windowing_output_debug_string("\noswindow_data::SetFocus 1.3");
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //windowing_output_debug_string("\noswindow_data::SetFocus 2");
+   //   //windowing_output_debug_string("\noswindow_data::SetFocus 2");
 
-      ////return ::success;
+   //   ////return ::success;
 
-   }
+   //}
 
 
-   bool window::is_active_window() const
-   {
+   //bool window::is_active_window() const
+   //{
 
-      return ::windowing::window::is_active_window();
+   //   return ::windowing::window::is_active_window();
 
-   }
+   //}
 
 
-   void window::bring_to_front()
-   {
+   //void window::bring_to_front()
+   //{
 
-      synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(user_mutex());
 
-      //if (Window() == 0)
-      //{
+   //   //if (Window() == 0)
+   //   //{
 
-      //   throw ::exception(error_failed);
+   //   //   throw ::exception(error_failed);
 
-      //}
+   //   //}
 
-      //windowing_output_debug_string("\noswindow_data::SetFocus 1");
+   //   //windowing_output_debug_string("\noswindow_data::SetFocus 1");
 
-      //display_lock displaylock(x11_display()->Display());
+   //   //display_lock displaylock(x11_display()->Display());
 
-      //XRaiseWindow(displaylock.m_pdisplay, Window());
+   //   //XRaiseWindow(displaylock.m_pdisplay, Window());
 
-      //return ::success;
+   //   //return ::success;
 
-   }
+   //}
 
 
    //void window::on_touch_drag(int x, int y)

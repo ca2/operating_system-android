@@ -4,55 +4,34 @@
 #pragma once
 
 
-#define _NET_WM_STATE_REMOVE        0    // remove/unset property
-#define _NET_WM_STATE_ADD           1    // add/set property
-#define _NET_WM_STATE_TOGGLE        2    // toggle property
-
-
-#define windowing_android_WINDOW_MEMBER
-//using htask_t = pthread_t;
-
 
 namespace windowing_android
 {
 
 
    class CLASS_DECL_WINDOWING_ANDROID window :
-      virtual public ::windowing::window
+      virtual public ::sandbox_windowing::window
    {
    public:
 
 
-      //XWindowAttributes                            m_attr;
-      //XVisualInfo                                  m_visualinfo;
-      //void * m_pgdkwindow;
-      //__pointer(::windowing_android::x11data)          m_px11data;
-      //::Window                                     m_parent;
-      //Cursor                                       m_cursorLast;
-      //int                                          m_iXic;
-      //XIC                                          m_xic;
-      //__pointer(::windowing_android::display)     m_pdisplay;
-      //::Window                                     m_window;
-      //::Visual                                     m_visual;
-      //int                                          m_iDepth;
-      //int                                          m_iScreen;
-      bool                                         m_bMessageOnlyWindow;
+      //bool                                         m_bMessageOnlyWindow;
       //__pointer(::user::interaction_impl)     m_pimpl;
       //__pointer(::message_queue)              m_pmessagequeue;
-      htask_t                                    m_htask;
-      //Colormap                                     m_colormap;
-      ::duration                                       m_durationLastMouseMove;
-      //Window                                       m_parent;
-      ::rectangle_i32                              m_rect;
-      //string                                       m_strWMClass;
-      //int                                          m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
-      ::point_i32                                  m_pointCursor;
-      //static oswindow_dataptra *                 s_pdataptra;
-      //static::mutex *                            s_pmutex;
+      //htask_t                                    m_htask;
+      ////Colormap                                     m_colormap;
+      //::duration                                       m_durationLastMouseMove;
+      ////Window                                       m_parent;
+      //::rectangle_i32                              m_rect;
+      ////string                                       m_strWMClass;
+      ////int                                          m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
+      //::point_i32                                  m_pointCursor;
+      ////static oswindow_dataptra *                 s_pdataptra;
+      ////static::mutex *                            s_pmutex;
 
-      //static Atom                                s_atomLongType;
-      //static Atom                                s_atomLongStyle;
-      //static Atom                                s_atomLongStyleEx;
+      ////static Atom                                s_atomLongType;
+      ////static Atom                                s_atomLongStyle;
+      ////static Atom                                s_atomLongStyleEx;
 
       //__pointer(::xim::keyboard)                   m_pximkeyboard;
 
@@ -79,38 +58,8 @@ namespace windowing_android
       //}
 
 
-      ::windowing_android::windowing* windowing();
+      //::windowing_android::windowing* windowing();
 
-
-      //virtual ::Display * Display();
-
-      //virtual ::Display * Display() const;
-
-      //virtual int Screen();
-
-      //virtual int Screen() const;
-
-      //virtual ::Window Window();
-
-      //virtual ::Window Window() const;
-
-      //virtual ::Visual * Visual();
-
-      //virtual const ::Visual * Visual() const;
-
-      //virtual ::Window root_window_raw() const;
-
-      //virtual void unmapped_net_state_raw(Atom atom1, ...);
-
-      //virtual ::e_status initialize_x11_window(::windowing_android::display * pdisplay, ::Window window, ::Visual * pvisual, int iDepth, int iScreen, Colormap colormap);
-
-      //virtual void send_client_event(Atom atom, unsigned int numArgs, ...);
-      //virtual i32 store_name(const char * psz);
-      //virtual i32 select_input(i32 iInput);
-      //virtual i32 select_all_input();
-      //virtual i32 map_window();
-      //virtual i32 unmap_window(bool bWithdraw);
-      //virtual void set_wm_class(const char * psz);
 
       void exit_iconify() override;
 
@@ -120,13 +69,14 @@ namespace windowing_android
 
       void exit_zoomed() override;
 
-      virtual void set_user_interaction(::user::interaction_impl * pinteraction);
+      void set_user_interaction(::user::interaction_impl * pinteraction) override;
 
-      virtual void post_nc_destroy();
+      void post_nc_destroy() override;
 
-      virtual ::e_status set_window_icon(const ::file::path & path);
+      ::e_status set_window_icon(const ::file::path & path) override;
 
-      virtual bool is_child(windowing_android_WINDOW_MEMBER::windowing::window * candidateChildOrDescendant); // or descendant
+      bool is_child(::windowing::window * candidateChildOrDescendant) override; // or descendant
+
       ::windowing::window * get_parent() const override;
       //virtual ::Window get_parent_handle();
       oswindow get_parent_oswindow() const override;
@@ -135,7 +85,7 @@ namespace windowing_android
 
       //virtual ::Window get_parent_handle() const;
 
-      ::windowing_android::windowing * android_windowing() const { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing; }
+      ::windowing_android::windowing * windowing() { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing2; }
       //::windowing_android::display * x11_display() const { return (::windowing_android::display *)m_pdisplay->m_pDisplay; }
 
       void set_parent(::windowing::window * pwindowNewParent) override;
@@ -161,25 +111,25 @@ namespace windowing_android
       //virtual bool bamf_set_icon();
 
 
-      virtual bool set_icon(::image * pimage);
+      bool set_icon(::image * pimage);
 
       //virtual int x_change_property(Atom property, Atom type, int format, int mode, const unsigned char * data, int nelements);
 
-      void set_mouse_cursor(::windowing::cursor * pcursor) override;
+      //void set_mouse_cursor(::windowing::cursor * pcursor) override;
 
-      virtual void set_mouse_cursor2(::windowing::cursor * pcursor);
+      //void set_mouse_cursor2(::windowing::cursor * pcursor) override;
 
-      void set_keyboard_focus() override;
-      void set_mouse_capture() override;
-      void set_active_window() override;
-
-
-      void set_foreground_window() override;
+      //void set_keyboard_focus() override;
+      //void set_mouse_capture() override;
+      //void set_active_window() override;
 
 
-      bool has_mouse_capture() const override;
+      //void set_foreground_window() override;
 
-      bool has_keyboard_focus() const override;
+
+      //bool has_mouse_capture() const override;
+
+      //bool has_keyboard_focus() const override;
 
 
 
@@ -203,19 +153,19 @@ namespace windowing_android
       //virtual ::Window _get_window_relative(windowing_android_WINDOW_MEMBER enum_relative erelative, ::Window * windowa, int numItems);
       //virtual ::windowing::window * get_window(windowing_android_WINDOW_MEMBER enum_relative erelative);
 
-      void destroy_window() override;
-      //virtual int_bool destroy_window( windowing_android_WINDOW_MEMBER );
-      virtual bool is_window() override;
-      //virtual int_bool is_window( windowing_android_WINDOW_MEMBER );
+      //void destroy_window() override;
+      ////virtual int_bool destroy_window( windowing_android_WINDOW_MEMBER );
+      //virtual bool is_window() override;
+      ////virtual int_bool is_window( windowing_android_WINDOW_MEMBER );
 
 
-      virtual void set_window_text(const char * pszString);
+      //virtual void set_window_text(const char * pszString);
 
 
-      void set_tool_window(bool bSet) override;
+      //void set_tool_window(bool bSet) override;
 
 
-      bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
+      //bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
 
 
       //virtual comparable_array < Atom > wm_get_list_raw(windowing_android_WINDOW_MEMBER Atom atomList);
@@ -272,13 +222,13 @@ namespace windowing_android
       //virtual void wm_state_hidden_raw( windowing_android_WINDOW_MEMBER bool bSet);
       //virtual ::e_status mq_remove_window_from_all_queues(windowing_android_WINDOW_MEMBER);
 
-      void update_screen() override;
-      void window_show() override;
+      //void update_screen() override;
+      //void window_show() override;
 
-      bool is_active_window() const override;
+      //bool is_active_window() const override;
 
 
-      void bring_to_front() override;
+      //void bring_to_front() override;
 
 
       float get_dpi_for_window() override;

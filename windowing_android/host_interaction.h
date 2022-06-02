@@ -21,6 +21,11 @@ namespace windowing_android
       ~host_interaction() override;
 
 
+      
+      ::sandbox_windowing::windowing* windowing();
+
+
+
       void install_message_routing(::channel* pchannel) override;
 
 
@@ -39,6 +44,8 @@ namespace windowing_android
 
 
       void on_layout(::draw2d::graphics_pointer& pgraphics) override;
+
+
 
 
    };

@@ -5,6 +5,9 @@
 #include "aura_android/_aura_android.h"
 
 
+#include "aura/windowing/sandbox/_sandbox.h"
+
+
 #include "android/driver.h"
 
 

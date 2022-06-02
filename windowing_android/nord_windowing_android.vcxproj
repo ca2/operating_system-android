@@ -191,7 +191,6 @@
     <ClCompile Include="android\_jni_environment.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="display.cpp" />
-    <ClCompile Include="host_interaction.cpp" />
     <ClCompile Include="text_composition_client.cpp" />
     <ClCompile Include="monitor.cpp" />
     <ClCompile Include="node.cpp" />
@@ -211,7 +210,6 @@
     <ClInclude Include="android\_android.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="display.h" />
-    <ClInclude Include="host_interaction.h" />
     <ClInclude Include="text_composition_client.h" />
     <ClInclude Include="monitor.h" />
     <ClInclude Include="node.h" />

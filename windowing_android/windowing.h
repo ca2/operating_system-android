@@ -9,7 +9,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_WINDOWING_ANDROID windowing :
-      virtual public ::windowing::windowing
+      virtual public ::sandbox_windowing::windowing
    {
    public:
 
@@ -18,13 +18,8 @@ namespace windowing_android
       bool                                            m_bFirstWindowMap : 1;
 
       __pointer(::windowing_android::display)         m_pdisplay;
-      //bool                                            m_bFinishX11Thread;
-      //bool                                            m_bInitX11Thread;
 
-      __pointer(::windowing_android::window)          m_pwindowKeyboardFocus;
-      __pointer(::windowing_android::window)          m_pwindowMouseCapture;
-
-      itask_t                                         m_itask;
+      //itask_t                                         m_itask;
 
 //#ifdef WITH_XI
 //
@@ -33,11 +28,9 @@ namespace windowing_android
 //
 //#endif
 
-      ::procedure_list                                m_procedurelist;
+      //::procedure_list                                m_procedurelist;
 
-      __pointer(host_interaction)                     m_phostinteraction;
-
-      __pointer(::windowing::window)                  m_pwindowApplicationHost;
+      //__pointer(::windowing::window)                  m_pwindowApplicationHost;
 
 
       windowing();
@@ -50,9 +43,11 @@ namespace windowing_android
       bool is_branch_current() const override;
 
 
-      virtual void initialize_windowing();
+      void initialize_windowing() override;
 
-      virtual void terminate_windowing();
+      
+      void terminate_windowing() override;
+
 
       void defer_initialize_host_window(const RECTANGLE_I32* lpcrect) override;
 
@@ -111,9 +106,9 @@ namespace windowing_android
 
       //::windowing::window * get_active_window(::thread * pthread) override;
 
-      ::windowing::window * get_keyboard_focus(::thread * pthread) override;
+      //::windowing::window * get_keyboard_focus(::thread * pthread) override;
 
-      ::windowing::window * get_mouse_capture(::thread * pthread) override;
+      //::windowing::window * get_mouse_capture(::thread * pthread) override;
 
       //void clear_active_window(::thread * pthread, ::windowing::window * pwindow) override;
 
@@ -129,7 +124,7 @@ namespace windowing_android
 
       void windowing_post(const ::procedure & procedure) override;
 
-      virtual bool x11_runnable_step();
+      bool x11_runnable_step() override;
 
       //virtual ::windowing::window * window(oswindow oswindow) override;
 
