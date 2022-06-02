@@ -609,9 +609,6 @@ namespace aura_android
 
 
       //::user::interaction * get_next(bool bIgnoreChildren, i32 * piLevel) override;
-      virtual bool on_keyboard_focus(::user::primitive * pfocus);
-      virtual bool keyboard_focus_OnKillFocus(oswindow oswindowNew) override;
-      virtual bool keyboard_focus_OnChildKillFocus() override;
 
 
       virtual bool has_pending_graphical_update()override;
