@@ -103,7 +103,6 @@ namespace aura_android
 
       virtual void edit_on_kill_focus(::user::interaction* pinteraction) override;
 
-      //virtual void show_software_keyboard(::user::primitive * pprimitive, string str, strsize iBeg, strsize iEnd) override;
       void show_software_keyboard(::user::element * pelement) override;
       void hide_software_keyboard(::user::element * pelement) override;
 

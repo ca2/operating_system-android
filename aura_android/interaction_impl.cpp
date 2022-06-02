@@ -4948,8 +4948,6 @@ namespace aura_android
 
       m_pelementSoftwareKeyboard = pelement;
 
-      //return ::success;
-
    }
 
 
