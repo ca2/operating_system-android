@@ -30,7 +30,7 @@ namespace acme_android
 
       wstring wstrFileName;
 
-      wstrFileName = ::str::international::utf8_to_unicode(path);
+      wstrFileName = ::::str::ch().international::utf8_to_unicode(path);
 
       if (!windows_full_path(wstrFullName, wstrFileName))
       {
@@ -41,7 +41,7 @@ namespace acme_android
 
       }
 
-      ::str::international::unicode_to_utf8(rStatus.m_strFullName, wstrFullName);
+      ::::str::ch().international::unicode_to_utf8(rStatus.m_strFullName, wstrFullName);
 
       struct stat st;
 
@@ -193,7 +193,7 @@ namespace acme_android
       dwPermission |= S_IRGRP | S_IWGRP | S_IXGRP;
 
       // attempt file creation
-      //HANDLE hFile = shell::CreateFile(::str::international::utf8_to_unicode(m_strFileName), dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
+      //HANDLE hFile = shell::CreateFile(::::str::ch().international::utf8_to_unicode(m_strFileName), dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
       i32 hFile = ::open(m_strFileName, dwFlags, dwPermission); //::open(m_strFileName, dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
 
       if(hFile == -1)
@@ -257,7 +257,7 @@ namespace acme_android
             return false;
          }
 
-         m_strFileName = ::str::international::unicode_to_utf8(m_wstrFileName);
+         m_strFileName = ::::str::ch().international::unicode_to_utf8(m_wstrFileName);
 
          hFile = ::open(m_strFileName, nOpenFlags);*/
 

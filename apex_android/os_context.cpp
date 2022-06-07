@@ -527,9 +527,9 @@ namespace apex_android
                try
                {
 
-                  strCommand = ::str::consume_quoted_value(psz);
-                  ::str::consume_spaces(psz);
-                  ::str::consume(psz, "\"%L\"");
+                  strCommand = ::::str::ch().consume_quoted_value(psz);
+                  ::::str::ch().consume_spaces(psz);
+                  ::::str::ch().consume(psz, "\"%L\"");
                   strParam = psz;
 
                }

@@ -177,7 +177,7 @@ namespace apex_android
 
    //         ::file::path strPath = stra[i];
 
-   //         if (!::str::begins(strPath, listing.m_pathFinal))
+   //         if (!::::str::ch().begins(strPath, listing.m_pathFinal))
    //            continue;
 
    //         bool bIsDir;
@@ -281,7 +281,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str::ends(strDir, "/"))
+   //   if(!::::str::ch().ends(strDir, "/"))
    //   {
 
    //      strDir += "/";
@@ -299,7 +299,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str::begins_eat(strName, strDir))
+   //      if(!::::str::ch().begins_eat(strName, strDir))
    //         continue;
 
    //      if(!matches_wildcard_criteria(pszPattern, strName))
@@ -383,7 +383,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str::ends(strDir, "/"))
+   //   if(!::::str::ch().ends(strDir, "/"))
    //   {
 
    //      strDir += "/";
@@ -398,7 +398,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str::begins_eat(strName, strDir))
+   //      if(!::::str::ch().begins_eat(strName, strDir))
    //         continue;
 
    //      if(!get_context()->dir_context().is(strPath))
@@ -471,7 +471,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str::ends(strDir, "/"))
+   //   if(!::::str::ch().ends(strDir, "/"))
    //   {
 
    //      strDir += "/";
@@ -486,7 +486,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str::begins_eat(strName, strDir))
+   //      if(!::::str::ch().begins_eat(strName, strDir))
    //         continue;
 
    //      if(!get_context()->dir_context().is(strPath))
@@ -529,7 +529,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str::ends(strDir, "/"))
+   //   if(!::::str::ch().ends(strDir, "/"))
    //   {
 
    //      strDir += "/";
@@ -544,7 +544,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str::begins_eat(strName, strDir))
+   //      if(!::::str::ch().begins_eat(strName, strDir))
    //         continue;
 
    //      if(get_context()->dir_context().is(strPath))
@@ -590,7 +590,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str::ends(strDir, "/"))
+   //   if(!::::str::ch().ends(strDir, "/"))
    //   {
 
    //      strDir += "/";
@@ -605,7 +605,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str::begins_eat(strName, strDir))
+   //      if(!::::str::ch().begins_eat(strName, strDir))
    //         continue;
 
    //      if(pstraPath != nullptr)
@@ -680,7 +680,7 @@ namespace apex_android
    //   if (strPath.get_length() >= MAX_PATH)
    //   {
 
-   //      if (::str::begins(strPath, "\\\\"))
+   //      if (::::str::ch().begins(strPath, "\\\\"))
    //      {
 
    //         strPath = "\\\\?\\UNC" + strPath.Mid(1);
@@ -729,22 +729,22 @@ namespace apex_android
 
    //   wstring wstrPath;
 
-   //   //strsize iLen = ::str::international::utf8_to_unicode_count(strPath);
+   //   //strsize iLen = ::::str::ch().international::utf8_to_unicode_count(strPath);
    //   //wstrPath.alloc(iLen + 32);
-   //   wstrPath = ::str::international::utf8_to_unicode(strPath);
+   //   wstrPath = ::::str::ch().international::utf8_to_unicode(strPath);
    //   if(wstrPath.get_length() >= MAX_PATH)
    //   {
-   //      if(::str::begins(wstrPath, L"\\\\"))
+   //      if(::::str::ch().begins(wstrPath, L"\\\\"))
    //      {
-   //         ::str::begin(wstrPath, L"\\\\?\\UNC");
+   //         ::::str::ch().begin(wstrPath, L"\\\\?\\UNC");
    //      }
    //      else
    //      {
-   //         ::str::begin(wstrPath, L"\\\\?\\");
+   //         ::::str::ch().begin(wstrPath, L"\\\\?\\");
    //      }
    //   }
 
-   //   bIsDir = ::dir_context::is(::str::international::unicode_to_utf8(wstrPath));
+   //   bIsDir = ::dir_context::is(::::str::ch().international::unicode_to_utf8(wstrPath));
 
    //   m_isdirmap.set(strPath, bIsDir, bIsDir ? 0 : ::get_last_error());
 
@@ -799,9 +799,9 @@ namespace apex_android
 
       wstring wstrPath;
 
-      wstrPath = ::str::international::utf8_to_unicode(str, iLast + 1);
+      wstrPath = ::::str::ch().international::utf8_to_unicode(str, iLast + 1);
 
-      bool bIsDir = ::dir_context::is(::str::international::unicode_to_utf8(wstrPath));
+      bool bIsDir = ::dir_context::is(::::str::ch().international::unicode_to_utf8(wstrPath));
 
       return bIsDir;
 
@@ -926,7 +926,7 @@ namespace apex_android
    //               {
    //               }
 
-   //               //if(::CreateDirectory(::str::international::utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
+   //               //if(::CreateDirectory(::::str::ch().international::utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
    //               if (::dir_context::mk("\\\\?\\" + stra[i]))
    //               {
 
@@ -1276,7 +1276,7 @@ namespace apex_android
    //         __memset(buf, 0, sizeof(buf));
    //      }
    //   }*/
-   //   /*return ::str::international::unicode_to_utf8(buf);*/
+   //   /*return ::::str::ch().international::unicode_to_utf8(buf);*/
    //   return ::getlogin();
 
    //}
@@ -1350,7 +1350,7 @@ namespace apex_android
    bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
-      return ::str::begins_ci(pszDir, pszPath);
+      return ::::str::ch().begins_ci(pszDir, pszPath);
 
    }
 
