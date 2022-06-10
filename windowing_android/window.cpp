@@ -608,7 +608,7 @@ namespace windowing_android
 
 #elif 1
 
-      auto d1 = pcontext->m_pauracontext->create_image({ 32, 32 });
+      auto d1 = m_pcontext->m_pauracontext->create_image({ 32, 32 });
 
       if (!::is_ok(d1))
       {
