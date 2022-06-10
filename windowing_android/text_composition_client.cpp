@@ -105,7 +105,7 @@ namespace windowing_android
 
    //      strChar = wsz;
 
-   //      //if (!::str::begins_eat_ci(m_strImeComposition, strChar))
+   //      //if (!::str().begins_eat_ci(m_strImeComposition, strChar))
    //      //{
 
    //      pmessage->m_bRet = true;
