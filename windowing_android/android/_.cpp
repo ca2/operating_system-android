@@ -2,11 +2,9 @@
 #include "_android.h"
 
 
-extern class ::system* g_psystem;
-
-
 void android_aura_main()
 {
+
 
    auto pdirect = operating_system_bind::get();
 

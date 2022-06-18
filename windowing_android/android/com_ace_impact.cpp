@@ -9,14 +9,10 @@
 void set_jni_context(JNIEnv* penv);
 
 
-extern class ::system* g_psystem;
-
-
-
 ::windowing::window* __get_host_window()
 {
 
-   auto psystem = g_psystem;
+   auto psystem = ::get_system();
 
    if (::is_set(psystem))
    {
@@ -100,7 +96,8 @@ extern class ::system* g_psystem;
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+//JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try

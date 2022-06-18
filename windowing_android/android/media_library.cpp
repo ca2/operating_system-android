@@ -3,9 +3,6 @@
 #include "media_library.h"
 
 
-extern class ::system* g_psystem;
-
-
 namespace android
 {
 
@@ -114,7 +111,9 @@ namespace android
    void add_media_library_item(library_item* plibraryitem)
    {
 
-      g_psystem->m_pacmedirectory->add_media_library_item(plibraryitem);
+      auto psystem = ::get_system();
+
+      psystem->m_pacmedirectory->add_media_library_item(plibraryitem);
 
    }
 

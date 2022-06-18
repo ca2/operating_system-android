@@ -1,16 +1,15 @@
 #include "framework.h"
 
 
-extern class ::system* g_psystem;
-
-
 void _android_key(unsigned int message, int keyCode, int iUni);
 
 
 void android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   g_psystem->fork([=]()
+   auto psystem = ::get_system();
+
+   psystem->fork([=]()
       {
 
          _android_key(message, keyCode, iUni);
@@ -25,13 +24,15 @@ int translate_android_key_message(::message::key* pkey, int keyCode, int iUni);
 void _android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   if (g_psystem == nullptr)
+   auto psystem = ::get_system();
+
+   if (psystem == nullptr)
       return;
 
-   if (g_psystem->get_session() == nullptr)
+   if (psystem->get_session() == nullptr)
       return;
 
-   if (g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
+   if (psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
       return;
 
    __pointer(::message::key) pkey = __new(::message::key());
@@ -45,7 +46,7 @@ void _android_key(unsigned int message, int keyCode, int iUni)
 
    }
 
-   auto puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -66,16 +67,18 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    __UNREFERENCED_PARAMETER(yDummy);
 
-   if (g_psystem == nullptr)
+   auto psystem = ::get_system();
+
+   if (psystem == nullptr)
       return;
 
-   if (g_psystem->get_session() == nullptr)
+   if (psystem->get_session() == nullptr)
       return;
 
-   if (g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
+   if (psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
       return;
 
-   __pointer(::user::interaction) puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   __pointer(::user::interaction) puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -136,7 +139,9 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 
    output_debug_string("android_on_size\n");
 
-   if (g_psystem == nullptr)
+   auto psystem = ::get_system();
+
+   if (psystem == nullptr)
    {
 
       return;
@@ -146,7 +151,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -262,7 +267,9 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
    //::aura::get_system()->fork([=]()
    //{
 
-   auto puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto psystem = ::get_system();
+
+   auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -270,7 +277,7 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
       //puserinteraction->post_procedure([=]()
       //   {
 
-      //      g_psystem->on_os_text(etext, strText);
+      //      psystem->on_os_text(etext, strText);
 
       //   });
 
@@ -321,7 +328,7 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
 //
 //      }
 //
-//      __pointer(::user::interaction) puserinteraction = g_psystem->get_session()->m_puserinteractionHost);
+//      __pointer(::user::interaction) puserinteraction = psystem->get_session()->m_puserinteractionHost);
 //
 //      if (!puserinteraction)
 //      {
@@ -577,7 +584,9 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 int GetMainScreenRect(RECTANGLE_I32* lprect)
 {
 
-   auto puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto psystem = ::get_system();
+
+   auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -596,7 +605,9 @@ int GetMainScreenRect(RECTANGLE_I32* lprect)
 int SetMainScreenRect(const RECTANGLE_I32* lpcrect)
 {
 
-   auto psession = g_psystem->get_session();
+   auto psystem = ::get_system();
+
+   auto psession = psystem->get_session();
 
    if (!psession)
    {
@@ -605,7 +616,7 @@ int SetMainScreenRect(const RECTANGLE_I32* lpcrect)
 
    }
 
-   auto puserinteraction = g_psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (!puserinteraction)
    {

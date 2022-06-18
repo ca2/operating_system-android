@@ -72,7 +72,7 @@ namespace windowing_android
       void release_mouse_capture() override;
 
 
-      void clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny = nullptr) override;
+      void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
 
 
       //virtual void x11_main();

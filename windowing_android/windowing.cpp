@@ -529,7 +529,7 @@ namespace windowing_android
    }
 
 
-   void windowing::clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny)
+   void windowing::clear_keyboard_focus(::user::element * pelementGainingFocusIfAny)
    {
 
       if (!m_pwindowKeyboardFocus)
@@ -547,7 +547,7 @@ namespace windowing_android
          if (puserinteractionimpl->m_puserinteractionKeyboardFocus)
          {
 
-            puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
+            puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 
             //puserinteractionimpl->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
 

@@ -56,8 +56,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_message_box", "..\..\..
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_message_box", "..\..\seed-android\app\message_box\android_app_message_box.androidproj", "{EC4D7BAB-16BD-49FA-B330-A0E376C1CD14}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_shader", "..\..\..\source\app\shader\nord_app_shader.vcxproj", "{37E67AE3-A9A2-47A6-A9C6-BD4795039431}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		basis|ARM = basis|ARM
@@ -1142,54 +1140,6 @@ Global
 		{EC4D7BAB-16BD-49FA-B330-A0E376C1CD14}.stage|x86.ActiveCfg = Debug|x86
 		{EC4D7BAB-16BD-49FA-B330-A0E376C1CD14}.stage|x86.Build.0 = Debug|x86
 		{EC4D7BAB-16BD-49FA-B330-A0E376C1CD14}.stage|x86.Deploy.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|ARM.ActiveCfg = Debug|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|ARM.Build.0 = Debug|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|ARM64.ActiveCfg = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|ARM64.Build.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|x64.ActiveCfg = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|x64.Build.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|x86.ActiveCfg = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.basis|x86.Build.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|ARM.ActiveCfg = Debug|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|ARM.Build.0 = Debug|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|ARM64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|ARM64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|x64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|x64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|x86.ActiveCfg = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_basis|x86.Build.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|ARM.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|ARM.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|ARM64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|ARM64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|x64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|x64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|x86.ActiveCfg = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.cube_stage|x86.Build.0 = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|ARM.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|ARM.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|ARM64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|ARM64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|x64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|x64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|x86.ActiveCfg = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Debug|x86.Build.0 = Debug|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|ARM.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|ARM.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|ARM64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|ARM64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|x64.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|x64.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|x86.ActiveCfg = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.Release|x86.Build.0 = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|ARM.ActiveCfg = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|ARM.Build.0 = Release|ARM
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|ARM64.ActiveCfg = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|ARM64.Build.0 = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|x64.ActiveCfg = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|x64.Build.0 = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|x86.ActiveCfg = Release|x86
-		{37E67AE3-A9A2-47A6-A9C6-BD4795039431}.stage|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -177,10 +177,10 @@
   <ItemGroup>
     <ClCompile Include="android\bind.cpp" />
     <ClCompile Include="android\driver.cpp" />
-    <ClCompile Include="android\java_ace_ace.cpp" />
-    <ClCompile Include="android\java_ace_impact.cpp" />
-    <ClCompile Include="android\java_ace_input_connection.cpp" />
-    <ClCompile Include="android\java_enumerate.cpp" />
+    <ClCompile Include="android\com_ace_ace.cpp" />
+    <ClCompile Include="android\com_ace_impact.cpp" />
+    <ClCompile Include="android\com_ace_InputConnection.cpp" />
+    <ClCompile Include="android\com_ace_enumerate.cpp" />
     <ClCompile Include="android\media_library.cpp" />
     <ClCompile Include="android\message_box.cpp" />
     <ClCompile Include="android\object.cpp" />

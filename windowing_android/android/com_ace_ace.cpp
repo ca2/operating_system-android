@@ -24,16 +24,6 @@ int SetMainScreenRect(const RECTANGLE_I32* lpcrect);
 void set_jni_context(JNIEnv * penv);
 
 
-extern class ::system * g_psystem;
-
-
-extern "C"
-JNIEXPORT jboolean JNICALL Java_com_ace_ace_aura_1is_1started(JNIEnv * env, jobject obj)
-{
-   
-   return g_bAuraStart;
-
-}
 
 
 extern "C"
@@ -232,12 +222,21 @@ JNIEXPORT void JNICALL Java_com_ace_ace_on_1aura_1message_1box_1response(JNIEnv 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_sync_1mem_1free_1available(JNIEnv * env, jobject obj, jobject os)
+JNIEXPORT jboolean JNICALL Java_com_ace_ace_aura_1is_1started(JNIEnv * env, jobject obj)
 {
-   
+
+   return g_bAuraStart;
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL Java_com_ace_ace_sync_1mem_1free_1available(JNIEnv * env, jobject obj)
+{
+
    try
    {
-   
+
       set_jni_context(env);
 
       ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();

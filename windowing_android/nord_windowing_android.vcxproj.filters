@@ -119,13 +119,13 @@
     <ClCompile Include="android\driver.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
-    <ClCompile Include="android\java_ace_ace.cpp">
+    <ClCompile Include="android\com_ace_ace.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
-    <ClCompile Include="android\java_ace_impact.cpp">
+    <ClCompile Include="android\com_ace_impact.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
-    <ClCompile Include="android\java_enumerate.cpp">
+    <ClCompile Include="android\com_ace_enumerate.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
     <ClCompile Include="android\media_library.cpp">
@@ -137,7 +137,7 @@
     <ClCompile Include="android\object.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
-    <ClCompile Include="android\java_ace_input_connection.cpp">
+    <ClCompile Include="android\com_ace_InputConnection.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
   </ItemGroup>
