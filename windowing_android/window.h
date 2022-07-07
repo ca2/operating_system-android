@@ -79,13 +79,13 @@ namespace windowing_android
 
       ::windowing::window * get_parent() const override;
       //virtual ::Window get_parent_handle();
-      oswindow get_parent_oswindow() const override;
+      ::oswindow get_parent_oswindow() const override;
 
       ::point_i32 get_mouse_cursor_position() override;
 
       //virtual ::Window get_parent_handle() const;
 
-      ::windowing_android::windowing * windowing() { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing2; }
+      ::windowing_android::windowing * windowing() { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing4; }
       //::windowing_android::display * x11_display() const { return (::windowing_android::display *)m_pdisplay->m_pDisplay; }
 
       void set_parent(::windowing::window * pwindowNewParent) override;

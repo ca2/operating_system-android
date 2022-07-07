@@ -4,7 +4,9 @@
 #include "_asset.h"
 #include "acme/user/nano/_nano.h"
 #include "acme/platform/system_setup.h"
+//typedef void(*PFN_factory)(::factory::factory* pfactory);
 
+typedef int(*PFN_MAIN)(int argc, char* argv[], char* envp[], const char * p1, const char * p2);
 
 extern ::mutex * g_pmutexOs;
 
@@ -24,7 +26,11 @@ int SetMainScreenRect(const RECTANGLE_I32* lpcrect);
 void set_jni_context(JNIEnv * penv);
 
 
-
+const char* this_argv[] =
+{
+   "app",
+   nullptr
+};
 
 extern "C"
 JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
@@ -82,7 +88,38 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          pdriver->m_passetResourceFolder = pdriver->m_passetmanager->get_asset("_matter.zip");
 
-         auto papp = ::app_factory::new_app();
+         string strLibrary;
+
+         //int main(int argc, char* argv[], char* envp[])
+
+         strLibrary = pdriver->m_strApplicationIdentifier;
+
+         strLibrary.find_replace("/", "_");
+
+         strLibrary.find_replace("-", "_");
+
+         string strMain;
+
+         strMain = "main_"+strLibrary;
+
+         strLibrary = "lib" + strLibrary + ".so";
+
+         auto pLibrary = dlopen(strLibrary, 0);
+
+         PFN_MAIN pfnMain = (PFN_MAIN) dlsym(pLibrary, strMain);
+         const char* p1=nullptr;
+         const char* p2=nullptr;
+         //auto pfactory = __new(::factory::factory);
+                  pdriver->m_passetResourceFolder->get_pointers(
+            p1,
+            p2);
+
+         //pfnFactory(pfactory);
+         //pfnMain(1, (char**)this_argv, nullptr, p1, p2);
+
+         //auto papp = pfactory->create<::app>();
+
+         //auto papp = ::app_factory::new_app();
 
          //papp->m_argc = __argc;
 
@@ -102,20 +139,18 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          //papp->m_nCmdShow = nCmdShow;
 
-         pdriver->m_passetResourceFolder->get_pointers(
-            papp->m_pchar_binary__matter_zip_start,
-            papp->m_pchar_binary__matter_zip_end);
 
          //if (m_psystem->m_pchar_binary__matter_zip_start && m_psystem->m_pchar_binary__matter_zip_end)
 
       //   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 
-         papp->m_bConsole = false;
+         //papp->m_bConsole = false;
 
          try
          {
 
-            int iExitCode = papp->main_loop();
+            pfnMain(1, (char**)this_argv, nullptr, p1, p2);
+            //int iExitCode = papp->main_loop();
 
          }
          catch (const ::exception& exception)

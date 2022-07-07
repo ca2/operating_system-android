@@ -4790,7 +4790,7 @@ namespace aura_android
    void interaction_impl::edit_on_set_focus(::user::interaction* pinteraction)
    {
 
-      auto puserinteraction = pinteraction->get_parent_frame();
+      auto puserinteraction = pinteraction->parent_frame();
 
       ::rectangle_i32 rWindowFrame;
 
@@ -4839,7 +4839,7 @@ namespace aura_android
    void interaction_impl::edit_on_kill_focus(::user::interaction* pinteraction)
    {
 
-      auto puserinteraction = pinteraction->get_parent_frame();
+      auto puserinteraction = pinteraction->parent_frame();
 
       ::rectangle_i32 rWindowFrame;
 

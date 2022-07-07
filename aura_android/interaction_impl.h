@@ -107,7 +107,7 @@ namespace aura_android
       void hide_software_keyboard(::user::element * pelement) override;
 
       using ::user::interaction_impl::get_child_by_id;
-      void get_child_by_id(atom atom,oswindow* poswindow_) const;
+      void get_child_by_id(atom atom,::oswindow* poswindow_) const;
 
       //virtual bool IsWindow() const;
 

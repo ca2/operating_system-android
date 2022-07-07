@@ -7,7 +7,7 @@ namespace windowing_android
 {
 
 
-   void message_box::do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox)
+   void message_box::do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails)
    {
 
       auto pdriver = ::operating_system_driver::get();

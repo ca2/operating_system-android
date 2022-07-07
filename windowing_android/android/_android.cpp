@@ -89,7 +89,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    puserinteraction->order_top();
 
-   puserinteraction->set_dim(0, 0, cx, cy);
+   puserinteraction->place({ 0, 0, cx, cy });
 
    puserinteraction->display(::e_display_normal);
 

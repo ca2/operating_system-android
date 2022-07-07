@@ -18,7 +18,7 @@ namespace windowing_android
 
       m_itask = -1;
 
-      m_pWindowing2 = this;
+      m_pWindowing4 = this;
 
       m_bFirstWindowMap = false;
 

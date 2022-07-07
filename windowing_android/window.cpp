@@ -28,7 +28,7 @@ namespace windowing_android
    window::window()
    {
 
-      m_pWindow2 = this;
+      m_pWindow4 = this;
 
       //m_iXic = 0;
 
@@ -103,15 +103,15 @@ namespace windowing_android
 
       //display_lock displaylock(pdisplayx11->Display());
 
-      int x = m_puserinteractionimpl->m_puserinteraction->layout().sketch().origin().x;
+      int x = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().x;
 
-      int y = m_puserinteractionimpl->m_puserinteraction->layout().sketch().origin().y;
+      int y = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().y;
 
-      int cx = m_puserinteractionimpl->m_puserinteraction->layout().sketch().width();
+      int cx = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().width();
 
-      int cy = m_puserinteractionimpl->m_puserinteraction->layout().sketch().height();
+      int cy = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().height();
 
-      bool bVisible = m_puserinteractionimpl->m_puserinteraction->layout().sketch().is_screen_visible();
+      bool bVisible = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().is_screen_visible();
 
       //      if(pusersystem)
       //      {
@@ -270,6 +270,8 @@ namespace windowing_android
       m_puserinteractionimpl = pimpl;
 
       pimpl->m_pwindow = this;
+
+      pimpl->m_puserinteraction->m_pwindow = this;
 
       set_oswindow(this);
 
@@ -484,16 +486,14 @@ namespace windowing_android
                // (Hinting for monitor placement, if no stored information
                // available).
 
-               if (pimpl->m_puserinteraction->layout().sketch().display() == e_display_undefined)
+               if (pimpl->m_puserinteraction->const_layout().sketch().display() == e_display_undefined)
                {
 
-                  auto pwindowing = windowing();
+                  auto pointCursor = get_cursor_position();
 
-                  auto pointCursor = pwindowing->get_cursor_position();
+                  pimpl->m_puserinteraction->set_position(pointCursor);
 
-                  pimpl->m_puserinteraction->move_to(pointCursor);
-
-                  pimpl->m_puserinteraction->set_size(0, 0);
+                  pimpl->m_puserinteraction->set_size({ 0, 0 });
 
                }
 

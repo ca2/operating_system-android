@@ -20,8 +20,8 @@ namespace windowing_android
       e_message_box           m_emessagebox;
 
 
-      
-      void do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox) override;
+      void do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails) override;
+
 
       ::string get_message_box_message() override;
       ::string get_message_box_title() override;
