@@ -2635,7 +2635,7 @@ namespace aura_android
 //
 //            /*XMapWindow(m_oswindow->display(), m_oswindow->window());*/
 //
-//            ::show_window(get_handle(), e_display_normal);
+//            ::show_window(get_handle(), e_display_restored);
 //
 //         }
 //
@@ -2912,7 +2912,7 @@ namespace aura_android
    //   if (m_puserinteraction != nullptr)
    //   {
 
-   //      m_puserinteraction->m_edisplay = ::e_display_normal;
+   //      m_puserinteraction->m_edisplay = ::e_display_restored;
 
    //   }
 

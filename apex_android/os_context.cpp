@@ -576,7 +576,7 @@ namespace apex_android
                      {
                         string strCommand(str2);
                         strCommand.replace("%1", lpcsz);
-                        WinExec(strCommand,e_display_normal);
+                        WinExec(strCommand,e_display_restored);
                      }
                   }
                   else
@@ -590,7 +590,7 @@ namespace apex_android
                            {
                               string strCommand(str2);
                               strCommand.replace("%1", lpcsz);
-                              WinExec(strCommand,e_display_normal);
+                              WinExec(strCommand,e_display_restored);
                            }
                         }
                      }

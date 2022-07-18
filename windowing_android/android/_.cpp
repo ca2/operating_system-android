@@ -40,7 +40,7 @@ void android_aura_main()
 
    //puserinteraction->place(rectangle);
 
-   //puserinteraction->display(e_display_normal);
+   //puserinteraction->display(e_display_restored);
 
    //puserinteraction->set_need_layout();
 
