@@ -86,6 +86,15 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_EndBatchEdit(JNIEnv * en
 
                pelementFocus->InputConnectionEndBatchEdit();
 
+               __pointer(::user::plain_edit) pedit = pelementFocus;
+
+               if (pedit && pedit->m_iInputConnectionBatch == 0)
+               {
+
+                  input_connection_synchronize_selection(pelementFocus);
+
+               }
+
             }
             catch (...)
             {
@@ -93,6 +102,8 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_EndBatchEdit(JNIEnv * en
             }
 
          }
+
+         
 
       }
       else
@@ -165,7 +176,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_CommitText(JNIEnv * env,
 
             }
 
-            input_connection_synchronize_selection(pelementFocus);
+            //input_connection_synchronize_selection(pelementFocus);
 
          }
          else
@@ -294,7 +305,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_SetComposingText(JNIEnv 
 
             }
 
-            input_connection_synchronize_selection(pelementFocus);
+            //input_connection_synchronize_selection(pelementFocus);
 
          }
          else
