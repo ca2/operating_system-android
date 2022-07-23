@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "app-core/audio/audio/_audio.h"
+#include "app-core/audio/_library.h"
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
 
