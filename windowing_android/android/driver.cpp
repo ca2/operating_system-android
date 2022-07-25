@@ -35,26 +35,20 @@ operating_system_driver::~operating_system_driver()
 }
 
 
-void operating_system_driver::set_input_method_manager_selection(strsize iStart, strsize iEnd)
+void operating_system_driver::set_input_method_manager_selection(strsize iSelBeg, strsize iSelEnd, strsize iCandidateBeg, strsize iCandidateEnd)
 {
 
-   m_iInputMethodManagerSelectionStart = iStart;
+   m_iInputMethodManagerSelectionStart = iSelBeg;
 
-   m_iInputMethodManagerSelectionEnd = iEnd;
+   m_iInputMethodManagerSelectionEnd = iSelEnd;
+
+   m_iInputMethodManagerCandidateStart = iCandidateBeg;
+
+   m_iInputMethodManagerCandidateEnd = iCandidateEnd;
 
    m_bInputMethodManagerUpdateSelection = true;
 
-}
-
-
-void operating_system_driver::set_input_method_manager_candidate_position(strsize iStart, strsize iEnd)
-{
-
-   m_iInputMethodManagerCandidateStart = iStart;
-
-   m_iInputMethodManagerCandidateEnd = iEnd;
-
-   m_bInputMethodManagerUpdateSelection = true;
+   __android_log_print(ANDROID_LOG_INFO, "TextInput", "set_input_method_manager_selection:Sel(%d, %d),Composing:(%d, %d)", iSelBeg, iSelEnd, iCandidateBeg, iCandidateEnd);
 
 }
 

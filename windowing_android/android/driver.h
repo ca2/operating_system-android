@@ -82,8 +82,8 @@ public:
    ~operating_system_driver() override;
 
    // windowing::text_editor_interface
-   void set_input_method_manager_selection(strsize iStart, strsize iEnd) override;
-   void set_input_method_manager_candidate_position(strsize iStart, strsize iEnd) override;
+   void set_input_method_manager_selection(strsize iSelBeg, strsize iSelEnd, strsize iCandidateBeg, strsize iCandidateEnd) override;
+   //void set_input_method_manager_candidate_position(strsize iStart, strsize iEnd) override;
    void synchronize_input_method_manager_with_selection_end() override;
    void set_editor_selection(strsize iStart, strsize iEnd) override;
    void set_editor_text(const ::string& strText) override;
