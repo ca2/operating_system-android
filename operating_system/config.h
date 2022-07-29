@@ -1,10 +1,23 @@
 #pragma once
 
+
+#define _THREAD_SAFE
+
+
+#define PARALLELIZATION_PTHREAD
+
+
+#define BROAD_PRECOMPILED_HEADER 1
+
+
+#define MUTEX_COND_TIMED
+
+
+
 #include "inc.h"
 
 #include "config_memdleak.h"
 
-#define MUTEX_COND_TIMED
 
 #include <features.h>
 
