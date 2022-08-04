@@ -16,7 +16,7 @@ typedef int32_t  Fixed;
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_renderImpact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+JNIEXPORT void JNICALL Java_com_ca2_impact_renderImpact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
 {
 
 
@@ -100,7 +100,7 @@ JNIEXPORT void JNICALL Java_com_ca2_view_renderImpact(JNIEnv * env, jobject  obj
 
       fid = env->GetFieldID(cls,"m_bHideKeyboard","Z");
 
-      LOGI("%s\n", "Java_com_ca2_view_renderImpact g_nodedataexchange.m_bHideKeyboard : true");
+      LOGI("%s\n", "Java_com_ca2_impact_renderImpact g_nodedataexchange.m_bHideKeyboard : true");
 
       env->SetBooleanField(result,fid,g_nodedataexchange.m_bHideKeyboard);
 
@@ -315,63 +315,63 @@ JNIEXPORT void JNICALL Java_com_ca2_view_renderImpact(JNIEnv * env, jobject  obj
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_com_ca2_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
-   LOGI("%s\n", "Java_com_ca2_view_keyDown");
+   LOGI("%s\n", "Java_com_ca2_impact_keyDown");
 
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_com_ca2_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
-   LOGI("%s\n", "Java_com_ca2_view_keyUp");
+   LOGI("%s\n", "Java_com_ca2_impact_keyUp");
 
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_com_ca2_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
-   //LOGI("%s\n", "Java_com_ca2_view_keyPreImeDown");
+   //LOGI("%s\n", "Java_com_ca2_impact_keyPreImeDown");
 
    key_down(keyCode, iUni);
 
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_com_ca2_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
-   LOGI("%s\n", "Java_com_ca2_view_keyPreImeUp");
+   LOGI("%s\n", "Java_com_ca2_impact_keyPreImeUp");
 
    key_up(keyCode, iUni);
 
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_com_ca2_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
-   LOGI("%s\n", "Java_com_view_onReceivedShowKeyboard");
+   LOGI("%s\n", "Java_com_impact_onReceivedShowKeyboard");
 
 }
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_onReceivedHideKeyboard(JNIEnv * env,jobject  obj)
+JNIEXPORT void JNICALL Java_com_ca2_impact_onReceivedHideKeyboard(JNIEnv * env,jobject  obj)
 {
 
-   LOGI("%s\n","Java_com_view_onReceivedHideKeyboard");
+   LOGI("%s\n","Java_com_impact_onReceivedHideKeyboard");
 
 }
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ca2_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
-   LOGI("%s\n","Java_com_ca2_view_lButtonDown");
+   LOGI("%s\n","Java_com_ca2_impact_lButtonDown");
 
    l_button_down(x, y);
 
@@ -379,7 +379,7 @@ JNIEXPORT void JNICALL Java_com_ca2_view_lButtonDown(JNIEnv * env, jobject  obj,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ca2_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    mouse_move(x, y);
@@ -388,10 +388,10 @@ JNIEXPORT void JNICALL Java_com_ca2_view_mouseMove(JNIEnv * env, jobject  obj, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_com_ca2_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
-   LOGI("%s\n","Java_com_ca2_view_lButtonUp");
+   LOGI("%s\n","Java_com_ca2_impact_lButtonUp");
 
    l_button_up(x, y);
 
@@ -399,10 +399,10 @@ JNIEXPORT void JNICALL Java_com_ca2_view_lButtonUp(JNIEnv * env, jobject  obj, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ca2_view_onText(JNIEnv * env,jobject  obj,jstring bytes)
+JNIEXPORT void JNICALL Java_com_ca2_impact_onText(JNIEnv * env,jobject  obj,jstring bytes)
 {
 
-   LOGI("%s\n","Java_com_ca2_view_onText");
+   LOGI("%s\n","Java_com_ca2_impact_onText");
 
    if(bytes == NULL)
       return;
