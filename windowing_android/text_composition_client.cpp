@@ -702,7 +702,7 @@ namespace windowing_android
 
 
 
-         //int y = (iLine)* m_iLineHeight - get_impactport_offset().y;
+         //int y = (iLine)* m_iLineHeight - get_context_offset().y;
          //int y2 = y + m_iLineHeight;
          // ::point_i32 point(x, y);
          //::rectangle_i32 r;

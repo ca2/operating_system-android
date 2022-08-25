@@ -566,7 +566,7 @@ namespace aura_android
 
 
 
-      //void set_impactport_org(::draw2d::graphics_pointer & pgraphics) override;
+      //void set_context_org(::draw2d::graphics_pointer & pgraphics) override;
 
       //string calc_icon_window_class(u32 dwDefaultStyle, const ::string & pszMatter);
       //string calc_window_class();
