@@ -1,8 +1,8 @@
 // From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardS�rensen!!
 #include "framework.h"
-//#include "_android.h"
-//#include "acme/id.h"
-////#include "apex/xml/_.h"
+#include "dir_context.h"
+#include "dir_system.h"
+#include "file_system.h"
 
 
 namespace apex_android
@@ -1298,7 +1298,7 @@ namespace apex_android
    //}
 
 
-   //::file::path dir_context::default_userfolder(::application *  papp, const string & lpcszPrefix, const string & lpcszLogin)
+   //::file::path dir_context::default_userfolder(::apex::application *  papp, const string & lpcszPrefix, const string & lpcszLogin)
    //{
 
    //   return userfolder();

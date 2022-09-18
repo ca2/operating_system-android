@@ -2,6 +2,9 @@
 #pragma once
 
 
+#include "aura_android/node.h"
+
+
 namespace windowing_android
 {
 

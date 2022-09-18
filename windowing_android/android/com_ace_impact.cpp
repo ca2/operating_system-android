@@ -1,9 +1,18 @@
 #include "framework.h"
-#include "_android.h"
+#include "aura/user/user/user.h"
+#include "aura/platform/session.h"
+#include "aura/user/user/interaction_impl.h"
+#include "aura/windowing/window.h"
+#include "aura/windowing/windowing.h"
+#include "_internal.h"
+#include <android/log.h>
 #include <android/bitmap.h>
 
 
 #define LOG_TAG "ace.impact(native)"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+#define LOGW(...) __android_log_print(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 
 void set_jni_context(JNIEnv* penv);

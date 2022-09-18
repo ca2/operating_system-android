@@ -2,12 +2,16 @@
 // recreated by Camilo 2021-01-28 22:20 <3TBS, Mummi and bilbo!!
 // Adapted by Camilo for android 2022-01-05 04:37 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
-#include "aura/user/user/_user.h"
-#include "acme/operating_system/_user.h"
+#include "window.h"
+#include "windowing.h"
+#include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/interaction_prodevian.h"
 #include "aura/platform/message_queue.h"
 #include "aura/graphics/image/context_image.h"
 #include "aura/graphics/image/drawing.h"
+#include "aura/platform/context.h"
+#include "aura/platform/application.h"
+#include "android/_internal.h"
 
 
 //void on_sn_launch_context(void * pSnContext, Window window);

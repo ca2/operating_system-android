@@ -1,8 +1,8 @@
 #include "framework.h"
 #include "_.h"
 #include "buffer.h"
-#include "android/_android.h"
-//#include "aura/os/android/window_android.h"
+#include "android/_internal.h"
+#include "aura/graphics/image/image.h"
 //#include <native_window.h>
 
 

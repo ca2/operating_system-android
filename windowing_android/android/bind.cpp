@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "acme/id.h"
-#include "_android.h"
+#include "_internal.h"
 
 
 operating_system_bind * g_pandroiddirect;

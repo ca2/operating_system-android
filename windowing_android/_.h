@@ -20,6 +20,12 @@ namespace windowing_android
 
    class windowing;
 
+   class display;
+
+   class monitor;
+
+   class text_composition_client;
+
 
 } // namespace aura
 

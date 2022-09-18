@@ -3,6 +3,12 @@
 // Adapted by Camilo for android 2022-01-05 04:36 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
 #include "windowing.h"
+#include "window.h"
+#include "display.h"
+#include "aura/user/user/interaction_impl.h"
+#include "aura/windowing/sandbox/host_interaction.h"
+#include "android/_internal.h"
+#include "aura/windowing/cursor_manager.h"
 
 
 namespace windowing_android

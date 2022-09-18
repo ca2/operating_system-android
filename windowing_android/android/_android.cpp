@@ -1,4 +1,10 @@
 #include "framework.h"
+#include "aura/platform/session.h"
+#include "aura/user/user/interaction_impl.h"
+#include "aura/user/user/user.h"
+#include "aura/windowing/window.h"
+#include "aura/windowing/windowing.h"
+#include "aura/message/user.h"
 
 
 void _android_key(unsigned int message, int keyCode, int iUni);

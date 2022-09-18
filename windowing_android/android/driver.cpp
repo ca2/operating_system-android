@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "acme/id.h"
-#include "_android.h"
+#include "_internal.h"
 #include "_asset_manager.h"
 
 
@@ -123,31 +123,31 @@ void operating_system_driver::set(operating_system_driver* pdriver)
 
 
 
-void operating_system_driver::add_message_box_sequence(::sequence < ::conversation >* psequence)
+void operating_system_driver::queue_message_box_sequencer(::sequencer< ::conversation >* psequencer)
 {
 
-   synchronous_lock synchronouslock(&m_mutexMessageBoxSequence);
+   synchronous_lock synchronouslock(&m_mutexMessageBoxSequencer);
 
-   m_sequenceaMessageBox.add(psequence);
+   m_sequenceraMessageBox.add(psequencer);
 
 }
 
 
-__pointer(::sequence < ::conversation >) operating_system_driver::pick_message_box_sequence()
+__pointer(::sequencer < ::conversation >) operating_system_driver::pick_message_box_sequencer()
 {
 
-   synchronous_lock synchronouslock(&m_mutexMessageBoxSequence);
+   synchronous_lock synchronouslock(&m_mutexMessageBoxSequencer);
 
-   if (m_sequenceaMessageBox.is_empty())
+   if (m_sequenceraMessageBox.is_empty())
    {
 
       return nullptr;
 
    }
 
-   auto psequence = m_sequenceaMessageBox.pop_first();
+   auto psequencer = m_sequenceraMessageBox.pop_first();
 
-   return psequence;
+   return psequencer;
 
 }
 
@@ -225,22 +225,20 @@ void operating_system_driver::exchange()
       //else
       //{
 
-      auto psequence = pick_message_box_sequence();
+      auto psequencer = pick_message_box_sequencer();
 
-      if (::is_set(psequence))
+      if (::is_set(psequencer))
       {
 
-         psequence->increment_reference_count();
+         psequencer->increment_reference_count();
 
-         pdirect->setMessageBoxSequence((::iptr)psequence.m_p);
+         pdirect->setMessageBoxSequence((::iptr)psequencer.m_p);
 
-         auto& sequence = *psequence;
+         pdirect->setMessageBox(psequencer->m_psequence->get_message_box_message());
 
-         pdirect->setMessageBox(sequence->get_message_box_message());
+         pdirect->setMessageBoxCaption(psequencer->m_psequence->get_message_box_title());
 
-         pdirect->setMessageBoxCaption(sequence->get_message_box_title());
-
-         pdirect->setMessageBoxButton(e_message_box_to_button(sequence->get_message_box_flags()));
+         pdirect->setMessageBoxButton(e_message_box_to_button(psequencer->m_psequence->get_message_box_flags()));
 
       }
 

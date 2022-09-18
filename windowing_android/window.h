@@ -4,6 +4,8 @@
 #pragma once
 
 
+#include "aura/windowing/sandbox/window.h"
+
 
 namespace windowing_android
 {

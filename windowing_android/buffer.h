@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "aura/graphics/graphics/_graphics.h"
+#include "aura/graphics/graphics/double_buffer.h"
 
 
 namespace windowing_android

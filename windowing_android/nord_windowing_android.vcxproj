@@ -207,7 +207,7 @@
     <ClInclude Include="android\object.h" />
     <ClInclude Include="android\_asset.h" />
     <ClInclude Include="android\_asset_manager.h" />
-    <ClInclude Include="android\_android.h" />
+    <ClInclude Include="android\_internal.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="text_composition_client.h" />

@@ -2,6 +2,9 @@
 #pragma once
 
 
+#include "acme_posix/acme_directory.h"
+
+
 namespace acme_android
 {
 

@@ -1,5 +1,6 @@
 #include "framework.h"
-
+#include "text_composition_client.h"
+#include "aura/user/user/interaction.h"
 
 
 namespace windowing_android

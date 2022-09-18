@@ -1,5 +1,6 @@
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
+#include "aura/user/user/interaction.h"
 
 
 ::user::interaction* __get_host_interaction();

@@ -1,5 +1,6 @@
 #include "framework.h"
-
+#include "file.h"
+#include "acme_directory.h"
 #include <fcntl.h>
 
 #undef USE_MISC

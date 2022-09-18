@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
 
 
 void android_aura_main()

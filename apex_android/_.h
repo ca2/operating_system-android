@@ -13,21 +13,21 @@
 #endif
 
 
-namespace apex
+namespace apex_android
 {
 
 
-   namespace android
-   {
+   class node;
+
+   class dir_context;
+   class dir_system;
+   class file_context;
+   class file_system;
+
+   class os_context;
 
 
-      class node;
-
-
-   } // namespace android
-
-
-} // namespace apex
+} // namespace apex_android
 
 
 

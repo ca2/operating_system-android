@@ -37,7 +37,7 @@
     <ClInclude Include="android\_asset_manager.h">
       <Filter>Header Files\android</Filter>
     </ClInclude>
-    <ClInclude Include="android\_android.h">
+    <ClInclude Include="android\_internal.h">
       <Filter>Header Files\android</Filter>
     </ClInclude>
     <ClInclude Include="android\bind.h">

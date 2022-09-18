@@ -16,21 +16,22 @@ class operating_system_driver :
 public:
 
 
-   string         m_strApplicationIdentifier;
-   string         m_strCommandLineParameters;
-   ::file::path   m_pathCacheDirectory;
-   int            m_iWidth;
-   int            m_iHeight;
-   float          m_fDpiX;
-   float          m_fDpiY;
-   float          m_fDensity;
-   bool           m_bShowKeyboard;
-   bool           m_bHideKeyboard;
-   string_array   m_straOpenUrl;
+   ::element_pointer       m_pelementMainOsThread;
+   string                  m_strApplicationIdentifier;
+   string                  m_strCommandLineParameters;
+   ::file::path            m_pathCacheDirectory;
+   int                     m_iWidth;
+   int                     m_iHeight;
+   float                   m_fDpiX;
+   float                   m_fDpiY;
+   float                   m_fDensity;
+   bool                    m_bShowKeyboard;
+   bool                    m_bHideKeyboard;
+   string_array            m_straOpenUrl;
    
-   string         m_strSetUserWallpaper;
-   string         m_strGetUserWallpaper;
-   bool           m_bGetUserWallpaper;
+   string                  m_strSetUserWallpaper;
+   string                  m_strGetUserWallpaper;
+   bool                    m_bGetUserWallpaper;
 
    //::iptr         m_iptrMessageBoxSequence;
       // int            m_iMessageBoxButton;
@@ -70,8 +71,8 @@ public:
 
    __pointer(asset)     m_passetResourceFolder;
 
-   ::mutex                                         m_mutexMessageBoxSequence;
-   __pointer_array(::sequence < ::conversation >)  m_sequenceaMessageBox;
+   ::mutex                                         m_mutexMessageBoxSequencer;
+   __pointer_array(::sequencer < ::conversation >) m_sequenceraMessageBox;
 
 
    ::mutex                                         m_mutexListFileEnumerate;
@@ -95,8 +96,8 @@ public:
    static void set(operating_system_driver* pdriver);
 
 
-   virtual void add_message_box_sequence(::sequence < ::conversation >* psequence);
-   virtual __pointer(::sequence < ::conversation >) pick_message_box_sequence();
+   virtual void queue_message_box_sequencer(::sequencer < ::conversation >* psequencer);
+   virtual __pointer(::sequencer < ::conversation >) pick_message_box_sequencer();
 
 
    virtual void open_url(const ::string& strOpenUrl);

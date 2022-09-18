@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "interprocess_communication.h"
 
 
 namespace apex_android

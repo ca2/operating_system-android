@@ -2,6 +2,10 @@
 #pragma once
 
 
+#include "aura_posix/node.h"
+#include "apex_android/node.h"
+
+
 namespace aura_android
 {
 

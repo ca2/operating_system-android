@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "aura/user/user/text_composition_client.h"
+
+
 namespace windowing_android
 {
 

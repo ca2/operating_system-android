@@ -1,16 +1,16 @@
 // Created by camilo on 2022-05-08 18:27 <3ThomasBorregaardSørensen!!(All around what Thomas Likes 25!!)
 #include "framework.h"
 #include "message_box.h"
+#include "node.h"
+#include "android/_internal.h"
 
 
 namespace windowing_android
 {
 
 
-   void message_box::do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails)
+   void message_box::initialize_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails)
    {
-
-      auto pdriver = ::operating_system_driver::get();
 
       m_strMessage = strMessage;
 
@@ -18,7 +18,13 @@ namespace windowing_android
 
       m_emessagebox = emessagebox;
 
-      pdriver->add_message_box_sequence(m_psequence);
+   }
+
+
+   void message_box::do_message_box(const ::string & strMessage, const ::string & strTitle, const ::e_message_box & emessagebox, const ::string & strDetails)
+   {
+
+      initialize_message_box(strMessage, strTitle, emessagebox, strDetails);
 
    }
 
@@ -54,6 +60,15 @@ namespace windowing_android
 
    }
 
+
+   void message_box::do_asynchronously()
+   {
+
+      auto pdriver = ::operating_system_driver::get();
+
+      pdriver->queue_message_box_sequencer(m_psequencer);
+
+   }
 
 
 } // namespace windowing_android

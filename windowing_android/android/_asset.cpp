@@ -1,6 +1,6 @@
 // Created by camilo on 2022-05-06 03:50 <3ThomasBorregaardSørensen!!(ThomasLikesNumber5!!)
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
 #include "_asset.h"
 
 

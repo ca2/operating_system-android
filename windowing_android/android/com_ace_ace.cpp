@@ -1,12 +1,12 @@
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
 #include "_asset_manager.h"
 #include "_asset.h"
 #include "acme/user/nano/_nano.h"
 #include "acme/platform/system_setup.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
-typedef int(*PFN_MAIN)(int argc, char* argv[], char* envp[], const char * p1, const char * p2);
+typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
 
 extern ::mutex * g_pmutexOs;
 
@@ -20,17 +20,97 @@ bool g_bAuraStart = false;
 void os_on_finish_launching();
 
 
-int SetMainScreenRect(const RECTANGLE_I32* lpcrect);
+int SetMainScreenRect(const RECTANGLE_I32 * lpcrect);
 
 
 void set_jni_context(JNIEnv * penv);
 
 
-const char* this_argv[] =
+const char * this_argv[] =
 {
    "app",
    nullptr
 };
+
+
+class main_os_thread :
+   virtual public ::element
+{
+public:
+
+
+   pthread_t         m_pthread;
+   PFN_MAIN          m_pfnMain;
+   char ** m_ppszArg;
+   const char * m_pszResourceStart;
+   const char * m_pszResourceEnd;
+   ::e_status        m_estatus;
+
+
+   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const char * pszResourceStart, const char * pszResourceEnd)
+   {
+
+      m_pfnMain = pfnMain;
+      m_ppszArg = ppszArg;
+      m_pszResourceStart = pszResourceStart;
+      m_pszResourceEnd = pszResourceEnd;
+
+   }
+
+
+   void start()
+   {
+
+      pthread_attr_t taskAttr;
+
+      pthread_attr_init(&taskAttr);
+
+      pthread_attr_setdetachstate(&taskAttr, PTHREAD_CREATE_DETACHED); // Set task to detached state. No need for pthread_join
+
+      pthread_create(&m_pthread, &taskAttr, &main_os_thread::s_run, (void *)this);
+
+   }
+
+
+   static void * s_run(void * ptr)
+   {
+
+      auto pmainosthread = (main_os_thread *)ptr;
+
+      pmainosthread->run();
+
+      return (void *)(iptr)_status_exit_code(pmainosthread->m_estatus);
+
+   }
+
+
+   void run() override
+   {
+
+      try
+      {
+
+         m_estatus = ::success;
+
+         m_pfnMain(1, (char **)m_ppszArg, nullptr, m_pszResourceStart, m_pszResourceEnd);
+
+      }
+      catch (const ::exception & exception)
+      {
+
+         auto psequencer = ::get_system()->create_message_box_sequencer(
+            "Failed to load library?",
+            "Failed to Load Library?",
+            e_message_box_ok);
+
+         psequencer->do_asynchronously();
+
+      }
+
+   }
+
+};
+
 
 extern "C"
 JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
@@ -100,24 +180,34 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          string strMain;
 
-         strMain = "main_"+strLibrary;
+         strMain = "main_" + strLibrary;
 
          strLibrary = "lib" + strLibrary + ".so";
 
          auto pLibrary = dlopen(strLibrary, 0);
 
-         PFN_MAIN pfnMain = (PFN_MAIN) dlsym(pLibrary, strMain);
-         const char* p1=nullptr;
-         const char* p2=nullptr;
+         PFN_MAIN pfnMain = (PFN_MAIN)dlsym(pLibrary, strMain);
+
+         const char * pResourceStart = nullptr;
+         const char * pResourceEnd = nullptr;
          //auto pfactory = __new(::factory::factory);
-                  pdriver->m_passetResourceFolder->get_pointers(
-            p1,
-            p2);
+         pdriver->m_passetResourceFolder->get_pointers(
+            pResourceStart,
+            pResourceEnd);
+
+
+         auto pmainosthread = __new(main_os_thread(
+            pfnMain, (char **)this_argv, pResourceStart,
+            pResourceEnd));
+
+
+         pdriver->m_pelementMainOsThread = pmainosthread;
+
 
          //pfnFactory(pfactory);
          //pfnMain(1, (char**)this_argv, nullptr, p1, p2);
 
-         //auto papp = pfactory->create<::app>();
+         //auto papp = pfactory->create<::acme::application>();
 
          //auto papp = ::app_factory::new_app();
 
@@ -139,45 +229,13 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          //papp->m_nCmdShow = nCmdShow;
 
+         pmainosthread->start();
 
          //if (m_psystem->m_pchar_binary__matter_zip_start && m_psystem->m_pchar_binary__matter_zip_end)
 
       //   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 
          //papp->m_bConsole = false;
-
-         try
-         {
-
-            pfnMain(1, (char**)this_argv, nullptr, p1, p2);
-            //int iExitCode = papp->main_loop();
-
-         }
-         catch (const ::exception& exception)
-         {
-
-            //message_box_asynchronous(nullptr, papp, "Failed to load library?", "Failed to Load Library?", e_message_box_ok);
-
-            auto pdriver = ::operating_system_driver::get();
-
-            auto psequence = __new(::sequence < ::conversation >);
-
-            auto pnanomessagebox = __new(nano_message_box);
-
-            psequence->m_p = pnanomessagebox;
-
-            pnanomessagebox->m_psequence = psequence;
-
-            pnanomessagebox->m_strMessage = "Failed to load library?";
-
-            pnanomessagebox->m_strTitle = "Failed to Load Library?";
-
-            pnanomessagebox->m_emessagebox = e_message_box_ok;
-
-            pdriver->add_message_box_sequence(psequence);
-
-         }
-
       }
       else
       {
@@ -216,18 +274,18 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1start(JNIEnv * penv, jobject obj)
    try
    {
 
-   set_jni_context(penv);
+      set_jni_context(penv);
 
-   if (g_bAuraStart)
-   {
+      if (g_bAuraStart)
+      {
 
-      return;
+         return;
 
-   }
+      }
 
-   g_bAuraStart = true;
+      g_bAuraStart = true;
 
-   android_aura_main();
+      android_aura_main();
 
    }
    catch (...)
@@ -245,13 +303,11 @@ extern "C"
 JNIEXPORT void JNICALL Java_com_ace_ace_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
 {
 
-   auto psequence = ::move_transfer((::sequence < ::conversation> *)(::iptr) jlMicromessagebox);
+   auto psequencer = ::move_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
 
-   auto & sequence = *psequence;
+   psequencer->m_psequence->m_payloadResult = (enum_dialog_result)jlResponse;
 
-   sequence->m_atomResult = (enum_dialog_result) jlResponse;
-
-   psequence->on_sequence();
+   psequencer->on_sequence();
 
 }
 

@@ -1,6 +1,6 @@
 // Created by camilo on 2022-05-28 02:55 <3ThomasBorregaardSørensen!! (ThomasLikesNumber5 and will raise ca-square?)
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
 #include "media_library.h"
 
 

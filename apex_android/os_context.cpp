@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "os_context.h"
 
 
 #undef USERNAME_LENGTH // mysql one

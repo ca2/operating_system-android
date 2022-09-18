@@ -3,6 +3,9 @@
 #pragma once
 
 
+#include "aura/windowing/monitor.h"
+
+
 namespace windowing_android
 {
 

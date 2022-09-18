@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "_android.h"
+#include "_internal.h"
 
 
 extern operating_system_driver* g_pandroiddriver;

@@ -1,5 +1,6 @@
 #include "framework.h"
-
+#include "acme_directory.h"
+#include "file.h"
 
 __FACTORY_EXPORT void acme_posix_factory(::factory::factory * pfactory);
 

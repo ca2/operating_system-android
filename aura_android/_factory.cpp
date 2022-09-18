@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "interaction_impl.h"
 
 
 __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory);
