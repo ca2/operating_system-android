@@ -64,9 +64,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bred", "..\..\..\source\app
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "..\..\..\source\app\core\nord_core.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_app_simple_drawing", "..\..\..\source\app-simple\drawing\nord_lib_app_simple_drawing.vcxproj", "{FECCEAED-349F-4FEB-890D-EDBCF451F310}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_drawing", "..\..\..\source\app-complex\drawing\nord_impl_app_complex_drawing.vcxproj", "{8B2D6E23-44DB-41BD-B314-D101F07ECD32}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_app_simple_form", "..\..\..\source\app-simple\form\nord_lib_app_simple_form.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_form", "..\..\..\source\app-complex\form\nord_impl_app_complex_form.vcxproj", "{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_drawing", "..\..\..\source\app-simple\drawing\nord_app_simple_drawing.vcxproj", "{FECCEAED-349F-4FEB-890D-EDBCF451F310}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_form", "..\..\..\source\app-simple\form\nord_app_simple_form.vcxproj", "{85DD443E-1930-4C2D-A917-200E09D871E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -981,6 +985,66 @@ Global
 		{16AB3478-F401-43C0-8BF1-A19F28802711}.stage|x64.Build.0 = Debug|x86
 		{16AB3478-F401-43C0-8BF1-A19F28802711}.stage|x86.ActiveCfg = Debug|x86
 		{16AB3478-F401-43C0-8BF1-A19F28802711}.stage|x86.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|Android.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|Android.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|ARM.Build.0 = Debug|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|ARM64.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|ARM64.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|x64.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|x64.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|x86.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Debug|x86.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|Android.ActiveCfg = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|Android.Build.0 = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|ARM.ActiveCfg = Release|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|ARM.Build.0 = Release|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|ARM64.ActiveCfg = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|ARM64.Build.0 = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|x64.ActiveCfg = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|x64.Build.0 = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|x86.ActiveCfg = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.Release|x86.Build.0 = Release|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|Android.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|Android.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|ARM.ActiveCfg = Debug|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|ARM.Build.0 = Debug|ARM
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|ARM64.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|ARM64.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|x64.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|x64.Build.0 = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|x86.ActiveCfg = Debug|x86
+		{8B2D6E23-44DB-41BD-B314-D101F07ECD32}.stage|x86.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|Android.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|Android.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|ARM.ActiveCfg = Debug|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|ARM.Build.0 = Debug|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|ARM64.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|ARM64.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|x64.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|x64.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|x86.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Debug|x86.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|Android.ActiveCfg = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|Android.Build.0 = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|ARM.ActiveCfg = Release|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|ARM.Build.0 = Release|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|ARM64.ActiveCfg = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|ARM64.Build.0 = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|x64.ActiveCfg = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|x64.Build.0 = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|x86.ActiveCfg = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.Release|x86.Build.0 = Release|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|Android.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|Android.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|ARM.ActiveCfg = Debug|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|ARM.Build.0 = Debug|ARM
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|ARM64.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|ARM64.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|x64.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|x64.Build.0 = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|x86.ActiveCfg = Debug|x86
+		{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}.stage|x86.Build.0 = Debug|x86
 		{FECCEAED-349F-4FEB-890D-EDBCF451F310}.Debug|Android.ActiveCfg = Debug|x86
 		{FECCEAED-349F-4FEB-890D-EDBCF451F310}.Debug|Android.Build.0 = Debug|x86
 		{FECCEAED-349F-4FEB-890D-EDBCF451F310}.Debug|ARM.ActiveCfg = Debug|ARM
