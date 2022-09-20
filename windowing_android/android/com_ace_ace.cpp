@@ -180,9 +180,9 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
          string strMain;
 
-         strMain = "main_" + strLibrary;
+         strMain = "android_main";
 
-         strLibrary = "lib" + strLibrary + ".so";
+         strLibrary = "libimpl_" + strLibrary + ".so";
 
          auto pLibrary = dlopen(strLibrary, 0);
 
