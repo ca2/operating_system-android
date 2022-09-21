@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "out.h"
 
 
 __FACTORY_EXPORT void audio_opensles_factory(::factory::factory* pfactory)

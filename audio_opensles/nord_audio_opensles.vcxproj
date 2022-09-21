@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_.h" />
-    <ClInclude Include="_audio_opensles.h" />
+    <ClInclude Include="aaa_audio_opensles.h" />
     <ClInclude Include="_factory.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="translation.h" />

@@ -1,6 +1,10 @@
 #pragma once
 
 
+#include "engine.h"
+#include "app-core/audio/wave/in.h"
+
+
 namespace multimedia
 {
 

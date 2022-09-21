@@ -2,6 +2,9 @@
 
 
 #include "app-core/audio/_.h"
+#include "apex/operating_system.h"
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_Android.h>
 
 
 #define DEBUG_SND TRACE

@@ -12,7 +12,7 @@
     <ClInclude Include="_.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="_audio_opensles.h">
+    <ClInclude Include="aaa_audio_opensles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="_factory.h">
