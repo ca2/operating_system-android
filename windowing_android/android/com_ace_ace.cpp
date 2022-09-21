@@ -98,6 +98,10 @@ public:
       catch (const ::exception & exception)
       {
 
+         string strMessage = exception.m_strMessage;
+
+         string strDetails = exception.m_strDetails;
+
          auto psequencer = ::get_system()->create_message_box_sequencer(
             "Failed to load library?",
             "Failed to Load Library?",
