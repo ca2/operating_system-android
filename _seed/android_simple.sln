@@ -68,9 +68,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "folder_zip", "..\..\..\sour
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "database_sqlite3", "..\..\..\source\app\database_sqlite3\nord_database_sqlite3.vcxproj", "{4F5ED26D-3B32-4BEC-8DE5-8CEA352438A4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_simple_drawing", "..\..\..\source\app-simple\drawing\nord_impl_app_simple_drawing.vcxproj", "{CD623BB6-6398-4128-9755-3534AAC45895}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_simple_drawing", "..\..\..\source\app-simple\drawing\__implement\nord_impl_app_simple_drawing.vcxproj", "{CD623BB6-6398-4128-9755-3534AAC45895}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_simple_application", "..\..\..\source\app-simple\application\nord_impl_app_simple_application.vcxproj", "{7ABC4481-1476-4759-886C-26611E2E2FC9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_simple_application", "..\..\..\source\app-simple\application\__implement\nord_impl_app_simple_application.vcxproj", "{7ABC4481-1476-4759-886C-26611E2E2FC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

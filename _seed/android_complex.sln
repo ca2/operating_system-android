@@ -64,9 +64,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bred", "..\..\..\source\app
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "..\..\..\source\app\core\nord_core.vcxproj", "{16AB3478-F401-43C0-8BF1-A19F28802711}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_drawing", "..\..\..\source\app-complex\drawing\nord_impl_app_complex_drawing.vcxproj", "{8B2D6E23-44DB-41BD-B314-D101F07ECD32}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_drawing", "..\..\..\source\app-complex\drawing\__implement\nord_impl_app_complex_drawing.vcxproj", "{8B2D6E23-44DB-41BD-B314-D101F07ECD32}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_form", "..\..\..\source\app-complex\form\nord_impl_app_complex_form.vcxproj", "{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_complex_form", "..\..\..\source\app-complex\form\__implement\nord_impl_app_complex_form.vcxproj", "{EFE52F45-483E-44C8-97C2-3AC8337F2ABD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_simple_drawing", "..\..\..\source\app-simple\drawing\nord_app_simple_drawing.vcxproj", "{FECCEAED-349F-4FEB-890D-EDBCF451F310}"
 EndProject

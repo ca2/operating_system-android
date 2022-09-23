@@ -80,23 +80,23 @@ Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_core_hello_mult
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_core_hello_animation", "..\..\seed-android\app-core\hello_animation\android_app_core_hello_animation.androidproj", "{C055D43D-6E92-48D2-9C20-CDE622659A11}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_cidadedecuritiba_alphaclock", "..\..\..\source\app-cidadedecuritiba\alphaclock\nord_impl_app_cidadedecuritiba_alphaclock.vcxproj", "{405705DF-56E7-45BC-907C-921D0499AA76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_cidadedecuritiba_alphaclock", "..\..\..\source\app-cidadedecuritiba\alphaclock\__implement\nord_impl_app_cidadedecuritiba_alphaclock.vcxproj", "{405705DF-56E7-45BC-907C-921D0499AA76}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_hello_animation", "..\..\..\source\app-core\hello_animation\nord_impl_app_core_hello_animation.vcxproj", "{69090453-1F2E-4DCC-AEF9-6DCFA7CF270A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_hello_animation", "..\..\..\source\app-core\hello_animation\__implement\nord_impl_app_core_hello_animation.vcxproj", "{69090453-1F2E-4DCC-AEF9-6DCFA7CF270A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_hello_multiverse", "..\..\..\source\app-core\hello_multiverse\nord_impl_app_core_hello_multiverse.vcxproj", "{72E83722-B3BA-4493-B590-5C04C11B36F3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_hello_multiverse", "..\..\..\source\app-core\hello_multiverse\__implement\nord_impl_app_core_hello_multiverse.vcxproj", "{72E83722-B3BA-4493-B590-5C04C11B36F3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_flag", "..\..\..\source\app-core\flag\nord_app_core_flag.vcxproj", "{E6D642D9-5A69-41C5-8E05-43EDC766E273}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_flag", "..\..\..\source\app-core\flag\nord_impl_app_core_flag.vcxproj", "{19841115-2E02-4BC0-BF89-D11F8409C8DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_flag", "..\..\..\source\app-core\flag\__implement\nord_impl_app_core_flag.vcxproj", "{19841115-2E02-4BC0-BF89-D11F8409C8DF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_projection", "..\..\..\source\app-core\projection\nord_impl_app_core_projection.vcxproj", "{8854EEC4-D514-46AA-99D6-902CBC54533F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_projection", "..\..\..\source\app-core\projection\__implement\nord_impl_app_core_projection.vcxproj", "{8854EEC4-D514-46AA-99D6-902CBC54533F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_projection", "..\..\..\source\app-core\projection\nord_app_core_projection.vcxproj", "{95D88A24-2411-4C60-B6C0-FC116EAEC7ED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "networking_bsd", "..\..\..\source\app\networking_bsd\nord_networking_bsd.vcxproj", "{134A1ADC-6717-4FEF-9AD6-2C26C7C6533B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_clockverse_no_audio", "..\..\..\source\app-core\clockverse\__implement_no_audio\nord_impl_app_core_clockverse_no_audio.vcxproj", "{1AD494DD-70CB-465D-95D7-268247646E48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_clockverse_no_audio", "..\..\..\source\app-core\clockverse\__implement_no_audio\__implement\nord_impl_app_core_clockverse_no_audio.vcxproj", "{1AD494DD-70CB-465D-95D7-268247646E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

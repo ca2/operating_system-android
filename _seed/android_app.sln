@@ -56,9 +56,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_message_box", "..\..\..
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_message_box", "..\..\seed-android\app\message_box\android_app_message_box.androidproj", "{EC4D7BAB-16BD-49FA-B330-A0E376C1CD14}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_app", "..\..\..\source\app\app\nord_impl_app_app.vcxproj", "{8008BE53-A1C5-4E80-B915-CEAE36E62CC3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_app", "..\..\..\source\app\app\__implement\nord_impl_app_app.vcxproj", "{8008BE53-A1C5-4E80-B915-CEAE36E62CC3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_message_box", "..\..\..\source\app\message_box\nord_impl_app_message_box.vcxproj", "{321A8E4B-D16F-4FAD-8383-3564FF6759B1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_message_box", "..\..\..\source\app\message_box\__implement\nord_impl_app_message_box.vcxproj", "{321A8E4B-D16F-4FAD-8383-3564FF6759B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
