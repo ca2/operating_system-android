@@ -96,7 +96,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app_core_projection", "..\.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "networking_bsd", "..\..\..\source\app\networking_bsd\nord_networking_bsd.vcxproj", "{134A1ADC-6717-4FEF-9AD6-2C26C7C6533B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_clockverse_no_audio", "..\..\..\source\app-core\clockverse\__implement_no_audio\__implement\nord_impl_app_core_clockverse_no_audio.vcxproj", "{1AD494DD-70CB-465D-95D7-268247646E48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "impl_app_core_clockverse_no_audio", "..\..\..\source\app-core\clockverse\__implement_no_audio\nord_impl_app_core_clockverse_no_audio.vcxproj", "{1AD494DD-70CB-465D-95D7-268247646E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
