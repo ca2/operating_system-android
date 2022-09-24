@@ -132,14 +132,14 @@
 #define EXPORT
 #endif
 
-#define BSD_STYLE_SOCKETS
+//#define BSD_STYLE_SOCKETS
 #if !defined VARIADIC_TEMPLATE
 #define VARIADIC_TEMPLATE
 #endif
 
 
 //#define HAVE_MYSQL
-#define HAVE_OPENSSL
+//#define HAVE_OPENSSL
 
 #ifdef HAVE_UNISTD_H
 #undef HAVE_UNISTD_H
