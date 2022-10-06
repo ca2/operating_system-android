@@ -1,6 +1,6 @@
 // Created by camilo 2021-01
 // Recreated by camilo 2021-02-10 <3TBS_!!
-// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSørensen!!
+// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSï¿½rensen!!
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
@@ -64,7 +64,7 @@ namespace write_text_android
 
             }
 
-            auto pdocument = __create_new < ::xml::document >();
+            auto pxmldocument = __create_new < ::xml::document >();
 
             __pointer(true_type_font_utilities) putilities;
 
