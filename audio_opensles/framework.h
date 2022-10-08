@@ -11,7 +11,7 @@
 //#include "_audio_opensles.h"
 
 
-#include "aura/_defer.h"
+//#include "aura/_defer.h"
 
 
 #endif // APP_CORE_AUDIO_H
