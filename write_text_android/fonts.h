@@ -1,5 +1,5 @@
 // Created by camilo 2021-02-10 <3TBS_!!
-// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSørensen!!
+// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
@@ -16,7 +16,7 @@ namespace write_text_android
    public:
 
 
-    /*  __pointer(::write_text::font_enumeration)   m_pfontenumeration;*/
+    /*  ::pointer<::write_text::font_enumeration>  m_pfontenumeration;*/
 
       //::write_text::font_pointer                m_pfontCaption;
       //::write_text::font_pointer                m_pfontMenu;
@@ -25,11 +25,11 @@ namespace write_text_android
       //::write_text::font_pointer                m_pfontListCtrl;
       //::write_text::font_pointer                m_pfontMeshCtrl;
       //::write_text::font_pointer                m_pfontGridCtrl;
-      //__pointer(::write_text::font)                 m_lpSongLabelFont;
-      //__pointer(::write_text::font)                 m_lpSongListFont;
-      //__pointer(::write_text::font)                 m_pfontLyric;
-      //__pointer(::write_text::font)                 m_pfontLyricCompact;
-      //__pointer(::write_text::font)                 m_pxffontMidiTrackName;
+      //::pointer<::write_text::font>                m_lpSongLabelFont;
+      //::pointer<::write_text::font>                m_lpSongListFont;
+      //::pointer<::write_text::font>                m_pfontLyric;
+      //::pointer<::write_text::font>                m_pfontLyricCompact;
+      //::pointer<::write_text::font>                m_pxffontMidiTrackName;
       //draw2d_font_spa              m_pTitleFonts;
       //draw2d_font_spa              m_pSubTitleFonts;
       //draw2d_font_spa              m_pH3TitleFonts;

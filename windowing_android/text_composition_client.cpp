@@ -69,7 +69,7 @@ namespace windowing_android
    //void text_composition_client::_011OnChar(::message::message* pmessage)
    //{
 
-   //   __pointer(::user::message) pusermessage(pmessage);
+   //   ::pointer<::user::message>pusermessage(pmessage);
 
    //   if (pmessage->m_atom == e_message_char)
    //   {
@@ -135,7 +135,7 @@ namespace windowing_android
 //
 //#ifdef WINDOWS_DESKTOP
 //
-//      __pointer(::user::message) pusermessage(pmessage);
+//      ::pointer<::user::message>pusermessage(pmessage);
 //
 //      if (pmessage->m_atom == WM_INPUTLANGCHANGE)
 //      {

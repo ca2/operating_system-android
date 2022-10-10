@@ -24,10 +24,10 @@ namespace windowing_android
 //      void* _m_pX11Display;
 //#endif
 //
-//      __pointer_array(monitor)      m_monitora;
+//      pointer_array < monitor >      m_monitora;
 //
 //
-//      __pointer(windowing)          m_pwindowing;
+//      ::pointer<windowing>         m_pwindowing;
 //      bool                          m_bSystemSynchronizedScreen;
 //
 //      index                         m_iMainMonitor;
@@ -146,7 +146,7 @@ namespace windowing_android
    };
 
 
-   //using display_map = iptr_map < __pointer(display) >;
+   //using display_map = iptr_map < ::pointer<display >>
 
 
 } // namespace windowing

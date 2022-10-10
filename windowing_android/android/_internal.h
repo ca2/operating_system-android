@@ -74,9 +74,9 @@ extern const char* g_pszCacheDir;
 
 class asset_manager;
 
-//extern __pointer(operating_system_bind) g_pandroidcontext;
+//extern ::pointer<operating_system_bind>g_pandroidcontext;
 
-//extern __pointer(operating_system_driver) g_pandroiddriver;
+//extern ::pointer<operating_system_driver>g_pandroiddriver;
 
 CLASS_DECL_APEX string get_string(jstring jstring);
 

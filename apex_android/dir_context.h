@@ -1,4 +1,4 @@
-// From apex by camilo on 2022-04-30 04:25 <3ThomasBorregaardSørensen!!
+// From apex by camilo on 2022-04-30 04:25 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
@@ -12,8 +12,8 @@ namespace apex_android
    public:
 
       
-      __reference(dir_system)       m_pdirsystem;
-      __reference(file_system)      m_pfilesystem;
+      ::pointer<dir_system>      m_pdirsystem;
+      ::pointer<file_system>     m_pfilesystem;
 
 
       dir_context();

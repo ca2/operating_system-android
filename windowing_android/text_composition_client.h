@@ -16,7 +16,7 @@ namespace windowing_android
 
       bool                             m_bTextCompositionActive2; // replaced by m_bTextCompositionActive in base class.
       bool                             m_bImeCancelling;
-      __pointer(::user::interaction)   m_puserinteraction;
+      ::pointer<::user::interaction>  m_puserinteraction;
 
 
       text_composition_client();

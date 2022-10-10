@@ -757,7 +757,7 @@ namespace multimedia
       void out::OnReady(::message::message * pmessage)
       {
 
-         //__pointer(::message::user) pusermessage(pmessage);
+         //::pointer<::message::user>pusermessage(pmessage);
 
          int iBuffer = pmessage->m_wparam;
 
@@ -769,7 +769,7 @@ namespace multimedia
       void out::OnFree(::message::message * pmessage)
       {
 
-         //__pointer(::user::message) pusermessage(pobj);
+         //::pointer<::user::message>pusermessage(pobj);
 
          int iBuffer = pmessage->m_wparam;
 

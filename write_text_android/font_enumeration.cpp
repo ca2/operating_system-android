@@ -51,7 +51,7 @@ namespace write_text_android
 
       auto pwritetext = m_psystem->m_paurasystem->m_pdraw2d->m_pwritetext;
 
-            __pointer(::write_text::font_enumeration_item) pitem;
+            ::pointer<::write_text::font_enumeration_item>pitem;
 
             double dAndroid = 4.4;
 
@@ -66,7 +66,7 @@ namespace write_text_android
 
             auto pxmldocument = __create_new < ::xml::document >();
 
-            __pointer(true_type_font_utilities) putilities;
+            ::pointer<true_type_font_utilities>putilities;
 
             //::e_status estatus = 
             __construct_new(putilities);

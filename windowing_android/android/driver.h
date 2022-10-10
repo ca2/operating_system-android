@@ -69,10 +69,10 @@ public:
 
    asset_manager *      m_passetmanager;
 
-   __pointer(asset)     m_passetResourceFolder;
+   ::pointer<asset>    m_passetResourceFolder;
 
    ::mutex                                         m_mutexMessageBoxSequencer;
-   __pointer_array(::sequencer < ::conversation >) m_sequenceraMessageBox;
+   ::pointer_array < ::sequencer < ::conversation > > m_sequenceraMessageBox;
 
 
    ::mutex                                         m_mutexListFileEnumerate;
@@ -97,7 +97,7 @@ public:
 
 
    virtual void queue_message_box_sequencer(::sequencer < ::conversation >* psequencer);
-   virtual __pointer(::sequencer < ::conversation >) pick_message_box_sequencer();
+   virtual pointer< ::sequencer < ::conversation > > pick_message_box_sequencer();
 
 
    virtual void open_url(const ::string& strOpenUrl);

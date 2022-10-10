@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardSørensen!!
+// Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardSï¿½rensen!!
 #include "framework.h"
 #include "_internal.h"
 #include <android/asset_manager_jni.h>
@@ -33,7 +33,7 @@ asset_manager::~asset_manager()
 #define AASSET_MANAGER_ACCESS_BUFFER 3
 
 
-__pointer(asset) asset_manager::get_asset(const char* path)
+::pointer<asset>asset_manager::get_asset(const char* path)
 {
 
    auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);

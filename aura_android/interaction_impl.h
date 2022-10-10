@@ -88,10 +88,10 @@ namespace aura_android
       //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, u32 dwStyle, const ::rectangle_i32 & rectangle, ::user::primitive * pParentWnd, atom atom, ::create * pcreate = nullptr) override;
 
       // for top level windows and/or special features
-      //virtual bool create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::primitive * puiParent = nullptr, ::atom atom = ::atom()) override;
+      //virtual bool create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::primitive * puiParent = nullptr, ::atom atom = ::atom()) override;
 
       // for top level windows and/or special features
-      //virtual bool _native_create_window_ex(__pointer(::user::system) pusersystem) override;
+      //virtual bool _native_create_window_ex(::pointer<::user::system>pusersystem) override;
 
       //virtual bool DestroyWindow() override;
 

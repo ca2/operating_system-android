@@ -20,20 +20,20 @@ namespace windowing_android
       bool                                            m_bRootSelectInput : 1;
       bool                                            m_bFirstWindowMap : 1;
 
-      __pointer(::windowing_android::display)         m_pdisplay;
+      ::pointer<::windowing_android::display>        m_pdisplay;
 
       //itask_t                                         m_itask;
 
 //#ifdef WITH_XI
 //
 //      int                                             m_xi_opcode = -1;
-//      __pointer(object_array)                         m_pobjectaExtendedEventListener;
+//      ::pointer<object_array>                        m_pobjectaExtendedEventListener;
 //
 //#endif
 
       //::procedure_list                                m_procedurelist;
 
-      //__pointer(::windowing::window)                  m_pwindowApplicationHost;
+      //::pointer<::windowing::window>                 m_pwindowApplicationHost;
 
 
       windowing();
@@ -81,7 +81,7 @@ namespace windowing_android
       //virtual void x11_main();
 
       //virtual HCURSOR load_default_cursor(e_cursor ecursor) override;
-      virtual __pointer(::windowing::cursor) load_default_cursor(enum_cursor ecursor) override;
+      virtual ::pointer<::windowing::cursor>load_default_cursor(enum_cursor ecursor) override;
 
       //virtual int_bool window_set_mouse_cursor(window * pwindow, HCURSOR hcursor) override;
 
@@ -150,7 +150,7 @@ namespace windowing_android
       using ::windowing::windowing::get_cursor;
 
 
-      __pointer(::windowing::cursor) get_cursor(enum_cursor ecursor) override;
+      ::pointer<::windowing::cursor>get_cursor(enum_cursor ecursor) override;
 
 
    };

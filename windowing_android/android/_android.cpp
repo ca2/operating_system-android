@@ -41,7 +41,7 @@ void _android_key(unsigned int message, int keyCode, int iUni)
    if (psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
       return;
 
-   __pointer(::message::key) pkey = __new(::message::key());
+   ::pointer<::message::key>pkey = __new(::message::key());
 
    pkey->m_atom = (enum_message)message;
 
@@ -84,7 +84,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
    if (psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
       return;
 
-   __pointer(::user::interaction) puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   ::pointer<::user::interaction>puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -309,7 +309,7 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
 //      if (get_session() == nullptr || ::is_null(get_session()->m_puserinteractionHost))
 //         return;
 //
-//      __pointer(::message::key) pkey = __new(::message::key());
+//      ::pointer<::message::key>pkey = __new(::message::key());
 //
 //      pkey->m_atom = e_message_key_down;
 //
@@ -334,7 +334,7 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
 //
 //      }
 //
-//      __pointer(::user::interaction) puserinteraction = psystem->get_session()->m_puserinteractionHost);
+//      ::pointer<::user::interaction>puserinteraction = psystem->get_session()->m_puserinteractionHost);
 //
 //      if (!puserinteraction)
 //      {

@@ -91,7 +91,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_EndBatchEdit(JNIEnv * en
 
             __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "EndBatchEdit-(%d-%d)", bSuper, bReturn);
 
-            //__pointer(::user::plain_edit) pedit = pelementFocus;
+            //::pointer<::user::plain_edit>pedit = pelementFocus;
 
             //if (pedit && pedit->m_iInputConnectionBatch == 0)
             //{

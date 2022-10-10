@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-08 18:27 <3ThomasBorregaardSørensen!!(All around what Thomas Likes 25!!)
+// Created by camilo on 2022-05-08 18:27 <3ThomasBorregaardSï¿½rensen!!(All around what Thomas Likes 25!!)
 #include "framework.h"
 #include "message_box.h"
 #include "node.h"
@@ -53,7 +53,7 @@ namespace windowing_android
    }
 
 
-   __pointer(::conversation) node::create_new_message_box_conversation()
+   ::pointer<::conversation>node::create_new_message_box_conversation()
    {
 
       return __new(class message_box());

@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-06 03:44 <3ThomasBorregaardSørensen!!
+// Created by camilo on 2022-05-06 03:44 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
@@ -18,7 +18,7 @@ public:
    ~asset_manager();
 
 
-   __pointer(asset) get_asset(const char * path);
+   ::pointer<asset>get_asset(const char * path);
 
 
 };

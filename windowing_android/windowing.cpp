@@ -58,7 +58,7 @@ namespace windowing_android
    ::windowing::window * windowing::new_window(::user::interaction_impl * pimpl)
    {
 
-      __pointer(::windowing_android::window) pwindow = pimpl->__create < ::windowing::window >();
+      ::pointer<::windowing_android::window>pwindow = pimpl->__create < ::windowing::window >();
 
       if (!pwindow)
       {
@@ -322,7 +322,7 @@ namespace windowing_android
    //}
 
 
-   __pointer(::windowing::cursor) windowing::load_default_cursor(enum_cursor ecursor)
+   ::pointer<::windowing::cursor>windowing::load_default_cursor(enum_cursor ecursor)
    {
 
       synchronous_lock synchronouslock(mutex());
@@ -607,7 +607,7 @@ namespace windowing_android
    }
 
 
-   __pointer(::windowing::cursor) windowing::get_cursor(enum_cursor ecursor)
+   ::pointer<::windowing::cursor>windowing::get_cursor(enum_cursor ecursor)
    {
 
       return nullptr;

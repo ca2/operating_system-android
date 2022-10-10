@@ -279,7 +279,7 @@ void android_edit_on_kill_focus()
 //}
 //
 //
-//__pointer(operating_system_driver) g_pandroiddriver;
+//::pointer<operating_system_driver>g_pandroiddriver;
 //
 //
 //void set_operating_system_driver(operating_system_driver* poslocal)

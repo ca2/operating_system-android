@@ -7,7 +7,7 @@
 int e_message_box_to_button(const ::e_message_box& emessagebox);
 
 
-__pointer(operating_system_driver) g_pandroiddriver;
+::pointer<operating_system_driver>g_pandroiddriver;
 
 
 operating_system_driver::operating_system_driver()
@@ -133,7 +133,7 @@ void operating_system_driver::queue_message_box_sequencer(::sequencer< ::convers
 }
 
 
-__pointer(::sequencer < ::conversation >) operating_system_driver::pick_message_box_sequencer()
+pointer< ::sequencer < ::conversation > > operating_system_driver::pick_message_box_sequencer()
 {
 
    synchronous_lock synchronouslock(&m_mutexMessageBoxSequencer);

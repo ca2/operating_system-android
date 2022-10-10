@@ -2674,7 +2674,7 @@ namespace windowing_android
    //   if (::is_set(m_puserinteractionimpl))
    //   {
 
-   //      __pointer(::user::interaction) pinteraction = m_puserinteractionimpl->m_puserinteraction;
+   //      ::pointer<::user::interaction>pinteraction = m_puserinteractionimpl->m_puserinteraction;
 
    //      if (pinteraction.is_set())
    //      {

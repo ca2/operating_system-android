@@ -28,7 +28,7 @@ namespace windowing_android
       void on_start_system() override;
 
 
-      __pointer(::conversation) create_new_message_box_conversation() override;
+      ::pointer<::conversation>create_new_message_box_conversation() override;
 
 
       void on_change_application_capability() override;

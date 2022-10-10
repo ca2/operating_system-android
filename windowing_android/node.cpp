@@ -72,7 +72,7 @@ namespace windowing_android
    }
 
 
-   //__pointer(::conversation) node::create_new_message_box_conversation()
+   //::pointer<::conversation>node::create_new_message_box_conversation()
    //{
 
    //   return __new(::windowing_android::message_box());
@@ -80,7 +80,7 @@ namespace windowing_android
    //}
 
 
-   //__pointer(::sequence < ::conversation >) node::get_new_conversation_sequence()
+   //pointer< ::sequence < ::conversation > > node::get_new_conversation_sequence()
    //{
 
    //   auto psequence = __new(windowing_android::message_box);
@@ -90,7 +90,7 @@ namespace windowing_android
    //}
 
 
-   //__pointer(::sequence < ::conversation >) node::message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox)
+   //pointer< ::sequence < ::conversation > > node::message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox)
    //{
 
    //   return nullptr;
