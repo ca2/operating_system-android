@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "interprocess_communication.h"
+#include "interprocess_handler.h"
 
 
 namespace apex_android
@@ -20,21 +20,21 @@ namespace apex_android
    }
 
 
-   interprocess_communication_tx::interprocess_communication_tx()
+   interprocess_caller::interprocess_caller()
    {
 
 
    }
 
 
-   interprocess_communication_tx::~interprocess_communication_tx()
+   interprocess_caller::~interprocess_caller()
    {
 
 
    }
 
 
-   void interprocess_communication_tx::open(const::string & pszChannel, ::launcher * plauncher)
+   void interprocess_caller::open(const::string & pszChannel, ::launcher * plauncher)
    {
 
       //if(m_iQueue >= 0)
@@ -57,7 +57,7 @@ namespace apex_android
    }
 
 
-   void interprocess_communication_tx::close()
+   void interprocess_caller::close()
    {
 
       //if(m_iQueue < 0)
@@ -72,7 +72,7 @@ namespace apex_android
    }
 
 
-   void interprocess_communication_tx::send(const ::string & strMessage, const duration & durationTimeout)
+   void interprocess_caller::send(const ::string & strMessage, const duration & durationTimeout)
    {
 
       //data_struct data;
@@ -100,7 +100,7 @@ namespace apex_android
    }
 
 
-   void interprocess_communication_tx::send(i32 message,void * pdata,i32 len, const duration & durationTimeout)
+   void interprocess_caller::send(i32 message,void * pdata,i32 len, const duration & durationTimeout)
    {
 
       if (message == (i32)0x80000000)
@@ -167,7 +167,7 @@ namespace apex_android
    }
 
 
-   bool interprocess_communication_tx::is_tx_ok()
+   bool interprocess_caller::is_tx_ok()
    {
 
       //return m_iQueue != -1;
@@ -177,7 +177,7 @@ namespace apex_android
    }
 
 
-   interprocess_communication_rx::interprocess_communication_rx()
+   interprocess_handler::interprocess_handler()
    {
 
       m_preceiver    = nullptr;
@@ -185,13 +185,13 @@ namespace apex_android
    }
 
 
-   interprocess_communication_rx::~interprocess_communication_rx()
+   interprocess_handler::~interprocess_handler()
    {
 
    }
 
 
-   void interprocess_communication_rx::create(const ::string & strChannel)
+   void interprocess_handler::create(const ::string & strChannel)
    {
       /*
       m_key = ftok(".", 'c');
@@ -210,7 +210,7 @@ namespace apex_android
    }
 
 
-   void interprocess_communication_rx::destroy()
+   void interprocess_handler::destroy()
    {
 
       //i32 iRetry = 23;
@@ -236,7 +236,7 @@ namespace apex_android
    }
 
    
-   //bool interprocess_communication_rx::start_receiving()
+   //bool interprocess_handler::start_receiving()
    //{
 
    //   //m_bRunning = true;
@@ -281,7 +281,7 @@ namespace apex_android
 
 
 
-   //void * interprocess_communication_rx::on_interprocess_receive(rx * prx,const char * pszMessage)
+   //void * interprocess_handler::on_interprocess_receive(rx * prx,const char * pszMessage)
    //{
 
    //   if(m_preceiver != nullptr)
@@ -295,7 +295,7 @@ namespace apex_android
 
    //}
 
-   //void * interprocess_communication_rx::on_interprocess_receive(rx * prx,i32 message,void * pdata,memsize len)
+   //void * interprocess_handler::on_interprocess_receive(rx * prx,i32 message,void * pdata,memsize len)
    //{
 
    //   if(m_preceiver != nullptr)
@@ -312,7 +312,7 @@ namespace apex_android
 
 
 
-   //void * interprocess_communication_rx::on_interprocess_post(rx * prx,i64 a,i64 b)
+   //void * interprocess_handler::on_interprocess_post(rx * prx,i64 a,i64 b)
    //{
 
    //   if(m_preceiver != nullptr)
@@ -328,7 +328,7 @@ namespace apex_android
 
 
 
-   bool interprocess_communication_rx::on_idle()
+   bool interprocess_handler::on_idle()
    {
 
       return false;
@@ -336,7 +336,7 @@ namespace apex_android
    }
 
 
-   bool interprocess_communication_rx::is_rx_ok()
+   bool interprocess_handler::is_rx_ok()
    {
 
       return true;
