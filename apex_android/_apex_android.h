@@ -1,4 +1,4 @@
-// Created by camilo on 2022-04-30 04:28 <3ThomasBorregaardSørensen!!
+// Created by camilo on 2022-04-30 04:28 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
@@ -18,7 +18,7 @@
 //#include "os_context.h"
 //
 //
-//#include "interprocess_communication.h"
+//#include "inteprocess_channel.h"
 //
 //
 //#include "node.h"
