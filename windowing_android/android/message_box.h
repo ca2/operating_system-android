@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-08 18:26 <3ThomasBorregaardS�rensen!!(All around what Thomas Likes 25!!)
+﻿// Created by camilo on 2022-05-08 18:26 <3ThomasBorregaardSørensen!!(All around what Thomas Likes 25!!)
 #pragma once
 
 
@@ -20,7 +20,7 @@ namespace windowing_android
       e_message_box           m_emessagebox;
 
 
-      void initialize_message_box(const ::string & strMessage, const ::string & strTitle, const ::e_message_box & emessagebox, const ::string & strDetails) override;
+      void initialize_conversation(const ::string & strMessage, const ::string & strTitle, const ::e_message_box & emessagebox, const ::string & strDetails) override;
       void do_message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails) override;
 
 
