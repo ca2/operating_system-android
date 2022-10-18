@@ -25,7 +25,13 @@
     <ClCompile Include="node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="interprocess_communication.cpp">
+    <ClCompile Include="interprocess_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interprocess_caller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interprocess_target.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,7 +63,13 @@
     <ClInclude Include="node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="interprocess_communication.h">
+    <ClInclude Include="interprocess_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interprocess_caller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interprocess_target.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "acme/constant/id.h"
 #include "_internal.h"
 #include "_asset_manager.h"
@@ -234,11 +234,11 @@ void operating_system_driver::exchange()
 
          pdirect->setMessageBoxSequence((::iptr)psequencer.m_p);
 
-         pdirect->setMessageBox(psequencer->m_psequence->get_message_box_message());
+         pdirect->setMessageBox(psequencer->m_psequence->get_conversation_message());
 
-         pdirect->setMessageBoxCaption(psequencer->m_psequence->get_message_box_title());
+         pdirect->setMessageBoxCaption(psequencer->m_psequence->get_conversation_title());
 
-         pdirect->setMessageBoxButton(e_message_box_to_button(psequencer->m_psequence->get_message_box_flags()));
+         pdirect->setMessageBoxButton(e_message_box_to_button(psequencer->m_psequence->get_conversation_flags()));
 
       }
 

@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "file.h"
 #include "acme_directory.h"
 #include <fcntl.h>
@@ -205,6 +205,8 @@ namespace acme_android
 
          m_estatus = errno_to_status(iErrNo);
 
+         auto errorcode = __errno(iErrNo);
+
          set_nok();
 
          if (eopen & ::file::e_open_no_exception_on_open)
@@ -243,7 +245,7 @@ namespace acme_android
 
 
             //return __new(::file::exception(::error_os_error_to_exception(dwLastError), dwLastError, m_strFileName, nOpenFlags));
-            throw ::file_open_exception(m_estatus, path);
+            throw ::file::exception(m_estatus, errorcode, path, "::open == -1", m_eopen);
 
             //}
 
@@ -279,8 +281,7 @@ namespace acme_android
             else
             {*/
 
-
-            throw ::file_open_exception(m_estatus, path);
+            throw ::file::exception(m_estatus, errorcode, path, "::open == -1 (2)", m_eopen);
 
             //}
 
@@ -317,14 +318,18 @@ namespace acme_android
       {
          readNow = (size_t) minimum(0x7fffffff, nCount);
          i32 iRead = ::read(m_iFile, &((byte *)lpBuf)[pos], readNow);
+         
          if(iRead < 0)
          {
-            i32 iError = errno;
-            if(iError == EAGAIN)
-            {
+            
+            auto iErrNo = errno;
 
-            }
-            throw ::file::exception(errno, m_path);
+            auto estatus = errno_to_status(iErrNo);
+
+            auto errorcode = __errno(iErrNo);
+
+            throw ::file::exception(estatus, errorcode, m_path, "::read < 0", m_eopen);
+
          }
          else if(iRead == 0)
          {
@@ -368,9 +373,13 @@ namespace acme_android
          if (iWrite < 0)
          {
 
-            set_last_errno_status();
+            auto iErrNo = errno;
 
-            throw ::exception(::file::exception(::get_last_status(),-1, -1, m_strFileName));
+            auto estatus = errno_to_status(iErrNo);
+
+            auto errorcode = __errno(iErrNo);
+
+            throw ::file::exception(estatus, errorcode, m_path, "::write < 0", m_eopen);
 
          }
 
@@ -389,7 +398,13 @@ namespace acme_android
       if (m_iFile == hFileNull)
       {
 
-         throw ::file::exception(error_bad_argument, -1, m_path);
+         auto iErrNo = -1;
+
+         auto estatus = error_bad_argument;
+
+         auto errorcode = __errno(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull", m_eopen);
 
       }
 
@@ -402,10 +417,16 @@ namespace acme_android
 
       filesize posNew = ::lseek64(m_iFile, lLoOffset, (::u32)eseek);
 
-      if (posNew == (filesize)-1)
+      if (posNew < 0)
       {
 
-         throw ::exception(::file::exception(errno_to_status(errno)));
+         auto iErrNo = errno;
+
+         auto estatus = errno_to_status(iErrNo);
+
+         auto errorcode = __errno(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
       }
 
@@ -424,10 +445,16 @@ namespace acme_android
 
       filesize pos = ::lseek64(m_iFile, lLoOffset, SEEK_CUR);
       //    pos |= ((filesize)lHiOffset) << 32;
-      if (pos == (filesize)-1)
+      if (pos < 0)
       {
        
-         throw ::exception(::file::exception(errno_to_status(errno)));
+         auto iErrNo = errno;
+
+         auto estatus = errno_to_status(iErrNo);
+
+         auto errorcode = __errno(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
       }
 
@@ -469,7 +496,13 @@ namespace acme_android
       if (bError)
       {
 
-         throw ::exception(::file::exception(errno_to_status(errno)));
+         auto iErrNo = errno;
+
+         auto estatus = errno_to_status(iErrNo);
+
+         auto errorcode = __errno(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "::close == -1", m_eopen);
 
       }
 
@@ -522,9 +555,13 @@ namespace acme_android
       if (iError == -1)
       {
 
-         int iErrorNumber = errno;
-       
-         throw ::exception(::file::exception(errno_to_status(iErrorNumber)));
+         auto iErrNo = errno;
+
+         auto estatus = errno_to_status(iErrNo);
+
+         auto errorcode = __errno(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "ftruncate == -1", m_eopen);
 
       }
 #endif
@@ -583,17 +620,17 @@ namespace acme_android
       // we permit the descriptor m_iFile to be any value for derived classes
    }
 
+   
    void file::dump(dump_context & dumpcontext) const
    {
+      
       ::file::file::dump(dumpcontext);
 
-      dumpcontext << "with handle " << (::u32)m_iFile;
-      dumpcontext << " and name \"" << m_strFileName << "\"";
-      dumpcontext << "\n";
+      //dumpcontext << "with handle " << (::u32)m_iFile;
+      //dumpcontext << " and name \"" << m_strFileName << "\"";
+      //dumpcontext << "\n";
+
    }
-
-
-
 
 
    //string file::GetFileName() const

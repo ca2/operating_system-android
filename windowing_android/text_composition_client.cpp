@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "text_composition_client.h"
 #include "aura/user/user/interaction.h"
 
@@ -738,7 +738,7 @@ namespace windowing_android
 
          com.dwStyle = CFS_FORCE_POSITION;
 
-         __copy(com.ptCurrentPos, rectangle.top_left());
+         copy(&com.ptCurrentPos, &rectangle.top_left());
 
          com.ptCurrentPos.y -= 100;
 
@@ -748,7 +748,7 @@ namespace windowing_android
 
          com.dwStyle = CFS_RECT;
 
-         __copy(com.rcArea, rect2);
+         copy(&com.rcArea, &rect2);
 
          //ShowCaret(get_handle());
 
@@ -788,7 +788,7 @@ namespace windowing_android
 
          can.dwStyle = CFS_CANDIDATEPOS;
 
-         __copy(can.ptCurrentPos, rectangle.bottom_left());
+         copy(&can.ptCurrentPos, &rectangle.bottom_left());
 
          if (::ImmSetCandidateWindow(imm, &can))
          {

@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "file_context.h"
 #include "dir_system.h"
 #include "file_system.h"
@@ -36,7 +36,7 @@ namespace apex_android
 
       //estatus = 
       
-      __refer(m_pdirsystem, m_psystem->m_papexsystem->m_pdirsystem);
+      m_pdirsystem = m_psystem->m_papexsystem->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -47,7 +47,7 @@ namespace apex_android
 
       //estatus = 
       
-      __refer(m_pfilesystem, m_psystem->m_papexsystem->m_pfilesystem);
+      m_pfilesystem = m_psystem->m_papexsystem->m_pfilesystem;
 
       //if (!estatus)
       //{

@@ -44,5 +44,8 @@
     <ClCompile Include="acme_directory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="node_android.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

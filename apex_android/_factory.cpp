@@ -1,9 +1,11 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "dir_context.h"
 #include "dir_system.h"
 #include "file_context.h"
 #include "file_system.h"
-#include "inteprocess_channel.h"
+#include "interprocess_base.h"
+#include "interprocess_caller.h"
+#include "interprocess_target.h"
 #include "os_context.h"
 #include "apex/operating_system.h"
 #include "apex/platform/launcher.h"
@@ -43,9 +45,9 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::android::ip_enum, ::net::ip_enum >();
 
 
-   pfactory->add_factory_item < ::apex_android::interprocess_communication_base, ::inteprocess_channel::base >();
-   pfactory->add_factory_item < ::apex_android::interprocess_handler, ::inteprocess::handler >();
-   pfactory->add_factory_item < ::apex_android::interprocess_caller, ::inteprocess::caller >();
+   pfactory->add_factory_item < ::apex_android::interprocess_base, ::interprocess::base >();
+   pfactory->add_factory_item < ::apex_android::interprocess_caller, ::interprocess::caller >();
+   pfactory->add_factory_item < ::apex_android::interprocess_target, ::interprocess::target >();
    //create_factory < ::android::inteprocess_channel, ::inteprocess_channel::inteprocess_channel >();
 
 

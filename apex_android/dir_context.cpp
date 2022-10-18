@@ -1,4 +1,4 @@
-// From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardS�rensen!!
+﻿// From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardS�rensen!!
 #include "framework.h"
 #include "dir_context.h"
 #include "dir_system.h"
@@ -37,7 +37,7 @@ namespace apex_android
 
       //estatus = 
       
-      __refer(m_pdirsystem, m_psystem->m_papexsystem->m_pdirsystem);
+      m_pdirsystem = m_psystem->m_papexsystem->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -48,7 +48,7 @@ namespace apex_android
       
       //estatus = 
       
-      __refer(m_pfilesystem, m_psystem->m_papexsystem->m_pfilesystem);
+      m_pfilesystem = m_psystem->m_papexsystem->m_pfilesystem;
 
       //if (!estatus)
       //{

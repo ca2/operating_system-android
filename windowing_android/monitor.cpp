@@ -1,4 +1,4 @@
-// created from windowing::monitor by camilo 2022-05-06 18:54 <3ThomasBorregaardSoerensen!!
+﻿// created from windowing::monitor by camilo 2022-05-06 18:54 <3ThomasBorregaardSoerensen!!
 // created by Camilo 2021-01-31 05:16 BRT <3CamiloSasukeThomasBorregaardSoerensen
 #include "framework.h"
 #include "monitor.h"
@@ -65,20 +65,20 @@ namespace windowing_android
    //   //      return true;
 
    //}
+
+
    void monitor::get_monitor_rectangle(::RECTANGLE_I32* prectangle)
    {
+
       _get_monitor_rectangle();
 
-      __copy(prectangle, m_rectangle);
-
-      //      return true;
+      copy(prectangle, &m_rectangle);
 
    }
 
+
    ::e_status monitor::_get_monitor_rectangle()
    {
-
-      //synchronous_lock sl(user_mutex());
 
       m_rectangle.left = 0;
       m_rectangle.top = 0;
@@ -88,7 +88,6 @@ namespace windowing_android
       return ::success;
 
    }
-
 
 
 } // namespace windowing_android

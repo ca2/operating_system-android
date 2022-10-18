@@ -1,4 +1,4 @@
-// Created by camilo 2021-01
+﻿// Created by camilo 2021-01
 // Recreated by camilo 2021-02-10 <3TBS_!!
 // From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardS�rensen!!
 #include "framework.h"
@@ -7,7 +7,7 @@
 #include "aura/graphics/write_text/font_enumeration_item.h"
 #include "aura/graphics/write_text/true_type_font_utilities.h"
 #include "aura/graphics/draw2d/draw2d.h"
-#include "aqua/xml.h"
+#include "aqua/xml/document.h"
 //#include <pango/pangocairo.h>
 
 
@@ -55,12 +55,12 @@ namespace write_text_android
 
             double dAndroid = 4.4;
 
-            string strSystemFonts = m_pcontext->m_papexcontext->file().as_string("/system/etc/system_fonts.xml");
+            string strSystemFonts = m_pcontext->m_papexcontext->file().safe_get_string("/system/etc/system_fonts.xml");
 
             if (strSystemFonts.is_empty())
             {
 
-               strSystemFonts = m_pcontext->m_papexcontext->file().as_string("/system/etc/fonts.xml");
+               strSystemFonts = m_pcontext->m_papexcontext->file().safe_get_string("/system/etc/fonts.xml");
 
             }
 
@@ -73,14 +73,29 @@ namespace write_text_android
 
             const char * pszSystemFonts = strSystemFonts;
 
-            if (pdocument->load(strSystemFonts))
+            bool bOk = true;
+
+            try
+            {
+
+               pxmldocument->load(strSystemFonts);
+
+            }
+            catch (...)
+            {
+
+               bOk = false;
+
+            }
+
+            if(bOk)
             {
 
                ::count iChildCount = 0;
 
                string strFamily;
 
-               while (auto pfamily = pdocument->root()->get_child_at(iChildCount))
+               while (auto pfamily = pxmldocument->root()->get_child_at(iChildCount))
                {
 
                   iChildCount++;

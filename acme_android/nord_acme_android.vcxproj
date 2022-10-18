@@ -178,6 +178,7 @@
     <ClCompile Include="acme_directory.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="node.cpp" />
+    <ClCompile Include="node_android.cpp" />
     <ClCompile Include="_.cpp" />
     <ClCompile Include="_factory.cpp" />
   </ItemGroup>
