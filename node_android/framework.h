@@ -1,4 +1,4 @@
-#ifndef __GNUC__
+﻿#ifndef __GNUC__
 #pragma once
 #endif
 
@@ -9,7 +9,7 @@
 #include "_.h"
 
 
-#include "_node_android.h"
+//#include "_node_android.h"
 
 
 //#include "aura/_defer.h"

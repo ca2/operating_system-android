@@ -193,7 +193,6 @@
     <ClCompile Include="display.cpp" />
     <ClCompile Include="text_composition_client.cpp" />
     <ClCompile Include="monitor.cpp" />
-    <ClCompile Include="node.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowing.cpp" />
     <ClCompile Include="_.cpp" />
@@ -212,7 +211,6 @@
     <ClInclude Include="display.h" />
     <ClInclude Include="text_composition_client.h" />
     <ClInclude Include="monitor.h" />
-    <ClInclude Include="node.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="windowing.h" />
     <ClInclude Include="_.h" />

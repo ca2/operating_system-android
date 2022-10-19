@@ -1,7 +1,7 @@
 ﻿// Created by camilo on 2022-05-08 18:27 <3ThomasBorregaardS�rensen!!(All around what Thomas Likes 25!!)
 #include "framework.h"
 #include "message_box.h"
-#include "node.h"
+//#include "node.h"
 #include "android/_internal.h"
 
 
@@ -55,12 +55,6 @@ namespace windowing_android
   //}
 
 
-  ::pointer<::conversation>node::create_new_message_box_conversation()
-  {
-
-     return __new(class message_box());
-
-  }
 
 
   void message_box::do_asynchronously()

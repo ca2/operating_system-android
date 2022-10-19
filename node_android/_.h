@@ -1,9 +1,8 @@
-// Created by camilo on 2022-04-30 04:05 BRT <3ThomasBorregaardS�rensen!!
+﻿// Created by camilo on 2022-04-30 04:05 BRT <3ThomasBorregaardSørensen!!
 #pragma once
 
 
 #include "windowing_android/_.h"
-
 
 
 #if defined(_NODE_ANDROID_LIBRARY)
@@ -13,21 +12,14 @@
 #endif
 
 
-namespace aura
+namespace node_android
 {
 
 
-   namespace android
-   {
+   class node;
 
 
-      class node;
-
-
-   } // namespace android
-
-
-} // namespace aura
+} // namespace node_android
 
 
 

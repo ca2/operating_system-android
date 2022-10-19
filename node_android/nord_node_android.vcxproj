@@ -175,12 +175,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="node.cpp" />
     <ClCompile Include="_.cpp" />
     <ClCompile Include="_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="node.h" />
     <ClInclude Include="_.h" />
-    <ClInclude Include="_node_android.h" />
+    <ClInclude Include="aaa_node_android.h" />
     <ClInclude Include="framework.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
