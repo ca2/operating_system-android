@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "aura/platform/session.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/user.h"
@@ -608,7 +608,7 @@ int GetMainScreenRect(RECTANGLE_I32* lprect)
 }
 
 
-int SetMainScreenRect(const RECTANGLE_I32* lpcrect)
+int SetMainScreenRect(const RECTANGLE_I32 & rect)
 {
 
    auto psystem = ::get_system();
@@ -631,7 +631,7 @@ int SetMainScreenRect(const RECTANGLE_I32* lpcrect)
 
    }
 
-   puserinteraction->place(lpcrect);
+   puserinteraction->place(rect);
 
    puserinteraction->display(e_display_restored);
 

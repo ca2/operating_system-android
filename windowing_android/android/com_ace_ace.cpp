@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "_internal.h"
 #include "_asset_manager.h"
 #include "_asset.h"
@@ -20,7 +20,7 @@ bool g_bAuraStart = false;
 void os_on_finish_launching();
 
 
-int SetMainScreenRect(const RECTANGLE_I32 * lpcrect);
+int SetMainScreenRect(const RECTANGLE_I32 & rect);
 
 
 void set_jni_context(JNIEnv * penv);
