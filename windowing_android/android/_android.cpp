@@ -608,7 +608,7 @@ int GetMainScreenRect(RECTANGLE_I32* lprect)
 }
 
 
-int SetMainScreenRect(const RECTANGLE_I32 & rect)
+int SetMainScreenRect(const ::rectangle_i32 &rect)
 {
 
    auto psystem = ::get_system();
