@@ -1,4 +1,4 @@
-// created from windowing::display by camilo 2022-05-06 18:55 <3ThomasBorregaardSoerensen(ThomasLikesNumber5!!)
+﻿// created from windowing::display by camilo 2022-05-06 18:55 <3ThomasBorregaardSoerensen(ThomasLikesNumber5!!)
 // created by Camilo 2021-01-31 05:13 BRT <3CamiloSasukeThomasBorregaardSoerensen
 #pragma once
 
@@ -34,7 +34,7 @@ namespace windowing_android
 
       //virtual void get_monitor_rectangle(::RECTANGLE_I32* prectangle);
       //virtual void get_workspace_rectangle(::RECTANGLE_I32* prectangle);
-      void get_monitor_rectangle(::RECTANGLE_I32* prectangle) override;
+      void get_monitor_rectangle(::RECTANGLE_I32 & rectangle) override;
       ::e_status _get_monitor_rectangle();
 
    };

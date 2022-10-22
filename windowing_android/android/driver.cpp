@@ -374,6 +374,23 @@ void operating_system_driver::exchange()
 
    }
 
+   {
+
+      auto pdirect = ::operating_system_bind::get();
+
+      string strUri = pdirect->getUri();
+
+      if (strUri.has_char())
+      {
+
+         pdirect->setUri("");
+
+         ::get_system()->handle_uri(strUri);
+
+      }
+
+   }
+
 }
 
 

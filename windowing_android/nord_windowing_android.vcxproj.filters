@@ -113,7 +113,7 @@
     <ClCompile Include="android\driver.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
-    <ClCompile Include="android\com_ace_ace.cpp">
+    <ClCompile Include="android\com_ace_main_activity.cpp">
       <Filter>Source Files\android</Filter>
     </ClCompile>
     <ClCompile Include="android\com_ace_impact.cpp">

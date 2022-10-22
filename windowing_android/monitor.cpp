@@ -67,12 +67,12 @@ namespace windowing_android
    //}
 
 
-   void monitor::get_monitor_rectangle(::RECTANGLE_I32* prectangle)
+   void monitor::get_monitor_rectangle(::RECTANGLE_I32 & rectangle)
    {
 
       _get_monitor_rectangle();
 
-      copy(prectangle, &m_rectangle);
+      copy(rectangle, m_rectangle);
 
    }
 

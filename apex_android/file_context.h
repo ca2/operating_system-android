@@ -1,5 +1,8 @@
-// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardS�rensen!!
+﻿// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardS�rensen!!
 #pragma once
+
+
+#include "apex/filesystem/filesystem/file_context.h"
 
 
 namespace apex_android

@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "apex/filesystem/filesystem/file_context.h"
 #include "aura/graphics/write_text/font_enumeration_item.h"
 #include "aura/graphics/write_text/true_type_font_utilities.h"
 #include "aura/graphics/draw2d/draw2d.h"

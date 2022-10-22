@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 #include "object.h"
@@ -89,6 +89,7 @@ public:
    JX(b, LockListFileEnumerate);
    //String m_strListFileEnumerate;
    JX(str, ListFileEnumerate);
+   JX(str, Uri);
 
    
    static operating_system_bind* get();

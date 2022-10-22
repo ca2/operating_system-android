@@ -177,7 +177,7 @@
   <ItemGroup>
     <ClCompile Include="android\bind.cpp" />
     <ClCompile Include="android\driver.cpp" />
-    <ClCompile Include="android\com_ace_ace.cpp" />
+    <ClCompile Include="android\com_ace_main_activity.cpp" />
     <ClCompile Include="android\com_ace_impact.cpp" />
     <ClCompile Include="android\com_ace_InputConnection.cpp" />
     <ClCompile Include="android\com_ace_enumerate.cpp" />

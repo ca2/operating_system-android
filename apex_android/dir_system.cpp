@@ -21,22 +21,11 @@ namespace apex_android
    void dir_system::initialize(::object * pobject)
    {
 
-      //auto estatus = 
-      
       ::dir_system::initialize(pobject);
-
-      //if (!estatus)
-      //{
-
-      //   return estatus;
-
-      //}
-
-      //m_pathInstall = ::dir::install();
 
       m_pathHome = m_psystem->m_pathCacheDirectory / "home";
 
-      //return estatus;
+      m_pathCa2Config = m_psystem->m_pathCacheDirectory / ".config/ca2";
 
    }
 

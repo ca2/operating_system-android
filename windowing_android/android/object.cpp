@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "_internal.h"
 
 
@@ -275,9 +275,16 @@ string jni_object::get_str(jfieldID jfieldid)
 
    jstring jstring = (::jstring) t_pjnienv->GetObjectField(m_jobject, jfieldid);
 
-   string str = get_string(jstring);
+   string str;
+   
+   if (jstring)
+   {
 
-   t_pjnienv->DeleteLocalRef(jstring);
+      str = get_string(jstring);
+
+      t_pjnienv->DeleteLocalRef(jstring);
+
+   }
 
    return str;
 
