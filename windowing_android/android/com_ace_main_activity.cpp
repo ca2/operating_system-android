@@ -117,7 +117,7 @@ public:
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
+JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
 {
 
    try
@@ -272,7 +272,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1init(JNIEnv * penv, jobject obj, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_aura_1start(JNIEnv * penv, jobject obj)
+JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1start(JNIEnv * penv, jobject obj)
 {
 
    try
@@ -304,7 +304,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_aura_1start(JNIEnv * penv, jobject obj)
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
+JNIEXPORT void JNICALL Java_com_ace_main_1activity_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
 {
 
    auto psequencer = ::move_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
@@ -317,7 +317,7 @@ JNIEXPORT void JNICALL Java_com_ace_ace_on_1aura_1message_1box_1response(JNIEnv 
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_ace_ace_aura_1is_1started(JNIEnv * env, jobject obj)
+JNIEXPORT jboolean JNICALL Java_com_ace_main_1activity_aura_1is_1started(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;
@@ -326,7 +326,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_ace_aura_1is_1started(JNIEnv * env, jobj
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_ace_sync_1mem_1free_1available(JNIEnv * env, jobject obj)
+JNIEXPORT void JNICALL Java_com_ace_main_1activity_sync_1mem_1free_1available(JNIEnv * env, jobject obj)
 {
 
    try
