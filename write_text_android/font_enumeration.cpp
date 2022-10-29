@@ -50,7 +50,7 @@ namespace write_text_android
 
       //      critical_section_lock synchronouslock(::aura::g_pcsFont);
 
-      auto pwritetext = m_psystem->m_paurasystem->m_pdraw2d->m_pwritetext;
+      auto pwritetext = acmesystem()->m_paurasystem->m_pdraw2d->m_pwritetext;
 
             ::pointer<::write_text::font_enumeration_item>pitem;
 
@@ -217,7 +217,7 @@ namespace write_text_android
 
                               pitem = __new(::write_text::font_enumeration_item);
 
-                              if (m_psystem->m_pacmefile->exists(path))
+                              if (acmefile()->exists(path))
                               {
 
                                  pitem->m_mapFileName[0] = path;
@@ -280,7 +280,7 @@ namespace write_text_android
 
                            path /= strFile;
 
-                           if (m_psystem->m_pacmefile->exists(path))
+                           if (acmefile()->exists(path))
                            {
 
                               pitem->m_mapFileName[iKey] = path;
@@ -316,7 +316,7 @@ namespace write_text_android
 
                listing.set_file_listing("/system/fonts");
 
-               m_psystem->m_pacmedirectory->enumerate(listing);
+               acmedirectory()->enumerate(listing);
 
                //::dir::ls(patha, "/system/fonts");
 
@@ -359,9 +359,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_monospace);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_monospace);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_monospace);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_monospace);
 
                itema.add(pitem);
 
@@ -372,9 +372,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_sans);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_sans);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_sans);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_sans);
 
                itema.add(pitem);
 
@@ -385,9 +385,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_serif);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_serif);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_serif);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_serif);
 
                itema.add(pitem);
 
@@ -398,9 +398,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_sans_ex);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_sans_ex);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_sans_ex);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_sans_ex);
 
                itema.add(pitem);
 
@@ -411,9 +411,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_serif_ex);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_serif_ex);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_serif_ex);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_serif_ex);
 
                itema.add(pitem);
 
@@ -424,9 +424,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_sans_fx);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_sans_fx);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_sans_fx);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_sans_fx);
 
                itema.add(pitem);
 
@@ -437,9 +437,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = m_psystem->m_pnode->font_name(e_font_serif_fx);
+               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_serif_fx);
 
-               pitem->m_strName = m_psystem->m_pnode->font_name(e_font_serif_fx);
+               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_serif_fx);
 
                itema.add(pitem);
 

@@ -56,7 +56,7 @@ namespace windowing_android
 //
 //      //}
 //
-//      auto psystem = m_psystem->m_paurasystem;
+//      auto psystem = acmesystem()->m_paurasystem;
 //
 //      if (psystem != nullptr)
 //      {
@@ -552,7 +552,7 @@ namespace windowing_android
 //
 //      ::e_display edisplayPrevious = *pedisplay;
 //
-//      auto psystem = m_psystem->m_paurasystem;
+//      auto psystem = acmesystem()->m_paurasystem;
 //
 //      double dMargin = psystem->m_paurasystem->m_dDpi;
 //

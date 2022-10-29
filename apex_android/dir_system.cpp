@@ -18,14 +18,14 @@ namespace apex_android
    }
 
 
-   void dir_system::initialize(::object * pobject)
+   void dir_system::initialize(::particle * pparticle)
    {
 
       ::dir_system::initialize(pobject);
 
-      m_pathHome = m_psystem->m_pathCacheDirectory / "home";
+      m_pathHome = acmesystem()->m_pathCacheDirectory / "home";
 
-      m_pathCa2Config = m_psystem->m_pathCacheDirectory / ".config/ca2";
+      m_pathCa2Config = acmesystem()->m_pathCacheDirectory / ".config/ca2";
 
    }
 

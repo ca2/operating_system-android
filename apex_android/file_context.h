@@ -24,7 +24,7 @@ namespace apex_android
       ~file_context() override;
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
 
       //void update_module_path() override;

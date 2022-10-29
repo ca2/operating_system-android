@@ -27,11 +27,11 @@ namespace acme_android
    void node::system_main()
    {
 
-      m_psystem->increment_reference_count();
+      acmesystem()->increment_reference_count();
 
-      m_psystem->main();
+      acmesystem()->main();
 
-//      m_psystem->post_initial_request();
+//      acmesystem()->post_initial_request();
 
    }
 

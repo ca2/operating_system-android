@@ -40,7 +40,7 @@ namespace windowing_android
       ~windowing() override;
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
 
       bool is_branch_current() const override;

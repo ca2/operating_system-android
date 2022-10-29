@@ -29,7 +29,7 @@ namespace apex_android
    }
 
 
-   void file_system::initialize(::object * pobject)
+   void file_system::initialize(::particle * pparticle)
    {
 
       //auto estatus = 
@@ -51,7 +51,7 @@ namespace apex_android
    //void file_system::update_module_path()
    //{
 
-   //   m_pathModule = m_psystem->m_pacmepath->app_module();
+   //   m_pathModule = acmepath()->app_module();
 
    //   m_pathCa2Module = m_pathModule;
 

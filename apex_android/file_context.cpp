@@ -21,7 +21,7 @@ namespace apex_android
    }
 
 
-   void file_context::initialize(::object * pobject)
+   void file_context::initialize(::particle * pparticle)
    {
 
       //auto estatus = 
@@ -37,7 +37,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pdirsystem = m_psystem->m_papexsystem->m_pdirsystem;
+      m_pdirsystem = acmesystem()->m_papexsystem->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -48,7 +48,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pfilesystem = m_psystem->m_papexsystem->m_pfilesystem;
+      m_pfilesystem = acmesystem()->m_papexsystem->m_pfilesystem;
 
       //if (!estatus)
       //{

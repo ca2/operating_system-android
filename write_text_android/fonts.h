@@ -63,7 +63,7 @@ namespace write_text_android
       ~fonts() override;
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
       //virtual ::e_status finalize() override;
 
 

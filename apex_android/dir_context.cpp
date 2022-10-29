@@ -22,7 +22,7 @@ namespace apex_android
    }
 
 
-   void dir_context::initialize(::object * pobject)
+   void dir_context::initialize(::particle * pparticle)
    {
 
       //auto estatus = 
@@ -38,7 +38,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pdirsystem = m_psystem->m_papexsystem->m_pdirsystem;
+      m_pdirsystem = acmesystem()->m_papexsystem->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -49,7 +49,7 @@ namespace apex_android
       
       //estatus = 
       
-      m_pfilesystem = m_psystem->m_papexsystem->m_pfilesystem;
+      m_pfilesystem = acmesystem()->m_papexsystem->m_pfilesystem;
 
       //if (!estatus)
       //{
@@ -1017,17 +1017,17 @@ namespace apex_android
 
       //doc.load(pcontext->m_papexcontext->file().as_string(appdata() / "configuration\\directory.xml"));
 
-      ::file::path pathInstall = m_psystem->m_papexsystem->m_pathCacheDirectory;
+      ::file::path pathInstall = acmesystem()->m_papexsystem->m_pathCacheDirectory;
 
       m_pdirsystem->m_pathInstall = pathInstall;
 
-      //nodeos_set_home(         auto psystem = m_psystem;
+      //nodeos_set_home(         auto psystem = acmesystem();
 
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //
 //pacmedirectory->system() / "home");
 //
-//      //nodeos_set_temp(         auto psystem = m_psystem;
+//      //nodeos_set_temp(         auto psystem = acmesystem();
 //
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //
@@ -1163,7 +1163,7 @@ namespace apex_android
 //
 //      string str;
 //
-//      str =          auto psystem = m_psystem;
+//      str =          auto psystem = acmesystem();
 //
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //

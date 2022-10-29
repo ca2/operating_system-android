@@ -61,7 +61,7 @@ namespace aura_android
    //}
 
 
-   //interaction_impl::interaction_impl(::object * pobject):
+   //interaction_impl::interaction_impl(::particle * pparticle):
    //   ::object(pobject)
    //{
    //   m_bScreenRelativeMouseMessagePosition = true;
@@ -85,10 +85,10 @@ namespace aura_android
       //if(get_session() != nullptr)
       //{
 
-      //   if(m_psystem->m_paurasystem->m_pwindowmap != nullptr)
+      //   if(acmesystem()->m_paurasystem->m_pwindowmap != nullptr)
       //   {
 
-      //      m_psystem->m_paurasystem->m_pwindowmap->m_map.erase_key(get_handle());
+      //      acmesystem()->m_paurasystem->m_pwindowmap->m_map.erase_key(get_handle());
 
       //   }
 
@@ -217,12 +217,12 @@ namespace aura_android
    //void interaction_impl::native_create_host()
    //{
 
-   //   //      auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
+   //   //      auto pwindowMain = acmesystem()->m_paurasystem->m_pwindowMain;
    //   //
    //   //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
    //   //      {
    //   //
-   //   //         m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
+   //   //         m_pwindow = acmesystem()->m_paurasystem->m_pwindowMain;
    //   //
    //   //         m_pwindow->m_puserinteractionimpl = this;
    //   //
@@ -243,10 +243,10 @@ namespace aura_android
    //   //
    //   //         //}
    //   //
-   //   //         if (!m_psystem->m_paurasystem->m_pwindowMain)
+   //   //         if (!acmesystem()->m_paurasystem->m_pwindowMain)
    //   //         {
    //   //
-   //   //            m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
+   //   //            acmesystem()->m_paurasystem->m_pwindowMain = m_pwindow;
    //   //
    //   //         }
    //   //

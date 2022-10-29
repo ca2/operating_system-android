@@ -1,4 +1,4 @@
-// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardSørensen!!
+// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
@@ -29,7 +29,7 @@ namespace apex_android
       ~dir_system() override;
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
 
 

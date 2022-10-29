@@ -88,7 +88,7 @@ namespace windowing_android
    }
 
 
-   void windowing::initialize(::object * pobject)
+   void windowing::initialize(::particle * pparticle)
    {
 
       //auto estatus =
@@ -194,7 +194,7 @@ namespace windowing_android
    //   void windowing::start()
    //   {
    //
-   //      auto psystem = m_psystem->m_papexsystem;
+   //      auto psystem = acmesystem()->m_papexsystem;
    //
    //      if (psystem->m_bUser)
    //      {

@@ -235,7 +235,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          pmainosthread->start();
 
-         //if (m_psystem->m_pchar_binary__matter_zip_start && m_psystem->m_pchar_binary__matter_zip_end)
+         //if (acmesystem()->m_pchar_binary__matter_zip_start && acmesystem()->m_pchar_binary__matter_zip_end)
 
       //   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 
