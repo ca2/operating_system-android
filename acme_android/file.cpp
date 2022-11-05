@@ -203,9 +203,9 @@ namespace acme_android
 //         set_last_errno_status();
          int iErrNo = errno;
 
-         m_estatus = errno_to_status(iErrNo);
+         m_estatus = errno_status(iErrNo);
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          set_nok();
 
@@ -324,9 +324,9 @@ namespace acme_android
             
             auto iErrNo = errno;
 
-            auto estatus = errno_to_status(iErrNo);
+            auto estatus = errno_status(iErrNo);
 
-            auto errorcode = __errno(iErrNo);
+            auto errorcode = errno_error_code(iErrNo);
 
             throw ::file::exception(estatus, errorcode, m_path, "::read < 0", m_eopen);
 
@@ -375,9 +375,9 @@ namespace acme_android
 
             auto iErrNo = errno;
 
-            auto estatus = errno_to_status(iErrNo);
+            auto estatus = errno_status(iErrNo);
 
-            auto errorcode = __errno(iErrNo);
+            auto errorcode = errno_error_code(iErrNo);
 
             throw ::file::exception(estatus, errorcode, m_path, "::write < 0", m_eopen);
 
@@ -402,7 +402,7 @@ namespace acme_android
 
          auto estatus = error_bad_argument;
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull", m_eopen);
 
@@ -422,9 +422,9 @@ namespace acme_android
 
          auto iErrNo = errno;
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
@@ -450,9 +450,9 @@ namespace acme_android
        
          auto iErrNo = errno;
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
@@ -498,9 +498,9 @@ namespace acme_android
 
          auto iErrNo = errno;
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "::close == -1", m_eopen);
 
@@ -557,9 +557,9 @@ namespace acme_android
 
          auto iErrNo = errno;
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "ftruncate == -1", m_eopen);
 
@@ -682,7 +682,7 @@ namespace acme_android
    //void PASCAL file_exception::ThrowErrno(::matter * pobject, i32 nErrno, const char * lpszFileName /* = nullptr */)
    //{
    //   if (nErrno != 0)
-   //      vfxThrowFileexception(file_exception::errno_to_status(nErrno), errno, lpszFileName);
+   //      vfxThrowFileexception(file_exception::errno_status(nErrno), errno, lpszFileName);
    //}
 
 
