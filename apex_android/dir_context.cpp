@@ -178,7 +178,7 @@ namespace apex_android
 
    //         ::file::path strPath = stra[i];
 
-   //         if (!::str().begins(strPath, listing.m_pathFinal))
+   //         if (!strPath.begins(listing.m_pathFinal))
    //            continue;
 
    //         bool bIsDir;
@@ -282,7 +282,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str().ends(strDir, "/"))
+   //   if(!strDir.ends("/"))
    //   {
 
    //      strDir += "/";
@@ -300,7 +300,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str().begins_eat(strName, strDir))
+   //      if(!strName.begins_eat(strDir))
    //         continue;
 
    //      if(!matches_wildcard_criteria(pszPattern, strName))
@@ -384,7 +384,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str().ends(strDir, "/"))
+   //   if(!strDir.ends("/"))
    //   {
 
    //      strDir += "/";
@@ -399,7 +399,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str().begins_eat(strName, strDir))
+   //      if(!strName.begins_eat(strDir))
    //         continue;
 
    //      if(!get_context()->dir_context().is(strPath))
@@ -472,7 +472,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str().ends(strDir, "/"))
+   //   if(!strDir.ends("/"))
    //   {
 
    //      strDir += "/";
@@ -487,7 +487,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str().begins_eat(strName, strDir))
+   //      if(!strName.begins_eat(strDir))
    //         continue;
 
    //      if(!get_context()->dir_context().is(strPath))
@@ -530,7 +530,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str().ends(strDir, "/"))
+   //   if(!strDir.ends("/"))
    //   {
 
    //      strDir += "/";
@@ -545,7 +545,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str().begins_eat(strName, strDir))
+   //      if(!strName.begins_eat(strDir))
    //         continue;
 
    //      if(get_context()->dir_context().is(strPath))
@@ -591,7 +591,7 @@ namespace apex_android
 
    //   string strDir(lpcsz);
 
-   //   if(!::str().ends(strDir, "/"))
+   //   if(!strDir.ends("/"))
    //   {
 
    //      strDir += "/";
@@ -606,7 +606,7 @@ namespace apex_android
 
    //      string strName = strPath;
 
-   //      if(!::str().begins_eat(strName, strDir))
+   //      if(!strName.begins_eat(strDir))
    //         continue;
 
    //      if(pstraPath != nullptr)
@@ -681,7 +681,7 @@ namespace apex_android
    //   if (strPath.get_length() >= MAX_PATH)
    //   {
 
-   //      if (::str().begins(strPath, "\\\\"))
+   //      if (strPath.begins("\\\\"))
    //      {
 
    //         strPath = "\\\\?\\UNC" + strPath.Mid(1);
@@ -735,7 +735,7 @@ namespace apex_android
    //   wstrPath = utf8_to_unicode(strPath);
    //   if(wstrPath.get_length() >= MAX_PATH)
    //   {
-   //      if(::str().begins(wstrPath, L"\\\\"))
+   //      if(wstrPath.begins(L"\\\\"))
    //      {
    //         ::str().begin(wstrPath, L"\\\\?\\UNC");
    //      }
@@ -1351,7 +1351,7 @@ namespace apex_android
    bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
-      return ::str().begins_ci(pszDir, pszPath);
+      return pszDir.begins_ci(pszPath);
 
    }
 
