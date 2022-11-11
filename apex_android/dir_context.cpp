@@ -219,7 +219,7 @@ namespace apex_android
    //}
 
 
-   //bool dir_context::rls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, e_extract eextract)
+   //bool dir_context::rls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
    //{
 
    //   if(::file::system_dir::rls(papp,lpcsz,pstraPath,pstraTitle,pstraRelative,eextract))
@@ -234,7 +234,7 @@ namespace apex_android
    //}
 
 
-   //bool dir_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, i64_array * piaSize, e_extract eextract)
+   //bool dir_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, i64_array * piaSize, enum_extract eextract)
    //{
 
 
@@ -264,7 +264,7 @@ namespace apex_android
    //         iStart = pstraRelative->get_size();
    //      }
 
-   //      rls_pattern(papp, strDir, pszPattern, pstraPath, pstraTitle, pstraRelative, pbaIsDir, piaSize, eextract == extract_all ? extract_all : extract_none);
+   //      rls_pattern(papp, strDir, pszPattern, pstraPath, pstraTitle, pstraRelative, pbaIsDir, piaSize, eextract == e_extract_all ? e_extract_all : e_extract_none);
 
    //      if(pstraRelative != nullptr)
    //      {
