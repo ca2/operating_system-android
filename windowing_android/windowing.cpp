@@ -18,7 +18,7 @@ namespace windowing_android
    windowing::windowing()
    {
 
-      defer_create_mutex();
+      defer_create_synchronization();
 
       m_bRootSelectInput = false;
 
@@ -235,7 +235,7 @@ namespace windowing_android
 
       }
 
-      synchronous_lock synchronouslock(mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       m_procedurelist.add_tail(procedure);
 
@@ -266,7 +266,7 @@ namespace windowing_android
 
       //}
 
-      synchronous_lock synchronouslock(mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       if (m_procedurelist.is_empty())
       {
@@ -325,7 +325,7 @@ namespace windowing_android
    ::pointer<::windowing::cursor>windowing::load_default_cursor(enum_cursor ecursor)
    {
 
-      synchronous_lock synchronouslock(mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       if (!m_pcursormanager)
       {

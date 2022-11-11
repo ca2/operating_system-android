@@ -13,7 +13,7 @@ int e_message_box_to_button(const ::e_message_box& emessagebox);
 operating_system_driver::operating_system_driver()
 {
 
-   defer_create_mutex();
+   defer_create_synchronization();
 
    m_passetmanager = nullptr;
 
@@ -167,7 +167,7 @@ void operating_system_driver::exchange()
 
    {
 
-      synchronous_lock synchronouslock(mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       auto pdirect = ::operating_system_bind::get();
 

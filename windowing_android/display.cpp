@@ -28,7 +28,7 @@ namespace windowing_android
 //      m_iMainMonitor = 0;
 //      m_iMainWorkspace = 0;
 //
-//      defer_create_mutex();
+//      defer_create_synchronization();
 
    }
 
@@ -484,7 +484,7 @@ namespace windowing_android
 //   monitor* display::get_monitor(index iMonitor)
 //   {
 //
-//      synchronous_lock synchronouslock(mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      if (iMonitor < 0 || iMonitor >= m_monitora.get_count())
 //      {

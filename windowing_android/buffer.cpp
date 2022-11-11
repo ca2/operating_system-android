@@ -114,7 +114,7 @@ namespace windowing_android
 
       //destroy_buffer();
 
-      synchronous_lock synchronouslock(mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       int w;
 
