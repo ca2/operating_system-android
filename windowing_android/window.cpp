@@ -55,7 +55,7 @@ namespace windowing_android
 
       m_bMessageOnlyWindow = false;
 
-      //__zero(m_visual);
+      //zero(m_visual);
 
       //m_iDepth = -1;
 
@@ -197,7 +197,7 @@ namespace windowing_android
       //else
       //{
 
-      //   __zero(m_visualinfo);
+      //   zero(m_visualinfo);
 
       //}
 
@@ -205,7 +205,7 @@ namespace windowing_android
 
       //XSetWindowAttributes attr;
 
-      //__zero(attr);
+      //zero(attr);
 
       //attr.colormap = pdisplayx11->m_colormap;
 
@@ -989,7 +989,7 @@ namespace windowing_android
 
    //   va_start(argp, numArgs);
 
-   //   __zero(xevent);
+   //   zero(xevent);
 
    //   xevent.xclient.type = ClientMessage;
    //   xevent.xclient.serial = 0;
@@ -1028,7 +1028,7 @@ namespace windowing_android
 //#define _NET_WM_STATE_ADD           1    /* add/set property */
 //#define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 //
-//      __zero(xclient);
+//      zero(xclient);
 //      xclient.type = ClientMessage;
 //      xclient.window = Window();
 //      xclient.message_type = x11_display()->intern_atom("_NET_WM_STATE", False);
@@ -1058,7 +1058,7 @@ namespace windowing_android
 //
 //      va_start(argp, atom1);
 //
-//      __zero(xevent);
+//      zero(xevent);
 //
 //      array<Atom> atoms;
 //
@@ -2377,7 +2377,7 @@ namespace windowing_android
 
    //      XEvent xev;
 
-   //      __zero(xev);
+   //      zero(xev);
 
    //      auto windowRoot = DefaultRootWindow(Display());
 
