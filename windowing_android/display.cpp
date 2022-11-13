@@ -548,7 +548,7 @@ namespace windowing_android
 //
 //      index iBestWorkspace = get_best_workspace(&rectangleWorkspace, rectangle);
 //
-//      edisplay edisplay;
+//      ::e_display edisplay;
 //
 //      ::e_display edisplayPrevious = *pedisplay;
 //
@@ -1102,7 +1102,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::get_good_restore(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleHintParam, ::user::interaction* pinteraction, edisplay edisplay)
+//   index display::get_good_restore(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleHintParam, ::user::interaction* pinteraction, ::e_display edisplay)
 //   {
 //
 //      ::rectangle_i32 rectangleHint(rectangleHintParam);
