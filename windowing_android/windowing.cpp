@@ -928,7 +928,7 @@ namespace user
 //i32 oswindow_data::store_name(const ::string & psz)
 //{
 //
-//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
 //
 //   synchronous_lock slOsWindow(s_pmutex);
 //
@@ -948,7 +948,7 @@ namespace user
 //i32 oswindow_data::select_input(i32 iInput)
 //{
 //
-//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
 //
 //   synchronous_lock slOsWindow(s_pmutex);
 //
@@ -986,7 +986,7 @@ namespace user
 //
 //   /*
 //
-//   synchronous_lock synchronouslock(m_puserinteraction == nullptr ? nullptr : m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_puserinteraction == nullptr ? nullptr : m_puserinteraction->synchronization());
 //
 //   synchronous_lock slOsWindow(s_pmutex);
 //
@@ -1110,7 +1110,7 @@ namespace user
 //bool oswindow_data::is_child(::oswindow oswindow)
 //{
 //
-//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
 //
 //   synchronous_lock slOsWindow(s_pmutex);
 //
@@ -1146,7 +1146,7 @@ namespace user
 //bool oswindow_data::show_window(const ::e_display & edisplay, const ::e_activation & eactivation)
 //{
 //
-//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
 //
 //   synchronous_lock slOsWindow(s_pmutex);
 //
@@ -1218,7 +1218,7 @@ namespace user
 //bool oswindow_data::is_window_visible()
 //{
 //
-//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
 //
 //   if (m_pimpl == nullptr)
 //   {
@@ -1536,7 +1536,7 @@ oswindow get_capture()
 //int_bool destroy_window(oswindow w)
 //{
 //
-//   synchronous_lock synchronouslock(w == nullptr || w->m_pimpl == nullptr || w->m_pimpl->m_puserinteraction == nullptr ? nullptr : w->m_pimpl->m_puserinteraction->mutex());
+//   synchronous_lock synchronouslock(w == nullptr || w->m_pimpl == nullptr || w->m_pimpl->m_puserinteraction == nullptr ? nullptr : w->m_pimpl->m_puserinteraction->synchronization());
 //
 //   if (!is_window(w))
 //   {
