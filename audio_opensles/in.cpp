@@ -67,7 +67,7 @@ namespace multimedia
 
          //}
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          ::e_status mmr = ::success;
 
@@ -247,7 +247,7 @@ namespace multimedia
       void in::in_close()
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          ::e_status mmr;
 
@@ -298,7 +298,7 @@ namespace multimedia
 
          //return result_success;
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if (m_einstate == ::wave::e_in_state_recording)
          {
@@ -339,7 +339,7 @@ namespace multimedia
       void in::in_stop()
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if (m_einstate != ::wave::e_in_state_recording)
          {
@@ -453,7 +453,7 @@ namespace multimedia
       void in::in_reset()
       {
 
-         synchronous_lock lock(mutex());
+         synchronous_lock lock(synchronization());
 
          m_bResetting = true;
 

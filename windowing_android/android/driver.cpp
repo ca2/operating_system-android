@@ -155,7 +155,7 @@ pointer< ::sequencer < ::conversation > > operating_system_driver::pick_message_
 void operating_system_driver::open_url(const ::string& strOpenUrl)
 {
 
-   synchronous_lock lock(mutex());
+   synchronous_lock lock(synchronization());
 
    m_straOpenUrl.add(strOpenUrl);
 
@@ -184,7 +184,7 @@ void operating_system_driver::exchange()
 
       {
 
-         //synchronous_lock lock(mutex());
+         //synchronous_lock lock(synchronization());
 
          while (m_straOpenUrl.has_element())
          {

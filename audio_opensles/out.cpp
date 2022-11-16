@@ -219,7 +219,7 @@ namespace multimedia
       void out::out_open_ex(::thread* pthreadCallback, u32 uiSamplesPerSec, u32 uiChannelCount, u32 uiBitsPerSample, ::wave::enum_purpose epurpose)
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if (engineObject != NULL && m_eoutstate != ::wave::e_out_state_initial)
          {
@@ -471,7 +471,7 @@ namespace multimedia
       void out::out_close()
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if(m_eoutstate == ::wave::e_out_state_playing)
          {
@@ -525,7 +525,7 @@ namespace multimedia
 
          //single_lock sLock(m_mutex, true);
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if (m_eoutstate != ::wave::e_out_state_playing && m_eoutstate != ::wave::e_out_state_paused)
          {
@@ -565,7 +565,7 @@ namespace multimedia
       void out::out_pause()
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          ASSERT(m_eoutstate == ::wave::e_out_state_playing);
 
@@ -600,7 +600,7 @@ namespace multimedia
       void out::out_restart()
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          ASSERT(m_eoutstate == ::wave::e_out_state_paused);
 
@@ -637,7 +637,7 @@ namespace multimedia
 
          //single_lock sLock(m_mutex, true);
 
-         synchronous_lock lock(mutex());
+         synchronous_lock lock(synchronization());
 
          //if(m_ppcm != NULL)
          //{
@@ -781,7 +781,7 @@ namespace multimedia
       void out::opensles_out_filled(int iBuffer)
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if(m_eoutstate != ::wave::e_out_state_playing
          && m_eoutstate != ::wave::e_out_state_stopping)
@@ -812,7 +812,7 @@ namespace multimedia
       void out::out_start(const ::duration & position)
       {
 
-         synchronous_lock sLock(mutex());
+         synchronous_lock sLock(synchronization());
 
          if (m_eoutstate == ::wave::e_out_state_playing)
          {
