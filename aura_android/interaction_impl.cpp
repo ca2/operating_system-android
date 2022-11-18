@@ -1978,7 +1978,7 @@ namespace aura_android
 
    //            m_bRedraw = true;
 
-   //            m_puserinteraction->m_pthread->post_message(WM_KICKIDLE);
+   //            m_puserinteraction->m_pthread->post_message(e_message_kick_idle);
 
    //         }
 
