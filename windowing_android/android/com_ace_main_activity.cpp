@@ -102,7 +102,7 @@ public:
 
          string strDetails = exception.m_strDetails;
 
-         auto psequencer = ::get_system()->create_message_box_sequencer(
+         auto psequencer = ::get_system()->nano()->message_box_sequencer(
             "Failed to load library?",
             "Failed to Load Library?",
             e_message_box_ok);
