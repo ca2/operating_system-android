@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 #define _THREAD_SAFE
@@ -222,6 +222,7 @@ typedef int int_bool;
 
 
 
+typedef int errno_t;
 
 
 
