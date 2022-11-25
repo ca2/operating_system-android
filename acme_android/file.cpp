@@ -1,6 +1,8 @@
 ﻿#include "framework.h"
 #include "file.h"
 #include "acme_directory.h"
+#include "acme/filesystem/file/exception.h"
+#include "acme/filesystem/file/status.h"
 #include <fcntl.h>
 
 #undef USE_MISC
@@ -31,7 +33,7 @@ namespace acme_android
 
       wstring wstrFileName;
 
-      wstrFileName = utf8_to_unicode(path);
+      wstrFileName = path;
 
       if (!windows_full_path(wstrFullName, wstrFileName))
       {
@@ -42,7 +44,7 @@ namespace acme_android
 
       }
 
-      unicode_to_utf8(rStatus.m_strFullName, wstrFullName);
+      rStatus.m_strFullName = wstrFullName;
 
       struct stat st;
 
@@ -125,11 +127,7 @@ namespace acme_android
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
 
-         auto psystem = acmesystem();
-
-         auto pacmedirectory = psystem->m_pacmedirectory;
-
-         pacmedirectory->create(path.folder());
+         acmedirectory()->create(path.folder());
 
       }
 
@@ -293,7 +291,7 @@ namespace acme_android
 
       m_estatus = ::success;
 
-      set_ok();
+      set_ok_flag();
 
       //return ::success;
 
@@ -614,23 +612,23 @@ namespace acme_android
    // file diagnostics
 
 
-   void file::assert_ok() const
-   {
-      ::file::file::assert_ok();
-      // we permit the descriptor m_iFile to be any value for derived classes
-   }
+   //void file::assert_ok() const
+   //{
+   //   ::file::file::assert_ok();
+   //   // we permit the descriptor m_iFile to be any value for derived classes
+   //}
 
-   
-   void file::dump(dump_context & dumpcontext) const
-   {
-      
-      ::file::file::dump(dumpcontext);
+   //
+   //void file::dump(dump_context & dumpcontext) const
+   //{
+   //   
+   //   ::file::file::dump(dumpcontext);
 
-      //dumpcontext << "with handle " << (::u32)m_iFile;
-      //dumpcontext << " and name \"" << m_strFileName << "\"";
-      //dumpcontext << "\n";
+   //   //dumpcontext << "with handle " << (::u32)m_iFile;
+   //   //dumpcontext << " and name \"" << m_strFileName << "\"";
+   //   //dumpcontext << "\n";
 
-   }
+   //}
 
 
    //string file::GetFileName() const

@@ -1,5 +1,6 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "interaction_impl.h"
+#include "acme/constant/message.h"
 #include "aura/user/user/frame.h"
 #include "aura/windowing/window.h"
 #include "aura/windowing/windowing.h"
@@ -8,7 +9,7 @@
 #include "aura/windowing/text_editor_interface.h"
 
 
-CLASS_DECL_AURA ::mutex * osmutex();
+CLASS_DECL_AURA ::particle * osmutex();
 
 
 void android_edit_on_set_focus(int l, int t, int r, int b, const ::string & pszText, int iBeg, int iEnd);
@@ -815,39 +816,39 @@ namespace aura_android
 //   //}
 //
 //
-   void interaction_impl::assert_ok() const
-   {
-      //if(((::android::interaction_impl *)this)->get_handle() == nullptr)
-      //   return;     // null (unattached) android are valid
-
-      // check for special wnd??? values
-///      ASSERT(HWND_TOP == nullptr);       // same as desktop
-      //if(((::android::interaction_impl *)this)->get_handle() == HWND_BOTTOM)
-      //{
-      //}
-      //else if(((::android::interaction_impl *)this)->get_handle() == HWND_TOPMOST)
-      //{
-      //}
-      //else if(((::android::interaction_impl *)this)->get_handle() == HWND_NOTOPMOST)
-      //{
-      //}
-      //else
-      //{
-      //   // should be a normal interaction_impl
-      //   ASSERT(::is_window(((::android::interaction_impl *)this)->get_handle()));
-
-      //}
-   }
-
-
-   void interaction_impl::dump(dump_context & dumpcontext) const
-   {
-      
-      object::dump(dumpcontext);
-
-      //dumpcontext << "\nm_oswindow_ = " << ((::android::interaction_impl *)this)->get_handle();
-
-   }
+//   void interaction_impl::assert_ok() const
+//   {
+//      //if(((::android::interaction_impl *)this)->get_handle() == nullptr)
+//      //   return;     // null (unattached) android are valid
+//
+//      // check for special wnd??? values
+/////      ASSERT(HWND_TOP == nullptr);       // same as desktop
+//      //if(((::android::interaction_impl *)this)->get_handle() == HWND_BOTTOM)
+//      //{
+//      //}
+//      //else if(((::android::interaction_impl *)this)->get_handle() == HWND_TOPMOST)
+//      //{
+//      //}
+//      //else if(((::android::interaction_impl *)this)->get_handle() == HWND_NOTOPMOST)
+//      //{
+//      //}
+//      //else
+//      //{
+//      //   // should be a normal interaction_impl
+//      //   ASSERT(::is_window(((::android::interaction_impl *)this)->get_handle()));
+//
+//      //}
+//   }
+//
+//
+//   void interaction_impl::dump(dump_context & dumpcontext) const
+//   {
+//      
+//      object::dump(dumpcontext);
+//
+//      //dumpcontext << "\nm_oswindow_ = " << ((::android::interaction_impl *)this)->get_handle();
+//
+//   }
 
 
 //   void interaction_impl::on_set_parent(::user::interaction * pinteraction)

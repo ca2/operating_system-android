@@ -1,6 +1,8 @@
 ﻿// Created by camilo on 2022-10-18 20:32 <3ThomasBorregaardSorensen
 #include "framework.h"
 #include "node.h"
+#include "acme/platform/system.h"
+#include "apex/platform/session.h"
 #include "windowing_android/android/_internal.h"
 #include "windowing_android/android/driver.h"
 #include "windowing_android/android/message_box.h"
@@ -24,12 +26,12 @@ namespace node_android
    }
 
 
-   void node::on_initialize_object()
+   void node::on_initialize_particle()
    {
 
       acmesystem()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
 
-      ::aura_android::node::on_initialize_object();
+      ::aura_android::node::on_initialize_particle();
 
    }
 
@@ -40,13 +42,13 @@ namespace node_android
       if (acmesystem()->m_bIsReadyForUserInteraction)
       {
 
-         ::aura_android::node::report_exception_to_user(pobject, exception, strMoreDetails);
+         ::aura_android::node::report_exception_to_user(pparticle, exception, strMoreDetails);
 
       }
       else
       {
 
-         operating_system_log_exception(pobject, exception, strMoreDetails);
+         operating_system_log_exception(pparticle, exception, strMoreDetails);
 
       }
 

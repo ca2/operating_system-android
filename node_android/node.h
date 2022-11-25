@@ -19,7 +19,7 @@ namespace node_android
       ~node() override;
 
 
-      void on_initialize_object() override;
+      void on_initialize_particle() override;
 
 
       void report_exception_to_user(::particle * pparticle, ::exception & exception, const ::string & strMoreDetails) override;

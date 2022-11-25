@@ -1,5 +1,6 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "_internal.h"
+#include "acme/parallelization/synchronous_lock.h"
 
 
 void android_aura_main()
@@ -190,7 +191,7 @@ int e_message_box_to_button(const ::e_message_box& emessagebox)
 }
 
 
-::mutex * osmutex();
+::particle * osmutex();
 
 void android_exchange()
 {

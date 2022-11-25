@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-28 02:49 <3ThomasBorregaardSørensen
+ï»¿// Created by camilo on 2022-05-28 02:49 <3ThomasBorregaardSï¿½rensen
 #include "framework.h"
 #include "media_library.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
@@ -13,7 +13,7 @@ namespace android
 
       ::string str;
 
-      str = __string(m_iId);
+      str = ::as_string(m_iId);
 
       return ::move(str);
 
@@ -112,9 +112,7 @@ namespace android
    void add_media_library_item(library_item* plibraryitem)
    {
 
-      auto psystem = ::get_system();
-
-      psystem->m_pacmedirectory->add_media_library_item(plibraryitem);
+      plibraryitem->acmedirectory()->add_media_library_item(plibraryitem);
 
    }
 

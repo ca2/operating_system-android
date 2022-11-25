@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 #include "aura/user/user/interaction_impl.h"
@@ -21,7 +21,7 @@ namespace aura_android
       size_i32                                      m_size;
       point_i32                                     m_point;
       static const ::u32                         m_nMsgDragList;
-      edisplay                                  m_edisplayLayout;
+      e_display                                 m_edisplayLayout;
       ::thread *                                m_pthreadDraw;
       int                                       m_iSoftwareKeyboardScroll;
 
@@ -30,8 +30,8 @@ namespace aura_android
       ~interaction_impl() override;
 
 
-      void assert_ok() const override;
-      void dump(dump_context & dumpcontext) const override;
+      //void assert_ok() const override;
+      //void dump(dump_context & dumpcontext) const override;
 
       //bool create_message_queue(::user::interaction * pinteraction, const ::string & pszName) override;
 

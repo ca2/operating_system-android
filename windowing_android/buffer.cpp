@@ -1,7 +1,8 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "_.h"
 #include "buffer.h"
 #include "android/_internal.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "aura/graphics/image/image.h"
 //#include <native_window.h>
 

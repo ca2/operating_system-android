@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-28 02:55 <3ThomasBorregaardSørensen!! (ThomasLikesNumber5 and will raise ca-square?)
+ï»¿// Created by camilo on 2022-05-28 02:55 <3ThomasBorregaardSï¿½rensen!! (ThomasLikesNumber5 and will raise ca-square?)
 #include "framework.h"
 #include "_internal.h"
 #include "media_library.h"
@@ -15,15 +15,15 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_music_announce(JNIEnv * env, jobje
 
       ::i64 iId = id;
 
-      ::string strDisplayName = __string(display_name);
+      ::string strDisplayName = ::as_string(display_name);
 
-      ::string strFullPath = __string(full_path);
+      ::string strFullPath = ::as_string(full_path);
 
-      ::string strMimeType = __string(mime_type);
+      ::string strMimeType = ::as_string(mime_type);
 
-      ::string strTitle = __string(title);
+      ::string strTitle = ::as_string(title);
 
-      ::string strArtist = __string(artist);
+      ::string strArtist = ::as_string(artist);
 
       auto pitem = __new(::android::audio_item(id, strTitle, strArtist));
 
@@ -57,13 +57,13 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_image_announce(JNIEnv * env, jobje
 
       ::i64 iId = id;
 
-      ::string strDisplayName = __string(display_name);
+      ::string strDisplayName = ::as_string(display_name);
 
-      ::string strFullPath = __string(full_path);
+      ::string strFullPath = ::as_string(full_path);
 
-      ::string strMimeType = __string(mime_type);
+      ::string strMimeType = ::as_string(mime_type);
 
-      ::string strTitle = __string(title);
+      ::string strTitle = ::as_string(title);
 
       auto pitem = __new(::android::images_item(id, strTitle));
 
@@ -97,15 +97,15 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_video_announce(JNIEnv * env, jobje
 
       ::i64 iId = id;
 
-      ::string strDisplayName = __string(display_name);
+      ::string strDisplayName = ::as_string(display_name);
 
-      ::string strFullPath = __string(full_path);
+      ::string strFullPath = ::as_string(full_path);
 
-      ::string strMimeType = __string(mime_type);
+      ::string strMimeType = ::as_string(mime_type);
 
-      ::string strTitle = __string(title);
+      ::string strTitle = ::as_string(title);
 
-      ::string strArtist = __string(artist);
+      ::string strArtist = ::as_string(artist);
 
       auto pitem = __new(::android::video_item(id, strTitle, strArtist));
 

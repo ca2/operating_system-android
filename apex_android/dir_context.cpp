@@ -3,6 +3,8 @@
 #include "dir_context.h"
 #include "dir_system.h"
 #include "file_system.h"
+#include "acme/filesystem/filesystem/listing.h"
+#include "acme/parallelization/single_lock.h"
 #include "apex/platform/system.h"
 
 
@@ -27,7 +29,7 @@ namespace apex_android
 
       //auto estatus = 
       
-      ::dir_context::initialize(pobject);
+      ::dir_context::initialize(pparticle);
 
       //if (!estatus)
       //{
@@ -800,9 +802,9 @@ namespace apex_android
 
       wstring wstrPath;
 
-      wstrPath = utf8_to_unicode(str, iLast + 1);
+      wstrPath = str.Left(iLast + 1);
 
-      bool bIsDir = ::dir_context::is(unicode_to_utf8(wstrPath));
+      bool bIsDir = ::dir_context::is(wstrPath);
 
       return bIsDir;
 
@@ -845,7 +847,7 @@ namespace apex_android
    ::file::path dir_context::install()
    {
 
-      single_lock synchronouslock(mutex(), true);
+      single_lock synchronouslock(synchronization(), true);
 
       return m_pdirsystem->m_pathInstall;
 

@@ -1,9 +1,9 @@
-// Created by camilo on 2022-05-06 03:49 <3ThomasBorregaardSørensen!!
+ï»¿// Created by camilo on 2022-05-06 03:49 <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
 class asset :
-   virtual public ::element
+   virtual public ::particle
 
 {
 public:

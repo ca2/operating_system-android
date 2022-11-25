@@ -1,9 +1,12 @@
-// created by Camilo <3CamiloSasukeThomasBorregaardSoerensen
+﻿// created by Camilo <3CamiloSasukeThomasBorregaardSoerensen
 // recreated by Camilo 2021-01-28 22:20 <3TBS, Mummi and bilbo!!
 // Adapted by Camilo for android 2022-01-05 04:37 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
 #include "window.h"
 #include "windowing.h"
+#include "acme/constant/message.h"
+#include "acme/parallelization/synchronous_lock.h"
+#include "apex/platform/system.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/interaction_prodevian.h"
 #include "aura/platform/message_queue.h"
@@ -18,7 +21,7 @@
 //void on_sn_launch_complete(void * pSnContext);
 
 
-mutex * user_mutex();
+::particle * synchronization();
 
 
 #undef ALOG_CONTEXT
@@ -77,7 +80,7 @@ namespace windowing_android
    void window::create_window(::user::interaction_impl * pimpl)
    {
 
-      synchronous_lock synchronouslock(user_mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       bool bOk = true;
 
@@ -528,7 +531,7 @@ namespace windowing_android
 
          pimpl->m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
 
-         pimpl->m_puserinteraction->set(e_flag_task_started);
+         pimpl->m_puserinteraction->set_flag(e_flag_task_started);
 
       }
 
@@ -614,7 +617,7 @@ namespace windowing_android
 
       auto d1 = m_pcontext->m_pauracontext->create_image({ 32, 32 });
 
-      if (!::is_ok(d1))
+      if (d1.nok())
       {
 
          return false;
@@ -662,7 +665,7 @@ namespace windowing_android
 
       windowing_output_debug_string("\nwindow::set_icon");
 
-      synchronous_lock synchronouslock(user_mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -780,7 +783,7 @@ namespace windowing_android
 
    //   windowing_output_debug_string("\nwindow::store_name");
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   display_lock displaylock(x11_display()->Display());
 
@@ -798,7 +801,7 @@ namespace windowing_android
 
    //   windowing_output_debug_string("\nwindow::select_input");
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   display_lock displaylock(x11_display()->Display());
 
@@ -816,7 +819,7 @@ namespace windowing_android
 
    //   windowing_output_debug_string("\nwindow::select_all_input");
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   display_lock displaylock(x11_display()->Display());
 
@@ -966,7 +969,7 @@ namespace windowing_android
 
       }
 
-      synchronous_lock synchronouslock(user_mutex());
+      synchronous_lock synchronouslock(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -1020,7 +1023,7 @@ namespace windowing_android
 //   void window::mapped_net_state_raw(bool add, int iScreen, Atom state1, Atom state2)
 //   {
 //
-//      synchronous_lock synchronouslock(user_mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      XClientMessageEvent xclient;
 //
@@ -1048,7 +1051,7 @@ namespace windowing_android
 //   void window::unmapped_net_state_raw(Atom atom1, ...)
 //   {
 //
-//      synchronous_lock synchronouslock(user_mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      XEvent xevent;
 //
@@ -1110,7 +1113,7 @@ namespace windowing_android
 //
 //            windowing_output_debug_string("\n::window::show_window 1");
 //
-//            synchronous_lock synchronouslock(user_mutex());
+//            synchronous_lock synchronouslock(synchronization());
 //
 //            display_lock displaylock(x11_display()->Display());
 //
@@ -1193,7 +1196,7 @@ namespace windowing_android
 //
 //      windowing_output_debug_string("\n::window::full_screen 1");
 //
-//      synchronous_lock synchronouslock(user_mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      display_lock displaylock(x11_display()->Display());
 //
@@ -1262,7 +1265,7 @@ namespace windowing_android
    void window::exit_iconify()
    {
 
-      //synchronous_lock synchronouslock(user_mutex());
+      //synchronous_lock synchronouslock(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -1294,7 +1297,7 @@ namespace windowing_android
    void window::exit_full_screen()
    {
 
-      //synchronous_lock synchronouslock(user_mutex());
+      //synchronous_lock synchronouslock(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -1326,7 +1329,7 @@ namespace windowing_android
    void window::exit_zoomed()
    {
 
-      //synchronous_lock sl(user_mutex());
+      //synchronous_lock sl(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -1412,7 +1415,7 @@ namespace windowing_android
 
    //   windowing_output_debug_string("\n::window::get_state 1");
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   display_lock displaylock(x11_display()->Display());
 
@@ -1500,7 +1503,7 @@ namespace windowing_android
 
       //windowing_output_debug_string("\n::window::is_window_visible 1");
 
-      //synchronous_lock synchronouslock(user_mutex());
+      //synchronous_lock synchronouslock(synchronization());
 
       //display_lock displaylock(x11_display()->Display());
 
@@ -1854,7 +1857,7 @@ namespace windowing_android
 //   bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
 //   {
 //
-//      synchronous_lock sl(user_mutex());
+//      synchronous_lock sl(synchronization());
 //
 //      windowing_output_debug_string("\n::window::set_window_pos 1");
 //
@@ -2154,7 +2157,7 @@ namespace windowing_android
    //void window::set_mouse_cursor2(::windowing::cursor * pcursor)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   //display_lock displaylock(x11_display()->Display());
 
@@ -2239,7 +2242,7 @@ namespace windowing_android
    //   //m_pwindowing->windowing_post([this, pcursorx11]()
    //   //   {
 
-   //   //      synchronous_lock sl(user_mutex());
+   //   //      synchronous_lock sl(synchronization());
 
    //   //      windowing_output_debug_string("\n::SetCursor 1");
 
@@ -2299,7 +2302,7 @@ namespace windowing_android
 //   void window::upper_window_rects(rectangle_i32_array & ra)
 //   {
 //
-//      synchronous_lock synchronouslock(user_mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      ra.erase_all();
 //
@@ -2367,7 +2370,7 @@ namespace windowing_android
 
    //}
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   {
 
@@ -2528,7 +2531,7 @@ namespace windowing_android
    //::windowing::window * window::get_window(enum_relative erelative)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   ::Window window = 0;
 
@@ -2711,7 +2714,7 @@ namespace windowing_android
    //   //      x11_fork([window]()
    //   //               {
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   //Display *Display() = Display();
 
@@ -2763,7 +2766,7 @@ namespace windowing_android
 
    //   comparable_array < Atom >atoma;
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   if (atomList == None)
    //   {
@@ -2800,7 +2803,7 @@ namespace windowing_android
    //int window::wm_test_list_raw(Atom atomList, Atom atomFlag)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   Atom actual_type;
 
@@ -2827,7 +2830,7 @@ namespace windowing_android
    //int window::wm_test_state_raw(const char * pszNetStateFlag)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   Atom atomFlag = x11_display()->intern_atom(pszNetStateFlag, 1);
 
@@ -2859,7 +2862,7 @@ namespace windowing_android
    //int window::wm_test_state(const char * pszNetStateFlag)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   windowing_output_debug_string("\n::wm_test_state 1");
 
@@ -2886,7 +2889,7 @@ namespace windowing_android
    //bool window::wm_add_remove_list_raw(Atom atomList, Atom atomFlag, bool bSet)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   if (atomFlag == None)
    //   {
@@ -2970,7 +2973,7 @@ namespace windowing_android
    //void window::set_foreground_window()
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   //display_lock displaylock(x11_display()->Display());
 
@@ -3080,7 +3083,7 @@ namespace windowing_android
    //::e_status window::x11_store_name(const char * pszName)
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   display_lock displaylock(x11_display()->Display());
 
@@ -3152,7 +3155,7 @@ namespace windowing_android
    //   int_bool window::get_client_rect(RECTANGLE_I32 *prectangle)
    //   {
    //
-   //      synchronous_lock synchronouslock(user_mutex());
+   //      synchronous_lock synchronouslock(synchronization());
    //
    //      display_lock displaylock(x11_display()->Display());
    //
@@ -3279,7 +3282,7 @@ namespace windowing_android
    //void window::set_mouse_capture()
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   auto pwindowing = (::windowing_android::windowing*)m_pwindowing->m_pWindowing;
 
@@ -3366,7 +3369,7 @@ namespace windowing_android
    //void window::set_keyboard_focus()
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   auto pwindowing = windowing();
 
@@ -3449,7 +3452,7 @@ namespace windowing_android
    //void window::bring_to_front()
    //{
 
-   //   synchronous_lock synchronouslock(user_mutex());
+   //   synchronous_lock synchronouslock(synchronization());
 
    //   //if (Window() == 0)
    //   //{

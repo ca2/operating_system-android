@@ -280,7 +280,7 @@ string jni_object::get_str(jfieldID jfieldid)
    if (jstring)
    {
 
-      str = get_string(jstring);
+      str = ::as_string(jstring);
 
       t_pjnienv->DeleteLocalRef(jstring);
 

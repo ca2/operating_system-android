@@ -26,7 +26,7 @@ namespace apex_android
 
       //auto estatus = 
       
-      ::file_context::initialize(pobject);
+      ::file_context::initialize(pparticle);
 
       //if (!estatus)
       //{

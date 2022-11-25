@@ -2,6 +2,8 @@
 #include "acme/constant/id.h"
 #include "_internal.h"
 #include "_asset_manager.h"
+#include "acme/parallelization/synchronous_lock.h"
+#include "acme/platform/system.h"
 
 
 int e_message_box_to_button(const ::e_message_box& emessagebox);
@@ -126,7 +128,7 @@ void operating_system_driver::set(operating_system_driver* pdriver)
 void operating_system_driver::queue_message_box_sequencer(::sequencer< ::conversation >* psequencer)
 {
 
-   synchronous_lock synchronouslock(&m_mutexMessageBoxSequencer);
+   synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
 
    m_sequenceraMessageBox.add(psequencer);
 
@@ -136,7 +138,7 @@ void operating_system_driver::queue_message_box_sequencer(::sequencer< ::convers
 pointer< ::sequencer < ::conversation > > operating_system_driver::pick_message_box_sequencer()
 {
 
-   synchronous_lock synchronouslock(&m_mutexMessageBoxSequencer);
+   synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
 
    if (m_sequenceraMessageBox.is_empty())
    {
@@ -350,7 +352,7 @@ void operating_system_driver::exchange()
 
    {
 
-      synchronous_lock sl(&m_mutexListFileEnumerate);
+      synchronous_lock sl(m_pparticleMutexListFileEnumerate);
 
       if (m_straListFileEnumerate.has_element())
       {
@@ -397,7 +399,7 @@ void operating_system_driver::exchange()
 void operating_system_driver::list_file_enumerate(const ::string& strListFileEnumerate)
 {
 
-   synchronous_lock lock(&m_mutexListFileEnumerate);
+   synchronous_lock lock(m_pparticleMutexListFileEnumerate);
 
    m_straListFileEnumerate.add(strListFileEnumerate);
 

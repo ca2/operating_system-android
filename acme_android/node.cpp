@@ -1,6 +1,8 @@
 ﻿// Created by camilo on 2022-05-04 03:33 <3ThomasBorregaardSorensen
 #include "framework.h"
 #include "node.h"
+#include "acme/platform/system.h"
+
 
 #if defined(__clang__)
    ::string android_backtrace();
@@ -50,15 +52,15 @@ namespace acme_android
    }
 
 
-#if defined(__clang__)
-   ::string node::get_callstack()
-   {
-
-      return android_backtrace();
-
-   }
-
-#endif
+//#if defined(__clang__)
+//   ::string node::get_callstack()
+//   {
+//
+//      return android_backtrace();
+//
+//   }
+//
+//#endif
 
 
 } // namespace acme_android

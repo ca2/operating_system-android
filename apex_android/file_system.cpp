@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "file_system.h"
 
 
@@ -34,7 +34,7 @@ namespace apex_android
 
       //auto estatus = 
       
-      ::file_system::initialize(pobject);
+      ::file_system::initialize(pparticle);
 
       //if (!estatus)
       //{

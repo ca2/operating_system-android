@@ -5,6 +5,8 @@
 #include "windowing.h"
 #include "window.h"
 #include "display.h"
+#include "acme/constant/message.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/sandbox/host_interaction.h"
 #include "android/_internal.h"
@@ -93,7 +95,7 @@ namespace windowing_android
 
       //auto estatus =
       //
-      ::windowing::windowing::initialize(pobject);
+      ::windowing::windowing::initialize(pparticle);
 
       //      if(!estatus)
       //      {

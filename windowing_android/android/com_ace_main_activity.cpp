@@ -2,13 +2,16 @@
 #include "_internal.h"
 #include "_asset_manager.h"
 #include "_asset.h"
-#include "acme/user/nano/_nano.h"
+//#include "acme/user/nano/_nano.h"
+#include "acme/platform/node.h"
+#include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
+#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
 typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
 
-extern ::mutex * g_pmutexOs;
+extern ::pointer < ::particle > g_pmutexOs;
 
 
 void android_aura_main();
@@ -34,7 +37,7 @@ const char * this_argv[] =
 
 
 class main_os_thread :
-   virtual public ::element
+   virtual public ::particle
 {
 public:
 
@@ -128,7 +131,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = new mutex();
+         g_pmutexOs = ::get_system()->acmenode()->create_mutex();
 
       }
 
@@ -205,7 +208,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
             pResourceEnd));
 
 
-         pdriver->m_pelementMainOsThread = pmainosthread;
+         pdriver->m_pparticleMainOsThread = pmainosthread;
 
 
          //pfnFactory(pfactory);

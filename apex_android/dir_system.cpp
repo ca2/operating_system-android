@@ -1,5 +1,6 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "dir_system.h"
+#include "acme/platform/system.h"
 
 
 namespace apex_android
@@ -21,7 +22,7 @@ namespace apex_android
    void dir_system::initialize(::particle * pparticle)
    {
 
-      ::dir_system::initialize(pobject);
+      ::dir_system::initialize(pparticle);
 
       m_pathHome = acmesystem()->m_pathCacheDirectory / "home";
 

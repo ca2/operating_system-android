@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "_internal.h"
 
 
@@ -8,10 +8,10 @@ extern operating_system_driver* g_pandroiddriver;
 thread_local JNIEnv* t_pjnienv;
 
 
-::mutex* g_pmutexOs;
+::pointer < ::particle > g_pmutexOs;
 
 
-::mutex* osmutex()
+::particle* osmutex()
 {
 
    return g_pmutexOs;
@@ -32,7 +32,7 @@ int get_mem_free_available_kb()
 
 
 
-string get_string(jstring jstring)
+string as_string(const jstring & jstring)
 {
 
    const char* nativeString = t_pjnienv->GetStringUTFChars(jstring, 0);

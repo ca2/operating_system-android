@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-04 07:20 <3ThomasBorregaardSorensen!!
+﻿// Created by camilo on 2022-05-04 07:20 <3ThomasBorregaardSorensen!!
 #pragma once
 
 
@@ -19,7 +19,7 @@
 #include "driver.h"
 
 
-CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobject, ::exception& exception, const ::string& strMoreDetails);
+CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails);
 
 
 #include <android/log.h>
@@ -39,7 +39,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobje
 #include <math.h>
 
 
-::string __string(const jstring& jstring);
+::string as_string(const jstring& jstring);
 
 //#include "_os_object.h"
 //#include "_os_local.h"
@@ -78,7 +78,7 @@ class asset_manager;
 
 //extern ::pointer<operating_system_driver>g_pandroiddriver;
 
-CLASS_DECL_APEX string get_string(jstring jstring);
+CLASS_DECL_APEX string as_string(const jstring & jstring);
 
 
 CLASS_DECL_APEX void set_jni_context(JNIEnv* penv);

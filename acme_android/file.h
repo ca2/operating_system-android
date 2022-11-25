@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 class FileException;
@@ -54,14 +54,14 @@ namespace acme_android
       ~file() override;
 
 
-      void assert_ok() const override;
-      void dump(dump_context & dumpcontext) const override;
+      //void assert_ok() const override;
+      //void dump(dump_context & dumpcontext) const override;
 
 
-      virtual filesize get_position() const override;
+      filesize get_position() const override;
 
 
-      virtual bool get_status(::file::file_status & rStatus) const override;
+      bool get_status(::file::file_status & rStatus) const override;
       //virtual string GetFileName() const;
       //virtual string GetFileTitle() const;
       ::file::path get_file_path() const override;
@@ -76,23 +76,23 @@ namespace acme_android
 
       //virtual file_pointer Duplicate() const;
 
-      virtual filesize translate(filesize lOff, ::enum_seek eseek) override;
-      virtual void set_size(filesize dwNewLen) override;
-      virtual filesize get_size() const override;
+      filesize translate(filesize lOff, ::enum_seek eseek) override;
+      void set_size(filesize dwNewLen) override;
+      filesize get_size() const override;
 
-      virtual memsize read(void * lpBuf, memsize nCount) override;
-      virtual void write(const void * lpBuf, memsize nCount) override;
+      memsize read(void * lpBuf, memsize nCount) override;
+      void write(const void * lpBuf, memsize nCount) override;
 
-      virtual void lock(filesize dwPos, filesize dwCount) override;
-      virtual void unlock(filesize dwPos, filesize dwCount) override;
+      void lock(filesize dwPos, filesize dwCount) override;
+      void unlock(filesize dwPos, filesize dwCount) override;
 
       //virtual void Abort();
-      virtual void flush() override;
-      virtual void close() override;
+      void flush() override;
+      void close() override;
 
-      virtual bool is_opened() const override;
+      bool is_opened() const override;
 
-      //virtual u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
+      //u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
 
 
    };

@@ -1,12 +1,13 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "acme/constant/id.h"
 #include "_internal.h"
+#include "acme/platform/node.h"
 
 
 operating_system_bind * g_pandroiddirect;
 
 
-CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
+CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pobject, ::exception& exception, const ::string& strMoreDetails)
 {
 
    string strMessage;
@@ -14,7 +15,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobje
    strMessage += "Failed to initialize application\n";
    strMessage += "\n";
    strMessage += exception.m_strMessage + "\n";
-   strMessage += "(" + __string(exception.m_estatus) + ")";
+   strMessage += "(" + ::as_string(exception.m_estatus) + ")";
 
    string strTitle;
 
@@ -25,7 +26,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::object* pobje
    strDetails += strMessage + "\n";
    strDetails += exception.m_strDetails + "\n\n";
    strDetails += "\n";
-   strDetails += "PID: " + __string(::get_current_process_id()) + "\n";
+   strDetails += "PID: " + ::as_string(pobject->acmenode()->get_current_process_id()) + "\n";
    //strDetails += "Working Directory: " + string(GetCurrentDirectory()) + "\n\n";
 
    if (strMoreDetails.has_char())

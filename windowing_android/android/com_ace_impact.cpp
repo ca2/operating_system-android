@@ -1,4 +1,6 @@
-#include "framework.h"
+﻿#include "framework.h"
+#include "acme/constant/message.h"
+#include "acme/platform/system.h"
 #include "aura/user/user/user.h"
 #include "aura/platform/session.h"
 #include "aura/user/user/interaction_impl.h"

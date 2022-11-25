@@ -4,6 +4,8 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/listing.h"
+#include "acme/platform/node.h"
 #include "apex/filesystem/filesystem/file_context.h"
 #include "aura/graphics/write_text/font_enumeration_item.h"
 #include "aura/graphics/write_text/true_type_font_utilities.h"
@@ -56,12 +58,12 @@ namespace write_text_android
 
             double dAndroid = 4.4;
 
-            string strSystemFonts = m_pcontext->m_papexcontext->file().safe_get_string("/system/etc/system_fonts.xml");
+            string strSystemFonts = file()->safe_get_string("/system/etc/system_fonts.xml");
 
             if (strSystemFonts.is_empty())
             {
 
-               strSystemFonts = m_pcontext->m_papexcontext->file().safe_get_string("/system/etc/fonts.xml");
+               strSystemFonts = file()->safe_get_string("/system/etc/fonts.xml");
 
             }
 
@@ -359,9 +361,9 @@ namespace write_text_android
 
                pitem = __new(::write_text::font_enumeration_item);
 
-               pitem->m_mapFileName[0] = acmesystem()->m_pnode->font_name(e_font_monospace);
+               pitem->m_mapFileName[0] = acmenode()->font_name(e_font_monospace);
 
-               pitem->m_strName = acmesystem()->m_pnode->font_name(e_font_monospace);
+               pitem->m_strName = acmenode()->font_name(e_font_monospace);
 
                itema.add(pitem);
 

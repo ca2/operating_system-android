@@ -27,9 +27,10 @@ namespace acme_android
       
       string audio_get_default_library_name() override;
 
-#if defined(__clang__)
-      ::string get_callstack() override;
-#endif
+//#if defined(__clang__)
+//      ::string get_callstack() override;
+//#endif
+
 
    };
 
