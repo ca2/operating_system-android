@@ -155,13 +155,13 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
          if (::is_set(puserinteractionimpl))
          {
 
-            ::duration duration;
+            ::time time;
 
-            duration.Now();
+            time.Now();
 
             puserinteractionimpl->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
 
-            LOGE("render_impact: %lld ms duration=%f ms", time_ms, duration.elapsed().floating_millisecond().m_d);
+            LOGE("render_impact: %lld ms time=%f ms", time_ms, time.elapsed().floating_millisecond().m_d);
 
          }
 

@@ -30,8 +30,8 @@ namespace apex_android
       void close() override;
 
 
-      void call(const ::string & strMessage, const duration & durationTimeout) override;
-      //void send(int message, void * pdata, int len, const duration & durationTimeout) override;
+      void call(const ::string & strMessage, const class time & timeTimeout) override;
+      //void send(int message, void * pdata, int len, const class time & timeTimeout) override;
 
 
       bool is_caller_ok() override;

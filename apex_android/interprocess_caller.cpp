@@ -60,7 +60,7 @@ namespace apex_android
    }
 
 
-   void interprocess_caller::call(const ::string & strUri, const duration & durationTimeout)
+   void interprocess_caller::call(const ::string & strUri, const class time & timeTimeout)
    {
 
       //data_struct data;
@@ -94,7 +94,7 @@ namespace apex_android
    }
 
 
-   //void interprocess_caller::send(i32 message,void * pdata,i32 len, const duration & durationTimeout)
+   //void interprocess_caller::send(i32 message,void * pdata,i32 len, const class time & timeTimeout)
    //{
 
    //   if (message == (i32)0x80000000)

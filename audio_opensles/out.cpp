@@ -632,7 +632,7 @@ namespace multimedia
 
 
       //imedia_time out::wave_out_get_position_millis()
-      ::duration out::out_get_position()
+      ::time out::out_get_position()
       {
 
          //single_lock sLock(m_mutex, true);
@@ -809,7 +809,7 @@ namespace multimedia
       }
 
 
-      void out::out_start(const ::duration & position)
+      void out::out_start(const ::time & position)
       {
 
          synchronous_lock sLock(synchronization());

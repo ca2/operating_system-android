@@ -53,7 +53,7 @@ namespace multimedia
 
          void install_message_routing(::channel * pchannel) override;
 
-         ::duration out_get_position() override;
+         class ::time out_get_position() override;
          //imedia_position wave_out_get_position();
 
          void out_open_ex(::thread* pthreadCallback, u32 uiSamplesPerSec, u32 uiChannelCount, u32 uiBitsPerSample, ::wave::enum_purpose epurpose) override;
@@ -76,7 +76,7 @@ namespace multimedia
          DECLARE_MESSAGE_HANDLER(OnReady);
          DECLARE_MESSAGE_HANDLER(OnFree);
 
-         void out_start(const ::duration & duration) override;
+         void out_start(const class time & time) override;
 
          virtual bool on_run_step();
 

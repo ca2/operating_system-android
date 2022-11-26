@@ -22,7 +22,7 @@ namespace windowing_android
       //::pointer<::message_queue>             m_pmessagequeue;
       //htask_t                                    m_htask;
       ////Colormap                                     m_colormap;
-      //::duration                                       m_durationLastMouseMove;
+      //class ::time                                       m_timeLastMouseMove;
       ////Window                                       m_parent;
       //::rectangle_i32                              m_rect;
       ////string                                       m_strWMClass;
