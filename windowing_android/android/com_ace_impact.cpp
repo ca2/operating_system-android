@@ -155,7 +155,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
          if (::is_set(puserinteractionimpl))
          {
 
-            ::time time;
+            class ::time time;
 
             time.Now();
 
