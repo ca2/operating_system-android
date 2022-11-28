@@ -60,6 +60,8 @@ Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_ace", "..\..\seed-a
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app_app", "..\..\seed-android\app\app\android_app_app.androidproj", "{07DB723F-EF85-45FA-B3FC-3FEEAF021D08}"
 EndProject
+Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "android_app", "..\..\seed-android\app\app\android_app.androidproj", "{1537111D-1157-47B0-855F-01641E04B271}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|ARM = debug|ARM
@@ -848,6 +850,54 @@ Global
 		{07DB723F-EF85-45FA-B3FC-3FEEAF021D08}.static_release|x86.ActiveCfg = Debug|x86
 		{07DB723F-EF85-45FA-B3FC-3FEEAF021D08}.static_release|x86.Build.0 = Debug|x86
 		{07DB723F-EF85-45FA-B3FC-3FEEAF021D08}.static_release|x86.Deploy.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM.ActiveCfg = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM.Build.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM.Deploy.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM64.ActiveCfg = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM64.Build.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|ARM64.Deploy.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x64.ActiveCfg = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x64.Build.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x64.Deploy.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x86.ActiveCfg = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x86.Build.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.debug|x86.Deploy.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM.ActiveCfg = Release|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM.Build.0 = Release|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM.Deploy.0 = Release|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM64.ActiveCfg = Release|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM64.Build.0 = Release|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|ARM64.Deploy.0 = Release|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x64.ActiveCfg = Release|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x64.Build.0 = Release|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x64.Deploy.0 = Release|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x86.ActiveCfg = Release|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x86.Build.0 = Release|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.Release|x86.Deploy.0 = Release|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM.ActiveCfg = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM.Build.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM.Deploy.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM64.ActiveCfg = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM64.Build.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|ARM64.Deploy.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x64.ActiveCfg = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x64.Build.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x64.Deploy.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x86.ActiveCfg = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x86.Build.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_debug|x86.Deploy.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM.ActiveCfg = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM.Build.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM.Deploy.0 = Debug|ARM
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM64.ActiveCfg = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM64.Build.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|ARM64.Deploy.0 = Debug|ARM64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x64.ActiveCfg = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x64.Build.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x64.Deploy.0 = Debug|x64
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x86.ActiveCfg = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x86.Build.0 = Debug|x86
+		{1537111D-1157-47B0-855F-01641E04B271}.static_release|x86.Deploy.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
