@@ -384,7 +384,7 @@ namespace apex_android
                {
 
                   keyPlugin.SetValue("Description", "ca2 plugin for NPAPI");
-                  keyPlugin.SetValue("Path", ::apex::get_system()->m_strCa2Module("npca2.dll"));
+                  keyPlugin.SetValue("Path", ::apexacmesystem()->m_strCa2Module("npca2.dll"));
                   keyPlugin.SetValue("ProductName", "ca2 plugin for NPAPI");
                   keyPlugin.SetValue("Vendor", "ca2 Desenvolvimento de Software Ltda.");
                   keyPlugin.SetValue("Version", get_app()->acmefile()->as_string(m_pcontext->m_papexcontext->dir().ca2("appdata/x86/ca2_build.txt")));

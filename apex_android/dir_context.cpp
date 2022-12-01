@@ -857,7 +857,7 @@ namespace apex_android
    //::file::path dir_context::module()
    //{
 
-   // return ::apex::get_system()->get_module_folder();
+   // return ::apexacmesystem()->get_module_folder();
 
    //}
 
@@ -865,7 +865,7 @@ namespace apex_android
    //::file::path dir_context::ca2module()
    //{
    //
-   // return ::apex::get_system()->get_ca2_module_folder();
+   // return ::apexacmesystem()->get_ca2_module_folder();
    //
    //}
 

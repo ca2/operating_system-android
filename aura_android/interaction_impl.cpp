@@ -482,9 +482,9 @@ namespace aura_android
 //
 //         string strMessage;
 //
-//         strMessage.format("::aura::get_system() Error Code: %d", estatusLast);
+//         strMessage.format("::auraacmesystem() Error Code: %d", estatusLast);
 //
-//         //strMessage.format("%s\n\n::aura::get_system() Error Code: %d",strLastError.c_str(),dwLastError);
+//         //strMessage.format("%s\n\n::auraacmesystem() Error Code: %d",strLastError.c_str(),dwLastError);
 //
 //         TRACE("Warning: Window creation failed: get_last_error returned:\n");
 //
@@ -1078,7 +1078,7 @@ namespace aura_android
    //   __UNREFERENCED_PARAMETER(nCmd);
    //   throw ::interface_only();
 
-   //   /*      application* pApp = ::aura::get_system();
+   //   /*      application* pApp = ::auraacmesystem();
    //   ASSERT_VALID(pApp);
    //   ASSERT(pApp->m_pszHelpFilePath != nullptr);
    //   ASSERT(pApp->m_eHelpType == afxWinHelp);
@@ -1095,8 +1095,8 @@ namespace aura_android
    //   // finally, run the Windows Help engine
    //   /* trans   if (!::WinHelp(NODE_WINDOW(pwindow)->get_handle(), pApp->m_pszHelpFilePath, nCmd, dwData))
    //   {
-   //   // android ::aura::get_system()->message_box(__IDP_FAILED_TO_LAUNCH_HELP);
-   //   ::aura::get_system()->output_error_message("Failed to launch help");
+   //   // android ::auraacmesystem()->message_box(__IDP_FAILED_TO_LAUNCH_HELP);
+   //   ::auraacmesystem()->output_error_message("Failed to launch help");
    //   }*/
    //}
 
@@ -1104,7 +1104,7 @@ namespace aura_android
    ////{
    //// throw ::interface_only();
    ///*
-   //application* pApp = ::aura::get_system();
+   //application* pApp = ::auraacmesystem();
    //ASSERT_VALID(pApp);
    //ASSERT(pApp->m_pszHelpFilePath != nullptr);
    //// to call HtmlHelp the m_fUseHtmlHelp must be set in
@@ -1123,8 +1123,8 @@ namespace aura_android
    //// run the HTML Help engine
    ///* trans   if (!::aura::HtmlHelp(NODE_WINDOW(pwindow)->get_handle(), pApp->m_pszHelpFilePath, nCmd, dwData))
    //{
-   //// android ::aura::get_system()->message_box(__IDP_FAILED_TO_LAUNCH_HELP);
-   //::aura::get_system()->output_error_message("Failed to launch help");
+   //// android ::auraacmesystem()->message_box(__IDP_FAILED_TO_LAUNCH_HELP);
+   //::auraacmesystem()->output_error_message("Failed to launch help");
    //}*/
    ////}
 
@@ -1170,7 +1170,7 @@ namespace aura_android
    //   __UNREFERENCED_PARAMETER(nCmd);
    //   throw ::interface_only();
    //   /*
-   //   application* pApp = ::aura::get_system();
+   //   application* pApp = ::auraacmesystem();
    //   ASSERT_VALID(pApp);
    //   if (pApp->m_eHelpType == afxHTMLHelp)
    //   {
@@ -1372,10 +1372,10 @@ namespace aura_android
 //            {
 //               m_puserinteraction->get_window_rect(rectangleWindow);
 //            }
-//            /*if(::aura::get_system()->get_monitor_count() > 0)
+//            /*if(::auraacmesystem()->get_monitor_count() > 0)
 //            {
 //            ::rectangle_i32 rcMonitor;
-//            ::aura::get_system()->get_monitor_rectangle(0,&rcMonitor);
+//            ::auraacmesystem()->get_monitor_rectangle(0,&rcMonitor);
 //            if(rectangleWindow.left >= rcMonitor.left)
 //            pmouse->m_point.x += (::i32)rectangleWindow.left;
 //            if(rectangleWindow.top >= rcMonitor.top)
@@ -1425,7 +1425,7 @@ namespace aura_android
 //
 //      //   user::oswindow_array oswindowa;
 //      //   user::interaction_ptra wnda;
-//      //   wnda = ::aura::get_system()->m_uiptraFrame;
+//      //   wnda = ::auraacmesystem()->m_uiptraFrame;
 //      //   oswindowa = wnda.get_hwnda();
 //      //   user::window_util::SortByZOrder(oswindowa);
 //      //   for(i32 i = 0; i < oswindowa.get_size(); i++)
@@ -2350,7 +2350,7 @@ namespace aura_android
    //   //         // center within appropriate monitor coordinates
    //   //         if (hWndCenter == nullptr)
    //   //         {
-   //   //            oswindow hwDefault = ::aura::get_system()->GetMainWnd()->get_handle();
+   //   //            oswindow hwDefault = ::auraacmesystem()->GetMainWnd()->get_handle();
    //   //
    //   //            GetMonitorInfo(
    //   //               MonitorFromWindow(hwDefault, MONITOR_DEFAULTTOPRIMARY), &mi);
@@ -4632,7 +4632,7 @@ namespace aura_android
 ////         if (pFrame != nullptr)
 ////         hWnd = pFrame->get_handle();
 ////         else
-////         hWnd = ::aura::get_system()->GetMainWnd()->get_handle();*/
+////         hWnd = ::auraacmesystem()->GetMainWnd()->get_handle();*/
 ////      }
 ////
 ////      // a popup ::user::interaction_impl cannot be owned by a child ::user::interaction_impl
@@ -4688,7 +4688,7 @@ namespace aura_android
 //   void interaction_impl::_001BaseWndInterfaceMap()
 //   {
 //
-//      ::aura::get_system()->window_map().set(get_handle(), this);
+//      ::auraacmesystem()->window_map().set(get_handle(), this);
 //
 //   }
 //

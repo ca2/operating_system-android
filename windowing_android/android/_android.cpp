@@ -14,7 +14,7 @@ void _android_key(unsigned int message, int keyCode, int iUni);
 void android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    psystem->fork([=]()
       {
@@ -31,7 +31,7 @@ int translate_android_key_message(::message::key* pkey, int keyCode, int iUni);
 void _android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    if (psystem == nullptr)
       return;
@@ -74,7 +74,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    __UNREFERENCED_PARAMETER(yDummy);
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    if (psystem == nullptr)
       return;
@@ -104,7 +104,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    puserinteraction->post_redraw();
 
-   //::aura::get_system()->get_session()->m_puserinteractionHost->set_window_position(e_zorder_top, 0, 0, cx, cy, SWP_SHOWWINDOW);
+   //::auraacmesystem()->get_session()->m_puserinteractionHost->set_window_position(e_zorder_top, 0, 0, cx, cy, SWP_SHOWWINDOW);
 
 }
 
@@ -146,7 +146,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 
    output_debug_string("android_on_size\n");
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    if (psystem == nullptr)
    {
@@ -271,10 +271,10 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
 
    string strText(pwch, len);
 
-   //::aura::get_system()->fork([=]()
+   //::auraacmesystem()->fork([=]()
    //{
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
@@ -550,7 +550,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //
 //   ::future process = processParam;
 //
-//   ::aura::get_system()->fork([=]()
+//   ::auraacmesystem()->fork([=]()
 //      {
 //
 //         auto result = _android_os_message_box(strText, strCaption, emessagebox);
@@ -591,7 +591,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 int GetMainScreenRect(RECTANGLE_I32* lprect)
 {
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    auto puserinteraction = psystem->get_session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
@@ -612,7 +612,7 @@ int GetMainScreenRect(RECTANGLE_I32* lprect)
 int SetMainScreenRect(const ::rectangle_i32 &rect)
 {
 
-   auto psystem = ::get_system();
+   auto psystem = acmesystem();
 
    auto psession = psystem->get_session();
 

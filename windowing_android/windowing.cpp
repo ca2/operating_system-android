@@ -1746,15 +1746,15 @@ oswindow get_capture()
 //   if (::get_context_system() == nullptr)
 //      return;
 //
-//   if (::aura::get_system()->get_session() == nullptr)
+//   if (::auraacmesystem()->get_session() == nullptr)
 //      return;
 //
-//   if (::aura::get_system()->get_session()->m_puserinteractionHost == nullptr)
+//   if (::auraacmesystem()->get_session()->m_puserinteractionHost == nullptr)
 //      return;
 //
 //   MESSAGE msg;
 //
-//   auto puserinteraction = __user_interaction(::aura::get_system()->get_session()->m_puserinteractionHost);
+//   auto puserinteraction = __user_interaction(::auraacmesystem()->get_session()->m_puserinteractionHost);
 //
 //   if (puserinteraction)
 //   {
@@ -1779,7 +1779,7 @@ oswindow get_capture()
 //
 //   msg.pt.y = (long)y;
 //
-//   //auto puserinteraction = __user_interaction(::aura::get_system()->get_session()->m_puserinteractionHost);
+//   //auto puserinteraction = __user_interaction(::auraacmesystem()->get_session()->m_puserinteractionHost);
 //
 //   if (puserinteraction)
 //   {

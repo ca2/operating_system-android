@@ -105,7 +105,7 @@ public:
 
          string strDetails = exception.m_strDetails;
 
-         auto psequencer = ::get_system()->nano()->message_box_sequencer(
+         auto psequencer = acmesystem()->nano()->message_box(
             "Failed to load library?",
             "Failed to Load Library?",
             e_message_box_ok);
@@ -131,7 +131,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = ::get_system()->acmenode()->create_mutex();
+         g_pmutexOs = acmesystem()->acmenode()->create_mutex();
 
       }
 

@@ -387,7 +387,7 @@ void operating_system_driver::exchange()
 
          pdirect->setUri("");
 
-         ::get_system()->handle_uri(strUri);
+         acmesystem()->handle_uri(strUri);
 
       }
 

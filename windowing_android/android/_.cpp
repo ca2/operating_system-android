@@ -37,7 +37,7 @@ void android_aura_main()
 
    //psession->set_main_screen_rect(rectangle);
 
-   //auto puserinteraction = __user_interaction(::aura::get_system()->get_session()->m_puserinteractionHost);
+   //auto puserinteraction = __user_interaction(::auraacmesystem()->get_session()->m_puserinteractionHost);
 
    //puserinteraction->place(rectangle);
 
