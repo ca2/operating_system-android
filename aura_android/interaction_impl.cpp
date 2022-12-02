@@ -612,7 +612,7 @@ namespace aura_android
    }
 
 
-   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, u32 dwStyle, const ::rectangle_i32 & rectangle, ::user::primitive * pParentWnd, atom atom, ::create * pcreate)
+   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, u32 dwStyle, const ::rectangle_i32 & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest)
    //{
 
    //   // can't use for desktop or pop-up android (use create_window_ex instead)
