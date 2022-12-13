@@ -1231,8 +1231,8 @@ namespace apex_android
 //      index iFind = strRelative.find(':');
 //      if(iFind >= 0)
 //      {
-//         strsize iFind1 = strRelative.reverse_find("\\", iFind);
-//         strsize iFind2 = strRelative.reverse_find("/", iFind);
+//         strsize iFind1 = strRelative.rear_find("\\", iFind);
+//         strsize iFind2 = strRelative.rear_find("/", iFind);
 //         strsize iStart = maximum(iFind1 + 1, iFind2 + 1);
 //         strRelative = strRelative.Left(iFind - 1) + "_" + strRelative.Mid(iStart, iFind - iStart) + strRelative.Mid(iFind + 1);
 //      }

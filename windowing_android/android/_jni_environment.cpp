@@ -72,7 +72,7 @@ JNIEnv* get_jni_env()
 
    auto env = get_jni_env();
 
-   const wd16char* utf16 = (wd16char*)env->GetStringChars(jstring, NULL);
+   const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(jstring, NULL);
 
    if (utf16 == NULL)
    {
@@ -83,7 +83,7 @@ JNIEnv* get_jni_env()
 
    size_t length = (size_t)env->GetStringLength(jstring);
 
-   wd16string wstr(utf16, length);
+   wd16_string wstr(utf16, length);
 
    string str(wstr);
 

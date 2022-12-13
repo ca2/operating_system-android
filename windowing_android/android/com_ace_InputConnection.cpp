@@ -140,7 +140,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_CommitText(JNIEnv * env,
 
       set_jni_context(env);
 
-      const wd16char* utf16 = (wd16char*)env->GetStringChars(text, NULL);
+      const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(text, NULL);
 
       if (utf16 == NULL)
       {
@@ -163,7 +163,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_CommitText(JNIEnv * env,
          if (pelementFocus)
          {
 
-            wd16string wstr(utf16, length);
+            wd16_string wstr(utf16, length);
 
             string str(wstr);
 
@@ -269,7 +269,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_SetComposingText(JNIEnv 
 
       set_jni_context(env);
 
-      const wd16char* utf16 = (wd16char*)env->GetStringChars(text, NULL);
+      const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(text, NULL);
 
       if (utf16 == NULL)
       {
@@ -292,7 +292,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_InputConnection_SetComposingText(JNIEnv 
          if (pelementFocus)
          {
 
-            wd16string wstr(utf16, length);
+            wd16_string wstr(utf16, length);
 
             string str(wstr);
 
