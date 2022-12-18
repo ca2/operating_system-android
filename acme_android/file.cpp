@@ -701,7 +701,7 @@ namespace acme_android
    {
       ASSERT_VALID(this);
 
-      //__memset(&rStatus, 0, sizeof(::file::file_status));
+      //memory_set(&rStatus, 0, sizeof(::file::file_status));
 
       // copy file name from cached m_strFileName
       rStatus.m_strFullName = m_strFileName;
