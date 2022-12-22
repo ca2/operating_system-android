@@ -38,7 +38,7 @@ namespace acme_android
       if (!windows_full_path(wstrFullName, wstrFileName))
       {
 
-         rStatus.m_strFullName.Empty();
+         rStatus.m_strFullName.empty();
 
          return false;
 
@@ -133,7 +133,7 @@ namespace acme_android
 
       m_iFile = (::u32)hFileNull;
 
-      m_strFileName.Empty();
+      m_strFileName.empty();
 
       m_strFileName = path;
 
@@ -489,7 +489,7 @@ namespace acme_android
          bError = ::close(m_iFile) == -1;
 
       m_iFile = (::u32) hFileNull;
-      m_strFileName.Empty();
+      m_strFileName.empty();
 
       if (bError)
       {
@@ -516,7 +516,7 @@ namespace acme_android
    //      ::close(m_iFile);
    //      m_iFile = (::u32)hFileNull;
    //   }
-   //   m_strFileName.Empty();
+   //   m_strFileName.empty();
    //}
 
    void file::lock(filesize dwPos, filesize dwCount)

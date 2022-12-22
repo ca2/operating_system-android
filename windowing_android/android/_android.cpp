@@ -321,7 +321,7 @@ void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len)
 //      if (pkey->m_strText == "\n" || pkey->m_strText == "\r\n" || pkey->m_strText == "\r")
 //      {
 //
-//         pkey->m_strText.Empty();
+//         pkey->m_strText.empty();
 //
 //         pkey->m_ekey = ::user::e_key_return;
 //

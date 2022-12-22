@@ -686,7 +686,7 @@ namespace apex_android
    //      if (strPath.begins("\\\\"))
    //      {
 
-   //         strPath = "\\\\?\\UNC" + strPath.Mid(1);
+   //         strPath = "\\\\?\\UNC" + strPath.substr(1);
 
    //      }
    //      else
@@ -802,7 +802,7 @@ namespace apex_android
 
       wstring wstrPath;
 
-      wstrPath = str.Left(iLast + 1);
+      wstrPath = str.left(iLast + 1);
 
       bool bIsDir = ::dir_context::is(wstrPath);
 
@@ -1138,7 +1138,7 @@ namespace apex_android
    //   {
    //      string strDir = psz.folder();
    //      string str;
-   //      str = strDir.Left(2);
+   //      str = strDir.left(2);
    //      str += "\\trash_that_is_not_trash\\";
    //      string strFormat;
    //      ::earth::time time;
@@ -1147,11 +1147,11 @@ namespace apex_android
    //      str += strFormat;
    //      if (strDir[2] == '\\')
    //      {
-   //         str += strDir.Mid(3);
+   //         str += strDir.substr(3);
    //      }
    //      else
    //      {
-   //         str += strDir.Mid(2);
+   //         str += strDir.substr(2);
    //      }
    //      return str;
    //   }
@@ -1234,7 +1234,7 @@ namespace apex_android
 //         strsize iFind1 = strRelative.rear_find("\\", iFind);
 //         strsize iFind2 = strRelative.rear_find("/", iFind);
 //         strsize iStart = maximum(iFind1 + 1, iFind2 + 1);
-//         strRelative = strRelative.Left(iFind - 1) + "_" + strRelative.Mid(iStart, iFind - iStart) + strRelative.Mid(iFind + 1);
+//         strRelative = strRelative.left(iFind - 1) + "_" + strRelative.substr(iStart, iFind - iStart) + strRelative.substr(iFind + 1);
 //      }
 //
 //   ::file::path strUserFolderShift;

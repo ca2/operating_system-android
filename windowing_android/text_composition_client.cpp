@@ -194,7 +194,7 @@ namespace windowing_android
 //
 //               m_puserinteraction->edit_undo();
 //
-//               m_strImeComposition.Empty();
+//               m_strImeComposition.empty();
 //
 //            }
 //
@@ -666,7 +666,7 @@ namespace windowing_android
    void text_composition_client::clear_ime_composition()
    {
 
-      m_strImeComposition.Empty();
+      m_strImeComposition.empty();
 
       m_bTextCompositionActive2 = false;
 
@@ -678,7 +678,7 @@ namespace windowing_android
 
       m_puserinteraction->edit_undo();
 
-      m_strImeComposition.Empty();
+      m_strImeComposition.empty();
 
 
    }

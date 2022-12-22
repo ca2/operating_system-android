@@ -249,7 +249,7 @@ void operating_system_driver::exchange()
 
          pdirect->setUserWallpaper(m_strSetUserWallpaper);
 
-         m_strSetUserWallpaper.Empty();
+         m_strSetUserWallpaper.empty();
 
       }
 
