@@ -52,7 +52,7 @@ namespace android
    }
 
 
-   /// Attributes
+   /
    ::string audio_item::get_title()
    {
 
@@ -76,7 +76,7 @@ namespace android
 
    }
 
-   /// Attributes
+   /
    ::string video_item::get_title()
    {
 
@@ -100,7 +100,7 @@ namespace android
 
    }
 
-   /// Attributes
+   /
    ::string images_item::get_title()
    {
 

@@ -335,7 +335,7 @@ namespace aura_android
       //virtual bool SetWindowContextHelpId(u32 dwContextHelpId) override;
       //virtual u32 GetWindowContextHelpId() const override;
 
-      // Dialog Data support
+       support
       //virtual bool update_data(bool bSaveAndValidate = true);
       // data wnd must be same type as this
 
@@ -518,7 +518,7 @@ namespace aura_android
       //virtual bool ReflectChildNotify(::user::message * pusermessage);
       //static bool ReflectMessage(oswindow oswindow_Child,::user::message * pusermessage);
 
-      // Implementation
+      
       //virtual bool CheckAutoCenter() override;
       //virtual bool GrayCtlColor(HDC hDC,oswindow oswindow,::u32 nCtlColor,
       //                          HBRUSH hbrGray,color32_t clrText);

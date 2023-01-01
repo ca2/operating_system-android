@@ -3,18 +3,6 @@
 
 
 
-/*
-#ifndef _XSERVER64
-#ifndef _XTYPEDEF_XID
-#define _XTYPEDEF_XID
-typedef unsigned long XID;
-#endif
-#endif
-*/
-
-//#pragma once
-
-
 
 #define __cdecl
 #define _stdcall
@@ -93,108 +81,8 @@ typedef struct device_context * HDC;
 
 typedef struct gdi_object * HGDIOBJ;
 
-//union _XEvent;
-
-//typedef union _XEvent XEvent;
-
-#define DECL_SPEC_ANY
-
-
-// STRICT is the only supported option (NOSTRICT is no longer supported)
-#ifndef STRICT
-#define STRICT 1
-#endif
-
-
-#ifndef EXPORT
-#define EXPORT
-#endif
-
-
-#ifdef _MIPS_
-// specific overrides for MIPS...
-#define _AFX_PACKING    8       // default MIPS alignment (required)
-#endif //_MIPS_
-
 
 void debug_break();
-
-
-#ifdef _PPC_
-// specific overrides for PPC...
-#define _AFX_PACKING    8       // default PPC alignment (required)
-#endif //_PPC_
-
-
-#ifdef _IA64_
-// specific overrides for IA64...
-#define _AFX_PACKING    8
-#define _SHADOW_DOUBLES 8
-#endif //_IA64_
-
-
-#ifdef _AMD64_
-// specific overrides for AMD64...
-#define _AFX_PACKING    8
-#endif //_AMD64_
-
-
-
-
-
-
-#ifndef SIZE_T_MAX
-	#define SIZE_T_MAX  UINT_MAX
-#endif
-
-#ifndef CDECL
-	#define CDECL
-#endif
-
-#ifndef EXPORT
-	#define EXPORT
-#endif
-
-// UNALIGNED is used for unaligned data access (in carchive mostly)
-#if !defined(UNALIGNED)
-#if defined(_M_IA64) || defined(_M_AMD64)
-#define UNALIGNED __unaligned
-#else
-#define UNALIGNED
-#endif
-#endif
-
-
-
-// for global data that should be in COMDATs (packaged data)
-#ifndef __COMDAT
-#define __COMDAT // __declspec(selectany)
-#endif
-
-
-#define NO_ANSIUNI_ONLY
-
-#define MAX_DWORD_PTR ((dword_ptr)(-1))
-
-#define TRUE 1
-
-#define FALSE 0
-
-
-
-//#define max(x,y) (((x) > (y)) ? (x) : (y))
-//#define min(x,y) (((x) < (y)) ? (x) : (y))
-
-
-//#define __max(a,b)  (((a) > (b)) ? (a) : (b))
-//#define __min(a,b)  (((a) < (b)) ? (a) : (b))
-
-
-
-//typedef unsigned char   u_char;
-//typedef unsigned short  u_short;
-//typedef ::u32    u_int;
-//typedef unsigned long   u_long;
 
 
 
@@ -214,8 +102,6 @@ typedef ::wd32_character        ::wide_character;
 
 #ifdef _DEBUG
 
-//#define RELEASENOTHROW
-
 #else
 
 #define RELEASENOTHROW throw()
@@ -223,21 +109,11 @@ typedef ::wd32_character        ::wide_character;
 #endif
 
 
-//#define ::u32     ::u32
-//
-//#define byte      ::u328_t
-
-//#define NULL 0
 
 #define _strcmpi strcasecmp
 
 
 #define __forceinline inline
-
-
-
-
-//typedef ::u328_t byte;
 
 
 typedef void * PVOID;
@@ -287,11 +163,4 @@ typedef void * PVOID;
 
 
 #define WINBOOL int
-
-
-
-//#define offsetof(type, member)  __builtin_offsetof (type, member)
-
-
-
 
