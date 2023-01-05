@@ -63,6 +63,8 @@ int timespec_get(timespec * ts, int);
 
 #include <typeinfo>
 #include <initializer_list>
+#include <compare>
+#include <concepts>
 
 
 #endif
