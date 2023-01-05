@@ -25,4 +25,8 @@ solution.vc.db*
 *.expand_fileset
 *.expand_fileset.spa
 Thumbs.db
+Makefile
 deployment.rc
+application_build_helper_input.txt
+application_build_helper_output.txt
+matter_output.txt
