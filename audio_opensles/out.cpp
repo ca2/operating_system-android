@@ -661,7 +661,7 @@ namespace multimedia
             &nPositionMs);
 
 
-         return INTEGRAL_MILLISECOND{ nPositionMs };
+         return integral_millisecond{ nPositionMs };
 
       }
 
