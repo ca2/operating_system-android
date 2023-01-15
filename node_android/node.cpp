@@ -1,4 +1,4 @@
-﻿// Created by camilo on 2022-10-18 20:32 <3ThomasBorregaardSorensen
+﻿// Created by camilo on 2022-10-18 20:32 <3ThomasBorregaardSørensen
 #include "framework.h"
 #include "node.h"
 #include "acme/platform/system.h"
