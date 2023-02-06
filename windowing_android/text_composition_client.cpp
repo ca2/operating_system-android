@@ -707,7 +707,7 @@ namespace windowing_android
          //int y2 = y + m_iLineHeight;
          // ::point_i32 point(x, y);
          //::rectangle_i32 r;
-         //get_client_rect(rectangle);
+         //client_rectangle(rectangle);
          //rectangle.left = x;
          //rectangle.top = y;
          //rectangle.bottom = y2;

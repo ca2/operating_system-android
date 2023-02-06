@@ -1379,10 +1379,10 @@ oswindow get_capture()
 //}
 
 
-//int_bool get_client_rect(oswindow_data * pdata, RECTANGLE_I32 * prectangle)
+//int_bool client_rectangle(oswindow_data * pdata, RECTANGLE_I32 * prectangle)
 //{
 //
-//   pdata->m_pimpl->m_puserinteraction->get_client_rect(prectangle);
+//   pdata->m_pimpl->m_puserinteraction->client_rectangle(prectangle);
 //
 //   //prectangle->right -= prectangle->left;
 //   //prectangle->bottom -= prectangle->top;
@@ -1394,10 +1394,10 @@ oswindow get_capture()
 //}
 
 
-//int_bool get_window_rect(oswindow_data * pdata, RECTANGLE_I32 * prectangle)
+//int_bool window_rectangle(oswindow_data * pdata, RECTANGLE_I32 * prectangle)
 //{
 //
-//   pdata->m_pimpl->m_puserinteraction->get_window_rect(prectangle);
+//   pdata->m_pimpl->m_puserinteraction->window_rectangle(prectangle);
 //
 //   return true;
 //

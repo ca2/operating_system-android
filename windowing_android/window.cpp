@@ -481,7 +481,7 @@ namespace windowing_android
 
          //::rectangle_i32 rect32;
 
-         //(::get_window_rect((oswindow) get_handle(), rect32))
+         //(::window_rectangle((oswindow) get_handle(), rect32))
          {
 
 
@@ -2275,7 +2275,7 @@ namespace windowing_android
    //}
 
 
-   //::e_status window::get_window_rect(RECTANGLE_I32 * prectangle)
+   //::e_status window::window_rectangle(RECTANGLE_I32 * prectangle)
    //{
 
    //   return x11_get_window_rect(prectangle);
@@ -2291,7 +2291,7 @@ namespace windowing_android
    //}
 
 
-   //::e_status window::get_client_rect(RECTANGLE_I32 * prectangle)
+   //::e_status window::client_rectangle(RECTANGLE_I32 * prectangle)
    //{
 
    //   return x11_get_client_rect(prectangle);
@@ -2340,7 +2340,7 @@ namespace windowing_android
 //
 //      x11_get_window_rect(rectangle);
 //
-//      //r = oswindow->m_puserinteractionimpl->m_puserinteraction->get_window_rect();
+//      //r = oswindow->m_puserinteractionimpl->m_puserinteraction->window_rectangle();
 //
 //      //string strTopic = x11_get_name(x11_display(), Window());
 //
@@ -3152,7 +3152,7 @@ namespace windowing_android
    //
    //   }
 
-   //   int_bool window::get_client_rect(RECTANGLE_I32 *prectangle)
+   //   int_bool window::client_rectangle(RECTANGLE_I32 *prectangle)
    //   {
    //
    //      synchronous_lock synchronouslock(synchronization());
@@ -3162,7 +3162,7 @@ namespace windowing_android
    //      if (x11_display()->is_null())
    //      {
    //
-   //         windowing_output_debug_string("\n::get_client_rect 1.1 (display is null)");
+   //         windowing_output_debug_string("\n::client_rectangle 1.1 (display is null)");
    //
    //         return false;
    //
@@ -3173,7 +3173,7 @@ namespace windowing_android
    //      if (XGetWindowAttributes(Display(), Window(), &attr) == 0)
    //      {
    //
-   //         windowing_output_debug_string("\n::get_client_rect 1.2 (xgetwindowattributes failed");
+   //         windowing_output_debug_string("\n::client_rectangle 1.2 (xgetwindowattributes failed");
    //
    //         return false;
    //
@@ -3187,7 +3187,7 @@ namespace windowing_android
    //
    //      prectangle->bottom = prectangle->top + attr.height;
    //
-   //      windowing_output_debug_string("\n::get_client_rect 2");
+   //      windowing_output_debug_string("\n::client_rectangle 2");
    //
    //      return true;
    //
