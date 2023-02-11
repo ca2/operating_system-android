@@ -1353,7 +1353,7 @@ namespace apex_android
    bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
-      return pszDir.begins_ci(pszPath);
+      return pszDir.case_insensitive_begins(pszPath);
 
    }
 

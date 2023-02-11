@@ -106,7 +106,7 @@ namespace windowing_android
 
    //      strChar = wsz;
 
-   //      //if (!m_strImeComposition.begins_eat_ci(strChar))
+   //      //if (!m_strImeComposition.case_insensitive_begins_eat(strChar))
    //      //{
 
    //      pmessage->m_bRet = true;
