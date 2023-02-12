@@ -757,7 +757,7 @@ namespace apex_android
    bool dir_context::name_is(const ::file::path & str)
    {
       //output_debug_string(str);
-      strsize iLast = str.get_length() - 1;
+      strsize iLast = str.length() - 1;
       while (iLast >= 0)
       {
          if (str[iLast] != '\\' && str[iLast] != '/' && str[iLast] != ':')

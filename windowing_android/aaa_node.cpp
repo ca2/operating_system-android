@@ -63,7 +63,7 @@
 //      rectangle.right = pdriver->m_iWidth;
 //      rectangle.bottom = pdriver->m_iHeight;
 //
-//      auto psession = acmesystem()->get_session();
+//      auto psession = acmesession();
 //
 //      psession->defer_initialize_host_window(rectangle);
 //
