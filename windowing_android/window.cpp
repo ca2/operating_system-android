@@ -648,7 +648,7 @@ namespace windowing_android
 
       m.set_size(length * 4);
 
-      unsigned int * pcr = (unsigned int *)m.get_data();
+      unsigned int * pcr = (unsigned int *)m.data();
 
       pcr[0] = d1->width();
 
@@ -1614,7 +1614,7 @@ namespace windowing_android
 
       //}
 
-      return true;
+      return ::success;
 
    }
 

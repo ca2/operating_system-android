@@ -1,5 +1,6 @@
 ﻿#include "framework.h"
 #include "acme/constant/message.h"
+#include "acme/platform/acme.h"
 #include "acme/platform/system.h"
 #include "aura/user/user/user.h"
 #include "aura/platform/session.h"
@@ -23,7 +24,7 @@ void set_jni_context(JNIEnv* penv);
 ::windowing::window* __get_host_window()
 {
 
-   auto psystem = acmesystem();
+   auto psystem = ::acme::acme::g_p->m_psubsystem->acmesystem();
 
    if (::is_set(psystem))
    {
@@ -33,7 +34,7 @@ void set_jni_context(JNIEnv* penv);
       if (::is_set(paurasystem))
       {
 
-         auto paurasession = psystem->m_paurasession;
+         auto paurasession = psystem->acmesession()->m_paurasession;
 
          if (::is_set(paurasession))
          {
@@ -161,7 +162,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
 
             puserinteractionimpl->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
 
-            LOGE("render_impact: %lld ms time=%f ms", time_ms, time.elapsed().floating_millisecond().m_d);
+            LOGE("render_impact: %lld ms time=%f ms", time_ms, time.elapsed().floating_millisecond());
 
          }
 

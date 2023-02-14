@@ -3,7 +3,9 @@
 #include "_asset_manager.h"
 #include "_asset.h"
 //#include "acme/user/nano/_nano.h"
+#include "acme/platform/acme.h"
 #include "acme/platform/node.h"
+#include "acme/platform/sequencer.h"
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
 #include "acme/user/nano/nano.h"
@@ -82,7 +84,7 @@ public:
 
       pmainosthread->run();
 
-      return (void *)(iptr)_status_exit_code(pmainosthread->m_estatus);
+      return (void *)(iptr)pmainosthread->m_estatus.exit_code();
 
    }
 
@@ -131,7 +133,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = acmesystem()->acmenode()->create_mutex();
+         g_pmutexOs = ::acme::acme::g_p->m_psubsystem->acmesystem()->acmenode()->create_mutex();
 
       }
 

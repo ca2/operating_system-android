@@ -37,6 +37,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pp
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "acme/constant/os_text.h"
 
 
 ::string as_string(const jstring& jstring);
@@ -46,7 +47,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pp
 //#include "_os_remote.h"
 
 
-void android_on_text(e_os_text etext, const wchar_t* pwch, size_t len);
+void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len);
 
 
 //#define  LOG_TAG    "apex : os : _os_binding"

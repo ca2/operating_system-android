@@ -1,6 +1,9 @@
 ﻿#pragma once
 
 
+#include "acme/filesystem/file/file.h"
+
+
 class FileException;
 struct FileStatus;
 
@@ -76,9 +79,9 @@ namespace acme_android
 
       //virtual file_pointer Duplicate() const;
 
-      filesize translate(filesize lOff, ::enum_seek eseek) override;
+      void translate(filesize lOff, ::enum_seek eseek) override;
       void set_size(filesize dwNewLen) override;
-      filesize get_size() const override;
+      filesize size() const override;
 
       memsize read(void * lpBuf, memsize nCount) override;
       void write(const void * lpBuf, memsize nCount) override;

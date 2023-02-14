@@ -2,6 +2,7 @@
 #include "acme/constant/id.h"
 #include "_internal.h"
 #include "_asset_manager.h"
+#include "acme/platform/sequencer.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
 

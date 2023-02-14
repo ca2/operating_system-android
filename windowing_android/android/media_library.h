@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-28 02:43 <3ThomasBorregaardS�rensen
+﻿// Created by camilo on 2022-05-28 02:43 <3ThomasBorregaardS�rensen
 #pragma once
 
 
@@ -51,7 +51,6 @@ namespace android
 
       ::enum_media_library media_library_type() override;
 
-      /
       ::string get_title() override;
       ::string get_artist() override;
 
@@ -77,7 +76,7 @@ namespace android
 
       ::enum_media_library media_library_type() override;
 
-      /
+      
       ::string get_title() override;
 
 
@@ -104,8 +103,6 @@ namespace android
 
       ::enum_media_library media_library_type() override;
 
-
-      /
       ::string get_title() override;
       ::string get_artist() override;
 

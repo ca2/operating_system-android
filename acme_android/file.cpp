@@ -390,7 +390,8 @@ namespace acme_android
       //vfxThrowFileexception(::error_disk_full, -1, m_strFileName);
    }
 
-   filesize file::translate(filesize lOff, ::enum_seek eseek)
+   
+   void file::translate(filesize lOff, ::enum_seek eseek)
    {
 
       if (m_iFile == hFileNull)
@@ -428,7 +429,7 @@ namespace acme_android
 
       }
 
-      return posNew;
+      //return posNew;
 
    }
 
@@ -565,7 +566,8 @@ namespace acme_android
 #endif
    }
 
-   filesize file::get_size() const
+
+   filesize file::size() const
    {
       ASSERT_VALID(this);
 
@@ -574,8 +576,9 @@ namespace acme_android
       // seek is a non const operation
       file* pFile = (file*)this;
       dwCur = pFile->get_position();
-      dwLen = pFile->seek_to_end();
-      VERIFY(dwCur == pFile->set_position(dwCur));
+      pFile->seek_to_end();
+      dwLen = pFile->get_position();
+      pFile->set_position(dwCur);
 
       return (filesize) dwLen;
    }

@@ -15,7 +15,7 @@ namespace android
 
       str = ::as_string(m_iId);
 
-      return ::move(str);
+      return ::transfer(str);
 
    }
 
@@ -52,7 +52,7 @@ namespace android
    }
 
 
-   /
+   
    ::string audio_item::get_title()
    {
 
@@ -76,7 +76,7 @@ namespace android
 
    }
 
-   /
+   
    ::string video_item::get_title()
    {
 
@@ -100,7 +100,7 @@ namespace android
 
    }
 
-   /
+   
    ::string images_item::get_title()
    {
 

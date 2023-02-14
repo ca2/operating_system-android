@@ -5,6 +5,8 @@
 #include "file_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/single_lock.h"
+#include "acme/parallelization/task_flag.h"
+#include "acme/platform/acme.h"
 #include "apex/platform/system.h"
 
 
