@@ -5,7 +5,7 @@
 #include "windowing_android/_.h"
 
 
-#if defined(_NODE_ANDROID_LIBRARY)
+#if defined(_node_android_project)
 #define CLASS_DECL_NODE_ANDROID  CLASS_DECL_EXPORT
 #else
 #define CLASS_DECL_NODE_ANDROID  CLASS_DECL_IMPORT

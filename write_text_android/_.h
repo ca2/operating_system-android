@@ -1,11 +1,11 @@
-// Created by camilo on 2022-04-30 04:05 BRT <3ThomasBorregaardSørensen!!
+// Created by camilo on 2022-04-30 04:05 BRT <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
 #include "aura_android/_.h"
 
 
-#if defined(_WRITE_TEXT_ANDROID_LIBRARY)
+#if defined(_write_text_android_project)
 #define CLASS_DECL_WRITE_TEXT_ANDROID  CLASS_DECL_EXPORT
 #else
 #define CLASS_DECL_WRITE_TEXT_ANDROID  CLASS_DECL_IMPORT

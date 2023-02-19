@@ -1,11 +1,11 @@
-// Created by camilo on 2022-04-30 04:03 BRT <3ThomasBorregaardSørensen!!
+// Created by camilo on 2022-04-30 04:03 BRT <3ThomasBorregaardSï¿½rensen!!
 #pragma once
 
 
 #include "acme_posix/_.h"
 
 
-#if defined(_ACME_ANDROID_LIBRARY)
+#if defined(_acme_android_project)
 #define CLASS_DECL_ACME_ANDROID  CLASS_DECL_EXPORT
 #else
 #define CLASS_DECL_ACME_ANDROID  CLASS_DECL_IMPORT
