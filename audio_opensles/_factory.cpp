@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "out.h"
-#include "app-core/audio/audio.h"
+#include "audio/audio/audio.h"
 
 
 __FACTORY_EXPORT void audio_opensles_factory(::factory::factory* pfactory)
