@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src0"/>
-	<classpathentry kind="lib" path="C:/Microsoft/AndroidSDK/25/platforms/android-25/android.jar"/>
-	<classpathentry kind="lib" path="C:/basis/operating-system/seed-android/app-cidadedecuritiba/alphaclock/app/build/intermediates/exploded-aar/android_ace_ace/jars/classes.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
