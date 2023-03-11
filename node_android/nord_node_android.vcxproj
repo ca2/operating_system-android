@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E31EDCB1-A35F-4D04-AFFE-6F37135D3BF9}</ProjectGuid>
     <Keyword>Android</Keyword>
-    <RootNamespace>operating-system-android</RootNamespace>
+    <RootNamespace>operating_system-android</RootNamespace>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <ApplicationType>Android</ApplicationType>
     <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
@@ -110,7 +110,7 @@
       <PreprocessorDefinitions>_NODE_ANDROID_LIBRARY;CUBE;DEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating-system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating-system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating_system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating_system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
       <WholeArchiveBegin>true</WholeArchiveBegin>
       <FunctionBinding>false</FunctionBinding>
     </Link>
@@ -130,7 +130,7 @@
       <PreprocessorDefinitions>_NODE_ANDROID_LIBRARY;CUBE</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating-system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating-system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating_system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating_system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
       <WholeArchiveBegin>true</WholeArchiveBegin>
       <FunctionBinding>false</FunctionBinding>
     </Link>
@@ -149,7 +149,7 @@
       <PreprocessorDefinitions>_NODE_ANDROID_LIBRARY;CUBE;DEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating-system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating-system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating_system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating_system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
       <WholeArchiveBegin>true</WholeArchiveBegin>
       <FunctionBinding>false</FunctionBinding>
     </Link>
@@ -169,7 +169,7 @@
       <PreprocessorDefinitions>_NODE_ANDROID_LIBRARY;CUBE</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating-system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating-system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\..\..\operating_system\storage-android\library\$(PlatformName)\$(Configuration)\;$(SolutionDir)..\..\..\..\operating_system\storage-android\third\library\$(PlatformName)\$(Configuration)\;$(OutDir)</AdditionalLibraryDirectories>
       <WholeArchiveBegin>true</WholeArchiveBegin>
       <FunctionBinding>false</FunctionBinding>
     </Link>

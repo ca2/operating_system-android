@@ -8,7 +8,7 @@
 #include "interprocess_target.h"
 #include "os_context.h"
 #include "apex/platform/launcher.h"
-#include "operating-system-posix/apex_posix/file_context.h"
+#include "operating_system-posix/apex_posix/file_context.h"
 #include "apex/parallelization/service_handler.h"
 #include "apex/platform/node.h"
 
