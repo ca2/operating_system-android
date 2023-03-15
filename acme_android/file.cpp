@@ -118,7 +118,7 @@ namespace acme_android
       }
 
       ASSERT_VALID(this);
-      ASSERT(__is_valid_string(path));
+      ASSERT(is_string_ok(path));
       ASSERT(!(eopen & ::file::e_open_text));   // text mode not supported
 
       // file objects are always binary and CreateFile does not need flag
@@ -307,7 +307,7 @@ namespace acme_android
          return 0;   // avoid Win32 "null-read"
 
       ASSERT(lpBuf != nullptr);
-      ASSERT(__is_valid_address(lpBuf, nCount));
+      ASSERT(is_memory_segment_ok(lpBuf, nCount));
 
       memsize pos = 0;
       memsize sizeRead = 0;
@@ -359,7 +359,7 @@ namespace acme_android
 
       ASSERT(lpBuf != nullptr);
 
-      ASSERT(__is_valid_address(lpBuf, nCount, false));
+      ASSERT(is_memory_segment_ok(lpBuf, nCount, false));
 
       memsize pos = 0;
 

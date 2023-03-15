@@ -281,7 +281,7 @@ namespace aura_android
 
    //   }
 
-   //   //      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
+   //   //      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || is_string_ok(pusersystem->m_createstruct.lpszName));
    //   //
    //   if (!m_puserinteraction->pre_create_window(pusersystem))
    //   {
@@ -414,7 +414,7 @@ namespace aura_android
 //
 ////      return false;
 //
-//      ENSURE_ARG(pusersystem->m_createstruct.lpszClass == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszClass));
+//      ENSURE_ARG(pusersystem->m_createstruct.lpszClass == nullptr || is_string_ok(pusersystem->m_createstruct.lpszClass));
 //
 //      m_puserinteraction->m_pimpl = this;
 //
