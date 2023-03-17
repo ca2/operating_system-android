@@ -312,7 +312,7 @@ extern "C"
 JNIEXPORT void JNICALL Java_com_ace_main_1activity_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
 {
 
-   auto psequencer = ::move_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
+   auto psequencer = ::pointer_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
 
    psequencer->m_psequence->m_payloadResult = (enum_dialog_result)jlResponse;
 

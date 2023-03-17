@@ -49,7 +49,7 @@ namespace acme_android
 
       };
 
-      ::file::path   m_strFileName;
+      //::file::path   m_strFileName;
       i32        m_iFile;
 
 
@@ -64,13 +64,13 @@ namespace acme_android
       filesize get_position() const override;
 
 
-      bool get_status(::file::file_status & rStatus) const override;
+      ::file::file_status get_status() const override;
       //virtual string GetFileName() const;
       //virtual string GetFileTitle() const;
       ::file::path get_file_path() const override;
-      void set_file_path(const ::file::path & path) override;
+      // void set_file_path(const ::file::path & path) override;
 
-      void open(const ::file::path & lpszFileName, const ::file::e_open & eopen) override;
+      void open(const ::file::path & lpszFileName, ::file::e_open eopen, ::pointer < ::file::exception > * ppfileexception) override;
 
       //virtual bool PASCAL GetStatus(const char * lpszFileName, ::file::file_status& rStatus);
 
@@ -96,6 +96,8 @@ namespace acme_android
       bool is_opened() const override;
 
       //u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
+
+      [[noreturn]]virtual void throw_exception(const ::scoped_string & scopedstr = nullptr, int iErrNo = 0) const;
 
 
    };

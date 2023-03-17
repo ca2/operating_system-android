@@ -3,6 +3,12 @@
 #include "acme_directory.h"
 #include "acme/filesystem/file/exception.h"
 #include "acme/filesystem/file/status.h"
+
+
+#include "acme/_operating_system.h"
+#include "acme/operating_system/time.h"
+
+
 #include <fcntl.h>
 
 #undef USE_MISC
@@ -38,13 +44,13 @@ namespace acme_android
       if (!windows_full_path(wstrFullName, wstrFileName))
       {
 
-         rStatus.m_strFullName.empty();
+         rStatus.m_pathFullName.empty();
 
          return false;
 
       }
 
-      rStatus.m_strFullName = wstrFullName;
+      rStatus.m_pathFullName = wstrFullName;
 
       struct stat st;
 
@@ -73,15 +79,15 @@ namespace acme_android
       /*rStatus.m_ctime = ::earth::time(findFileData.ftCreationTime);
       rStatus.m_atime = ::earth::time(findFileData.ftLastAccessTime);
       rStatus.m_mtime = ::earth::time(findFileData.ftLastWriteTime);*/
-      rStatus.m_ctime = ::earth::time(st.st_mtime);
-      rStatus.m_atime = ::earth::time(st.st_atime);
-      rStatus.m_mtime = ::earth::time(st.st_ctime);
+      file_time_to_time(&rStatus.m_timeCreation, (const file_time_t *) & st.st_mtim);
+      file_time_to_time(&rStatus.m_timeAccess, (const file_time_t *)&st.st_atime);
+      file_time_to_time(&rStatus.m_timeModification, (const file_time_t *)&st.st_ctime);
 
-      if (rStatus.m_ctime.get_time() == 0)
-         rStatus.m_ctime = rStatus.m_mtime;
+      if (rStatus.m_timeCreation <= 0_s)
+         rStatus.m_timeCreation = rStatus.m_timeModification;
 
-      if (rStatus.m_atime.get_time() == 0)
-         rStatus.m_atime = rStatus.m_mtime;
+      if (rStatus.m_timeAccess <= 0)
+         rStatus.m_timeAccess = rStatus.m_timeModification;
 
       return true;
 
@@ -105,10 +111,8 @@ namespace acme_android
    }
 
 
-   void file::open(const ::file::path & path, const ::file::e_open & eopenParam)
+   void file::open(const ::file::path & path, ::file::e_open eopen, ::pointer < ::file::exception > * ppfileexception)
    {
-
-      ::file::e_open eopen(eopenParam);
 
       if (m_iFile != hFileNull)
       {
@@ -130,12 +134,6 @@ namespace acme_android
          acmedirectory()->create(path.folder());
 
       }
-
-      m_iFile = (::u32)hFileNull;
-
-      m_strFileName.empty();
-
-      m_strFileName = path;
 
       ASSERT(::file::e_open_share_compat == 0);
 
@@ -193,7 +191,7 @@ namespace acme_android
 
       // attempt file creation
       //HANDLE hFile = shell::CreateFile(utf8_to_unicode(m_strFileName), dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
-      i32 hFile = ::open(m_strFileName, dwFlags, dwPermission); //::open(m_strFileName, dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
+      i32 hFile = ::open(path, dwFlags, dwPermission); //::open(m_strFileName, dwAccess, dwShareMode, &sa, dwCreateFlag, FILE_ATTRIBUTE_NORMAL, nullptr);
 
       if(hFile == -1)
       {
@@ -243,7 +241,7 @@ namespace acme_android
 
 
             //return __new(::file::exception(::error_os_error_to_exception(dwLastError), dwLastError, m_strFileName, nOpenFlags));
-            throw ::file::exception(m_estatus, errorcode, path, "::open == -1", m_eopen);
+            throw ::file::exception(m_estatus, errorcode, path, m_eopen, "::open == -1");
 
             //}
 
@@ -279,7 +277,7 @@ namespace acme_android
             else
             {*/
 
-            throw ::file::exception(m_estatus, errorcode, path, "::open == -1 (2)", m_eopen);
+            throw ::file::exception(m_estatus, errorcode, path, m_eopen, "::open == -1 (2)");
 
             //}
 
@@ -292,6 +290,12 @@ namespace acme_android
       m_estatus = ::success;
 
       set_ok_flag();
+
+      m_iFile = (::u32)hFileNull;
+
+      m_path.clear();
+
+      m_path = path;
 
       //return ::success;
 
@@ -326,12 +330,14 @@ namespace acme_android
 
             auto errorcode = errno_error_code(iErrNo);
 
-            throw ::file::exception(estatus, errorcode, m_path, "::read < 0", m_eopen);
+            throw ::file::exception(estatus, errorcode, m_path, m_eopen, "::read < 0");
 
          }
          else if(iRead == 0)
          {
+            
             break;
+
          }
 
          nCount -= iRead;
@@ -377,7 +383,7 @@ namespace acme_android
 
             auto errorcode = errno_error_code(iErrNo);
 
-            throw ::file::exception(estatus, errorcode, m_path, "::write < 0", m_eopen);
+            throw ::file::exception(estatus, errorcode, m_path, m_eopen, "::write < 0");
 
          }
 
@@ -397,13 +403,15 @@ namespace acme_android
       if (m_iFile == hFileNull)
       {
 
-         auto iErrNo = -1;
+         throw_exception("m_iFile == hFileNull");
 
-         auto estatus = error_bad_argument;
+         //auto iErrNo = -1;
 
-         auto errorcode = errno_error_code(iErrNo);
+         //auto estatus = error_bad_argument;
 
-         throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull", m_eopen);
+         //auto errorcode = errno_error_code(iErrNo);
+
+         //throw ::file::exception(estatus, errorcode, m_path, m_eopen, "m_iFile == hFileNull");
 
       }
 
@@ -419,13 +427,8 @@ namespace acme_android
       if (posNew < 0)
       {
 
-         auto iErrNo = errno;
+         throw_exception();
 
-         auto estatus = errno_status(iErrNo);
-
-         auto errorcode = errno_error_code(iErrNo);
-
-         throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
       }
 
@@ -446,14 +449,16 @@ namespace acme_android
       //    pos |= ((filesize)lHiOffset) << 32;
       if (pos < 0)
       {
+
+         throw_exception("lseek64 < 0");
        
-         auto iErrNo = errno;
+         //auto iErrNo = errno;
 
-         auto estatus = errno_status(iErrNo);
+         //auto estatus = errno_status(iErrNo);
 
-         auto errorcode = errno_error_code(iErrNo);
+         //auto errorcode = errno_error_code(iErrNo);
 
-         throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
+         //throw ::file::exception(estatus, errorcode, m_path, "lseek64 < 0", m_eopen);
 
       }
 
@@ -486,22 +491,32 @@ namespace acme_android
       ASSERT(m_iFile != hFileNull);
 
       bool bError = false;
+      int iErrNo = 0;
       if (m_iFile != hFileNull)
+      {
          bError = ::close(m_iFile) == -1;
+         if (bError)
+         {
+
+            iErrNo = errno;
+         }
+      }
 
       m_iFile = (::u32) hFileNull;
-      m_strFileName.empty();
+      m_path.clear();
 
       if (bError)
       {
 
-         auto iErrNo = errno;
+         throw_exception("::close == -1", iErrNo);
 
-         auto estatus = errno_status(iErrNo);
+         //auto iErrNo = errno;
 
-         auto errorcode = errno_error_code(iErrNo);
+         //auto estatus = errno_status(iErrNo);
 
-         throw ::file::exception(estatus, errorcode, m_path, "::close == -1", m_eopen);
+         //auto errorcode = errno_error_code(iErrNo);
+
+         //throw ::file::exception(estatus, errorcode, m_path, , m_eopen);
 
       }
 
@@ -554,13 +569,15 @@ namespace acme_android
       if (iError == -1)
       {
 
-         auto iErrNo = errno;
+         throw_exception("ftruncate == -1");
 
-         auto estatus = errno_status(iErrNo);
+         //auto iErrNo = errno;
 
-         auto errorcode = errno_error_code(iErrNo);
+         //auto estatus = errno_status(iErrNo);
 
-         throw ::file::exception(estatus, errorcode, m_path, "ftruncate == -1", m_eopen);
+         //auto errorcode = errno_error_code(iErrNo);
+
+         //throw ::file::exception(estatus, errorcode, m_path,  "ftruncate == -1", m_eopen);
 
       }
 #endif
@@ -657,15 +674,11 @@ namespace acme_android
       
       ASSERT_VALID(this);
       
-      ::file::file_status status;
+      auto status = get_status();
       
-      get_status(status);
-
-      return status.m_strFullName;
+      return status.m_pathFullName;
 
    }
-
-
 
 
    /////////////////////////////////////////////////////////////////////////////
@@ -700,77 +713,113 @@ namespace acme_android
    /////////////////////////////////////////////////////////////////////////////
    // file Status implementation
 
-   bool file::get_status(::file::file_status& rStatus) const
+   ::file::file_status file::get_status() const
    {
+
       ASSERT_VALID(this);
+
+      ::file::file_status filestatus;
 
       //memory_set(&rStatus, 0, sizeof(::file::file_status));
 
       // copy file name from cached m_strFileName
-      rStatus.m_strFullName = m_strFileName;
+      filestatus.m_pathFullName = m_path;
 
       if (m_iFile != hFileNull)
       {
+
          struct stat st;
-         if(fstat(m_iFile, &st) == -1)
-            return false;
+
+         if (fstat(m_iFile, &st) != 0)
+         {
+
+            throw_exception("fstat != 0");
+
+         }
          // get time ::e_seek_current file size_i32
          /*FILETIME ftCreate, ftAccess, ftModify;
          if (!::GetFileTime((HANDLE)m_iFile, &ftCreate, &ftAccess, &ftModify))
             return false;*/
 
-         rStatus.m_filesize = st.st_size;
+         filestatus.m_filesize = st.st_size;
 
-         rStatus.m_attribute = 0;
+         filestatus.m_attribute = 0;
 
-         rStatus.m_ctime = ::earth::time(st.st_mtime);
-         rStatus.m_atime = ::earth::time(st.st_atime);
-         rStatus.m_mtime = ::earth::time(st.st_ctime);
+         ::copy(&filestatus.m_timeModification, &st.st_mtim);
+         ::copy(&filestatus.m_timeAccess, &st.st_atim);
+         ::copy(&filestatus.m_timeCreation, &st.st_ctim);
 
-         if (rStatus.m_ctime.get_time() == 0)
-            rStatus.m_ctime = rStatus.m_mtime;
+         if (filestatus.m_timeCreation <= 0_s)
+         {
+            filestatus.m_timeCreation = filestatus.m_timeModification;
+         }
 
-         if (rStatus.m_atime.get_time() == 0)
-            rStatus.m_atime = rStatus.m_mtime;
+         if (filestatus.m_timeAccess <= 0_s)
+         {
+            filestatus.m_timeAccess = filestatus.m_timeModification;
+         }
+
       }
-      return true;
+      
+      return filestatus;
+
    }
-
-
-
 
 
    bool file::is_opened() const
    {
+
       return m_iFile != hFileNull;
+
    }
 
 
-   void file::set_file_path(const ::file::path & path)
+   //void file::set_file_path(const ::file::path & path)
+   //{
+
+   //   m_strFileName = path;
+
+   //}
+
+
+   void file::throw_exception(const ::scoped_string & scopedstr, int iErrNo) const
    {
 
-      m_strFileName = path;
+      throw_errno_exception(m_path, m_eopen, scopedstr, iErrNo);
+
+      //if (iErrNo == 0)
+      //{
+
+      //   iErrNo = errno;
+
+      //}
+
+      //auto estatus = errno_status(iErrNo);
+
+      //auto errorcode = errno_error_code(iErrNo);
+
+      //throw ::file::exception(estatus, errorcode, m_path, m_eopen, scopedstr);
 
    }
 
 
 } // namespace acme_android
 
-
-#define _wcsdec(_cpc1, _cpc2) ((_cpc1)>=(_cpc2) ? nullptr : (_cpc2)-1)
-
-#define _wcsinc(_pc)    ((_pc)+1)
-
-
-// turn a file, relative path or other into an absolute path
-bool CLASS_DECL_ACME windows_full_path(wstring & wstrFullPath, const wstring & wstrPath)
-{
-
-   wstrFullPath = wstrPath;
-   
-   return true;
-
-}
-
+//
+//#define _wcsdec(_cpc1, _cpc2) ((_cpc1)>=(_cpc2) ? nullptr : (_cpc2)-1)
+//
+//#define _wcsinc(_pc)    ((_pc)+1)
+//
+//
+//// turn a file, relative path or other into an absolute path
+//bool CLASS_DECL_ACME windows_full_path(wstring & wstrFullPath, const wstring & wstrPath)
+//{
+//
+//   wstrFullPath = wstrPath;
+//   
+//   return true;
+//
+//}
+//
 
 

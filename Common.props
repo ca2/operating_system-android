@@ -4,18 +4,22 @@
   <PropertyGroup Label="UserMacros">
     <BaseDir>$(SolutionDir)..\..\..\</BaseDir>
     <TimeDir>$(BaseDir)time-android\</TimeDir>
-    <__operating_system>$(BaseDir)operating-system\</__operating_system>
+    <__operating_system>$(BaseDir)operating_system\</__operating_system>
     <__toolsbin>$(__operating_system)tool-windows\bin\</__toolsbin>
   </PropertyGroup>
-  <PropertyGroup />
+  <PropertyGroup>
+    <OutDir>$(TimeDir)$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(TimeDir)intermediate\$(PlatformName)\$(Configuration)\$(RootNamespace)\$(ProjectName)\</IntDir>
+    <TargetName>lib$(ProjectName)</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(__sensitive)/sensitive/include;$(SolutionDir)../../../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../../../operating-system/operating-system-android/include;$(SolutionDir)../../../operating-system/operating-system-android;$(SolutionDir)../../../operating-system/operating-system-posix;$(SolutionDir)../../../source/app/include;$(SolutionDir)../../../source/port/include/operating-system/android;$(SolutionDir)../../../source/port/include;$(SolutionDir)../../../source/port;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../../../source;$(SolutionDir)../../../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(__sensitive)/sensitive/include;$(SolutionDir)../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../operating_system/operating_system-android/include;$(SolutionDir)../operating_system/operating_system-android;$(SolutionDir)../operating_system/operating_system-posix;$(SolutionDir)../source/app/include;$(SolutionDir)../port/_;$(SolutionDir)../port/include;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../source;$(SolutionDir)../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>
       </CppLanguageStandard>
       <AdditionalOptions>-Wno-attributes -Wno-sign-compare -Wno-comment -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-unknown-pragmas -Wno-unused-function -Wno-unused-variable -Wno-unused-value -Wno-reorder -Wno-overloaded-virtual -std=c++20 -Wno-char-subscripts %(AdditionalOptions)</AdditionalOptions>
+      <ObjectFileName>$(IntDir)%(RelativeDir)%(filename).o</ObjectFileName>
+      <PreprocessorDefinitions>_$(ProjectName)_project;_output_type_$(OutputType)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
