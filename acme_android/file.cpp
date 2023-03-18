@@ -23,75 +23,75 @@
 void set_last_errno_status();
 
 
-bool CLASS_DECL_ACME windows_full_path(wstring& wstrFullPath, const wstring& wstrPath);
+// bool CLASS_DECL_ACME windows_full_path(wstring& wstrFullPath, const wstring& wstrPath);
 
 
 namespace acme_android
 {
 
    
-   bool file_get_status(::file::file_status & rStatus, const ::file::path & path)
-   {
+   // bool file_get_status(::file::file_status & rStatus, const ::file::path & path)
+   // {
 
-      // attempt to fully qualify path first
+   //    // attempt to fully qualify path first
 
-      wstring wstrFullName;
+   //    wstring wstrFullName;
 
-      wstring wstrFileName;
+   //    wstring wstrFileName;
 
-      wstrFileName = path;
+   //    wstrFileName = path;
 
-      if (!windows_full_path(wstrFullName, wstrFileName))
-      {
+   //    if (!windows_full_path(wstrFullName, wstrFileName))
+   //    {
 
-         rStatus.m_pathFullName.empty();
+   //       rStatus.m_pathFullName.empty();
 
-         return false;
+   //       return false;
 
-      }
+   //    }
 
-      rStatus.m_pathFullName = wstrFullName;
+   //    rStatus.m_pathFullName = wstrFullName;
 
-      struct stat st;
+   //    struct stat st;
 
-      if (stat(path, &st) == -1)
-      {
+   //    if (stat(path, &st) == -1)
+   //    {
 
-         return false;
+   //       return false;
 
-      }
-      //if (hFind == INVALID_HANDLE_VALUE)
-      // return false;
-      //VERIFY(FindClose(hFind));
+   //    }
+   //    //if (hFind == INVALID_HANDLE_VALUE)
+   //    // return false;
+   //    //VERIFY(FindClose(hFind));
 
-      // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
-      //rStatus.m_attribute = (byte) (findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
+   //    // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
+   //    //rStatus.m_attribute = (byte) (findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
 
-      rStatus.m_attribute = 0;
+   //    rStatus.m_attribute = 0;
 
-      // get just the low ::u32 of the file size_i32
-      //ASSERT(findFileData.nFileSizeHigh == 0);
-      //rStatus.m_size = (::i32)findFileData.nFileSizeLow;
+   //    // get just the low ::u32 of the file size_i32
+   //    //ASSERT(findFileData.nFileSizeHigh == 0);
+   //    //rStatus.m_size = (::i32)findFileData.nFileSizeLow;
 
-      rStatus.m_filesize = st.st_size;
+   //    rStatus.m_filesize = st.st_size;
 
-      // convert times as appropriate
-      /*rStatus.m_ctime = ::earth::time(findFileData.ftCreationTime);
-      rStatus.m_atime = ::earth::time(findFileData.ftLastAccessTime);
-      rStatus.m_mtime = ::earth::time(findFileData.ftLastWriteTime);*/
-      file_time_to_time(&rStatus.m_timeCreation, (const file_time_t *) & st.st_mtim);
-      file_time_to_time(&rStatus.m_timeAccess, (const file_time_t *)&st.st_atime);
-      file_time_to_time(&rStatus.m_timeModification, (const file_time_t *)&st.st_ctime);
+   //    // convert times as appropriate
+   //    /*rStatus.m_ctime = ::earth::time(findFileData.ftCreationTime);
+   //    rStatus.m_atime = ::earth::time(findFileData.ftLastAccessTime);
+   //    rStatus.m_mtime = ::earth::time(findFileData.ftLastWriteTime);*/
+   //    file_time_to_time(&rStatus.m_timeCreation, (const file_time_t *) & st.st_mtim);
+   //    file_time_to_time(&rStatus.m_timeAccess, (const file_time_t *)&st.st_atime);
+   //    file_time_to_time(&rStatus.m_timeModification, (const file_time_t *)&st.st_ctime);
 
-      if (rStatus.m_timeCreation <= 0_s)
-         rStatus.m_timeCreation = rStatus.m_timeModification;
+   //    if (rStatus.m_timeCreation <= 0_s)
+   //       rStatus.m_timeCreation = rStatus.m_timeModification;
 
-      if (rStatus.m_timeAccess <= 0)
-         rStatus.m_timeAccess = rStatus.m_timeModification;
+   //    if (rStatus.m_timeAccess <= 0)
+   //       rStatus.m_timeAccess = rStatus.m_timeModification;
 
-      return true;
+   //    return true;
 
-   }
+   // }
 
 
    file::file()
