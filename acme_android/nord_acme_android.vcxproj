@@ -156,7 +156,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="acme_directory.cpp" />
-    <ClCompile Include="file.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="node_android.cpp" />
     <ClCompile Include="_.cpp" />
@@ -164,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="acme_directory.h" />
-    <ClInclude Include="file.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="_acme_android.h" />
     <ClInclude Include="framework.h" />

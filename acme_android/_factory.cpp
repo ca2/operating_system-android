@@ -18,7 +18,7 @@ __FACTORY_EXPORT void acme_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::android::acme_path, ::acme_path >();
 
    //pfactory->add_factory_item < ::android::console, ::console::console >();
-   pfactory->add_factory_item < ::acme_android::file, ::file::file >();
+   //pfactory->add_factory_item < ::acme_android::file, ::file::file >();
    //pfactory->add_factory_item < ::android::stdio_file, ::file::file >();
    //pfactory->add_factory_item < ::android::stdio_file, ::file::text_file >();
 
