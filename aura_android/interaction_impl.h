@@ -222,7 +222,7 @@ namespace aura_android
 
       //virtual bool SetFocus() override;
 
-      //virtual bool has_focus() override;
+      //virtual bool has_keyboard_focus() override;
       //virtual bool is_active() override;
 
       //virtual ::user::interaction * GetFocus() override;
