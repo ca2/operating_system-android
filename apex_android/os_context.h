@@ -22,11 +22,11 @@ namespace apex_android
       void shutdown(bool bPowerOff) override;
 
       void terminate_processes_by_title(const ::string & strName) override;
-      bool path_pid(::u32 & dwPid, const ::string & strName) override;
-      bool title_pid(::u32 & dwPid, const ::string & strName) override;
-      virtual int get_pid() override;
-      virtual void get_all_processes(::u32_array & dwa) override;
-      virtual ::file::path get_process_path(::u32 dwPid) override;
+      //process_identifier_array module_path_processes_identifiers(const ::scoped_string & scopedstr) override;
+      //process_identifier_array title_processes_identifiers(const ::scoped_string & scopedstr) override;
+      process_identifier current_process_identifier() override;
+      process_identifier_array processes_identifiers() override;
+      ::file::path process_identifier_module_path(process_identifier processidentifier) override;
 
       virtual ::payload connection_settings_get_auto_detect() override;
       virtual ::payload connection_settings_get_auto_config_url() override;

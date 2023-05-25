@@ -1,6 +1,7 @@
 ﻿#include "framework.h"
 #include "os_context.h"
 #include "acme/exception/interface_only.h"
+#include "acme/platform/node.h"
 
 
 #undef USERNAME_LENGTH // mysql one
@@ -144,46 +145,48 @@ namespace apex_android
    }
 
 
-   bool os_context::path_pid(::u32 & dwPid, const ::string &strName)
-   {
-      ::u32_array dwa;
-      get_all_processes(dwa);
-      for(i32 i = 0; i < dwa.get_count(); i++)
-      {
-         if(get_process_path(dwa[i]).case_insensitive_order(strName) == 0)
-         {
-            dwPid = dwa[i];
-            return true;
-         }
-      }
-      return false;
-   }
+   //::process_identifier_array os_context::module_path_processes_identifiers(const ::scoped_string & scopedstr)
+   //{
+
+   //   auto processesidentifiers = processes_identifiers();
+   //   
+   //   for(i32 i = 0; i < dwa.get_count(); i++)
+   //   {
+   //      if(get_process_path(dwa[i]).case_insensitive_order(strName) == 0)
+   //      {
+   //         dwPid = dwa[i];
+   //         return true;
+   //      }
+   //   }
+   //   return false;
+   //}
 
 
-   bool os_context::title_pid(::u32 & dwPid, const ::string & strName)
-   {
-      ::u32_array dwa;
-      get_all_processes(dwa);
-      for(i32 i = 0; i < dwa.get_count(); i++)
-      {
-         if(get_process_path(dwa[i]).title().case_insensitive_order(strName) == 0)
-         {
-            dwPid = dwa[i];
-            return true;
-         }
-      }
-      return false;
-   }
+   //bool os_context::title_pid(::u32 & dwPid, const ::string & strName)
+   //{
+   //   ::u32_array dwa;
+   //   get_all_processes(dwa);
+   //   for(i32 i = 0; i < dwa.get_count(); i++)
+   //   {
+   //      if(get_process_path(dwa[i]).title().case_insensitive_order(strName) == 0)
+   //      {
+   //         dwPid = dwa[i];
+   //         return true;
+   //      }
+   //   }
+   //   return false;
+   //}
 
 
-   int os_context::get_pid()
+   process_identifier os_context::current_process_identifier()
    {
 
       return ::getpid();
 
    }
 
-   ::file::path os_context::get_process_path(::u32 dwPid)
+
+   ::file::path os_context::process_identifier_module_path(process_identifier processidentifier)
    {
       /*
       string strName = ":<unknown>";
@@ -213,11 +216,11 @@ namespace apex_android
 
    }
 
-   void os_context::get_all_processes(::u32_array & dwa )
+   
+   process_identifier_array os_context::processes_identifiers()
    {
 
-      throw ::interface_only();
-      return;
+      return acmenode()->processes_identifiers();
 
       /*
             dwa.set_size(0);
