@@ -154,7 +154,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::index display::get_main_monitor(RECTANGLE_I32* prectangle)
+//   ::index display::get_main_monitor(::rectangle_i32* prectangle)
 //   {
 //
 //      index iMainMonitor = 0;
@@ -230,7 +230,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_monitor_rectangle(index iMonitor, RECTANGLE_I32* prectangle)
+//   bool display::get_monitor_rectangle(index iMonitor, ::rectangle_i32* prectangle)
 //   {
 //
 //      if (iMonitor < 0 || iMonitor >= get_monitor_count())
@@ -272,7 +272,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_desk_monitor_rect(index iMonitor, RECTANGLE_I32* prectangle)
+//   bool display::get_desk_monitor_rect(index iMonitor, ::rectangle_i32* prectangle)
 //   {
 //
 //      return get_monitor_rectangle(iMonitor, prectangle);
@@ -281,7 +281,7 @@ namespace windowing_android
 //
 //
 //
-//   index display::get_main_workspace(RECTANGLE_I32* prectangle)
+//   index display::get_main_workspace(::rectangle_i32* prectangle)
 //   {
 //
 //      if (!get_workspace_rectangle(0, prectangle))
@@ -304,7 +304,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_workspace_rectangle(index iWorkspace, RECTANGLE_I32* prectangle)
+//   bool display::get_workspace_rectangle(index iWorkspace, ::rectangle_i32* prectangle)
 //   {
 //
 //      if (iWorkspace < 0 || iWorkspace >= get_workspace_count())
@@ -353,7 +353,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_desk_workspace_rect(index iWorkspace, RECTANGLE_I32* prectangle)
+//   bool display::get_desk_workspace_rect(index iWorkspace, ::rectangle_i32* prectangle)
 //
 //   {
 //
@@ -392,7 +392,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::workspace_to_monitor(RECTANGLE_I32* prectangle, index iMonitor, index iWorkspace)
+//   bool display::workspace_to_monitor(::rectangle_i32* prectangle, index iMonitor, index iWorkspace)
 //   {
 //
 //      ::rectangle_i32 rectangle(*prectangle);
@@ -427,7 +427,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::workspace_to_monitor(RECTANGLE_I32* prectangle)
+//   bool display::workspace_to_monitor(::rectangle_i32* prectangle)
 //   {
 //
 //      index iWorkspace = get_best_workspace(nullptr, rectangle_i32(prectangle));
@@ -437,7 +437,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::monitor_to_workspace(RECTANGLE_I32* prectangle)
+//   bool display::monitor_to_workspace(::rectangle_i32* prectangle)
 //   {
 //
 //      index iMonitor = get_best_monitor(nullptr, rectangle_i32(prectangle));
@@ -447,7 +447,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::monitor_to_workspace(RECTANGLE_I32* prectangle, index iWorkspace, index iMonitor)
+//   bool display::monitor_to_workspace(::rectangle_i32* prectangle, index iWorkspace, index iMonitor)
 //   {
 //
 //      ::rectangle_i32 rectangle(prectangle);
@@ -817,7 +817,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::get_best_monitor(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleParam, ::e_activation eactivation)
+//   index display::get_best_monitor(::rectangle_i32* prectangle, const rectangle_i32& rectangleParam, ::e_activation eactivation)
 //   {
 //
 //      index iMatchingMonitor = -1;
@@ -975,7 +975,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::get_good_iconify(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleParam)
+//   index display::get_good_iconify(::rectangle_i32* prectangle, const rectangle_i32& rectangleParam)
 //   {
 //
 //      ::rectangle_i32 rectangleMonitor;
@@ -995,7 +995,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::initial_frame_position(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleParam, bool bMove, ::user::interaction* pinteraction)
+//   index display::initial_frame_position(::rectangle_i32* prectangle, const rectangle_i32& rectangleParam, bool bMove, ::user::interaction* pinteraction)
 //   {
 //
 //      ::rectangle_i32 rectangleRestore(rectangleParam);
@@ -1102,7 +1102,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::get_good_restore(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleHintParam, ::user::interaction* pinteraction, ::e_display edisplay)
+//   index display::get_good_restore(::rectangle_i32* prectangle, const rectangle_i32& rectangleHintParam, ::user::interaction* pinteraction, ::e_display edisplay)
 //   {
 //
 //      ::rectangle_i32 rectangleHint(rectangleHintParam);
@@ -1209,7 +1209,7 @@ namespace windowing_android
 //   }
 //
 //
-//   index display::get_good_move(RECTANGLE_I32* prectangle, const rectangle_i32& rectangleParam, ::user::interaction* pinteraction)
+//   index display::get_good_move(::rectangle_i32* prectangle, const rectangle_i32& rectangleParam, ::user::interaction* pinteraction)
 //   {
 //
 //      index iMatchingMonitor = initial_frame_position(prectangle, rectangleParam, true, pinteraction);

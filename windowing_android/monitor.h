@@ -32,8 +32,8 @@ namespace windowing_android
       //virtual bool adjust_monitor(::u32 dwTemperature, double dBrightness, double dwGamma);
 
 
-      //virtual void get_monitor_rectangle(::RECTANGLE_I32* prectangle);
-      //virtual void get_workspace_rectangle(::RECTANGLE_I32* prectangle);
+      //virtual void get_monitor_rectangle(::rectangle_i32* prectangle);
+      //virtual void get_workspace_rectangle(::rectangle_i32* prectangle);
       ::rectangle_i32 monitor_rectangle() override;
       ::e_status _get_monitor_rectangle();
 

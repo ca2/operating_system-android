@@ -1394,7 +1394,7 @@ namespace windowing_android
    //   }
 
 
-   bool window::client_to_screen(POINT_I32 * ppoint)
+   bool window::client_to_screen(::point_i32 * ppoint)
    {
 
       return true;
@@ -1402,7 +1402,7 @@ namespace windowing_android
    }
 
 
-   bool window::screen_to_client(POINT_I32 * ppoint)
+   bool window::screen_to_client(::point_i32 * ppoint)
    {
 
       return true;
@@ -2267,7 +2267,7 @@ namespace windowing_android
    //}
 
 
-   //bool window::x11_get_window_rect(RECTANGLE_I32 * prectangle)
+   //bool window::x11_get_window_rect(::rectangle_i32 * prectangle)
    //{
 
    //   return ::x11_get_window_rect(Display(), Window(), prectangle);
@@ -2275,7 +2275,7 @@ namespace windowing_android
    //}
 
 
-   //::e_status window::window_rectangle(RECTANGLE_I32 * prectangle)
+   //::e_status window::window_rectangle(::rectangle_i32 * prectangle)
    //{
 
    //   return x11_get_window_rect(prectangle);
@@ -2283,7 +2283,7 @@ namespace windowing_android
    //}
 
 
-   //bool window::x11_get_client_rect(RECTANGLE_I32 * prectangle)
+   //bool window::x11_get_client_rect(::rectangle_i32 * prectangle)
    //{
 
    //   return ::x11_get_client_rect(Display(), Window(), prectangle);
@@ -2291,7 +2291,7 @@ namespace windowing_android
    //}
 
 
-   //::e_status window::client_rectangle(RECTANGLE_I32 * prectangle)
+   //::e_status window::client_rectangle(::rectangle_i32 * prectangle)
    //{
 
    //   return x11_get_client_rect(prectangle);
@@ -3111,7 +3111,7 @@ namespace windowing_android
    //   }
 
    //// should be called in user_thread
-   //   int_bool window::x11_get_window_rect(RECTANGLE_I32 *prectangle)
+   //   int_bool window::x11_get_window_rect(::rectangle_i32 *prectangle)
    //   {
    //
    //      XWindowAttributes attrs;
@@ -3152,7 +3152,7 @@ namespace windowing_android
    //
    //   }
 
-   //   int_bool window::client_rectangle(RECTANGLE_I32 *prectangle)
+   //   int_bool window::client_rectangle(::rectangle_i32 *prectangle)
    //   {
    //
    //      synchronous_lock synchronouslock(synchronization());

@@ -584,7 +584,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 
 
-//int_bool point_is_window_origin(POINT_I32 ptHitTest, oswindow oswindowExclude, int iMargin)
+//int_bool point_is_window_origin(::point_i32 ptHitTest, oswindow oswindowExclude, int iMargin)
 //{
 //
 //   return abs(ptHitTest.x) < iMargin && abs(ptHitTest.y) < iMargin;
@@ -608,7 +608,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 //
 
-int GetMainScreenRect(RECTANGLE_I32* lprect)
+int GetMainScreenRect(::rectangle_i32* lprect)
 {
 
    auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
