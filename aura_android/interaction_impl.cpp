@@ -1280,7 +1280,7 @@ namespace aura_android
    //   {
    //      // clicking on floating frame when it does not have
    //      // focus itself -- activate the toplevel frame instead.
-   //      EnsureTopLevel()->SetForegroundWindow();
+   //      EnsureTopLevel()->set_foreground_window();
    //   }
    //}
 
@@ -1422,7 +1422,7 @@ namespace aura_android
    //   case SC_NEXTWINDOW:
    //   if (LOWORD(lparam) == VK_F6 && pParent != nullptr)
    //   {
-   //   pParent->SetFocus();
+   //   pParent->XXXSetFocus();
    //   return true;
    //   }
    //   break;
@@ -1443,14 +1443,14 @@ namespace aura_android
    //   // and focus after sending it.
    //   oswindow hWndSave = get_handle();
    //   oswindow hWndFocus = ::GetFocus();
-   //   pParent->SetActiveWindow();
-   //   pParent->send_message(WM_SYSCOMMAND, nID, lparam);
+   //   pParent->XXXSetActiveWindow();
+   //   pParent->XXXsend_message(WM_SYSCOMMAND, nID, lparam);
 
    //   // be very careful here...
-   //   if (::is_window(hWndSave))
-   //   ::SetActiveWindow(hWndSave);
-   //   if (::is_window(hWndFocus))
-   //   ::SetFocus(hWndFocus);
+   //   if (::XXXis_window(hWndSave))
+   //   ::XXXSetActiveWindow(hWndSave);
+   //   if (::XXXis_window(hWndFocus))
+   //   ::XXXSetFocus(hWndFocus);
    //   }
    //   }
    //   return true;
@@ -2142,7 +2142,7 @@ namespace aura_android
 //
 //            /*XMapWindow(m_oswindow->display(), m_oswindow->window());*/
 //
-//            ::show_window(get_handle(), e_display_restored);
+//            ::show_window(get_handle(), e_display_normal);
 //
 //         }
 //
@@ -2419,7 +2419,7 @@ namespace aura_android
    //   if (m_puserinteraction != nullptr)
    //   {
 
-   //      m_puserinteraction->m_edisplay = ::e_display_restored;
+   //      m_puserinteraction->m_edisplay = ::e_display_normal;
 
    //   }
 
@@ -2428,7 +2428,7 @@ namespace aura_android
    //}
 
 
-//   bool interaction_impl::ShowWindow(const ::e_display & edisplay)
+//   bool interaction_impl::show_window(const ::e_display & edisplay)
 //   {
 //
 //      if (!::is_window((oswindow)get_handle()))
@@ -3116,7 +3116,7 @@ namespace aura_android
 
    //}
 
-   //::user::interaction * interaction_impl::SetActiveWindow()
+   //::user::interaction * interaction_impl::set_active_window()
    //{
 
    //   return ::android::interaction_impl::ui_from_handle(::set_active_window(get_handle()));
@@ -3148,7 +3148,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::SetFocus()
+   //bool interaction_impl::XXXSetFocus()
    //{
 
    //   ASSERT(::is_window((oswindow)get_handle()));
@@ -3536,11 +3536,11 @@ namespace aura_android
 
    //}
 
-   //bool interaction_impl::SetForegroundWindow()
+   //bool interaction_impl::set_foreground_window()
    //{
 
    //   //    throw ::not_implemented();
-   //   //      return ::SetForegroundWindow(get_handle()) != false;
+   //   //      return ::XXXSetForegroundWindow(get_handle()) != false;
 
    //   return false;
 

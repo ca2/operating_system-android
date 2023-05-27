@@ -1424,7 +1424,7 @@ oswindow get_capture()
 //
 //      auto eactivation = uFlags & SWP_NOACTIVATE ? e_activation_no_activate : e_activation_default;
 //
-//      pdata->m_pimpl->m_puserinteraction->display(e_display_restored, eactivation);
+//      pdata->m_pimpl->m_puserinteraction->display(e_display_normal, eactivation);
 //
 //   }
 //   else if(uFlags & SWP_HIDEWINDOW)

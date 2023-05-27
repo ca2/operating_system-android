@@ -118,7 +118,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    puserinteraction->place({ 0, 0, cx, cy });
 
-   puserinteraction->display(::e_display_restored);
+   puserinteraction->display(::e_display_normal);
 
    puserinteraction->set_need_layout();
 
@@ -654,7 +654,7 @@ int SetMainScreenRect(const ::rectangle_i32 &rect)
 
    puserinteraction->place(rect);
 
-   puserinteraction->display(e_display_restored);
+   puserinteraction->display(e_display_normal);
 
    puserinteraction->set_need_layout();
 

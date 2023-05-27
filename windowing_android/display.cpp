@@ -730,7 +730,7 @@ namespace windowing_android
 //      if (edisplay == e_display_none)
 //      {
 //
-//         edisplay = e_display_restored;
+//         edisplay = e_display_normal;
 //
 //      }
 //

@@ -37,7 +37,7 @@ typedef struct oswindow_data * oswindow;
 CLASS_DECL_AURA int_bool IsChild(oswindow windowParent, oswindow windowCandidateChildOrDescendant);
 CLASS_DECL_AURA oswindow get_parent(oswindow window);
 CLASS_DECL_AURA oswindow SetParent(oswindow window, oswindow windowNewParent);
-CLASS_DECL_AURA int_bool ShowWindow(oswindow window, int32_t nCmdShow);
+CLASS_DECL_AURA int_bool android_show_window(oswindow window, int32_t nCmdShow);
 CLASS_DECL_AURA LONG GetWindowLongA(oswindow window, int32_t nIndex);
 CLASS_DECL_AURA LONG SetWindowLongA(oswindow window, int32_t nIndex, LONG l);
 CLASS_DECL_AURA int_bool ClientToScreen(oswindow window, LPPOINT lppoint);
