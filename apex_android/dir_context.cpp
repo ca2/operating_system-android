@@ -1,4 +1,4 @@
-﻿// From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardS�rensen!!
+// From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "dir_context.h"
 #include "dir_system.h"

@@ -1,4 +1,4 @@
-﻿// created from windowing::monitor by camilo 2022-05-06 18:54 <3ThomasBorregaardSoerensen!!
+// created from windowing::monitor by camilo 2022-05-06 18:54 <3ThomasBorregaardSoerensen!!
 // created by Camilo 2021-01-31 05:16 BRT <3CamiloSasukeThomasBorregaardSoerensen
 #include "framework.h"
 #include "monitor.h"

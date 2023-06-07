@@ -1,4 +1,4 @@
-﻿// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardS�rensen!!
+// From apex by camilo on 2022-04-30 04:23 <3ThomasBorregaardSorensen!!
 #pragma once
 
 

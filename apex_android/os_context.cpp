@@ -1,4 +1,4 @@
-﻿#include "framework.h"
+#include "framework.h"
 #include "os_context.h"
 #include "acme/exception/interface_only.h"
 #include "acme/platform/node.h"

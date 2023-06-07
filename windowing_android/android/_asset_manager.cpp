@@ -1,4 +1,4 @@
-// Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardS�rensen!!
+// Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "_internal.h"
 #include <android/asset_manager_jni.h>

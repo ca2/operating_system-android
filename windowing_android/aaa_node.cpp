@@ -1,4 +1,4 @@
-﻿// Created by camilo on 2022-05-04 00:00 <3ThomasBorregaardSørensen(ThomasLikesNumber5)
+// Created by camilo on 2022-05-04 00:00 <3ThomasBorregaardSorensen(ThomasLikesNumber5)
 #include "framework.h"
 //#include "node.h"
 //#include "android/_internal.h"

@@ -1,4 +1,4 @@
-﻿#include "framework.h"
+#include "framework.h"
 #include "buffer.h"
 #include "monitor.h"
 #include "display.h"

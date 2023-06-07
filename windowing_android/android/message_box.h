@@ -1,4 +1,4 @@
-﻿// Created by camilo on 2022-05-08 18:26 <3ThomasBorregaardSørensen!!(All around what Thomas Likes 25!!)
+// Created by camilo on 2022-05-08 18:26 <3ThomasBorregaardSorensen!!(All around what Thomas Likes 25!!)
 #pragma once
 
 

@@ -1,4 +1,4 @@
-﻿// Created by camilo on 2022-05-28 02:49 <3ThomasBorregaardS�rensen
+// Created by camilo on 2022-05-28 02:49 <3ThomasBorregaardSorensen
 #include "framework.h"
 #include "media_library.h"
 #include "acme/filesystem/filesystem/acme_directory.h"

@@ -1,4 +1,4 @@
-﻿// From interprocess_communication.cpp by camilo on 2022-10-17 14:34 <3ThomasBorregaardSørensen!!
+// From interprocess_communication.cpp by camilo on 2022-10-17 14:34 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "interprocess_base.h"
 

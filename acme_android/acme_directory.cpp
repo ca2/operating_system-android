@@ -1,4 +1,4 @@
-﻿// From acme_posix/acme_directory.cpp by camilo on 2021-05-06 01:30 BRT <3ThomasBorregaardS�rensen(ThomasLikesNumber5)!!
+// From acme_posix/acme_directory.cpp by camilo on 2021-05-06 01:30 BRT <3ThomasBorregaardSorensen(ThomasLikesNumber5)!!
 #include "framework.h"
 #include "acme_directory.h"
 #include "acme/platform/system.h"

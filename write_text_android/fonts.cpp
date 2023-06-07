@@ -1,5 +1,5 @@
-﻿// Created by camilo 2021-02-10 <3TBS_!!
-// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardS�rensen!!
+// Created by camilo 2021-02-10 <3TBS_!!
+// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 
 

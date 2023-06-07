@@ -1,6 +1,6 @@
-﻿// Created by camilo 2021-01
+// Created by camilo 2021-01
 // Recreated by camilo 2021-02-10 <3TBS_!!
-// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardS�rensen!!
+// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
