@@ -1,4 +1,4 @@
-// From acme_posix/acme_directory.cpp by camilo on 2021-05-06 01:20 BRT <3ThomasBorregaardSørensen(ThomasLikesNumber5)!!
+// From acme_posix/acme_directory.cpp by camilo on 2021-05-06 01:20 BRT <3ThomasBorregaardSorensen(ThomasLikesNumber5)!!
 #pragma once
 
 

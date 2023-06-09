@@ -1,4 +1,4 @@
-// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSørensen!!
+// From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSoerensen!!
 #pragma once
 
 
