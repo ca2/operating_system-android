@@ -745,7 +745,7 @@ namespace aura_android
 //   void interaction_impl::on_message_destroy(::message::message * pmessage)
 //   {
 //
-//      __UNREFERENCED_PARAMETER(pmessage);
+//      UNREFERENCED_PARAMETER(pmessage);
 //
 //      //::parallelization::post_quit_and_wait(m_pprodevian, seconds(10));
 //
@@ -896,7 +896,7 @@ namespace aura_android
       
       ::user::interaction_impl::pre_translate_message(pmessage);
 
-      //__UNREFERENCED_PARAMETER(pmessage);
+      //UNREFERENCED_PARAMETER(pmessage);
       // no default processing
    }
 
@@ -1226,7 +1226,7 @@ namespace aura_android
 
    //bool interaction_impl::OnCommand(::user::message * pusermessage)
    //{
-   //   __UNREFERENCED_PARAMETER(pusermessage);
+   //   UNREFERENCED_PARAMETER(pusermessage);
    //   return false;
    //}
 
@@ -1345,7 +1345,7 @@ namespace aura_android
 
    //bool interaction_impl::GetScrollInfo(i32 nBar,LPSCROLLINFO lpScrollInfo,::u32 nMask)
    //{
-   //   __UNREFERENCED_PARAMETER(nMask);
+   //   UNREFERENCED_PARAMETER(nMask);
    //   ASSERT(lpScrollInfo != nullptr);
 
    //   oswindow oswindow = get_handle();
@@ -1495,7 +1495,7 @@ namespace aura_android
    void interaction_impl::on_message_create(::message::message * pmessage)
    {
 
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
 
       //Default();
 
@@ -1653,7 +1653,7 @@ namespace aura_android
    //void interaction_impl::_001OnProdevianSynch(::message::message * pmessage)
    //{
 
-   //   __UNREFERENCED_PARAMETER(pmessage);
+   //   UNREFERENCED_PARAMETER(pmessage);
 
    //}
 
@@ -1965,9 +1965,9 @@ namespace aura_android
    //void interaction_impl::UpdateDialogControls(channel* pTarget, bool bDisableIfNoHndler)
    //{
 
-   //   //__UNREFERENCED_PARAMETER(pTarget);
+   //   //UNREFERENCED_PARAMETER(pTarget);
 
-   //   //__UNREFERENCED_PARAMETER(bDisableIfNoHndler);
+   //   //UNREFERENCED_PARAMETER(bDisableIfNoHndler);
 
    //   //::message::command state(this);
 
@@ -2571,7 +2571,7 @@ namespace aura_android
 //   void interaction_impl::SetFont(::write_text::font* pfont, bool bRedraw)
 //   {
 //
-//      __UNREFERENCED_PARAMETER(bRedraw);
+//      UNREFERENCED_PARAMETER(bRedraw);
 //
 //      //ASSERT(::is_window((oswindow) get_handle())); m_pfont = new ::write_text::font(*pfont);
 //
@@ -2696,8 +2696,8 @@ namespace aura_android
    //i32 interaction_impl::SetWindowRgn(HRGN hRgn, bool bRedraw)
    //{
 
-   //   __UNREFERENCED_PARAMETER(hRgn);
-   //   __UNREFERENCED_PARAMETER(bRedraw);
+   //   UNREFERENCED_PARAMETER(hRgn);
+   //   UNREFERENCED_PARAMETER(bRedraw);
 
    //   //throw ::not_implemented();
 
@@ -3067,7 +3067,7 @@ namespace aura_android
    //   //return ::user::interaction_impl::SetTimer(uEvent, nElapse, lpfnTimer);
 
 
-   //   //__UNREFERENCED_PARAMETER(lpfnTimer);
+   //   //UNREFERENCED_PARAMETER(lpfnTimer);
 
    //   //m_puserinteraction->get_app()->set_timer(m_puserinteraction, uEvent, nElapse);
 
@@ -3720,7 +3720,7 @@ namespace aura_android
 
    //void interaction_impl::on_message_size(::message::message * pmessage)
    //{
-   //   __UNREFERENCED_PARAMETER(pmessage);
+   //   UNREFERENCED_PARAMETER(pmessage);
 
    //   //size_i32 sizeRequest = m_puserinteraction->m_rectangleParentClientRequest.size();
 
@@ -4174,7 +4174,7 @@ namespace aura_android
 //
 ////void interaction_impl::on_delete(::object * pinteraction)
 ////{
-////   __UNREFERENCED_PARAMETER(pinteraction);
+////   UNREFERENCED_PARAMETER(pinteraction);
 ////}
 //
 //

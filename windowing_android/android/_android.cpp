@@ -90,9 +90,9 @@ void _android_key(unsigned int message, int keyCode, int iUni)
 void _android_size(float xDummy, float yDummy, float cx, float cy)
 {
 
-   __UNREFERENCED_PARAMETER(xDummy);
+   UNREFERENCED_PARAMETER(xDummy);
 
-   __UNREFERENCED_PARAMETER(yDummy);
+   UNREFERENCED_PARAMETER(yDummy);
 
    auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
 
@@ -376,7 +376,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 {
 
-   __UNREFERENCED_PARAMETER(bDock);
+   UNREFERENCED_PARAMETER(bDock);
 
 
 }

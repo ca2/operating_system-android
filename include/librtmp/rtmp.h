@@ -128,7 +128,7 @@ extern "C"
   {
     int sb_socket;
     int sb_size;		/* number of unprocessed bytes in buffer */
-    char *sb_start;		/* pointer into sb_pBuffer of next byte to process */
+    char *sb_start;		/* pointer into sb_pBuffer of next ::u8 to process */
     char sb_buf[RTMP_BUFFER_CACHE_SIZE];	/* data read from socket */
     int sb_timedout;
     void *sb_ssl;
