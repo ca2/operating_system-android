@@ -227,7 +227,7 @@ namespace windowing_android
 
       ////attr.override_redirect = True;
 
-      //FORMATTED_INFORMATION("XCreateWindow (l=%d, t=%d) (w=%d, h=%d)", x, y, cx, cy);
+      //information("XCreateWindow (l=%d, t=%d) (w=%d, h=%d)", x, y, cx, cy);
 
       //::Window window = XCreateWindow(display, DefaultRootWindow(display),
       //   x, y,
@@ -394,7 +394,7 @@ namespace windowing_android
       //if (!XGetWindowAttributes(Display(), Window(), &m_px11data->m_attr))
       //{
 
-      //   INFORMATION("freebsd::interaction_impl::_native_create_window_ex XGetWindowAttributes failed.");
+      //   information() << "freebsd::interaction_impl::_native_create_window_ex XGetWindowAttributes failed.";
 
       //}
 
@@ -1911,7 +1911,7 @@ namespace windowing_android
 ////
 ////#ifdef SET_WINDOW_POS_LOG
 ////
-////            FORMATTED_INFORMATION("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////            information("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
 ////
 ////#endif
 ////
@@ -1924,7 +1924,7 @@ namespace windowing_android
 ////
 ////#ifdef SET_WINDOW_POS_LOG
 ////
-////               FORMATTED_INFORMATION("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////               information("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
 ////
 ////#endif
 ////
@@ -1968,7 +1968,7 @@ namespace windowing_android
 ////      //            if(!XChangeWindowAttributes(Display(), Window(), CWOverrideRedirect, &set))
 ////      //            {
 ////      //
-////      //               INFORMATION("freebsd::interaction_impl::_native_create_window_ex failed to clear override_redirect");
+////      //               information() << "freebsd::interaction_impl::_native_create_window_ex failed to clear override_redirect";
 ////      //
 ////      //            }
 ////      //
