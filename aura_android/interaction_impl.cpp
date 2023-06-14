@@ -486,9 +486,9 @@ namespace aura_android
 //
 //         //strMessage.format("%s\n\n::auraacmesystem() Error Code: %d",strLastError.c_str(),dwLastError);
 //
-//         TRACE("Warning: Window creation failed: get_last_error returned:\n");
+//         information("Warning: Window creation failed: get_last_error returned:\n");
 //
-//         FORMATTED_TRACE("%s\n", strMessage.c_str());
+//         information("%s\n", strMessage.c_str());
 //
 //         try
 //         {
@@ -496,13 +496,13 @@ namespace aura_android
 //         /*   if(estatusLast == 0x0000057e.succeeded())
 //            {
 //
-//               TRACE("Cannot create a top-level child interaction_impl.");
+//               information("Cannot create a top-level child interaction_impl.");
 //
 //            }
 //            else
 //            {
 //
-//               FORMATTED_TRACE("%s", strMessage.c_str());
+//               information("%s", strMessage.c_str());
 //
 //            }*/
 //
@@ -989,11 +989,11 @@ namespace aura_android
 //      {
 //         if(m_puserinteraction->layout().is_moving())
 //         {
-//            //TRACE("moving: skip pre translate message");
+//            //information("moving: skip pre translate message");
 //         }
 //         else if(m_puserinteraction->layout().is_sizing())
 //         {
-//            //TRACE("sizing: skip pre translate message");
+//            //information("sizing: skip pre translate message");
 //         }
 //         else
 //         {
@@ -1502,7 +1502,7 @@ namespace aura_android
       if (m_puserinteraction->is_message_only_window())
       {
 
-         TRACE("good : opt out!");
+         information("good : opt out!");
 
       }
       else
@@ -1600,7 +1600,7 @@ namespace aura_android
    //      begin_thread( &print_window::s_print_window, (LPVOID) this, ::e_priority_normal);
    //      if (m_event.wait(::time(tickTimeout)).timeout())
    //      {
-   //         TRACE("print_window::time_out");
+   //         information("print_window::time_out");
    //      }
    //   }
 
@@ -1776,7 +1776,7 @@ namespace aura_android
 //      //      if (hDC == nullptr)
 //      //      {
 //      //         // sometimes Win32 passes a nullptr hDC in the WM_CTLCOLOR message.
-//      //         //         TRACE(::ca2::trace::category_AppMsg, 0, "Warning: hDC is nullptr in interaction_impl::GrayCtlColor; WM_CTLCOLOR not processed.\n");
+//      //         //         information(::ca2::trace::category_AppMsg, 0, "Warning: hDC is nullptr in interaction_impl::GrayCtlColor; WM_CTLCOLOR not processed.\n");
 //      //         return false;
 //      //      }
 //      //

@@ -170,7 +170,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   TRACE("Unable to determine current m_pswparams for playback: %s\n", snd_strerror(err));
+      //   //   information("Unable to determine current m_pswparams for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -183,7 +183,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   TRACE("Unable to set start threshold mode for playback: %s\n", snd_strerror(err));
+      //   //   information("Unable to set start threshold mode for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -194,7 +194,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   TRACE("Unable to set avail minimum for playback: %s\n", snd_strerror(err));
+      //   //   information("Unable to set avail minimum for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -205,7 +205,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   TRACE("Unable to set sw params for playback: %s\n", snd_strerror(err));
+      //   //   information("Unable to set sw params for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -839,7 +839,7 @@ namespace multimedia
          //if ((err = snd_pcm_prepare (m_ppcm)) < 0)
          //{
 
-         //   TRACE ("cannot prepare audio interface for use (%s)\n",snd_strerror (err));
+         //   information ("cannot prepare audio interface for use (%s)\n",snd_strerror (err));
 
          //   return result_error;
 
@@ -906,7 +906,7 @@ namespace multimedia
             //if (err < 0)
             //{
 
-            //   TRACE("Can't recovery from underrun, prepare failed: %s\n", snd_strerror(err));
+            //   information("Can't recovery from underrun, prepare failed: %s\n", snd_strerror(err));
 
             //}
             //else if (err == -ESTRPIPE)
@@ -927,7 +927,7 @@ namespace multimedia
             //      if (err < 0)
             //      {
 
-            //         TRACE("Can't recovery from suspend, prepare failed: %s\n", snd_strerror(err));
+            //         information("Can't recovery from suspend, prepare failed: %s\n", snd_strerror(err));
 
             //      }
 

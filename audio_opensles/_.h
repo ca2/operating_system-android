@@ -7,7 +7,7 @@
 #include <SLES/OpenSLES_Android.h>
 
 
-#define DEBUG_SND TRACE
+#define DEBUG_SND information
 
 
 #if defined(_audio_opensles_project)

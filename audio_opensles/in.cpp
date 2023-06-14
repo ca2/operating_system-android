@@ -28,7 +28,7 @@ namespace multimedia
       void in::init_task()
       {
 
-         //TRACE("in::initialize_instance %X\n", get_os_int());
+         //information("in::initialize_instance %X\n", get_os_int());
          //SetMainWnd(NULL);
          //ASSERT(GetMainWnd() == NULL);
          set_thread_priority(::e_priority_highest);
@@ -133,17 +133,17 @@ namespace multimedia
          {
             if(mmr == MMSYSERR_ALLOCATED)
             {
-               TRACE("Specified resource is already allocated.");
+               information("Specified resource is already allocated.");
             }
             else if(mmr == MMSYSERR_BADDEVICEID)
             {
-               TRACE("Specified device identifier is out of range.");
+               information("Specified device identifier is out of range.");
             }
             else if(mmr == WAVERR_BADFORMAT)
             {
-               TRACE("Attempted to open with an unsupported waveform-audio_opensles format.");
+               information("Attempted to open with an unsupported waveform-audio_opensles format.");
             }
-            TRACE("ERROR OPENING WAVE INPUT DEVICE");
+            information("ERROR OPENING WAVE INPUT DEVICE");
             return mmr;
          }*/
 
@@ -216,7 +216,7 @@ namespace multimedia
 
             if(result_success != (mmr =  waveInPrepareHeader(m_hwavein, create_new_WAVEHDR(wave_in_get_buffer(), i), sizeof(WAVEHDR))))
             {
-               TRACE("ERROR OPENING Preparing INPUT DEVICE buffer");
+               information("ERROR OPENING Preparing INPUT DEVICE buffer");
                return mmr;
             }
 
@@ -272,7 +272,7 @@ namespace multimedia
 
             if(result_success != (mmr = waveInUnprepareHeader(m_hwavein, wave_hdr(i), sizeof(WAVEHDR))))
             {
-               TRACE("ERROR OPENING Unpreparing INPUT DEVICE buffer");
+               information("ERROR OPENING Unpreparing INPUT DEVICE buffer");
                //return mmr;
             }
 
@@ -323,7 +323,7 @@ namespace multimedia
          //if((mmr = translate_alsa(snd_pcm_start(m_ppcm))) != result_success)
          //{
          //   
-         //   TRACE("ERROR starting INPUT DEVICE ");
+         //   information("ERROR starting INPUT DEVICE ");
          //   //return mmr;
 
          //   throw ::exception(error_failed);
@@ -360,7 +360,7 @@ namespace multimedia
          //   if(result_success != (mmr = translate_alsa(snd_pcm_drain(m_ppcm))))
          //   {
 
-         //      TRACE("in::wave_in_stop : ERROR OPENING stopping INPUT DEVICE ");
+         //      information("in::wave_in_stop : ERROR OPENING stopping INPUT DEVICE ");
 
          //   }
 
@@ -368,7 +368,7 @@ namespace multimedia
          //catch(...)
          //{
 
-         //   TRACE("in::wave_in_stop : Exception OPENING stopping INPUT DEVICE ");
+         //   information("in::wave_in_stop : Exception OPENING stopping INPUT DEVICE ");
 
          //}
 
@@ -408,7 +408,7 @@ namespace multimedia
          //         }
          //         else
          //         {
-         //            TRACE("read from audio interface failed (%s)\n", snd_strerror (err));
+         //            information("read from audio interface failed (%s)\n", snd_strerror (err));
          //         }
 
          //      }
@@ -472,7 +472,7 @@ namespace multimedia
             /*if(result_success != (mmr = wave_in_stop()))
             {
 
-               TRACE("in::Reset error stopping input device");
+               information("in::Reset error stopping input device");
 
                return mmr;
 
@@ -486,7 +486,7 @@ namespace multimedia
          //   if(result_success != (mmr = translate_alsa(snd_pcm_drop(m_ppcm))))
          //   {
 
-         //      TRACE("in::Reset error resetting input device");
+         //      information("in::Reset error resetting input device");
          //      //return mmr;
 
          //      throw ::exception(::error_failed);
@@ -525,7 +525,7 @@ namespace multimedia
          /*if(result_success != (mmr = waveInAddBuffer(m_hwavein, lpwavehdr, sizeof(WAVEHDR))))
          {
 
-            TRACE("ERROR OPENING Adding INPUT DEVICE buffer");
+            information("ERROR OPENING Adding INPUT DEVICE buffer");
 
          }*/
 
