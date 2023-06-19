@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "acme/primitive/geometry2d/_geometry2d.h"
+//#include "acme/primitive/geometry2d/_geometry2d.h"
 #include "aura/windowing/text_editor_interface.h"
 
 
