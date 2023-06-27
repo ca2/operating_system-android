@@ -40,7 +40,7 @@ namespace windowing_android
 
       LOGI("on_begin_draw");
 
-      auto pimage = pitem->m_pimage;
+      auto pimage = pitem->m_pimage2;
 
       //if (pimage->size() != sizeWindow)
       {
