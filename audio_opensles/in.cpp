@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "in.h"
+#include "acme/parallelization/synchronous_lock.h"
 
 
 namespace multimedia

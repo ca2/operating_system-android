@@ -31,14 +31,16 @@ namespace windowing_android
    }
 
 
-   ::draw2d::graphics* buffer::on_begin_draw()
+   ::graphics::buffer_item * buffer::on_begin_draw()
    {
 
-      auto& pimage = get_buffer_image();
+      auto pitem = get_buffer_item();
 
-      auto sizeWindow = window_size();
+      //auto sizeWindow = window_size();
 
       LOGI("on_begin_draw");
+
+      auto pimage = pitem->m_pimage;
 
       //if (pimage->size() != sizeWindow)
       {
@@ -71,10 +73,12 @@ namespace windowing_android
 
          //auto sizeMonitor = ::size_i32(1920, 1080);
 
+      
+
 
          //pimage->create(sizeWindow);
          // 
-         pimage->create(sizeWindow);
+         pimage->create(pitem->m_size);
          //if (!pimage->create(sizeWindow))
          //{
 
@@ -104,13 +108,13 @@ namespace windowing_android
 
       }
 
-      return pimage->g();
+      return pitem;
 
    }
 
 
 
-   bool buffer::update_buffer(const ::size_i32 & size, int iStrideParam)
+   bool buffer::update_buffer(::graphics::buffer_item * pbufferitem)
    {
 
       //destroy_buffer();
@@ -128,7 +132,7 @@ namespace windowing_android
 
       //ANativeWindow_setBuffersGeometry(m_pimpl->m_oswindow->m_engine.app->window, w, h, WINDOW_FORMAT_RGBA_8888);
 
-      ::graphics::double_buffer::update_buffer(size, iStrideParam );
+      ::graphics::double_buffer::update_buffer(pbufferitem);
 
       return true;
 
@@ -147,7 +151,7 @@ namespace windowing_android
    }
 
 
-   bool buffer::update_screen(::image * pimage)
+   bool buffer::on_update_screen(::graphics::buffer_item * pbufferitem)
    {
 
       auto pdriver = ::operating_system_driver::get();

@@ -2626,38 +2626,38 @@ namespace aura_android
 //   */
 //
 
-   void interaction_impl::set_window_text(const ::string & lpszString)
-   {
+   //void interaction_impl::set_window_text(const ::string & lpszString)
+   //{
 
-      m_strWindowText = lpszString;
+   //   m_strWindowText = lpszString;
 
-   }
-
-
-   strsize interaction_impl::get_window_text(char * lpszStringBuf, strsize nMaxCount)
-   {
-
-      strncpy(lpszStringBuf, m_strWindowText, nMaxCount);
-
-      return minimum(nMaxCount, m_strWindowText.length());
-
-   }
+   //}
 
 
-   void interaction_impl::get_window_text(string & rString)
-   {
+   //strsize interaction_impl::get_window_text(char * lpszStringBuf, strsize nMaxCount)
+   //{
 
-      m_strWindowText = rString;
+   //   strncpy(lpszStringBuf, m_strWindowText, nMaxCount);
 
-   }
+   //   return minimum(nMaxCount, m_strWindowText.length());
+
+   //}
 
 
-   strsize interaction_impl::get_window_text_length()
-   {
+   //void interaction_impl::get_window_text(string & rString)
+   //{
 
-      return m_strWindowText.length();
+   //   m_strWindowText = rString;
 
-   }
+   //}
+
+
+   //strsize interaction_impl::get_window_text_length()
+   //{
+
+   //   return m_strWindowText.length();
+
+   //}
 
 
    //::user::interaction * interaction_impl::get_parent()
@@ -4195,13 +4195,13 @@ namespace aura_android
 //   }
 //
 //
-   void interaction_impl::_001OnTriggerMouseInside()
-   {
+   //void interaction_impl::_001OnTriggerMouseInside()
+   //{
 
 
-      ::user::interaction_impl::_001OnTriggerMouseInside();
+   //   ::user::interaction_impl::_001OnTriggerMouseInside();
 
-   }
+   //}
 
 
    //void interaction_impl::set_context_org(::draw2d::graphics_pointer & pgraphics)
@@ -4309,14 +4309,14 @@ namespace aura_android
 
       ::size_i32 size = m_puserinteraction->get_client_size();
 
-      int iSoftwareKeyboardTop = size.cy / 2;
+      int iSoftwareKeyboardTop = size.cy() / 2;
 
       if (r1.top > iSoftwareKeyboardTop)
       {
 
          m_iSoftwareKeyboardScroll = r1.bottom - iSoftwareKeyboardTop;
 
-         puserinteraction->m_pointScroll.y = m_iSoftwareKeyboardScroll;
+         puserinteraction->m_pointScroll.y() = m_iSoftwareKeyboardScroll;
 
       }
 
@@ -4355,7 +4355,7 @@ namespace aura_android
       if (m_iSoftwareKeyboardScroll > 0)
       {
 
-         puserinteraction->m_pointScroll.y -= m_iSoftwareKeyboardScroll;
+         puserinteraction->m_pointScroll.y() -= m_iSoftwareKeyboardScroll;
 
          m_iSoftwareKeyboardScroll = 0;
 

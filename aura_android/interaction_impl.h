@@ -134,10 +134,10 @@ namespace aura_android
       //virtual void RedrawWindow(::u32 nFlags = 0) override;
 
       // Window Text Functions
-      virtual void set_window_text(const ::string & lpszString) override;
-      virtual strsize get_window_text(char * lpszStringBuf, strsize nMaxCount) override;
-      virtual void get_window_text(string & rString) override;
-      virtual strsize get_window_text_length() override;
+      //virtual void set_window_text(const ::string & lpszString) override;
+      //virtual strsize get_window_text(char * lpszStringBuf, strsize nMaxCount) override;
+      //virtual void get_window_text(string & rString) override;
+      //virtual strsize get_window_text_length() override;
 
 
       // Window size_i32 and position Functions
@@ -608,7 +608,7 @@ namespace aura_android
 
 
 
-      void _001OnTriggerMouseInside() override;
+      //void _001OnTriggerMouseInside() override;
 
 
       //::user::interaction * get_next(bool bIgnoreChildren, i32 * piLevel) override;

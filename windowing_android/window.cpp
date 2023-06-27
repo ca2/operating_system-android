@@ -110,9 +110,9 @@ namespace windowing_android
 
       //display_lock displaylock(pdisplayx11->Display());
 
-      int x = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().x;
+      int x = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().x();
 
-      int y = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().y;
+      int y = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().origin().y();
 
       int cx = m_puserinteractionimpl->m_puserinteraction->const_layout().sketch().width();
 
@@ -659,7 +659,7 @@ namespace windowing_android
       for (int i = 0; i < c; i++)
       {
 
-         pcr[i + 2] = d1->colorref()[i];
+         pcr[i + 2] = d1->image32()[i].m_u32;
 
       }
 

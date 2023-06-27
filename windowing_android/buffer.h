@@ -17,12 +17,12 @@ namespace windowing_android
       buffer();
       ~buffer() override;
 
-      ::draw2d::graphics* on_begin_draw() override;
+      ::graphics::buffer_item * on_begin_draw() override;
 
-      bool update_buffer(const ::size_i32 & size, int iStride = -1) override;
+      bool update_buffer(::graphics::buffer_item * pitem) override;
       void destroy_buffer() override;
 
-      bool update_screen(::image * pimage) override;
+      bool on_update_screen(::graphics::buffer_item * pitem) override;
 
       //virtual ::draw2d::graphics * on_begin_draw();
 

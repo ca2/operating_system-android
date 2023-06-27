@@ -1285,18 +1285,18 @@ namespace user
 //
 //
 
-static oswindow g_oswindowCapture;
-static oswindow g_oswindowFocus;
-static oswindow g_oswindowActive;
+//static oswindow g_oswindowCapture;
+//static oswindow g_oswindowFocus;
+//static oswindow g_oswindowActive;
 
 
 
-oswindow get_capture()
-{
-
-   return g_oswindowCapture;
-
-}
+//oswindow get_capture()
+//{
+//
+//   return g_oswindowCapture;
+//
+//}
 
 //oswindow set_capture(oswindow oswindow)
 //{

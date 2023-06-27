@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "out.h"
+#include "apex/message/message.h"
+#include "acme/parallelization/synchronous_lock.h"
 
 
 void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context);
@@ -253,10 +255,10 @@ namespace multimedia
          SLuint32  channels = uiChannelCount;
          uint32_t uiBufferSizeLog2;
          uint32_t uiBufferSize;
-         uint32_t uiAnalysisSize;
-         uint32_t uiAllocationSize;
-         uint32_t uiInterestSize;
-         uint32_t uiSkippedSamplesCount;
+         //uint32_t uiAnalysisSize;
+         //uint32_t uiAllocationSize;
+         //uint32_t uiInterestSize;
+         //uint32_t uiSkippedSamplesCount;
          int err;
          if (create() != SL_RESULT_SUCCESS)
          {
@@ -319,13 +321,13 @@ namespace multimedia
                //const SLboolean req[] = { SL_BOOLEAN_FALSE };
                //result = (*engineEngine)->CreateOutputMix(engineEngine, &(outputMixObject), 1, ids, req);
                result = (*engineEngine)->CreateOutputMix(engineEngine, &(outputMixObject), 0, NULL, NULL);
-               output_debug_string("engineEngine="+ __string((uptr)engineEngine));
+               information("engineEngine="+ ::as_string((uptr)engineEngine));
                ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // realize the output mix
                result = (*outputMixObject)->Realize(outputMixObject, SL_BOOLEAN_FALSE);
-               output_debug_string("Realize" + __string((uptr)result));
+               information("Realize" + ::as_string((uptr)result));
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                int speakers;
@@ -347,38 +349,38 @@ namespace multimedia
                const SLboolean req1[] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE };
                result = (*engineEngine)->CreateAudioPlayer(engineEngine,
                   &(bqPlayerObject), &audioSrc, &audioSnk, 2, ids1, req1);
-               output_debug_string("bqPlayerObject="+__string((uptr)bqPlayerObject));
+               information("bqPlayerObject="+::as_string((uptr)bqPlayerObject));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // realize the player
                result = (*bqPlayerObject)->Realize(bqPlayerObject, SL_BOOLEAN_FALSE);
-               output_debug_string("Realize="+__string((uptr)result));
+               information("Realize="+::as_string((uptr)result));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the play interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_PLAY, &(bqPlayerPlay));
-               output_debug_string("bqPlayerPlay=" + __string((uptr) bqPlayerPlay));
+               information("bqPlayerPlay=" + ::as_string((uptr) bqPlayerPlay));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the volume interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_VOLUME, &(bqPlayerVolume));
-               output_debug_string("bqPlayerVolume=" + __string((uptr) bqPlayerVolume));
+               information("bqPlayerVolume=" + ::as_string((uptr) bqPlayerVolume));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the buffer queue interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_ANDROIDSIMPLEBUFFERQUEUE,
                   &(bqPlayerBufferQueue));
-               ::output_debug_string("bqPlayerBufferQueue=" + __string((uptr) bqPlayerBufferQueue));
+               ::information("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // register callback on the buffer queue
                result = (*bqPlayerBufferQueue)->RegisterCallback(bqPlayerBufferQueue, bqPlayerCallback, this);
-               output_debug_string("bqPlayerCallback=" + __string((uptr)bqPlayerCallback));
+               information("bqPlayerCallback=" + ::as_string((uptr)bqPlayerCallback));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
@@ -397,38 +399,38 @@ namespace multimedia
             
             iBufferSampleCount = period_size / (m_pwaveformat->m_waveformat.nChannels * 2);
 
-            uiAnalysisSize = 4 * 1 << uiBufferSizeLog2;
+            //uiAnalysisSize = 4 * 1 << uiBufferSizeLog2;
 
-            if(iBufferCount > 0)
-            {
+            //if(iBufferCount > 0)
+            //{
 
-               uiAllocationSize = iBufferCount * uiAnalysisSize;
+            //   uiAllocationSize = iBufferCount * uiAnalysisSize;
 
-            }
-            else
-            {
-               uiAllocationSize = 8 * uiAnalysisSize;
-            }
-            uiInterestSize = 200;
-            uiSkippedSamplesCount = 2;
+            //}
+            //else
+            //{
+            //   uiAllocationSize = 8 * uiAnalysisSize;
+            //}
+            //uiInterestSize = 200;
+            //uiSkippedSamplesCount = 2;
          }
          else if(m_pwaveformat->m_waveformat.nSamplesPerSec == 22050)
          {
             uiBufferSizeLog2 = 10;
             uiBufferSize = 4 * 1 << uiBufferSizeLog2;
-            uiAnalysisSize = 4 * 1 << uiBufferSizeLog2;
-            uiAllocationSize = 4 * uiAnalysisSize;
-            uiInterestSize = 200;
-            uiSkippedSamplesCount = 1;
+            //uiAnalysisSize = 4 * 1 << uiBufferSizeLog2;
+            //uiAllocationSize = 4 * uiAnalysisSize;
+            //uiInterestSize = 200;
+            //uiSkippedSamplesCount = 1;
          }
          else if(m_pwaveformat->m_waveformat.nSamplesPerSec == 11025)
          {
             uiBufferSizeLog2 = 10;
             uiBufferSize = 2 * 1 << uiBufferSizeLog2;
-            uiAnalysisSize = 2 * 1 << uiBufferSizeLog2;
-            uiAllocationSize = 4 * uiAnalysisSize;
-            uiInterestSize = 200;
-            uiSkippedSamplesCount = 1;
+            //uiAnalysisSize = 2 * 1 << uiBufferSizeLog2;
+            //uiAllocationSize = 4 * uiAnalysisSize;
+            //uiInterestSize = 200;
+            //uiSkippedSamplesCount = 1;
          }
 
          out_get_buffer()->PCMOutOpen(this, uiBufferSize, iBufferCount, 128, m_pwaveformat, m_pwaveformat);
@@ -447,7 +449,7 @@ namespace multimedia
          if (result == SL_RESULT_SUCCESS)
          {
             
-            output_debug_string("out::wave_out_open_ex success");
+            information("out::wave_out_open_ex success");
             //return ::success;
 
             m_estatus = ::success;
@@ -456,7 +458,7 @@ namespace multimedia
          else
          {
 
-            output_debug_string("out::wave_out_open_ex error");
+            information("out::wave_out_open_ex error");
             
             m_estatus = ::error_failed;
             
@@ -632,7 +634,7 @@ namespace multimedia
 
 
       //imedia_time out::wave_out_get_position_millis()
-      ::time out::out_get_position()
+      class ::time out::out_get_position()
       {
 
          //single_lock sLock(m_mutex, true);
@@ -661,7 +663,7 @@ namespace multimedia
             &nPositionMs);
 
 
-         return integral_millisecond{ nPositionMs };
+         return millisecond_time(nPositionMs);
 
       }
 
@@ -800,7 +802,7 @@ namespace multimedia
 
          (*bqPlayerBufferQueue)->Enqueue(bqPlayerBufferQueue, out_get_buffer_data(iBuffer), out_get_buffer_size());
 
-         //output_debug_string("buffer_size"+__string((uint_ptr) wave_out_get_buffer_size()));
+         //information("buffer_size"+__string((uint_ptr) wave_out_get_buffer_size()));
 
          destroy:
 
@@ -809,7 +811,7 @@ namespace multimedia
       }
 
 
-      void out::out_start(const ::time & position)
+      void out::out_start(const class ::time & position)
       {
 
          synchronous_lock sLock(synchronization());
@@ -834,7 +836,7 @@ namespace multimedia
 
          int err = 0;
 
-         output_debug_string("out::wave_out_start");
+         information("out::wave_out_start");
 
          //if ((err = snd_pcm_prepare (m_ppcm)) < 0)
          //{
@@ -969,7 +971,7 @@ void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
 
    (*bq)->GetState(bq, &s);
 
-   //output_debug_string("buffer_index" + __string(s.index % p->m_iBufferCount));
+   //information("buffer_index" + __string(s.index % p->m_iBufferCount));
 
    p->out_free(s.index % p->m_iBufferCount);
 
