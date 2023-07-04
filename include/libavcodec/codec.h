@@ -151,7 +151,7 @@
 /**
  * Deprecated and unused. Use AVCodecDescriptor.props instead
  */
-#define AV_CODEC_CAP_LOSSLESS         0x80000000
+#define AV_CODEC_CAP_LOSSLESS         I32_MINIMUM
 #endif
 
 /**

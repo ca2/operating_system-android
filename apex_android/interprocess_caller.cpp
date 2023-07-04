@@ -97,7 +97,7 @@ namespace apex_android
    //void interprocess_caller::send(i32 message,void * pdata,i32 len, const class time & timeTimeout)
    //{
 
-   //   if (message == (i32)0x80000000)
+   //   if (message == (i32)I32_MINIMUM)
    //   {
 
    //      throw ::exception(error_bad_argument);
@@ -123,7 +123,7 @@ namespace apex_android
 
    //   //data_struct data;
    //   //data.mtype        = 20170101;
-   //   //data.request      = 0x80000000;
+   //   //data.request      = I32_MINIMUM;
    //   //data.size_i32         = (i32)ansi_length(pszMessage);
 
    //   //::count cPos = 0;

@@ -470,7 +470,7 @@ int CRYPTO_memcmp(const void * in_a, const void * in_b, size_t len);
 /* FREE: 0x20000000L */
 /* FREE: 0x40000000L */
 /* FREE: 0x80000000L */
-/* Max OPENSSL_INIT flag value is 0x80000000 */
+/* Max OPENSSL_INIT flag value is I32_MINIMUM */
 
 /* openssl and dasync not counted as builtin */
 # define OPENSSL_INIT_ENGINE_ALL_BUILTIN \

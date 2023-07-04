@@ -23,7 +23,7 @@
 
 #include <stddef.h>
 
-#define AV_CPU_FLAG_FORCE    0x80000000 /* force usage of selected flags (OR) */
+#define AV_CPU_FLAG_FORCE    I32_MINIMUM /* force usage of selected flags (OR) */
 
     /* lower 16 bits - CPU features */
 #define AV_CPU_FLAG_MMX          0x0001 ///< standard MMX
