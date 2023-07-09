@@ -1265,7 +1265,7 @@ namespace user
 //*/
 //
 //
-//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array & stra, bool_array  & baTab, int_array  & ya, ::size_i32 * psize)
+//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array & stra, bool_array  & baTab, ::i32_array  & ya, ::size_i32 * psize)
 //{
 //
 //   pgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
