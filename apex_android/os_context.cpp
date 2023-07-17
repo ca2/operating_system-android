@@ -299,7 +299,7 @@ namespace apex_android
    }
 
 
-   void os_context::local_machine_set_run(const ::string & strKey, const ::string & strCommand, const ::string & strArguments, bool bSet)
+   void os_context::local_machine_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
    {
 
 //      throw ::interface_only();
@@ -317,7 +317,7 @@ namespace apex_android
    }
 
 
-   void os_context::local_machine_set_run_once(const ::string & strKey, const ::string & strCommand, const ::string & strArguments, bool bSet)
+   void os_context::local_machine_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
    {
 
 
@@ -334,7 +334,7 @@ namespace apex_android
    }
 
 
-   void os_context::current_user_set_run(const ::string & strKey, const ::string & strCommand, const ::string & strArguments, bool bSet)
+   void os_context::current_user_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
    {
 
       throw ::interface_only();
@@ -352,7 +352,7 @@ namespace apex_android
    }
 
 
-   void os_context::current_user_set_run_once(const ::string & strKey, const ::string & strCommand, const ::string & strArguments, bool bSet)
+   void os_context::current_user_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
    {
 
       throw ::interface_only();
