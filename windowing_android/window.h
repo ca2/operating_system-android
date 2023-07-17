@@ -65,7 +65,7 @@ namespace windowing_android
 
       void exit_iconify() override;
 
-      void full_screen(const ::rectangle_i32 & rect = nullptr) override;
+      void full_screen(const ::rectangle_i32 & rect = {}) override;
 
       void exit_full_screen() override;
 
