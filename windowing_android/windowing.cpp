@@ -1379,10 +1379,10 @@ namespace user
 //}
 
 
-//int_bool client_rectangle(oswindow_data * pdata, ::rectangle_i32 * prectangle)
+//int_bool this->rectangle(oswindow_data * pdata, ::rectangle_i32 * prectangle)
 //{
 //
-//   pdata->m_pimpl->m_puserinteraction->client_rectangle(prectangle);
+//   pdata->m_pimpl->m_puserinteraction->rectangle(prectangle);
 //
 //   //prectangle->right -= prectangle->left;
 //   //prectangle->bottom -= prectangle->top;
