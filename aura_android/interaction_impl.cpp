@@ -626,8 +626,8 @@ namespace aura_android
    //   pusersystem->m_createstruct.lpszClass = lpszClassName;
    //   pusersystem->m_createstruct.lpszName = lpszWindowName;
    //   pusersystem->m_createstruct.style = dwStyle | WS_CHILD;
-   //   pusersystem->m_createstruct.x = rectangle.left;
-   //   pusersystem->m_createstruct.y = rectangle.top;
+   //   pusersystem->m_createstruct.x = rectangle.left();
+   //   pusersystem->m_createstruct.y = rectangle.top();
    //   pusersystem->m_createstruct.cx = width(rectangle);
    //   pusersystem->m_createstruct.cy = height(rectangle);
    //   pusersystem->m_createstruct.hwndParent = pParentWnd->get_safe_handle();
@@ -1088,16 +1088,16 @@ namespace aura_android
 //            {
 //            ::rectangle_i32 rcMonitor;
 //            ::auraacmesystem()->get_monitor_rectangle(0,&rcMonitor);
-//            if(rectangleWindow.left >= rcMonitor.left)
-//            pmouse->m_point.x += (::i32)rectangleWindow.left;
-//            if(rectangleWindow.top >= rcMonitor.top)
-//            pmouse->m_point.y += (::i32)rectangleWindow.top;
+//            if(rectangleWindow.left() >= rcMonitor.left())
+//            pmouse->m_point.x += (::i32)rectangleWindow.left();
+//            if(rectangleWindow.top() >= rcMonitor.top())
+//            pmouse->m_point.y += (::i32)rectangleWindow.top();
 //            }
 //            else*/
-//            //if(rectangleWindow.left >= 0)
-//            pmouse->m_point.x += (::i32)rectangleWindow.left;
-//            //if(rectangleWindow.top >= 0)
-//            pmouse->m_point.y += (::i32)rectangleWindow.top;
+//            //if(rectangleWindow.left() >= 0)
+//            pmouse->m_point.x += (::i32)rectangleWindow.left();
+//            //if(rectangleWindow.top() >= 0)
+//            pmouse->m_point.y += (::i32)rectangleWindow.top();
 //         }
 //
 //         if(pmessage->m_atom == e_message_mouse_move)
@@ -1390,7 +1390,7 @@ namespace aura_android
    //   //         ::rectangle_i32 rectangle;
    //   //         ::window_rectangle(oswindow_Child,&rectangle);
    //   //         screen_to_client(&rectangle);
-   //   //         ::set_window_position(oswindow_Child,nullptr,rectangle.left + xAmount,rectangle.top + yAmount,0,0,SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOZORDER);
+   //   //         ::set_window_position(oswindow_Child,nullptr,rectangle.left() + xAmount,rectangle.top() + yAmount,0,0,SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOZORDER);
    //   //      }
    //   //   }
    //   //}
@@ -1678,10 +1678,10 @@ namespace aura_android
    //   //      ::GetCurrentObject((HDC) pusermessage->m_wparam, OBJ_BITMAP);
    //   //      //      ::u32 dw = ::get_last_error();
    //   //      ::size_i32 size = pbitmap->get_size();
-   //   //      rectx.left = 0;
-   //   //      rectx.top = 0;
-   //   //      rectx.right = size.cx;
-   //   //      rectx.bottom = size.cy;
+   //   //      rectx.left() = 0;
+   //   //      rectx.top() = 0;
+   //   //      rectx.right() = size.cx;
+   //   //      rectx.bottom() = size.cy;
    //   //      try
    //   //      {
    //   //         ::rectangle_i32 rectangleWindow;
@@ -1714,14 +1714,14 @@ namespace aura_android
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
    //   //         _000OnDraw(pgraphics);
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
-   //   //         //(dynamic_cast<::android::graphics * >(pgraphics))->FillSolidRect(rectangleUpdate.left, rectangleUpdate.top, 100, 100, 255);
+   //   //         //(dynamic_cast<::android::graphics * >(pgraphics))->FillSolidRect(rectangleUpdate.left(), rectangleUpdate.top(), 100, 100, 255);
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SelectClipRgn(nullptr);
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
    //   //
    //   //         pgraphics->SelectClipRgn( nullptr);
-   //   //         pgraphics->BitBlt(rectanglePaint.left, rectanglePaint.top,
+   //   //         pgraphics->BitBlt(rectanglePaint.left(), rectanglePaint.top(),
    //   //            rectanglePaint.width(), rectanglePaint.height(),
-   //   //            pgraphics, rectangleUpdate.left, rectangleUpdate.top,
+   //   //            pgraphics, rectangleUpdate.left(), rectangleUpdate.top(),
    //   //            SRCCOPY);
    //   //
    //   //         pgraphics->text_out(0, 0, "Te Amo Carlinhos!!", 11);
@@ -1880,19 +1880,19 @@ namespace aura_android
    //   //      }
    //   //
    //   //      // find dialog's upper left based on rcCenter
-   //   //      i32 xLeft = (rcCenter.left + rcCenter.right) / 2 - rcDlg.width() / 2;
-   //   //      i32 yTop = (rcCenter.top + rcCenter.bottom) / 2 - rcDlg.height() / 2;
+   //   //      i32 xLeft = (rcCenter.left() + rcCenter.right()) / 2 - rcDlg.width() / 2;
+   //   //      i32 yTop = (rcCenter.top() + rcCenter.bottom()) / 2 - rcDlg.height() / 2;
    //   //
    //   //      // if the dialog is outside the screen, move it inside
-   //   //      if (xLeft < rcarea.left)
-   //   //         xLeft = rcarea.left;
-   //   //      else if (xLeft + rcDlg.width() > rcarea.right)
-   //   //         xLeft = rcarea.right - rcDlg.width();
+   //   //      if (xLeft < rcarea.left())
+   //   //         xLeft = rcarea.left();
+   //   //      else if (xLeft + rcDlg.width() > rcarea.right())
+   //   //         xLeft = rcarea.right() - rcDlg.width();
    //   //
-   //   //      if (yTop < rcarea.top)
-   //   //         yTop = rcarea.top;
-   //   //      else if (yTop + rcDlg.height() > rcarea.bottom)
-   //   //         yTop = rcarea.bottom - rcDlg.height();
+   //   //      if (yTop < rcarea.top())
+   //   //         yTop = rcarea.top();
+   //   //      else if (yTop + rcDlg.height() > rcarea.bottom())
+   //   //         yTop = rcarea.bottom() - rcDlg.height();
    //   //
    //   //      // ::collection::map screen coordinates to child coordinates
    //   //      set_window_position(nullptr, xLeft, yTop, -1, -1,
@@ -2068,14 +2068,14 @@ namespace aura_android
 //      if (nFlags & SWP_IGNOREPALACEGUARD)
 //         iPalaceGuard = 1;
 //
-//      if (x > rectangleScreen.right - iPalaceGuard)
-//         x = rectangleScreen.right - iPalaceGuard;
+//      if (x > rectangleScreen.right() - iPalaceGuard)
+//         x = rectangleScreen.right() - iPalaceGuard;
 //
 //      if (x < 0)
 //         x = 0;
 //
-//      if (y > rectangleScreen.bottom - iPalaceGuard)
-//         y = rectangleScreen.bottom - iPalaceGuard;
+//      if (y > rectangleScreen.bottom() - iPalaceGuard)
+//         y = rectangleScreen.bottom() - iPalaceGuard;
 //
 //      if (y < 0)
 //         y = 0;
@@ -2173,10 +2173,10 @@ namespace aura_android
 
    //   }
 
-   //   lprect->left += (::i32)rectangleWindow.left;
-   //   lprect->right += (::i32)rectangleWindow.left;
-   //   lprect->top += (::i32)rectangleWindow.top;
-   //   lprect->bottom += (::i32)rectangleWindow.top;
+   //   lprect->left() += (::i32)rectangleWindow.left();
+   //   lprect->right() += (::i32)rectangleWindow.left();
+   //   lprect->top() += (::i32)rectangleWindow.top();
+   //   lprect->bottom() += (::i32)rectangleWindow.top();
 
    //   return true;
 
@@ -2195,8 +2195,8 @@ namespace aura_android
 
    //   }
 
-   //   lppoint->x += (::i32)rectangleWindow.left;
-   //   lppoint->y += (::i32)rectangleWindow.top;
+   //   lppoint->x += (::i32)rectangleWindow.left();
+   //   lppoint->y += (::i32)rectangleWindow.top();
 
    //   return true;
 
@@ -2215,10 +2215,10 @@ namespace aura_android
 
    //   }
 
-   //   lprect->left += rectangleWindow.left;
-   //   lprect->right += rectangleWindow.left;
-   //   lprect->top += rectangleWindow.top;
-   //   lprect->bottom += rectangleWindow.top;
+   //   lprect->left() += rectangleWindow.left();
+   //   lprect->right() += rectangleWindow.left();
+   //   lprect->top() += rectangleWindow.top();
+   //   lprect->bottom() += rectangleWindow.top();
 
    //   return true;
 
@@ -2237,8 +2237,8 @@ namespace aura_android
 
    //   }
 
-   //   lppoint->x += rectangleWindow.left;
-   //   lppoint->y += rectangleWindow.top;
+   //   lppoint->x += rectangleWindow.left();
+   //   lppoint->y += rectangleWindow.top();
 
    //   return true;
 
@@ -2257,10 +2257,10 @@ namespace aura_android
 
    //   }
 
-   //   lprect->left -= (::i32)rectangleWindow.left;
-   //   lprect->right -= (::i32)rectangleWindow.left;
-   //   lprect->top -= (::i32)rectangleWindow.top;
-   //   lprect->bottom -= (::i32)rectangleWindow.top;
+   //   lprect->left() -= (::i32)rectangleWindow.left();
+   //   lprect->right() -= (::i32)rectangleWindow.left();
+   //   lprect->top() -= (::i32)rectangleWindow.top();
+   //   lprect->bottom() -= (::i32)rectangleWindow.top();
 
    //   return true;
 
@@ -2279,8 +2279,8 @@ namespace aura_android
 
    //   }
 
-   //   lppoint->x -= (::i32)rectangleWindow.left;
-   //   lppoint->y -= (::i32)rectangleWindow.top;
+   //   lppoint->x -= (::i32)rectangleWindow.left();
+   //   lppoint->y -= (::i32)rectangleWindow.top();
 
    //   return true;
 
@@ -2299,10 +2299,10 @@ namespace aura_android
 
    //   }
 
-   //   lprect->left -= rectangleWindow.left;
-   //   lprect->right -= rectangleWindow.left;
-   //   lprect->top -= rectangleWindow.top;
-   //   lprect->bottom -= rectangleWindow.top;
+   //   lprect->left() -= rectangleWindow.left();
+   //   lprect->right() -= rectangleWindow.left();
+   //   lprect->top() -= rectangleWindow.top();
+   //   lprect->bottom() -= rectangleWindow.top();
 
    //   return true;
 
@@ -2321,8 +2321,8 @@ namespace aura_android
 
    //   }
 
-   //   lppoint->x -= rectangleWindow.left;
-   //   lppoint->y -= rectangleWindow.top;
+   //   lppoint->x -= rectangleWindow.left();
+   //   lppoint->y -= rectangleWindow.top();
 
    //   return true;
 
@@ -2678,7 +2678,7 @@ namespace aura_android
    //void interaction_impl::MoveWindow(const ::rectangle_i32 * lpRect, bool bRepaint)
    //{
 
-   //   MoveWindow(lpRect->left, lpRect->top, lpRect->right - lpRect->left, lpRect->bottom - lpRect->top, bRepaint);
+   //   MoveWindow(lpRect->left(), lpRect->top(), lpRect->right() - lpRect->left(), lpRect->bottom() - lpRect->top(), bRepaint);
 
    //}
 
@@ -2778,10 +2778,10 @@ namespace aura_android
 
    //   //oswindow->rectangle(rectangleX);
 
-   //   rectangleX.left = 0;
-   //   rectangleX.top = 0;
-   //   rectangleX.right = 500;
-   //   rectangleX.bottom = 500;
+   //   rectangleX.left() = 0;
+   //   rectangleX.top() = 0;
+   //   rectangleX.right() = 500;
+   //   rectangleX.bottom() = 500;
    //   //      (dynamic_cast < ::android::graphics * >(g.m_p))->attach(cairo_create(cairo_xlib_surface_create(oswindow->display(), oswindow->interaction_impl(), oswindow->draw2d(),rectangleX.width(), rectangleX.height())));
    //   return g.detach();
    //}
@@ -4311,10 +4311,10 @@ namespace aura_android
 
       int iSoftwareKeyboardTop = size.cy() / 2;
 
-      if (r1.top > iSoftwareKeyboardTop)
+      if (r1.top() > iSoftwareKeyboardTop)
       {
 
-         m_iSoftwareKeyboardScroll = r1.bottom - iSoftwareKeyboardTop;
+         m_iSoftwareKeyboardScroll = r1.bottom() - iSoftwareKeyboardTop;
 
          puserinteraction->m_pointScroll.y() = m_iSoftwareKeyboardScroll;
 
@@ -4338,7 +4338,7 @@ namespace aura_android
 
       pinteraction->_001GetSel(iBeg, iEnd);
 
-      android_edit_on_set_focus(r2.left, r2.top, r2.right, r2.bottom, strText, iBeg, iEnd);
+      android_edit_on_set_focus(r2.left(), r2.top(), r2.right(), r2.bottom(), strText, iBeg, iEnd);
 
    }
 

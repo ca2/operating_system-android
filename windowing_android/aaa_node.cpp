@@ -58,10 +58,10 @@
 //
 //      ::rectangle_i32 rectangle;
 //
-//      rectangle.left = 0;
-//      rectangle.top = 0;
-//      rectangle.right = pdriver->m_iWidth;
-//      rectangle.bottom = pdriver->m_iHeight;
+//      rectangle.left() = 0;
+//      rectangle.top() = 0;
+//      rectangle.right() = pdriver->m_iWidth;
+//      rectangle.bottom() = pdriver->m_iHeight;
 //
 //      auto psession = acmesession();
 //

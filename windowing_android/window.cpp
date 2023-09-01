@@ -1224,17 +1224,17 @@ namespace windowing_android
 //
 //      ::rectangle_i32 rWindow;
 //
-//      rWindow.left = attr.x;
-//      rWindow.top = attr.y;
-//      rWindow.right = attr.x + attr.width;
-//      rWindow.bottom = attr.y + attr.height;
+//      rWindow.left() = attr.x;
+//      rWindow.top() = attr.y;
+//      rWindow.right() = attr.x + attr.width;
+//      rWindow.bottom() = attr.y + attr.height;
 //
 //      if (rBest != rWindow)
 //      {
 //
 //         m_puserinteractionimpl->m_puserinteraction->place(rBest);
 //
-//         XMoveResizeWindow(Display(), Window(), rBest.left, rBest.top, rBest.width(), rBest.height());
+//         XMoveResizeWindow(Display(), Window(), rBest.left(), rBest.top(), rBest.width(), rBest.height());
 //
 //      }
 //
@@ -1654,17 +1654,17 @@ namespace windowing_android
    //
    //      ::rectangle_i32 rWindow;
    //
-   //      rWindow.left      = attr.x;
-   //      rWindow.top       = attr.y;
-   //      rWindow.right     = attr.x    + attr.width;
-   //      rWindow.bottom    = attr.y    + attr.height;
+   //      rWindow.left()      = attr.x;
+   //      rWindow.top()       = attr.y;
+   //      rWindow.right()     = attr.x    + attr.width;
+   //      rWindow.bottom()    = attr.y    + attr.height;
    //
    //      if(rBest != rWindow)
    //      {
    //
    //         m_puserinteractionimpl->m_puserinteraction->place(rBest);
    //
-   //         XMoveResizeWindow(d, m_window, rBest.left, rBest.top, rBest.width(), rBest.height());
+   //         XMoveResizeWindow(d, m_window, rBest.left(), rBest.top(), rBest.width(), rBest.height());
    //
    //      }
    //
@@ -3137,13 +3137,13 @@ namespace windowing_android
    //
    //      XTranslateCoordinates(Display(), window, windowRoot, 0, 0, &x, &y, &child);
    //
-   //      prectangle->left = x + attrs.x;
+   //      prectangle->left() = x + attrs.x;
    //
-   //      prectangle->top = y + attrs.y;
+   //      prectangle->top() = y + attrs.y;
    //
-   //      prectangle->right = x + attrs.x + attrs.width;
+   //      prectangle->right() = x + attrs.x + attrs.width;
    //
-   //      prectangle->bottom = y + attrs.y + attrs.height;
+   //      prectangle->bottom() = y + attrs.y + attrs.height;
    //
    //
    //      windowing_output_debug_string("\n::x11_get_window_rect 2");
@@ -3179,13 +3179,13 @@ namespace windowing_android
    //
    //      }
    //
-   //      prectangle->left = 0;
+   //      prectangle->left() = 0;
    //
-   //      prectangle->top = 0;
+   //      prectangle->top() = 0;
    //
-   //      prectangle->right = prectangle->left + attr.width;
+   //      prectangle->right() = prectangle->left() + attr.width;
    //
-   //      prectangle->bottom = prectangle->top + attr.height;
+   //      prectangle->bottom() = prectangle->top() + attr.height;
    //
    //      windowing_output_debug_string("\n::this->rectangle 2");
    //

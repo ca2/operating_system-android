@@ -294,13 +294,13 @@ void operating_system_driver::exchange()
 
          pdirect->setEditFocusSet(true);
 
-         pdirect->setEditFocusLeft(m_rectangleEditFocus.left);
+         pdirect->setEditFocusLeft(m_rectangleEditFocus.left());
 
-         pdirect->setEditFocusTop(m_rectangleEditFocus.top);
+         pdirect->setEditFocusTop(m_rectangleEditFocus.top());
 
-         pdirect->setEditFocusRight(m_rectangleEditFocus.right);
+         pdirect->setEditFocusRight(m_rectangleEditFocus.right());
 
-         pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom);
+         pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom());
 
       }
 

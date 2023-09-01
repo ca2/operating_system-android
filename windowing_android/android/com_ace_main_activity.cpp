@@ -253,13 +253,13 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          ::rectangle_i32 r;
 
-         r.left = 0;
+         r.left() = 0;
 
-         r.top = 0;
+         r.top() = 0;
 
-         r.right = pdirect->getWidth();
+         r.right() = pdirect->getWidth();
 
-         r.bottom = pdirect->getHeight();
+         r.bottom() = pdirect->getHeight();
 
          SetMainScreenRect(r);
 

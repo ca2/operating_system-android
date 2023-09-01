@@ -530,10 +530,10 @@ JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, job
 
       //::rectangle_i32 rectangle;
 
-      //rectangle.left = 0;
-      //rectangle.top = 0;
-      //rectangle.right = ::operating_system_bind::get()->getWidth();
-      //rectangle.bottom = ::operating_system_bind::get()->getHeight();
+      //rectangle.left() = 0;
+      //rectangle.top() = 0;
+      //rectangle.right() = ::operating_system_bind::get()->getWidth();
+      //rectangle.bottom() = ::operating_system_bind::get()->getHeight();
 
       auto w = ::operating_system_bind::get()->getWidth();
       auto h = ::operating_system_bind::get()->getHeight();
