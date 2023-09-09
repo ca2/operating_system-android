@@ -7,10 +7,10 @@
 #include "acme/parallelization/single_lock.h"
 #include "acme/parallelization/task_flag.h"
 #include "acme/platform/acme.h"
-#include "apex/platform/system.h"
+#include "acme/platform/system.h"
 
 
-namespace apex_android
+namespace acme_android
 {
 
 
@@ -42,7 +42,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pdirsystem = acmesystem()->m_papexsystem->m_pdirsystem;
+      m_pdirsystem = acmesystem()->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -53,7 +53,7 @@ namespace apex_android
       
       //estatus = 
       
-      m_pfilesystem = acmesystem()->m_papexsystem->m_pfilesystem;
+      m_pfilesystem = acmesystem()->m_pfilesystem;
 
       //if (!estatus)
       //{
@@ -804,7 +804,7 @@ namespace apex_android
 
       wstring wstrPath;
 
-      wstrPath = str.left()(iLast + 1);
+      wstrPath = str.left(iLast + 1);
 
       bool bIsDir = ::dir_context::is(wstrPath);
 
@@ -1021,7 +1021,7 @@ namespace apex_android
 
       //doc.load(pcontext->m_papexcontext->file().as_string(appdata() / "configuration\\directory.xml"));
 
-      ::file::path pathInstall = acmesystem()->m_papexsystem->m_pathCacheDirectory;
+      ::file::path pathInstall = acmesystem()->m_pathCacheDirectory;
 
       m_pdirsystem->m_pathInstall = pathInstall;
 
@@ -1380,7 +1380,7 @@ namespace apex_android
    }
 
 
-} // namespace apex_android
+} // namespace acme_android
 
 
 

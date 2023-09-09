@@ -12,18 +12,17 @@
 #endif
 
 
-namespace acme
+namespace acme_android
 {
 
 
-   namespace android
-   {
+   class node;
 
 
-      class node;
-
-
-   } // namespace android
+   class dir_context;
+   class dir_system;
+   class file_context;
+   class file_system;
 
 
 } // namespace acme

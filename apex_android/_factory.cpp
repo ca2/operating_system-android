@@ -1,14 +1,10 @@
 #include "framework.h"
-#include "dir_context.h"
-#include "dir_system.h"
-#include "file_context.h"
-#include "file_system.h"
 #include "interprocess_base.h"
 #include "interprocess_caller.h"
 #include "interprocess_target.h"
 #include "os_context.h"
 #include "apex/platform/launcher.h"
-#include "operating_system-posix/apex_posix/file_context.h"
+//#include "operating_system-posix/apex_posix/file_context.h"
 #include "apex/parallelization/service_handler.h"
 #include "apex/platform/node.h"
 
@@ -30,11 +26,6 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
 
    acme_android_factory(pfactory);
 
-   pfactory->add_factory_item < ::apex_android::dir_system, ::dir_system >();
-   pfactory->add_factory_item < ::apex_android::file_system, ::file_system >();
-
-   pfactory->add_factory_item < ::apex_android::dir_context, ::dir_context >();
-   pfactory->add_factory_item < ::apex_android::file_context, ::file_context >();
 
    //create_factory < ::android::stdio_file, ::file::text_file >();
    //create_factory < ::android::file, ::file::file >();
@@ -59,7 +50,7 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::file::os_watcher, ::file::watcher >();
    //pfactory->add_factory_item < ::file::os_watch, ::file::watch >();
 
-   pfactory->add_factory_item < ::apex_android::file_context, ::file_context >();
+   //pfactory->add_factory_item < ::apex_android::file_context, ::file_context >();
    //pfactory->add_factory_item < ::android::service_handler, ::service_handler >();
 
    //pfactory->add_factory_item < ::apex::android::node, ::acme::node >();

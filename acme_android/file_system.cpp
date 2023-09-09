@@ -13,7 +13,7 @@ struct PROCESS_INFO_t
 };
 
 
-namespace apex_android
+namespace acme_android
 {
 
 
@@ -60,7 +60,7 @@ namespace apex_android
    //}
 
 
-} // namespace apex_android
+} // namespace acme_android
 
 
 

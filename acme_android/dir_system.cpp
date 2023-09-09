@@ -3,7 +3,7 @@
 #include "acme/platform/system.h"
 
 
-namespace apex_android
+namespace acme_android
 {
 
 
@@ -31,7 +31,7 @@ namespace apex_android
    }
 
 
-} // namespace apex_android
+} // namespace acme_android
 
 
 

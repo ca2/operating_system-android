@@ -5,11 +5,11 @@
 #include "acme/filesystem/filesystem/dir_context.h"
 
 
-namespace apex_android
+namespace acme_android
 {
 
 
-   class CLASS_DECL_APEX dir_context :
+   class CLASS_DECL_ACME_ANDROID dir_context :
       virtual public ::dir_context
    {
    public:
@@ -86,7 +86,7 @@ namespace apex_android
    };
 
 
-} // namespace apex_android
+} // namespace acme_android
 
 
 

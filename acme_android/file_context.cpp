@@ -2,10 +2,10 @@
 #include "file_context.h"
 #include "dir_system.h"
 #include "file_system.h"
-#include "apex/platform/system.h"
+#include "acme/platform/system.h"
 
 
-namespace apex_android
+namespace acme_android
 {
 
 
@@ -37,7 +37,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pdirsystem = acmesystem()->m_papexsystem->m_pdirsystem;
+      m_pdirsystem = acmesystem()->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -48,7 +48,7 @@ namespace apex_android
 
       //estatus = 
       
-      m_pfilesystem = acmesystem()->m_papexsystem->m_pfilesystem;
+      m_pfilesystem = acmesystem()->m_pfilesystem;
 
       //if (!estatus)
       //{
@@ -79,7 +79,7 @@ namespace apex_android
    //}
 
 
-} // namespace apex_android
+} // namespace acme_android
 
 
 

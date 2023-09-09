@@ -7,8 +7,8 @@
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "apex/platform/system.h"
+#include "aura/user/user/interaction_graphics_thread.h"
 #include "aura/user/user/interaction_impl.h"
-#include "aura/user/user/interaction_prodevian.h"
 #include "aura/platform/message_queue.h"
 #include "aura/graphics/image/context_image.h"
 #include "aura/graphics/image/drawing.h"
@@ -1102,11 +1102,6 @@ namespace windowing_android
 //   }
 //
 //
-   void window::show_window(const ::e_display & edisplay, const ::e_activation & eactivation)
-   {
-
-   }
-
 //
 //      x11_windowing()->windowing_post([this, edisplay, eactivation]()
 //         {
