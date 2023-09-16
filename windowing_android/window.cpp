@@ -387,7 +387,7 @@ namespace windowing_android
 
       //}
 
-      //htask_t htask = ::get_current_htask();
+      //htask_t htask = ::current_htask();
 
       //m_htask = htask;
 

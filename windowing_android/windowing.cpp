@@ -49,7 +49,7 @@ namespace windowing_android
    bool windowing::is_branch_current() const
    {
 
-      auto itaskCurrent = get_current_itask();
+      auto itaskCurrent = current_itask();
 
       return itaskCurrent == m_itask;
 
