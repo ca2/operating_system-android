@@ -173,7 +173,7 @@ namespace windowing_android
 
       m_phostinteraction->place(*lpcrect);
 
-      m_phostinteraction->create_host();
+      m_phostinteraction->create_host(e_parallelization_synchronous);
 
       m_phostinteraction->display();
 
@@ -227,23 +227,23 @@ namespace windowing_android
    //   }
 
 
-   void windowing::windowing_post(const ::procedure & procedure)
-   {
+   //void windowing::windowing_post(const ::procedure & procedure)
+   //{
 
-      if (!procedure)
-      {
+   //   if (!procedure)
+   //   {
 
-         throw ::exception(error_null_pointer);
+   //      throw ::exception(error_null_pointer);
 
-      }
+   //   }
 
-      synchronous_lock synchronouslock(synchronization());
+   //   synchronous_lock synchronouslock(synchronization());
 
-      m_procedurelist.add_tail(procedure);
+   //   m_procedurelist.add_tail(procedure);
 
-      //return ::success_scheduled;
+   //   //return ::success_scheduled;
 
-   }
+   //}
 
 
    bool windowing::x11_runnable_step()
@@ -500,7 +500,7 @@ namespace windowing_android
    //}
 
 
-   void windowing::release_mouse_capture()
+   void windowing::release_mouse_capture(::thread * pthread)
    {
 
       if (!m_pwindowMouseCapture)

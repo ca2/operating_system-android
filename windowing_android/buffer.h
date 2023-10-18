@@ -17,7 +17,7 @@ namespace windowing_android
       buffer();
       ~buffer() override;
 
-      ::graphics::buffer_item * on_begin_draw() override;
+      bool _on_begin_draw(::graphics::buffer_item * pbufferitem) override;
 
       bool update_buffer(::graphics::buffer_item * pitem) override;
       void destroy_buffer() override;

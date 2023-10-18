@@ -381,7 +381,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_mouseMove(JNIEnv * env, jobject  obj,
       if (::is_set(pwindowApplicationHost))
       {
 
-         pwindowApplicationHost->on_touch_drag(x, y);
+         pwindowApplicationHost->on_touch_drag(x, y, x, y);
 
       }
 
@@ -411,7 +411,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  ob
       if (::is_set(pwindowHost))
       {
 
-         pwindowHost->on_touch_down(x, y);
+         pwindowHost->on_touch_down(x, y, x, y);
 
       }
 
@@ -441,7 +441,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_lButtonUp(JNIEnv * env, jobject  obj,
       if (::is_set(pwindowApplicationHost))
       {
 
-         pwindowApplicationHost->on_touch_up(x, y);
+         pwindowApplicationHost->on_touch_up(x, y, x, y);
 
       }
 

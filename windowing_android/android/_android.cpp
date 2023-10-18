@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "acme/constant/os_text.h"
+#include "acme/constant/user_key.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/system.h"
 #include "aura/platform/session.h"

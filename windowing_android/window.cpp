@@ -2,6 +2,7 @@
 // recreated by Camilo 2021-01-28 22:20 <3TBS, Mummi and bilbo!!
 // Adapted by Camilo for android 2022-01-05 04:37 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
+#include "display.h"
 #include "window.h"
 #include "windowing.h"
 #include "acme/constant/message.h"
@@ -496,7 +497,7 @@ namespace windowing_android
                if (pimpl->m_puserinteraction->const_layout().sketch().display() == e_display_undefined)
                {
 
-                  auto pointCursor = get_cursor_position();
+                  auto pointCursor = windowing()->display()->get_mouse_cursor_position();
 
                   pimpl->m_puserinteraction->set_position(pointCursor);
 
@@ -907,12 +908,12 @@ namespace windowing_android
    }
 
 
-   ::point_i32 window::get_mouse_cursor_position()
-   {
+   //::point_i32 window::get_mouse_cursor_position()
+   //{
 
-      return m_pointCursor;
+   //   return m_pointCursor;
 
-   }
+   //}
 
 
    //   ::Window window::get_parent_handle()

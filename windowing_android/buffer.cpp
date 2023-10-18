@@ -31,7 +31,7 @@ namespace windowing_android
    }
 
 
-   ::graphics::buffer_item * buffer::on_begin_draw()
+   bool buffer::_on_begin_draw(::graphics::buffer_item *)
    {
 
       auto pitem = get_buffer_item();
@@ -104,7 +104,7 @@ namespace windowing_android
       if (!pimage)
       {
 
-         return nullptr;
+         return false;
 
       }
 

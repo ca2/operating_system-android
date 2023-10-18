@@ -72,7 +72,7 @@ namespace windowing_android
       //void windowing_post_quit() override;
 
 
-      void release_mouse_capture() override;
+      void release_mouse_capture(::thread * pthread) override;
 
 
       void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
@@ -125,7 +125,7 @@ namespace windowing_android
 //
       //virtual bool x11_message_loop_step();
 
-      void windowing_post(const ::procedure & procedure) override;
+      //void user_post(const ::procedure & procedure) override;
 
       bool x11_runnable_step() override;
 

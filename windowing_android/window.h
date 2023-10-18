@@ -83,8 +83,8 @@ namespace windowing_android
       //virtual ::Window get_parent_handle();
       ::oswindow get_parent_oswindow() const override;
 
-      ::point_i32 get_mouse_cursor_position() override;
-
+  //    ::point_i32 get_mouse_cursor_position() override;
+//
       //virtual ::Window get_parent_handle() const;
 
       ::windowing_android::windowing * windowing() { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing4; }
