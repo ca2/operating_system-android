@@ -4268,20 +4268,24 @@ namespace aura_android
    bool interaction_impl::has_pending_graphical_update()
    {
 
-      //synchronous_lock synchronouslock(m_puserinteraction->synchronization());
-
-      auto puserinteractionpointeraChild = m_puserinteraction->m_puserinteractionpointeraChild;
-
-      if (puserinteractionpointeraChild)
       {
 
-         for (auto & p : puserinteractionpointeraChild->interactiona())
+         synchronous_lock synchronouslock(m_puserinteraction->synchronization());
+
+         auto puserinteractionpointeraChild = m_puserinteraction->m_puserinteractionpointeraChild;
+
+         if (puserinteractionpointeraChild)
          {
 
-            if (p->has_pending_graphical_update())
+            for (auto & p : puserinteractionpointeraChild->interactiona())
             {
 
-               return true;
+               if (p->has_pending_graphical_update())
+               {
+
+                  return true;
+
+               }
 
             }
 
