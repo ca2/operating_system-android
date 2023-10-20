@@ -228,7 +228,7 @@ namespace windowing_android
 
       ////attr.override_redirect = True;
 
-      //information("XCreateWindow (l=%d, t=%d) (w=%d, h=%d)", x, y, cx, cy);
+      //informationf("XCreateWindow (l=%d, t=%d) (w=%d, h=%d)", x, y, cx, cy);
 
       //::Window window = XCreateWindow(display, DefaultRootWindow(display),
       //   x, y,
@@ -1907,7 +1907,7 @@ namespace windowing_android
 ////
 ////#ifdef SET_WINDOW_POS_LOG
 ////
-////            information("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////            informationf("XMoveResizeWindow (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
 ////
 ////#endif
 ////
@@ -1920,7 +1920,7 @@ namespace windowing_android
 ////
 ////#ifdef SET_WINDOW_POS_LOG
 ////
-////               information("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
+////               informationf("Changing parameters... (%Display(), %d) - (%Display(), %d)", x, y, cx, cy);
 ////
 ////#endif
 ////

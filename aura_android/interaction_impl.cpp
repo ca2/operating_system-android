@@ -487,9 +487,9 @@ namespace aura_android
 //
 //         //strMessage.format("%s\n\n::auraacmesystem() Error Code: %d",strLastError.c_str(),dwLastError);
 //
-//         information("Warning: Window creation failed: get_last_error returned:\n");
+//         informationf("Warning: Window creation failed: get_last_error returned:\n");
 //
-//         information("%s\n", strMessage.c_str());
+//         informationf("%s\n", strMessage.c_str());
 //
 //         try
 //         {
@@ -497,13 +497,13 @@ namespace aura_android
 //         /*   if(estatusLast == 0x0000057e.succeeded())
 //            {
 //
-//               information("Cannot create a top-level child interaction_impl.");
+//               informationf("Cannot create a top-level child interaction_impl.");
 //
 //            }
 //            else
 //            {
 //
-//               information("%s", strMessage.c_str());
+//               informationf("%s", strMessage.c_str());
 //
 //            }*/
 //
@@ -990,11 +990,11 @@ namespace aura_android
 //      {
 //         if(m_puserinteraction->layout().is_moving())
 //         {
-//            //information("moving: skip pre translate message");
+//            //informationf("moving: skip pre translate message");
 //         }
 //         else if(m_puserinteraction->layout().is_sizing())
 //         {
-//            //information("sizing: skip pre translate message");
+//            //informationf("sizing: skip pre translate message");
 //         }
 //         else
 //         {
@@ -1503,7 +1503,7 @@ namespace aura_android
       if (m_puserinteraction->is_message_only_window())
       {
 
-         information("good : opt out!");
+         informationf("good : opt out!");
 
       }
       else
@@ -1601,7 +1601,7 @@ namespace aura_android
    //      begin_thread( &print_window::s_print_window, (LPVOID) this, ::e_priority_normal);
    //      if (m_event.wait(::time(tickTimeout)).timeout())
    //      {
-   //         information("print_window::time_out");
+   //         informationf("print_window::time_out");
    //      }
    //   }
 

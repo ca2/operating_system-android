@@ -172,7 +172,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   information("Unable to determine current m_pswparams for playback: %s\n", snd_strerror(err));
+      //   //   informationf("Unable to determine current m_pswparams for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -185,7 +185,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   information("Unable to set start threshold mode for playback: %s\n", snd_strerror(err));
+      //   //   informationf("Unable to set start threshold mode for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -196,7 +196,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   information("Unable to set avail minimum for playback: %s\n", snd_strerror(err));
+      //   //   informationf("Unable to set avail minimum for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -207,7 +207,7 @@ namespace multimedia
       //   //if (err < 0)
       //   //{
 
-      //   //   information("Unable to set sw params for playback: %s\n", snd_strerror(err));
+      //   //   informationf("Unable to set sw params for playback: %s\n", snd_strerror(err));
 
       //   //   return result_error;
 
@@ -321,13 +321,13 @@ namespace multimedia
                //const SLboolean req[] = { SL_BOOLEAN_FALSE };
                //result = (*engineEngine)->CreateOutputMix(engineEngine, &(outputMixObject), 1, ids, req);
                result = (*engineEngine)->CreateOutputMix(engineEngine, &(outputMixObject), 0, NULL, NULL);
-               information("engineEngine="+ ::as_string((uptr)engineEngine));
+               informationf("engineEngine="+ ::as_string((uptr)engineEngine));
                ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // realize the output mix
                result = (*outputMixObject)->Realize(outputMixObject, SL_BOOLEAN_FALSE);
-               information("Realize" + ::as_string((uptr)result));
+               informationf("Realize" + ::as_string((uptr)result));
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                int speakers;
@@ -349,38 +349,38 @@ namespace multimedia
                const SLboolean req1[] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE };
                result = (*engineEngine)->CreateAudioPlayer(engineEngine,
                   &(bqPlayerObject), &audioSrc, &audioSnk, 2, ids1, req1);
-               information("bqPlayerObject="+::as_string((uptr)bqPlayerObject));
+               informationf("bqPlayerObject="+::as_string((uptr)bqPlayerObject));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // realize the player
                result = (*bqPlayerObject)->Realize(bqPlayerObject, SL_BOOLEAN_FALSE);
-               information("Realize="+::as_string((uptr)result));
+               informationf("Realize="+::as_string((uptr)result));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the play interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_PLAY, &(bqPlayerPlay));
-               information("bqPlayerPlay=" + ::as_string((uptr) bqPlayerPlay));
+               informationf("bqPlayerPlay=" + ::as_string((uptr) bqPlayerPlay));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the volume interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_VOLUME, &(bqPlayerVolume));
-               information("bqPlayerVolume=" + ::as_string((uptr) bqPlayerVolume));
+               informationf("bqPlayerVolume=" + ::as_string((uptr) bqPlayerVolume));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // get the buffer queue interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_ANDROIDSIMPLEBUFFERQUEUE,
                   &(bqPlayerBufferQueue));
-               ::information("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
+               ::informationf("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
                // register callback on the buffer queue
                result = (*bqPlayerBufferQueue)->RegisterCallback(bqPlayerBufferQueue, bqPlayerCallback, this);
-               information("bqPlayerCallback=" + ::as_string((uptr)bqPlayerCallback));
+               informationf("bqPlayerCallback=" + ::as_string((uptr)bqPlayerCallback));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
@@ -449,7 +449,7 @@ namespace multimedia
          if (result == SL_RESULT_SUCCESS)
          {
             
-            information("out::wave_out_open_ex success");
+            informationf("out::wave_out_open_ex success");
             //return ::success;
 
             m_estatus = ::success;
@@ -458,7 +458,7 @@ namespace multimedia
          else
          {
 
-            information("out::wave_out_open_ex error");
+            informationf("out::wave_out_open_ex error");
             
             m_estatus = ::error_failed;
             
@@ -802,7 +802,7 @@ namespace multimedia
 
          (*bqPlayerBufferQueue)->Enqueue(bqPlayerBufferQueue, out_get_buffer_data(iBuffer), out_get_buffer_size());
 
-         //information("buffer_size"+__string((uint_ptr) wave_out_get_buffer_size()));
+         //informationf("buffer_size"+__string((uint_ptr) wave_out_get_buffer_size()));
 
          destroy:
 
@@ -836,7 +836,7 @@ namespace multimedia
 
          int err = 0;
 
-         information("out::wave_out_start");
+         informationf("out::wave_out_start");
 
          //if ((err = snd_pcm_prepare (m_ppcm)) < 0)
          //{
@@ -908,7 +908,7 @@ namespace multimedia
             //if (err < 0)
             //{
 
-            //   information("Can't recovery from underrun, prepare failed: %s\n", snd_strerror(err));
+            //   informationf("Can't recovery from underrun, prepare failed: %s\n", snd_strerror(err));
 
             //}
             //else if (err == -ESTRPIPE)
@@ -929,7 +929,7 @@ namespace multimedia
             //      if (err < 0)
             //      {
 
-            //         information("Can't recovery from suspend, prepare failed: %s\n", snd_strerror(err));
+            //         informationf("Can't recovery from suspend, prepare failed: %s\n", snd_strerror(err));
 
             //      }
 
@@ -971,7 +971,7 @@ void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
 
    (*bq)->GetState(bq, &s);
 
-   //information("buffer_index" + __string(s.index % p->m_iBufferCount));
+   //informationf("buffer_index" + __string(s.index % p->m_iBufferCount));
 
    p->out_free(s.index % p->m_iBufferCount);
 
