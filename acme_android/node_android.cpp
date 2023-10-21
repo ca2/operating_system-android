@@ -64,7 +64,7 @@ string android_backtrace()
       int status = 0;
       char * demangled = __cxxabiv1::__cxa_demangle(symbol, 0, 0, &status);
 
-      str.append_format("%03d: 0x%p %s",
+      str.append_formatf("%03d: 0x%p %s",
          idx,
          addr,
          (NULL != demangled && 0 == status) ?

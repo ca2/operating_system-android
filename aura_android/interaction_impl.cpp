@@ -483,9 +483,9 @@ namespace aura_android
 //
 //         string strMessage;
 //
-//         strMessage.format("::auraacmesystem() Error Code: %d", estatusLast);
+//         strMessage.formatf("::auraacmesystem() Error Code: %d", estatusLast);
 //
-//         //strMessage.format("%s\n\n::auraacmesystem() Error Code: %d",strLastError.c_str(),dwLastError);
+//         //strMessage.formatf("%s\n\n::auraacmesystem() Error Code: %d",strLastError.c_str(),dwLastError);
 //
 //         informationf("Warning: Window creation failed: get_last_error returned:\n");
 //
