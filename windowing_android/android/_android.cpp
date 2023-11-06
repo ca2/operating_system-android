@@ -17,7 +17,7 @@ void _android_key(unsigned int message, int keyCode, int iUni);
 void android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    if (psystem == nullptr)
    {
@@ -52,7 +52,7 @@ int translate_android_key_message(::message::key* pkey, int keyCode, int iUni);
 void _android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    if (psystem == nullptr)
       return;
@@ -95,7 +95,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    UNREFERENCED_PARAMETER(yDummy);
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    if (::is_null(psystem))
       return;
@@ -167,7 +167,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 
    output_debug_string("android_on_size\n");
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    if (psystem == nullptr)
    {
@@ -295,7 +295,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
    //::auraacmesystem()->fork([=]()
    //{
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    auto puserinteraction = psystem->acmesession()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
@@ -612,7 +612,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 int GetMainScreenRect(::rectangle_i32* lprect)
 {
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    auto puserinteraction = psystem->acmesession()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
 
@@ -633,7 +633,7 @@ int GetMainScreenRect(::rectangle_i32* lprect)
 int SetMainScreenRect(const ::rectangle_i32 &rect)
 {
 
-   auto psystem = ::acme::acme::g_pacme->m_psubsystem->acmesystem();
+   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
 
    auto psession = psystem->acmesession();
 
