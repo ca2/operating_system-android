@@ -87,10 +87,10 @@ namespace aura_android
       //if(get_session() != nullptr)
       //{
 
-      //   if(acmesystem()->m_paurasystem->m_pwindowmap != nullptr)
+      //   if(system()->m_paurasystem->m_pwindowmap != nullptr)
       //   {
 
-      //      acmesystem()->m_paurasystem->m_pwindowmap->m_map.erase_key(get_handle());
+      //      system()->m_paurasystem->m_pwindowmap->m_map.erase_key(get_handle());
 
       //   }
 
@@ -219,12 +219,12 @@ namespace aura_android
    //void interaction_impl::native_create_host()
    //{
 
-   //   //      auto pwindowMain = acmesystem()->m_paurasystem->m_pwindowMain;
+   //   //      auto pwindowMain = system()->m_paurasystem->m_pwindowMain;
    //   //
    //   //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
    //   //      {
    //   //
-   //   //         m_pwindow = acmesystem()->m_paurasystem->m_pwindowMain;
+   //   //         m_pwindow = system()->m_paurasystem->m_pwindowMain;
    //   //
    //   //         m_pwindow->m_puserinteractionimpl = this;
    //   //
@@ -245,10 +245,10 @@ namespace aura_android
    //   //
    //   //         //}
    //   //
-   //   //         if (!acmesystem()->m_paurasystem->m_pwindowMain)
+   //   //         if (!system()->m_paurasystem->m_pwindowMain)
    //   //         {
    //   //
-   //   //            acmesystem()->m_paurasystem->m_pwindowMain = m_pwindow;
+   //   //            system()->m_paurasystem->m_pwindowMain = m_pwindow;
    //   //
    //   //         }
    //   //

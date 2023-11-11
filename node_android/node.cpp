@@ -29,7 +29,7 @@ namespace node_android
    void node::on_initialize_particle()
    {
 
-      acmesystem()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
+      system()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
 
       ::aura_android::node::on_initialize_particle();
 
@@ -39,7 +39,7 @@ namespace node_android
    void node::report_exception_to_user(::particle * pparticle, ::exception & exception, const ::string & strMoreDetails)
    {
 
-      if (acmesystem()->m_bIsReadyForUserInteraction)
+      if (system()->m_bIsReadyForUserInteraction)
       {
 
          ::aura_android::node::report_exception_to_user(pparticle, exception, strMoreDetails);
@@ -98,11 +98,11 @@ namespace node_android
       rectangle.right() = pdriver->m_iWidth;
       rectangle.bottom() = pdriver->m_iHeight;
 
-      auto psession = acmesession();
+      auto psession = session();
 
       psession->m_papexsession->defer_initialize_host_window(&rectangle);
 
-      acmesystem()->defer_post_initial_request();
+      system()->defer_post_initial_request();
 
    }
 

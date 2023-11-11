@@ -24,7 +24,7 @@ void set_jni_context(JNIEnv* penv);
 ::windowing::window* __get_host_window()
 {
 
-   auto psystem = ::acme::acme::g_pacme->m_pplatform->acmesystem();
+   auto psystem = ::platform::get()->system();
 
    if (::is_set(psystem))
    {
@@ -34,7 +34,7 @@ void set_jni_context(JNIEnv* penv);
       if (::is_set(paurasystem))
       {
 
-         auto paurasession = psystem->acmesession()->m_paurasession;
+         auto paurasession = psystem->session()->m_paurasession;
 
          if (::is_set(paurasession))
          {

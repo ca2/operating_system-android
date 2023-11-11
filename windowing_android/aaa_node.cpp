@@ -25,7 +25,7 @@
 //   void node::on_initialize_object()
 //   {
 //
-//      acmesystem()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
+//      system()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
 //
 //      ::aura_android::node::on_initialize_object();
 //
@@ -35,7 +35,7 @@
 //   void node::report_exception_to_user(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
 //   {
 //
-//      if (acmesystem()->m_bIsReadyForUserInteraction)
+//      if (system()->m_bIsReadyForUserInteraction)
 //      {
 //
 //         ::aura_android::node::report_exception_to_user(pobject, exception, strMoreDetails);
@@ -63,11 +63,11 @@
 //      rectangle.right() = pdriver->m_iWidth;
 //      rectangle.bottom() = pdriver->m_iHeight;
 //
-//      auto psession = acmesession();
+//      auto psession = session();
 //
 //      psession->defer_initialize_host_window(rectangle);
 //
-//      acmesystem()->post_initial_request();
+//      system()->post_initial_request();
 //
 //   }
 //

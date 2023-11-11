@@ -24,9 +24,9 @@ namespace acme_android
 
       ::dir_system::initialize(pparticle);
 
-      m_pathHome = acmesystem()->m_pathCacheDirectory / "home";
+      m_pathHome = system()->m_pathCacheDirectory / "home";
 
-      m_pathCa2Config = acmesystem()->m_pathCacheDirectory / ".config/ca2";
+      m_pathCa2Config = system()->m_pathCacheDirectory / ".config/ca2";
 
    }
 

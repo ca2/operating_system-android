@@ -42,7 +42,7 @@ namespace acme_android
 
       //estatus = 
       
-      m_pdirsystem = acmesystem()->m_pdirsystem;
+      m_pdirsystem = system()->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -53,7 +53,7 @@ namespace acme_android
       
       //estatus = 
       
-      m_pfilesystem = acmesystem()->m_pfilesystem;
+      m_pfilesystem = system()->m_pfilesystem;
 
       //if (!estatus)
       //{
@@ -1021,17 +1021,17 @@ namespace acme_android
 
       //doc.load(pcontext->m_papexcontext->file().as_string(appdata() / "configuration\\directory.xml"));
 
-      ::file::path pathInstall = acmesystem()->m_pathCacheDirectory;
+      ::file::path pathInstall = system()->m_pathCacheDirectory;
 
       m_pdirsystem->m_pathInstall = pathInstall;
 
-      //nodeos_set_home(         auto psystem = acmesystem();
+      //nodeos_set_home(         auto psystem = system();
 
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //
 //pacmedirectory->system() / "home");
 //
-//      //nodeos_set_temp(         auto psystem = acmesystem();
+//      //nodeos_set_temp(         auto psystem = system();
 //
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //
@@ -1167,7 +1167,7 @@ namespace acme_android
 //
 //      string str;
 //
-//      str =          auto psystem = acmesystem();
+//      str =          auto psystem = system();
 //
 //         auto pacmedirectory = psystem->m_pacmedirectory;
 //

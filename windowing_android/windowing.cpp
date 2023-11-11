@@ -196,7 +196,7 @@ namespace windowing_android
    //   void windowing::start()
    //   {
    //
-   //      auto psystem = acmesystem()->m_papexsystem;
+   //      auto psystem = system()->m_papexsystem;
    //
    //      if (psystem->m_bUser)
    //      {

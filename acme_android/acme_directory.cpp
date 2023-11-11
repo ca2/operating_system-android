@@ -25,7 +25,7 @@ namespace acme_android
    ::file::path acme_directory::home()
    {
 
-      return acmesystem()->m_pathCacheDirectory / "home";
+      return system()->m_pathCacheDirectory / "home";
 
    }
 
@@ -33,7 +33,7 @@ namespace acme_android
    ::file::path acme_directory::roaming()
    {
 
-      return acmesystem()->m_pathCacheDirectory / ".config";
+      return system()->m_pathCacheDirectory / ".config";
 
    }
 

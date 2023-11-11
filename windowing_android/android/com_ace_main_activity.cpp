@@ -107,7 +107,7 @@ public:
 
          string strDetails = exception.m_strDetails;
 
-         auto psequencer = acmesystem()->nano()->message_box(
+         auto psequencer = system()->nano()->message_box(
             "Failed to load library?",
             "Failed to Load Library?",
             e_message_box_ok);
@@ -133,7 +133,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = ::acme::acme::g_pacme->m_pplatform->acmesystem()->acmenode()->create_mutex();
+         g_pmutexOs = ::platform::get()->system()->acmenode()->create_mutex();
 
       }
 
@@ -240,7 +240,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          pmainosthread->start();
 
-         //if (acmesystem()->m_pchar_binary__matter_zip_start && acmesystem()->m_pchar_binary__matter_zip_end)
+         //if (system()->m_pchar_binary__matter_zip_start && system()->m_pchar_binary__matter_zip_end)
 
       //   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 

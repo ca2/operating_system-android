@@ -71,9 +71,9 @@ namespace apex_android
       //   return false;
 
 
-      //acmesystem()->open_link(m_strBaseChannel + "://" + strUri, "", "");
+      //system()->open_link(m_strBaseChannel + "://" + strUri, "", "");
 
-      acmesystem()->open_link(strUri, "", "");
+      system()->open_link(strUri, "", "");
 
 
       ///* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
@@ -113,7 +113,7 @@ namespace apex_android
    //   }
 
 
-   //   acmesystem()->open_link(m_strBaseChannel + "://" + message, "", "");
+   //   system()->open_link(m_strBaseChannel + "://" + message, "", "");
 
    //   //const char * pszMessage = (const char *)pdata;
 

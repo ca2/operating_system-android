@@ -37,7 +37,7 @@ namespace acme_android
 
       //estatus = 
       
-      m_pdirsystem = acmesystem()->m_pdirsystem;
+      m_pdirsystem = system()->m_pdirsystem;
 
       //if (!estatus)
       //{
@@ -48,7 +48,7 @@ namespace acme_android
 
       //estatus = 
       
-      m_pfilesystem = acmesystem()->m_pfilesystem;
+      m_pfilesystem = system()->m_pfilesystem;
 
       //if (!estatus)
       //{

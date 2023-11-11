@@ -29,11 +29,11 @@ namespace acme_android
    void node::system_main()
    {
 
-      acmesystem()->increment_reference_count();
+      system()->increment_reference_count();
 
-      acmesystem()->main();
+      system()->main();
 
-//      acmesystem()->post_initial_request();
+//      system()->post_initial_request();
 
    }
 
@@ -47,7 +47,7 @@ namespace acme_android
    string node::audio_get_default_implementation_name()
    {
 
-      return acmesystem()->implementation_name("audio", "opensles");
+      return system()->implementation_name("audio", "opensles");
 
    }
 

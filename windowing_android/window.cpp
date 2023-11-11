@@ -300,7 +300,7 @@ namespace windowing_android
       if (!(pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_satellite_window))
       {
 
-         auto psystem = acmesystem()->m_papexsystem;
+         auto psystem = system()->m_papexsystem;
 
          string strApplicationServerName = psystem->get_application_server_name();
 
@@ -308,7 +308,7 @@ namespace windowing_android
 
          //         XClassHint * pupdate = XAllocClassHint();
          //
-         //         auto psystem = acmesystem()->m_papexsystem;
+         //         auto psystem = system()->m_papexsystem;
          //
          //         string strApplicationServerName = psystem->get_application_server_name();
          //

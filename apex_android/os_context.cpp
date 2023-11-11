@@ -685,7 +685,7 @@ namespace apex_android
 //
 //      string strSystemFonts = m_pcontext->m_papexcontext->file().as_string("/system/etc/system_fonts.xml");
 //
-//            auto psystem = acmesystem()->m_paurasystem;
+//            auto psystem = system()->m_paurasystem;
 
       //auto pxml = psystem->xml();
 
