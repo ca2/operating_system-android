@@ -33,7 +33,7 @@ namespace acme_android
 
       system()->main();
 
-//      system()->post_initial_request();
+//      system()->aaa_post_initial_request();
 
    }
 

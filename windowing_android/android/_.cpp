@@ -60,7 +60,7 @@ void android_aura_main()
 
 
 
-//psystem->post_initial_request();
+//psystem->aaa_post_initial_request();
 
 }
 

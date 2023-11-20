@@ -67,7 +67,7 @@
 //
 //      psession->defer_initialize_host_window(rectangle);
 //
-//      system()->post_initial_request();
+//      system()->aaa_post_initial_request();
 //
 //   }
 //
