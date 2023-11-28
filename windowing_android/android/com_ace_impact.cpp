@@ -24,7 +24,7 @@ void set_jni_context(JNIEnv* penv);
 ::windowing::window* __get_host_window()
 {
 
-   auto psystem = ::platform::get()->system();
+   auto psystem = this->platform()->system();
 
    if (::is_set(psystem))
    {

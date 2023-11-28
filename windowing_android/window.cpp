@@ -188,7 +188,7 @@ namespace windowing_android
       //if (m_px11data.is_null())
       //{
 
-      //   m_px11data = __new(x11data);
+      //   m_px11data = __allocate< x11data >();
 
       //}
 
@@ -293,7 +293,7 @@ namespace windowing_android
 
       pimpl->m_puserinteraction->m_pinteractionimpl = pimpl;
 
-      pimpl->m_puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
+      pimpl->m_puserinteraction->increment_reference_count(REFERENCING_DEBUGGING_P_NOTE(this, "native_create_window"));
 
       auto papp = get_app();
 
@@ -1764,7 +1764,7 @@ namespace windowing_android
 
    //      }
 
-   //      pmessagequeue = pthread->get_message_queue();
+   //      pmessagequeue = pthread->aaa_get_message_queue();
 
    //   }
 
@@ -1827,7 +1827,7 @@ namespace windowing_android
 
    //   itask_t idthread = pinteraction->get_app()->get_itask();
 
-   //   message_queue * pmq = get_message_queue(idthread, false);
+   //   message_queue * pmq = aaa_get_message_queue(idthread, false);
 
    //   if (pmq == nullptr)
    //   {

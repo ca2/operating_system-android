@@ -133,7 +133,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = ::platform::get()->system()->acmenode()->create_mutex();
+         g_pmutexOs = this->platform()->system()->acmenode()->create_mutex();
 
       }
 
@@ -199,13 +199,13 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          const char * pResourceStart = nullptr;
          const char * pResourceEnd = nullptr;
-         //auto pfactory = __new(::factory::factory);
+         //auto pfactory = __allocate< ::factory::factory >();
          pdriver->m_passetResourceFolder->get_pointers(
             pResourceStart,
             pResourceEnd);
 
 
-         auto pmainosthread = __new(main_os_thread(
+         auto pmainosthread = __allocate < main_os_thread >(
             pfnMain, (char **)this_argv, pResourceStart,
             pResourceEnd));
 
