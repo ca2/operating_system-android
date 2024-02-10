@@ -361,9 +361,9 @@ namespace write_text_android
 
                pitem = __allocate< ::write_text::font_enumeration_item >();
 
-               pitem->m_mapFileName[0] = acmenode()->font_name(e_font_monospace);
+               pitem->m_mapFileName[0] = node()->font_name(e_font_monospace);
 
-               pitem->m_strName = acmenode()->font_name(e_font_monospace);
+               pitem->m_strName = node()->font_name(e_font_monospace);
 
                itema.add(pitem);
 

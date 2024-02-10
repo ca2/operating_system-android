@@ -133,7 +133,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = this->platform()->system()->acmenode()->create_mutex();
+         g_pmutexOs = this->platform()->system()->node()->create_mutex();
 
       }
 

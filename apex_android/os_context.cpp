@@ -220,7 +220,7 @@ namespace apex_android
    process_identifier_array os_context::processes_identifiers()
    {
 
-      return acmenode()->processes_identifiers();
+      return node()->processes_identifiers();
 
       /*
             dwa.set_size(0);
