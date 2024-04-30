@@ -91,9 +91,9 @@ void _android_key(unsigned int message, int keyCode, int iUni)
 void _android_size(float xDummy, float yDummy, float cx, float cy)
 {
 
-   UNREFERENCED_PARAMETER(xDummy);
+   __UNREFERENCED_PARAMETER(xDummy);
 
-   UNREFERENCED_PARAMETER(yDummy);
+   __UNREFERENCED_PARAMETER(yDummy);
 
    auto psystem = this->platform()->system();
 
@@ -377,7 +377,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 {
 
-   UNREFERENCED_PARAMETER(bDock);
+   __UNREFERENCED_PARAMETER(bDock);
 
 
 }
