@@ -16,7 +16,7 @@ namespace windowing_android
    public:
 
 
-      //::index                                               m_iIndex;
+      //::raw::index                                               m_iIndex;
       //::rectangle_i32                                       m_rectangle;
       //::rectangle_i32                                       m_rectangleWorkspace;
       //::pointer<::windowing::display>                      m_pdisplay;

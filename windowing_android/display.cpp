@@ -105,7 +105,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::set_main_workspace(index iWorkspace)
+//   bool display::set_main_workspace(::raw::index iWorkspace)
 //   {
 //
 //      if (iWorkspace == -1)
@@ -154,7 +154,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::index display::get_main_monitor(::rectangle_i32* prectangle)
+//   ::raw::index display::get_main_monitor(::rectangle_i32* prectangle)
 //   {
 //
 //      index iMainMonitor = 0;
@@ -222,7 +222,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::count display::get_monitor_count()
+//   ::raw::count display::get_monitor_count()
 //   {
 //
 //      return 1;
@@ -230,7 +230,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_monitor_rectangle(index iMonitor, ::rectangle_i32* prectangle)
+//   bool display::get_monitor_rectangle(::raw::index iMonitor, ::rectangle_i32* prectangle)
 //   {
 //
 //      if (iMonitor < 0 || iMonitor >= get_monitor_count())
@@ -264,7 +264,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::count display::get_desk_monitor_count()
+//   ::raw::count display::get_desk_monitor_count()
 //   {
 //
 //      return get_monitor_count();
@@ -272,7 +272,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_desk_monitor_rect(index iMonitor, ::rectangle_i32* prectangle)
+//   bool display::get_desk_monitor_rect(::raw::index iMonitor, ::rectangle_i32* prectangle)
 //   {
 //
 //      return get_monitor_rectangle(iMonitor, prectangle);
@@ -296,7 +296,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::count display::get_workspace_count()
+//   ::raw::count display::get_workspace_count()
 //   {
 //
 //      return get_monitor_count();
@@ -304,7 +304,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_workspace_rectangle(index iWorkspace, ::rectangle_i32* prectangle)
+//   bool display::get_workspace_rectangle(::raw::index iWorkspace, ::rectangle_i32* prectangle)
 //   {
 //
 //      if (iWorkspace < 0 || iWorkspace >= get_workspace_count())
@@ -345,7 +345,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::count display::get_desk_workspace_count()
+//   ::raw::count display::get_desk_workspace_count()
 //   {
 //
 //      return get_workspace_count();
@@ -353,7 +353,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::get_desk_workspace_rect(index iWorkspace, ::rectangle_i32* prectangle)
+//   bool display::get_desk_workspace_rect(::raw::index iWorkspace, ::rectangle_i32* prectangle)
 //
 //   {
 //
@@ -363,7 +363,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::set_main_monitor(index iMonitor)
+//   bool display::set_main_monitor(::raw::index iMonitor)
 //   {
 //
 //      if (iMonitor == -1)
@@ -392,7 +392,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::workspace_to_monitor(::rectangle_i32* prectangle, index iMonitor, index iWorkspace)
+//   bool display::workspace_to_monitor(::rectangle_i32* prectangle, ::raw::index iMonitor, ::raw::index iWorkspace)
 //   {
 //
 //      ::rectangle_i32 rectangle(*prectangle);
@@ -447,7 +447,7 @@ namespace windowing_android
 //   }
 //
 //
-//   bool display::monitor_to_workspace(::rectangle_i32* prectangle, index iWorkspace, index iMonitor)
+//   bool display::monitor_to_workspace(::rectangle_i32* prectangle, ::raw::index iWorkspace, ::raw::index iMonitor)
 //   {
 //
 //      ::rectangle_i32 rectangle(prectangle);
@@ -481,7 +481,7 @@ namespace windowing_android
 //   }
 //
 //
-//   monitor* display::get_monitor(index iMonitor)
+//   monitor* display::get_monitor(::raw::index iMonitor)
 //   {
 //
 //      synchronous_lock synchronouslock(synchronization());
@@ -501,7 +501,7 @@ namespace windowing_android
 //   void display::get_monitor(rectangle_i32_array& rectaMonitor, rectangle_i32_array& rectaIntersect, const rectangle_i32& rectangleParam)
 //   {
 //
-//      for (index iMonitor = 0; iMonitor < get_monitor_count(); iMonitor++)
+//      for (::raw::index iMonitor = 0; iMonitor < get_monitor_count(); iMonitor++)
 //      {
 //
 //         ::rectangle_i32 rectangleIntersect;
@@ -837,7 +837,7 @@ namespace windowing_android
 //
 //      }
 //
-//      for (index iMonitor = 0; iMonitor < get_monitor_count(); iMonitor++)
+//      for (::raw::index iMonitor = 0; iMonitor < get_monitor_count(); iMonitor++)
 //      {
 //
 //         ::rectangle_i32 rectangleIntersect;
@@ -916,7 +916,7 @@ namespace windowing_android
 //
 //      }
 //
-//      for (index iWorkspace = 0; iWorkspace < get_workspace_count(); iWorkspace++)
+//      for (::raw::index iWorkspace = 0; iWorkspace < get_workspace_count(); iWorkspace++)
 //      {
 //
 //         ::rectangle_i32 rectangleIntersect;
@@ -1261,11 +1261,11 @@ namespace windowing_android
 //
 //      auto psession = get_session();
 //
-//      ::count iMonitorCount = get_monitor_count();
+//      ::raw::count iMonitorCount = get_monitor_count();
 //
 //      string_array stra;
 //
-//      for (index iScreen = 0; iScreen < iMonitorCount; iScreen++)
+//      for (::raw::index iScreen = 0; iScreen < iMonitorCount; iScreen++)
 //      {
 //
 //         stra.add(get_wallpaper(iScreen));
@@ -1274,7 +1274,7 @@ namespace windowing_android
 //
 //      bool bAllEqual = true;
 //
-//      for (index iScreen = 1; iScreen < iMonitorCount; iScreen++)
+//      for (::raw::index iScreen = 1; iScreen < iMonitorCount; iScreen++)
 //      {
 //
 //         if (stra[iScreen] != stra[iScreen - 1])
@@ -1310,7 +1310,7 @@ namespace windowing_android
 //
 //      auto psession = get_session();
 //
-//      ::count iMonitorCount = get_monitor_count();
+//      ::raw::count iMonitorCount = get_monitor_count();
 //
 //#ifdef LINUX
 //
@@ -1323,7 +1323,7 @@ namespace windowing_android
 //
 //#else
 //
-//      for (index iScreen = 0; iScreen < iMonitorCount; iScreen++)
+//      for (::raw::index iScreen = 0; iScreen < iMonitorCount; iScreen++)
 //      {
 //
 //         string strWallpaper = iScreen % straWallpaper;
@@ -1337,7 +1337,7 @@ namespace windowing_android
 //   }
 //
 //
-//   string display::get_wallpaper(::index iScreen)
+//   string display::get_wallpaper(::raw::index iScreen)
 //   {
 //
 //      return impl_get_wallpaper(iScreen);
@@ -1345,7 +1345,7 @@ namespace windowing_android
 //   }
 //
 //
-//   string display::impl_get_wallpaper(::index)
+//   string display::impl_get_wallpaper(::raw::index)
 //   {
 //
 //      return "";
@@ -1384,7 +1384,7 @@ namespace windowing_android
 //
 //
 //   // todo color:// gradient:// if the operating system doesn't have this, create the file, please.
-//   bool display::impl_set_wallpaper(::index, string strWallpaper)
+//   bool display::impl_set_wallpaper(::raw::index, string strWallpaper)
 //   {
 //
 //      //return "";
@@ -1392,7 +1392,7 @@ namespace windowing_android
 //
 //   }
 //
-//   bool display::set_wallpaper(::index iScreen, string strWallpaper)
+//   bool display::set_wallpaper(::raw::index iScreen, string strWallpaper)
 //   {
 //
 //      //return "";
