@@ -1380,7 +1380,7 @@ namespace aura_android
    //   //{
    //   //   // Windows does not perform any scrolling if the interaction_impl is
    //   //   // not visible.  This leaves child android unscrolled.
-   //   //   // To ac::raw::count for this oversight, the child android are moved
+   //   //   // To ac::collection::count for this oversight, the child android are moved
    //   //   // directly instead.
    //   //   oswindow oswindow_Child = ::GetWindow(get_handle(),GW_CHILD);
    //   //   if(oswindow_Child != nullptr)
