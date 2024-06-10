@@ -4335,7 +4335,7 @@ namespace aura_android
 
       string strText;
 
-      pinteraction->_001GetText(strText);
+      pinteraction->get_text(strText);
 
       strsize iBeg = 0;
 
