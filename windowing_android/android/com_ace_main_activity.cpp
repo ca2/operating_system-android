@@ -205,9 +205,9 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
             pResourceEnd);
 
 
-         auto pmainosthread = __allocate < main_os_thread >(
+         auto pmainosthread = ::place(new main_os_thread(
             pfnMain, (char **)this_argv, pResourceStart,
-            pResourceEnd));
+            pResourceEnd)));
 
 
          pdriver->m_pparticleMainOsThread = pmainosthread;
