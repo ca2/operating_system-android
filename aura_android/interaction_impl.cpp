@@ -278,7 +278,7 @@ namespace aura_android
    //   else
    //   {
 
-   //      pusersystem = __allocate< ::user::system >();
+   //      pusersystem = ::place(new ::user::system());
 
    //   }
 
@@ -621,7 +621,7 @@ namespace aura_android
    //   ASSERT(pParentWnd != nullptr);
    //   ASSERT((dwStyle & WS_POPUP) == 0);
 
-   //   auto pusersystem = __allocate< ::user::system >();
+   //   auto pusersystem = ::place(new ::user::system());
 
    //   pusersystem->m_createstruct.dwExStyle = 0;
    //   pusersystem->m_createstruct.lpszClass = lpszClassName;

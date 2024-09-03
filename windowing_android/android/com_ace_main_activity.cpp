@@ -199,7 +199,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          const char * pResourceStart = nullptr;
          const char * pResourceEnd = nullptr;
-         //auto pfactory = __allocate< ::factory::factory >();
+         //auto pfactory = ::place(new ::factory::factory());
          pdriver->m_passetResourceFolder->get_pointers(
             pResourceStart,
             pResourceEnd);

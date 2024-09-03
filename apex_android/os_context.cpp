@@ -748,7 +748,7 @@ namespace apex_android
 //
 //                        path /= strFile;
 //
-//                        pitem = __allocate< ::write_text::font_enumeration_item >();
+//                        pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //                        if (::acmefile()->exists(path))
 //                        {
@@ -794,7 +794,7 @@ namespace apex_android
 //            for (auto& path : patha)
 //            {
 //
-//               pitem = __allocate< ::write_text::font_enumeration_item >();
+//               pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //               pitem->m_strFile = path;
 //
@@ -825,7 +825,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_mono)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_mono);
 //
@@ -838,7 +838,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_sans)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_sans);
 //
@@ -851,7 +851,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_serif)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_serif);
 //
@@ -864,7 +864,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_sans_ex)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_sans_ex);
 //
@@ -877,7 +877,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_serif_ex)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_serif_ex);
 //
@@ -890,7 +890,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_sans_fx)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_sans_fx);
 //
@@ -903,7 +903,7 @@ namespace apex_android
 //
 //#ifdef pnode->font_name(e_font_serif_fx)
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = pnode->font_name(e_font_serif_fx);
 //
@@ -916,7 +916,7 @@ namespace apex_android
 //
 //#ifdef FONT_SANS_FX2
 //
-//         pitem = __allocate< ::write_text::font_enumeration_item >();
+//         pitem = ::place(new ::write_text::font_enumeration_item());
 //
 //         pitem->m_strFile = FONT_SANS_FX2;
 //

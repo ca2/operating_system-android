@@ -63,7 +63,7 @@ void _android_key(unsigned int message, int keyCode, int iUni)
    if (psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
       return;
 
-   ::pointer<::message::key>pkey = __allocate< ::message::key >();
+   ::pointer<::message::key>pkey = ::place(new ::message::key());
 
    pkey->m_atom = (enum_message)message;
 
@@ -331,7 +331,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //      if (get_session() == nullptr || ::is_null(get_session()->m_puserinteractionHost))
 //         return;
 //
-//      ::pointer<::message::key>pkey = __allocate< ::message::key >();
+//      ::pointer<::message::key>pkey = ::place(new ::message::key());
 //
 //      pkey->m_atom = e_message_key_down;
 //
