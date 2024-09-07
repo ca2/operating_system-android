@@ -48,7 +48,7 @@ namespace aura_android
 
       void route_command(::message::command * pcommand, bool bRouteToKeyDescendant = false) override;
 
-      //void _002OnDraw(::image * pimage);
+      //void _002OnDraw(::image::image * pimage);
 
       //DECLARE_MESSAGE_HANDLER(on_message_size);
       //DECLARE_MESSAGE_HANDLER(on_message_show_window);
@@ -194,7 +194,7 @@ namespace aura_android
 
       //virtual ::draw2d::graphics * GetDC();
       //virtual ::draw2d::graphics * GetWindowDC();
-      //virtual bool ReleaseDC(::image * pimage);
+      //virtual bool ReleaseDC(::image::image * pimage);
       //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip,u32 flags);
       //virtual bool LockWindowUpdate() override;
       //virtual void UnlockWindowUpdate() override;

@@ -927,7 +927,7 @@ namespace aura_android
    }
 
 
-   //void interaction_impl::_002OnDraw(::image * pimage)
+   //void interaction_impl::_002OnDraw(::image::image * pimage)
    //{
 
    //   throw ::interface_only();
@@ -1575,7 +1575,7 @@ namespace aura_android
    //}
 
 
-   /*   void interaction_impl::_001OnDeferPaintLayeredWindowBackground(::image * pimage)
+   /*   void interaction_impl::_001OnDeferPaintLayeredWindowBackground(::image::image * pimage)
    {
    _001DeferPaintLayeredWindowBackground(pgraphics);
    }*/
@@ -1688,7 +1688,7 @@ namespace aura_android
    //   //         ::rectangle_i32 rectangleWindow;
    //   //         window_rectangle(rectangleWindow);
    //   //
-   //   //         ::image_pointer pimage(this);
+   //   //         ::image::image_pointer pimage(this);
    //   //         if(!pimage = create_image(rectangleWindow.bottom_right()))
    //   //            return;
    //   //
@@ -2796,7 +2796,7 @@ namespace aura_android
    //   return GetDC();
    //}
 
-   //bool interaction_impl::ReleaseDC(::image * pimage)
+   //bool interaction_impl::ReleaseDC(::image::image * pimage)
    //{
 
    //   //if (pgraphics == nullptr)

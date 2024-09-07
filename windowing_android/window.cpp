@@ -11,7 +11,7 @@
 #include "aura/user/user/interaction_graphics_thread.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/platform/message_queue.h"
-#include "aura/graphics/image/context_image.h"
+#include "aura/graphics/image/context.h"
 #include "aura/graphics/image/drawing.h"
 #include "aura/platform/context.h"
 #include "aura/platform/application.h"
@@ -579,7 +579,7 @@ namespace windowing_android
 
 
 
-   bool window::set_icon(::image * pimage)
+   bool window::set_icon(::image::image * pimage)
    {
 
       // http://stackoverflow.com/questions/10699927/xlib-argb-window-icon
@@ -616,7 +616,7 @@ namespace windowing_android
 
 #elif 1
 
-      auto d1 = context_image()->create_image({ 32, 32 });
+      auto d1 = image()->create_image({ 32, 32 });
 
       if (d1.nok())
       {
@@ -629,13 +629,13 @@ namespace windowing_android
 
       {
 
-         image_source imagesource(pimage->g(), pimage->rectangle());
+         ::image::image_source imagesource(pimage->g(), pimage->rectangle());
 
          rectangle_f64 rectangle(d1->rectangle());
 
-         image_drawing_options imagedrawingoptions(rectangle);
+         ::image::image_drawing_options imagedrawingoptions(rectangle);
 
-         image_drawing imagedrawing(imagedrawingoptions, imagesource);
+         ::image::image_drawing imagedrawing(imagedrawingoptions, imagesource);
 
          //getfileimage.m_iImage = m_pimagelist[16]->set(getfileimage.m_iImage, imagedrawing);
 
