@@ -4,9 +4,9 @@
 #include "framework.h"
 #include "display.h"
 //#include "_windowing.h"
-//#include "acme/primitive/geometry2d/_.h"
-//#include "acme/primitive/geometry2d/_enhanced.h"
-//#include "acme/primitive/geometry2d/_impl.h"
+//#include "acme/prototype/geometry2d/_.h"
+//#include "acme/prototype/geometry2d/_enhanced.h"
+//#include "acme/prototype/geometry2d/_impl.h"
 
 
 namespace windowing_android
