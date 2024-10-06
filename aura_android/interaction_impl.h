@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "aura/user/user/interaction_impl.h"
+//#include "aura/user/user/interaction_impl.h"
 
 
 namespace aura_android
@@ -10,7 +10,7 @@ namespace aura_android
 
 
    class CLASS_DECL_AURA interaction_impl:
-      virtual public ::user::interaction_impl
+      virtual public ::windowing::window
    {
    public:
 
@@ -40,8 +40,8 @@ namespace aura_android
 
       void install_message_routing(::channel * pchannel) override;
 
-      //bool operator==(const ::user::interaction_impl& wnd) const;
-      //bool operator!=(const ::user::interaction_impl& wnd) const;
+      //bool operator==(const ::windowing::window& wnd) const;
+      //bool operator!=(const ::windowing::window& wnd) const;
 
       //virtual bool ModifyStyle(u32 dwRemove,u32 dwAdd,::u32 nFlags = 0) override;
       //virtual bool ModifyStyleEx(u32 dwRemove,u32 dwAdd,::u32 nFlags = 0) override;
@@ -66,10 +66,10 @@ namespace aura_android
 
 #endif   // WINVER >= 0x0500
 
-      //virtual ::user::interaction_impl * from_os_data(void * pdata) override;
+      //virtual ::windowing::window * from_os_data(void * pdata) override;
       //virtual void * get_os_data() const override;
 
-      //static ::user::interaction_impl * from_handle(oswindow oswindow);
+      //static ::windowing::window * from_handle(oswindow oswindow);
       //static ::user::interaction * ui_from_handle(oswindow oswindow);
 
       // subclassing/unsubclassing functions
@@ -109,7 +109,7 @@ namespace aura_android
       void show_software_keyboard(::user::element * pelement) override;
       void hide_software_keyboard(::user::element * pelement) override;
 
-      using ::user::interaction_impl::get_child_by_id;
+      using ::windowing::window::get_child_by_id;
       void get_child_by_id(atom atom,::oswindow* poswindow_) const;
 
       //virtual bool IsWindow() const;
@@ -118,7 +118,7 @@ namespace aura_android
       //virtual bool IsWindowEnabled();
       //virtual bool EnableWindow(bool bEnable = true);
 
-      // the active ::user::interaction_impl applies only to top-level (frame windows)
+      // the active ::windowing::window applies only to top-level (frame windows)
       //virtual ::user::interaction * get_active_window() override;
       //virtual ::user::interaction * set_active_window() override;
 
@@ -146,14 +146,14 @@ namespace aura_android
       //i32 SetWindowRgn(HRGN hRgn,bool bRedraw);
       //i32 GetWindowRgn(HRGN hRgn);
 
-      //using ::user::interaction_impl::set_window_position;
+      //using ::windowing::window::set_window_position;
       //virtual bool set_window_position(iptr z,i32 x,i32 y,i32 cx,i32 cy,::u32 nFlags = SWP_SHOWWINDOW);
       //virtual ::u32 ArrangeIconicWindows();
       //virtual void BringToTop(int nCmdShow);
       //virtual bool BringWindowToTop();
-      //using ::user::interaction_impl::window_rectangle;
+      //using ::windowing::window::window_rectangle;
       //virtual bool window_rectangle(::rectangle_i64 * lpRect);
-      //using ::user::interaction_impl::this->rectangle;
+      //using ::windowing::window::this->rectangle;
       //virtual bool this->rectangle(::rectangle_i64 * lpRect);
 
       //virtual bool client_to_screen(::rectangle_i32 * lprect);
@@ -291,7 +291,7 @@ namespace aura_android
 
       //virtual bool IsChild(::user::interaction *  pWnd);
       //virtual ::user::interaction * get_parent();
-      //using ::user::interaction_impl::SetParent;
+      //using ::windowing::window::SetParent;
       //::user::interaction * SetParent(::user::interaction * pWndNewParent);
       //static::user::interaction * PASCAL oswindowFromPoint(::point_i32 point_i32);
 

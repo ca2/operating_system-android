@@ -99,7 +99,7 @@ namespace aura_android
    }
 
 
-   //::user::interaction_impl * interaction_impl::from_os_data(void * pdata)
+   //::windowing::window * interaction_impl::from_os_data(void * pdata)
    //{
 
    //   return from_handle((oswindow)pdata);
@@ -221,12 +221,12 @@ namespace aura_android
 
    //   //      auto pwindowMain = system()->m_paurasystem->m_pwindowMain;
    //   //
-   //   //      if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
+   //   //      if (pwindowMain && !pwindowMain->m_pwindow)
    //   //      {
    //   //
    //   //         m_pwindow = system()->m_paurasystem->m_pwindowMain;
    //   //
-   //   //         m_pwindow->m_puserinteractionimpl = this;
+   //   //         m_pwindow->m_pwindow = this;
    //   //
    //   //         m_puserinteraction->m_pinteractionimpl = this;
    //   //
@@ -669,7 +669,7 @@ namespace aura_android
    {
 
       last_install_message_routing(pchannel);
-      ::user::interaction_impl::install_message_routing(pchannel);
+      ::windowing::window::install_message_routing(pchannel);
 
       if(!m_puserinteraction->m_bMessageWindow)
       {
@@ -779,7 +779,7 @@ namespace aura_android
 //
 //      //single_lock synchronouslock(m_puserinteraction->get_app()->mutex(), true);
 //
-//      //::user::interaction_impl * pwindow;
+//      //::windowing::window * pwindow;
 //
 //      //::thread* pthread = ::get_thread();
 //
@@ -801,7 +801,7 @@ namespace aura_android
 //
 //      //set_handle(nullptr);
 //
-//      ::user::interaction_impl::post_non_client_destroy();
+//      ::windowing::window::post_non_client_destroy();
 //
 //   }
 //
@@ -895,7 +895,7 @@ namespace aura_android
    void interaction_impl::pre_translate_message(::message::message * pmessage)
    {
       
-      ::user::interaction_impl::pre_translate_message(pmessage);
+      ::windowing::window::pre_translate_message(pmessage);
 
       //__UNREFERENCED_PARAMETER(pmessage);
       // no default processing
@@ -939,7 +939,7 @@ namespace aura_android
    void interaction_impl::message_handler(::message::message * pmessage)
    {
 
-      ::user::interaction_impl::message_handler(pmessage);
+      ::windowing::window::message_handler(pmessage);
 
       return;
 
@@ -1207,7 +1207,7 @@ namespace aura_android
 //      //   return;
 //      //}
 //
-//      ::user::interaction_impl::message_handler(pmessage);
+//      ::windowing::window::message_handler(pmessage);
 //
 //      //if(pmessage->m_bRet && !pmessage->m_bDoSystemDefault)
 //      if(pmessage->m_bRet)
@@ -1276,7 +1276,7 @@ namespace aura_android
    //void interaction_impl::ActivateTopParent()
    //{
    //   // special activate logic for floating toolbars and palettes
-   //   //::user::interaction_impl * pActiveWnd = GetForegroundWindow();
+   //   //::windowing::window * pActiveWnd = GetForegroundWindow();
    //   //if(pActiveWnd == nullptr || !(NODE_WINDOW(pActiveWnd)->get_handle() == get_handle() || ::IsChild(NODE_WINDOW(pActiveWnd)->get_handle(),get_handle())))
    //   {
    //      // clicking on floating frame when it does not have
@@ -2020,7 +2020,7 @@ namespace aura_android
    //   if (pWnd->get_handle() == nullptr)
    //   {
 
-   //      return ::user::interaction_impl::is_child(pWnd);
+   //      return ::windowing::window::is_child(pWnd);
 
    //   }
    //   else
@@ -2054,7 +2054,7 @@ namespace aura_android
 //   bool interaction_impl::set_window_position(iptr z, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
 //   {
 //
-//      return ::user::interaction_impl::set_window_position(z, x, y, cx, cy, nFlags);
+//      return ::windowing::window::set_window_position(z, x, y, cx, cy, nFlags);
 //
 //      //      single_lock synchronouslock(&user_mutex(), true);
 //
@@ -2410,7 +2410,7 @@ namespace aura_android
 
    //void interaction_impl::_001WindowMaximize()
    //{
-   //   ::user::interaction_impl::_001WindowMaximize();
+   //   ::windowing::window::_001WindowMaximize();
    //}
 
 
@@ -2484,14 +2484,14 @@ namespace aura_android
 //// interaction_impl
 //   /* interaction_impl::operator oswindow() const
 //   { return this == nullptr ? nullptr : get_handle(); }*/
-//   bool interaction_impl::operator==(const ::user::interaction_impl& wnd) const
+//   bool interaction_impl::operator==(const ::windowing::window& wnd) const
 //   {
-//      return const_cast < ::user::interaction_impl * >  (&wnd)->get_handle() == ((interaction_impl *)this)->get_handle();
+//      return const_cast < ::windowing::window * >  (&wnd)->get_handle() == ((interaction_impl *)this)->get_handle();
 //   }
 //
-//   bool interaction_impl::operator!=(const ::user::interaction_impl& wnd) const
+//   bool interaction_impl::operator!=(const ::windowing::window& wnd) const
 //   {
-//      return const_cast < ::user::interaction_impl * >  (&wnd)->get_handle() != ((interaction_impl *)this)->get_handle();
+//      return const_cast < ::windowing::window * >  (&wnd)->get_handle() != ((interaction_impl *)this)->get_handle();
 //   }
 //
 ////::u32 interaction_impl::GetStyle() const
@@ -2543,7 +2543,7 @@ namespace aura_android
 //
 //      //}
 //
-//      return ::user::interaction_impl::send_message(atom, wparam, lparam);
+//      return ::windowing::window::send_message(atom, wparam, lparam);
 //
 //   }
 //
@@ -2551,7 +2551,7 @@ namespace aura_android
 //   bool interaction_impl::post_message(const ::atom & atom, wparam wparam, lparam lparam)
 //   {
 //
-//      return ::user::interaction_impl::post_message(atom, wparam, lparam);
+//      return ::windowing::window::post_message(atom, wparam, lparam);
 //      //return ::post_me((oswindow)get_handle(), message, wparam, lparam) != false;
 //
 //   }
@@ -3063,9 +3063,9 @@ namespace aura_android
    //bool interaction_impl::SetTimer(uptr uEvent, ::u32 nElapse, PFN_TIMER pfnTimer)
    //{
 
-   //   return ::user::interaction_impl::SetTimer(uEvent, nElapse, pfnTimer);
+   //   return ::windowing::window::SetTimer(uEvent, nElapse, pfnTimer);
 
-   //   //return ::user::interaction_impl::SetTimer(uEvent, nElapse, lpfnTimer);
+   //   //return ::windowing::window::SetTimer(uEvent, nElapse, lpfnTimer);
 
 
    //   //__UNREFERENCED_PARAMETER(lpfnTimer);
@@ -3084,7 +3084,7 @@ namespace aura_android
    ////bool interaction_impl::KillTimer(uptr uEvent)
    ////{
 
-   ////   return ::user::interaction_impl::KillTimer(uEvent);
+   ////   return ::windowing::window::KillTimer(uEvent);
 
    ////   //m_puserinteraction->get_app()->unset_timer(m_puserinteraction, uEvent);
 
@@ -4123,11 +4123,11 @@ namespace aura_android
 //   }
 //
 ////////////////////////////////////////////////////////////////////////////////
-////// UI related ::user::interaction_impl functions
+////// UI related ::windowing::window functions
 ////
 ////   oswindow PASCAL interaction_impl::GetSafeOwner_(oswindow hParent, oswindow* pWndTop)
 ////   {
-////      // get ::user::interaction_impl to start with
+////      // get ::windowing::window to start with
 ////      oswindow hWnd = hParent;
 ////      if (hWnd == nullptr)
 ////      {
@@ -4138,11 +4138,11 @@ namespace aura_android
 ////         hWnd = ::auraacmesystem()->GetMainWnd()->get_handle();*/
 ////      }
 ////
-////      // a popup ::user::interaction_impl cannot be owned by a child ::user::interaction_impl
+////      // a popup ::windowing::window cannot be owned by a child ::windowing::window
 ////      while (hWnd != nullptr && (::GetWindowLong(hWnd, GWL_STYLE) & WS_CHILD))
 ////         hWnd = ::get_parent(hWnd);
 ////
-////      // determine toplevel ::user::interaction_impl to disable as well
+////      // determine toplevel ::windowing::window to disable as well
 ////      oswindow hWndTop = hWnd, hWndTemp = hWnd;
 ////      for (;;)
 ////      {
@@ -4158,7 +4158,7 @@ namespace aura_android
 ////      //    if (hParent == nullptr && hWnd != nullptr)
 ////      //       hWnd = ::GetLastActivePopup(hWnd);
 ////
-////      // disable and store top level parent ::user::interaction_impl if specified
+////      // disable and store top level parent ::windowing::window if specified
 ////      if (pWndTop != nullptr)
 ////      {
 ////         /*         if (hWndTop != nullptr && ::IsWindowEnabled(hWndTop) && hWndTop != hWnd)
@@ -4200,7 +4200,7 @@ namespace aura_android
    //{
 
 
-   //   ::user::interaction_impl::_001OnTriggerMouseInside();
+   //   ::windowing::window::_001OnTriggerMouseInside();
 
    //}
 
@@ -4251,7 +4251,7 @@ namespace aura_android
 
 
 
-   //::user::interaction_impl * interaction_impl::from_handle(oswindow oswindow)
+   //::windowing::window * interaction_impl::from_handle(oswindow oswindow)
    //{
 
    //   return oswindow_interaction_impl(oswindow);
@@ -4426,7 +4426,7 @@ namespace aura_android
       if (::is_set(papplicationhostwindow))
       {
 
-         papplicationhostwindow->m_puserinteractionimpl->m_puserinteraction->set_need_redraw();
+         papplicationhostwindow->m_pwindow->m_puserinteraction->set_need_redraw();
 
       }
 

@@ -47,7 +47,7 @@ void android_aura_main()
 
    ////puserinteraction->post_redraw();
 
-   //auto pimpl = puserinteraction->m_pimpl.cast < ::user::interaction_impl >();
+   //auto pimpl = puserinteraction->m_pimpl.cast < ::windowing::window >();
 
    //if (pimpl)
    //{

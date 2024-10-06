@@ -7,7 +7,7 @@
 #include "display.h"
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
-#include "aura/user/user/interaction_impl.h"
+//#include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/sandbox/host_interaction.h"
 #include "android/_internal.h"
 #include "aura/windowing/cursor_manager.h"
@@ -57,7 +57,7 @@ namespace windowing_android
    }
 
 
-   ::windowing::window * windowing::new_window(::user::interaction_impl * pimpl)
+   ::windowing::window * windowing::new_window(::windowing::window * pimpl)
    {
 
       ::pointer<::windowing_android::window>pwindow = pimpl->__create < ::windowing::window >();
@@ -71,7 +71,7 @@ namespace windowing_android
 
       pwindow->m_pwindowing = this;
 
-      pwindow->m_puserinteractionimpl = pimpl;
+      pwindow->m_pwindow = pimpl;
 
       pimpl->m_pwindow = pwindow;
 
@@ -461,7 +461,7 @@ namespace windowing_android
 
    //   auto pwindowApplicationHost = get_application_host_window();
 
-   //   if (!pwindowApplicationHost->m_puserinteractionimpl->m_puserinteractionKeyboardFocus)
+   //   if (!pwindowApplicationHost->m_pwindow->m_puserinteractionKeyboardFocus)
    //   {
 
    //      return nullptr;
@@ -510,12 +510,12 @@ namespace windowing_android
 
       }
 
-      auto puserinteractionimpl = m_pwindowMouseCapture->m_puserinteractionimpl;
+      auto pwindow = m_pwindowMouseCapture->m_pwindow;
 
-      if (puserinteractionimpl)
+      if (pwindow)
       {
 
-         puserinteractionimpl->m_puserinteractionMouseCapture.release();
+         pwindow->m_puserinteractionMouseCapture.release();
 
       }
 
@@ -547,21 +547,21 @@ namespace windowing_android
 
       }
 
-      auto puserinteractionimpl = m_pwindowKeyboardFocus->m_puserinteractionimpl;
+      auto pwindow = m_pwindowKeyboardFocus->m_pwindow;
 
-      if (puserinteractionimpl)
+      if (pwindow)
       {
 
-         if (puserinteractionimpl->m_puserinteractionKeyboardFocus)
+         if (pwindow->m_puserinteractionKeyboardFocus)
          {
 
-            puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
+            pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 
-            //puserinteractionimpl->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+            //pwindow->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
 
          }
 
-         auto puserinteraction = puserinteractionimpl->m_puserinteraction;
+         auto puserinteraction = pwindow->m_puserinteraction;
 
          if (puserinteraction)
          {
@@ -570,16 +570,16 @@ namespace windowing_android
 
          }
 
-         //if (puserinteractionimpl->m_puserinteractionKeyboardFocus)
+         //if (pwindow->m_puserinteractionKeyboardFocus)
          //{
 
-         //   puserinteractionimpl->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
+         //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
 
-         //   puserinteractionimpl->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+         //   pwindow->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
 
          //}
 
-         puserinteractionimpl->m_puserinteractionKeyboardFocus.release();
+         pwindow->m_puserinteractionKeyboardFocus.release();
 
       }
 
@@ -645,15 +645,15 @@ void defer_term_ui()
 //}
 
 
-//CLASS_DECL_AURA i32 oswindow_find_message_only_window(::user::interaction_impl * puibaseMessageWindow);
+//CLASS_DECL_AURA i32 oswindow_find_message_only_window(::windowing::window * puibaseMessageWindow);
 //CLASS_DECL_AURA i32 oswindow_find(Display * pdisplay,Window window);
 //CLASS_DECL_AURA i32 oswindow_find(Window window);
-//CLASS_DECL_AURA oswindow_data * oswindow_get_message_only_window(::user::interaction_impl * puibaseMessageWindow);
+//CLASS_DECL_AURA oswindow_data * oswindow_get_message_only_window(::windowing::window * puibaseMessageWindow);
 //CLASS_DECL_AURA oswindow_data * oswindow_get(Display * pdisplay,Window window,Visual * pvisual = nullptr,int iDepth = -1,int iScreen = -1,Colormap colormap = None);
 //CLASS_DECL_AURA oswindow_data * oswindow_get(Window window);
 //CLASS_DECL_AURA oswindow oswindow_defer_get(Window w);
 //CLASS_DECL_AURA bool oswindow_erase(Display * pdisplay,Window window);
-//CLASS_DECL_AURA bool oswindow_erase_message_only_window(::user::interaction_impl * puibaseMessageOnlyWindow);
+//CLASS_DECL_AURA bool oswindow_erase_message_only_window(::windowing::window * puibaseMessageOnlyWindow);
 
 
 namespace user
@@ -699,7 +699,7 @@ namespace user
 ////::mutex * oswindow_data::s_pmutex = new ::mutex;
 //
 //
-//i32 oswindow_find_message_only_window(::user::interaction_impl * pimpl)
+//i32 oswindow_find_message_only_window(::windowing::window * pimpl)
 //{
 //
 //   if (pimpl == nullptr)
@@ -730,7 +730,7 @@ namespace user
 //
 //
 //
-//i32 oswindow_find(::user::interaction_impl * pimpl)
+//i32 oswindow_find(::windowing::window * pimpl)
 //{
 //
 //   synchronous_lock slOsWindow(::oswindow_data::s_pmutex);
@@ -748,7 +748,7 @@ namespace user
 //
 //}
 //
-//oswindow_data * oswindow_get_message_only_window(::user::interaction_impl * pimpl)
+//oswindow_data * oswindow_get_message_only_window(::windowing::window * pimpl)
 //{
 //
 //   if (pimpl == nullptr)
@@ -778,7 +778,7 @@ namespace user
 //}
 //
 //
-//oswindow_data * oswindow_get(::user::interaction_impl * pimpl)
+//oswindow_data * oswindow_get(::windowing::window * pimpl)
 //{
 //
 //   synchronous_lock slOsWindow(::oswindow_data::s_pmutex);
@@ -884,7 +884,7 @@ namespace user
 //*/
 //
 //
-//oswindow oswindow_defer_get(::user::interaction_impl * pimpl)
+//oswindow oswindow_defer_get(::windowing::window * pimpl)
 //{
 //
 //   return pimpl->m_oswindow;
@@ -910,7 +910,7 @@ namespace user
 ////}
 //
 //
-//bool oswindow_erase_message_only_window(::user::interaction_impl * pinteraction)
+//bool oswindow_erase_message_only_window(::windowing::window * pinteraction)
 //{
 //
 //   synchronous_lock slOsWindow(::oswindow_data::s_pmutex);
@@ -1013,7 +1013,7 @@ namespace user
 //}
 //
 //
-//void oswindow_data::set_impl(::user::interaction_impl * pimpl)
+//void oswindow_data::set_impl(::windowing::window * pimpl)
 //{
 //
 //   synchronous_lock slOsWindow(s_pmutex);
@@ -1032,7 +1032,7 @@ namespace user
 //}
 //
 //
-//::user::interaction_impl * oswindow_data::get_impl()
+//::windowing::window * oswindow_data::get_impl()
 //{
 //
 //   single_lock slOsWindow(s_pmutex, true);
@@ -1049,7 +1049,7 @@ namespace user
 //}
 //
 //
-//::user::interaction_impl * oswindow_data::get_impl() const
+//::windowing::window * oswindow_data::get_impl() const
 //{
 //
 //   single_lock slOsWindow(s_pmutex, true);
@@ -1069,7 +1069,7 @@ namespace user
 //::user::interaction * oswindow_data::get_user_interaction()
 //{
 //
-//   ::user::interaction_impl * pimpl = get_impl();
+//   ::windowing::window * pimpl = get_impl();
 //
 //   try
 //   {
@@ -1090,7 +1090,7 @@ namespace user
 //::user::interaction * oswindow_data::get_user_interaction() const
 //{
 //
-//   ::user::interaction_impl * pimpl = get_impl();
+//   ::windowing::window * pimpl = get_impl();
 //
 //   try
 //   {
@@ -1695,7 +1695,7 @@ namespace user
 //}
 //
 //
-//::user::interaction_impl * window_from_handle(oswindow oswindow)
+//::windowing::window * window_from_handle(oswindow oswindow)
 //{
 //
 //   if (oswindow == nullptr)

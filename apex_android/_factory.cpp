@@ -45,7 +45,7 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
 
 
    //create_factory < ::android::buffer, ::graphics::graphics >();
-   //create_factory < ::android::interaction_impl, ::user::interaction_impl >();
+   //create_factory < ::android::interaction_impl, ::windowing::window >();
 
    //pfactory->add_factory_item < ::file::os_watcher, ::file::watcher >();
    //pfactory->add_factory_item < ::file::os_watch, ::file::watch >();

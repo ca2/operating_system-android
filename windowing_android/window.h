@@ -18,7 +18,7 @@ namespace windowing_android
 
 
       //bool                                         m_bMessageOnlyWindow;
-      //::pointer<::user::interaction_impl>    m_pimpl;
+      //::pointer<::windowing::window>    m_pimpl;
       //::pointer<::message_queue>             m_pmessagequeue;
       //htask_t                                    m_htask;
       ////Colormap                                     m_colormap;
@@ -46,7 +46,7 @@ namespace windowing_android
       ~window() override;
 
 
-      void create_window(::user::interaction_impl * pimpl) override;
+      void create_window(::windowing::window * pimpl) override;
 
 
       //static Atom get_window_long_atom(i32 nIndex);
@@ -71,7 +71,7 @@ namespace windowing_android
 
       void exit_zoomed() override;
 
-      void set_user_interaction(::user::interaction_impl * pinteraction) override;
+      void set_user_interaction(::windowing::window * pinteraction) override;
 
       void post_nc_destroy() override;
 

@@ -4,7 +4,7 @@
 #include "acme/platform/acme.h"
 #include "acme/platform/system.h"
 #include "aura/platform/session.h"
-#include "aura/user/user/interaction_impl.h"
+//#include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/user.h"
 #include "aura/windowing/window.h"
 #include "aura/windowing/windowing.h"
@@ -29,7 +29,7 @@ void android_key(unsigned int message, int keyCode, int iUni)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -74,7 +74,7 @@ void _android_key(unsigned int message, int keyCode, int iUni)
 
    }
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -106,7 +106,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
    if (::is_null(psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()))
       return;
 
-   ::pointer<::user::interaction>puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   ::pointer<::user::interaction>puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -179,7 +179,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -297,7 +297,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 
    auto psystem = this->platform()->system();
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -383,7 +383,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 }
 
 
-//CLASS_DECL_AURA ::user::interaction_impl * oswindow_get(oswindow oswindow)
+//CLASS_DECL_AURA ::windowing::window * oswindow_get(oswindow oswindow)
 //{
 //
 //   if (oswindow == nullptr)
@@ -614,7 +614,7 @@ int GetMainScreenRect(::rectangle_i32* lprect)
 
    auto psystem = this->platform()->system();
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -644,7 +644,7 @@ int SetMainScreenRect(const ::rectangle_i32 &rect)
 
    }
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_puserinteractionimpl->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -670,7 +670,7 @@ int SetMainScreenRect(const ::rectangle_i32 &rect)
 
    //}
 
-   auto pimpl = puserinteraction->m_pinteractionimpl.cast < ::user::interaction_impl >();
+   auto pimpl = puserinteraction->m_pinteractionimpl.cast < ::windowing::window >();
 
    //if (pimpl)
    //{

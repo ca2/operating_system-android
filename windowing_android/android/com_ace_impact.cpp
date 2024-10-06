@@ -4,7 +4,7 @@
 #include "acme/platform/system.h"
 #include "aura/user/user/user.h"
 #include "aura/platform/session.h"
-#include "aura/user/user/interaction_impl.h"
+//#include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/window.h"
 #include "aura/windowing/windowing.h"
 #include "_internal.h"
@@ -73,7 +73,7 @@ void set_jni_context(JNIEnv* penv);
 }
 
 
-::user::interaction_impl* __get_host_user_impl()
+::windowing::window* __get_host_user_impl()
 {
 
    auto pwindowApplicationHost = __get_host_window();
@@ -81,7 +81,7 @@ void set_jni_context(JNIEnv* penv);
    if (::is_set(pwindowApplicationHost))
    {
 
-      return pwindowApplicationHost->m_puserinteractionimpl;
+      return pwindowApplicationHost->m_pwindow;
 
    }
 
@@ -151,16 +151,16 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
       try
       {
 
-         auto puserinteractionimpl = __get_host_user_impl();
+         auto pwindow = __get_host_user_impl();
 
-         if (::is_set(puserinteractionimpl))
+         if (::is_set(pwindow))
          {
 
             class ::time time;
 
             time.Now();
 
-            puserinteractionimpl->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
+            pwindow->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
 
             LOGE("render_impact: %lld ms time=%f ms", time_ms, time.elapsed().floating_millisecond());
 
@@ -575,7 +575,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, job
 
    //}
 
-   //auto pimpl = puserinteraction->m_pimpl.cast < ::user::interaction_impl >();
+   //auto pimpl = puserinteraction->m_pimpl.cast < ::windowing::window >();
 
    //if (pimpl)
    //{
@@ -599,7 +599,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, job
 
    //         puserinteractionChild->send_message(e_message_display_change);
 
-   //         //::pointer<::user::interaction_impl>pimpl = puserinteraction->m_pimpl;
+   //         //::pointer<::windowing::window>pimpl = puserinteraction->m_pimpl;
 
    //         //if (pimpl)
    //         //{
