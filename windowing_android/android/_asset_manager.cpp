@@ -38,7 +38,7 @@ asset_manager::~asset_manager()
 
    auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);
 
-   auto passet = ::place(new asset(paasset));
+   auto passet = __new asset(paasset);
 
    return passet;
 

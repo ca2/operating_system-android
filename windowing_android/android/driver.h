@@ -17,7 +17,7 @@ class operating_system_driver :
 public:
 
 
-   ::pointer < ::particle >   m_pparticleMainOsThread;
+   ::particle_pointer   m_pparticleMainOsThread;
    string                     m_strApplicationIdentifier;
    string                     m_strCommandLineParameters;
    ::file::path               m_pathCacheDirectory;
@@ -72,11 +72,11 @@ public:
 
    ::pointer<asset>           m_passetResourceFolder;
 
-   ::pointer < ::particle >                        m_pparticleMutexMessageBoxSequencer;
+   ::particle_pointer                        m_pparticleMutexMessageBoxSequencer;
    ::pointer_array < ::sequencer < ::conversation > > m_sequenceraMessageBox;
 
 
-   ::pointer < ::particle >                        m_pparticleMutexListFileEnumerate;
+   ::particle_pointer                        m_pparticleMutexListFileEnumerate;
    ::string_array                                  m_straListFileEnumerate;
 
 
@@ -98,7 +98,7 @@ public:
 
 
    virtual void queue_message_box_sequencer(::sequencer < ::conversation >* psequencer);
-   virtual pointer< ::sequencer < ::conversation > > pick_message_box_sequencer();
+   virtual ::pointer < ::subparticle > pick_message_box_sequencer();
 
 
    virtual void open_url(const ::string& strOpenUrl);

@@ -29,7 +29,7 @@ void android_key(unsigned int message, int keyCode, int iUni)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -60,10 +60,10 @@ void _android_key(unsigned int message, int keyCode, int iUni)
    if (psystem->session() == nullptr)
       return;
 
-   if (psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window() == nullptr)
+   if (psystem->session()->m_paurasession->system()->windowing()->get_application_host_window() == nullptr)
       return;
 
-   ::pointer<::message::key>pkey = ::place(new ::message::key());
+   ::pointer<::message::key>pkey = __new ::message::key();
 
    pkey->m_atom = (enum_message)message;
 
@@ -74,7 +74,7 @@ void _android_key(unsigned int message, int keyCode, int iUni)
 
    }
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -103,10 +103,10 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
    if (::is_null(psystem->session()))
       return;
 
-   if (::is_null(psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()))
+   if (::is_null(psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()))
       return;
 
-   ::pointer<::user::interaction>puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   ::pointer<::user::interaction>puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -179,7 +179,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -297,7 +297,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 
    auto psystem = this->platform()->system();
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (puserinteraction)
    {
@@ -331,7 +331,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //      if (get_session() == nullptr || ::is_null(get_session()->m_puserinteractionHost))
 //         return;
 //
-//      ::pointer<::message::key>pkey = ::place(new ::message::key());
+//      ::pointer<::message::key>pkey = __new ::message::key();
 //
 //      pkey->m_atom = e_message_key_down;
 //
@@ -614,7 +614,7 @@ int GetMainScreenRect(::rectangle_i32* lprect)
 
    auto psystem = this->platform()->system();
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {
@@ -644,7 +644,7 @@ int SetMainScreenRect(const ::rectangle_i32 &rect)
 
    }
 
-   auto puserinteraction = psystem->session()->m_paurasession->m_puser->m_pwindowing->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->session()->m_paurasession->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
 
    if (!puserinteraction)
    {

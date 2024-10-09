@@ -8,7 +8,7 @@ extern operating_system_driver* g_pandroiddriver;
 thread_local JNIEnv* t_pjnienv;
 
 
-::pointer < ::particle > g_pmutexOs;
+::particle_pointer g_pmutexOs;
 
 
 ::particle* osmutex()

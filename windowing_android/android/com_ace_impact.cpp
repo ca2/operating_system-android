@@ -44,7 +44,7 @@ void set_jni_context(JNIEnv* penv);
             if (::is_set(puser))
             {
 
-               auto pwindowing = puser->m_pwindowing;
+               auto pwindowing = system()->windowing();
 
                if (::is_set(pwindowing))
                {

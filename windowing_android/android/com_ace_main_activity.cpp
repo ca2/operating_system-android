@@ -5,7 +5,7 @@
 //#include "acme/user/nano/_nano.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/node.h"
-#include "acme/platform/sequencer.h"
+//#include "acme/platform/sequencer.h"
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
 #include "acme/user/nano/nano.h"
@@ -13,7 +13,7 @@
 
 typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
 
-extern ::pointer < ::particle > g_pmutexOs;
+extern ::particle_pointer g_pmutexOs;
 
 
 void android_aura_main();
@@ -199,13 +199,13 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          const char * pResourceStart = nullptr;
          const char * pResourceEnd = nullptr;
-         //auto pfactory = ::place(new ::factory::factory());
+         //auto pfactory = __new ::factory::factory();
          pdriver->m_passetResourceFolder->get_pointers(
             pResourceStart,
             pResourceEnd);
 
 
-         auto pmainosthread = ::place(new main_os_thread(
+         auto pmainosthread = ::as(new main_os_thread(
             pfnMain, (char **)this_argv, pResourceStart,
             pResourceEnd)));
 

@@ -2,7 +2,7 @@
 #include "acme/constant/id.h"
 #include "_internal.h"
 #include "_asset_manager.h"
-#include "acme/platform/sequencer.h"
+//#include "acme/platform/sequencer.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
 
@@ -136,7 +136,7 @@ void operating_system_driver::queue_message_box_sequencer(::sequencer< ::convers
 }
 
 
-pointer< ::sequencer < ::conversation > > operating_system_driver::pick_message_box_sequencer()
+::pointer < ::subparticle > operating_system_driver::pick_message_box_sequencer()
 {
 
    synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
