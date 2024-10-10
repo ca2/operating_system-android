@@ -45,7 +45,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * po
 
    // auto pmessagebox = __initialize_new ::message_box(pobject, strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
 
-send(pmessagebox);
+pmessagebox->sync();
 
 
    __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);
