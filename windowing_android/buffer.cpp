@@ -175,7 +175,7 @@ namespace windowing_android
 
       ///**
       //* Unlock the window's drawing surface after previously locking it,
-      //* posting the new buffer to the display.
+      //* posting the __new buffer to the display.
       //*/
 
 

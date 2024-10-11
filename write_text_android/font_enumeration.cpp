@@ -123,7 +123,7 @@ namespace write_text_android
 
                         ::file::path path = pwritetext->m_mapFontKeyFaceName[strFamily][iKey];
 
-                        pitem = __new ::write_text::font_enumeration_item();
+                        pitem = __allocate ::write_text::font_enumeration_item();
 
                         pitem->m_mapFileName[iKey] = path;
 
@@ -147,7 +147,7 @@ namespace write_text_android
                         for (auto & pair : pwritetext->m_mapFontKeyFaceName[strFamily])
                         {
 
-                           pitem = __new ::write_text::font_enumeration_item();
+                           pitem = __allocate ::write_text::font_enumeration_item();
 
                            pitem->m_mapFileName[pair.m_element1] = pair.m_element2;
 
@@ -217,7 +217,7 @@ namespace write_text_android
 
                               path /= strFile;
 
-                              pitem = __new ::write_text::font_enumeration_item();
+                              pitem = __allocate ::write_text::font_enumeration_item();
 
                               if (acmefile()->exists(path))
                               {
@@ -250,7 +250,7 @@ namespace write_text_android
 
                         strFamily = pfamily->attribute("name");
 
-                        pitem = __new ::write_text::font_enumeration_item();
+                        pitem = __allocate ::write_text::font_enumeration_item();
 
                         pitem->m_strName = strFamily;
 
@@ -328,7 +328,7 @@ namespace write_text_android
                   for (auto & path : listing)
                   {
 
-                     pitem = __new ::write_text::font_enumeration_item();
+                     pitem = __allocate ::write_text::font_enumeration_item();
 
                      pitem->m_mapFileName[0] = path;
 
@@ -359,7 +359,7 @@ namespace write_text_android
 
 //#ifdef FONT_MONO
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = node()->font_name(e_font_monospace);
 
@@ -372,7 +372,7 @@ namespace write_text_android
 
 //#ifdef FONT_SANS
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_sans);
 
@@ -385,7 +385,7 @@ namespace write_text_android
 
 //#ifdef FONT_SERIF
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_serif);
 
@@ -398,7 +398,7 @@ namespace write_text_android
 
 //#ifdef FONT_SANS_EX
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_sans_ex);
 
@@ -411,7 +411,7 @@ namespace write_text_android
 
 //#ifdef FONT_SERIF_EX
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_serif_ex);
 
@@ -424,7 +424,7 @@ namespace write_text_android
 
 //#ifdef FONT_SANS_FX
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_sans_fx);
 
@@ -437,7 +437,7 @@ namespace write_text_android
 
 //#ifdef FONT_SERIF_FX
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = system()->m_pnode->font_name(e_font_serif_fx);
 
@@ -450,7 +450,7 @@ namespace write_text_android
 
 #ifdef FONT_SANS_FX2
 
-               pitem = __new ::write_text::font_enumeration_item();
+               pitem = __allocate ::write_text::font_enumeration_item();
 
                pitem->m_mapFileName[0] = FONT_SANS_FX2;
 
@@ -485,7 +485,7 @@ namespace write_text_android
       //for (int i = 0; i < n_families; i++)
       //{
 
-      //   auto pitem = __new ::write_text::font_enumeration_item();
+      //   auto pitem = __allocate ::write_text::font_enumeration_item();
 
       //   PangoFontFamily * pfamily = families[i];
 

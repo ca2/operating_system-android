@@ -75,7 +75,7 @@
 //   //::pointer<::conversation>node::create_new_message_box_conversation()
 //   //{
 //
-//   //   return __new ::windowing_android::message_box();
+//   //   return __allocate ::windowing_android::message_box();
 //
 //   //}
 //
@@ -83,7 +83,7 @@
 //   //pointer< ::sequence < ::conversation > > node::get_new_conversation_sequence()
 //   //{
 //
-//   //   auto psequence = __new windowing_android::message_box();
+//   //   auto psequence = __allocate windowing_android::message_box();
 //
 //   //   return psequence;
 //

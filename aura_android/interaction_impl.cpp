@@ -278,7 +278,7 @@ namespace aura_android
    //   else
    //   {
 
-   //      pusersystem = __new ::user::system();
+   //      pusersystem = __allocate ::user::system();
 
    //   }
 
@@ -536,7 +536,7 @@ namespace aura_android
 //         if (m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread == nullptr)
 //         {
 //
-//            m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread = new user_interaction_ptr_array();
+//            m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread = __new user_interaction_ptr_array();
 //
 //         }
 //
@@ -621,7 +621,7 @@ namespace aura_android
    //   ASSERT(pParentWnd != nullptr);
    //   ASSERT((dwStyle & WS_POPUP) == 0);
 
-   //   auto pusersystem = __new ::user::system();
+   //   auto pusersystem = __allocate ::user::system();
 
    //   pusersystem->m_createstruct.dwExStyle = 0;
    //   pusersystem->m_createstruct.lpszClass = lpszClassName;
@@ -2574,7 +2574,7 @@ namespace aura_android
 //
 //      __UNREFERENCED_PARAMETER(bRedraw);
 //
-//      //ASSERT(::is_window((oswindow) get_handle())); m_pfont = new ::write_text::font(*pfont);
+//      //ASSERT(::is_window((oswindow) get_handle())); m_pfont = __new ::write_text::font(*pfont);
 //
 //   }
 //
