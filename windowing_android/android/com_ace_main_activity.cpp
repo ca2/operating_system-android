@@ -144,12 +144,12 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
       }
 
-      ::operating_system_bind::set(__new operating_system_bind(jobjectDirect));
+      ::operating_system_bind::set(___new operating_system_bind(jobjectDirect));
 
       if (!::operating_system_driver::get())
       {
 
-         ::operating_system_driver::set(__new operating_system_driver());
+         ::operating_system_driver::set(___new operating_system_driver());
 
          auto pdirect = ::operating_system_bind::get();
 
@@ -173,7 +173,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          pdriver->m_bShowKeyboard = false;
 
-         pdriver->m_passetmanager = __new asset_manager(jobjectAssetManager);
+         pdriver->m_passetmanager = ___new asset_manager(jobjectAssetManager);
 
          pdriver->m_passetResourceFolder = pdriver->m_passetmanager->get_asset("_matter.zip");
 

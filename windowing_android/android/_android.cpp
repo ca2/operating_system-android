@@ -408,9 +408,9 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //
 //   //set_DispatchMessage(&axis_DispatchMessage);
 //
-//   oswindow_data::s_pdataptra = __new oswindow_dataptra;
+//   oswindow_data::s_pdataptra = ___new oswindow_dataptra;
 //
-//   oswindow_data::s_pmutex = __new ::mutex;
+//   oswindow_data::s_pmutex = ___new ::mutex;
 //
 //   return true;
 //

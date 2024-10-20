@@ -695,8 +695,8 @@ namespace user
 //#define CA2_X11_WINDOW_LONG_STYLE "ca2_ccwarehouse_fontopu_window_long_style"
 //#define CA2_X11_WINDOW_LONG_STYLE_EX "ca2_ccwarehouse_fontopu_window_long_style_ex"
 //
-////oswindow_dataptra * oswindow_data::s_pdataptra = __new oswindow_dataptra;
-////::mutex * oswindow_data::s_pmutex = __new ::mutex;
+////oswindow_dataptra * oswindow_data::s_pdataptra = ___new oswindow_dataptra;
+////::mutex * oswindow_data::s_pmutex = ___new ::mutex;
 //
 //
 //i32 oswindow_find_message_only_window(::windowing::window * pimpl)
@@ -765,7 +765,7 @@ namespace user
 //
 //   }
 //
-//   ::oswindow_data * pdata = __new oswindow_data;
+//   ::oswindow_data * pdata = ___new oswindow_data;
 //
 //   pdata->m_bMessageOnlyWindow = true;
 //
@@ -788,7 +788,7 @@ namespace user
 //   if (iFind >= 0)
 //      return ::oswindow_data::s_pdataptra->element_at(iFind);
 //
-//   ::oswindow_data * pdata = __new ::oswindow_data;
+//   ::oswindow_data * pdata = ___new ::oswindow_data;
 //
 //   pdata->m_bMessageOnlyWindow = false;
 //   pdata->m_pimpl = pimpl;

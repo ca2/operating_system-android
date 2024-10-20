@@ -536,7 +536,7 @@ namespace aura_android
 //         if (m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread == nullptr)
 //         {
 //
-//            m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread = __new user_interaction_ptr_array();
+//            m_puserinteraction->m_pthreadUserInteraction->m_puiptraThread = ___new user_interaction_ptr_array();
 //
 //         }
 //
@@ -2574,7 +2574,7 @@ namespace aura_android
 //
 //      __UNREFERENCED_PARAMETER(bRedraw);
 //
-//      //ASSERT(::is_window((oswindow) get_handle())); m_pfont = __new ::write_text::font(*pfont);
+//      //ASSERT(::is_window((oswindow) get_handle())); m_pfont = ___new ::write_text::font(*pfont);
 //
 //   }
 //

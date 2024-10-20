@@ -177,7 +177,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	}
 
-	::core::system * psystem = __new ::core::system();
+	::core::system * psystem = ___new ::core::system();
 
 	int32_t nReturnCode = 0;
 
@@ -219,7 +219,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	}
 
-   psystem->get_session()->m_puserinteractionHost = __new ::user::interaction();
+   psystem->get_session()->m_puserinteractionHost = ___new ::user::interaction();
 
    ::user::native_window_initialize initialize;
 
@@ -232,7 +232,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	psystem->get_session()->m_puserinteractionHost->create_window_ex(createstruct);
 
-   //::oswindow_data * pwindow = __new oswindow_data;
+   //::oswindow_data * pwindow = ___new oswindow_data;
 
    //oswindow window = pwindow;
 
@@ -271,7 +271,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	//engine & engine = pwindow->m_engine;
 
-	//engine.m_pstate = __new saved_state;
+	//engine.m_pstate = ___new saved_state;
 
 	//memset(&engine, 0, sizeof(engine));
 	//state->userData = &engine;
