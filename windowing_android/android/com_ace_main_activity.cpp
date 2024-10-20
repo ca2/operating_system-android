@@ -112,7 +112,7 @@ public:
             "Failed to Load Library?",
             e_message_box_ok);
 
-         psequencer->do_asynchronously();
+         pmessagebox->async();
 
       }
 
