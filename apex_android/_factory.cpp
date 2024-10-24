@@ -53,7 +53,7 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::apex_android::file_context, ::file_context >();
    //pfactory->add_factory_item < ::android::service_handler, ::service_handler >();
 
-   //pfactory->add_factory_item < ::apex::android::node, ::acme::node >();
+   //pfactory->add_factory_item < ::apex::android::node, ::platform::node >();
 
    //create_factory < ::android::copydesk, ::user::cop
    // 

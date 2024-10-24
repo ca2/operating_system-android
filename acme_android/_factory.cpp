@@ -16,7 +16,7 @@ __FACTORY_EXPORT void acme_android_factory(::factory::factory * pfactory)
    acme_posix_factory(pfactory);
 
 
-   //pfactory->add_factory_item < ::acme::android::node, ::acme::node >();
+   //pfactory->add_factory_item < ::acme::android::node, ::platform::node >();
    pfactory->add_factory_item < ::acme_android::acme_directory, ::acme_directory >();
    //pfactory->add_factory_item < ::android::acme_file, ::acme_file >();
    //pfactory->add_factory_item < ::android::acme_path, ::acme_path >();

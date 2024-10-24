@@ -10,7 +10,7 @@ __FACTORY_EXPORT void node_android_factory(::factory::factory * pfactory)
 
    windowing_android_factory(pfactory);
 
-   pfactory->add_factory_item < ::node_android::node, ::acme::node >();
+   pfactory->add_factory_item < ::node_android::node, ::platform::node >();
 
 }
 

@@ -30,7 +30,7 @@ __FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::windowing_android::icon, ::windowing::icon > ();
    //pfactory->add_factory_item < ::windowing_android::cursor, ::windowing::cursor > ();
    //pfactory->add_factory_item < ::windowing_android::keyboard, ::windowing::keyboard > ();
-   //pfactory->add_factory_item < ::windowing_android::node, ::acme::node >();
+   //pfactory->add_factory_item < ::windowing_android::node, ::platform::node >();
 
    pfactory->add_factory_item < ::windowing::desktop_environment >();
 
