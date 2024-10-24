@@ -1,6 +1,6 @@
-// From acme_posix/acme_directory.cpp by camilo on 2021-05-06 01:30 BRT <3ThomasBorregaardSorensen(ThomasLikesNumber5)!!
+// From acme_posix/directory_system.cpp by camilo on 2021-05-06 01:30 BRT <3ThomasBorregaardSorensen(ThomasLikesNumber5)!!
 #include "framework.h"
-#include "acme_directory.h"
+#include "directory_system.h"
 #include "acme/platform/system.h"
 
 
@@ -8,21 +8,21 @@ namespace acme_android
 {
 
 
-   acme_directory::acme_directory()
+   directory_system::directory_system()
    {
 
 
    }
 
 
-   acme_directory::~acme_directory()
+   directory_system::~directory_system()
    {
 
 
    }
 
 
-   ::file::path acme_directory::home()
+   ::file::path directory_system::home()
    {
 
       return system()->m_pathCacheDirectory / "home";
@@ -30,7 +30,7 @@ namespace acme_android
    }
 
 
-   ::file::path acme_directory::roaming()
+   ::file::path directory_system::roaming()
    {
 
       return system()->m_pathCacheDirectory / ".config";

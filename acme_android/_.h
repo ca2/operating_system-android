@@ -19,8 +19,8 @@ namespace acme_android
    class node;
 
 
-   class dir_context;
-   class dir_system;
+   class directory_context;
+   class directory_system;
    class file_context;
    class file_system;
 

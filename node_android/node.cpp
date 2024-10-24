@@ -100,7 +100,7 @@ namespace node_android
 
       auto psession = session();
 
-      psession->m_papexsession->defer_initialize_host_window(&rectangle);
+      psession->defer_initialize_host_window(&rectangle);
 
       system()->defer_post_initial_request();
 

@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "dir_system.h"
+#include "directory_system.h"
 #include "acme/platform/system.h"
 
 
@@ -7,22 +7,22 @@ namespace acme_android
 {
 
 
-   dir_system::dir_system()
+   directory_system::directory_system()
    {
 
    }
 
 
-   dir_system::~dir_system()
+   directory_system::~directory_system()
    {
 
    }
 
 
-   void dir_system::initialize(::particle * pparticle)
+   void directory_system::initialize(::particle * pparticle)
    {
 
-      ::dir_system::initialize(pparticle);
+      ::directory_system::initialize(pparticle);
 
       m_pathHome = system()->m_pathCacheDirectory / "home";
 

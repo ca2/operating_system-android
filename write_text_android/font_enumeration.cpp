@@ -2,8 +2,8 @@
 // Recreated by camilo 2021-02-10 <3TBS_!!
 // From write_text_pango by camilo on 2022-01-05 05:21 <3ThomasBorregaardSorensen!!
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_file.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/file_system.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/platform/node.h"
 #include "acme/filesystem/filesystem/file_context.h"
@@ -219,7 +219,7 @@ namespace write_text_android
 
                               pitem = __allocate ::write_text::font_enumeration_item();
 
-                              if (acmefile()->exists(path))
+                              if (file_system()->exists(path))
                               {
 
                                  pitem->m_mapFileName[0] = path;
@@ -282,7 +282,7 @@ namespace write_text_android
 
                            path /= strFile;
 
-                           if (acmefile()->exists(path))
+                           if (file_system()->exists(path))
                            {
 
                               pitem->m_mapFileName[iKey] = path;
@@ -318,7 +318,7 @@ namespace write_text_android
 
                listing.set_file_listing("/system/fonts");
 
-               acmedirectory()->enumerate(listing);
+               directory_system()->enumerate(listing);
 
                //::dir::ls(patha, "/system/fonts");
 

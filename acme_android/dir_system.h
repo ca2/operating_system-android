@@ -2,15 +2,15 @@
 #pragma once
 
 
-#include "acme/filesystem/filesystem/dir_system.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 
 
 namespace acme_android
 {
 
 
-   class CLASS_DECL_ACME_ANDROID dir_system :
-      virtual public ::dir_system
+   class CLASS_DECL_ACME_ANDROID directory_system :
+      virtual public ::directory_system
    {
    public:
 
@@ -25,8 +25,8 @@ namespace acme_android
       ::file::path  			   m_strCommonPrograms;
 
 
-      dir_system();
-      ~dir_system() override;
+      directory_system();
+      ~directory_system() override;
 
 
       void initialize(::particle * pparticle) override;

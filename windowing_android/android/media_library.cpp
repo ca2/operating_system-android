@@ -1,7 +1,7 @@
 // Created by camilo on 2022-05-28 02:49 <3ThomasBorregaardSorensen
 #include "framework.h"
 #include "media_library.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 
 
 namespace android
@@ -112,7 +112,7 @@ namespace android
    void add_media_library_item(library_item* plibraryitem)
    {
 
-      plibraryitem->acmedirectory()->add_media_library_item(plibraryitem);
+      plibraryitem->directory_system()->add_media_library_item(plibraryitem);
 
    }
 

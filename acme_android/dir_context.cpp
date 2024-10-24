@@ -1,7 +1,7 @@
 // From apex by camilo on 2022-04-30 04:22 <3ThomasBorregaardSorensen!!
 #include "framework.h"
-#include "dir_context.h"
-#include "dir_system.h"
+#include "directory_context.h"
+#include "directory_system.h"
 #include "file_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/single_lock.h"
@@ -14,24 +14,24 @@ namespace acme_android
 {
 
 
-   dir_context::dir_context()
+   directory_context::directory_context()
    {
 
    }
 
 
-   dir_context::~dir_context()
+   directory_context::~directory_context()
    {
 
    }
 
 
-   void dir_context::initialize(::particle * pparticle)
+   void directory_context::initialize(::particle * pparticle)
    {
 
       //auto estatus = 
       
-      ::dir_context::initialize(pparticle);
+      ::directory_context::initialize(pparticle);
 
       //if (!estatus)
       //{
@@ -76,7 +76,7 @@ namespace acme_android
    }
 
 
-   ::file::listing & dir_context::root_ones(::file::listing & listing)
+   ::file::listing & directory_context::root_ones(::file::listing & listing)
    {
 
       ::file::path path;
@@ -94,10 +94,10 @@ namespace acme_android
    }
 
 
-   //bool dir_context::enumerate(::file::listing & listing)
+   //bool directory_context::enumerate(::file::listing & listing)
    //{
 
-   //   if (::dir_context::ls( listing))
+   //   if (::directory_context::ls( listing))
    //   {
 
    //      return listing;
@@ -187,7 +187,7 @@ namespace acme_android
 
    //         bool bIsDir;
 
-   //         bIsDir = ::dir_context::is(strPath);
+   //         bIsDir = ::directory_context::is(strPath);
 
    //         if (!bIsDir && !matches_wildcard_criteria(listing.m_straPattern, strPath.name()))
    //            continue;
@@ -223,7 +223,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::rls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
+   //bool directory_context::rls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
    //{
 
    //   if(::file::system_dir::rls(papp,lpcsz,pstraPath,pstraTitle,pstraRelative,eextract))
@@ -238,7 +238,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, i64_array * piaSize, enum_extract eextract)
+   //bool directory_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, i64_array * piaSize, enum_extract eextract)
    //{
 
 
@@ -251,7 +251,7 @@ namespace acme_android
 
    //   string_array straDir;
 
-   //   ::dir_context::ls_dir(straDir, lpcsz);
+   //   ::directory_context::ls_dir(straDir, lpcsz);
 
    //   for(i32 i = 0; i < straDir.get_count(); i++)
    //   {
@@ -276,7 +276,7 @@ namespace acme_android
    //         for(::collection::index i = iStart; i < pstraRelative->get_size(); i++)
    //         {
 
-   //            pstraRelative->element_at(i) = get_context()->dir_context().path(file().name_(strDir), pstraRelative->element_at(i));
+   //            pstraRelative->element_at(i) = get_context()->directory_context().path(file().name_(strDir), pstraRelative->element_at(i));
 
    //         }
 
@@ -295,7 +295,7 @@ namespace acme_android
 
    //   string_array stra;
 
-   //   ::dir_context::ls(stra, lpcsz);
+   //   ::directory_context::ls(stra, lpcsz);
 
    //   for(i32 i = 0; i < stra.get_count(); i++)
    //   {
@@ -336,7 +336,7 @@ namespace acme_android
    //      if(pbaIsDir != nullptr || piaSize != nullptr)
    //      {
 
-   //         bIsDir = ::dir_context::is(strPath);
+   //         bIsDir = ::directory_context::is(strPath);
 
    //      }
 
@@ -372,7 +372,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::rls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
+   //bool directory_context::rls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
    //{
 
    //   if(::file::system_dir::rls_dir(papp,lpcsz,pstraPath,pstraTitle,pstraRelative))
@@ -384,7 +384,7 @@ namespace acme_android
 
    //   string_array stra;
 
-   //   ::dir_context::ls(stra, lpcsz);
+   //   ::directory_context::ls(stra, lpcsz);
 
    //   string strDir(lpcsz);
 
@@ -406,7 +406,7 @@ namespace acme_android
    //      if(!strName.begins_eat(strDir))
    //         continue;
 
-   //      if(!get_context()->dir_context().is(strPath))
+   //      if(!get_context()->directory_context().is(strPath))
    //         continue;
 
    //      if(pstraPath != nullptr)
@@ -447,7 +447,7 @@ namespace acme_android
    //         for(::collection::index i = iStart; i < pstraRelative->get_size(); i++)
    //         {
 
-   //            pstraRelative->element_at(i) = get_context()->dir_context().path(strPath, pstraRelative->element_at(i));
+   //            pstraRelative->element_at(i) = get_context()->directory_context().path(strPath, pstraRelative->element_at(i));
 
    //         }
 
@@ -460,7 +460,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::ls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_dir(papp,lpcsz,pstraPath,pstraTitle))
@@ -472,7 +472,7 @@ namespace acme_android
 
    //   string_array stra;
 
-   //   ::dir_context::ls(stra, lpcsz);
+   //   ::directory_context::ls(stra, lpcsz);
 
    //   string strDir(lpcsz);
 
@@ -494,7 +494,7 @@ namespace acme_android
    //      if(!strName.begins_eat(strDir))
    //         continue;
 
-   //      if(!get_context()->dir_context().is(strPath))
+   //      if(!get_context()->directory_context().is(strPath))
    //         continue;
 
    //      if(pstraPath != nullptr)
@@ -518,7 +518,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::ls_file(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_file(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_file(papp,lpcsz,pstraPath,pstraTitle))
@@ -530,7 +530,7 @@ namespace acme_android
 
    //   string_array stra;
 
-   //   ::dir_context::ls(stra, lpcsz);
+   //   ::directory_context::ls(stra, lpcsz);
 
    //   string strDir(lpcsz);
 
@@ -552,7 +552,7 @@ namespace acme_android
    //      if(!strName.begins_eat(strDir))
    //         continue;
 
-   //      if(get_context()->dir_context().is(strPath))
+   //      if(get_context()->directory_context().is(strPath))
    //         continue;
 
 
@@ -577,7 +577,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::ls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, i64_array * piaSize)
+   //bool directory_context::ls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, i64_array * piaSize)
    //{
 
 
@@ -591,7 +591,7 @@ namespace acme_android
 
    //   string_array stra;
 
-   //   ::dir_context::ls(stra, lpcsz);
+   //   ::directory_context::ls(stra, lpcsz);
 
    //   string strDir(lpcsz);
 
@@ -633,7 +633,7 @@ namespace acme_android
    //      if(pbaIsDir != nullptr || piaSize != nullptr)
    //      {
 
-   //         bIsDir = get_context()->dir_context().is(strPath);
+   //         bIsDir = get_context()->directory_context().is(strPath);
 
    //      }
 
@@ -670,10 +670,10 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::is(const ::file::path & lpcszPath)
+   //bool directory_context::is(const ::file::path & lpcszPath)
    //{
 
-   //   if (::dir_context::is(lpcszPath))
+   //   if (::directory_context::is(lpcszPath))
    //   {
 
    //      return true;
@@ -707,7 +707,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::is(const ::string & strPath)
+   //bool directory_context::is(const ::string & strPath)
    //{
 
    //   if(::file::system_dir::is(strPath))
@@ -749,14 +749,14 @@ namespace acme_android
    //      }
    //   }
 
-   //   bIsDir = ::dir_context::is(unicode_to_utf8(wstrPath));
+   //   bIsDir = ::directory_context::is(unicode_to_utf8(wstrPath));
 
    //   m_isdirmap.set(strPath, bIsDir, bIsDir ? 0 : ::get_last_error());
 
    //   return bIsDir;
    //}
 
-   bool dir_context::name_is(const ::file::path & str)
+   bool directory_context::name_is(const ::file::path & str)
    {
       //output_debug_string(str);
       strsize iLast = str.length() - 1;
@@ -806,14 +806,14 @@ namespace acme_android
 
       wstrPath = str.left(iLast + 1);
 
-      bool bIsDir = ::dir_context::is(wstrPath);
+      bool bIsDir = ::directory_context::is(wstrPath);
 
       return bIsDir;
 
    }
 
 
-   ::file::path dir_context::time()
+   ::file::path directory_context::time()
    {
 
       return m_pdirsystem->m_strTimeFolder;
@@ -821,7 +821,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::stage()
+   ::file::path directory_context::stage()
    {
 
       return install() / "stage";
@@ -829,7 +829,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::stageapp()
+   ::file::path directory_context::stageapp()
    {
 
       return stage() / "basis";
@@ -837,7 +837,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::netseed()
+   ::file::path directory_context::netseed()
    {
 
       return m_pdirsystem->m_strNetSeedFolder;
@@ -846,7 +846,7 @@ namespace acme_android
 
 
    // stage in ccwarehouse spalib
-   ::file::path dir_context::install()
+   ::file::path directory_context::install()
    {
 
       single_lock synchronouslock(synchronization(), true);
@@ -856,7 +856,7 @@ namespace acme_android
    }
 
 
-   //::file::path dir_context::module()
+   //::file::path directory_context::module()
    //{
 
    // return ::apexacmesystem()->get_module_folder();
@@ -864,7 +864,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::ca2module()
+   //::file::path directory_context::ca2module()
    //{
    //
    // return ::apexacmesystem()->get_ca2_module_folder();
@@ -872,7 +872,7 @@ namespace acme_android
    //}
 
 
-   ::file::path dir_context::time_square()
+   ::file::path directory_context::time_square()
    {
 
       return time() / "time";
@@ -880,14 +880,14 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::time_log(const ::string & strId)
+   ::file::path directory_context::time_log(const ::string & strId)
    {
 
       return appdata() / "log";
 
    }
 
-   //bool dir_context::mk(const ::file::path & lpcsz)
+   //bool directory_context::mk(const ::file::path & lpcsz)
    //{
 
    //   if (is(lpcsz))
@@ -932,7 +932,7 @@ namespace acme_android
    //               }
 
    //               //if(::CreateDirectory(utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
-   //               if (::dir_context::mk("\\\\?\\" + stra[i]))
+   //               if (::directory_context::mk("\\\\?\\" + stra[i]))
    //               {
 
    //                  goto try1;
@@ -967,7 +967,7 @@ namespace acme_android
    //}
 
 
-   //bool dir_context::rm(const ::file::path & path, bool bRecursive)
+   //bool directory_context::rm(const ::file::path & path, bool bRecursive)
    //{
    //   if (bRecursive)
    //   {
@@ -1003,12 +1003,12 @@ namespace acme_android
    //}
 
 
-   void dir_context::init_system()
+   void directory_context::init_system()
    {
 
       //auto estatus = 
       
-      ::dir_context::init_system();
+      ::directory_context::init_system();
      
       //if (!estatus)
       //{
@@ -1109,12 +1109,12 @@ namespace acme_android
    }
 
 
-   void dir_context::init_context()
+   void directory_context::init_context()
    {
 
       //auto estatus = 
       
-      ::dir_context::init_context();
+      ::directory_context::init_context();
 
       //if (!estatus)
       //{
@@ -1128,7 +1128,7 @@ namespace acme_android
    }
 
 
-   //::file::path dir_context::trash_that_is_not_trash(const ::file::path & pszParam)
+   //::file::path directory_context::trash_that_is_not_trash(const ::file::path & pszParam)
    //{
 
    //   if (pszParam == nullptr)
@@ -1162,7 +1162,7 @@ namespace acme_android
    //}
 
 
-//   ::file::path dir_context::appdata()
+//   ::file::path directory_context::appdata()
 //   {
 //
 //      string str;
@@ -1182,7 +1182,7 @@ namespace acme_android
 //   }
 
 
-   ::file::path dir_context::commonappdata()
+   ::file::path directory_context::commonappdata()
    {
 
       return m_pdirsystem->m_strCommonAppData;
@@ -1190,7 +1190,7 @@ namespace acme_android
    }
 
 
-   //::file::path dir_context::usersystemappdata(const string & lpcszPrefix)
+   //::file::path directory_context::usersystemappdata(const string & lpcszPrefix)
    //{
 
    //   
@@ -1200,7 +1200,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::appdata()
+   //::file::path directory_context::appdata()
    //{
 
    //   return userfolder() /  "appdata";
@@ -1208,7 +1208,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::userdata()
+   //::file::path directory_context::userdata()
    //{
 
    //   return userfolder() / "data";
@@ -1216,7 +1216,7 @@ namespace acme_android
    //}
 
 
-//   ::file::path dir_context::userfolder()
+//   ::file::path directory_context::userfolder()
 //   {
 //
 //      string str;
@@ -1269,7 +1269,7 @@ namespace acme_android
 //      }*/
 //   }
 
-   //::file::path dir_context::default_os_user_path_prefix()
+   //::file::path directory_context::default_os_user_path_prefix()
    //{
    //   /*
    //   unichar buf[MAX_PATH];
@@ -1287,7 +1287,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::default_userappdata(const string & lpcszPrefix, const string & lpcszLogin)
+   //::file::path directory_context::default_userappdata(const string & lpcszPrefix, const string & lpcszLogin)
    //{
 
    //   return default_userfolder(papp, lpcszPrefix, lpcszLogin) /  "appdata";
@@ -1295,7 +1295,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::default_userdata(const string & lpcszPrefix, const string & lpcszLogin)
+   //::file::path directory_context::default_userdata(const string & lpcszPrefix, const string & lpcszLogin)
    //{
 
    //   return default_userfolder(papp, lpcszPrefix, lpcszLogin) / "data";
@@ -1303,7 +1303,7 @@ namespace acme_android
    //}
 
 
-   //::file::path dir_context::default_userfolder(::apex::application *  papp, const string & lpcszPrefix, const string & lpcszLogin)
+   //::file::path directory_context::default_userfolder(::apex::application *  papp, const string & lpcszPrefix, const string & lpcszLogin)
    //{
 
    //   return userfolder();
@@ -1311,7 +1311,7 @@ namespace acme_android
    //}
 
 
-   ::file::path dir_context::userquicklaunch()
+   ::file::path directory_context::userquicklaunch()
    {
 
       return m_pdirsystem->m_pathInstall / ".ca2/app/Microsoft/Internet Explorer/Quick Launch";
@@ -1319,7 +1319,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::bookmark()
+   ::file::path directory_context::bookmark()
    {
 
       return m_pdirsystem->m_pathInstall / "bookmark";
@@ -1327,7 +1327,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::userprograms()
+   ::file::path directory_context::userprograms()
    {
 
       return m_pdirsystem->m_pathInstall / "userprograms";
@@ -1335,7 +1335,7 @@ namespace acme_android
    }
 
 
-   ::file::path dir_context::commonprograms()
+   ::file::path directory_context::commonprograms()
    {
 
       return m_pdirsystem->m_pathInstall / "commonprograms";
@@ -1343,7 +1343,7 @@ namespace acme_android
    }
 
 
-   bool dir_context::is_inside_time(const ::file::path & pszPath)
+   bool directory_context::is_inside_time(const ::file::path & pszPath)
    {
 
       return is_inside(time(), pszPath);
@@ -1352,7 +1352,7 @@ namespace acme_android
 
 
 
-   bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
+   bool directory_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
       return pszDir.case_insensitive_begins(pszPath);
@@ -1360,7 +1360,7 @@ namespace acme_android
    }
 
 
-   //bool dir_context::has_subdir(const ::file::path & pszDir)
+   //bool directory_context::has_subdir(const ::file::path & pszDir)
    //{
 
    //   ::file::listing ls;
@@ -1372,7 +1372,7 @@ namespace acme_android
    //}
 
 
-   ::file::path dir_context::commonappdata_root()
+   ::file::path directory_context::commonappdata_root()
    {
 
       return m_pdirsystem->m_strCommonAppData;
