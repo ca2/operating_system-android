@@ -374,7 +374,7 @@ namespace multimedia
                // get the buffer queue interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_ANDROIDSIMPLEBUFFERQUEUE,
                   &(bqPlayerBufferQueue));
-               ::acme::get()->platform()->informationf("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
+               ::system()->platform()->informationf("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 

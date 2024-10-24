@@ -21,7 +21,7 @@ void android_aura_main()
 
    //psystem->system_construct(pdriver, e_display_default);
 
-   //::e_status estatus = psystem->m_papexsystem->os_application_system_run();
+   //::e_status estatus = psystem->os_application_system_run();
    //
    //if (!estatus)
    //{

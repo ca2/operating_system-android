@@ -300,7 +300,7 @@ namespace windowing_android
       if (!(pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_satellite_window))
       {
 
-         auto psystem = system()->m_papexsystem;
+         auto psystem = system();
 
          string strApplicationServerName = psystem->get_application_server_name();
 
@@ -308,7 +308,7 @@ namespace windowing_android
 
          //         XClassHint * pupdate = XAllocClassHint();
          //
-         //         auto psystem = system()->m_papexsystem;
+         //         auto psystem = system();
          //
          //         string strApplicationServerName = psystem->get_application_server_name();
          //
@@ -1696,7 +1696,7 @@ namespace windowing_android
    //      if (msg.oswindow == nullptr)
    //      {
 
-   //         auto pcontext = m_pcontext->m_papexcontext;
+   //         auto pcontext = m_papplication->m_papexcontext;
 
    //         pcontext->post_message(msg.m_atom, msg.wParam, msg.lParam);
 

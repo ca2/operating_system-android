@@ -216,7 +216,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
          //pfnFactory(pfactory);
          //pfnMain(1, (char**)this_argv, nullptr, p1, p2);
 
-         //auto papp = pfactory->create<::acme::application>();
+         //auto papp = pfactory->create<::platform::application>();
 
          //auto papp = ::app_factory::new_app();
 
