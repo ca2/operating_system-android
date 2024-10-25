@@ -677,7 +677,7 @@ namespace aura_android
          //MESSAGE_LINK(e_message_print, pchannel, this,&interaction_impl::_001OnPrint);
       }
       m_puserinteraction->install_message_routing(pchannel);
-      MESSAGE_LINK(MESSAGE_CREATE, pchannel, this,&interaction_impl::on_message_create);
+      MESSAGE_LINK(e_message_create, pchannel, this,&interaction_impl::on_message_create);
       if(!m_puserinteraction->m_bMessageWindow)
       {
 
@@ -699,7 +699,7 @@ namespace aura_android
 
       }
 
-      MESSAGE_LINK(MESSAGE_DESTROY, pchannel, this,&interaction_impl::on_message_destroy);
+      MESSAGE_LINK(e_message_destroy, pchannel, this,&interaction_impl::on_message_destroy);
 
       //MESSAGE_LINK(e_message_non_client_calc_size, pchannel, this,&interaction_impl::on_message_non_client_calculate_size);
 
