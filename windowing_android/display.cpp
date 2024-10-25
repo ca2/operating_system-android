@@ -56,12 +56,12 @@ namespace windowing_android
 //
 //      //}
 //
-//      auto psystem = system()->m_paurasystem;
+//      auto psystem = system();
 //
 //      if (psystem != nullptr)
 //      {
 //
-//         m_bSystemSynchronizedScreen = psystem->m_paurasystem->m_bSystemSynchronizedScreen;
+//         m_bSystemSynchronizedScreen = psystem->m_bSystemSynchronizedScreen;
 //
 //      }
 //
@@ -552,9 +552,9 @@ namespace windowing_android
 //
 //      ::e_display edisplayPrevious = *pedisplay;
 //
-//      auto psystem = system()->m_paurasystem;
+//      auto psystem = system();
 //
-//      double dMargin = psystem->m_paurasystem->m_dDpi;
+//      double dMargin = psystem->m_dDpi;
 //
 //      if (ZONEING_COMPARE::is_equal(rectangle.top(), rectangleWorkspace.top(), dMargin, !(edisplayPrevious & e_display_top)))
 //      {

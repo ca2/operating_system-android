@@ -29,7 +29,7 @@ void set_jni_context(JNIEnv* penv);
    if (::is_set(psystem))
    {
 
-      auto paurasystem = psystem->m_paurasystem;
+      auto paurasystem = psystem;
 
       if (::is_set(paurasystem))
       {
@@ -567,7 +567,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, job
    //try
    //{
 
-      //g_psystem->m_paurasystem->m_puser->(rectangle);
+      //g_psystem->m_puser->(rectangle);
 
    //}
    //catch (...)

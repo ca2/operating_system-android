@@ -42,7 +42,7 @@ namespace acme_android
 
       //estatus = 
       
-      m_pdirsystem = system()->m_pdirsystem;
+      m_pdirectorysystem = system()->m_pdirectorysystem;
 
       //if (!estatus)
       //{
@@ -816,7 +816,7 @@ namespace acme_android
    ::file::path directory_context::time()
    {
 
-      return m_pdirsystem->m_strTimeFolder;
+      return m_pdirectorysystem->m_strTimeFolder;
 
    }
 
@@ -840,7 +840,7 @@ namespace acme_android
    ::file::path directory_context::netseed()
    {
 
-      return m_pdirsystem->m_strNetSeedFolder;
+      return m_pdirectorysystem->m_strNetSeedFolder;
 
    }
 
@@ -851,7 +851,7 @@ namespace acme_android
 
       single_lock synchronouslock(synchronization(), true);
 
-      return m_pdirsystem->m_pathInstall;
+      return m_pdirectorysystem->m_pathInstall;
 
    }
 
@@ -1023,25 +1023,25 @@ namespace acme_android
 
       ::file::path pathInstall = system()->m_pathCacheDirectory;
 
-      m_pdirsystem->m_pathInstall = pathInstall;
+      m_pdirectorysystem->m_pathInstall = pathInstall;
 
       //nodeos_set_home(         auto psystem = system();
 
-//         auto pacmedirectory = psystem->m_pacmedirectory;
+//         auto pacmedirectory = psystem->m_pdirectorysystem;
 //
 //pacmedirectory->system() / "home");
 //
 //      //nodeos_set_temp(         auto psystem = system();
 //
-//         auto pacmedirectory = psystem->m_pacmedirectory;
+//         auto pacmedirectory = psystem->m_pdirectorysystem;
 //
 //pacmedirectory->system() / "temp");
 
-      m_pdirsystem->m_strCommonAppData = pathInstall / "commonappdata";
+      m_pdirectorysystem->m_strCommonAppData = pathInstall / "commonappdata";
 
-      create(m_pdirsystem->m_strCommonAppData);
+      create(m_pdirectorysystem->m_strCommonAppData);
 
-      if (!is(m_pdirsystem->m_strCommonAppData))
+      if (!is(m_pdirectorysystem->m_strCommonAppData))
       {
 
          throw ::exception(error_failed);
@@ -1061,14 +1061,14 @@ namespace acme_android
 
       //}
 
-      if (m_pdirsystem->m_strTimeFolder.is_empty())
+      if (m_pdirectorysystem->m_strTimeFolder.is_empty())
       {
 
          pathTimeFolder = appdata() / "time";
 
       }
 
-      if (m_pdirsystem->m_strNetSeedFolder.is_empty())
+      if (m_pdirectorysystem->m_strNetSeedFolder.is_empty())
       {
 
          pathNetSeedFolder = install() / "net";
@@ -1100,9 +1100,9 @@ namespace acme_android
 
       }
 
-      m_pdirsystem->m_strTimeFolder = pathTimeFolder;
+      m_pdirectorysystem->m_strTimeFolder = pathTimeFolder;
 
-      m_pdirsystem->m_strNetSeedFolder = pathNetSeedFolder;
+      m_pdirectorysystem->m_strNetSeedFolder = pathNetSeedFolder;
 
       //return success;
 
@@ -1169,7 +1169,7 @@ namespace acme_android
 //
 //      str =          auto psystem = system();
 //
-//         auto pacmedirectory = psystem->m_pacmedirectory;
+//         auto pacmedirectory = psystem->m_pdirectorysystem;
 //
 //pacmedirectory->system() / ".ca2/app/appdata";
 //      
@@ -1185,7 +1185,7 @@ namespace acme_android
    ::file::path directory_context::commonappdata()
    {
 
-      return m_pdirsystem->m_strCommonAppData;
+      return m_pdirectorysystem->m_strCommonAppData;
 
    }
 
@@ -1314,7 +1314,7 @@ namespace acme_android
    ::file::path directory_context::userquicklaunch()
    {
 
-      return m_pdirsystem->m_pathInstall / ".ca2/app/Microsoft/Internet Explorer/Quick Launch";
+      return m_pdirectorysystem->m_pathInstall / ".ca2/app/Microsoft/Internet Explorer/Quick Launch";
 
    }
 
@@ -1322,7 +1322,7 @@ namespace acme_android
    ::file::path directory_context::bookmark()
    {
 
-      return m_pdirsystem->m_pathInstall / "bookmark";
+      return m_pdirectorysystem->m_pathInstall / "bookmark";
 
    }
 
@@ -1330,7 +1330,7 @@ namespace acme_android
    ::file::path directory_context::userprograms()
    {
 
-      return m_pdirsystem->m_pathInstall / "userprograms";
+      return m_pdirectorysystem->m_pathInstall / "userprograms";
 
    }
 
@@ -1338,7 +1338,7 @@ namespace acme_android
    ::file::path directory_context::commonprograms()
    {
 
-      return m_pdirsystem->m_pathInstall / "commonprograms";
+      return m_pdirectorysystem->m_pathInstall / "commonprograms";
 
    }
 
@@ -1375,7 +1375,7 @@ namespace acme_android
    ::file::path directory_context::commonappdata_root()
    {
 
-      return m_pdirsystem->m_strCommonAppData;
+      return m_pdirectorysystem->m_strCommonAppData;
 
    }
 

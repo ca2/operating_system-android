@@ -52,7 +52,7 @@ namespace write_text_android
 
       //      critical_section_lock synchronouslock(::aura::g_pcsFont);
 
-      auto pwritetext = system()->m_paurasystem->m_pdraw2d->m_pwritetext;
+      auto pwritetext = system()->m_pdraw2d->m_pwritetext;
 
             ::pointer<::write_text::font_enumeration_item>pitem;
 
