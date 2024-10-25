@@ -34,7 +34,7 @@ void set_jni_context(JNIEnv* penv);
       if (::is_set(paurasystem))
       {
 
-         auto paurasession = psystem->session()->m_paurasession;
+         auto paurasession = psystem->session();
 
          if (::is_set(paurasession))
          {

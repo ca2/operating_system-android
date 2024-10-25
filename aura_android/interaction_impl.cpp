@@ -322,7 +322,7 @@ namespace aura_android
 
    //      auto puser = psession->user();
 
-   //      auto pwindowing = puser->windowing();
+   //      auto pwindowing = system()->windowing();
 
    //      //pwindowing->windowing_send([&]()
    //      //   {
@@ -331,7 +331,7 @@ namespace aura_android
 
    //      //      auto puser = psession->user();
 
-   //      //      auto pwindowing = puser->windowing();
+   //      //      auto pwindowing = system()->windowing();
 
    //            m_pwindow = pwindowing->new_window(this);
 
