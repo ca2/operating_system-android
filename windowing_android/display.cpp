@@ -1259,7 +1259,7 @@ namespace windowing_android
 //   string_array display::get_wallpaper()
 //   {
 //
-//      auto psession = get_session();
+//      
 //
 //      ::collection::count iMonitorCount = get_monitor_count();
 //
@@ -1308,7 +1308,7 @@ namespace windowing_android
 //
 //      }
 //
-//      auto psession = get_session();
+//      
 //
 //      ::collection::count iMonitorCount = get_monitor_count();
 //

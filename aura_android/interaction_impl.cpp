@@ -318,7 +318,7 @@ namespace aura_android
 
    //      m_puserinteraction->m_bMessageWindow = false;
 
-   //      auto psession = get_session();
+   //      
 
    //      auto puser = psession->user();
 
@@ -327,7 +327,7 @@ namespace aura_android
    //      //pwindowing->windowing_send([&]()
    //      //   {
 
-   //      //      auto psession = get_session();
+   //      //      
 
    //      //      auto puser = psession->user();
 
@@ -960,7 +960,7 @@ namespace aura_android
 //
 //         auto pkey = pmessage->m_union.m_pkey;
 //
-//         auto psession = get_session();
+//         
 //
 //         if(pmessage->m_atom == e_message_key_down || pmessage->m_atom == e_message_sys_key_down)
 //         {
@@ -1005,7 +1005,7 @@ namespace aura_android
 //         }
 //      }
 //
-//      auto psession = get_session();
+//      
 //
 //      if(pmessage->m_atom == e_message_timer)
 //      {
@@ -3703,7 +3703,7 @@ namespace aura_android
 
    //    ::pointer<::user::message>pusermessage(pmessage);
 
-   //    auto psession = get_session();
+   //    
 
    //    if (psession->get_cursor() != nullptr
    //          && psession->get_cursor()->m_ecursor != ::cursor_system)
