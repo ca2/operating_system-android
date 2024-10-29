@@ -236,7 +236,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
    //oswindow window = pwindow;
 
-   //psystem->m_pbasesystem->m_possystemwindow->m_oswindow = pwindow;
+   //psystem->m_possystemwindow->m_oswindow = pwindow;
 
 	try
 	{

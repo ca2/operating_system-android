@@ -2,7 +2,7 @@
 #include "interaction_impl.h"
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
-#include "aura/user/user/frame.h"
+#include "aura/user/user/frame_interaction.h"
 #include "aura/windowing/window.h"
 #include "aura/windowing/windowing.h"
 #include "acme/operating_system/cross.h"
