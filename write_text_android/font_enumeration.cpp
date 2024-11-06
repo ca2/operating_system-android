@@ -103,12 +103,12 @@ namespace write_text_android
 
                   iChildCount++;
 
-                  if (pfamily->m_strName == "alias" && strFamily.has_char())
+                  if (pfamily->m_strName == "alias" && strFamily.has_character())
                   {
 
                      string strWeight = pfamily->attribute("weight");
 
-                     if (strWeight.has_char())
+                     if (strWeight.has_character())
                      {
 
                         int iWeight = atoi(strWeight);
@@ -270,7 +270,7 @@ namespace write_text_android
 
                            iFontCount++;
 
-                           int iWeight = pnodeFont->attribute("weight").as_i32();
+                           int iWeight = pnodeFont->attribute("weight").as_int();
 
                            int iItalic = pnodeFont->attribute("style").case_insensitive_equals("italic");
 

@@ -438,7 +438,7 @@ namespace aura_android
 //
 //         m_puserinteraction->ModifyStyle(0, WS_VISIBLE);
 //
-//         ::rectangle_i32 rectangleCreate;
+//         ::int_rectangle rectangleCreate;
 //
 //         pusersystem->get_rect(rectangleCreate);
 //
@@ -613,7 +613,7 @@ namespace aura_android
    }
 
 
-   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::rectangle_i32 & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest)
+   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest)
    //{
 
    //   // can't use for desktop or pop-up android (use create_window_ex instead)
@@ -649,7 +649,7 @@ namespace aura_android
 
    //    }
 
-   //    ::user::system createstruct(0, nullptr, pszName, WS_CHILD, ::rectangle_i32());
+   //    ::user::system createstruct(0, nullptr, pszName, WS_CHILD, ::int_rectangle());
 
    //    pusersystem->m_createstruct.hwndParent = HWND_MESSAGE;
 
@@ -718,7 +718,7 @@ namespace aura_android
 //
 //      m_bUpdateGraphics = false;
 //
-//      ::rectangle_i32 rectangleWindow;
+//      ::int_rectangle rectangleWindow;
 //
 //      m_puserinteraction->window_rectangle(rectangleWindow);
 //
@@ -1013,11 +1013,11 @@ namespace aura_android
 //      }
 //      else if(pmessage->m_atom == e_message_left_button_down)
 //      {
-//         //::rectangle_i32 rectangleX;
+//         //::int_rectangle rectangleX;
 //         //::this->rectangle(get_handle(),rectangleX);
-//         //::rectangle_i32 rectangleWindow;
+//         //::int_rectangle rectangleWindow;
 //         //::window_rectangle(get_handle(),rectangleWindow);
-//         //::rectangle_i32 rectangleRegion;
+//         //::int_rectangle rectangleRegion;
 //         //HRGN hrgn = CreateRectRgn(0,0,0,0);
 //         //int regionType = ::GetWindowRgn(get_handle(),hrgn);
 //         //if(regionType != ERROR)
@@ -1073,11 +1073,11 @@ namespace aura_android
 //         if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
 //         {
 //            pmouse->m_bTranslated = true;
-//            rectangle_i32 rectangleWindow;
+//            int_rectangle rectangleWindow;
 //            if(m_bScreenRelativeMouseMessagePosition)
 //            {
 //               rectangleWindow.Null();
-//               //::rectangle_i32 rectangleWindow32;
+//               //::int_rectangle rectangleWindow32;
 //               //::window_rectangle(get_handle(), rectangleWindow32);
 //               //::copy(rectangleWindow,rectangleWindow32);
 //            }
@@ -1087,7 +1087,7 @@ namespace aura_android
 //            }
 //            /*if(::auraacmesystem()->get_monitor_count() > 0)
 //            {
-//            ::rectangle_i32 rcMonitor;
+//            ::int_rectangle rcMonitor;
 //            ::auraacmesystem()->get_monitor_rectangle(0,&rcMonitor);
 //            if(rectangleWindow.left() >= rcMonitor.left())
 //            pmouse->m_point.x += (int)rectangleWindow.left();
@@ -1367,7 +1367,7 @@ namespace aura_android
    //}
 
    //void interaction_impl::ScrollWindow(int xAmount,int yAmount,
-   //                                    const ::rectangle_i32 * lpRect,const ::rectangle_i32 * lpClipRect)
+   //                                    const ::int_rectangle * lpRect,const ::int_rectangle * lpClipRect)
    //{
    //   //ASSERT(::is_window(get_handle()));
 
@@ -1388,7 +1388,7 @@ namespace aura_android
    //   //      for(; oswindow_Child != nullptr;
    //   //         oswindow_Child = ::GetNextWindow(oswindow_Child,GW_HWNDNEXT))
    //   //      {
-   //   //         ::rectangle_i32 rectangle;
+   //   //         ::int_rectangle rectangle;
    //   //         ::window_rectangle(oswindow_Child,&rectangle);
    //   //         screen_to_client(&rectangle);
    //   //         ::set_window_position(oswindow_Child,nullptr,rectangle.left() + xAmount,rectangle.top() + yAmount,0,0,SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOZORDER);
@@ -1401,7 +1401,7 @@ namespace aura_android
 
 
 
-   //void interaction_impl::CalcWindowRect(::rectangle_i32 * lpClientRect, unsigned int nAdjustType)
+   //void interaction_impl::CalcWindowRect(::int_rectangle * lpClientRect, unsigned int nAdjustType)
    //{
    //   /*unsigned int dwExStyle = GetExStyle();
    //   if (nAdjustType == 0)
@@ -1626,7 +1626,7 @@ namespace aura_android
    //void interaction_impl::_001DeferPaintLayeredWindowBackground(HDC hdc)
    //{
 
-   //   ::rectangle_i32 rectangleX;
+   //   ::int_rectangle rectangleX;
 
    //   m_puserinteraction->rectangle(rectangleX);
 
@@ -1634,10 +1634,10 @@ namespace aura_android
    //   //pgraphics->FillSolidRect(rectangleX, 0x00000000);
 
    //   //return;
-   //   ::rectangle_i32 rectangleUpdate;
+   //   ::int_rectangle rectangleUpdate;
    //   m_puserinteraction->window_rectangle(rectangleUpdate);
    //   //      SetViewportOrgEx(hdc, 0, 0, nullptr);
-   //   ::rectangle_i32 rectanglePaint;
+   //   ::int_rectangle rectanglePaint;
    //   rectanglePaint = rectangleUpdate;
    //   m_puserinteraction->screen_to_client(rectanglePaint);
    //   user::oswindow_array wndaApp;
@@ -1674,18 +1674,18 @@ namespace aura_android
    //   //
    //   //      ::draw2d::graphics_pointer graphics(this);
    //   //      WIN_DC(graphics.m_p)->Attach((HDC) pusermessage->m_wparam);
-   //   //      ::rectangle_i32 rectx;
+   //   //      ::int_rectangle rectx;
    //   //      ::draw2d::bitmap * pbitmap = &pgraphics->GetCurrentBitmap();
    //   //      ::GetCurrentObject((HDC) pusermessage->m_wparam, OBJ_BITMAP);
    //   //      //      unsigned int dw = ::get_last_error();
-   //   //      ::size_i32 size = pbitmap->get_size();
+   //   //      ::int_size size = pbitmap->get_size();
    //   //      rectx.left() = 0;
    //   //      rectx.top() = 0;
    //   //      rectx.right() = size.cx;
    //   //      rectx.bottom() = size.cy;
    //   //      try
    //   //      {
-   //   //         ::rectangle_i32 rectangleWindow;
+   //   //         ::int_rectangle rectangleWindow;
    //   //         window_rectangle(rectangleWindow);
    //   //
    //   //         ::image::image_pointer pimage(this);
@@ -1697,8 +1697,8 @@ namespace aura_android
    //   //         if(pgraphics->get_handle() == nullptr)
    //   //            return;
    //   //
-   //   //         ::rectangle_i32 rectanglePaint;
-   //   //         ::rectangle_i32 rectangleUpdate;
+   //   //         ::int_rectangle rectanglePaint;
+   //   //         ::int_rectangle rectangleUpdate;
    //   //         rectangleUpdate = rectangleWindow;
    //   //         rectanglePaint = rectangleWindow;
    //   //         rectanglePaint.offset(-rectanglePaint.top_left());
@@ -1712,12 +1712,12 @@ namespace aura_android
    //   //            _001OnDeferPaintLayeredWindowBackground(pgraphics);
    //   //         }
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SelectClipRgn(nullptr);
-   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
+   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::int_point());
    //   //         _000OnDraw(pgraphics);
-   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
+   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::int_point());
    //   //         //(dynamic_cast<::android::graphics * >(pgraphics))->FillSolidRect(rectangleUpdate.left(), rectangleUpdate.top(), 100, 100, 255);
    //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SelectClipRgn(nullptr);
-   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::point_i32());
+   //   //         (dynamic_cast<::android::graphics * >(pgraphics))->SetViewportOrg(::int_point());
    //   //
    //   //         pgraphics->SelectClipRgn( nullptr);
    //   //         pgraphics->BitBlt(rectanglePaint.left(), rectanglePaint.top(),
@@ -1832,10 +1832,10 @@ namespace aura_android
    //   //      }
    //   //
    //   //      // get coordinates of the interaction_impl relative to its parent
-   //   //      rectangle_i32 rcDlg;
+   //   //      int_rectangle rcDlg;
    //   //      window_rectangle(&rcDlg);
-   //   //      rectangle_i32 rcarea;
-   //   //      rectangle_i32 rcCenter;
+   //   //      int_rectangle rcarea;
+   //   //      int_rectangle rcCenter;
    //   //      ::pointer<::user::interaction>hWndParent;
    //   //      if (!(dwStyle & WS_CHILD))
    //   //      {
@@ -1877,7 +1877,7 @@ namespace aura_android
    //   //         hWndParent->rectangle(&rcarea);
    //   //         ASSERT(hWndCenter->is_window());
    //   //         hWndCenter->rectangle(&rcCenter);
-   //   //         ::MapWindowPoints(hWndCenter->get_handle(), hWndParent->get_handle(), (::point_i32*)&rcCenter, 2);
+   //   //         ::MapWindowPoints(hWndCenter->get_handle(), hWndParent->get_handle(), (::int_point*)&rcCenter, 2);
    //   //      }
    //   //
    //   //      // find dialog's upper left based on rcCenter
@@ -2060,7 +2060,7 @@ namespace aura_android
 //
 //      //xdisplay d(m_oswindow->display());
 //
-//      ::rectangle_i32 rectangleScreen;
+//      ::int_rectangle rectangleScreen;
 //
 //      m_puserinteraction->best_monitor(rectangleScreen);
 //
@@ -2129,7 +2129,7 @@ namespace aura_android
 //
 //      }
 //
-//      ::rectangle_i32 rectangle;
+//      ::int_rectangle rectangle;
 //
 //      ::window_rectangle(get_handle(), rectangle);
 //
@@ -2162,10 +2162,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::client_to_screen(::rectangle_i32 * lprect)
+   //bool interaction_impl::client_to_screen(::int_rectangle * lprect)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2184,10 +2184,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::client_to_screen(::point_i32 * lppoint)
+   //bool interaction_impl::client_to_screen(::int_point * lppoint)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2204,10 +2204,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::client_to_screen(::rectangle_i64 * lprect)
+   //bool interaction_impl::client_to_screen(::i64_rectangle * lprect)
    //{
 
-   //   ::rectangle_i32 rectangleWindow;
+   //   ::int_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2226,10 +2226,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::client_to_screen(::point_i64 * lppoint)
+   //bool interaction_impl::client_to_screen(::huge_integer_point * lppoint)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2246,10 +2246,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::screen_to_client(::rectangle_i32 * lprect)
+   //bool interaction_impl::screen_to_client(::int_rectangle * lprect)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2268,10 +2268,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::screen_to_client(::point_i32 * lppoint)
+   //bool interaction_impl::screen_to_client(::int_point * lppoint)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!m_puserinteraction->window_rectangle(rectangleWindow))
    //   {
@@ -2288,10 +2288,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::screen_to_client(::rectangle_i64 * lprect)
+   //bool interaction_impl::screen_to_client(::i64_rectangle * lprect)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2310,10 +2310,10 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::screen_to_client(::point_i64 * lppoint)
+   //bool interaction_impl::screen_to_client(::huge_integer_point * lppoint)
    //{
 
-   //   ::rectangle_i64 rectangleWindow;
+   //   ::i64_rectangle rectangleWindow;
 
    //   if(!window_rectangle(rectangleWindow))
    //   {
@@ -2330,7 +2330,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::window_rectangle(::rectangle_i64 * lprect)
+   //bool interaction_impl::window_rectangle(::i64_rectangle * lprect)
    //{
 
    //   if (!::is_window((oswindow)get_handle()))
@@ -2343,7 +2343,7 @@ namespace aura_android
    //   // if it is temporary interaction_impl - probably not ca2 wrapped interaction_impl
    //   //if(m_puserinteraction == nullptr || m_puserinteraction == this)
    //   {
-   //      ::rectangle_i32 rect32;
+   //      ::int_rectangle rect32;
 
    //      if(!::window_rectangle((oswindow)get_handle(),rect32))
    //      {
@@ -2364,7 +2364,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::this->rectangle(::rectangle_i64 * lprect)
+   //bool interaction_impl::this->rectangle(::i64_rectangle * lprect)
    //{
 
    //   if(!::is_window((oswindow)get_handle()))
@@ -2376,7 +2376,7 @@ namespace aura_android
    //   // if it is temporary interaction_impl - probably not ca2 wrapped interaction_impl
    //   //if(m_puserinteraction == nullptr || m_puserinteraction == this)
    //   {
-   //      ::rectangle_i32 rect32;
+   //      ::int_rectangle rect32;
    //      if(!::this->rectangle((oswindow)get_handle(),rect32))
    //      {
 
@@ -2557,13 +2557,13 @@ namespace aura_android
 //   }
 //
 //
-//   //bool interaction_impl::DragDetect(::point_i32 pt) const
+//   //bool interaction_impl::DragDetect(::int_point pt) const
 //   //{
 //
 //   //   throw ::not_implemented();
    //   //ASSERT(::is_window((oswindow) get_handle()));
 
-   //   //return ::DragDetect(get_handle(), point_i32) != false;
+   //   //return ::DragDetect(get_handle(), int_point) != false;
 
    //}
 //
@@ -2635,7 +2635,7 @@ namespace aura_android
    //}
 
 
-   //strsize interaction_impl::get_window_text(char * lpszStringBuf, strsize nMaxCount)
+   //character_count interaction_impl::get_window_text(char * lpszStringBuf, character_count nMaxCount)
    //{
 
    //   strncpy(lpszStringBuf, m_strWindowText, nMaxCount);
@@ -2653,7 +2653,7 @@ namespace aura_android
    //}
 
 
-   //strsize interaction_impl::get_window_text_length()
+   //character_count interaction_impl::get_window_text_length()
    //{
 
    //   return m_strWindowText.length();
@@ -2676,7 +2676,7 @@ namespace aura_android
 
    //}
 
-   //void interaction_impl::MoveWindow(const ::rectangle_i32 * lpRect, bool bRepaint)
+   //void interaction_impl::MoveWindow(const ::int_rectangle * lpRect, bool bRepaint)
    //{
 
    //   MoveWindow(lpRect->left(), lpRect->top(), lpRect->right() - lpRect->left(), lpRect->bottom() - lpRect->top(), bRepaint);
@@ -2731,7 +2731,7 @@ namespace aura_android
    //}
 
 
-   //void interaction_impl::MapWindowPoints(::user::interaction * puserinteractionTo, ::point_i32 * lpPoint, unsigned int nCount)
+   //void interaction_impl::MapWindowPoints(::user::interaction * puserinteractionTo, ::int_point * lpPoint, unsigned int nCount)
    //{
 
    //   throw ::not_implemented();
@@ -2742,13 +2742,13 @@ namespace aura_android
    //}
 
 
-   //void interaction_impl::MapWindowPoints(::user::interaction * puserinteractionTo, ::rectangle_i32 * lpRect)
+   //void interaction_impl::MapWindowPoints(::user::interaction * puserinteractionTo, ::int_rectangle * lpRect)
    //{
 
    //   throw ::not_implemented();
 
    //   //      ASSERT(::is_window((oswindow) get_handle()));
-   //   //      ::MapWindowPoints(get_handle(), (oswindow) puserinteractionTo->get_handle(), (::point_i32 *)lpRect, 2);
+   //   //      ::MapWindowPoints(get_handle(), (oswindow) puserinteractionTo->get_handle(), (::int_point *)lpRect, 2);
 
    //}
 
@@ -2775,7 +2775,7 @@ namespace aura_android
 
    //   }
 
-   //   ::rectangle_i32 rectangleX;
+   //   ::int_rectangle rectangleX;
 
    //   //oswindow->rectangle(rectangleX);
 
@@ -2844,7 +2844,7 @@ namespace aura_android
    //   //::SendMessage(get_handle(), WM_SETREDRAW, bRedraw, 0);
    //}
 
-   //bool interaction_impl::GetUpdateRect(::rectangle_i32 * lpRect, bool bErase)
+   //bool interaction_impl::GetUpdateRect(::int_rectangle * lpRect, bool bErase)
    //{
    //   throw ::not_implemented();
    //   //ASSERT(::is_window((oswindow) get_handle()));
@@ -2865,7 +2865,7 @@ namespace aura_android
    //   //::InvalidateRect(get_handle(), nullptr, bErase);
    //}
 
-   //void interaction_impl::InvalidateRect(const ::rectangle_i32 * lpRect, bool bErase)
+   //void interaction_impl::InvalidateRect(const ::int_rectangle * lpRect, bool bErase)
    //{
    //   throw ::not_implemented();
    //   //ASSERT(::is_window((oswindow) get_handle()));
@@ -2879,7 +2879,7 @@ namespace aura_android
    //   //::InvalidateRgn(get_handle(), (HRGN)pRgn->get_handle(), bErase);
    //}
 
-   //void interaction_impl::ValidateRect(const ::rectangle_i32 * lpRect)
+   //void interaction_impl::ValidateRect(const ::int_rectangle * lpRect)
    //{
    //   throw ::not_implemented();
    //   //ASSERT(::is_window((oswindow) get_handle()));
@@ -3004,7 +3004,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::RedrawWindow(const ::rectangle_i32 & rectangleUpdate, ::draw2d::region * prgnUpdate, unsigned int flags)
+   //bool interaction_impl::RedrawWindow(const ::int_rectangle & rectangleUpdate, ::draw2d::region * prgnUpdate, unsigned int flags)
    //{
 
    //   if (!is_window_visible())
@@ -3042,7 +3042,7 @@ namespace aura_android
    }
    */
 
-   //bool interaction_impl::DrawAnimatedRects(int idAni, const ::rectangle_i32 *lprcFrom, const ::rectangle_i32 *lprcTo)
+   //bool interaction_impl::DrawAnimatedRects(int idAni, const ::int_rectangle *lprcFrom, const ::int_rectangle *lprcTo)
    //{
 
    //   throw ::not_implemented();
@@ -3051,7 +3051,7 @@ namespace aura_android
 
    //}
 
-   //bool interaction_impl::DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::rectangle_i32 * lprc, unsigned int uFlags)
+   //bool interaction_impl::DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::int_rectangle * lprc, unsigned int uFlags)
    //{
 
    //   throw ::not_implemented();
@@ -3345,7 +3345,7 @@ namespace aura_android
 
    //}
 
-   //int interaction_impl::ScrollWindowEx(int dx, int dy, const ::rectangle_i32 * lpRectScroll, const ::rectangle_i32 * lpRectClip, ::draw2d::region * prgnUpdate, ::rectangle_i32 * lpRectUpdate, unsigned int flags)
+   //int interaction_impl::ScrollWindowEx(int dx, int dy, const ::int_rectangle * lpRectScroll, const ::int_rectangle * lpRectClip, ::draw2d::region * prgnUpdate, ::int_rectangle * lpRectUpdate, unsigned int flags)
    //{
 
    //   throw ::not_implemented();
@@ -3363,17 +3363,17 @@ namespace aura_android
 
    //}
 
-   //::user::interaction * interaction_impl::ChildWindowFromPoint(::point_i32 point_i32)
+   //::user::interaction * interaction_impl::ChildWindowFromPoint(::int_point int_point)
    //{
 
 
    //   throw ::not_implemented();
    //   //      ASSERT(::is_window((oswindow) get_handle()));
-   //   //      return ::android::interaction_impl::from_handle(::ChildWindowFromPoint(get_handle(), point_i32));
+   //   //      return ::android::interaction_impl::from_handle(::ChildWindowFromPoint(get_handle(), int_point));
 
    //}
 
-   //::user::interaction * interaction_impl::ChildWindowFromPoint(::point_i32 point, unsigned int nFlags)
+   //::user::interaction * interaction_impl::ChildWindowFromPoint(::int_point point, unsigned int nFlags)
    //{
 
    //   throw ::not_implemented();
@@ -3432,7 +3432,7 @@ namespace aura_android
    //}
 
 
-   //::user::interaction * PASCAL interaction_impl::oswindowFromPoint(::point_i32 point_i32)
+   //::user::interaction * PASCAL interaction_impl::oswindowFromPoint(::int_point int_point)
    //{
 
 
@@ -3504,16 +3504,16 @@ namespace aura_android
 
 
 
-   //point_i32 PASCAL interaction_impl::GetCaretPos()
+   //int_point PASCAL interaction_impl::GetCaretPos()
    //{
 
    //   throw ::not_implemented();
-   //   //      ::point_i32 point;
-   //   //      ::GetCaretPos((::point_i32 *)&point); return point;
+   //   //      ::int_point point;
+   //   //      ::GetCaretPos((::int_point *)&point); return point;
 
    //}
 
-   //void PASCAL interaction_impl::SetCaretPos(::point_i32 point_i32)
+   //void PASCAL interaction_impl::SetCaretPos(::int_point int_point)
    //{
 
    //   throw ::not_implemented();
@@ -3623,7 +3623,7 @@ namespace aura_android
    //{
    //   Default();
    //}
-   //void interaction_impl::OnContextMenu(::user::interaction *, point_i32)
+   //void interaction_impl::OnContextMenu(::user::interaction *, int_point)
    //{
    //   Default();
    //}
@@ -3723,7 +3723,7 @@ namespace aura_android
    //{
    //   __UNREFERENCED_PARAMETER(pmessage);
 
-   //   //size_i32 sizeRequest = m_puserinteraction->m_rectangleParentClientRequest.size();
+   //   //int_size sizeRequest = m_puserinteraction->m_rectangleParentClientRequest.size();
 
    //   //for (auto & pinteraction : m_puserinteraction->m_uiptraChild)
    //   //{
@@ -3790,31 +3790,31 @@ namespace aura_android
 //   {
 //      return Default();
 //   }
-//   //void interaction_impl::OnNcLButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnNcLButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcLButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnNcLButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcLButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnNcLButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcMButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnNcMButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcMButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnNcMButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcMButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnNcMButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcMouseMove(unsigned int, point_i32)
+//   //void interaction_impl::OnNcMouseMove(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
@@ -3822,15 +3822,15 @@ namespace aura_android
 //   {
 //      Default();
 //   }
-//   //void interaction_impl::OnNcRButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnNcRButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcRButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnNcRButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnNcRButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnNcRButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
@@ -3890,27 +3890,27 @@ namespace aura_android
 //   {
 //      Default();
 //   }
-//   //void interaction_impl::OnLButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnLButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnLButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnLButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnLButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnLButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnMButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnMButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnMButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnMButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnMButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnMButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
@@ -3918,12 +3918,12 @@ namespace aura_android
 //   //{
 //   //   return (int)Default();
 //   //}
-//   //void interaction_impl::OnMouseMove(unsigned int, point_i32)
+//   //void interaction_impl::OnMouseMove(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
 //
-//   //bool interaction_impl::OnMouseWheel(unsigned int, short, point_i32)
+//   //bool interaction_impl::OnMouseWheel(unsigned int, short, int_point)
 //   //{
 //
 //   //   return Default() != false;
@@ -3934,15 +3934,15 @@ namespace aura_android
 //   {
 //      return Default();
 //   }
-//   //void interaction_impl::OnRButtonDblClk(unsigned int, point_i32)
+//   //void interaction_impl::OnRButtonDblClk(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnRButtonDown(unsigned int, point_i32)
+//   //void interaction_impl::OnRButtonDown(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
-//   //void interaction_impl::OnRButtonUp(unsigned int, point_i32)
+//   //void interaction_impl::OnRButtonUp(unsigned int, int_point)
 //   //{
 //   //   Default();
 //   //}
@@ -3963,7 +3963,7 @@ namespace aura_android
 //      (nMaxCount);
 //      if (nMaxCount>0)
 //      {
-//         /* defwindow proc should do this for us, but to be safe, we'll do it here too */
+//         /* defwindow proc should do this for us, but to be safe, we'hi do it here too */
 //         pszName[0] = '\0';
 //      }
 //      Default();
@@ -4025,11 +4025,11 @@ namespace aura_android
 ////   { Default(); }
 ////   void interaction_impl::OnStyleChanging(int, LPSTYLESTRUCT)
 ////   { Default(); }
-//   void interaction_impl::OnSizing(unsigned int, ::rectangle_i32 *)
+//   void interaction_impl::OnSizing(unsigned int, ::int_rectangle *)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMoving(unsigned int, ::rectangle_i32 *)
+//   void interaction_impl::OnMoving(unsigned int, ::int_rectangle *)
 //   {
 //      Default();
 //   }
@@ -4209,12 +4209,12 @@ namespace aura_android
    //{
    //   // graphics will be already set its impact port to the interaction_impl for android - cairo with xlib
 
-   //   pgraphics->SetViewportOrg(::point_i32());
+   //   pgraphics->SetViewportOrg(::int_point());
 
-   //   /*      rectangle_i64 rectangleWindow;
+   //   /*      huge_integer_rectangle rectangleWindow;
    //   window_rectangle(rectangleWindow);
    //   get_wnd()->screen_to_client(rectangleWindow);
-   //   pgraphics->SetViewportOrg(point_i32(rectangleWindow.top_left()));
+   //   pgraphics->SetViewportOrg(int_point(rectangleWindow.top_left()));
    //   pgraphics->SelectClipRgn(nullptr);
    //   */
 
@@ -4304,15 +4304,15 @@ namespace aura_android
 
       auto puserinteraction = pinteraction->parent_frame();
 
-      ::rectangle_i32 rWindowFrame;
+      ::int_rectangle rWindowFrame;
 
       puserinteraction->window_rectangle(rWindowFrame);
 
-      ::rectangle_i32 r1;
+      ::int_rectangle r1;
 
       pinteraction->window_rectangle(r1);
 
-      ::size_i32 size = m_puserinteraction->get_client_size();
+      ::int_size size = m_puserinteraction->get_client_size();
 
       int iSoftwareKeyboardTop = size.cy() / 2;
 
@@ -4329,7 +4329,7 @@ namespace aura_android
 
       puserinteraction->post_redraw();
 
-      ::rectangle_i32 r2;
+      ::int_rectangle r2;
 
       pinteraction->window_rectangle(r2);
 
@@ -4337,9 +4337,9 @@ namespace aura_android
 
       pinteraction->get_text(strText);
 
-      strsize iBeg = 0;
+      character_count iBeg = 0;
 
-      strsize iEnd = 0;
+      character_count iEnd = 0;
 
       pinteraction->_001GetSel(iBeg, iEnd);
 
@@ -4353,7 +4353,7 @@ namespace aura_android
 
       auto puserinteraction = pinteraction->parent_frame();
 
-      ::rectangle_i32 rWindowFrame;
+      ::int_rectangle rWindowFrame;
 
       puserinteraction->window_rectangle(rWindowFrame);
 

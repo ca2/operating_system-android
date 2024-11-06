@@ -442,10 +442,10 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 
 
-//i64 oswindow_id(oswindow w)
+//huge_integer oswindow_id(oswindow w)
 //{
 //
-//   return (i64)(w);
+//   return (huge_integer)(w);
 //
 //}
 
@@ -585,7 +585,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 
 
-//int_bool point_is_window_origin(::point_i32 ptHitTest, oswindow oswindowExclude, int iMargin)
+//int_bool point_is_window_origin(::int_point ptHitTest, oswindow oswindowExclude, int iMargin)
 //{
 //
 //   return abs(ptHitTest.x) < iMargin && abs(ptHitTest.y) < iMargin;
@@ -609,7 +609,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 //
 
-int GetMainScreenRect(::rectangle_i32* lprect)
+int GetMainScreenRect(::int_rectangle* lprect)
 {
 
    auto psystem = this->platform()->system();
@@ -630,7 +630,7 @@ int GetMainScreenRect(::rectangle_i32* lprect)
 }
 
 
-int SetMainScreenRect(const ::rectangle_i32 &rect)
+int SetMainScreenRect(const ::int_rectangle &rect)
 {
 
    auto psystem = this->platform()->system();

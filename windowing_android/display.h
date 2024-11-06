@@ -52,42 +52,42 @@ namespace windowing_android
 //
 //      virtual bool set_main_monitor(::collection::index iMonitor);
 //      //virtual ::collection::count get_monitor_count() //;
-//      //virtual bool  get_monitor_rectangle(::collection::index iMonitor, ::rectangle_i32 * prectangle) //;
+//      //virtual bool  get_monitor_rectangle(::collection::index iMonitor, ::int_rectangle * prectangle) //;
 //
-////      virtual ::collection::index get_main_workspace(::rectangle_i32 * prectangle = nullptr) ;
+////      virtual ::collection::index get_main_workspace(::int_rectangle * prectangle = nullptr) ;
 //
 //      virtual bool set_main_workspace(::collection::index iWorkspace);
 //      //virtual ::collection::count get_workspace_count() ;
-//      //virtual bool  get_workspace_rectangle(::collection::index iWorkspace, ::rectangle_i32 * prectangle) ;
+//      //virtual bool  get_workspace_rectangle(::collection::index iWorkspace, ::int_rectangle * prectangle) ;
 //
-//      virtual bool workspace_to_monitor(::rectangle_i32* prectangle, ::collection::index iMonitor, ::collection::index iWorkspace);
+//      virtual bool workspace_to_monitor(::int_rectangle* prectangle, ::collection::index iMonitor, ::collection::index iWorkspace);
 //
-//      virtual bool monitor_to_workspace(::rectangle_i32* prectangle, ::collection::index iWorkspace, ::collection::index iMonitor);
+//      virtual bool monitor_to_workspace(::int_rectangle* prectangle, ::collection::index iWorkspace, ::collection::index iMonitor);
 //
-//      virtual bool workspace_to_monitor(::rectangle_i32* prectangle);
+//      virtual bool workspace_to_monitor(::int_rectangle* prectangle);
 //
-//      virtual bool monitor_to_workspace(::rectangle_i32* prectangle);
+//      virtual bool monitor_to_workspace(::int_rectangle* prectangle);
 //
 //      //virtual ::collection::count get_desk_monitor_count() ;
-//      //virtual bool  get_desk_monitor_rect(::collection::index iMonitor, ::rectangle_i32 * prectangle) ;
+//      //virtual bool  get_desk_monitor_rect(::collection::index iMonitor, ::int_rectangle * prectangle) ;
 //
 //      virtual monitor* get_monitor(::collection::index iMonitor);
 //
-//      virtual void  get_monitor(rectangle_i32_array& rectaMonitor, rectangle_i32_array& rectaIntersect, const ::rectangle_i32& rectangle);
+//      virtual void  get_monitor(::int_rectangle_array& rectaMonitor, ::int_rectangle_array& rectaIntersect, const ::int_rectangle& rectangle);
 //
-//      virtual ::collection::index initial_frame_position(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, bool bMove, ::user::interaction* pinteraction);
+//      virtual ::collection::index initial_frame_position(::int_rectangle* prectangle, const ::int_rectangle& rectangle, bool bMove, ::user::interaction* pinteraction);
 //
-//      virtual ::collection::index _get_best_zoneing(edisplay* pedisplay, ::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, bool bPreserveSize = false);
+//      virtual ::collection::index _get_best_zoneing(edisplay* pedisplay, ::int_rectangle* prectangle, const ::int_rectangle& rectangle, bool bPreserveSize = false);
 //
-//      virtual ::collection::index get_best_monitor(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, ::e_activation eactivation = e_activation_default);
+//      virtual ::collection::index get_best_monitor(::int_rectangle* prectangle, const ::int_rectangle& rectangle, ::e_activation eactivation = e_activation_default);
 //
-//      virtual ::collection::index get_best_workspace(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, ::e_activation eactivation = e_activation_default);
+//      virtual ::collection::index get_best_workspace(::int_rectangle* prectangle, const ::int_rectangle& rectangle, ::e_activation eactivation = e_activation_default);
 //
-//      virtual ::collection::index get_good_iconify(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle);
+//      virtual ::collection::index get_good_iconify(::int_rectangle* prectangle, const ::int_rectangle& rectangle);
 //
-//      virtual ::collection::index get_good_restore(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, ::user::interaction* pinteraction, edisplay edisplayRestore);
+//      virtual ::collection::index get_good_restore(::int_rectangle* prectangle, const ::int_rectangle& rectangle, ::user::interaction* pinteraction, edisplay edisplayRestore);
 //
-//      virtual ::collection::index get_good_move(::rectangle_i32* prectangle, const ::rectangle_i32& rectangle, ::user::interaction* pinteraction);
+//      virtual ::collection::index get_good_move(::int_rectangle* prectangle, const ::int_rectangle& rectangle, ::user::interaction* pinteraction);
 //
 //
 //
@@ -95,25 +95,25 @@ namespace windowing_android
 //
 //      virtual void enum_display_monitors();
 //
-//      virtual ::collection::index get_main_monitor(::rectangle_i32* prectangle = nullptr);
-//      virtual ::size_i32 get_main_monitor_size();
+//      virtual ::collection::index get_main_monitor(::int_rectangle* prectangle = nullptr);
+//      virtual ::int_size get_main_monitor_size();
 //
-//      virtual ::size_i32 get_monitor_union_size();
+//      virtual ::int_size get_monitor_union_size();
 //
 //      virtual ::collection::count get_monitor_count();
-//      virtual bool  get_monitor_rectangle(::collection::index iMonitor, ::rectangle_i32* prectangle);
+//      virtual bool  get_monitor_rectangle(::collection::index iMonitor, ::int_rectangle* prectangle);
 //
 //      virtual ::collection::count get_desk_monitor_count();
-//      virtual bool  get_desk_monitor_rect(::collection::index iMonitor, ::rectangle_i32* prectangle);
+//      virtual bool  get_desk_monitor_rect(::collection::index iMonitor, ::int_rectangle* prectangle);
 //
 //
-//      virtual ::collection::index get_main_workspace(::rectangle_i32* prectangle = nullptr);
+//      virtual ::collection::index get_main_workspace(::int_rectangle* prectangle = nullptr);
 //
 //      virtual ::collection::count get_workspace_count();
-//      virtual bool  get_workspace_rectangle(::collection::index iWorkspace, ::rectangle_i32* prectangle);
+//      virtual bool  get_workspace_rectangle(::collection::index iWorkspace, ::int_rectangle* prectangle);
 //
 //      virtual ::collection::count get_desk_workspace_count();
-//      virtual bool  get_desk_workspace_rect(::collection::index iWorkspace, ::rectangle_i32* prectangle);
+//      virtual bool  get_desk_workspace_rect(::collection::index iWorkspace, ::int_rectangle* prectangle);
 //
 //      virtual ::collection::index get_ui_workspace(::user::interaction* pinteraction);
 //

@@ -159,7 +159,7 @@ namespace windowing_android
    }
 
 
-   void windowing::defer_initialize_host_window(const ::rectangle_i32* lpcrect)
+   void windowing::defer_initialize_host_window(const ::int_rectangle* lpcrect)
    {
 
       if (::is_set(m_phostinteraction))
@@ -1186,7 +1186,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::client_to_screen(::point_i32 * pp)
+//bool oswindow_data::client_to_screen(::int_point * pp)
 //{
 //
 //   return true;
@@ -1194,7 +1194,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::screen_to_client(::point_i32 * pp)
+//bool oswindow_data::screen_to_client(::int_point * pp)
 //{
 //
 //   return true;
@@ -1265,7 +1265,7 @@ namespace user
 //*/
 //
 //
-//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array & stra, bool_array  & baTab, ::i32_array  & ya, ::size_i32 * psize)
+//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array & stra, bool_array  & baTab, ::i32_array  & ya, ::int_size * psize)
 //{
 //
 //   pgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
@@ -1379,7 +1379,7 @@ namespace user
 //}
 
 
-//int_bool this->rectangle(oswindow_data * pdata, ::rectangle_i32 * prectangle)
+//int_bool this->rectangle(oswindow_data * pdata, ::int_rectangle * prectangle)
 //{
 //
 //   pdata->m_pimpl->m_puserinteraction->rectangle(prectangle);
@@ -1394,7 +1394,7 @@ namespace user
 //}
 
 
-//int_bool window_rectangle(oswindow_data * pdata, ::rectangle_i32 * prectangle)
+//int_bool window_rectangle(oswindow_data * pdata, ::int_rectangle * prectangle)
 //{
 //
 //   pdata->m_pimpl->m_puserinteraction->window_rectangle(prectangle);
@@ -1606,17 +1606,17 @@ namespace user
 //}
 //
 //
-//::point_i32 g_pointCursor;
+//::int_point g_pointCursor;
 //
 //
-//int_bool SetCursorPos(::point_i32 * lppt)
+//int_bool SetCursorPos(::int_point * lppt)
 //{
 //   g_pointCursor = *lppt;
 //   return true;
 //}
 //
 //
-//int_bool GetCursorPos(::point_i32 * lppt)
+//int_bool GetCursorPos(::int_point * lppt)
 //{
 //   *lppt = g_pointCursor;
 //   return true;

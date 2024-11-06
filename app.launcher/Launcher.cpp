@@ -161,7 +161,7 @@ static void engine_term_display(oswindow window) {
 //extern unichar * g_pwszCommandLine;
 
 /**
-* This is the main entry point_i32 of a native application that is using
+* This is the main entry int_point of a native application that is using
 * android_native_app_glue.  It runs in its own thread, with its own
 * event loop for receiving input events and doing other things.
 */

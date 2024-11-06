@@ -105,7 +105,7 @@ namespace apex_android
    // {
    // }
 
-   // void rx::receiver::on_ipc_post(rx * prx,i64 a,i64 b)
+   // void rx::receiver::on_ipc_post(rx * prx,huge_integer a,huge_integer b)
    // {
    // }
 
@@ -141,7 +141,7 @@ namespace apex_android
 
 
 
-   //void * interprocess_target::on_interprocess_post(rx * prx,i64 a,i64 b)
+   //void * interprocess_target::on_interprocess_post(rx * prx,huge_integer a,huge_integer b)
    //{
 
    //   if(m_preceiver != nullptr)

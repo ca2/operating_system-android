@@ -42,11 +42,11 @@ public:
    //bool                     m_bMessageBox;
    //bool                     m_bMessageBoxOn;
    //bool                     m_iMessageBoxResult;
-   long long                  m_lMemFreeAvailableKb;
+   huge_integer                  m_lMemFreeAvailableKb;
 
 
    bool                       m_bEditFocusSet;
-   rectangle_i32              m_rectangleEditFocus;
+   int_rectangle              m_rectangleEditFocus;
    bool                       m_bEditFocusKill;
    
    bool                       m_bRedraw;
@@ -84,10 +84,10 @@ public:
    ~operating_system_driver() override;
 
    // windowing::text_editor_interface
-   void set_input_method_manager_selection(strsize iSelBeg, strsize iSelEnd, strsize iCandidateBeg, strsize iCandidateEnd) override;
-   //void set_input_method_manager_candidate_position(strsize iStart, strsize iEnd) override;
+   void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd, character_count iCandidateBeg, character_count iCandidateEnd) override;
+   //void set_input_method_manager_candidate_position(character_count iStart, character_count iEnd) override;
    void synchronize_input_method_manager_with_selection_end() override;
-   void set_editor_selection(strsize iStart, strsize iEnd) override;
+   void set_editor_selection(character_count iStart, character_count iEnd) override;
    void set_editor_text(const ::string& strText) override;
    void show_software_keyboard() override;
    void hide_software_keyboard() override;

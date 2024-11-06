@@ -66,8 +66,8 @@ namespace apex_android
       //data_struct data;
       //data.mtype        = 20170101;
       //data.request      = 0;
-      //data.size_i32         = ansi_length(pszMessage);
-      //if(data.size_i32 > 512)
+      //data.int_size         = ansi_length(pszMessage);
+      //if(data.int_size > 512)
       //   return false;
 
 
@@ -76,7 +76,7 @@ namespace apex_android
       system()->open_link(strUri, "", "");
 
 
-      ///* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
+      ///* The length is essentially the int_size of the structure minus sizeof(mtype) */
       //int length = sizeof(data_struct) - sizeof(long);
 
       //int result;
@@ -124,7 +124,7 @@ namespace apex_android
    //   //data_struct data;
    //   //data.mtype        = 20170101;
    //   //data.request      = I32_MINIMUM;
-   //   //data.size_i32         = (int)ansi_length(pszMessage);
+   //   //data.int_size         = (int)ansi_length(pszMessage);
 
    //   //::collection::count cPos = 0;
 
@@ -144,7 +144,7 @@ namespace apex_android
    //   //   else
    //   //      data.size = (int)cSend;
 
-   //   //   /* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
+   //   //   /* The length is essentially the int_size of the structure minus sizeof(mtype) */
    //   //   int length = sizeof(data_struct) - sizeof(long);
 
    //   //   int result;

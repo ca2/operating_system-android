@@ -15,12 +15,12 @@ namespace android
    public:
 
 
-      ::i64       m_iId;
+      huge_integer       m_iId;
       string      m_strDisplayName;
       string      m_strFullPath;
       string      m_strMimeType;
 
-      library_item(::i64 iId) : m_iId(iId) {}
+      library_item(huge_integer iId) : m_iId(iId) {}
 
       ::string get_id() override;
       ::string get_display_name() override;
@@ -40,7 +40,7 @@ namespace android
       string m_strArtist;
 
 
-      audio_item(::i64 iId, const ::string& strTitle, const ::string& strArtist) :
+      audio_item(huge_integer iId, const ::string& strTitle, const ::string& strArtist) :
          library_item(iId),
          m_strTitle(strTitle),
          m_strArtist(strArtist)
@@ -66,7 +66,7 @@ namespace android
 
       string m_strTitle;
 
-      images_item(::i64 iId, const ::string& strTitle) :
+      images_item(huge_integer iId, const ::string& strTitle) :
          library_item(iId),
          m_strTitle(strTitle)
       {
@@ -92,7 +92,7 @@ namespace android
       string m_strTitle;
       string m_strArtist;
 
-      video_item(::i64 iId, const ::string& strTitle, const ::string& strArtist) :
+      video_item(huge_integer iId, const ::string& strTitle, const ::string& strArtist) :
          library_item(iId),
          m_strTitle(strTitle),
          m_strArtist(strArtist)

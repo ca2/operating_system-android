@@ -38,7 +38,7 @@ operating_system_driver::~operating_system_driver()
 }
 
 
-void operating_system_driver::set_input_method_manager_selection(strsize iSelBeg, strsize iSelEnd, strsize iCandidateBeg, strsize iCandidateEnd)
+void operating_system_driver::set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd, character_count iCandidateBeg, character_count iCandidateEnd)
 {
 
    m_iInputMethodManagerSelectionStart = iSelBeg;
@@ -66,7 +66,7 @@ void operating_system_driver::synchronize_input_method_manager_with_selection_en
 }
 
 
-void operating_system_driver::set_editor_selection(strsize iStart, strsize iEnd)
+void operating_system_driver::set_editor_selection(character_count iStart, character_count iEnd)
 {
 
    m_iEditorSelectionStart = iStart;
@@ -194,7 +194,7 @@ void operating_system_driver::exchange()
 
             strOpenUrl = m_straOpenUrl.pick_first();
 
-            if (strOpenUrl.has_char())
+            if (strOpenUrl.has_character())
             {
 
                break;
@@ -205,7 +205,7 @@ void operating_system_driver::exchange()
 
       }
 
-      if (strOpenUrl.has_char())
+      if (strOpenUrl.has_character())
       {
 
          pdirect->setOpenUrl(strOpenUrl);
@@ -245,7 +245,7 @@ void operating_system_driver::exchange()
 
       }
 
-      if (m_strSetUserWallpaper.has_char())
+      if (m_strSetUserWallpaper.has_character())
       {
 
          pdirect->setUserWallpaper(m_strSetUserWallpaper);
@@ -383,7 +383,7 @@ void operating_system_driver::exchange()
 
       string strUri = pdirect->getUri();
 
-      if (strUri.has_char())
+      if (strUri.has_character())
       {
 
          pdirect->setUri("");

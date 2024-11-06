@@ -13,7 +13,7 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_music_announce(JNIEnv * env, jobje
 
       set_jni_context(env);
 
-      ::i64 iId = id;
+      huge_integer iId = id;
 
       ::string strDisplayName = ::as_string(display_name);
 
@@ -55,7 +55,7 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_image_announce(JNIEnv * env, jobje
 
       set_jni_context(env);
 
-      ::i64 iId = id;
+      huge_integer iId = id;
 
       ::string strDisplayName = ::as_string(display_name);
 
@@ -95,7 +95,7 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_video_announce(JNIEnv * env, jobje
 
       set_jni_context(env);
 
-      ::i64 iId = id;
+      huge_integer iId = id;
 
       ::string strDisplayName = ::as_string(display_name);
 

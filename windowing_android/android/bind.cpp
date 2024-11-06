@@ -29,7 +29,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * po
    strDetails += "PID: " + ::as_string(pobject->node()->current_process_identifier()) + "\n";
    //strDetails += "Working Directory: " + string(GetCurrentDirectory()) + "\n\n";
 
-   if (strMoreDetails.has_char())
+   if (strMoreDetails.has_character())
    {
 
       strDetails += strMoreDetails + "\n";

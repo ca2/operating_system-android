@@ -47,7 +47,7 @@ namespace windowing_android
    //}
 
 
-   //void monitor::get_monitor_rectangle(::rectangle_i32* prectangle)
+   //void monitor::get_monitor_rectangle(::int_rectangle* prectangle)
    //{
 
    //   __copy(prectangle, m_rectangle);
@@ -57,7 +57,7 @@ namespace windowing_android
    //}
 
 
-   //void monitor::get_workspace_rectangle(::rectangle_i32* prectangle)
+   //void monitor::get_workspace_rectangle(::int_rectangle* prectangle)
    //{
 
    //   __copy(prectangle, m_rectangleWorkspace);
@@ -67,7 +67,7 @@ namespace windowing_android
    //}
 
 
-   ::rectangle_i32 monitor::monitor_rectangle()
+   ::int_rectangle monitor::monitor_rectangle()
    {
 
       _get_monitor_rectangle();

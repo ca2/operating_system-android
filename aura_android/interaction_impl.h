@@ -18,8 +18,8 @@ namespace aura_android
       string                                    m_strWindowText;
       ::user::primitive *                       m_pbasewnd;
       bool                                      m_bUpdateGraphics;
-      size_i32                                      m_size;
-      point_i32                                     m_point;
+      int_size                                      m_size;
+      int_point                                     m_point;
       static const unsigned int                         m_nMsgDragList;
       e_display                                 m_edisplayLayout;
       ::thread *                                m_pthreadDraw;
@@ -85,7 +85,7 @@ namespace aura_android
       //bool ExecuteDlgInit(LPVOID lpResource);
 
       // for child windows, views, panes etc
-      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::rectangle_i32 & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest = nullptr) override;
+      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest = nullptr) override;
 
       // for top level windows and/or special features
       //virtual bool create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::primitive * puiParent = nullptr, ::atom atom = ::atom()) override;
@@ -95,12 +95,12 @@ namespace aura_android
 
       //virtual bool DestroyWindow() override;
 
-      // special pre-creation and interaction_impl rectangle_i32 adjustment hooks
+      // special pre-creation and interaction_impl int_rectangle adjustment hooks
       virtual bool pre_create_window(::user::system * pusersystem) override;
 
       // Advanced: virtual AdjustWindowRect
       //enum AdjustType { adjustBorder = 0,adjustOutside = 1 };
-      //virtual void CalcWindowRect(::rectangle_i32 * lpClientRect,unsigned int nAdjustType = adjustBorder) override;
+      //virtual void CalcWindowRect(::int_rectangle * lpClientRect,unsigned int nAdjustType = adjustBorder) override;
 
       virtual void edit_on_set_focus(::user::interaction* pinteraction) override;
 
@@ -129,18 +129,18 @@ namespace aura_android
       //bool SendNotifyMessage(const ::atom & atom,WPARAM wParam,lparam lParam) override;
       //bool SendChildNotifyLastMsg(LRESULT* pResult = nullptr);
 
-      //bool DragDetect(::point_i32 pt) const;
+      //bool DragDetect(::int_point pt) const;
 
       //virtual void RedrawWindow(unsigned int nFlags = 0) override;
 
       // Window Text Functions
       //virtual void set_window_text(const ::string & lpszString) override;
-      //virtual strsize get_window_text(char * lpszStringBuf, strsize nMaxCount) override;
+      //virtual character_count get_window_text(char * lpszStringBuf, character_count nMaxCount) override;
       //virtual void get_window_text(string & rString) override;
-      //virtual strsize get_window_text_length() override;
+      //virtual character_count get_window_text_length() override;
 
 
-      // Window size_i32 and position Functions
+      // Window int_size and position Functions
       //virtual bool layout().is_iconic();
       //virtual bool layout().is_zoomed();
       //int SetWindowRgn(HRGN hRgn,bool bRedraw);
@@ -152,36 +152,36 @@ namespace aura_android
       //virtual void BringToTop(int nCmdShow);
       //virtual bool BringWindowToTop();
       //using ::windowing::window::window_rectangle;
-      //virtual bool window_rectangle(::rectangle_i64 * lpRect);
+      //virtual bool window_rectangle(::i64_rectangle * lpRect);
       //using ::windowing::window::this->rectangle;
-      //virtual bool this->rectangle(::rectangle_i64 * lpRect);
+      //virtual bool this->rectangle(::i64_rectangle * lpRect);
 
-      //virtual bool client_to_screen(::rectangle_i32 * lprect);
-      //virtual bool client_to_screen(::point_i32 * lppoint);
-      //virtual bool client_to_screen(::rectangle_i64 * lprect);
-      //virtual bool client_to_screen(::point_i64 * lppoint);
-      //virtual bool screen_to_client(::rectangle_i32 * lprect);
-      //virtual bool screen_to_client(::point_i32 * lppoint);
-      //virtual bool screen_to_client(::rectangle_i64 * lprect);
-      //virtual bool screen_to_client(::point_i64 * lppoint);
+      //virtual bool client_to_screen(::int_rectangle * lprect);
+      //virtual bool client_to_screen(::int_point * lppoint);
+      //virtual bool client_to_screen(::i64_rectangle * lprect);
+      //virtual bool client_to_screen(::huge_integer_point * lppoint);
+      //virtual bool screen_to_client(::int_rectangle * lprect);
+      //virtual bool screen_to_client(::int_point * lppoint);
+      //virtual bool screen_to_client(::i64_rectangle * lprect);
+      //virtual bool screen_to_client(::huge_integer_point * lppoint);
 
       //virtual bool GetWindowPlacement(WINDOWPLACEMENT* lpuserinteractionpl);
       //virtual bool SetWindowPlacement(const WINDOWPLACEMENT* lpuserinteractionpl);
 
-      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::point_i32 * lpPoint,unsigned int nCount);
-      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::rectangle_i32 * lpRect);
+      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::int_point * lpPoint,unsigned int nCount);
+      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::int_rectangle * lpRect);
 
       //virtual void Print(::draw2d::graphics_pointer & pgraphics,unsigned int dwFlags) const;
       //virtual void PrintClient(::draw2d::graphics_pointer & pgraphics,unsigned int dwFlags) const;
 
       //virtual void UpdateWindow();
       //virtual void SetRedraw(bool bRedraw = true);
-      //virtual bool GetUpdateRect(::rectangle_i32 * lpRect,bool bErase = false);
+      //virtual bool GetUpdateRect(::int_rectangle * lpRect,bool bErase = false);
       //virtual int GetUpdateRgn(::draw2d::region* pRgn,bool bErase = false);
       //virtual void Invalidate(bool bErase = true);
-      //virtual void InvalidateRect(const ::rectangle_i32 * lpRect,bool bErase = true);
+      //virtual void InvalidateRect(const ::int_rectangle * lpRect,bool bErase = true);
       //virtual void InvalidateRgn(::draw2d::region* pRgn,bool bErase = true);
-      //virtual void ValidateRect(const ::rectangle_i32 * lpRect);
+      //virtual void ValidateRect(const ::int_rectangle * lpRect);
       //virtual void ValidateRgn(::draw2d::region* pRgn);
       //virtual bool show_window(const ::e_display & edisplay) override;
 //      virtual void _001WindowMinimize();
@@ -198,13 +198,13 @@ namespace aura_android
       //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip,unsigned int flags);
       //virtual bool LockWindowUpdate() override;
       //virtual void UnlockWindowUpdate() override;
-      //virtual bool RedrawWindow(const ::rectangle_i32 * lpRectUpdate = nullptr,
+      //virtual bool RedrawWindow(const ::int_rectangle * lpRectUpdate = nullptr,
         //                        ::draw2d::region* prgnUpdate = nullptr,
           //                      unsigned int flags = RDW_INVALIDATE | RDW_ERASE);
       //virtual bool EnableScrollBar(int nSBFlags,unsigned int nArrowFlags = 0);
 
-      //virtual bool DrawAnimatedRects(int idAni,const ::rectangle_i32 *lprcFrom,const ::rectangle_i32 *lprcTo);
-      //virtual bool DrawCaption(::draw2d::graphics_pointer & pgraphics,const ::rectangle_i32 * lprc,unsigned int uFlags);
+      //virtual bool DrawAnimatedRects(int idAni,const ::int_rectangle *lprcFrom,const ::int_rectangle *lprcTo);
+      //virtual bool DrawCaption(::draw2d::graphics_pointer & pgraphics,const ::int_rectangle * lprc,unsigned int uFlags);
 
 
 
@@ -257,15 +257,15 @@ namespace aura_android
       // Scrolling Functions
       //virtual int GetScrollPos(int nBar) const override;
       //virtual void GetScrollRange(int nBar,LPINT lpMinPos,LPINT lpMaxPos) const override;
-      //virtual void ScrollWindow(int xAmount,int yAmount, const ::rectangle_i32 * lpRect = nullptr, const ::rectangle_i32 * lpClipRect = nullptr) override;
+      //virtual void ScrollWindow(int xAmount,int yAmount, const ::int_rectangle * lpRect = nullptr, const ::int_rectangle * lpClipRect = nullptr) override;
       //virtual int SetScrollPos(int nBar,int nPos,bool bRedraw = true) override;
       //virtual void SetScrollRange(int nBar,int nMinPos,int nMaxPos, bool bRedraw = true) override;
       //virtual void ShowScrollBar(unsigned int nBar,bool bShow = true) override;
       //virtual void EnableScrollBarCtrl(int nBar,bool bEnable = true) override;
 
       //virtual int ScrollWindowEx(int dx,int dy,
-        //                         const ::rectangle_i32 * lpRectScroll,const ::rectangle_i32 * lpRectClip,
-          //                       ::draw2d::region* prgnUpdate,::rectangle_i32 * lpRectUpdate,unsigned int flags) override;
+        //                         const ::int_rectangle * lpRectScroll,const ::int_rectangle * lpRectClip,
+          //                       ::draw2d::region* prgnUpdate,::int_rectangle * lpRectUpdate,unsigned int flags) override;
       //virtual bool SetScrollInfo(int nBar,LPSCROLLINFO lpScrollInfo,
       //   bool bRedraw = true);
       //virtual bool GetScrollInfo(int nBar,LPSCROLLINFO lpScrollInfo,unsigned int nMask = SIF_ALL);
@@ -278,8 +278,8 @@ namespace aura_android
 //#endif   // WINVER >= 0x0500
 //
 //      // Window Access Functions
-//      virtual ::user::interaction * ChildWindowFromPoint(::point_i32 point_i32);
-//      virtual ::user::interaction * ChildWindowFromPoint(::point_i32 point,unsigned int nFlags);
+//      virtual ::user::interaction * ChildWindowFromPoint(::int_point int_point);
+//      virtual ::user::interaction * ChildWindowFromPoint(::int_point point,unsigned int nFlags);
 //      static ::user::interaction * FindWindow(const ::string & lpszClassName, const ::string & lpszWindowName);
 //      static ::user::interaction * FindWindowEx(oswindow oswindowParent,oswindow oswindowChildAfter, const ::string & lpszClass, const ::string & lpszWindow);
 
@@ -293,7 +293,7 @@ namespace aura_android
       //virtual ::user::interaction * get_parent();
       //using ::windowing::window::SetParent;
       //::user::interaction * SetParent(::user::interaction * pWndNewParent);
-      //static::user::interaction * PASCAL oswindowFromPoint(::point_i32 point_i32);
+      //static::user::interaction * PASCAL oswindowFromPoint(::int_point int_point);
 
 
       //virtual ::user::interaction * SetOwner(::user::interaction * pWndNewParent);
@@ -319,8 +319,8 @@ namespace aura_android
       //static ::user::interaction * GetOpenClipboardWindow();
 
 
-      //static point_i32 GetCaretPos();
-      //static void SetCaretPos(::point_i32 point_i32);
+      //static int_point GetCaretPos();
+      //static void SetCaretPos(::int_point int_point);
       //virtual void HideCaret() override;
       //virtual void ShowCaret() override;
 
@@ -394,18 +394,18 @@ namespace aura_android
       //bool OnNcCreate(::user::system * lpCreateStruct);
 
       //DECLARE_MESSAGE_HANDLER(on_message_non_client_calculate_size);
-      //LRESULT OnNcHitTest(::point_i32 point);
-      //void OnNcLButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcLButtonDown(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcLButtonUp(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcMButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcMButtonDown(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcMButtonUp(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcMouseMove(unsigned int nHitTest, const ::point_i32 & point);
+      //LRESULT OnNcHitTest(::int_point point);
+      //void OnNcLButtonDblClk(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcLButtonDown(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcLButtonUp(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcMButtonDblClk(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcMButtonDown(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcMButtonUp(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcMouseMove(unsigned int nHitTest, const ::int_point & point);
       //void OnNcPaint();
-      //void OnNcRButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcRButtonDown(unsigned int nHitTest, const ::point_i32 & point);
-      //void OnNcRButtonUp(unsigned int nHitTest, const ::point_i32 & point);
+      //void OnNcRButtonDblClk(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcRButtonDown(unsigned int nHitTest, const ::int_point & point);
+      //void OnNcRButtonUp(unsigned int nHitTest, const ::int_point & point);
 
       // ::auraacmesystem() message handler member functions
       //void OnDropFiles(HDROP hDropInfo);
@@ -432,19 +432,19 @@ namespace aura_android
       //    void OnVScroll(unsigned int nSBCode, unsigned int nPos, CScrollBar* pScrollBar);
       //void OnKeyDown(unsigned int nChar,unsigned int nRepCnt,unsigned int nFlags);
       //void OnKeyUp(unsigned int nChar,unsigned int nRepCnt,unsigned int nFlags);
-      //void OnLButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
-      //void OnLButtonDown(unsigned int nFlags, const ::point_i32 & point);
-      //void OnLButtonUp(unsigned int nFlags, const ::point_i32 & point);
-      //void OnMButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
-      //void OnMButtonDown(unsigned int nFlags, const ::point_i32 & point);
-      //void OnMButtonUp(unsigned int nFlags, const ::point_i32 & point);
+      //void OnLButtonDblClk(unsigned int nFlags, const ::int_point & point);
+      //void OnLButtonDown(unsigned int nFlags, const ::int_point & point);
+      //void OnLButtonUp(unsigned int nFlags, const ::int_point & point);
+      //void OnMButtonDblClk(unsigned int nFlags, const ::int_point & point);
+      //void OnMButtonDown(unsigned int nFlags, const ::int_point & point);
+      //void OnMButtonUp(unsigned int nFlags, const ::int_point & point);
       //int OnMouseActivate(::user::interaction * pDesktopWnd,unsigned int nHitTest,const ::atom & atom);
-      //void OnMouseMove(unsigned int nFlags, const ::point_i32 & point);
-      //bool OnMouseWheel(unsigned int nFlags,short zDelta, const ::point_i32 & point);
+      //void OnMouseMove(unsigned int nFlags, const ::int_point & point);
+      //bool OnMouseWheel(unsigned int nFlags,short zDelta, const ::int_point & point);
       //LRESULT OnRegisteredMouseWheel(WPARAM wParam,LPARAM lParam);
-      //void OnRButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
-      //void OnRButtonDown(unsigned int nFlags, const ::point_i32 & point);
-      //void OnRButtonUp(unsigned int nFlags, const ::point_i32 & point);
+      //void OnRButtonDblClk(unsigned int nFlags, const ::int_point & point);
+      //void OnRButtonDown(unsigned int nFlags, const ::int_point & point);
+      //void OnRButtonUp(unsigned int nFlags, const ::int_point & point);
       //////DECLARE_MESSAGE_HANDLER(on_message_set_cursor);
       //void OnTimer(uptr uEvent);
 
@@ -482,8 +482,8 @@ namespace aura_android
       //// Win4 messages
       ////void OnStyleChanged(int nStyleType,LPSTYLESTRUCT lpStyleStruct);
       ////void OnStyleChanging(int nStyleType,LPSTYLESTRUCT lpStyleStruct);
-      //void OnSizing(unsigned int nSide,::rectangle_i32 * lpRect);
-      //void OnMoving(unsigned int nSide,::rectangle_i32 * lpRect);
+      //void OnSizing(unsigned int nSide,::int_rectangle * lpRect);
+      //void OnMoving(unsigned int nSide,::int_rectangle * lpRect);
       //void OnCaptureChanged(::user::interaction * pwindow);
       //bool OnDeviceChange(unsigned int nEventType,uptr dwData);
 
@@ -580,7 +580,7 @@ namespace aura_android
 
       //bool Attach(oswindow hWndNew);
       //virtual oswindow Detach();
-      //virtual bool get_rect_normal(::rectangle_i32 * lprect);
+      //virtual bool get_rect_normal(::int_rectangle * lprect);
       //virtual oswindow UnsubclassWindow();
 //      virtual void register_drop_target();
 
@@ -590,7 +590,7 @@ namespace aura_android
       //virtual oswindow get_handle() const override;
 
       //virtual void MoveWindow(int x, int y, int nWidth, int nHeight, bool bRepaint);
-      //virtual void MoveWindow(const ::rectangle_i32 * lpRect, bool bRepaint = true);
+      //virtual void MoveWindow(const ::int_rectangle * lpRect, bool bRepaint = true);
 
       //virtual atom SetDlgCtrlId(atom atom) override;
       //virtual atom GetDlgCtrlId();

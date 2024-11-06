@@ -189,7 +189,7 @@ namespace windowing_android
 //
 //            ::output_debug_string("\nWM_IME_COMPOSITION Cancellation...");
 //
-//            if (m_strImeComposition.has_char())
+//            if (m_strImeComposition.has_character())
 //            {
 //
 //               m_puserinteraction->edit_undo();
@@ -202,7 +202,7 @@ namespace windowing_android
 //         else
 //         {
 //
-//            ::output_debug_string("\nWM_IME_COMPOSITION " + __string((::i64)pusermessage->m_lparam.m_lparam));
+//            ::output_debug_string("\nWM_IME_COMPOSITION " + __string((huge_integer)pusermessage->m_lparam.m_lparam));
 //
 //            if ((pmessage->m_lparam & GCS_RESULTSTR) != 0)
 //            {
@@ -332,7 +332,7 @@ namespace windowing_android
 //
 //         set_text_composition_active();
 //
-//         if (m_strImeComposition.has_char())
+//         if (m_strImeComposition.has_character())
 //         {
 //
 //            imm_context imm(m_puserinteraction);
@@ -575,7 +575,7 @@ namespace windowing_android
 //
 //         }
 //
-//         if (m_strImeComposition.has_char())
+//         if (m_strImeComposition.has_character())
 //         {
 //
 //            clear_ime_composition();
@@ -692,8 +692,8 @@ namespace windowing_android
       if (iMessage == TEXT_COMPOSITION_MESSAGE_UPDATE_CARET)
       {
 
-         //strsize iBeg;
-         //strsize iEnd;
+         //character_count iBeg;
+         //character_count iEnd;
 
          //_001GetSel(iBeg, iEnd);
 
@@ -705,8 +705,8 @@ namespace windowing_android
 
          //int y = (iLine)* m_iLineHeight - get_context_offset().y;
          //int y2 = y + m_iLineHeight;
-         // ::point_i32 point(x, y);
-         //::rectangle_i32 r;
+         // ::int_point point(x, y);
+         //::int_rectangle r;
          //this->rectangle(rectangle);
          //rectangle.left() = x;
          //rectangle.top() = y;
@@ -730,7 +730,7 @@ namespace windowing_android
 
          }
 
-         ::rectangle_i32 rectangle;
+         ::int_rectangle rectangle;
 
          m_puserinteraction->get_text_composition_area(rectangle);
 
@@ -742,7 +742,7 @@ namespace windowing_android
 
          com.ptCurrentPos.y -= 100;
 
-         ::rectangle_i32 rect2(rectangle);
+         ::int_rectangle rect2(rectangle);
 
          rect2.offset_y(-100);
 
