@@ -240,7 +240,7 @@ typedef unsigned long   u_long;
 
 
 #ifndef ANDROID
-typedef uint8_t ::u8;
+typedef uint8_t unsigned char;
 #endif
 
 
@@ -286,9 +286,9 @@ typedef wd32_character        wide_character;
 #endif
 
 
-//#define ::u32     ::u32
+//#define unsigned int     unsigned int
 //
-//#define ::u8      ::u328_t
+//#define unsigned char      ::u328_t
 
 //#define NULL 0
 
@@ -300,7 +300,7 @@ typedef wd32_character        wide_character;
 
 
 
-//typedef ::u328_t ::u8;
+//typedef ::u328_t unsigned char;
 
 
 typedef void * PVOID;

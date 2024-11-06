@@ -697,8 +697,8 @@ namespace windowing_android
 
          //_001GetSel(iBeg, iEnd);
 
-         //i32 x;
-         //i32 iLine = SelToLineX(iEnd, x);
+         //int x;
+         //int iLine = SelToLineX(iEnd, x);
 
 
 

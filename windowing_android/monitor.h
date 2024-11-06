@@ -28,8 +28,8 @@ namespace windowing_android
 
       //virtual void update_cache();
 
-      //virtual ::u32 get_monitor_color_temperature();
-      //virtual bool adjust_monitor(::u32 dwTemperature, double dBrightness, double dwGamma);
+      //virtual unsigned int get_monitor_color_temperature();
+      //virtual bool adjust_monitor(unsigned int dwTemperature, double dBrightness, double dwGamma);
 
 
       //virtual void get_monitor_rectangle(::rectangle_i32* prectangle);

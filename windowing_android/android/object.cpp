@@ -133,7 +133,7 @@ bool jni_object::get_b(const char * pszField)
 
 
 
-void jni_object::set_uch(const char * pszField, ::u8 b)
+void jni_object::set_uch(const char * pszField, unsigned char b)
 {
 
    set_uch(field_uch(pszField), b);
@@ -141,7 +141,7 @@ void jni_object::set_uch(const char * pszField, ::u8 b)
 }
 
 
-::u8 jni_object::get_uch(const char * pszField)
+unsigned char jni_object::get_uch(const char * pszField)
 {
 
    return get_uch(field_uch(pszField));
@@ -307,7 +307,7 @@ bool jni_object::get_b(jfieldID fid)
 }
 
 
-void jni_object::set_uch(jfieldID fid, ::u8 b)
+void jni_object::set_uch(jfieldID fid, unsigned char b)
 {
 
    t_pjnienv->SetByteField(m_jobject, fid, b);
@@ -315,7 +315,7 @@ void jni_object::set_uch(jfieldID fid, ::u8 b)
 }
 
 
-::u8 jni_object::get_uch(jfieldID fid)
+unsigned char jni_object::get_uch(jfieldID fid)
 {
 
    return t_pjnienv->GetByteField(m_jobject, fid);

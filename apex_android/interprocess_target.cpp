@@ -43,7 +43,7 @@ namespace apex_android
    void interprocess_target::destroy()
    {
 
-      //i32 iRetry = 23;
+      //int iRetry = 23;
       //while(m_bRunning && iRetry > 0)
       //{
       //   m_bRun = false;
@@ -101,7 +101,7 @@ namespace apex_android
    // {
    // }
 
-   // void rx::receiver::on_ipc_receive(rx * prx,i32 message,void * pdata,memsize len)
+   // void rx::receiver::on_ipc_receive(rx * prx,int message,void * pdata,memsize len)
    // {
    // }
 
@@ -125,7 +125,7 @@ namespace apex_android
 
    //}
 
-   //void * interprocess_target::on_interprocess_receive(rx * prx,i32 message,void * pdata,memsize len)
+   //void * interprocess_target::on_interprocess_receive(rx * prx,int message,void * pdata,memsize len)
    //{
 
    //   if(m_preceiver != nullptr)

@@ -125,7 +125,7 @@ enum AVPacketSideDataType {
      * u32le quality factor of the compressed frame. Allowed range is between 1 (good) and FF_LAMBDA_MAX (bad).
      * u8    picture type
      * u8    error count
-     * u16   reserved
+     * unsigned short   reserved
      * u64le[error count] sum of squared differences between encoder in and output
      * @endcode
      */
@@ -185,7 +185,7 @@ enum AVPacketSideDataType {
     /**
      * Data found in BlockAdditional element of matroska container. There is
      * no end marker for the data, so it is required to rely on the side data
-     * size to recognize the end. 8 ::u8 id (as found in BlockAddId) followed
+     * size to recognize the end. 8 unsigned char id (as found in BlockAddId) followed
      * by data.
      */
     AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL,
@@ -255,7 +255,7 @@ enum AVPacketSideDataType {
     AV_PKT_DATA_ENCRYPTION_INFO,
 
     /**
-     * Active Format Description data consisting of a single ::u8 as specified
+     * Active Format Description data consisting of a single unsigned char as specified
      * in ETSI TS 101 154 using AVActiveFormatDescription enum.
      */
     AV_PKT_DATA_AFD,
@@ -390,7 +390,7 @@ typedef struct AVPacket {
      */
     int64_t duration;
 
-    int64_t pos;                            ///< ::u8 position in stream, -1 if unknown
+    int64_t pos;                            ///< unsigned char position in stream, -1 if unknown
 
     /**
      * for some private data of the user

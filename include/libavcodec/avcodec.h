@@ -2812,7 +2812,7 @@ typedef struct AVCodecParserContext {
 #define PARSER_FLAG_FETCHED_OFFSET            0x0004
 #define PARSER_FLAG_USE_CODEC_TS              0x1000
 
-    int64_t offset;      ///< ::u8 offset from starting packet start
+    int64_t offset;      ///< unsigned char offset from starting packet start
     int64_t cur_frame_end[AV_PARSER_PTS_NB];
 
     /**
@@ -2877,7 +2877,7 @@ typedef struct AVCodecParserContext {
     int64_t pos;
 
     /**
-     * Previous frame ::u8 position.
+     * Previous frame unsigned char position.
      */
     int64_t last_pos;
 
@@ -2972,7 +2972,7 @@ AVCodecParserContext *av_parser_init(int codec_id);
                         can be output).
  * @param pts           input presentation timestamp.
  * @param dts           input decoding timestamp.
- * @param pos           input ::u8 position in stream.
+ * @param pos           input unsigned char position in stream.
  * @return the number of bytes of the input bitstream used.
  *
  * Example:

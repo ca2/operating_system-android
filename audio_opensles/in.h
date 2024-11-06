@@ -34,7 +34,7 @@ namespace multimedia
          //snd_pcm_t * wave_in_get_safe_PCM();
          virtual void * get_os_data();
 
-         void in_open(i32 iBufferCount, i32 iBufferSampleCount) override;
+         void in_open(int iBufferCount, int iBufferSampleCount) override;
          void in_close() override;
          void in_stop() override;
          void in_start() override;

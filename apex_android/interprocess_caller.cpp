@@ -77,9 +77,9 @@ namespace apex_android
 
 
       ///* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
-      //i32 length = sizeof(data_struct) - sizeof(long);
+      //int length = sizeof(data_struct) - sizeof(long);
 
-      //i32 result;
+      //int result;
       /*
          if((result = msgsnd(m_iQueue, &data, length, 0)) == -1)
          {
@@ -94,10 +94,10 @@ namespace apex_android
    }
 
 
-   //void interprocess_caller::send(i32 message,void * pdata,i32 len, const class time & timeTimeout)
+   //void interprocess_caller::send(int message,void * pdata,int len, const class time & timeTimeout)
    //{
 
-   //   if (message == (i32)I32_MINIMUM)
+   //   if (message == (int)I32_MINIMUM)
    //   {
 
    //      throw ::exception(error_bad_argument);
@@ -124,7 +124,7 @@ namespace apex_android
    //   //data_struct data;
    //   //data.mtype        = 20170101;
    //   //data.request      = I32_MINIMUM;
-   //   //data.size_i32         = (i32)ansi_length(pszMessage);
+   //   //data.size_i32         = (int)ansi_length(pszMessage);
 
    //   //::collection::count cPos = 0;
 
@@ -142,12 +142,12 @@ namespace apex_android
    //   //   if(c > 0)
    //   //      data.size = 512;
    //   //   else
-   //   //      data.size = (i32)cSend;
+   //   //      data.size = (int)cSend;
 
    //   //   /* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
-   //   //   i32 length = sizeof(data_struct) - sizeof(long);
+   //   //   int length = sizeof(data_struct) - sizeof(long);
 
-   //   //   i32 result;
+   //   //   int result;
    //   //   /*
    //   //   if((result = msgsnd(m_iQueue, &data, length, 0)) == -1)
    //   //   {

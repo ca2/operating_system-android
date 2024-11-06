@@ -120,7 +120,7 @@ namespace acme_android
 
    //         ls_dir(straDir, listing.m_pathFinal);
 
-   //         for (i32 i = 0; i < straDir.get_count(); i++)
+   //         for (int i = 0; i < straDir.get_count(); i++)
    //         {
 
    //            string strDir = straDir[i];
@@ -177,7 +177,7 @@ namespace acme_android
 
    //      ::dir::ls(stra, listing.m_pathFinal);
 
-   //      for (i32 i = 0; i < stra.get_count(); i++)
+   //      for (int i = 0; i < stra.get_count(); i++)
    //      {
 
    //         ::file::path strPath = stra[i];
@@ -253,7 +253,7 @@ namespace acme_android
 
    //   ::directory_context::ls_dir(straDir, lpcsz);
 
-   //   for(i32 i = 0; i < straDir.get_count(); i++)
+   //   for(int i = 0; i < straDir.get_count(); i++)
    //   {
 
    //      string strDir = straDir[i];
@@ -297,7 +297,7 @@ namespace acme_android
 
    //   ::directory_context::ls(stra, lpcsz);
 
-   //   for(i32 i = 0; i < stra.get_count(); i++)
+   //   for(int i = 0; i < stra.get_count(); i++)
    //   {
 
    //      string strPath = stra[i];
@@ -396,7 +396,7 @@ namespace acme_android
    //   }
 
 
-   //   for(i32 i = 0; i < stra.get_count(); i++)
+   //   for(int i = 0; i < stra.get_count(); i++)
    //   {
 
    //      string strPath = stra[i];
@@ -484,7 +484,7 @@ namespace acme_android
    //   }
 
 
-   //   for(i32 i = 0; i < stra.get_count(); i++)
+   //   for(int i = 0; i < stra.get_count(); i++)
    //   {
 
    //      string strPath = stra[i];
@@ -542,7 +542,7 @@ namespace acme_android
    //   }
 
 
-   //   for(i32 i = 0; i < stra.get_count(); i++)
+   //   for(int i = 0; i < stra.get_count(); i++)
    //   {
 
    //      string strPath = stra[i];
@@ -603,7 +603,7 @@ namespace acme_android
    //   }
 
 
-   //   for(i32 i = 0; i < stra.get_count(); i++)
+   //   for(int i = 0; i < stra.get_count(); i++)
    //   {
 
    //      string strPath = stra[i];
@@ -715,7 +715,7 @@ namespace acme_android
 
    //   bool bIsDir;
 
-   //   ::u32 dwLastError;
+   //   unsigned int dwLastError;
 
    //   if(m_isdirmap.lookup(strPath, bIsDir, dwLastError))
    //   {
@@ -897,7 +897,7 @@ namespace acme_android
 
    //   lpcsz.ascendants_path(stra);
 
-   //   for (i32 i = 0; i < stra.get_size(); i++)
+   //   for (int i = 0; i < stra.get_size(); i++)
    //   {
 
    //      if (!is(stra[i]))
@@ -978,7 +978,7 @@ namespace acme_android
 
    //      ls(straPath);
 
-   //      for (i32 i = 0; i < straPath.get_count(); i++)
+   //      for (int i = 0; i < straPath.get_count(); i++)
    //      {
 
    //         if (is(straPath[i]))

@@ -377,7 +377,7 @@ namespace windowing_android
 
       //::Window * pchildren = nullptr;
 
-      //u32 ncount = 0;
+      //unsigned int ncount = 0;
 
       //XQueryTree(display, window, &root, &m_parent, &pchildren, &ncount);
 
@@ -779,7 +779,7 @@ namespace windowing_android
    }
 
 
-   //i32 window::store_name(const char * psz)
+   //int window::store_name(const char * psz)
    //{
 
    //   windowing_output_debug_string("\nwindow::store_name");
@@ -797,7 +797,7 @@ namespace windowing_android
    //}
 
 
-   //i32 window::select_input(i32 iInput)
+   //int window::select_input(int iInput)
    //{
 
    //   windowing_output_debug_string("\nwindow::select_input");
@@ -815,7 +815,7 @@ namespace windowing_android
    //}
 
 
-   //i32 window::select_all_input()
+   //int window::select_all_input()
    //{
 
    //   windowing_output_debug_string("\nwindow::select_all_input");
@@ -1018,7 +1018,7 @@ namespace windowing_android
    //}
 
 
-//   Atom get_window_long_atom(i32 nIndex);
+//   Atom get_window_long_atom(int nIndex);
 //
 //   // Change _NET_WM_STATE if Window is Mapped
 //   void window::mapped_net_state_raw(bool add, int iScreen, Atom state1, Atom state2)
@@ -1356,7 +1356,7 @@ namespace windowing_android
    }
 
 
-   //   iptr window::get_window_long_ptr(i32 nIndex)
+   //   iptr window::get_window_long_ptr(int nIndex)
    //   {
    //
    //      return m_pwindow->get_window_long_ptr(nIndex);
@@ -1364,7 +1364,7 @@ namespace windowing_android
    //   }
 
 
-   //   iptr window::set_window_long_ptr(i32 nIndex, iptr i)
+   //   iptr window::set_window_long_ptr(int nIndex, iptr i)
    //   {
    //
    //      return m_pwindow->set_window_long_ptr(nIndex, i);
@@ -1425,9 +1425,9 @@ namespace windowing_android
 
    //   Atom actual_type = 0;
 
-   //   i32 actual_format = 0;
+   //   int actual_format = 0;
 
-   //   i32 status = 0;
+   //   int status = 0;
 
    //   unsigned char * point = nullptr;
 
@@ -1564,7 +1564,7 @@ namespace windowing_android
 #undef SET_WINDOW_POS_LOG
 
 
-   //   bool window::set_window_pos(class ::zorder zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
+   //   bool window::set_window_pos(class ::zorder zorder, int x, int y, int cx, int cy, unsigned int nFlags)
    //   {
    //
    //      bool bOk = false;
@@ -1850,7 +1850,7 @@ namespace windowing_android
    //}
 
 
-//   bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
+//   bool window::set_window_position(const class ::zorder & zorder, int x, int y, int cx, int cy, unsigned int nFlags)
 //   {
 //
 //      synchronous_lock sl(synchronization());
@@ -2591,7 +2591,7 @@ namespace windowing_android
    //         ::Window root = 0;
    //         ::Window parent = 0;
    //         ::Window * pchildren = nullptr;
-   //         u32 numItems = 0;
+   //         unsigned int numItems = 0;
 
    //         int status = XQueryTree(Display(), Window(),
    //            &root, &parent, &pchildren, &numItems);
@@ -2619,7 +2619,7 @@ namespace windowing_android
    //      ::Window root = 0;
    //      ::Window parent = 0;
    //      ::Window * pchildren = nullptr;
-   //      u32 numItems = 0;
+   //      unsigned int numItems = 0;
 
    //      int status = XQueryTree(Display(), Window(),
    //         &root, &parent, &pchildren, &numItems);

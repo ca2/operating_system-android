@@ -20,7 +20,7 @@
 
 /**
  * @file
- * ::u8 swapping routines
+ * unsigned char swapping routines
  */
 
 #ifndef AVUTIL_BSWAP_H

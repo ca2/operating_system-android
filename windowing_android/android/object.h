@@ -33,9 +33,9 @@ public:
 
    bool get_b(jfieldID jfieldid);
 
-   void set_uch(jfieldID jfieldid, ::u8 b);
+   void set_uch(jfieldID jfieldid, unsigned char b);
 
-   ::u8 get_uch(jfieldID jfieldid);
+   unsigned char get_uch(jfieldID jfieldid);
 
    void set_ch(jfieldID jfieldid, char ch);
 
@@ -69,9 +69,9 @@ public:
 
    bool get_b(const char* pszField);
 
-   void set_uch(const char* pszField, ::u8 b);
+   void set_uch(const char* pszField, unsigned char b);
 
-   ::u8 get_uch(const char* pszField);
+   unsigned char get_uch(const char* pszField);
 
    void set_ch(const char* pszField, char ch);
 

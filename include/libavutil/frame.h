@@ -83,7 +83,7 @@ enum AVFrameSideDataType {
      */
     AV_FRAME_DATA_DISPLAYMATRIX,
     /**
-     * Active Format Description data consisting of a single ::u8 as specified
+     * Active Format Description data consisting of a single unsigned char as specified
      * in ETSI TS 101 154 using AVActiveFormatDescription enum.
      */
     AV_FRAME_DATA_AFD,
@@ -318,7 +318,7 @@ typedef struct AVFrame {
 #define AV_NUM_DATA_POINTERS 8
     /**
      * pointer to the picture/channel planes.
-     * This might be different from the first allocated ::u8. For video,
+     * This might be different from the first allocated unsigned char. For video,
      * it could even point to the end of the image data.
      *
      * All pointers in data and extended_data must point into one of the
@@ -340,9 +340,9 @@ typedef struct AVFrame {
     /**
      * For video, a positive or negative value, which is typically indicating
      * the size in bytes of each picture line, but it can also be:
-     * - the negative ::u8 size of lines for vertical flipping
+     * - the negative unsigned char size of lines for vertical flipping
      *   (with data[n] pointing to the end of the data
-     * - a positive or negative multiple of the ::u8 size as for accessing
+     * - a positive or negative multiple of the unsigned char size as for accessing
      *   even and odd fields of a frame (possibly flipped)
      *
      * For audio, only linesize[0] may be set. For planar audio, each channel

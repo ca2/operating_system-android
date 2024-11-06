@@ -645,9 +645,9 @@ void defer_term_ui()
 //}
 
 
-//CLASS_DECL_AURA i32 oswindow_find_message_only_window(::windowing::window * puibaseMessageWindow);
-//CLASS_DECL_AURA i32 oswindow_find(Display * pdisplay,Window window);
-//CLASS_DECL_AURA i32 oswindow_find(Window window);
+//CLASS_DECL_AURA int oswindow_find_message_only_window(::windowing::window * puibaseMessageWindow);
+//CLASS_DECL_AURA int oswindow_find(Display * pdisplay,Window window);
+//CLASS_DECL_AURA int oswindow_find(Window window);
 //CLASS_DECL_AURA oswindow_data * oswindow_get_message_only_window(::windowing::window * puibaseMessageWindow);
 //CLASS_DECL_AURA oswindow_data * oswindow_get(Display * pdisplay,Window window,Visual * pvisual = nullptr,int iDepth = -1,int iScreen = -1,Colormap colormap = None);
 //CLASS_DECL_AURA oswindow_data * oswindow_get(Window window);
@@ -699,7 +699,7 @@ namespace user
 ////::mutex * oswindow_data::s_pmutex = ___new ::mutex;
 //
 //
-//i32 oswindow_find_message_only_window(::windowing::window * pimpl)
+//int oswindow_find_message_only_window(::windowing::window * pimpl)
 //{
 //
 //   if (pimpl == nullptr)
@@ -711,7 +711,7 @@ namespace user
 //
 //   synchronous_lock slOsWindow(oswindow_data::s_pmutex);
 //
-//   for (i32 i = 0; i < ::oswindow_data::s_pdataptra->get_count(); i++)
+//   for (int i = 0; i < ::oswindow_data::s_pdataptra->get_count(); i++)
 //   {
 //
 //      if (::oswindow_data::s_pdataptra->element_at(i)->m_bMessageOnlyWindow
@@ -730,12 +730,12 @@ namespace user
 //
 //
 //
-//i32 oswindow_find(::windowing::window * pimpl)
+//int oswindow_find(::windowing::window * pimpl)
 //{
 //
 //   synchronous_lock slOsWindow(::oswindow_data::s_pmutex);
 //
-//   for (i32 i = 0; i < ::oswindow_data::s_pdataptra->get_count(); i++)
+//   for (int i = 0; i < ::oswindow_data::s_pdataptra->get_count(); i++)
 //   {
 //      if (!::oswindow_data::s_pdataptra->element_at(i)->m_bMessageOnlyWindow
 //            &&  ::oswindow_data::s_pdataptra->element_at(i)->m_pimpl == pimpl)
@@ -927,7 +927,7 @@ namespace user
 //}
 //
 //
-//i32 oswindow_data::store_name(const ::string & psz)
+//int oswindow_data::store_name(const ::string & psz)
 //{
 //
 //   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
@@ -947,7 +947,7 @@ namespace user
 //}
 //
 //
-//i32 oswindow_data::select_input(i32 iInput)
+//int oswindow_data::select_input(int iInput)
 //{
 //
 //   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
@@ -967,7 +967,7 @@ namespace user
 //}
 //
 //
-//i32 oswindow_data::select_all_input()
+//int oswindow_data::select_all_input()
 //{
 //
 //   /*
@@ -983,7 +983,7 @@ namespace user
 //}
 //
 //
-//i32 oswindow_data::map_window()
+//int oswindow_data::map_window()
 //{
 //
 //   /*
@@ -1170,7 +1170,7 @@ namespace user
 //}
 //
 //
-//iptr oswindow_data::get_window_long_ptr(i32 nIndex)
+//iptr oswindow_data::get_window_long_ptr(int nIndex)
 //{
 //
 //   return m_pimpl->get_window_long_ptr(nIndex);
@@ -1178,7 +1178,7 @@ namespace user
 //}
 //
 //
-//iptr oswindow_data::set_window_long_ptr(i32 nIndex, iptr l)
+//iptr oswindow_data::set_window_long_ptr(int nIndex, iptr l)
 //{
 //
 //   return m_pimpl->set_window_long_ptr(nIndex, l);
@@ -1638,7 +1638,7 @@ namespace user
 
 
 
-//i32 IsWindowVisible(oswindow window)
+//int IsWindowVisible(oswindow window)
 //{
 //
 //   if (!IsWindow(window))
@@ -1650,24 +1650,24 @@ namespace user
 //
 
 
-//::i32 GetWindowLongA(oswindow window, int nIndex)
+//int GetWindowLongA(oswindow window, int nIndex)
 //{
 //
 //   if (!IsWindow(window))
 //      return false;
 //
-//   return (::i32) window->get_window_long_ptr(nIndex);
+//   return (int) window->get_window_long_ptr(nIndex);
 //
 //}
 //
 //
-//::i32 SetWindowLongA(oswindow window, int nIndex, ::i32 lValue)
+//int SetWindowLongA(oswindow window, int nIndex, int lValue)
 //{
 //
 //   if (!IsWindow(window))
 //      return false;
 //
-//   return (::i32) window->set_window_long_ptr(nIndex, lValue);
+//   return (int) window->set_window_long_ptr(nIndex, lValue);
 //
 //}
 
@@ -1684,7 +1684,7 @@ namespace user
 
 
 
-//i32 IsIconic(oswindow window)
+//int IsIconic(oswindow window)
 //{
 //
 //   if (!IsWindow(window))

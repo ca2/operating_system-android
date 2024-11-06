@@ -56,7 +56,7 @@ namespace multimedia
          class ::time out_get_position() override;
          //imedia_position wave_out_get_position();
 
-         void out_open_ex(::thread* pthreadCallback, u32 uiSamplesPerSec, u32 uiChannelCount, u32 uiBitsPerSample, ::wave::enum_purpose epurpose) override;
+         void out_open_ex(::thread* pthreadCallback, unsigned int uiSamplesPerSec, unsigned int uiChannelCount, unsigned int uiBitsPerSample, ::wave::enum_purpose epurpose) override;
          //void out_open_ex(::thread * pthreadCallback, int32_t iBufferCount, int32_t iBufferSampleCount, uint32_t uiSamplesPerSec, uint32_t uiChannelCount, uint32_t uiBitsPerSample, ::multimedia::audio::e_purpose epurpose) override;
          void out_stop() override;
          void out_close() override;

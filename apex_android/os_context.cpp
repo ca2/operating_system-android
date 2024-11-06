@@ -98,7 +98,7 @@ namespace apex_android
             /*if (!ExitWindowsEx(EWX_REBOOT | EWX_FORCE,
             SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_INSTALLATION))
             {
-            ::u32 dwLastError = ::get_last_error();
+            unsigned int dwLastError = ::get_last_error();
             return false;
             }*/
       //reset the previlages
@@ -118,13 +118,13 @@ namespace apex_android
 
       //return;
 
-      /*      ::u32 dwPid;
+      /*      unsigned int dwPid;
             while(get_pid_by_title(pszName, dwPid))
             {
                HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
                   PROCESS_VM_READ,
                   false, dwPid );
-               TerminateProcess(hProcess, (::u32) -1);
+               TerminateProcess(hProcess, (unsigned int) -1);
                CloseHandle(hProcess);
                /*::EnumWindows((WNDENUMPROC)
                CKillProcessHelper::TerminateAppEnum,
@@ -150,7 +150,7 @@ namespace apex_android
 
    //   auto processesidentifiers = processes_identifiers();
    //   
-   //   for(i32 i = 0; i < dwa.get_count(); i++)
+   //   for(int i = 0; i < dwa.get_count(); i++)
    //   {
    //      if(get_process_path(dwa[i]).case_insensitive_order(strName) == 0)
    //      {
@@ -162,11 +162,11 @@ namespace apex_android
    //}
 
 
-   //bool os_context::title_pid(::u32 & dwPid, const ::string & strName)
+   //bool os_context::title_pid(unsigned int & dwPid, const ::string & strName)
    //{
    //   ::u32_array dwa;
    //   get_all_processes(dwa);
-   //   for(i32 i = 0; i < dwa.get_count(); i++)
+   //   for(int i = 0; i < dwa.get_count(); i++)
    //   {
    //      if(get_process_path(dwa[i]).title().case_insensitive_order(strName) == 0)
    //      {
@@ -200,7 +200,7 @@ namespace apex_android
       if (nullptr != hProcess )
       {
          HMODULE hMod;
-         ::u32 cbNeeded;
+         unsigned int cbNeeded;
 
          if(EnumProcessModules( hProcess, &hMod, sizeof(hMod),
             &cbNeeded) )
@@ -224,18 +224,18 @@ namespace apex_android
 
       /*
             dwa.set_size(0);
-            ::u32 cbNeeded = 0;
+            unsigned int cbNeeded = 0;
             while(cbNeeded == natural(dwa.get_count()))
             {
                dwa.set_size(dwa.get_count() + 1024);
                if(!EnumProcesses(
                   dwa.get_data(),
-                  (::u32) (dwa.get_count() * sizeof(::u32)),
+                  (unsigned int) (dwa.get_count() * sizeof(unsigned int)),
                   &cbNeeded))
                {
                   return;
                }
-               dwa.set_size(cbNeeded / sizeof(::u32));
+               dwa.set_size(cbNeeded / sizeof(unsigned int));
             }*/
    }
 
@@ -245,7 +245,7 @@ namespace apex_android
    //   return "";
    //   /*
    //   string strPath;
-   //   ::u32 dwSize = 1;
+   //   unsigned int dwSize = 1;
    //   while(natural(strPath.get_length() + 1) == dwSize)
    //   {
    //      dwSize = ::GetModuleFileName(
@@ -644,7 +644,7 @@ namespace apex_android
    }
 
 
-   //void os_context::raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags)
+   //void os_context::raise_exception( unsigned int dwExceptionCode, unsigned int dwExceptionFlags)
    //{
 
    //   throw ::interface_only();
