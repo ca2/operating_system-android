@@ -1595,7 +1595,7 @@ namespace aura_android
    //   print_window(oswindow hwnd, HDC hdc, unsigned int tickTimeout)
    //   {
 
-   //      m_happening.ResetEvent();
+   //      m_happening.reset_happening();
    //      m_hwnd = hwnd;
    //      m_hdc = hdc;
    //      begin_thread( &print_window::s_print_window, (LPVOID) this, ::e_priority_normal);

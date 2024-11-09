@@ -538,7 +538,7 @@ namespace multimedia
 
          }
 
-         //m_happeningStopped.ResetEvent();
+         //m_happeningStopped.reset_happening();
 
          ///m_pprebuffer->stop();
 
@@ -705,7 +705,7 @@ namespace multimedia
             //delete peffect;
          //}
 
-         //m_happeningStopped.SetEvent();
+         //m_happeningStopped.set_happening();
 
          //m_pplayer->OnEvent(::multimedia::wave::player::EventPlaybackEnd);
 
@@ -851,7 +851,7 @@ namespace multimedia
 
          m_iBufferedCount = 0;
 
-         //m_evBufferFull.ResetEvent();
+         //m_evBufferFull.reset_happening();
 
          ::wave::out::out_start(position);
 
