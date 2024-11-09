@@ -34,7 +34,7 @@ namespace multimedia
          //ASSERT(GetMainWnd() == NULL);
          set_thread_priority(::e_priority_highest);
 
-         //m_evInitialized.set_happening();
+         //m_happeningInitialized.set_happening();
 
          //return true;
 

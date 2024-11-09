@@ -707,7 +707,7 @@ namespace multimedia
 
          //m_happeningStopped.set_happening();
 
-         //m_pplayer->OnEvent(::multimedia::wave::player::EventPlaybackEnd);
+         //m_pplayer->OnHappening(::multimedia::wave::player::EventPlaybackEnd);
 
       }
 
@@ -851,7 +851,7 @@ namespace multimedia
 
          m_iBufferedCount = 0;
 
-         //m_evBufferFull.reset_happening();
+         //m_happeningBufferFull.reset_happening();
 
          ::wave::out::out_start(position);
 

@@ -38,7 +38,7 @@ namespace multimedia
          SLAndroidSimpleBufferQueueItf bqPlayerBufferQueue;
          SLEffectSendItf bqPlayerEffectSend;
 
-         //manual_reset_happening      m_evBufferFull;
+         //manual_reset_happening      m_happeningBufferFull;
 
          bool                    m_bWrite;
          int                     m_iBuffer;

@@ -98,13 +98,13 @@ static void engine_term_display(oswindow window) {
 }
 
 /**
-* Process the next input event.
+* Process the next input happening.
 */
-//static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) {
+//static int32_t engine_handle_input(struct android_app* app, AInputEvent* happening) {
 //	oswindow window = (oswindow)app->userData;
-//	if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION) {
-//		window->m_engine.m_pstate->x = AMotionEvent_getX(event, 0);
-//		window->m_engine.m_pstate->y = AMotionEvent_getY(event, 0);
+//	if (AInputEvent_getType(happening) == AINPUT_EVENT_TYPE_MOTION) {
+//		window->m_engine.m_pstate->x = AMotionEvent_getX(happening, 0);
+//		window->m_engine.m_pstate->y = AMotionEvent_getY(happening, 0);
 //		return 1;
 //	}
 //	return 0;
@@ -138,7 +138,7 @@ static void engine_term_display(oswindow window) {
 //		if (window->m_engine.accelerometerSensor != NULL) {
 //			ASensorEventQueue_enableSensor(window->m_engine.sensorEventQueue,
 //				window->m_engine.accelerometerSensor);
-//			// We'd like to get 60 events per second (in us).
+//			// We'd like to get 60 happenings per second (in us).
 //			ASensorEventQueue_setEventRate(window->m_engine.sensorEventQueue,
 //				window->m_engine.accelerometerSensor, (1000L / 60) * 1000);
 //		}
@@ -163,7 +163,7 @@ static void engine_term_display(oswindow window) {
 /**
 * This is the main entry int_point of a native application that is using
 * android_native_app_glue.  It runs in its own thread, with its own
-* event loop for receiving input events and doing other things.
+* happening loop for receiving input happenings and doing other things.
 */
 //void native_activity_android_start(struct android_app* state) {
 extern "C"
@@ -298,18 +298,18 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 	// loop waiting for stuff to do.
 
 	//while (1) {
-	//	// Read all pending events.
+	//	// Read all pending happenings.
 	//	int ident;
-	//	int events;
+	//	int happenings;
 	//	struct android_poll_source* source;
 
-	//	// If not animating, we will block forever waiting for events.
-	//	// If animating, we loop until all events are read, then continue
+	//	// If not animating, we will block forever waiting for happenings.
+	//	// If animating, we loop until all happenings are read, then continue
 	//	// to draw the next frame of animation.
-	//	while ((ident = ALooper_pollAll(engine.animating ? 0 : -1, NULL, &events,
+	//	while ((ident = ALooper_pollAll(engine.animating ? 0 : -1, NULL, &happenings,
 	//		(void**)&source)) >= 0) {
 
-	//		// Process this event.
+	//		// Process this happening.
 	//		if (source != NULL) {
 	//			source->process(state, source);
 	//		}
@@ -317,12 +317,12 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 	//		// If a sensor has data, process it now.
 	//		if (ident == LOOPER_ID_USER) {
 	//			if (engine.accelerometerSensor != NULL) {
-	//				ASensorEvent event;
+	//				ASensorEvent happening;
 	//				while (ASensorEventQueue_getEvents(engine.sensorEventQueue,
-	//					&event, 1) > 0) {
+	//					&happening, 1) > 0) {
 	//					LOGI("accelerometer: x=%f y=%f z=%f",
-	//						event.acceleration.x, event.acceleration.y,
-	//						event.acceleration.z);
+	//						happening.acceleration.x, happening.acceleration.y,
+	//						happening.acceleration.z);
 	//				}
 	//			}
 	//		}
@@ -335,7 +335,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 	//	}
 
 	//	if (engine.animating) {
-	//		// Done with events; draw next animation frame.
+	//		// Done with happenings; draw next animation frame.
 	//		engine.state.angle += .01f;
 	//		if (engine.state.angle > 1) {
 	//			engine.state.angle = 0;
