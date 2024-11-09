@@ -44,7 +44,7 @@ namespace multimedia
       void in::term_task()
       {
 
-         m_eventExitInstance.SetEvent();
+         m_happeningExitInstance.SetEvent();
 
          return thread::term_task();
 
@@ -375,7 +375,7 @@ namespace multimedia
 
          m_einstate = ::wave::e_in_state_stopped;
 
-         m_eventStopped.SetEvent();
+         m_happeningStopped.SetEvent();
 
          //return result_success;
 

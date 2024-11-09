@@ -1799,7 +1799,7 @@ namespace windowing_android
 
    //   pmessagequeue->m_messagea.add(message);
 
-   //   pmessagequeue->m_eventNewMessage.set_event();
+   //   pmessagequeue->m_happeningNewMessage.set_event();
 
    //   return true;
 
