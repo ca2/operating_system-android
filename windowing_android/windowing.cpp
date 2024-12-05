@@ -1145,7 +1145,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::show_window(const ::e_display & edisplay, const ::e_activation & eactivation)
+//bool oswindow_data::show_window(const ::e_display & edisplay, const ::user::e_activation & useractivation)
 //{
 //
 //   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
@@ -1404,10 +1404,10 @@ namespace user
 //}
 
 
-//int_bool show_window(oswindow_data * pdata, const ::e_display & edisplay, const ::e_activation & eactivation)
+//int_bool show_window(oswindow_data * pdata, const ::e_display & edisplay, const ::user::e_activation & useractivation)
 //{
 //
-//   return pdata->show_window(edisplay, eactivation);
+//   return pdata->show_window(edisplay, useractivation);
 //
 //}
 //
@@ -1422,9 +1422,9 @@ namespace user
 //   if (uFlags & SWP_SHOWWINDOW)
 //   {
 //
-//      auto eactivation = uFlags & SWP_NOACTIVATE ? e_activation_no_activate : e_activation_default;
+//      auto useractivation = uFlags & SWP_NOACTIVATE ? ::user::e_activation_no_activate : ::user::e_activation_default;
 //
-//      pdata->m_pimpl->m_puserinteraction->display(e_display_normal, eactivation);
+//      pdata->m_pimpl->m_puserinteraction->display(e_display_normal, useractivation);
 //
 //   }
 //   else if(uFlags & SWP_HIDEWINDOW)

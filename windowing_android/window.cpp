@@ -351,7 +351,7 @@ namespace windowing_android
       //   wm_desktopwindow(true);
 
       //}
-      //else if (pimpl->m_puserinteraction->layout().sketch().activation() & e_activation_on_center_of_screen)
+      //else if (pimpl->m_puserinteraction->layout().sketch().activation() & ::user::e_activation_on_center_of_screen)
       //{
 
       //   wm_centerwindow(true);
@@ -1104,7 +1104,7 @@ namespace windowing_android
 //
 //
 //
-//      x11_windowing()->windowing_post([this, edisplay, eactivation]()
+//      x11_windowing()->windowing_post([this, edisplay, useractivation]()
 //         {
 //
 //            windowing_output_debug_string("\n::window::show_window 1");
@@ -2079,15 +2079,15 @@ namespace windowing_android
 
    //   int_bool window::show_window(
    //                        const ::e_display &edisplay,
-   //                        const ::e_activation &eactivation
+   //                        const ::user::e_activation &useractivation
    //   )
    //   {
    //
-   //      x11_sync([oswindow, edisplay, eactivation]()
+   //      x11_sync([oswindow, edisplay, useractivation]()
    //               {
    //
    //                  return oswindow->
-   //                     show_window(edisplay, eactivation
+   //                     show_window(edisplay, useractivation
    //                  );
    //
    //               });
