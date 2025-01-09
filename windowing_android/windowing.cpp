@@ -461,7 +461,7 @@ namespace windowing_android
 
    //   auto pwindowApplicationHost = get_application_host_window();
 
-   //   if (!pwindowApplicationHost->m_pwindow->m_puserinteractionKeyboardFocus)
+   //   if (!pwindowApplicationHost->m_pwindow->aaa_m_pacmeuserinteractionKeyboardFocus)
    //   {
 
    //      return nullptr;
@@ -552,12 +552,12 @@ namespace windowing_android
       if (pwindow)
       {
 
-         if (pwindow->m_puserinteractionKeyboardFocus)
+         if (pwindow->m_pacmeuserinteractionKeyboardFocus)
          {
 
             pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 
-            //pwindow->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
 
          }
 
@@ -570,16 +570,16 @@ namespace windowing_android
 
          }
 
-         //if (pwindow->m_puserinteractionKeyboardFocus)
+         //if (pwindow->aaa_m_pacmeuserinteractionKeyboardFocus)
          //{
 
          //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
 
-         //   pwindow->m_puserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
 
          //}
 
-         pwindow->m_puserinteractionKeyboardFocus.release();
+         pwindow->m_pacmeuserinteractionKeyboardFocus.release();
 
       }
 
