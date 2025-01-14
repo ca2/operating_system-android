@@ -22,7 +22,7 @@ namespace windowing_android
 
       ::pointer<::windowing_android::display>        m_pdisplay;
 
-      //itask_t                                         m_itask;
+      //itask                                         m_itask;
 
 //#ifdef WITH_XI
 //

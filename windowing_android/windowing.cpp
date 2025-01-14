@@ -673,7 +673,7 @@ namespace user
 //
 //   m_pmq = nullptr;
 //
-//   m_htask = (htask_t) nullptr;
+//   m_htask = (htask) nullptr;
 //
 //   m_pimpl = nullptr;
 //
