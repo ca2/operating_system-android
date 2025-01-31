@@ -1698,7 +1698,7 @@ namespace windowing_android
 
    //         auto pcontext = m_papplication;
 
-   //         pcontext->post_message(msg.m_atom, msg.wParam, msg.lParam);
+   //         pcontext->post_message(msg.id(), msg.wParam, msg.lParam);
 
    //      }
    //      else
@@ -1710,7 +1710,7 @@ namespace windowing_android
 
    //            ::user::interaction * pinteraction = msg.oswindow->m_pwindow->m_puserinteraction;
 
-   //            pinteraction->post_message(msg.m_atom, msg.wParam, msg.lParam);
+   //            pinteraction->post_message(msg.id(), msg.wParam, msg.lParam);
 
    //         }
 
@@ -1757,7 +1757,7 @@ namespace windowing_android
    //   if (pmessagequeue == nullptr)
    //   {
 
-   //      if (message.m_atom == e_message_quit)
+   //      if (message.m_emessage == e_message_quit)
    //      {
 
    //         return false;
@@ -1777,20 +1777,20 @@ namespace windowing_android
 
    //   synchronous_lock ml(pmessagequeue->synchronization());
 
-   //   if (message.m_atom == e_message_quit)
+   //   if (message.m_emessage == e_message_quit)
    //   {
 
    //      output_debug_string("e_message_quit thread");
 
    //   }
 
-   //   if (message.m_atom == e_message_left_button_down)
+   //   if (message.m_emessage == e_message_left_button_down)
    //   {
 
    //      output_debug_string("post_ui_message::e_message_left_button_down\n");
 
    //   }
-   //   else if (message.m_atom == e_message_left_button_up)
+   //   else if (message.m_emessage == e_message_left_button_up)
    //   {
 
    //      output_debug_string("post_ui_message::e_message_left_button_up\n");

@@ -71,7 +71,7 @@ namespace windowing_android
 
    //   ::pointer<::user::message>pusermessage(pmessage);
 
-   //   if (pmessage->m_atom == e_message_char)
+   //   if (pmessage->m_emessage == e_message_char)
    //   {
 
    //      auto psession = m_puserinteraction->get_session();
@@ -137,7 +137,7 @@ namespace windowing_android
 //
 //      ::pointer<::user::message>pusermessage(pmessage);
 //
-//      if (pmessage->m_atom == WM_INPUTLANGCHANGE)
+//      if (pmessage->m_emessage == WM_INPUTLANGCHANGE)
 //      {
 //
 //         ::output_debug_string("WM_INPUTLANGCHANGE");
@@ -166,14 +166,14 @@ namespace windowing_android
 //         //   });
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_SELECT)
+//      else if (pmessage->m_emessage == WM_IME_SELECT)
 //      {
 //
 //         //SetInputLanguage();
 //         ::output_debug_string("\nWM_IME_SELECT");
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_SETCONTEXT)
+//      else if (pmessage->m_emessage == WM_IME_SETCONTEXT)
 //      {
 //
 //         //EnableIME();
@@ -181,7 +181,7 @@ namespace windowing_android
 //         ::output_debug_string("\nWM_IME_SETCONTEXT");
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_COMPOSITION)
+//      else if (pmessage->m_emessage == WM_IME_COMPOSITION)
 //      {
 //
 //         if (pmessage->m_lparam == 0)
@@ -274,13 +274,13 @@ namespace windowing_android
 //         pusermessage->m_bRet = true;
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_KEYDOWN)
+//      else if (pmessage->m_emessage == WM_IME_KEYDOWN)
 //      {
 //
 //         ::output_debug_string("\nWM_IME_KEYDOWN");
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_ENDCOMPOSITION)
+//      else if (pmessage->m_emessage == WM_IME_ENDCOMPOSITION)
 //      {
 //
 //         //::output_debug_string("WM_IME_ENDCOMPOSITION");
@@ -323,7 +323,7 @@ namespace windowing_android
 //         }
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_STARTCOMPOSITION)
+//      else if (pmessage->m_emessage == WM_IME_STARTCOMPOSITION)
 //      {
 //
 //         ::output_debug_string("\nWM_IME_STARTCOMPOSITION");
@@ -346,7 +346,7 @@ namespace windowing_android
 //         pusermessage->m_bRet = true;
 //
 //      }
-//      else if (pmessage->m_atom == WM_IME_NOTIFY)
+//      else if (pmessage->m_emessage == WM_IME_NOTIFY)
 //      {
 //
 //         if (pusermessage->m_wparam == IMN_CHANGECANDIDATE)

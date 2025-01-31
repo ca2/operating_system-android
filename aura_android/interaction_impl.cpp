@@ -882,7 +882,7 @@ namespace aura_android
 //   //}
 //
 //
-//   LRESULT interaction_impl::DefWindowProc(const ::atom & atom, WPARAM wParam, lparam lParam)
+//   LRESULT interaction_impl::DefWindowProc(::enum_message emessage, ::wparam wparam, ::lparam lparam)
 //   {
 //
 //      return 0;
@@ -943,26 +943,26 @@ namespace aura_android
 
       return;
 
-//      if(pmessage->m_atom == e_message_size || pmessage->m_atom == e_message_move)
+//      if(pmessage->m_emessage == e_message_size || pmessage->m_emessage == e_message_move)
 //      {
 //
 //         //win_update_graphics();
 //
 //      }
 //
-//      if(pmessage->m_atom == e_message_key_down ||
-//            pmessage->m_atom == e_message_key_up ||
-//            pmessage->m_atom == e_message_char ||
-//            pmessage->m_atom == e_message_sys_key_down ||
-//            pmessage->m_atom == e_message_sys_key_up ||
-//            pmessage->m_atom == e_message_sys_char)
+//      if(pmessage->m_emessage == e_message_key_down ||
+//            pmessage->m_emessage == e_message_key_up ||
+//            pmessage->m_emessage == e_message_char ||
+//            pmessage->m_emessage == e_message_sys_key_down ||
+//            pmessage->m_emessage == e_message_sys_key_up ||
+//            pmessage->m_emessage == e_message_sys_char)
 //      {
 //
 //         auto pkey = pmessage->m_union.m_pkey;
 //
 //         
 //
-//         if(pmessage->m_atom == e_message_key_down || pmessage->m_atom == e_message_sys_key_down)
+//         if(pmessage->m_emessage == e_message_key_down || pmessage->m_emessage == e_message_sys_key_down)
 //         {
 //            try
 //            {
@@ -972,7 +972,7 @@ namespace aura_android
 //            {
 //            }
 //         }
-//         else if(pmessage->m_atom == e_message_key_up || pmessage->m_atom == e_message_sys_key_up)
+//         else if(pmessage->m_emessage == e_message_key_up || pmessage->m_emessage == e_message_sys_key_up)
 //         {
 //            try
 //            {
@@ -1007,11 +1007,11 @@ namespace aura_android
 //
 //      
 //
-//      if(pmessage->m_atom == e_message_timer)
+//      if(pmessage->m_emessage == e_message_timer)
 //      {
 ////         m_puserinteraction->get_app()->step_timer();
 //      }
-//      else if(pmessage->m_atom == e_message_left_button_down)
+//      else if(pmessage->m_emessage == e_message_left_button_down)
 //      {
 //         //::int_rectangle rectangleX;
 //         //::this->rectangle(get_handle(),rectangleX);
@@ -1033,7 +1033,7 @@ namespace aura_android
 //         //bool bIconic = ::IsIconic(get_handle()) != false;
 //         psession->m_puiLastLButtonDown = m_puserinteraction;
 //      }
-//      /*      else if(pusermessage->m_atom == CA2M_BERGEDGE)
+//      /*      else if(pusermessage->id() == CA2M_BERGEDGE)
 //      {
 //      if(pusermessage->m_wparam == BERGEDGE_GETAPP)
 //      {
@@ -1045,7 +1045,7 @@ namespace aura_android
 //      }*/
 //      pmessage->set_lresult(0);
 //
-//      if(pmessage->m_atom == e_message_mouse_leave)
+//      if(pmessage->m_emessage == e_message_mouse_leave)
 //      {
 //
 //         _000OnMouseLeave(pmessage);
@@ -1054,16 +1054,16 @@ namespace aura_android
 //
 //      }
 //
-//      if(pmessage->m_atom == e_message_left_button_down ||
-//            pmessage->m_atom == e_message_left_button_up ||
-//            pmessage->m_atom == e_message_middle_button_down ||
-//            pmessage->m_atom == e_message_middle_button_up ||
-//            pmessage->m_atom == e_message_right_button_down ||
-//            pmessage->m_atom == e_message_right_button_up ||
-//            pmessage->m_atom == e_message_left_button_double_click ||
-//            pmessage->m_atom == e_message_mouse_move ||
-//            pmessage->m_atom == e_message_non_client_mouse_move ||
-//            pmessage->m_atom == e_message_mouse_wheel)
+//      if(pmessage->m_emessage == e_message_left_button_down ||
+//            pmessage->m_emessage == e_message_left_button_up ||
+//            pmessage->m_emessage == e_message_middle_button_down ||
+//            pmessage->m_emessage == e_message_middle_button_up ||
+//            pmessage->m_emessage == e_message_right_button_down ||
+//            pmessage->m_emessage == e_message_right_button_up ||
+//            pmessage->m_emessage == e_message_left_button_double_click ||
+//            pmessage->m_emessage == e_message_mouse_move ||
+//            pmessage->m_emessage == e_message_non_client_mouse_move ||
+//            pmessage->m_emessage == e_message_mouse_wheel)
 //      {
 //
 //         message::mouse * pmouse = (::message::mouse *) pmessage->m_union.m_pmouse;
@@ -1101,7 +1101,7 @@ namespace aura_android
 //            pmouse->m_point.y += (int)rectangleWindow.top();
 //         }
 //
-//         if(pmessage->m_atom == e_message_mouse_move)
+//         if(pmessage->m_emessage == e_message_mouse_move)
 //         {
 //            // We are at the message handler procedure.
 //            // mouse messages originated from message handler and that are mouse move happenings should end up with the correct cursor.
@@ -1111,7 +1111,7 @@ namespace aura_android
 //            //pmouse->m_ecursor = cursor_default;
 //            //pmouse->m_pcursor = cursor_default;
 //         }
-//         else if(pmessage->m_atom == e_message_non_client_mouse_move)
+//         else if(pmessage->m_emessage == e_message_non_client_mouse_move)
 //         {
 //            // We are at the message handler procedure.
 //            // mouse messages originated from message handler and that are mouse move happenings should end up with the correct cursor.
@@ -1127,10 +1127,10 @@ namespace aura_android
 //
 //      }
 //
-//      //if(pusermessage->m_atom == MESSAGE_OLE_DRAGENTER ||
-//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGOVER ||
-//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGLEAVE ||
-//      //   pusermessage->m_atom == MESSAGE_OLE_DRAGDROP)
+//      //if(pusermessage->id() == MESSAGE_OLE_DRAGENTER ||
+//      //   pusermessage->id() == MESSAGE_OLE_DRAGOVER ||
+//      //   pusermessage->id() == MESSAGE_OLE_DRAGLEAVE ||
+//      //   pusermessage->id() == MESSAGE_OLE_DRAGDROP)
 //      //{
 //
 //      //   message::drag_and_drop * pdrag = (::message::drag_and_drop *) pusermessage;
@@ -1153,12 +1153,12 @@ namespace aura_android
 //      //   }
 //      //   return;
 //      //}
-//      if(pmessage->m_atom == e_message_key_down ||
-//            pmessage->m_atom == e_message_key_up ||
-//            pmessage->m_atom == e_message_char ||
-//            pmessage->m_atom == e_message_sys_key_down ||
-//            pmessage->m_atom == e_message_sys_key_up ||
-//            pmessage->m_atom == e_message_sys_char)
+//      if(pmessage->m_emessage == e_message_key_down ||
+//            pmessage->m_emessage == e_message_key_up ||
+//            pmessage->m_emessage == e_message_char ||
+//            pmessage->m_emessage == e_message_sys_key_down ||
+//            pmessage->m_emessage == e_message_sys_key_up ||
+//            pmessage->m_emessage == e_message_sys_char)
 //      {
 //
 //         message::key * pkey = (::message::key *) pmessage->m_union.m_pkey;
@@ -1191,12 +1191,12 @@ namespace aura_android
 //
 //         }
 //
-//         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
+//         //pmessage->set_lresult(DefWindowProc(pmessage->m_emessage, pmessage->m_wparam, pmessage->m_lparam));
 //
 //         return;
 //
 //      }
-//      //if(pmessage->m_atom == e_message_event)
+//      //if(pmessage->m_emessage == e_message_event)
 //      //{
 //      //   if(m_puserinteraction != nullptr)
 //      //   {
@@ -1218,7 +1218,7 @@ namespace aura_android
 //      }
 //      else
 //      {
-//         //pmessage->set_lresult(DefWindowProc(pmessage->m_atom, pmessage->m_wparam, pmessage->m_lparam));
+//         //pmessage->set_lresult(DefWindowProc(pmessage->m_emessage, pmessage->m_wparam, pmessage->m_lparam));
 //      }
 
 
@@ -2533,7 +2533,7 @@ namespace aura_android
 //      m_puserinteraction->SetOwner((pOwnerWnd));
 //   }
 //
-//   LRESULT interaction_impl::send_message(const ::atom & atom, wparam wparam, lparam lparam)
+//   LRESULT interaction_impl::send_message(::enum_message emessage, ::wparam wparam, ::lparam lparam)
 //   {
 //
 //      //if (::get_task() == nullptr)
@@ -2543,15 +2543,15 @@ namespace aura_android
 //
 //      //}
 //
-//      return ::windowing::window::send_message(atom, wparam, lparam);
+//      return ::windowing::window::send_message(emessage, wparam, lparam);
 //
 //   }
 //
 //
-//   bool interaction_impl::post_message(const ::atom & atom, wparam wparam, lparam lparam)
+//   bool interaction_impl::post_message(::enum_message emessage, ::wparam wparam, ::lparam lparam)
 //   {
 //
-//      return ::windowing::window::post_message(atom, wparam, lparam);
+//      return ::windowing::window::post_message(emessage, wparam, lparam);
 //      //return ::post_me((oswindow)get_handle(), message, wparam, lparam) != false;
 //
 //   }
@@ -2935,7 +2935,7 @@ namespace aura_android
 
    //}
 
-   //void interaction_impl::send_message_to_descendants(const ::atom & atom, wparam wparam, lparam lparam, bool bDeep, bool bOnlyPerm)
+   //void interaction_impl::send_message_to_descendants(::enum_message emessage, ::wparam wparam, ::lparam lparam, bool bDeep, bool bOnlyPerm)
    //{
    //   ASSERT(::is_window((oswindow)get_handle()));
    //   //interaction_impl::send_message_to_descendants(get_handle(), message, wparam, lparam, bDeep, bOnlyPerm);
@@ -3318,7 +3318,7 @@ namespace aura_android
 
    //}
 
-   //LPARAM interaction_impl::SendDlgItemMessage(int nID, const ::atom & atom, wparam wparam, lparam lparam)
+   //LPARAM interaction_impl::SendDlgItemMessage(int nID, ::enum_message emessage, ::wparam wparam, ::lparam lparam)
    //{
 
    //   throw ::not_implemented();
@@ -3557,7 +3557,7 @@ namespace aura_android
 
    //}
 
-   //bool interaction_impl::SendNotifyMessage(const ::atom & atom, wparam wparam, lparam lparam)
+   //bool interaction_impl::SendNotifyMessage(::enum_message emessage, ::wparam wparam, ::lparam lparam)
    //{
 
    //   throw ::not_implemented();

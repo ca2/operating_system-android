@@ -123,10 +123,10 @@ namespace aura_android
       //virtual ::user::interaction * set_active_window() override;
 
 
-      //LRESULT send_message(const ::atom & atom,WPARAM wParam = 0,lparam lParam = 0) override;
-      //bool post_message(const ::atom & atom,WPARAM wParam = 0,lparam lParam = 0) override;
+      //LRESULT send_message(const ::atom & atom,const ::wparam & wparam = {},const ::lparam & lparam = {}) override;
+      //bool post_message(const ::atom & atom,const ::wparam & wparam = {},const ::lparam & lparam = {}) override;
 
-      //bool SendNotifyMessage(const ::atom & atom,WPARAM wParam,lparam lParam) override;
+      //bool SendNotifyMessage(::enum_message emessage, ::wparam wparam, ::lparam lparam) override;
       //bool SendChildNotifyLastMsg(LRESULT* pResult = nullptr);
 
       //bool DragDetect(::int_point pt) const;
@@ -249,7 +249,7 @@ namespace aura_android
       //virtual ::user::interaction * GetNextDlgGroupItem(::user::interaction * pWndCtl, bool bPrevious = false) const;
       //virtual ::user::interaction * GetNextDlgTabItem(::user::interaction * pWndCtl, bool bPrevious = false) const;
       //virtual unsigned int IsDlgButtonChecked(int nIDButton) const override;
-      //virtual LRESULT SendDlgItemMessage(int nID, const ::atom & atom, WPARAM wParam = 0, LPARAM lParam = 0) override;
+      //virtual LRESULT SendDlgItemMessage(int nID, ::enum_message emessage, ::wparam wparam = {}, ::lparam lparam = {}) override;
       //virtual void SetDlgItemInt(int nID, unsigned int nValue, bool bSigned = true) override;
       //virtual void SetDlgItemText(int nID, const ::string & lpszString) override;
 
@@ -508,7 +508,7 @@ namespace aura_android
 
       // for handling default processing
       //LRESULT Default();
-      //virtual LRESULT DefWindowProc(const ::atom & atom,WPARAM wParam,lparam lParam);
+      //virtual LRESULT DefWindowProc(::enum_message emessage, ::wparam wparam, ::lparam lparam);
 
       //virtual void post_non_client_destroy() override;
 
