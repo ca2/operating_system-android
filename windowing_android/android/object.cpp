@@ -202,7 +202,7 @@ int jni_object::get_i(const char * pszField)
 
 
 
-void jni_object::set_l(const char * pszField, huge_integer hi)
+void jni_object::set_l(const char * pszField, long long hi)
 {
 
    set_l(field_l(pszField), hi);
@@ -211,7 +211,7 @@ void jni_object::set_l(const char * pszField, huge_integer hi)
 
 
 
-huge_integer jni_object::get_l(const char * pszField)
+long long jni_object::get_l(const char * pszField)
 {
 
    return get_l(field_l(pszField));
@@ -372,7 +372,7 @@ int jni_object::get_i(jfieldID fid)
 
 
 
-void jni_object::set_l(jfieldID fid, huge_integer hi)
+void jni_object::set_l(jfieldID fid, long long hi)
 {
 
    t_pjnienv->SetLongField(m_jobject, fid, hi);
@@ -380,7 +380,7 @@ void jni_object::set_l(jfieldID fid, huge_integer hi)
 }
 
 
-huge_integer jni_object::get_l(jfieldID fid)
+long long jni_object::get_l(jfieldID fid)
 {
 
    return t_pjnienv->GetLongField(m_jobject, fid);

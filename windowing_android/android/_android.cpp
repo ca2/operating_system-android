@@ -442,10 +442,10 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 
 
-//huge_integer oswindow_id(oswindow w)
+//long long oswindow_id(oswindow w)
 //{
 //
-//   return (huge_integer)(w);
+//   return (long long)(w);
 //
 //}
 

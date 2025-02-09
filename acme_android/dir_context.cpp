@@ -238,7 +238,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, huge_integer_array * piaSize, enum_extract eextract)
+   //bool directory_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, long_long_array * piaSize, enum_extract eextract)
    //{
 
 
@@ -577,7 +577,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, huge_integer_array * piaSize)
+   //bool directory_context::ls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, long_long_array * piaSize)
    //{
 
 

@@ -49,9 +49,9 @@ public:
 
    int get_i(jfieldID jfieldid);
 
-   void set_l(jfieldID jfieldid, huge_integer hi);
+   void set_l(jfieldID jfieldid, long long hi);
 
-   huge_integer get_l(jfieldID jfieldid);
+   long long get_l(jfieldID jfieldid);
 
    void set_f(jfieldID jfieldid, float f);
 
@@ -85,9 +85,9 @@ public:
 
    int get_i(const char* pszField);
 
-   void set_l(const char* pszField, huge_integer hi);
+   void set_l(const char* pszField, long long hi);
 
-   huge_integer get_l(const char* pszField);
+   long long get_l(const char* pszField);
 
    void set_f(const char* pszField, float f);
 
