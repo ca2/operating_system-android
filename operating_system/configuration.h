@@ -120,8 +120,8 @@
 
 
 
-#ifndef ANDROID
-#define ANDROID 1
+#ifndef __ANDROID__
+#define __ANDROID__ 1
 #ifndef __arm__
 #define MD_SWAP
 #endif

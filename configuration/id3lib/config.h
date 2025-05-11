@@ -72,7 +72,7 @@
 /* Define if you have the ftruncate function.  */
 /* #undef HAVE_TRUNCATE */
 
-//#ifdef ANDROID
+//#ifdef __ANDROID__
 //#define HAVE_UNISTD_H 1
 //#define HAVE_SYS_STAT_H 1
 //#endif

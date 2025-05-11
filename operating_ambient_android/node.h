@@ -5,11 +5,11 @@
 #include "aura_android/node.h"
 
 
-namespace windowing_android
+namespace operating_ambient_android
 {
 
 
-   class CLASS_DECL_WINDOWING_ANDROID node :
+   class CLASS_DECL_OPERATING_AMBIENT_ANDROID node :
       virtual public ::aura_android::node
    {
    public:
@@ -37,7 +37,7 @@ namespace windowing_android
    };
 
 
-} // namespace windowing_android
+} // namespace operating_ambient_android
 
 
 

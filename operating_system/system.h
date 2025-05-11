@@ -239,7 +239,7 @@ typedef unsigned long   u_long;
 #endif
 
 
-#ifndef ANDROID
+#ifndef __ANDROID__
 typedef uint8_t unsigned char;
 #endif
 
@@ -261,9 +261,9 @@ typedef uint8_t unsigned char;
 
 
 
-typedef unsigned short        wd16_character;
-typedef wchar_t               wd32_character;
-typedef wd32_character        wide_character;
+//typedef unsigned short        wd16_character;
+//typedef wchar_t               wd32_character;
+//typedef wd32_character        wide_character;
 
 #define DECL_C
 

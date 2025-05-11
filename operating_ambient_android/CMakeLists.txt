@@ -1,38 +1,38 @@
 cmake_minimum_required(VERSION 3.16)
-project(acme_linux CXX)
+project(operating_ambient_android CXX)
 
 
 list(APPEND library_source
    _.cpp
    _.h
-   _acme_linux.h
+   _operating_ambient_android.h
    _factory.cpp
    #directory_system.cpp
    #directory_system.h
-   file_system.cpp
-   file_system.h
-   path_system.cpp
-   path_system.h
+   #file_system.cpp
+   #file_system.h
+   #path_system.cpp
+   #path_system.h
    #console.cpp
    #console.h
    #console_ncurses.cpp
-   directory_context.cpp
-   directory_context.h
-   directory_system.cpp
-   directory_system.h
-   file.cpp
-   file.h
-   file_context.cpp
-   file_context.h
-   file_system.cpp
-   file_system.h
+   #directory_context.cpp
+   #directory_context.h
+        #directory_system.cpp
+        #directory_system.h
+        #file.cpp
+        #file.h
+        #file_context.cpp
+        #file_context.h
+        #file_system.cpp
+        #file_system.h
    framework.cpp
    framework.h
    #integration_context.cpp
    #integration_context.h
    node.cpp
    node.h
-   node_unistd.cpp
+        #node_unistd.cpp
    #stdio_file.cpp
    #stdio_file.h
 )

@@ -2,6 +2,6 @@
 
 
 
-#define ANDROID
+#define __ANDROID__
 #define ANDROID_NDK
-#define ANDROID
+#define __ANDROID__

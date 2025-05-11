@@ -7,15 +7,21 @@
 #include "aura/windowing/display.h"
 
 
-namespace windowing_android
-{
+namespace android {
 
-   // X11 contribution : a display may contain more than one monitor
 
-   class CLASS_DECL_AURA display :
-      virtual public ::windowing::display
-   {
-   public:
+    namespace acme {
+
+
+        namespace windowing {
+
+            // X11 contribution : a display may contain more than one monitor
+
+            class CLASS_DECL_AURA display
+
+            :
+            virtual public ::windowing::display {
+            public:
 
 
 //      void* m_pDisplay;
@@ -35,8 +41,13 @@ namespace windowing_android
 //      double                        m_dpi;
 
 
-      display();
-      ~display() override;
+            display();
+
+            ~
+
+            display()
+
+            override;
 
 
 //      virtual void initialize_display(::windowing::windowing* pwindowing);
@@ -143,13 +154,19 @@ namespace windowing_android
 
 
 
-   };
+        };
 
 
-   //using display_map = iptr_map < ::pointer<display >>
+        //using display_map = iptr_map < ::pointer<display >>
 
 
-} // namespace windowing
+    } // namespace windowing
+
+
+} // namespace acme
+
+
+} // namespace android
 
 
 

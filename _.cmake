@@ -39,9 +39,9 @@ set(USE_PKGCONFIG TRUE)
 set(CURL_NANO_HTTP TRUE)
 set(HAS_WAYLAND TRUE)
 set(HAS_X11 TRUE)
-set(TOOL_RELEASE_NAME "linux")
-set(MAIN_STORE_SLASHED_OPERATING_SYSTEM "linux")
-set(OPERATING_SYSTEM_TOOL_FOLDER "tool-linux")
+set(TOOL_RELEASE_NAME "android")
+set(MAIN_STORE_SLASHED_OPERATING_SYSTEM "android")
+set(OPERATING_SYSTEM_TOOL_FOLDER "tool-android")
 
 
 add_compile_definitions(TOOL_FOLDER_OPERATING_SYSTEM_NAME="${TOOL_RELEASE_NAME}")
@@ -156,9 +156,9 @@ set(CMAKE_INSTALL_RPATH $ORIGIN)
 #set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 
-set(LINUX TRUE)
+set(LINUX FALSE)
 set(FREEBSD FALSE)
-set(OPERATING_SYSTEM_NAME "linux")
+set(OPERATING_SYSTEM_NAME "android")
 set(OPERATING_SYSTEM_POSIX TRUE)
 set(FILE_SYSTEM_INOTIFY TRUE)
 set(POSIX_SPAWN TRUE)
@@ -166,7 +166,7 @@ set(WITH_X11 TRUE)
 set(WITH_XCB TRUE)
 set(USE_OPENSSL TRUE)
 set(PTHREAD TRUE)
-set(PLATFORM_NAME "linux")
+set(PLATFORM_NAME "android")
 
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
@@ -215,12 +215,12 @@ set(default_write_text "write_text_pango")
 set(default_audio "audio_alsa")
 set(default_input "input_libinput")
 set(default_music_midi "music_midi_alsa")
-set(default_node "node_linux")
+set(default_node "node_android")
 set(default_audio_mixer "audio_mixer_alsa")
 set(default_gpu "gpu_opengl")
 set(default_networking "networking_bsd")
-set(default_acme "acme_linux")
-set(default_apex "apex_linux")
+set(default_acme "acme_android")
+set(default_apex "apex_android")
 set(default_nano_graphics "nano_graphics_cairo")
 
 
@@ -250,7 +250,7 @@ list(APPEND aura_libraries
    ${apex_libraries}
    aura
    aura_posix
-   aura_linux
+   aura_android
    node_android
 )
 

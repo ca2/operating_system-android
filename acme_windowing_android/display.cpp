@@ -9,12 +9,17 @@
 //#include "acme/prototype/geometry2d/_impl.h"
 
 
-namespace windowing_android
+namespace android
 {
 
 
-   display::display()
-   {
+    namespace acme
+    {
+
+    namespace windowing {
+
+
+        display::display() {
 
 //      m_pDisplay = nullptr;
 //
@@ -30,14 +35,13 @@ namespace windowing_android
 //
 //      defer_create_synchronization();
 
-   }
+        }
 
 
-   display::~display()
-   {
+        display::~display() {
 
 
-   }
+        }
 
 
 
@@ -1406,6 +1410,12 @@ namespace windowing_android
 //
 //
 //   }
+
+
+        } // namespace windowing
+
+
+    }// namespace acme
 
 
 } // namespace windowing_display

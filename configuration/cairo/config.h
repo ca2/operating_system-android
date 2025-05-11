@@ -121,14 +121,14 @@
 /* Define to 1 if you have the `FT_GlyphSlot_Embolden' function. */
 #undef HAVE_FT_GLYPHSLOT_EMBOLDEN
 
-//#if defined(_WIN32) || defined(LINUX)  || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX)  || defined(__ANDROID__)
 #define HAVE_FT_GLYPHSLOT_EMBOLDEN 1
 //#endif
 
 /* Define to 1 if you have the `FT_GlyphSlot_Oblique' function. */
 #undef HAVE_FT_GLYPHSLOT_OBLIQUE
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_FT_GLYPHSLOT_OBLIQUE 1
 //#endif
 
@@ -137,7 +137,7 @@
 #undef HAVE_FT_LIBRARY_SETLCDFILTER
 
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_FT_LIBRARY_SETLCDFILTER 1
 //#endif
 
@@ -145,7 +145,7 @@
 /* Define to 1 if you have the `FT_Load_Sfnt_Table' function. */
 #undef HAVE_FT_LOAD_SFNT_TABLE
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_FT_LOAD_SFNT_TABLE 1
 //#endif
 
@@ -224,21 +224,21 @@
 #undef HAVE_SIGNAL_H
 
 /* Define to 1 if you have the <stdint.h> header file. */
-//#if defined(LINUX) || defined(ANDROID)
+//#if defined(LINUX) || defined(__ANDROID__)
 #define HAVE_STDINT_H 1
 //#endif
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_STDLIB_H 1
 //#endif
 
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_STRINGS_H 1
 //#endif
 
@@ -278,7 +278,7 @@
 /* Define to 1 if you have the <time.h> header file. */
 #undef HAVE_TIME_H
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_TIME_H 1
 //#endif
 
@@ -287,7 +287,7 @@
 
 /* Define to 1 if the system has the type `uint64_t'. */
 
-//#if defined(_WIN32) || defined(LINUX) || defined(ANDROID)
+//#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_UINT64_T 1
 //#endif
 
@@ -464,7 +464,7 @@
 
 #define CAIRO_HAS_FT_FONT 1
 
-#ifdef ANDROID
+#ifdef __ANDROID__
 
 //struct lconv
 //{

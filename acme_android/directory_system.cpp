@@ -26,9 +26,30 @@ namespace acme_android
 
       m_pathHome = system()->m_pathCacheDirectory / "home";
 
+
+       m_pathRoaming = system()->m_pathCacheDirectory / ".config";
+
       m_pathCa2Config = system()->m_pathCacheDirectory / ".config/ca2";
 
    }
+
+
+
+    ::file::path directory_system::home()
+    {
+
+        return m_pathHome;
+
+    }
+
+
+    ::file::path directory_system::roaming()
+    {
+
+        return m_pathRoaming;
+
+    }
+
 
 
 } // namespace acme_android

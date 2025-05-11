@@ -506,7 +506,7 @@
 #define HAVE_STRDUP 1
 #define strcasecmp _stricmp
 #define strncasecmp _strnicmp
-#elif defined(ANDROID)
+#elif defined(__ANDROID__)
 #define HAVE_STRING_H 1
 #define HAVE_STRERROR 1
 #define HAVE_INTTYPES_H 1

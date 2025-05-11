@@ -25,6 +25,9 @@ namespace acme_android
       ::file::path  			   m_strCommonPrograms;
 
 
+    ::file::path  			   m_pathRoaming;
+
+
       directory_system();
       ~directory_system() override;
 
@@ -32,8 +35,14 @@ namespace acme_android
       void initialize(::particle * pparticle) override;
 
 
+    ::file::path home() override;
 
-   };
+
+    ::file::path roaming() override;
+
+
+
+};
 
 
 } // namespace acme_android
