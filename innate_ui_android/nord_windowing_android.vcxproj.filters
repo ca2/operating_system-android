@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="_windowing_android.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="_.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windowing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_composition_client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_asset.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_asset_manager.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\_internal.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\bind.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\driver.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\media_library.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\message_box.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+    <ClInclude Include="android\object.h">
+      <Filter>Header Files\android</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3ade454a-f2ec-455c-aca9-85e24f5186c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1d25a7cf-2192-483c-bd1d-e25ec34c9be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\android">
+      <UniqueIdentifier>{c817fd27-017e-4258-9dbf-5f1311065f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\android">
+      <UniqueIdentifier>{ece1b0de-f0f1-4c44-af47-fa20b48e7db4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windowing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="_factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_composition_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_android.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_asset.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_asset_manager.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\_jni_environment.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\bind.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\driver.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\com_ace_main_activity.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\com_ace_impact.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\com_ace_enumerate.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\media_library.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\message_box.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\object.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="android\com_ace_InputConnection.cpp">
+      <Filter>Source Files\android</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
