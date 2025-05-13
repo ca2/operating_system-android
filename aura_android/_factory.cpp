@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "interaction_impl.h"
+//#include "aaa_interaction_impl.h"
 
 
 __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory);
@@ -18,7 +18,7 @@ __FACTORY_EXPORT void aura_android_factory(::factory::factory * pfactory)
    aura_posix_factory( pfactory);
 
 
-   pfactory->add_factory_item < ::aura_android::interaction_impl, ::windowing::window >();
+   pfactory->add_factory_item < ::aura_android::node, ::platform::node >();
 
 
 }

@@ -83,7 +83,7 @@ namespace acme_android
 
       path = "/";
 
-      path.m_iDir = 1;
+      path.m_etype = ::file::e_type_existent_folder;
 
       listing.defer_add(path);
 
@@ -795,7 +795,7 @@ namespace acme_android
 
       }
 
-      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !ansi_count_compare_ci(&((const char *)str)[iLast - 3], ".zip", 4))
+      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !case_insensitive_ansi_count_compare(&((const char *)str)[iLast - 3], ".zip", 4))
       {
 
          return true;

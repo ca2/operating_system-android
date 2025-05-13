@@ -72,12 +72,12 @@ public:
 
    ::pointer<asset>           m_passetResourceFolder;
 
-   ::particle_pointer                        m_pparticleMutexMessageBoxSequencer;
-   ::pointer_array < ::sequencer < ::conversation > > m_sequenceraMessageBox;
+   ::particle_pointer                     m_pparticleMutexMessageBoxSequencer;
+   ::pointer_array < ::message_box >      m_messageboxa;
 
 
-   ::particle_pointer                        m_pparticleMutexListFileEnumerate;
-   ::string_array                                  m_straListFileEnumerate;
+   ::particle_pointer                     m_pparticleMutexListFileEnumerate;
+   ::string_array                         m_straListFileEnumerate;
 
 
    operating_system_driver();

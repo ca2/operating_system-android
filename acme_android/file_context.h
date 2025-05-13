@@ -16,8 +16,8 @@ namespace acme_android
 
 
 
-      ::pointer<directory_system>      m_pdirectorysystem;
-      ::pointer<file_system>     m_pfilesystem;
+      ::pointer<::acme_android::directory_system>      m_pdirectorysystem;
+      ::pointer<::acme_android::file_system>     m_pfilesystem;
 
 
       file_context();
