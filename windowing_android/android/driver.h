@@ -73,7 +73,7 @@ public:
    ::pointer<asset>           m_passetResourceFolder;
 
    ::particle_pointer                        m_pparticleMutexMessageBoxSequencer;
-   ::pointer_array < ::sequencer < ::conversation > > m_sequenceraMessageBox;
+   ::pointer_array < ::message_box > m_messageboxa;
 
 
    ::particle_pointer                        m_pparticleMutexListFileEnumerate;
@@ -97,8 +97,8 @@ public:
    static void set(operating_system_driver* pdriver);
 
 
-   virtual void queue_message_box_sequencer(::sequencer < ::conversation >* psequencer);
-   virtual ::pointer < ::subparticle > pick_message_box_sequencer();
+   virtual void queue_message_box(::message_box* psequencer);
+   virtual ::pointer < ::message_box > pick_message_box();
 
 
    virtual void open_url(const ::string& strOpenUrl);

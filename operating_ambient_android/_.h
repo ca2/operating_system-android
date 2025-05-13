@@ -5,29 +5,21 @@
 #include "aura_android/_.h"
 
 
-#if defined(_windowing_android_project)
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_EXPORT
+#if defined(_operating_ambient_android_project)
+#define CLASS_DECL_OPERATING_AMBIENT_ANDROID  CLASS_DECL_EXPORT
 #else
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_IMPORT
+#define CLASS_DECL_OPERATING_AMBIENT_ANDROID  CLASS_DECL_IMPORT
 #endif
 
 
-namespace windowing_android
+namespace operating_ambient_android
 {
 
 
-   class window;
-
-   class windowing;
-
-   class display;
-
-   class monitor;
-
-   class text_composition_client;
+    class node;
 
 
-} // namespace aura
+} // namespace operating_ambient_android
 
 
 

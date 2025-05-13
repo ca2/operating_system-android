@@ -29,7 +29,7 @@ __FACTORY_EXPORT void apex_android_factory(::factory::factory * pfactory)
 
    //create_factory < ::android::stdio_file, ::file::text_file >();
    //create_factory < ::android::file, ::file::file >();
-   pfactory->add_factory_item < ::apex_android::os_context, ::os_context >();
+   //pfactory->add_factory_item < ::apex_android::os_context, ::os_context >();
    //pfactory->add_factory_item < ::android::pipe, ::process::pipe >();
    //pfactory->add_factory_item < ::android::process, ::process::process >();
 

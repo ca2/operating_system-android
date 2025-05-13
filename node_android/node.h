@@ -26,11 +26,11 @@ namespace node_android
 
       void on_start_system() override;
 
-      ::pointer<::conversation> create_new_message_box_conversation() override;
+      //::pointer<::message_box> create_new_message_box() override;
 
       void on_change_application_capability() override;
       
-      void open_url(const ::string & strUrl) override;
+      void open_internet_link(const ::string & strUrl) override;
 
 
    };

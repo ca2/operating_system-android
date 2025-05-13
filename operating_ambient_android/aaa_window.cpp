@@ -3,8 +3,8 @@
 // Adapted by Camilo for android 2022-01-05 04:37 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
 #include "display.h"
-#include "window.h"
-#include "windowing.h"
+#include "aaa_window.h"
+#include "aaa_windowing.h"
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "apex/platform/system.h"

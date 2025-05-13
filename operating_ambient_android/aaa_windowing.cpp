@@ -2,8 +2,8 @@
 // recreated by Camilo 2021-01-28 22:35 <3TBS, Mummi and bilbo!!
 // Adapted by Camilo for android 2022-01-05 04:36 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #include "framework.h"
-#include "windowing.h"
-#include "window.h"
+#include "aaa_windowing.h"
+#include "aaa_window.h"
 #include "display.h"
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
