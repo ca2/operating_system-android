@@ -1,8 +1,10 @@
 // Created by camilo on 2022-05-04 00:00 <3ThomasBorregaardSorensen(ThomasLikesNumber5)
 #include "framework.h"
 #include "node.h"
-#include "windowing_android/operating_system_driver.h"
-//#include "android/_internal.h"
+#include "acme/platform/session.h"
+#include "aura/windowing/windowing.h"
+#include "windowing_android/android/driver.h"
+#include "windowing_android/android/_internal.h"
 //
 //
 
@@ -35,19 +37,19 @@ namespace operating_ambient_android
    }
 
 
-   void node::report_exception_to_user(::object* pobject, ::exception& exception, const ::string& strMoreDetails)
+   void node::report_exception_to_user(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails)
    {
 
       if (system()->m_bIsReadyForUserInteraction)
       {
 
-         ::aura_android::node::report_exception_to_user(pobject, exception, strMoreDetails);
+         ::aura_android::node::report_exception_to_user(pparticle, exception, strMoreDetails);
 
       }
       else
       {
 
-         operating_system_log_exception(pobject, exception, strMoreDetails);
+         operating_system_log_exception(pparticle, exception, strMoreDetails);
 
       }
 
@@ -66,11 +68,15 @@ namespace operating_ambient_android
       rectangle.right() = pdriver->m_iWidth;
       rectangle.bottom() = pdriver->m_iHeight;
 
-      auto psession = session();
+      //auto psession = session();
 
-      psession->defer_initialize_host_window(rectangle);
+      auto psystem = system();
 
-      system()->aaa_post_initial_request();
+      auto pwindowing = psystem->windowing();
+
+      pwindowing->defer_initialize_host_window(&rectangle);
+
+      //system()->aaa_post_initial_request();
 
    }
 

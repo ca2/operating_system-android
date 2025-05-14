@@ -24,9 +24,9 @@ namespace windowing_android
 
       m_bRootSelectInput = false;
 
-      m_itask = -1;
+      //m_itask = -1;
 
-      m_pWindowing4 = this;
+      //m_pWindowing4 = this;
 
       m_bFirstWindowMap = false;
 
@@ -57,29 +57,29 @@ namespace windowing_android
    }
 
 
-   ::windowing::window * windowing::new_window(::windowing::window * pimpl)
-   {
-
-      ::pointer<::windowing_android::window>pwindow = pimpl->__create < ::windowing::window >();
-
-      if (!pwindow)
-      {
-
-         return nullptr;
-
-      }
-
-      pwindow->m_pwindowing = this;
-
-      pwindow->m_pwindow = pimpl;
-
-      pimpl->m_pwindow = pwindow;
-
-      pwindow->create_window(pimpl);
-
-      return pwindow;
-
-   }
+//   ::windowing::window * windowing::new_window(::windowing::window * pimpl)
+//   {
+//
+//      ::pointer<::windowing_android::window>pwindow = pimpl->__create < ::windowing::window >();
+//
+//      if (!pwindow)
+//      {
+//
+//         return nullptr;
+//
+//      }
+//
+//      pwindow->m_pwindowing = this;
+//
+//      pwindow->m_pwindow = pimpl;
+//
+//      pimpl->m_pwindow = pwindow;
+//
+//      pwindow->create_window(pimpl);
+//
+//      return pwindow;
+//
+//   }
 
 
    void windowing::erase_window(::windowing::window * pwindow)
@@ -106,7 +106,7 @@ namespace windowing_android
 
       initialize_windowing();
 
-      auto pdisplay = __create < ::windowing::display >();
+      auto pdisplay = __øcreate < ::windowing::display >();
 
       //      if(!pdisplay)
       //      {
@@ -119,7 +119,7 @@ namespace windowing_android
 
             //estatus =
             //
-      pdisplay->initialize_display(this);
+      //pdisplay->initialize_display(this);
 
       //      if(!estatus)
       //      {
@@ -171,13 +171,15 @@ namespace windowing_android
 
       __construct_new(m_phostinteraction);
 
-      m_phostinteraction->place(*lpcrect);
+      m_phostinteraction->set_rectangle(*lpcrect);
 
-      m_phostinteraction->create_host(e_parallelization_synchronous);
+      //m_phostinteraction->create_host(e_parallelization_synchronous);
+
+      m_phostinteraction->create_window();
 
       m_phostinteraction->display();
 
-      m_phostinteraction->set_need_layout();
+      //m_phostinteraction->set_need_layout();
 
       m_phostinteraction->set_need_redraw();
 
@@ -186,7 +188,7 @@ namespace windowing_android
    }
 
 
-   ::windowing::window* windowing::get_application_host_window()
+   ::acme::windowing::window* windowing::get_application_host_window()
    {
 
       return m_pwindowApplicationHost;
@@ -246,57 +248,57 @@ namespace windowing_android
    //}
 
 
-   bool windowing::x11_runnable_step()
-   {
-
-      bool bHandled = false;
-
-      //if (m_pdisplay)
-      //{
-
-      //   if (m_pdisplay->m_px11display)
-      //   {
-
-      //      while (m_pdisplay->m_px11display->x11_posted())
-      //      {
-
-      //         bHandled = true;
-
-      //      }
-
-      //   }
-
-      //}
-
-      synchronous_lock synchronouslock(synchronization());
-
-      if (m_procedurelist.is_empty())
-      {
-
-         return bHandled;
-
-      }
-
-      do
-      {
-
-         {
-
-            auto routine = m_procedurelist.pick_head();
-
-            synchronouslock.unlock();
-
-            routine();
-
-         }
-
-         synchronouslock.lock();
-
-      } while (m_procedurelist.has_element());
-
-      return true;
-
-   }
+//   bool windowing::x11_runnable_step()
+//   {
+//
+//      bool bHandled = false;
+//
+//      //if (m_pdisplay)
+//      //{
+//
+//      //   if (m_pdisplay->m_px11display)
+//      //   {
+//
+//      //      while (m_pdisplay->m_px11display->x11_posted())
+//      //      {
+//
+//      //         bHandled = true;
+//
+//      //      }
+//
+//      //   }
+//
+//      //}
+//
+//      synchronous_lock synchronouslock(synchronization());
+//
+//      if (m_procedurelist.is_empty())
+//      {
+//
+//         return bHandled;
+//
+//      }
+//
+//      do
+//      {
+//
+//         {
+//
+//            auto routine = m_procedurelist.pick_head();
+//
+//            synchronouslock.unlock();
+//
+//            routine();
+//
+//         }
+//
+//         synchronouslock.lock();
+//
+//      } while (m_procedurelist.has_element());
+//
+//      return true;
+//
+//   }
 
 
    ::windowing::display * windowing::display()
@@ -440,7 +442,7 @@ namespace windowing_android
    }
 
 
-   ::windowing::window* windowing::window(oswindow oswindow)
+   ::acme::windowing::window* windowing::window(oswindow oswindow)
    {
 
       return oswindow;
@@ -500,105 +502,105 @@ namespace windowing_android
    //}
 
 
-   void windowing::release_mouse_capture(::thread * pthread)
-   {
+//   void windowing::release_mouse_capture(::thread * pthread)
+//   {
+//
+//      if (!m_pwindowMouseCapture)
+//      {
+//
+//         return;
+//
+//      }
+//
+//      auto pwindow = m_pwindowMouseCapture->m_pwindow;
+//
+//      if (pwindow)
+//      {
+//
+//         pwindow->m_puserinteractionMouseCapture.release();
+//
+//      }
+//
+//      m_pwindowMouseCapture.release();
+//
+//      //auto estatus =
+//      //
+//      //m_pdisplay->release_mouse_capture();
+//
+//      //      if(!estatus)
+//      //      {
+//      //
+//      //         return estatus;
+//      //
+//      //      }
+//      //
+//      //      return estatus;
+//
+//   }
 
-      if (!m_pwindowMouseCapture)
-      {
 
-         return;
-
-      }
-
-      auto pwindow = m_pwindowMouseCapture->m_pwindow;
-
-      if (pwindow)
-      {
-
-         pwindow->m_puserinteractionMouseCapture.release();
-
-      }
-
-      m_pwindowMouseCapture.release();
-
-      //auto estatus =
-      //
-      //m_pdisplay->release_mouse_capture();
-
-      //      if(!estatus)
-      //      {
-      //
-      //         return estatus;
-      //
-      //      }
-      //
-      //      return estatus;
-
-   }
-
-
-   void windowing::clear_keyboard_focus(::user::element * pelementGainingFocusIfAny)
-   {
-
-      if (!m_pwindowKeyboardFocus)
-      {
-
-         return;
-
-      }
-
-      auto pwindow = m_pwindowKeyboardFocus->m_pwindow;
-
-      if (pwindow)
-      {
-
-         if (pwindow->m_pacmeuserinteractionKeyboardFocus)
-         {
-
-            pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
-
-            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
-
-         }
-
-         auto puserinteraction = pwindow->m_puserinteraction;
-
-         if (puserinteraction)
-         {
-
-            puserinteraction->post_message(e_message_kill_focus);
-
-         }
-
-         //if (pwindow->aaa_m_pacmeuserinteractionKeyboardFocus)
-         //{
-
-         //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
-
-         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
-
-         //}
-
-         pwindow->m_pacmeuserinteractionKeyboardFocus.release();
-
-      }
-
-      m_pwindowKeyboardFocus.release();
-
-      //auto estatus =
-      //
-      //m_pdisplay->release_mouse_capture();
-
-      //      if(!estatus)
-      //      {
-      //
-      //         return estatus;
-      //
-      //      }
-      //
-      //      return estatus;
-
-   }
+//   void windowing::clear_keyboard_focus(::user::element * pelementGainingFocusIfAny)
+//   {
+//
+//      if (!m_pwindowKeyboardFocus)
+//      {
+//
+//         return;
+//
+//      }
+//
+//      auto pwindow = m_pwindowKeyboardFocus->m_pwindow;
+//
+//      if (pwindow)
+//      {
+//
+//         if (pwindow->m_pacmeuserinteractionKeyboardFocus)
+//         {
+//
+//            pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
+//
+//            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//
+//         }
+//
+//         auto puserinteraction = pwindow->m_puserinteraction;
+//
+//         if (puserinteraction)
+//         {
+//
+//            puserinteraction->post_message(e_message_kill_focus);
+//
+//         }
+//
+//         //if (pwindow->aaa_m_pacmeuserinteractionKeyboardFocus)
+//         //{
+//
+//         //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
+//
+//         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//
+//         //}
+//
+//         pwindow->m_pacmeuserinteractionKeyboardFocus.release();
+//
+//      }
+//
+//      m_pwindowKeyboardFocus.release();
+//
+//      //auto estatus =
+//      //
+//      //m_pdisplay->release_mouse_capture();
+//
+//      //      if(!estatus)
+//      //      {
+//      //
+//      //         return estatus;
+//      //
+//      //      }
+//      //
+//      //      return estatus;
+//
+//   }
 
 
    ::windowing::text_editor_interface * windowing::get_text_editor_interface()

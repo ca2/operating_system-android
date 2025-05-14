@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "aura/windowing/display.h"
+#include "acme/windowing/display.h"
 
 
 namespace android {
@@ -20,7 +20,7 @@ namespace android {
             class CLASS_DECL_AURA display
 
             :
-            virtual public ::windowing::display {
+        virtual public ::acme::windowing::display {
             public:
 
 

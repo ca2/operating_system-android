@@ -11,8 +11,8 @@ list(APPEND library_source
         #directory_system.h
         display.cpp
         display.h
-        monitor.cpp
-        monitor.h
+#        monitor.cpp
+#        monitor.h
         #console.cpp
         #console.h
         #console_ncurses.cpp
@@ -36,8 +36,8 @@ list(APPEND library_source
         #node_unistd.cpp
         ##stdio_file.cpp
         #stdio_file.h
-        text_composition_client.cpp
-        text_composition_client.h
+        #text_composition_client.cpp
+        #text_composition_client.h
         window.cpp
         window.h
         windowing.cpp

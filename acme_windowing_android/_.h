@@ -12,19 +12,31 @@
 #endif
 
 
-namespace windowing_android
+namespace android
 {
 
+    namespace acme
+    {
 
-   class window;
 
-   class windowing;
+        namespace windowing
+        {
 
-   class display;
 
-   class monitor;
+            class window;
 
-   class text_composition_client;
+            class windowing;
+
+            class display;
+
+            //class monitor;
+
+            //class text_composition_client;
+
+        } // namespace windowing
+
+
+    } // namespace acme
 
 
 } // namespace aura

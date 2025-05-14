@@ -2,11 +2,19 @@
 // created by Camilo 2021-01-31 05:16 BRT <3CamiloSasukeThomasBorregaardSoerensen
 #include "framework.h"
 #include "monitor.h"
-#include "android/_internal.h"
+//#include "android/_internal.h"
 
 
-namespace windowing_android
+namespace android
 {
+
+
+    namespace acme
+    {
+
+
+        namespace windowing
+        {
 
 
    monitor::monitor()
@@ -84,12 +92,22 @@ namespace windowing_android
 
       m_rectangle.left() = 0;
       m_rectangle.top() = 0;
-      m_rectangle.right() = ::operating_system_driver::get()->m_iWidth;
-      m_rectangle.bottom() = ::operating_system_driver::get()->m_iHeight;
+      m_rectangle.right() = 0;
+      m_rectangle.bottom() = 0;
+      //m_rectangle.right() = ::operating_system_driver::get()->m_iWidth;
+      //m_rectangle.bottom() = ::operating_system_driver::get()->m_iHeight;
 
       return ::success;
 
    }
+
+
+            //using monitor_map = iptr_map < ::pointer<monitor >>
+
+        } // namespace windowing
+
+
+    } // namespace acme
 
 
 } // namespace windowing_android

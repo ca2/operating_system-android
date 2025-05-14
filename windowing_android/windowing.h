@@ -49,12 +49,12 @@ namespace windowing_android
       void initialize_windowing() override;
 
       
-      void terminate_windowing() override;
+      //void terminate_windowing() override;
 
 
       void defer_initialize_host_window(const ::int_rectangle* lpcrect) override;
 
-      ::windowing::window* get_application_host_window() override;
+      ::acme::windowing::window* get_application_host_window() override;
 
       ////virtual void post_ui_message(const MESSAGE & message);
 
@@ -72,10 +72,10 @@ namespace windowing_android
       //void windowing_post_quit() override;
 
 
-      void release_mouse_capture(::thread * pthread) override;
+      //void release_mouse_capture(::thread * pthread) override;
 
 
-      void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
+    //                            void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
 
 
       //virtual void x11_main();
@@ -89,13 +89,15 @@ namespace windowing_android
 
       //virtual ::windowing::window * new_message_window(::windowing::window * pimpl) override;
 
-      ::windowing::window * new_window(::windowing::window * pimpl) override;
+      //::pointer < ::acme::windowing::window > create_new_window(::windowing::window * pimpl) override;
+
+    //::pointer < ::acme::windowing::window > create_new_window() override;
 
       void erase_window(::windowing::window * pwindow) override;
 
       //virtual ::windowing_android::window * _window(Window window);
 
-      ::windowing::window* window(oswindow oswindow) override;
+      ::acme::windowing::window* window(oswindow oswindow) override;
 
       virtual void _message_handler(void * p) override;
 
@@ -127,7 +129,7 @@ namespace windowing_android
 
       //void user_post(const ::procedure & procedure) override;
 
-      bool x11_runnable_step() override;
+      //bool x11_runnable_step() override;
 
       //virtual ::windowing::window * window(oswindow oswindow) override;
 

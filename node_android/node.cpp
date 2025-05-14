@@ -106,14 +106,14 @@ namespace node_android
 
    }
 
-
-   ::pointer<::conversation>node::create_new_message_box_conversation()
-   {
-
-      return __allocate class ::windowing_android::message_box();
-
-   }
-
+//
+//   ::pointer<::acme::user::message_box>node::create_new_message_box()
+//   {
+//
+//      return __allocate class ::windowing_android::message_box();
+//
+//   }
+//
 
 
    ////pointer< ::sequence < ::conversation > > node::get_new_conversation_sequence()
@@ -165,10 +165,12 @@ namespace node_android
    //}
 
 
-   void node::open_url(const ::string & strUrl)
+   void node::open_internet_link(const ::scoped_string & scopedstrUrl,
+                                 const ::scoped_string & scopedstrProfile,
+                                 const ::scoped_string & scopedstrTarget)
    {
 
-      ::operating_system_driver::get()->open_url(strUrl);
+      ::operating_system_driver::get()->open_url(scopedstrUrl);
 
    }
 

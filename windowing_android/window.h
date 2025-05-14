@@ -46,7 +46,9 @@ namespace windowing_android
       ~window() override;
 
 
-      void create_window(::windowing::window * pimpl) override;
+      //void create_window(::windowing::window * pimpl) override;
+
+      void create_window() override;
 
 
       //static Atom get_window_long_atom(int nIndex);
@@ -77,17 +79,17 @@ namespace windowing_android
 
       ::e_status set_window_icon(const ::file::path & path) override;
 
-      bool is_child(::windowing::window * candidateChildOrDescendant) override; // or descendant
+      //bool is_child(::windowing::window * candidateChildOrDescendant) override; // or descendant
 
-      ::windowing::window * get_parent() const override;
+      //::windowing::window * get_parent() const override;
       //virtual ::Window get_parent_handle();
-      ::oswindow get_parent_oswindow() const override;
+      //::oswindow get_parent_oswindow() const override;
 
   //    ::int_point get_mouse_cursor_position() override;
 //
       //virtual ::Window get_parent_handle() const;
 
-      ::windowing_android::windowing * windowing() { return (::windowing_android::windowing *)m_pwindowing->m_pWindowing4; }
+      ::windowing_android::windowing * android_windowing();
       //::windowing_android::display * x11_display() const { return (::windowing_android::display *)m_pdisplay->m_pDisplay; }
 
       void set_parent(::windowing::window * pwindowNewParent) override;

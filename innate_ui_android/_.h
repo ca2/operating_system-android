@@ -5,16 +5,15 @@
 #include "aura_android/_.h"
 
 
-#if defined(_windowing_android_project)
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_EXPORT
+#if defined(_innate_ui_project)
+#define CLASS_DECL_INNATE_UI_ANDROID  CLASS_DECL_EXPORT
 #else
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_IMPORT
+#define CLASS_DECL_INNATE_UI_ANDROID  CLASS_DECL_IMPORT
 #endif
 
 
-namespace windowing_android
+namespace innate_ui_android
 {
-
 
    class window;
 
@@ -27,7 +26,7 @@ namespace windowing_android
    class text_composition_client;
 
 
-} // namespace aura
+} // namespace innate_ui_android
 
 
 
