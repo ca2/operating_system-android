@@ -102,7 +102,7 @@ namespace node_android
 
       psession->defer_initialize_host_window(&rectangle);
 
-      system()->defer_post_initial_request();
+      //system()->defer_post_initial_request();
 
    }
 

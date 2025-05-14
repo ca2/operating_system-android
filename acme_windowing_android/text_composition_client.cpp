@@ -120,10 +120,10 @@ namespace windowing_android
    //}
 
 
-   void text_composition_client::insert_text(string str, bool bForceNewStep, const ::action_context& context)
+   void text_composition_client::insert_text(const ::scoped_string & scopedstr, bool bForceNewStep, const ::action_context& context)
    {
 
-      ::user::text_composition_client::insert_text(str, bForceNewStep, context);
+      ::user::text_composition_client::insert_text(scopedstr, bForceNewStep, context);
 
    }
 

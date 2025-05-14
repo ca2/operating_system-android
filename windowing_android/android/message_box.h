@@ -3,7 +3,7 @@
 
 
 //#include "aura/user/micro/message_box.h"
-#include "acme/platform/conversation_message.h"
+#include "acme/user/user/message_box.h"
 
 
 namespace windowing_android
@@ -11,7 +11,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_AURA message_box :
-      virtual public ::conversation_message
+virtual public ::acme::user::message_box
    {
    public:
 
@@ -31,7 +31,15 @@ namespace windowing_android
       //::e_message_box get_conversation_flags() override;
 
 
-      void do_asynchronously() override;
+//      void do_asynchronously() override;
+
+        void on_realize(::message_box * pmessagebox) override;
+
+
+        void add_button(const ::scoped_string & scopedstrText, enum_dialog_result edialogresult, char chLetter) override;
+
+
+        void run() override;
 
 
    };

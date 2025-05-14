@@ -78,7 +78,7 @@ namespace windowing_android
 
          //pimage->create(sizeWindow);
          // 
-         pimage->create(pitem->m_size);
+         pimage->create(pitem->m_sizeBufferItemDraw);
          //if (!pimage->create(sizeWindow))
          //{
 
@@ -151,7 +151,7 @@ namespace windowing_android
    }
 
 
-   bool buffer::on_update_screen(::graphics::buffer_item * pbufferitem)
+   void buffer::on_update_screen(::graphics::buffer_item * pbufferitem)
    {
 
       auto pdriver = ::operating_system_driver::get();
@@ -183,7 +183,7 @@ namespace windowing_android
 
       //ANativeWindow_unlockAndPost(m_pimpl->m_oswindow->m_engine.app->window);
 
-      return true;
+      //return true;
 
    }
 

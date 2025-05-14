@@ -1,6 +1,7 @@
 // Created by camilo on 2022-05-04 00:00 <3ThomasBorregaardSorensen(ThomasLikesNumber5)
 #include "framework.h"
 #include "node.h"
+#include "windowing_android/operating_system_driver.h"
 //#include "android/_internal.h"
 //
 //
@@ -24,12 +25,12 @@ namespace operating_ambient_android
    }
 
 
-   void node::on_initialize_object()
+   void node::on_initialize_particle()
    {
 
       system()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
 
-      ::aura_android::node::on_initialize_object();
+      ::aura_android::node::on_initialize_particle();
 
    }
 

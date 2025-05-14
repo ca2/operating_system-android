@@ -30,7 +30,8 @@ namespace node_android
 
       void on_change_application_capability() override;
       
-      void open_internet_link(const ::string & strUrl) override;
+      void open_internet_link(const ::scoped_string & strUrl, const ::scoped_string & strProfile = {},
+                              const ::scoped_string & strTarget = {}) override;
 
 
    };
