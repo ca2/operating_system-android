@@ -134,7 +134,7 @@ namespace android
                int cx = r.width();
                int cy = r.height();
 
-               bool bVisible = m_pacmeuserinteraction->is_this_visible();
+               bool bVisible = m_pacmeuserinteraction->is_this_visible(::user::e_layout_design);
 
                //      if(pusersystem)
                //      {
@@ -288,13 +288,13 @@ namespace android
 
                //}
 
-               m_pwindow = pimpl;
+               //m_pwindow = pimpl;
 
-               pimpl->m_pwindow = this;
+               //pimpl->m_pwindow = this;
 
-               pimpl->m_puserinteraction->m_pwindow = this;
+               m_pacmeuserinteraction->m_pacmewindowingwindow = this;
 
-               set_oswindow(this);
+               //set_oswindow(this);
 
                //set_os_data((void *)window);
 
@@ -304,36 +304,35 @@ namespace android
 
                //pimpl->set_os_data(LAYERED_X11, (::windowing_android::window *)this);
 
-               pimpl->m_puserinteraction->m_pinteractionimpl = pimpl;
+               //m_pacmeuserinteraction->m_pinteractionimpl = pimpl;
 
-               pimpl->m_puserinteraction->increment_reference_count(
-                       REFERENCING_DEBUGGING_P_NOTE(this, "native_create_window"));
+               m_pacmeuserinteraction->increment_reference_count();
 
                auto papp = get_app();
 
-               if (!(pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_satellite_window)) {
-
-                  auto psystem = system();
-
-                  string strApplicationServerName = psystem->get_application_server_name();
-
-                  //set_wm_class(strApplicationServerName);
-
-                  //         XClassHint * pupdate = XAllocClassHint();
-                  //
-                  //         auto psystem = system();
-                  //
-                  //         string strApplicationServerName = psystem->get_application_server_name();
-                  //
-                  //         pupdate->res_class = (char *) (const char *) strApplicationServerName;
-                  //
-                  //         pupdate->res_name = (char *) (const char *) strApplicationServerName;
-                  //
-                  //         XSetClassHint(display, window, pupdate);
-                  //
-                  //         XFree(pupdate);
-
-               }
+//               if (!(m_pacmeuserinteraction->m_ewindowflag & e_window_flag_satellite_window)) {
+//
+//                  auto psystem = system();
+//
+//                  string strApplicationServerName = psystem->get_application_server_name();
+//
+//                  //set_wm_class(strApplicationServerName);
+//
+//                  //         XClassHint * pupdate = XAllocClassHint();
+//                  //
+//                  //         auto psystem = system();
+//                  //
+//                  //         string strApplicationServerName = psystem->get_application_server_name();
+//                  //
+//                  //         pupdate->res_class = (char *) (const char *) strApplicationServerName;
+//                  //
+//                  //         pupdate->res_name = (char *) (const char *) strApplicationServerName;
+//                  //
+//                  //         XSetClassHint(display, window, pupdate);
+//                  //
+//                  //         XFree(pupdate);
+//
+//               }
 
 
 
@@ -499,23 +498,23 @@ namespace android
                   {
 
 
-                     if (get_session() != nullptr) {
+                     if (session() != nullptr) {
 
                         // Initial position of window below the cursor position
                         // with invalid (empty) size.
                         // (Hinting for monitor placement, if no stored information
                         // available).
 
-                        if (m_pacmeuserinteraction->const_layout().sketch().display() ==
-                            e_display_undefined) {
-
-                           auto pointCursor = windowing()->display()->get_mouse_cursor_position();
-
-                           m_pacmeuserinteraction->set_position(pointCursor);
-
-                           m_pacmeuserinteraction->set_size({0, 0});
-
-                        }
+//                        if (m_pacmeuserinteraction->const_layout().sketch().display() ==
+//                            e_display_undefined) {
+//
+//                           auto pointCursor = windowing()->display()->get_mouse_cursor_position();
+//
+//                           m_pacmeuserinteraction->set_position(pointCursor);
+//
+//                           m_pacmeuserinteraction->set_size({0, 0});
+//
+//                        }
 
                      }
 
