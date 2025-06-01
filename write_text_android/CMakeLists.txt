@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.16)
-project(windowing_android CXX)
+project(write_text_android CXX)
 
 
 list(APPEND library_source
         _.cpp
         _.h
-        _windowing_android.h
+        _write_text_android.h
         _factory.cpp
         #directory_system.cpp
         #directory_system.h
-        buffer.cpp
-        buffer.h
-        display.cpp
-        display.h
+        #buffer.cpp
+        #buffer.h
+        #display.cpp
+        #display.h
         #console.cpp
         #console.h
         #console_ncurses.cpp
@@ -26,23 +26,29 @@ list(APPEND library_source
         #   file_context.h
         #   file_system.cpp
         #   file_system.h
+        font_enumeration.cpp
+        font_enumeration.h
+        fonts.cpp
+        fonts.h
         framework.cpp
         framework.h
         #integration_context.cpp
         #integration_context.h
-        monitor.cpp
-        monitor.h
+        #monitor.cpp
+        #monitor.h
 #        node.cpp
 #        node.h
         #   node_unistd.cpp
         #stdio_file.cpp
         #stdio_file.h
-        text_composition_client.cpp
-        text_composition_client.h
-        window.cpp
-        window.h
-        windowing.cpp
-        windowing.h
+        #text_composition_client.cpp
+        #text_composition_client.h
+        #window.cpp
+        #window.h
+        #windowing.cpp
+        #windowing.h
+        write_text.cpp
+        write_text.h
 )
 
 

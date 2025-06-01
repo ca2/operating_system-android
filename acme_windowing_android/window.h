@@ -81,7 +81,7 @@ namespace android
 
                 void exit_zoomed() override;
 
-                void set_user_interaction(::windowing::window *pinteraction) override;
+                //void set_user_interaction(::windowing::window *pinteraction) override;
 
                 void post_nc_destroy() override;
 

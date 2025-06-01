@@ -539,7 +539,7 @@ namespace android
 
                   }
 
-                  m_pacmeuserinteraction->m_ewindowflag |= e_window_flag_window_created;
+                  //m_pacmeuserinteraction->m_ewindowflag |= e_window_flag_window_created;
 
                   m_pacmeuserinteraction->set_flag(e_flag_task_started);
 
@@ -578,11 +578,11 @@ namespace android
             }
 
 
-            void windowing::terminate_windowing()
-            {
-
-
-            }
+//            void windowing::terminate_windowing()
+//            {
+//
+//
+//            }
 
 
             bool window::set_icon(::image::image *pimage)
@@ -648,7 +648,7 @@ namespace android
 
                }
 
-               memory m(m_puserinteraction->get_app());
+               memory m(m_pacmeuserinteraction->get_app());
 
                int length = 2 + d1->area();
 
@@ -840,76 +840,78 @@ namespace android
             void window::post_nc_destroy()
             {
 
-               if (!::is_null(this)) {
+               if (!::is_null(this))
+               {
 
-                  m_pwindowing->erase_window(this);
+                  auto pwindowing = ::system()->acme_windowing();
+
+                  pwindowing->erase_window(this);
 
                }
 
             }
 
 
-            void window::set_user_interaction(::windowing::window *pimpl)
-            {
-
-               //      single_lock sl(ms_pmutex, true);
-               //
-               //      if (::is_null(this))
-               //      {
-               //
-               //         throw ::exception(::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));
-               //
-               //      }
-
-               m_pwindow = pimpl;
-
-               m_htask = pimpl->get_app()->get_os_handle();
-
-               m_pmessagequeue = m_pacmeuserinteraction->m_pthreadUserInteraction->get_message_queue();
-
-               //oswindow_assign(this, pimpl);
-
-            }
+//            void window::set_user_interaction(::windowing::window *pimpl)
+//            {
+//
+//               //      single_lock sl(ms_pmutex, true);
+//               //
+//               //      if (::is_null(this))
+//               //      {
+//               //
+//               //         throw ::exception(::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));
+//               //
+//               //      }
+//
+//               m_pwindow = pimpl;
+//
+//               m_htask = pimpl->get_app()->get_os_handle();
+//
+//               m_pmessagequeue = m_pacmeuserinteraction->m_pthreadUserInteraction->get_message_queue();
+//
+//               //oswindow_assign(this, pimpl);
+//
+//            }
 
 
             bool window::is_child(::oswindow oswindow)
             {
 
-               if (oswindow == nullptr || oswindow->m_pwindow == nullptr ||
-                   oswindow->m_pwindow->m_puserinteraction == nullptr) {
+               if (oswindow == nullptr || oswindow->m_pacmeuserinteraction) {
 
                   return false;
 
                }
 
-               if (m_pwindow == nullptr || m_pacmeuserinteraction == nullptr) {
+               if (m_pacmeuserinteraction == nullptr) {
 
                   return false;
 
                }
 
                return m_pacmeuserinteraction->is_child(
-                       oswindow->m_puserinteraction);
+                       oswindow->m_pacmeuserinteraction);
 
             }
-
-
-            ::windowing::window *window::get_parent() const
-            {
-
-               return nullptr;
-
-            }
-
-
-            //virtual ::Window get_parent_handle();
-            oswindow window::get_parent_oswindow() const
-            {
-
-               return nullptr;
-
-            }
-
+//
+//
+//            ::windowing::window *window::get_parent() const
+//            {
+//
+//               return nullptr;
+//
+//            }
+//
+//
+//            //virtual ::Window get_parent_handle();
+//            oswindow window::get_parent_oswindow() const
+//            {
+//
+//               return nullptr;
+//
+//            }
+//
 
             //::int_point window::get_mouse_cursor_position()
             //{
@@ -946,15 +948,15 @@ namespace android
             //
             //   }
 
-
-            ::windowing_android::windowing *window::android_windowing()
-            {
-
-               auto pacmewindowing = acme_windowing();
-
-               return dynamic_cast < ::windowing_android::windowing * > (pacmewindowing);
-
-            }
+//
+//            ::windowing_android::windowing *window::android_windowing()
+//            {
+//
+//               auto pacmewindowing = acme_windowing();
+//
+//               return dynamic_cast < ::windowing_android::windowing * > (pacmewindowing);
+//
+//            }
 
 
 //   void window::set_parent(::windowing::window * pwindowNewParent)
@@ -1482,15 +1484,15 @@ namespace android
             //   return -1;
 
             //}
-
-            ::acme::windowing_android::windowing *window::android_windowing()
-            {
-
-               auto pacmewindowing = this->acme_windowing();
-
-               return dynamic_cast <::acme::windowing_android::windowing *>(pacmewindowing);
-
-            }
+//
+//            ::acme::windowing_android::windowing *window::android_windowing()
+//            {
+//
+//               auto pacmewindowing = this->acme_windowing();
+//
+//               return dynamic_cast <::acme::windowing_android::windowing *>(pacmewindowing);
+//
+//            }
 
 
             bool window::is_iconic()
@@ -1563,11 +1565,11 @@ namespace android
 
                }
 
-               if (m_pwindow == nullptr) {
-
-                  return true;
-
-               }
+//               if (m_pwindow == nullptr) {
+//
+//                  return true;
+//
+//               }
 
                if (!m_pacmeuserinteraction->m_bUserElementOk) {
 
@@ -3493,21 +3495,21 @@ namespace android
 
             //}
 
-
-            float window::get_dpi_for_window()
-            {
-
-               return ::operating_system_driver::get()->m_fDpiX;
-
-            }
-
-
-            float window::get_density_for_window()
-            {
-
-               return ::operating_system_driver::get()->m_fDensity;
-
-            }
+//
+//            float window::get_dpi_for_window()
+//            {
+//
+//               return ::operating_system_driver::get()->m_fDpiX;
+//
+//            }
+//
+//
+//            float window::get_density_for_window()
+//            {
+//
+//               return ::operating_system_driver::get()->m_fDensity;
+//
+//            }
 
 
         } // namespace windowing
