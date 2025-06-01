@@ -517,11 +517,12 @@ namespace android
 
                }
 
-               auto pacmeuserinteractionCapture = m_pwindowMouseCapture->m_pacmeuserinteractionCapture;
+               auto pacmeuserinteractionCapture = m_pwindowMouseCapture->m_pacmeuserinteractionMouseCapture;
 
-               if (pacmeuserinteractionCapture) {
+               if (pacmeuserinteractionCapture)
+               {
 
-                  m_pwindowMouseCapture->m_pacmeuserinteractionCapture.release();
+                  m_pwindowMouseCapture->m_pacmeuserinteractionMouseCapture.release();
 
                }
 

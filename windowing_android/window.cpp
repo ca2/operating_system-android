@@ -89,7 +89,7 @@ namespace windowing_android
 
       ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
-      puserinteraction->m_bMessageWindow = false;
+      puserinteraction->m_bMessageOnlyWindow = false;
 
       auto pwindowing = windowing();
 
