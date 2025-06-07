@@ -42,7 +42,7 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
 			VALUE "CompanyName", "operating_system-android"
-			VALUE "FileDescription", "operating_system_android_acme_android"
+			VALUE "FileDescription", "operating_system_android_app_cidadedecuritiba"
             VALUE "FileVersion", "2025.0607.1524.36"
             VALUE "LegalCopyright", "Copyright (C) 2025-06-07-15-24-36"
             VALUE "ProductVersion", "2025.0607.1524.36"
