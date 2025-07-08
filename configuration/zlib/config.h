@@ -5,8 +5,10 @@
 #include "configuration/config.h"
 
 
-#undef Z_HAVE_UNISTD_H
+#define HAVE_UNISTD_H 1
 #undef _LARGEFILE64_SOURCE
+
+
 
 
 

@@ -15,6 +15,7 @@
 #include "aura/graphics/image/drawing.h"
 #include "aura/platform/context.h"
 #include "aura/platform/application.h"
+#include "aura/user/user/interaction_thread.h"
 #include "android/_internal.h"
 
 
