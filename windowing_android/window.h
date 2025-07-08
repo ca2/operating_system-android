@@ -73,20 +73,20 @@ namespace windowing_android
 
       void exit_zoomed() override;
 
-      void set_user_interaction(::windowing::window * pinteraction) override;
+      void set_user_interaction(::acme::user::interaction * pacmeuserinteraction) override;
 
       void post_nc_destroy() override;
 
       ::e_status set_window_icon(const ::file::path & path) override;
 
-      //bool is_child(::windowing::window * candidateChildOrDescendant) override; // or descendant
-
-      //::windowing::window * get_parent() const override;
-      //virtual ::Window get_parent_handle();
-      //::oswindow get_parent_oswindow() const override;
-
-  //    ::int_point get_mouse_cursor_position() override;
+//      bool is_child(::windowing::window * candidateChildOrDescendant) override; // or descendant
 //
+//      ::windowing::window * get_parent() const override;
+//      virtual ::windowing::window * get_parent_handle();
+//       ::windowing::window * get_parent_oswindow() const override;
+
+//
+  //    ::int_point get_mouse_cursor_position() override;
       //virtual ::Window get_parent_handle() const;
 
       ::windowing_android::windowing * android_windowing();

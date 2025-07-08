@@ -311,7 +311,7 @@ namespace windowing_android
 
       auto papp = get_app();
 
-      ::cast < ::user::interaction> puserinteraction = m_pacmeuserinteraction;
+      //::cast < ::user::interaction> puserinteraction = m_pacmeuserinteraction;
 
       if (!(puserinteraction->m_ewindowflag & e_window_flag_satellite_window))
       {
@@ -502,7 +502,7 @@ namespace windowing_android
          {
 
 
-            if (get_session() != nullptr)
+            if (session() != nullptr)
             {
 
                // Initial position of window below the cursor position
@@ -586,13 +586,13 @@ namespace windowing_android
    }
 
 
-   void windowing::terminate_windowing()
-   {
-
-
-   }
-
-
+//   void windowing::terminate_windowing()
+//   {
+//
+//
+//   }
+//
+//
 
 
    bool window::set_icon(::image::image * pimage)
@@ -658,6 +658,8 @@ namespace windowing_android
          d1->g()->draw(imagedrawing);
 
       }
+
+      ::cast < ::user::interaction> puserinteraction= m_pacmeuserinteraction;
 
       memory m(puserinteraction->get_app());
 
@@ -855,14 +857,16 @@ namespace windowing_android
       if (!::is_null(this))
       {
 
-         m_pwindowing->erase_window(this);
+         auto pwindowing = this->windowing();
+
+         pwindowing->erase_window(this);
 
       }
 
    }
 
 
-   void window::set_user_interaction(::windowing::window * pimpl)
+   void window::set_user_interaction(::acme::user::interaction * pacmeuserinteraction)
    {
 
       //      single_lock sl(ms_pmutex, true);
@@ -874,54 +878,54 @@ namespace windowing_android
       //
       //      }
 
-      m_pwindow = pimpl;
+      m_pacmeuserinteraction = pacmeuserinteraction;
 
-      m_htask = pimpl->get_app()->get_os_handle();
+      ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
-      m_pmessagequeue = puserinteraction->m_pthreadUserInteraction->get_message_queue();
+      m_pmessagequeue = puserinteraction->user_thread()->get_message_queue();
 
       //oswindow_assign(this, pimpl);
 
    }
 
 
-   bool window::is_child(::oswindow oswindow)
-   {
-
-      if (oswindow == nullptr || oswindow->m_pwindow == nullptr || oswindow->puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      if (m_pwindow == nullptr || puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      return puserinteraction->is_child(oswindow->puserinteraction);
-
-   }
-
-
-   ::windowing::window * window::get_parent() const
-   {
-
-      return nullptr;
-
-   }
-
-
-   //virtual ::Window get_parent_handle();
-   oswindow window::get_parent_oswindow() const
-   {
-
-      return nullptr;
-
-   }
+//   bool window::is_child(::windowing::window * oswindow)
+//   {
+//
+//      if (oswindow == nullptr || oswindow->m_pwindow == nullptr || oswindow->puserinteraction == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      if (m_pwindow == nullptr || puserinteraction == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      return puserinteraction->is_child(oswindow->puserinteraction);
+//
+//   }
+//
+//
+//   ::windowing::window * window::get_parent() const
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//
+//   //virtual ::Window get_parent_handle();
+//   oswindow window::get_parent_oswindow() const
+//   {
+//
+//      return nullptr;
+//
+//   }
 
 
    //::int_point window::get_mouse_cursor_position()
@@ -1558,12 +1562,7 @@ namespace windowing_android
 
       }
 
-      if (m_pwindow == nullptr)
-      {
-
-         return true;
-
-      }
+      ::cast < ::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
       if (!puserinteraction->m_bUserElementOk)
       {
