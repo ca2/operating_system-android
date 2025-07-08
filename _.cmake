@@ -357,5 +357,8 @@ set(INCLUDE_IMAGING_FREEIMAGE TRUE)
 set(STORE_FOLDER $ENV{HOME}/store/${SLASHED_OPERATING_SYSTEM})
 
 
+# Use ANDROID_ABI to construct the ABI-specific path
+set(JNI_LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
 
-
+# Add to global library search path
+link_directories(${JNI_LIBS_DIR})
