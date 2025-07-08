@@ -85,7 +85,7 @@ namespace windowing_android
 
       bool bOk = true;
 
-      //auto pusersystem = pimpl->m_puserinteraction->m_pusersystem;
+      //auto pusersystem = puserinteraction->m_pusersystem;
 
       ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
@@ -226,7 +226,7 @@ namespace windowing_android
       //attr.border_pixel = 0;
 
       //attr.override_redirect =
-      //   pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_arbitrary_positioning ? True : False;
+      //   puserinteraction->m_ewindowflag & e_window_flag_arbitrary_positioning ? True : False;
 
       ////attr.override_redirect = True;
 
@@ -242,7 +242,7 @@ namespace windowing_android
       //   CWColormap | CWEventMask | CWBackPixmap | CWBorderPixel
       //   | CWOverrideRedirect, &attr);
 
-      ////auto & windowstate3 = pimpl->m_puserinteraction->m_layout.window();
+      ////auto & windowstate3 = puserinteraction->m_layout.window();
 
       ////windowstate3.origin() = {INT_MIN, INT_MIN};
 
@@ -250,7 +250,7 @@ namespace windowing_android
 
       ////windowstate3.screen_origin() = {INT_MIN, INT_MIN};
 
-      ////auto & state = pimpl->m_puserinteraction->m_layout.design();
+      ////auto & state = puserinteraction->m_layout.design();
 
       ////state.origin() = {x, y};
 
@@ -281,7 +281,7 @@ namespace windowing_android
 
       //pimpl->m_pwindow = this;
 
-      ///pimpl->m_puserinteraction->m_pwindow = this;
+      ///puserinteraction->m_pwindow = this;
 
       set_oswindow(this);
 
@@ -293,13 +293,27 @@ namespace windowing_android
 
       //pimpl->set_os_data(LAYERED_X11, (::windowing_android::window *)this);
 
-      //pimpl->m_puserinteraction->m_pinteractionimpl = pimpl;
+      //puserinteraction->m_pinteractionimpl = pimpl;
 
-      m_pacmeuserinteraction->increment_reference_count(REFERENCING_DEBUGGING_P_NOTE(this, "native_create_window"));
+
+#if REFERENCING_DEBUGGING
+
+      if(m_pacmeuserinteraction->is_referencing_debugging_enabled())
+         {
+
+            m_pacmeuserinteraction->m_preferer = __refdbg_add_referer;
+
+         }
+
+#endif
+
+      m_pacmeuserinteraction->increment_reference_count();
 
       auto papp = get_app();
 
-      if (!(pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_satellite_window))
+      ::cast < ::user::interaction> puserinteraction = m_pacmeuserinteraction;
+
+      if (!(puserinteraction->m_ewindowflag & e_window_flag_satellite_window))
       {
 
          auto psystem = system();
@@ -341,26 +355,26 @@ namespace windowing_android
 //
 //#endif
 
-      //if (pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_dock_window)
+      //if (puserinteraction->m_ewindowflag & e_window_flag_dock_window)
       //{
 
       //   wm_dockwindow(true);
 
       //}
-      //else if (pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_desktop_window)
+      //else if (puserinteraction->m_ewindowflag & e_window_flag_desktop_window)
       //{
 
       //   wm_desktopwindow(true);
 
       //}
-      //else if (pimpl->m_puserinteraction->layout().sketch().activation() & ::user::e_activation_on_center_of_screen)
+      //else if (puserinteraction->layout().sketch().activation() & ::user::e_activation_on_center_of_screen)
       //{
 
       //   wm_centerwindow(true);
 
       //}
-      //else if (pimpl->m_puserinteraction->m_ewindowflag & e_window_flag_satellite_window
-      //   || pimpl->m_puserinteraction->m_bToolWindow)
+      //else if (puserinteraction->m_ewindowflag & e_window_flag_satellite_window
+      //   || puserinteraction->m_bToolWindow)
       //{
 
       //   wm_toolwindow(true);
@@ -417,7 +431,7 @@ namespace windowing_android
       ////if(strName.is_empty())
       ////{
 
-      string strWindowText = pimpl->m_puserinteraction->get_window_text();
+      string strWindowText = puserinteraction->get_window_text();
 
       //if (strWindowText.has_character())
       //{
@@ -449,7 +463,7 @@ namespace windowing_android
       //else
       //{
 
-      //   pimpl->m_puserinteraction->layout().window().display() = e_display_none;
+      //   puserinteraction->layout().window().display() = e_display_none;
 
       //}
 
@@ -459,7 +473,7 @@ namespace windowing_android
       //   if (!attr.override_redirect)
       //   {
 
-      //      if (is_docking_appearance(pimpl->m_puserinteraction->layout().sketch().display()))
+      //      if (is_docking_appearance(puserinteraction->layout().sketch().display()))
       //      {
 
       //         // window managers generally "don't like" windows that starts "docked/snapped".
@@ -496,14 +510,14 @@ namespace windowing_android
                // (Hinting for monitor placement, if no stored information
                // available).
 
-               if (pimpl->m_puserinteraction->const_layout().sketch().display() == e_display_undefined)
+               if (puserinteraction->const_layout().sketch().display() == e_display_undefined)
                {
 
                   auto pointCursor = windowing()->display()->get_mouse_cursor_position();
 
-                  pimpl->m_puserinteraction->set_position(pointCursor);
+                  puserinteraction->set_position(pointCursor);
 
-                  pimpl->m_puserinteraction->set_size({ 0, 0 });
+                  puserinteraction->set_size({ 0, 0 });
 
                }
 
@@ -521,9 +535,9 @@ namespace windowing_android
       if (bOk)
       {
 
-         //auto lresult = pimpl->m_puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
+         //auto lresult = puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
 
-         auto lresult = pimpl->m_puserinteraction->send_message(e_message_create, 0, 0);
+         auto lresult = puserinteraction->send_message(e_message_create, 0, 0);
 
          if (lresult == -1)
          {
@@ -532,9 +546,9 @@ namespace windowing_android
 
          }
 
-         pimpl->m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+         puserinteraction->m_ewindowflag |= e_window_flag_window_created;
 
-         pimpl->m_puserinteraction->set_flag(e_flag_task_started);
+         puserinteraction->set_flag(e_flag_task_started);
 
       }
 
@@ -864,7 +878,7 @@ namespace windowing_android
 
       m_htask = pimpl->get_app()->get_os_handle();
 
-      m_pmessagequeue = pimpl->m_puserinteraction->m_pthreadUserInteraction->get_message_queue();
+      m_pmessagequeue = puserinteraction->m_pthreadUserInteraction->get_message_queue();
 
       //oswindow_assign(this, pimpl);
 
@@ -3203,7 +3217,7 @@ namespace windowing_android
    //         if (::is_set(pimpl))
    //         {
 
-   //            auto puserinteraction = pimpl->m_puserinteraction;
+   //            auto puserinteraction = puserinteraction;
 
    //            if (::is_set(puserinteraction))
    //            {
@@ -3253,7 +3267,7 @@ namespace windowing_android
    //         if (::is_set(pimpl))
    //         {
 
-   //            auto puserinteraction = pimpl->m_puserinteraction;
+   //            auto puserinteraction = puserinteraction;
 
    //            if (::is_set(puserinteraction))
    //            {
