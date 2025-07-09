@@ -163,7 +163,7 @@
 #undef HAVE_INTEL_ATOMIC_PRIMITIVES
 
 /* Define to 1 if you have the "_inttypes.h" header file. */
-#undef HAVE_INTTYPES_H
+#define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <io.h> header file. */
 #undef HAVE_IO_H
@@ -236,7 +236,7 @@
 //#endif
 
 /* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
+#define HAVE_STRINGS_H 1
 
 //#if defined(_WIN32) || defined(LINUX) || defined(__ANDROID__)
 #define HAVE_STRINGS_H 1
