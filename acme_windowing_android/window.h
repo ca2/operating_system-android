@@ -149,8 +149,8 @@ namespace android
                 //bool has_keyboard_focus() const override;
 
 
-
-
+            virtual void _on_android_key(unsigned int message, int keyCode, int iUni);
+            virtual void _on_android_size(float xDummy, float yDummy, float cx, float cy);
                 //virtual Atom get_window_long_atom(int nIndex);
                 //virtual void mapped_net_state_raw(bool add, windowing_android_WINDOW_MEMBER int iScreen, Atom state1, Atom state2);
                 //virtual void unmapped_net_state_raw( windowing_android_WINDOW_MEMBER ...);

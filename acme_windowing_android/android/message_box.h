@@ -3,15 +3,19 @@
 
 
 //#include "aura/user/micro/message_box.h"
-#include "acme/platform/conversation_message.h"
+#include "acme/platform/message_box.h"
+
+namespace android {
 
 
-namespace windowing_android
-{
+    namespace acme {
 
 
-   class CLASS_DECL_AURA message_box :
-      virtual public ::conversation_message
+        namespace windowing {
+
+
+   class CLASS_DECL_ACME_WINDOWING_ANDROID message_box :
+      virtual public ::message_box
    {
    public:
 
@@ -31,13 +35,18 @@ namespace windowing_android
       //::e_message_box get_conversation_flags() override;
 
 
-      void do_asynchronously() override;
+      //void do_asynchronously() override;
 
 
    };
 
+    } // namespace windowing
 
-} // namespace windowing_android
+
+} // namespace acme
+
+
+} // namespace android
 
 
 

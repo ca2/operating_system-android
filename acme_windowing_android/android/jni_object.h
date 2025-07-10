@@ -10,8 +10,12 @@ public:
    jclass      m_jclass;
 
 
+   jni_object();
    jni_object(jobject jobject);
    ~jni_object();
+
+
+   void set_jni_object(jobject jobject);
 
 
    jfieldID field_str(const char *psz);

@@ -3,6 +3,23 @@ project(acme_windowing_android CXX)
 
 
 list(APPEND library_source
+        android/_.cpp
+        android/_android.cpp
+        android/android_asset.cpp
+        android/android_asset.cpp
+        android/android_asset_manager.cpp
+        android/android_asset_manager.h
+        android/bind.cpp
+        android/bind.h
+        android/driver.cpp
+        android/driver.h
+        android/jni_environment.cpp
+        android/jni_object.cpp
+        android/jni_object.h
+        android/media_library.cpp
+        android/media_library.h
+        android/message_box.cpp
+        android/message_box.h
         _.cpp
         _.h
         _windowing_android.h
@@ -85,7 +102,7 @@ elseif (${ANDROID})
     target_compile_options(static_${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fpermissive ${EXTRA_CXX_TARGET_COMPILER_OPTIONS}>)
     target_compile_definitions(static_${PROJECT_NAME} PRIVATE CUBE)
 
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references})
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} log android)
     target_link_libraries(static_${PROJECT_NAME} PRIVATE ${static_library_references})
 
     target_link_options(${PROJECT_NAME} PRIVATE -Wl,-z,defs)

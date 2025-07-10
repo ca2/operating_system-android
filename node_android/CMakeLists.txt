@@ -46,6 +46,7 @@ list(APPEND library_references
         acme
         acme_posix
         acme_android
+        acme_windowing_android
         apex
         apex_posix
         apex_android

@@ -107,3 +107,4 @@ template < typename T > \
 inline void set##name(T && t) { set_##type(m_fid##name, t); } \
 inline auto get##name() { return get_##type(m_fid##name); }
 
+JNIEnv* get_jni_env();

@@ -17,7 +17,7 @@
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
 #include "android/_internal.h"
-
+#include "android/driver.h"
 
 //void on_sn_launch_context(void * pSnContext, Window window);
 //void on_sn_launch_complete(void * pSnContext);
@@ -3494,7 +3494,16 @@ namespace windowing_android
    float window::get_dpi_for_window()
    {
 
-      return ::operating_system_driver::get()->m_fDpiX;
+      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+
+      if(!pdriver)
+      {
+
+         return ::windowing::window::get_dpi_for_window();
+
+      }
+
+      return pdriver->m_fDpiX;
 
    }
 
@@ -3502,7 +3511,16 @@ namespace windowing_android
    float window::get_density_for_window()
    {
 
-      return ::operating_system_driver::get()->m_fDensity;
+      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+
+      if(!pdriver)
+      {
+
+         return ::windowing::window::get_density_for_window();
+
+      }
+
+      return pdriver->m_fDensity;
 
    }
 

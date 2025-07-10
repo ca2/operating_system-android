@@ -3511,6 +3511,20 @@ namespace android
 //
 //            }
 
+            void window::_on_android_key(unsigned int message, int keyCode, int iUni)
+            {
+
+
+            }
+
+
+            void window::_on_android_size(float xDummy, float yDummy, float cx, float cy)
+            {
+
+
+            }
+
+
 
         } // namespace windowing
 

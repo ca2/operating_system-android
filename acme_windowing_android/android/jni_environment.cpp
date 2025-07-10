@@ -2,11 +2,22 @@
 #include "_internal.h"
 
 
-extern operating_system_driver* g_pandroiddriver;
+//extern operating_system_driver* g_pandroiddriver;
 
 
-thread_local JNIEnv* t_pjnienv;
+thread_local JNIEnv* t_pjnienv1;
 
+//JNIEnv * task_jnienv()
+//{
+//
+//   return t_pjnienv1;
+//}
+
+//void set_task_jnienv(JNIEnv * pjnienv1)
+//{
+//
+//   t_pjnienv1 = pjnienv1;
+//}
 
 ::particle_pointer g_pmutexOs;
 
@@ -19,13 +30,13 @@ thread_local JNIEnv* t_pjnienv;
 }
 
 
-extern thread_local JNIEnv* t_pjnienv;
+//extern thread_local JNIEnv* t_pjnienv;
 
 
 int get_mem_free_available_kb()
 {
 
-   return g_pandroiddriver->m_lMemFreeAvailableKb;
+   return ::acme::driver::get()->m_lMemFreeAvailableKb;
 
 }
 
@@ -35,11 +46,11 @@ int get_mem_free_available_kb()
 string as_string(const jstring & jstring)
 {
 
-   const char* nativeString = t_pjnienv->GetStringUTFChars(jstring, 0);
+   const char* nativeString = t_pjnienv1->GetStringUTFChars(jstring, 0);
 
    string str = nativeString;
 
-   t_pjnienv->ReleaseStringUTFChars(jstring, nativeString);
+   t_pjnienv1->ReleaseStringUTFChars(jstring, nativeString);
 
    return str;
 
@@ -54,7 +65,7 @@ string as_string(const jstring & jstring)
 void set_jni_context(JNIEnv* penv)
 {
 
-   t_pjnienv = penv;
+   t_pjnienv1 = penv;
 
 }
 
@@ -62,7 +73,7 @@ void set_jni_context(JNIEnv* penv)
 JNIEnv* get_jni_env()
 {
 
-   return t_pjnienv;
+   return t_pjnienv1;
 
 }
 
@@ -70,7 +81,7 @@ JNIEnv* get_jni_env()
 ::string __string(const jstring& jstring)
 {
 
-   auto env = get_jni_env();
+   auto env = t_pjnienv1;
 
    const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(jstring, NULL);
 

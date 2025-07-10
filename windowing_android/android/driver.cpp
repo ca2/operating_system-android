@@ -7,406 +7,386 @@
 #include "acme/platform/system.h"
 
 
-int e_message_box_to_button(const ::e_message_box& emessagebox);
-
-
-::pointer<operating_system_driver>g_pandroiddriver;
-
-
-operating_system_driver::operating_system_driver()
+namespace android
 {
 
-   defer_create_synchronization();
-
-   m_passetmanager = nullptr;
-
-   m_bLastShowSoftwareKeyboard = false;
-
-}
+//int e_message_box_to_button(const ::e_message_box& emessagebox);
 
 
-operating_system_driver::~operating_system_driver()
-{
-
-   if (::is_set(m_passetmanager))
-   {
-    
-      delete m_passetmanager;
-
-   }
-
-}
+//::pointer<driver>g_pandroiddriver;
 
 
-void operating_system_driver::set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd, character_count iCandidateBeg, character_count iCandidateEnd)
-{
+    driver::driver()
+    {
 
-   m_iInputMethodManagerSelectionStart = iSelBeg;
+       defer_create_synchronization();
 
-   m_iInputMethodManagerSelectionEnd = iSelEnd;
+       m_passetmanager = nullptr;
 
-   m_iInputMethodManagerCandidateStart = iCandidateBeg;
+       m_bLastShowSoftwareKeyboard = false;
 
-   m_iInputMethodManagerCandidateEnd = iCandidateEnd;
-
-   m_bInputMethodManagerUpdateSelection = true;
-
-   __android_log_print(ANDROID_LOG_INFO, "TextInput", "set_input_method_manager_selection:Sel(%d, %d),Composing:(%d, %d)", iSelBeg, iSelEnd, iCandidateBeg, iCandidateEnd);
-
-}
+    }
 
 
-void operating_system_driver::synchronize_input_method_manager_with_selection_end()
-{
+    driver::~driver()
+    {
 
-   m_iInputMethodManagerCandidateStart = m_iInputMethodManagerSelectionEnd;
+       if (::is_set(m_passetmanager)) {
 
-   m_iInputMethodManagerCandidateEnd = m_iInputMethodManagerSelectionEnd;
+          delete m_passetmanager;
 
-}
+       }
 
-
-void operating_system_driver::set_editor_selection(character_count iStart, character_count iEnd)
-{
-
-   m_iEditorSelectionStart = iStart;
-
-   m_iEditorSelectionEnd = iEnd;
-
-   m_bEditorTextUpdated = true;
-
-}
+    }
 
 
-void operating_system_driver::set_editor_text(const ::string& strText)
-{
+    void driver::set_input_method_manager_selection(character_count iSelBeg,
+                                                                     character_count iSelEnd,
+                                                                     character_count iCandidateBeg,
+                                                                     character_count iCandidateEnd)
+    {
 
-   m_strEditorText = strText;
+       m_iInputMethodManagerSelectionStart = iSelBeg;
 
-   m_bEditorTextUpdated = true;
+       m_iInputMethodManagerSelectionEnd = iSelEnd;
 
-}
+       m_iInputMethodManagerCandidateStart = iCandidateBeg;
 
+       m_iInputMethodManagerCandidateEnd = iCandidateEnd;
 
-void operating_system_driver::show_software_keyboard()
-{
+       m_bInputMethodManagerUpdateSelection = true;
 
-   m_bShowKeyboard = true;
+       __android_log_print(ANDROID_LOG_INFO, "TextInput",
+                           "set_input_method_manager_selection:Sel(%d, %d),Composing:(%d, %d)",
+                           iSelBeg, iSelEnd, iCandidateBeg, iCandidateEnd);
 
-   m_bLastShowSoftwareKeyboard = true;
-
-}
-
-
-void operating_system_driver::hide_software_keyboard()
-{
-
-   m_bHideKeyboard = true;
-
-   m_bLastShowSoftwareKeyboard = false;
-
-}
+    }
 
 
-operating_system_driver* operating_system_driver::get()
-{
+    void driver::synchronize_input_method_manager_with_selection_end()
+    {
 
-   return g_pandroiddriver;
+       m_iInputMethodManagerCandidateStart = m_iInputMethodManagerSelectionEnd;
 
-}
+       m_iInputMethodManagerCandidateEnd = m_iInputMethodManagerSelectionEnd;
 
-
-
-void operating_system_driver::set(operating_system_driver* pdriver)
-{
-
-   g_pandroiddriver = pdriver;
-
-}
+    }
 
 
+    void driver::set_editor_selection(character_count iStart, character_count iEnd)
+    {
 
-void operating_system_driver::queue_message_box(::message_box* psequencer)
-{
+       m_iEditorSelectionStart = iStart;
 
-   //synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
+       m_iEditorSelectionEnd = iEnd;
 
-   //m_sequenceraMessageBox.add(psequencer);
+       m_bEditorTextUpdated = true;
 
-}
+    }
 
 
-::pointer < ::message_box > operating_system_driver::pick_message_box()
-{
+    void driver::set_editor_text(const ::string &strText)
+    {
 
-   synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
+       m_strEditorText = strText;
 
-//   if (m_sequenceraMessageBox.is_empty())
-//   {
+       m_bEditorTextUpdated = true;
+
+    }
+
+
+    void driver::show_software_keyboard()
+    {
+
+       m_bShowKeyboard = true;
+
+       m_bLastShowSoftwareKeyboard = true;
+
+    }
+
+
+    void driver::hide_software_keyboard()
+    {
+
+       m_bHideKeyboard = true;
+
+       m_bLastShowSoftwareKeyboard = false;
+
+    }
+
+
 //
-//      return nullptr;
 //
-//   }
+//    void driver::queue_message_box(::message_box *psequencer)
+//    {
 //
-//   auto psequencer = m_sequenceraMessageBox.pop_first();
+//       //synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
+//
+//       //m_sequenceraMessageBox.add(psequencer);
+//
+//    }
+//
+//
+//    ::pointer<::message_box> driver::pick_message_box()
+//    {
+//
+//       synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
+//
+////   if (m_sequenceraMessageBox.is_empty())
+////   {
+////
+////      return nullptr;
+////
+////   }
+////
+////   auto psequencer = m_sequenceraMessageBox.pop_first();
+//
+////   return psequencer;
+//
+//       return {};
+//
+//    }
+
+
+//    void driver::open_url(const ::string &strOpenUrl)
+//    {
+//
+//       synchronous_lock lock(synchronization());
+//
+//       m_straOpenUrl.add(strOpenUrl);
+//
+//    }
+
+
+    void driver::exchange1()
+    {
+
+       {
+
+          synchronous_lock synchronouslock(synchronization());
+
+          auto pdirect = ::operating_system_bind::get();
+
+          if (m_bHideKeyboard) {
 
-//   return psequencer;
+             pdirect->setHideKeyboard(true);
 
-return {};
+             m_bHideKeyboard = false;
 
-}
+          }
 
+          ::acme::driver::exchange1();
 
-void operating_system_driver::open_url(const ::string& strOpenUrl)
-{
+//          string strOpenUrl;
+//
+//          {
+//
+//             //synchronous_lock lock(synchronization());
+//
+//             while (m_straOpenUrl.has_element()) {
+//
+//                strOpenUrl = m_straOpenUrl.pick_first();
+//
+//                if (strOpenUrl.has_character()) {
+//
+//                   break;
+//
+//                }
+//
+//             }
+//
+//          }
+//
+//          if (strOpenUrl.has_character()) {
+//
+//             pdirect->setOpenUrl(strOpenUrl);
+//
+//          }
 
-   synchronous_lock lock(synchronization());
+          //if (m_bMessageBoxOn)
+          //{
 
-   m_straOpenUrl.add(strOpenUrl);
+          //   int iResult = pdirect->getMessageBoxResult();
 
-}
+          //   if (iResult > 0)
+          //   {
 
+          //      m_bMessageBoxOn = false;
 
-void operating_system_driver::exchange()
-{
+          //   }
 
-   {
+          //}
+          //else
+          //{
 
-      synchronous_lock synchronouslock(synchronization());
+//          auto pmessagebox = pick_message_box();
+//
+//          if (::is_set(pmessagebox)) {
+//
+//             pmessagebox->increment_reference_count();
+//
+//             pdirect->setMessageBoxSequence((::iptr) pmessagebox.m_p);
+//
+//             pdirect->setMessageBox(pmessagebox->m_strMessage);
+//
+//             pdirect->setMessageBoxCaption(pmessagebox->m_strTitle);
+//
+//             pdirect->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
+//
+//          }
 
-      auto pdirect = ::operating_system_bind::get();
+          if (m_strSetUserWallpaper.has_character()) {
 
-      if (m_bHideKeyboard)
-      {
+             pdirect->setUserWallpaper(m_strSetUserWallpaper);
 
-         pdirect->setHideKeyboard(true);
+             m_strSetUserWallpaper.empty();
 
-         m_bHideKeyboard = false;
+          }
 
-      }
+          if (m_bGetUserWallpaper) {
 
-      string strOpenUrl;
+             m_strGetUserWallpaper = pdirect->getUserWallpaper();
 
-      {
+             m_bGetUserWallpaper = false;
 
-         //synchronous_lock lock(synchronization());
+          }
 
-         while (m_straOpenUrl.has_element())
-         {
+          if (m_bEditorSelectionUpdated) {
 
-            strOpenUrl = m_straOpenUrl.pick_first();
+             m_bEditorSelectionUpdated = false;
 
-            if (strOpenUrl.has_character())
-            {
+             pdirect->setEditorSelectionStart(m_iEditorSelectionStart);
 
-               break;
+             pdirect->setEditorSelectionEnd(m_iEditorSelectionEnd);
 
-            }
+             pdirect->setEditorSelectionUpdated(true);
 
-         }
+          }
 
-      }
+          if (m_bEditorTextUpdated) {
 
-      if (strOpenUrl.has_character())
-      {
+             m_bEditorTextUpdated = false;
 
-         pdirect->setOpenUrl(strOpenUrl);
+             pdirect->setEditorText(m_strEditorText);
 
-      }
+             pdirect->setEditorTextUpdated(true);
 
-      //if (m_bMessageBoxOn)
-      //{
+          }
 
-      //   int iResult = pdirect->getMessageBoxResult();
+          if (m_bEditFocusSet) {
 
-      //   if (iResult > 0)
-      //   {
+             m_bEditFocusSet = false;
 
-      //      m_bMessageBoxOn = false;
+             pdirect->setEditFocusSet(true);
 
-      //   }
+             pdirect->setEditFocusLeft(m_rectangleEditFocus.left());
 
-      //}
-      //else
-      //{
+             pdirect->setEditFocusTop(m_rectangleEditFocus.top());
 
-      auto pmessagebox = pick_message_box();
+             pdirect->setEditFocusRight(m_rectangleEditFocus.right());
 
-      if (::is_set(pmessagebox))
-      {
+             pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom());
 
-         pmessagebox->increment_reference_count();
+          }
 
-         pdirect->setMessageBoxSequence((::iptr)pmessagebox.m_p);
+          if (m_bEditFocusKill) {
 
-         pdirect->setMessageBox(pmessagebox->m_strMessage);
+             m_bEditFocusKill = false;
 
-         pdirect->setMessageBoxCaption(pmessagebox->m_strTitle);
+             pdirect->setEditFocusKill(true);
 
-         pdirect->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
+          }
 
-      }
+//          if (m_bRedraw) {
+//
+//             m_bRedraw = false;
+//
+//             pdirect->setRedraw(true);
+//
+//          }
 
-      if (m_strSetUserWallpaper.has_character())
-      {
+          if (m_bInputMethodManagerUpdateSelection) {
 
-         pdirect->setUserWallpaper(m_strSetUserWallpaper);
+             m_bInputMethodManagerUpdateSelection = false;
 
-         m_strSetUserWallpaper.empty();
+             pdirect->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
 
-      }
+             pdirect->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
 
-      if (m_bGetUserWallpaper)
-      {
+             pdirect->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
 
-         m_strGetUserWallpaper = pdirect->getUserWallpaper();
+             pdirect->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
 
-         m_bGetUserWallpaper = false;
+             pdirect->setInputMethodManagerUpdateSelection(true);
 
-      }
+          }
 
-      if (m_bEditorSelectionUpdated)
-      {
 
-         m_bEditorSelectionUpdated = false;
+          if (m_bShowKeyboard) {
 
-         pdirect->setEditorSelectionStart(m_iEditorSelectionStart);
+             pdirect->setShowKeyboard(true);
 
-         pdirect->setEditorSelectionEnd(m_iEditorSelectionEnd);
+             m_bShowKeyboard = false;
 
-         pdirect->setEditorSelectionUpdated(true);
+          }
 
-      }
+       }
 
-      if (m_bEditorTextUpdated)
-      {
+       {
 
-         m_bEditorTextUpdated = false;
+          //synchronous_lock sl(m_pparticleMutexListFileEnumerate);
+          synchronous_lock sl(this->synchronization());
 
-         pdirect->setEditorText(m_strEditorText);
+          if (m_straListFileEnumerate.has_element()) {
 
-         pdirect->setEditorTextUpdated(true);
+             auto pdirect = ::operating_system_bind::get();
 
-      }
+             auto bLock = pdirect->getLockListFileEnumerate();
 
-      if (m_bEditFocusSet)
-      {
+             if (!bLock) {
 
-         m_bEditFocusSet = false;
+                string strEnumerate = m_straListFileEnumerate.pick_first();
 
-         pdirect->setEditFocusSet(true);
+                pdirect->setListFileEnumerate(strEnumerate);
 
-         pdirect->setEditFocusLeft(m_rectangleEditFocus.left());
+                pdirect->setLockListFileEnumerate(true);
 
-         pdirect->setEditFocusTop(m_rectangleEditFocus.top());
+             }
 
-         pdirect->setEditFocusRight(m_rectangleEditFocus.right());
+          }
 
-         pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom());
+       }
 
-      }
+//       {
+//
+//          auto pdirect = ::operating_system_bind::get();
+//
+//          string strUri = pdirect->getUri();
+//
+//          if (strUri.has_character()) {
+//
+//             pdirect->setUri("");
+//
+//             system()->handle_uri(strUri);
+//
+//          }
+//
+//       }
 
-      if (m_bEditFocusKill)
-      {
+    }
 
-         m_bEditFocusKill = false;
+//
+//    void driver::list_file_enumerate(const ::string &strListFileEnumerate)
+//    {
+//
+//       synchronous_lock lock(m_pparticleMutexListFileEnumerate);
+//
+//       m_straListFileEnumerate.add(strListFileEnumerate);
+//
+//    }
 
-         pdirect->setEditFocusKill(true);
 
-      }
-
-      if (m_bRedraw)
-      {
-
-         m_bRedraw = false;
-
-         pdirect->setRedraw(true);
-
-      }
-
-      if (m_bInputMethodManagerUpdateSelection)
-      {
-
-         m_bInputMethodManagerUpdateSelection = false;
-
-         pdirect->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
-
-         pdirect->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
-
-         pdirect->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
-
-         pdirect->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
-
-         pdirect->setInputMethodManagerUpdateSelection(true);
-
-      }
-
-
-      if (m_bShowKeyboard)
-      {
-
-         pdirect->setShowKeyboard(true);
-
-         m_bShowKeyboard = false;
-
-      }
-
-   }
-
-   {
-
-      synchronous_lock sl(m_pparticleMutexListFileEnumerate);
-
-      if (m_straListFileEnumerate.has_element())
-      {
-
-         auto pdirect = ::operating_system_bind::get();
-
-         auto bLock = pdirect->getLockListFileEnumerate();
-
-         if (!bLock)
-         {
-
-            string strEnumerate = m_straListFileEnumerate.pick_first();
-
-            pdirect->setListFileEnumerate(strEnumerate);
-
-            pdirect->setLockListFileEnumerate(true);
-
-         }
-
-      }
-
-   }
-
-   {
-
-      auto pdirect = ::operating_system_bind::get();
-
-      string strUri = pdirect->getUri();
-
-      if (strUri.has_character())
-      {
-
-         pdirect->setUri("");
-
-         system()->handle_uri(strUri);
-
-      }
-
-   }
-
-}
-
-
-void operating_system_driver::list_file_enumerate(const ::string& strListFileEnumerate)
-{
-
-   synchronous_lock lock(m_pparticleMutexListFileEnumerate);
-
-   m_straListFileEnumerate.add(strListFileEnumerate);
-
-}
+} // namespace android
 
 
 

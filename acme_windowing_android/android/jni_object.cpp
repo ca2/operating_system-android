@@ -2,17 +2,24 @@
 #include "_internal.h"
 
 
-extern thread_local JNIEnv* t_pjnienv;
+extern thread_local JNIEnv* t_pjnienv1;
+
+
+jni_object::jni_object()
+{
+
+   m_jobject = nullptr;
+
+   m_jclass = nullptr;
+
+}
+
 
 
 jni_object::jni_object(jobject jobject)
 {
 
-   ::jclass jclass = t_pjnienv->GetObjectClass(jobject);
-
-   m_jclass = (::jclass) t_pjnienv->NewGlobalRef(jclass);
-
-   m_jobject = t_pjnienv->NewGlobalRef(jobject);
+   set_jni_object(jobject);
 
 }
 
@@ -20,9 +27,21 @@ jni_object::jni_object(jobject jobject)
 jni_object::~jni_object()
 {
 
-   t_pjnienv->DeleteGlobalRef(m_jobject);
+   t_pjnienv1->DeleteGlobalRef(m_jobject);
 
-   t_pjnienv->DeleteGlobalRef(m_jclass);
+   t_pjnienv1->DeleteGlobalRef(m_jclass);
+
+}
+
+
+void jni_object::set_jni_object(jobject jobject)
+{
+
+   ::jclass jclass = t_pjnienv1->GetObjectClass(jobject);
+
+   m_jclass = (::jclass) t_pjnienv1->NewGlobalRef(jclass);
+
+   m_jobject = t_pjnienv1->NewGlobalRef(jobject);
 
 }
 
@@ -30,7 +49,7 @@ jni_object::~jni_object()
 jfieldID jni_object::field_str(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
 
 }
 
@@ -38,7 +57,7 @@ jfieldID jni_object::field_str(const char * psz)
 jfieldID jni_object::field_b(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "Z");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "Z");
 
 }
 
@@ -46,7 +65,7 @@ jfieldID jni_object::field_b(const char * psz)
 jfieldID jni_object::field_uch(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "B");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "B");
 
 }
 
@@ -54,7 +73,7 @@ jfieldID jni_object::field_uch(const char * psz)
 jfieldID jni_object::field_ch(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "C");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "C");
 
 }
 
@@ -62,7 +81,7 @@ jfieldID jni_object::field_ch(const char * psz)
 jfieldID jni_object::field_sh(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "S");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "S");
 
 }
 
@@ -70,7 +89,7 @@ jfieldID jni_object::field_sh(const char * psz)
 jfieldID jni_object::field_i(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "I");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "I");
 
 }
 
@@ -78,7 +97,7 @@ jfieldID jni_object::field_i(const char * psz)
 jfieldID jni_object::field_l(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "J");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "J");
 
 }
 
@@ -87,7 +106,7 @@ jfieldID jni_object::field_l(const char * psz)
 jfieldID jni_object::field_f(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "F");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "F");
 
 }
 
@@ -95,7 +114,7 @@ jfieldID jni_object::field_f(const char * psz)
 jfieldID jni_object::field_d(const char * psz)
 {
 
-   return t_pjnienv->GetFieldID(m_jclass, psz, "D");
+   return t_pjnienv1->GetFieldID(m_jclass, psz, "D");
 
 }
 
@@ -254,7 +273,7 @@ double jni_object::get_d(const char * pszField)
 void jni_object::set_str(jfieldID jfieldid, const char * psz)
 {
 
-   jstring jstring = t_pjnienv->NewStringUTF(psz);
+   jstring jstring = t_pjnienv1->NewStringUTF(psz);
 
    if (!jstring)
    {
@@ -263,9 +282,9 @@ void jni_object::set_str(jfieldID jfieldid, const char * psz)
 
    }
 
-   t_pjnienv->SetObjectField(m_jobject, jfieldid, jstring);
+   t_pjnienv1->SetObjectField(m_jobject, jfieldid, jstring);
 
-   t_pjnienv->DeleteLocalRef(jstring);
+   t_pjnienv1->DeleteLocalRef(jstring);
 
 }
 
@@ -273,7 +292,7 @@ void jni_object::set_str(jfieldID jfieldid, const char * psz)
 string jni_object::get_str(jfieldID jfieldid)
 {
 
-   jstring jstring = (::jstring) t_pjnienv->GetObjectField(m_jobject, jfieldid);
+   jstring jstring = (::jstring) t_pjnienv1->GetObjectField(m_jobject, jfieldid);
 
    string str;
    
@@ -282,7 +301,7 @@ string jni_object::get_str(jfieldID jfieldid)
 
       str = ::as_string(jstring);
 
-      t_pjnienv->DeleteLocalRef(jstring);
+      t_pjnienv1->DeleteLocalRef(jstring);
 
    }
 
@@ -294,7 +313,7 @@ string jni_object::get_str(jfieldID jfieldid)
 void jni_object::set_b(jfieldID fid, bool b)
 {
 
-   t_pjnienv->SetBooleanField(m_jobject, fid, b);
+   t_pjnienv1->SetBooleanField(m_jobject, fid, b);
 
 }
 
@@ -302,7 +321,7 @@ void jni_object::set_b(jfieldID fid, bool b)
 bool jni_object::get_b(jfieldID fid)
 {
 
-   return t_pjnienv->GetBooleanField(m_jobject, fid);
+   return t_pjnienv1->GetBooleanField(m_jobject, fid);
 
 }
 
@@ -310,7 +329,7 @@ bool jni_object::get_b(jfieldID fid)
 void jni_object::set_uch(jfieldID fid, unsigned char b)
 {
 
-   t_pjnienv->SetByteField(m_jobject, fid, b);
+   t_pjnienv1->SetByteField(m_jobject, fid, b);
 
 }
 
@@ -318,7 +337,7 @@ void jni_object::set_uch(jfieldID fid, unsigned char b)
 unsigned char jni_object::get_uch(jfieldID fid)
 {
 
-   return t_pjnienv->GetByteField(m_jobject, fid);
+   return t_pjnienv1->GetByteField(m_jobject, fid);
 
 }
 
@@ -326,7 +345,7 @@ unsigned char jni_object::get_uch(jfieldID fid)
 void jni_object::set_ch(jfieldID fid, char ch)
 {
 
-   t_pjnienv->SetCharField(m_jobject, fid, ch);
+   t_pjnienv1->SetCharField(m_jobject, fid, ch);
 
 }
 
@@ -334,7 +353,7 @@ void jni_object::set_ch(jfieldID fid, char ch)
 char jni_object::get_ch(jfieldID fid)
 {
 
-   return t_pjnienv->GetCharField(m_jobject, fid);
+   return t_pjnienv1->GetCharField(m_jobject, fid);
 
 }
 
@@ -342,7 +361,7 @@ char jni_object::get_ch(jfieldID fid)
 void jni_object::set_sh(jfieldID fid, short sh)
 {
 
-   t_pjnienv->SetShortField(m_jobject, fid, sh);
+   t_pjnienv1->SetShortField(m_jobject, fid, sh);
 
 }
 
@@ -350,7 +369,7 @@ void jni_object::set_sh(jfieldID fid, short sh)
 short jni_object::get_sh(jfieldID fid)
 {
 
-   return t_pjnienv->GetShortField(m_jobject, fid);
+   return t_pjnienv1->GetShortField(m_jobject, fid);
 
 }
 
@@ -358,7 +377,7 @@ short jni_object::get_sh(jfieldID fid)
 void jni_object::set_i(jfieldID fid, int i)
 {
 
-   t_pjnienv->SetIntField(m_jobject, fid, i);
+   t_pjnienv1->SetIntField(m_jobject, fid, i);
 
 }
 
@@ -366,7 +385,7 @@ void jni_object::set_i(jfieldID fid, int i)
 int jni_object::get_i(jfieldID fid)
 {
 
-   return t_pjnienv->GetIntField(m_jobject, fid);
+   return t_pjnienv1->GetIntField(m_jobject, fid);
 
 }
 
@@ -375,7 +394,7 @@ int jni_object::get_i(jfieldID fid)
 void jni_object::set_l(jfieldID fid, long long hi)
 {
 
-   t_pjnienv->SetLongField(m_jobject, fid, hi);
+   t_pjnienv1->SetLongField(m_jobject, fid, hi);
 
 }
 
@@ -383,7 +402,7 @@ void jni_object::set_l(jfieldID fid, long long hi)
 long long jni_object::get_l(jfieldID fid)
 {
 
-   return t_pjnienv->GetLongField(m_jobject, fid);
+   return t_pjnienv1->GetLongField(m_jobject, fid);
 
 }
 
@@ -391,7 +410,7 @@ long long jni_object::get_l(jfieldID fid)
 void jni_object::set_f(jfieldID fid, float f)
 {
 
-   t_pjnienv->SetFloatField(m_jobject, fid, f);
+   t_pjnienv1->SetFloatField(m_jobject, fid, f);
 
 }
 
@@ -399,7 +418,7 @@ void jni_object::set_f(jfieldID fid, float f)
 float jni_object::get_f(jfieldID fid)
 {
 
-   return t_pjnienv->GetFloatField(m_jobject, fid);
+   return t_pjnienv1->GetFloatField(m_jobject, fid);
 
 }
 
@@ -408,7 +427,7 @@ float jni_object::get_f(jfieldID fid)
 void jni_object::set_d(jfieldID fid, double d)
 {
 
-   t_pjnienv->SetDoubleField(m_jobject, fid, d);
+   t_pjnienv1->SetDoubleField(m_jobject, fid, d);
 
 }
 
@@ -416,7 +435,7 @@ void jni_object::set_d(jfieldID fid, double d)
 double jni_object::get_d(jfieldID fid)
 {
 
-   return t_pjnienv->GetDoubleField(m_jobject, fid);
+   return t_pjnienv1->GetDoubleField(m_jobject, fid);
 
 }
 

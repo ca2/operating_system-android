@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "object.h"
+#include "jni_object.h"
 
 
 class operating_system_bind :

@@ -12,14 +12,14 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 
-#include "object.h"
+#include "jni_object.h"
 
 
 #include "bind.h"
 #include "driver.h"
 
 
-CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails);
+CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails);
 
 
 #include <android/log.h>
@@ -79,13 +79,13 @@ class asset_manager;
 
 //extern ::pointer<operating_system_driver>g_pandroiddriver;
 
-CLASS_DECL_APEX string as_string(const jstring & jstring);
+CLASS_DECL_ACME_WINDOWING_ANDROID string as_string(const jstring & jstring);
 
 
-CLASS_DECL_APEX void set_jni_context(JNIEnv* penv);
-CLASS_DECL_APEX JNIEnv* get_jni_env();
+CLASS_DECL_ACME_WINDOWING_ANDROID void set_jni_context(JNIEnv* penv);
+CLASS_DECL_ACME_WINDOWING_ANDROID JNIEnv* get_jni_env();
 
-CLASS_DECL_APEX void android_exchange();
+CLASS_DECL_ACME_WINDOWING_ANDROID void android_exchange();
 
 
 

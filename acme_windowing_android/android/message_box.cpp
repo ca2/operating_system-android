@@ -5,8 +5,14 @@
 #include "android/_internal.h"
 
 
-namespace windowing_android
-{
+namespace android {
+
+
+    namespace acme {
+
+
+        namespace windowing {
+
 
 
   //void message_box::initialize_conversation(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails)
@@ -57,17 +63,24 @@ namespace windowing_android
 
 
 
-  void message_box::do_asynchronously()
-  {
+//  void message_box::do_asynchronously()
+//  {
+//
+//     auto pdriver = ::operating_system_driver::get();
+//
+//     pdriver->queue_message_box_sequencer(m_psequencer);
+//
+//  }
 
-     auto pdriver = ::operating_system_driver::get();
 
-     pdriver->queue_message_box_sequencer(m_psequencer);
-
-  }
+} // namespace windowing
 
 
-} // namespace windowing_android
+} // namespace acme
+
+
+} // namespace android
+
 
 
 

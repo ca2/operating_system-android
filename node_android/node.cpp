@@ -29,7 +29,9 @@ namespace node_android
    void node::on_initialize_particle()
    {
 
-      system()->m_pathCacheDirectory = ::operating_system_driver::get()->m_pathCacheDirectory;
+      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+
+      system()->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
 
       ::aura_android::node::on_initialize_particle();
 
@@ -63,7 +65,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_music_library))
       {
 
-         ::operating_system_driver::get()->list_file_enumerate("music");
+         ::acme::driver::get()->list_file_enumerate("music");
 
       }
 
@@ -71,7 +73,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_image_library))
       {
 
-         ::operating_system_driver::get()->list_file_enumerate("image");
+         ::acme::driver::get()->list_file_enumerate("image");
 
       }
 
@@ -79,7 +81,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_video_library))
       {
 
-         ::operating_system_driver::get()->list_file_enumerate("video");
+         ::acme::driver::get()->list_file_enumerate("video");
 
       }
 
@@ -89,7 +91,7 @@ namespace node_android
    void node::on_start_system()
    {
 
-      auto pdriver = ::operating_system_driver::get();
+      auto pdriver = ::acme::driver::get();
 
       ::int_rectangle rectangle;
 
@@ -170,7 +172,7 @@ namespace node_android
                                  const ::scoped_string & scopedstrTarget)
    {
 
-      ::operating_system_driver::get()->open_url(scopedstrUrl);
+      ::acme::driver::get()->open_url(scopedstrUrl);
 
    }
 

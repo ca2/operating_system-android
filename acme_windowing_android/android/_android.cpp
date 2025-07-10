@@ -1,14 +1,14 @@
 #include "framework.h"
+#include "window.h"
 #include "acme/constant/os_text.h"
 #include "acme/constant/user_key.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/system.h"
-#include "aura/platform/session.h"
-//#include "aura/user/user/interaction_impl.h"
-#include "aura/user/user/user.h"
-#include "aura/windowing/window.h"
-#include "aura/windowing/windowing.h"
-#include "aura/message/user.h"
+#include "acme/platform/session.h"
+#include "acme/user/user/interaction.h"
+#include "acme/windowing/window.h"
+#include "acme/windowing/windowing.h"
+
 
 
 void _android_key(unsigned int message, int keyCode, int iUni);
@@ -17,7 +17,7 @@ void _android_key(unsigned int message, int keyCode, int iUni);
 void android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    if (psystem == nullptr)
    {
@@ -29,12 +29,12 @@ void android_key(unsigned int message, int keyCode, int iUni)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->acme_windowing()->get_application_host_window()->m_pacmeuserinteraction;
 
    if (puserinteraction)
    {
 
-      puserinteraction->post_procedure([=]()
+      puserinteraction->_post([=]()
          {
 
 
@@ -47,12 +47,12 @@ void android_key(unsigned int message, int keyCode, int iUni)
 }
 
 
-int translate_android_key_message(::message::key* pkey, int keyCode, int iUni);
+//int translate_android_key_message(::message::key* pkey, int keyCode, int iUni);
 
 void _android_key(unsigned int message, int keyCode, int iUni)
 {
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    if (psystem == nullptr)
       return;
@@ -60,30 +60,30 @@ void _android_key(unsigned int message, int keyCode, int iUni)
    if (psystem->session() == nullptr)
       return;
 
-   if (psystem->session()->system()->windowing()->get_application_host_window() == nullptr)
+   if (psystem->acme_windowing()->get_application_host_window() == nullptr)
       return;
 
-   ::pointer<::message::key>pkey = __allocate ::message::key();
+//   ::pointer<::message::key>pkey = __allocate ::message::key();
+//
+//   pkey->m_emessage = (enum_message)message;
+//
+//   if (!translate_android_key_message(pkey, keyCode, iUni))
+//   {
+//
+//      return;
+//
+//   }
 
-   pkey->m_emessage = (enum_message)message;
+   ::cast < ::android::acme::windowing::window> pwindowHost = psystem->acme_windowing()->get_application_host_window();
 
-   if (!translate_android_key_message(pkey, keyCode, iUni))
+   if (!pwindowHost)
    {
 
       return;
 
    }
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
-
-   if (!puserinteraction)
-   {
-
-      return;
-
-   }
-
-   puserinteraction->post(pkey);
+   pwindowHost->_on_android_key(message, keyCode, iUni);
 
 }
 
@@ -95,7 +95,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
    __UNREFERENCED_PARAMETER(yDummy);
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    if (::is_null(psystem))
       return;
@@ -103,27 +103,30 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
    if (::is_null(psystem->session()))
       return;
 
-   if (::is_null(psystem->session()->system()->windowing()->get_application_host_window()))
+   if (::is_null(psystem->acme_windowing()->get_application_host_window()))
       return;
 
-   ::pointer<::user::interaction>puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   ::cast < ::android::acme::windowing::window> pwindowHost = psystem->acme_windowing()->get_application_host_window();
 
-   if (!puserinteraction)
+   if (!pwindowHost)
    {
 
       return;
 
    }
 
-   puserinteraction->order_top();
+   pwindowHost->_on_android_size(xDummy, yDummy, cx, cy);
 
-   puserinteraction->place({ 0, 0, cx, cy });
 
-   puserinteraction->display(::e_display_normal);
-
-   puserinteraction->set_need_layout();
-
-   puserinteraction->post_redraw();
+//   puserinteraction->order_top();
+//
+//   puserinteraction->place({ 0, 0, cx, cy });
+//
+//   puserinteraction->display(::e_display_normal);
+//
+//   puserinteraction->set_need_layout();
+//
+//   puserinteraction->post_redraw();
 
    //::auraacmesystem()->get_session()->m_puserinteractionHost->set_window_position(e_zorder_top, 0, 0, cx, cy, SWP_SHOWWINDOW);
 
@@ -167,7 +170,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 
    output_debug_string("android_on_size\n");
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    if (psystem == nullptr)
    {
@@ -179,12 +182,12 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
    //::fork(::get_context_system(), [=]()
    //{
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->acme_windowing()->get_application_host_window()->m_pacmeuserinteraction;
 
    if (puserinteraction)
    {
 
-      puserinteraction->post_procedure([=]()
+      puserinteraction->post([=]()
          {
 
             _android_size(xScreen, yScreen, pikachu, yBitmap);
@@ -211,76 +214,76 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 // }
 
 
-
-
-int translate_android_key_message(::message::key* pkey, int keyCode, int iUni)
-{
-
-   output_debug_string("here???333");
-
-   if (I32_MINIMUM & iUni)
-   {
-
-      return 0;
-
-   }
-   bool bOk = true;
-   switch (keyCode)
-   {
-   case 62:
-      pkey->m_ekey = ::user::e_key_space;
-      break;
-   case 67:
-      pkey->m_ekey = ::user::e_key_back;
-      break;
-   case 112:
-      pkey->m_ekey = ::user::e_key_delete;
-      break;
-   case 59:
-      pkey->m_ekey = ::user::e_key_left_shift;
-      break;
-   case 60:
-      pkey->m_ekey = ::user::e_key_right_shift;
-      break;
-   case 66:
-      pkey->m_ekey = ::user::e_key_return;
-      break;
-   default:
-      bOk = false;
-   }
-
-   //if (keyCode >= 29 && keyCode <= 54)
-   if (!bOk)
-   {
-
-      //pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_a + keyCode - 29);
-      pkey->m_ekey = ::user::e_key_refer_to_text_member;
-
-      ::wd32_character u32sz[2];
-      u32sz[0] = iUni;
-      u32sz[1] = 0;
-
-      pkey->m_strText = wd32_to_ansi_str(u32sz);
-
-   }
-   //else if (keyCode >= 7 && keyCode <= 16)
-   //{
-
-   //   pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_0 + keyCode - 7);
-
-   //   pkey->m_ekey = ::user::e_key_refer_to_text_member;
-
-   //   pkey->m_strText = string((unichar)iUni);
-
-   //}
-   //else
-   //{
-
-   //}
-
-   return 1;
-
-}
+//
+//
+//int translate_android_key_message(::message::key* pkey, int keyCode, int iUni)
+//{
+//
+//   output_debug_string("here???333");
+//
+//   if (I32_MINIMUM & iUni)
+//   {
+//
+//      return 0;
+//
+//   }
+//   bool bOk = true;
+//   switch (keyCode)
+//   {
+//   case 62:
+//      pkey->m_ekey = ::user::e_key_space;
+//      break;
+//   case 67:
+//      pkey->m_ekey = ::user::e_key_back;
+//      break;
+//   case 112:
+//      pkey->m_ekey = ::user::e_key_delete;
+//      break;
+//   case 59:
+//      pkey->m_ekey = ::user::e_key_left_shift;
+//      break;
+//   case 60:
+//      pkey->m_ekey = ::user::e_key_right_shift;
+//      break;
+//   case 66:
+//      pkey->m_ekey = ::user::e_key_return;
+//      break;
+//   default:
+//      bOk = false;
+//   }
+//
+//   //if (keyCode >= 29 && keyCode <= 54)
+//   if (!bOk)
+//   {
+//
+//      //pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_a + keyCode - 29);
+//      pkey->m_ekey = ::user::e_key_refer_to_text_member;
+//
+//      ::wd32_character u32sz[2];
+//      u32sz[0] = iUni;
+//      u32sz[1] = 0;
+//
+//      pkey->m_strText = wd32_to_ansi_str(u32sz);
+//
+//   }
+//   //else if (keyCode >= 7 && keyCode <= 16)
+//   //{
+//
+//   //   pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_0 + keyCode - 7);
+//
+//   //   pkey->m_ekey = ::user::e_key_refer_to_text_member;
+//
+//   //   pkey->m_strText = string((unichar)iUni);
+//
+//   //}
+//   //else
+//   //{
+//
+//   //}
+//
+//   return 1;
+//
+//}
 
 void _android_on_text(string str);
 
@@ -295,9 +298,9 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
    //::auraacmesystem()->fork([=]()
    //{
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->acme_windowing()->get_application_host_window()->m_pacmeuserinteraction;
 
    if (puserinteraction)
    {
@@ -374,7 +377,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //} // namespace base
 
 
-CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
+CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 {
 
    __UNREFERENCED_PARAMETER(bDock);
@@ -612,18 +615,18 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 int GetMainScreenRect(::int_rectangle* lprect)
 {
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto pwindowHost = psystem->acme_windowing()->get_application_host_window();
 
-   if (!puserinteraction)
+   if (!pwindowHost)
    {
 
       return false;
 
    }
 
-   *lprect = puserinteraction->m_pinteractionimpl->m_rectangleWindowScreen;
+   *lprect = pwindowHost->get_window_rectangle();
 
    return true;
 
@@ -633,7 +636,7 @@ int GetMainScreenRect(::int_rectangle* lprect)
 int SetMainScreenRect(const ::int_rectangle &rect)
 {
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    auto psession = psystem->session();
 
@@ -644,7 +647,7 @@ int SetMainScreenRect(const ::int_rectangle &rect)
 
    }
 
-   auto puserinteraction = psystem->session()->system()->windowing()->get_application_host_window()->m_pwindow->m_puserinteraction;
+   auto puserinteraction = psystem->acme_windowing()->get_application_host_window()->m_pacmeuserinteraction;
 
    if (!puserinteraction)
    {
@@ -653,15 +656,15 @@ int SetMainScreenRect(const ::int_rectangle &rect)
 
    }
 
-   puserinteraction->place(rect);
+   puserinteraction->set_rectangle(rect);
 
-   puserinteraction->display(e_display_normal);
-
-   puserinteraction->set_need_layout();
-
-   puserinteraction->set_need_redraw();
-
-   puserinteraction->post_redraw();
+//   puserinteraction->display(e_display_normal);
+//
+//   puserinteraction->set_need_layout();
+//
+//   puserinteraction->set_need_redraw();
+//
+//   puserinteraction->post_redraw();
 
    //if (bPostRedraw)
    //{
@@ -670,7 +673,7 @@ int SetMainScreenRect(const ::int_rectangle &rect)
 
    //}
 
-   auto pimpl = puserinteraction->m_pinteractionimpl.cast < ::windowing::window >();
+//   auto pimpl = puserinteraction->m_pinteractionimpl.cast < ::windowing::window >();
 
    //if (pimpl)
    //{
@@ -684,7 +687,7 @@ int SetMainScreenRect(const ::int_rectangle &rect)
 }
 
 
-CLASS_DECL_AURA int32_t IsWindowVisible(oswindow window)
+CLASS_DECL_ACME_WINDOWING_ANDROID int32_t IsWindowVisible(oswindow window)
 {
 
    return true;
