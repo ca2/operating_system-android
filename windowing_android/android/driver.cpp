@@ -126,31 +126,33 @@ void operating_system_driver::set(operating_system_driver* pdriver)
 
 
 
-void operating_system_driver::queue_message_box_sequencer(::sequencer< ::conversation >* psequencer)
+void operating_system_driver::queue_message_box(::message_box* psequencer)
 {
 
-   synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
+   //synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
 
-   m_sequenceraMessageBox.add(psequencer);
+   //m_sequenceraMessageBox.add(psequencer);
 
 }
 
 
-::pointer < ::subparticle > operating_system_driver::pick_message_box_sequencer()
+::pointer < ::message_box > operating_system_driver::pick_message_box()
 {
 
    synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
 
-   if (m_sequenceraMessageBox.is_empty())
-   {
+//   if (m_sequenceraMessageBox.is_empty())
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   auto psequencer = m_sequenceraMessageBox.pop_first();
 
-      return nullptr;
+//   return psequencer;
 
-   }
-
-   auto psequencer = m_sequenceraMessageBox.pop_first();
-
-   return psequencer;
+return {};
 
 }
 
@@ -228,20 +230,20 @@ void operating_system_driver::exchange()
       //else
       //{
 
-      auto psequencer = pick_message_box_sequencer();
+      auto pmessagebox = pick_message_box();
 
-      if (::is_set(psequencer))
+      if (::is_set(pmessagebox))
       {
 
-         psequencer->increment_reference_count();
+         pmessagebox->increment_reference_count();
 
-         pdirect->setMessageBoxSequence((::iptr)psequencer.m_p);
+         pdirect->setMessageBoxSequence((::iptr)pmessagebox.m_p);
 
-         pdirect->setMessageBox(psequencer->m_psequence->get_conversation_message());
+         pdirect->setMessageBox(pmessagebox->m_strMessage);
 
-         pdirect->setMessageBoxCaption(psequencer->m_psequence->get_conversation_title());
+         pdirect->setMessageBoxCaption(pmessagebox->m_strTitle);
 
-         pdirect->setMessageBoxButton(e_message_box_to_button(psequencer->m_psequence->get_conversation_flags()));
+         pdirect->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
 
       }
 

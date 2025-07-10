@@ -3,6 +3,16 @@ project(windowing_android CXX)
 
 
 list(APPEND library_source
+        android/bind.cpp
+        android/bind.h
+        android/driver.cpp
+        android/driver.h
+        android/media_library.cpp
+        android/media_library.h
+        android/message_box.cpp
+        android/message_box.h
+        android/object.cpp
+        android/object.h
         _.cpp
         _.h
         _windowing_android.h
@@ -32,8 +42,8 @@ list(APPEND library_source
         #integration_context.h
         monitor.cpp
         monitor.h
-#        node.cpp
-#        node.h
+        #        node.cpp
+        #        node.h
         #   node_unistd.cpp
         #stdio_file.cpp
         #stdio_file.h
@@ -55,7 +65,16 @@ add_library(static_${PROJECT_NAME} STATIC ${library_source})
 
 list(APPEND library_references
         acme
-        acme_posix)
+        acme_posix
+        acme_android
+        apex
+        apex_posix
+        apex_android
+        aura
+        aura_posix
+        aura_android
+
+)
 
 
 list(APPEND static_library_references ${library_references})

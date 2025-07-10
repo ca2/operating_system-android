@@ -5,7 +5,7 @@ project(node_android CXX)
 list(APPEND library_source
         _.cpp
         _.h
-#        _acme_linux.h
+        #        _acme_linux.h
         _factory.cpp
         #   #directory_system.cpp
         #   #directory_system.h
@@ -32,9 +32,6 @@ list(APPEND library_source
         #integration_context.h
         node.cpp
         node.h
-        #   node_unistd.cpp
-        #   #stdio_file.cpp
-        #   #stdio_file.h
 )
 
 
@@ -49,12 +46,14 @@ list(APPEND library_references
         acme
         acme_posix
         acme_android
-apex
-apex_posix
-apex_android
-aura
-aura_posix
-aura_android)
+        apex
+        apex_posix
+        apex_android
+        aura
+        aura_posix
+        aura_android
+        windowing_android
+)
 
 
 list(APPEND static_library_references ${library_references})

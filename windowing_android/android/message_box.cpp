@@ -60,9 +60,9 @@ namespace windowing_android
   void message_box::do_asynchronously()
   {
 
-     auto pdriver = ::operating_system_driver::get();
-
-     pdriver->queue_message_box_sequencer(m_psequencer);
+//     auto pdriver = ::operating_system_driver::get();
+//
+//     pdriver->queue_message_box_sequencer(m_psequencer);
 
   }
 

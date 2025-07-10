@@ -28,12 +28,12 @@ namespace innate_ui_android
    window::~window()
    {
 
-      if (!m_pqwidget)
-      {
-
-         delete m_pqwidget;
-
-      }
+//      if (!m_pqwidget)
+//      {
+//
+//         delete m_pqwidget;
+//
+//      }
 
    }
 

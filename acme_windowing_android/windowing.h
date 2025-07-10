@@ -101,7 +101,7 @@ namespace android
 
                 //::windowing::window * new_window(::windowing::window * pimpl) override;
 
-                ::pointer<::acme::windowing::window> get_new_window() override;
+                ///::pointer<::acme::windowing::window> get_new_window() override;
 
                 //void erase_window(::windowing::window *pwindow) override;
 
@@ -109,7 +109,7 @@ namespace android
 
                 //::windowing::window* window(oswindow oswindow) override;
 
-                ::acme::windowing::window *window(oswindow oswindow) override;
+                //::acme::windowing::window *window(oswindow oswindow) override;
 
                 virtual void _message_handler(void *p) override;
 

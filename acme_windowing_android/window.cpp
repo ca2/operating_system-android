@@ -949,12 +949,12 @@ namespace android
             //   }
 
 
-            ::windowing_android::windowing *window::android_windowing()
+            ::android::acme::windowing::windowing *window::android_windowing()
             {
 
-               auto pacmewindowing = acme_windowing();
+               auto pacmewindowing = system()->acme_windowing();
 
-               return dynamic_cast < ::windowing_android::windowing * > (pacmewindowing);
+               return dynamic_cast < ::android::acme::windowing::windowing * > (pacmewindowing);
 
             }
 

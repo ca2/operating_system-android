@@ -31,7 +31,7 @@ virtual public ::acme::user::message_box
       //::e_message_box get_conversation_flags() override;
 
 
-//      void do_asynchronously() override;
+      void do_asynchronously();
 
         void on_realize(::message_box * pmessagebox) override;
 

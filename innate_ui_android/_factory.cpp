@@ -10,14 +10,13 @@
 //#include "aura/windowing/desktop_environment.h"
 
 
-__FACTORY_IMPORT void aura_android_factory(::factory::factory* pfactory);
+//__FACTORY_IMPORT void aura_android_factory(::factory::factory* pfactory);
+//
 
-
-__FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
+__FACTORY_EXPORT void innate_ui_android_factory(::factory::factory * pfactory)
 {
 
-
-   aura_android_factory(pfactory);
+   //aura_android_factory(pfactory);
 
    pfactory->add_factory_item < ::innate_ui_android::button, ::innate_ui::button > ();
    pfactory->add_factory_item < ::innate_ui_android::dialog, ::innate_ui::dialog >();

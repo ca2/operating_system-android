@@ -7,7 +7,7 @@
 operating_system_bind * g_pandroiddirect;
 
 
-CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pobject, ::exception& exception, const ::string& strMoreDetails)
+CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails)
 {
 
    string strMessage;
@@ -26,7 +26,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * po
    strDetails += strMessage + "\n";
    strDetails += exception.m_strDetails + "\n\n";
    strDetails += "\n";
-   strDetails += "PID: " + ::as_string(pobject->node()->current_process_identifier()) + "\n";
+   strDetails += "PID: " + ::as_string(pparticle->node()->current_process_identifier()) + "\n";
    //strDetails += "Working Directory: " + string(GetCurrentDirectory()) + "\n\n";
 
    if (strMoreDetails.has_character())
@@ -36,17 +36,23 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * po
 
    }
 
-   if (exception.m_strCallstack)
+   if (exception.m_strCallStackTrace)
    {
 
-      strDetails += "\n\n" + string(exception.m_strCallstack);
+      strDetails += "\n\n" + string(exception.m_strCallStackTrace);
 
    }
 
-   // auto pmessagebox = __initialize_new ::message_box(pobject, strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
+   auto pmessagebox = __allocate ::message_box(
+           strMessage,
+           strTitle,
+           e_message_box_ok
+               | e_message_box_icon_exclamation,
+           strDetails);
 
-pmessagebox->sync();
+   pmessagebox->initialize(pparticle);
 
+   pmessagebox->sync();
 
    __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);
 
