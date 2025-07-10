@@ -17,7 +17,7 @@ namespace android
         {
 
 
-            class CLASS_DECL_WINDOWING_ANDROID window :
+            class CLASS_DECL_ACME_WINDOWING_ANDROID window :
                     virtual public ::acme::sandbox_windowing::window
             {
             public:
@@ -128,7 +128,7 @@ namespace android
                 //virtual bool bamf_set_icon();
 
 
-                bool set_icon(::image::image *pimage);
+                //bool set_icon(::image::image *pimage);
 
                 //virtual int x_change_property(Atom property, Atom type, int format, int mode, const unsigned char * data, int nelements);
 

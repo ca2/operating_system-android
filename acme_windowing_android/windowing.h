@@ -17,7 +17,7 @@ namespace android
         {
 
 
-            class CLASS_DECL_WINDOWING_ANDROID windowing :
+            class CLASS_DECL_ACME_WINDOWING_ANDROID windowing :
         virtual public ::acme::sandbox_windowing::windowing
             {
             public:

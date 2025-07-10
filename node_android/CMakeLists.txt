@@ -47,7 +47,14 @@ add_library(static_${PROJECT_NAME} STATIC ${library_source})
 
 list(APPEND library_references
         acme
-        acme_posix)
+        acme_posix
+        acme_android
+apex
+apex_posix
+apex_android
+aura
+aura_posix
+aura_android)
 
 
 list(APPEND static_library_references ${library_references})

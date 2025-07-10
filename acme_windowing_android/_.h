@@ -2,13 +2,13 @@
 #pragma once
 
 
-#include "aura_android/_.h"
+#include "acme_android/_.h"
 
 
-#if defined(_windowing_android_project)
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_EXPORT
+#if defined(_acme_windowing_android_project)
+#define CLASS_DECL_ACME_WINDOWING_ANDROID  CLASS_DECL_EXPORT
 #else
-#define CLASS_DECL_WINDOWING_ANDROID  CLASS_DECL_IMPORT
+#define CLASS_DECL_ACME_WINDOWING_ANDROID  CLASS_DECL_IMPORT
 #endif
 
 

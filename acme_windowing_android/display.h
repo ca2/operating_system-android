@@ -17,7 +17,7 @@ namespace android {
 
             // X11 contribution : a display may contain more than one monitor
 
-            class CLASS_DECL_AURA display
+            class CLASS_DECL_ACME_WINDOWING_ANDROID display
 
             :
         virtual public ::acme::windowing::display {

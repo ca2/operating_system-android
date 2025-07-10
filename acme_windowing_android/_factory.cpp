@@ -9,14 +9,14 @@
 //#include "aura/windowing/desktop_environment.h"
 
 
-__FACTORY_IMPORT void aura_android_factory(::factory::factory* pfactory);
+///__FACTORY_IMPORT void aura_android_factory(::factory::factory* pfactory);
 
 
-__FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
+__FACTORY_EXPORT void acme_windowing_android_factory(::factory::factory * pfactory)
 {
 
 
-   aura_android_factory(pfactory);
+   //aura_android_factory(pfactory);
 
    //pfactory->add_factory_item < ::android::buffer, ::graphics::graphics > ();
 
