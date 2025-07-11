@@ -3,6 +3,7 @@
 
 
 #include "aura_android/_.h"
+#include "acme_windowing_android/_.h"
 
 
 #if defined(_windowing_android_project)

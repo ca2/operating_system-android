@@ -1,14 +1,17 @@
 #include "framework.h"
-#include "_internal.h"
-#include "_asset_manager.h"
-#include "_asset.h"
+#include "driver.h"
+#include "acme_windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/android_asset_manager.h"
+#include "acme_windowing_android/android/android_asset.h"
 //#include "acme/user/nano/_nano.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/node.h"
 //#include "acme/platform/sequencer.h"
+#include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
-#include "acme/user/nano/nano.h"
+#include "acme_windowing_android/android/android_asset_manager.h"
+//#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
 typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
@@ -107,7 +110,7 @@ public:
 
          string strDetails = exception.m_strDetails;
 
-         auto psequencer = system()->nano()->message_box(
+         auto pmessagebox = system()->message_box(
             "Failed to load library?",
             "Failed to Load Library?",
             e_message_box_ok);
@@ -122,7 +125,7 @@ public:
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
 {
 
    try
@@ -133,7 +136,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = this->platform()->system()->node()->create_mutex();
+         g_pmutexOs = ::system()->node()->create_mutex();
 
       }
 
@@ -146,14 +149,14 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
       ::operating_system_bind::set(___new operating_system_bind(jobjectDirect));
 
-      if (!::operating_system_driver::get())
+      if (!::acme::driver::get())
       {
 
-         ::operating_system_driver::set(___new operating_system_driver());
+         ::acme::driver::set(___new ::android::driver());
 
          auto pdirect = ::operating_system_bind::get();
 
-         auto pdriver = ::operating_system_driver::get();
+         ::cast < ::android::driver > pdriver = ::acme::driver::get();
 
          pdriver->m_strApplicationIdentifier = pdirect->getApplicationIdentifier();
 
@@ -173,7 +176,11 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
          pdriver->m_bShowKeyboard = false;
 
-         pdriver->m_passetmanager = ___new asset_manager(jobjectAssetManager);
+         auto passetmanager = ___new ::android::asset_manager();
+
+         passetmanager->set_AAssetManager(jobjectAssetManager);
+
+         pdriver->m_passetmanager = passetmanager;
 
          pdriver->m_passetResourceFolder = pdriver->m_passetmanager->get_asset("_matter.zip");
 
@@ -205,10 +212,11 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
             pResourceEnd);
 
 
-         auto pmainosthread = __initialize_new main_os_thread(
+         auto pmainosthread = __allocate main_os_thread(
             pfnMain, (char **)this_argv, pResourceStart,
-            pResourceEnd));
+            pResourceEnd);
 
+         pmainosthread->initialize(::system()->m_papplicationMain);
 
          pdriver->m_pparticleMainOsThread = pmainosthread;
 
@@ -277,7 +285,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1init(JNIEnv * penv, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1start(JNIEnv * penv, jobject obj)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1start(JNIEnv * penv, jobject obj)
 {
 
    try
@@ -309,20 +317,20 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_aura_1start(JNIEnv * penv, jo
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_main_1activity_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
 {
 
-   auto psequencer = ::pointer_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
+   auto pmessagebox = ::pointer_transfer((::message_box *)(::iptr) jlMicromessagebox);
 
-   psequencer->m_psequence->m_payloadResult = (enum_dialog_result)jlResponse;
+   pmessagebox->m_payloadResult = (enum_dialog_result)jlResponse;
 
-   psequencer->on_sequence();
+   pmessagebox->on_sequence();
 
 }
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_com_ace_main_1activity_aura_1is_1started(JNIEnv * env, jobject obj)
+JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_aura_1is_1started(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;
@@ -331,7 +339,7 @@ JNIEXPORT jboolean JNICALL Java_com_ace_main_1activity_aura_1is_1started(JNIEnv 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_main_1activity_sync_1mem_1free_1available(JNIEnv * env, jobject obj)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1available(JNIEnv * env, jobject obj)
 {
 
    try
@@ -339,7 +347,7 @@ JNIEXPORT void JNICALL Java_com_ace_main_1activity_sync_1mem_1free_1available(JN
 
       set_jni_context(env);
 
-      ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
+      ::acme::driver::get()->m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
 
    }
    catch (...)

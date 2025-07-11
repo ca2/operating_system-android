@@ -16,7 +16,7 @@
 #include "aura/platform/context.h"
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
-#include "android/_internal.h"
+#include "acme_windowing_android/android/_internal.h"
 #include "android/driver.h"
 
 //void on_sn_launch_context(void * pSnContext, Window window);

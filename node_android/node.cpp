@@ -3,9 +3,9 @@
 #include "node.h"
 #include "acme/platform/system.h"
 #include "apex/platform/session.h"
-#include "windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/_internal.h"
 #include "windowing_android/android/driver.h"
-#include "windowing_android/android/message_box.h"
+#include "acme_windowing_android/android/message_box.h"
 
 
 namespace node_android

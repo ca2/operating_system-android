@@ -1,11 +1,11 @@
 // Created by camilo on 2022-05-28 02:55 <3ThomasBorregaardSorensen!! (ThomasLikesNumber5 and will raise ca-square?)
 #include "framework.h"
-#include "_internal.h"
-#include "media_library.h"
+#include "acme_windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/media_library.h"
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_enumerate_music_announce(JNIEnv * env, jobject obj, jlong id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_announce(JNIEnv * env, jobject obj, jlong id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
 {
 
    try
@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_music_announce(JNIEnv * env, jobje
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_enumerate_image_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title)
 {
 
    try
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_com_ace_enumerate_image_announce(JNIEnv * env, jobje
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_enumerate_video_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_video_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
 {
 
    try

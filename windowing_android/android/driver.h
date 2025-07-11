@@ -13,7 +13,7 @@ namespace android
 {
 
     class driver :
-            virtual public ::acme::driver,
+virtual public ::android::acme::driver,
             virtual public ::windowing::text_editor_interface
     {
     public:

@@ -12,7 +12,7 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 
-#include "object.h"
+#include "acme_windowing_android/android/object.h"
 
 
 #include "bind.h"

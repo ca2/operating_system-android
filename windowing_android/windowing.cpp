@@ -9,7 +9,8 @@
 #include "acme/parallelization/synchronous_lock.h"
 //#include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/sandbox/host_interaction.h"
-#include "android/_internal.h"
+#include "aura/windowing/text_editor_interface.h"
+#include "acme_windowing_android/android/_internal.h"
 #include "aura/windowing/cursor_manager.h"
 
 

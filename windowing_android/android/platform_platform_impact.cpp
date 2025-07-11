@@ -7,7 +7,7 @@
 //#include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/window.h"
 #include "aura/windowing/windowing.h"
-#include "_internal.h"
+#include "acme_windowing_android/android/_internal.h"
 #include <android/log.h>
 #include <android/bitmap.h>
 
@@ -24,43 +24,22 @@ void set_jni_context(JNIEnv* penv);
 ::windowing::window* __get_host_window()
 {
 
-   auto psystem = this->platform()->system();
+   auto psystem = ::system();
 
    if (::is_set(psystem))
    {
 
-      auto paurasystem = psystem;
+      ::cast < ::windowing::windowing > pwindowing = psystem->windowing();
 
-      if (::is_set(paurasystem))
+      if (::is_set(pwindowing))
       {
 
-         auto paurasession = psystem->session();
+         ::cast < ::windowing::window > pwindowApplicationHost = pwindowing->get_application_host_window();
 
-         if (::is_set(paurasession))
+         if (::is_set(pwindowApplicationHost))
          {
 
-            auto puser = paurasession->m_puser;
-
-            if (::is_set(puser))
-            {
-
-               auto pwindowing = system()->windowing();
-
-               if (::is_set(pwindowing))
-               {
-
-                  auto pwindowApplicationHost = pwindowing->get_application_host_window();
-
-                  if (::is_set(pwindowApplicationHost))
-                  {
-
-                     return pwindowApplicationHost;
-
-                  }
-
-               }
-
-            }
+            return pwindowApplicationHost;
 
          }
 
@@ -73,32 +52,39 @@ void set_jni_context(JNIEnv* penv);
 }
 
 
-::windowing::window* __get_host_user_impl()
-{
-
-   auto pwindowApplicationHost = __get_host_window();
-
-   if (::is_set(pwindowApplicationHost))
-   {
-
-      return pwindowApplicationHost->m_pwindow;
-
-   }
-
-   return nullptr;
-
-}
+//::windowing::window* __get_host_user_impl()
+//{
+//
+//   auto pwindowApplicationHost = __get_host_window();
+//
+//   if (::is_set(pwindowApplicationHost))
+//   {
+//
+//      return pwindowApplicationHost->m_pwindow;
+//
+//   }
+//
+//   return nullptr;
+//
+//}
 
 
 ::user::interaction* __get_host_interaction()
 {
 
-   auto pimpl = __get_host_user_impl();
+   auto pwindow = __get_host_window();
 
-   if (::is_set(pimpl))
+   if (::is_set(pwindow))
    {
 
-      return pimpl->m_puserinteraction;
+      ::cast < ::user::interaction > puserinteraction = pwindow->m_pacmeuserinteraction;
+
+      if(puserinteraction)
+      {
+
+         return puserinteraction;
+
+      }
 
    }
 
@@ -108,8 +94,8 @@ void set_jni_context(JNIEnv* penv);
 
 
 extern "C"
-//JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+//JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -151,7 +137,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
       try
       {
 
-         auto pwindow = __get_host_user_impl();
+         auto pwindow = __get_host_window();
 
          if (::is_set(pwindow))
          {
@@ -190,7 +176,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_render_1impact(JNIEnv * env, jobject 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -225,7 +211,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_native_1on_1timer(JNIEnv * env, jobje
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    try
@@ -233,7 +219,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyDown(JNIEnv * env, jobject  obj, j
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_com_ace_impact_keyDown");
+      LOGI("%s\n", "Java_platform_platform_impact_keyDown");
 
 
    }
@@ -248,7 +234,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyDown(JNIEnv * env, jobject  obj, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
    try
    {
@@ -256,7 +242,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyUp(JNIEnv * env, jobject  obj, jin
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_com_ace_impact_keyUp");
+      LOGI("%s\n", "Java_platform_platform_impact_keyUp");
 
 
    }
@@ -271,7 +257,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyUp(JNIEnv * env, jobject  obj, jin
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
    try
    {
@@ -304,7 +290,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeDown(JNIEnv * env, jobject  
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    try
@@ -326,7 +312,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_keyPreImeUp(JNIEnv * env, jobject  ob
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -346,7 +332,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedShowKeyboard(JNIEnv * env, 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -368,7 +354,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_onReceivedHideKeyboard(JNIEnv * env, 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -398,7 +384,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_mouseMove(JNIEnv * env, jobject  obj,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -428,7 +414,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_lButtonDown(JNIEnv * env, jobject  ob
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -457,7 +443,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_lButtonUp(JNIEnv * env, jobject  obj,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
+JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
 {
 
    try
@@ -519,7 +505,7 @@ JNIEXPORT void JNICALL Java_com_ace_impact_onText(JNIEnv * env, jobject  obj, js
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_com_ace_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
 {
 
 

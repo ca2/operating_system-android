@@ -4,7 +4,7 @@
 #include "acme/platform/session.h"
 #include "aura/windowing/windowing.h"
 #include "windowing_android/android/driver.h"
-#include "windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/_internal.h"
 //
 //
 

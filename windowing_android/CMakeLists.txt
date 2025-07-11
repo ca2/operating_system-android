@@ -5,6 +5,10 @@ project(windowing_android CXX)
 list(APPEND library_source
         android/driver.cpp
         android/driver.h
+        android/platform_platform_enumerate.cpp
+        android/platform_platform_impact.cpp
+        android/platform_platform_InputConnection.cpp
+        android/platform_platform_main_activity.cpp
         _.cpp
         _.h
         _windowing_android.h
@@ -98,7 +102,7 @@ elseif (${ANDROID})
     target_compile_options(static_${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fpermissive ${EXTRA_CXX_TARGET_COMPILER_OPTIONS}>)
     target_compile_definitions(static_${PROJECT_NAME} PRIVATE CUBE)
 
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} log)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} log android jnigraphics)
     target_link_libraries(static_${PROJECT_NAME} PRIVATE ${static_library_references})
 
     target_link_options(${PROJECT_NAME} PRIVATE -Wl,-z,defs)

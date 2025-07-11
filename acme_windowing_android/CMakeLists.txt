@@ -11,6 +11,10 @@ list(APPEND library_source
         android/android_asset_manager.h
         android/bind.cpp
         android/bind.h
+        #android/com_ace_enumerate.cpp
+        #android/com_ace_impact.cpp
+        #android/com_ace_InputConnection.cpp
+        #android/com_ace_main_activity.cpp
         android/driver.cpp
         android/driver.h
         android/jni_environment.cpp
