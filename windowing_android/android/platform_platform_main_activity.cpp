@@ -136,7 +136,13 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = ::system()->node()->create_mutex();
+          auto psystem = ::system();
+
+          auto pnode = psystem->node();
+
+          auto pmutexNew = pnode->create_mutex();
+
+         g_pmutexOs = pmutexNew;
 
       }
 

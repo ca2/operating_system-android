@@ -86,7 +86,7 @@ namespace android
 
                 //void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
 
-
+            void windowing_application_main_loop() override;
                 //virtual void x11_main();
 
                 //virtual HCURSOR load_default_cursor(e_cursor ecursor) override;

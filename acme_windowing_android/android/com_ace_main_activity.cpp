@@ -8,10 +8,22 @@
 //#include "acme/platform/sequencer.h"
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
+#include "acme/inline/application/main.h"
 //#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
-typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
+//typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
+
+
+extern "C"
+{
+
+    typedef void (*PFN_CREATE_SYSTEM)();
+    typedef void (*PFN_INITIALIZE_SYSTEM)(int argc, char *argv[], char *envp[], const char *p1, const char *p2);
+    typedef int (*PFN_MAIN)();
+
+}
+
 
 extern ::particle_pointer g_pmutexOs;
 
@@ -128,7 +140,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
    try
    {
 
-      set_jni_context(penv);
+set_jni_context(penv);
 
       if (!g_pmutexOs)
       {
@@ -274,6 +286,268 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
    }
 
 }
+
+char * c_application_library_main_name(const char * pszApplicationNamespace, const char * p)
+{
+
+    int iLen1 = strlen(pszApplicationNamespace);
+    int iLen2 = strlen(p);
+
+    auto pname = (char *) malloc(iLen1 + iLen2 + 256);
+
+    strcpy(pname, p);
+    strcat(pname, "_");
+    strcat(pname, p);
+
+    return pname;
+
+}
+
+char * c_to_library_name(char * p)
+{
+
+    auto p2 = strdup(p);
+
+    auto pos = p2;
+    while(*pos)
+    {
+        if(*pos == '/')
+        {
+
+            *pos == '_';
+        }
+        else if(*pos == '-')
+        {
+
+            *pos == '_';
+        }
+        pos++;
+    }
+    return p2;
+}
+
+::string cpp_to_library_name(const ::scoped_string & scopedstr)
+{
+
+    ::string strLibraryName(scopedstr);
+
+    strLibraryName.find_replace("/", "_");
+    strLibraryName.find_replace("-", "_");
+
+    return strLibraryName;
+
+}
+
+
+::string cpp_application_library_main_name(const char * pszApplicationNamespace, const char * p)
+{
+
+    string str1(pszApplicationNamespace);
+    string str2(p);
+
+    return str1 + "_" + str2;
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIEnv *penv, jclass clazz, jstring jstrAppId, jobject jobjectAssetManager)
+{
+
+    // Attention!!
+    // When this function starts, platform::system doesn't exist yet.
+
+    char * pszAppId = nullptr;
+
+    {
+
+        // Convert Java string to C string
+        const char *arg = (*penv)->GetStringUTFChars(penv, jstrAppId, NULL);
+
+
+        if (arg == NULL)
+        {
+
+            // Out of memory
+            return;
+
+        }
+
+        __android_log_print(ANDROID_LOG_INFO, "MyApp", "Got string from Java: %s", pszAppId);
+
+        pszAppId = strdup(arg);
+
+        (*penv)->ReleaseStringUTFChars(penv, jstrAppId, arg);
+
+    }
+
+    auto pszLibraryName = c_to_library_name(pszAppId);
+
+    auto pszAppLibrary = (char*) malloc(strlen(pszLibraryName) + 256);
+
+    strcpy(pszAppLibrary, "lib");
+    strcat(pszAppLibrary, pszLibraryName);
+    strcat(pszAppLibrary, ".so");
+
+    // ---- Do something with 'arg' ----
+    // e.g., pass it to your C main loop
+
+    // When done, release it
+
+    void *handle = dlopen(pszAppLibrary, RTLD_NOW);
+
+    if (!handle)
+    {
+
+        __android_log_print(ANDROID_LOG_ERROR, "MyApp", "dlopen failed: %s", dlerror());
+
+        return;
+
+    }
+
+    auto pszCreateSystem = c_application_library_main_name(pszLibraryName, "create_system");
+
+    auto pfnCreateSystem = (PFN_CREATE_SYSTEM)dlsym(handle, pszCreateSystem);
+
+    if (!pfnCreateSystem)
+    {
+
+        __android_log_print(ANDROID_LOG_ERROR, "MyApp", "dlsym failed: %s", dlerror());
+
+        dlclose(handle);
+
+        return;
+
+    }
+
+    pfnCreateSystem();
+
+    if(!::system())
+    {
+
+        __android_log_print(ANDROID_LOG_ERROR, "MyApp", "system creation failed");
+
+    }
+
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
+{
+
+    if (::operating_system_bind::get())
+    {
+
+        delete ::operating_system_bind::get();
+
+    }
+
+    ::operating_system_bind::set(___new operating_system_bind(jobjectDirect));
+
+    if (!::operating_system_driver::get())
+    {
+
+        ::operating_system_driver::set(___new operating_system_driver());
+
+        auto pdirect = ::operating_system_bind::get();
+
+        auto pdriver = ::operating_system_driver::get();
+
+        pdriver->m_strApplicationIdentifier = pdirect->getApplicationIdentifier();
+
+        pdriver->m_strCommandLineParameters = pdirect->getCommandLineParameters();
+
+        pdriver->m_pathCacheDirectory = pdirect->getCacheDirectory();
+
+        pdriver->m_iWidth = pdirect->getWidth();
+
+        pdriver->m_iHeight = pdirect->getHeight();
+
+        pdriver->m_fDpiX = pdirect->getDpiX();
+
+        pdriver->m_fDpiY = pdirect->getDpiY();
+
+        pdriver->m_fDensity = pdirect->getDensity();
+
+        pdriver->m_bShowKeyboard = false;
+
+        pdriver->m_passetmanager = ___new asset_manager(jobjectAssetManager);
+
+        pdriver->m_passetResourceFolder = pdriver->m_passetmanager->get_asset("_matter.zip");
+
+        string strLibrary;
+
+        //int main(int argc, char* argv[], char* envp[])
+
+        strLibrary = pdriver->m_strApplicationIdentifier;
+
+        strLibrary = cpp_to_library_name(strLibrary);
+
+        string strMain;
+
+        strMain = "android_main";
+
+        strLibrary = "libimpl_" + strLibrary + ".so";
+
+auto pLibrary = dlopen(strLibrary, 0);
+
+PFN_MAIN pfnMain = (PFN_MAIN)dlsym(pLibrary, strMain);
+
+const char * pResourceStart = nullptr;
+const char * pResourceEnd = nullptr;
+//auto pfactory = __allocate ::factory::factory();
+pdriver->m_passetResourceFolder->get_pointers(
+        pResourceStart,
+        pResourceEnd);
+
+
+auto pmainosthread = __initialize_new main_os_thread(
+        pfnMain, (char **)this_argv, pResourceStart,
+        pResourceEnd));
+
+
+pdriver->m_pparticleMainOsThread = pmainosthread;
+
+
+//pfnFactory(pfactory);
+//pfnMain(1, (char**)this_argv, nullptr, p1, p2);
+
+//auto papp = pfactory->create<::platform::application>();
+
+//auto papp = ::app_factory::new_app();
+
+//papp->m_argc = __argc;
+
+//papp->m_argv = __argv;
+
+//papp->m_wargv = __wargv;
+
+//papp->m_envp = *__p__environ();
+
+//papp->m_wenvp = *__p__wenviron();
+
+//papp->m_hinstanceThis = hinstanceThis;
+
+//papp->m_hinstancePrev = hinstancePrev;
+
+//papp->m_strCommandLine = ::GetCommandLineW();
+
+//papp->m_nCmdShow = nCmdShow;
+
+pmainosthread->start();
+
+//if (system()->m_pchar_binary__matter_zip_start && system()->m_pchar_binary__matter_zip_end)
+
+//   g_psystem->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
+
+//papp->m_bConsole = false;
+}
+
+
+}
+
 
 
 extern "C"

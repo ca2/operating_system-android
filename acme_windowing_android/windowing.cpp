@@ -7,6 +7,8 @@
 #include "display.h"
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
+#include "acme/platform/application.h"
+#include "acme/platform/node.h"
 #include "acme/windowing/sandbox/host_interaction.h"
 //#include "aura/user/user/interaction_impl.h"
 //#include "aura/windowing/sandbox/host_interaction.h"
@@ -190,6 +192,68 @@ namespace android
                m_phostinteraction->set_need_redraw();
 
                m_phostinteraction->post_redraw();
+
+            }
+
+
+            void windowing::windowing_application_main_loop()
+            {
+
+                node()->notify_system_started();
+
+                __task_init();
+
+
+                init_task();
+
+                //set_current_handles();
+
+                //::set_main_thread();
+
+                //system()->defer_post_initial_request();
+
+                //run();
+
+                on_activate();
+
+                //system()->defer_post_initial_request();
+
+
+                system()->post_application_start();
+                system()->defer_post_file_open();
+                system()->post_application_started();
+
+                ::string strAppId = m_papplication->m_strAppId;
+//
+                //session()->get_application(strAppId, true);
+
+                //m_papplication->_post([this]()
+                //   {
+
+                //      m_papplication->m_bReadyToAttendRequests = true;
+
+                //   });
+
+                main();
+
+                //while (true)
+                //{
+
+                //   if (!_process_windowing_messages())
+                //   {
+
+                //      break;
+
+                //   }
+
+                //}
+
+                //if (::system()->m_pmanualresethappeningMainLoopEnd)
+                //{
+
+                //   ::system()->m_pmanualresethappeningMainLoopEnd->set_happening();
+
+                //}
 
             }
 

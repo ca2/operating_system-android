@@ -25,7 +25,7 @@
 #define HAVE_DECL_INTMAX_MAX 1
 #define HAVE_DECL_INTMAX_MIN 1
 
-#define HAVE__GET_TIMEZONE 1
+//#define HAVE__GET_TIMEZONE 1
 #define HAVE_WCSCPY 1
 #define HAVE_WCSLEN 1
 

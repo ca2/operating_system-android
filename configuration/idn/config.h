@@ -5,4 +5,4 @@
 #include "configuration/config.h"
 
 
-
+#define PACKAGE "idn"

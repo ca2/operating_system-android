@@ -59,7 +59,7 @@ namespace android
 
        __android_log_print(ANDROID_LOG_INFO, "TextInput",
                            "set_input_method_manager_selection:Sel(%d, %d),Composing:(%d, %d)",
-                           iSelBeg, iSelEnd, iCandidateBeg, iCandidateEnd);
+                           (int) iSelBeg, (int) iSelEnd,(int)  iCandidateBeg, (int) iCandidateEnd);
 
     }
 
