@@ -285,7 +285,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 //
 //}
 
-void _android_on_text(string str);
+void _android_on_text(const ::scoped_string & scopedstr);
 
 
 void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
@@ -328,7 +328,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //namespace aura
 //{
 //
-//   void system::on_os_text(e_os_text etext, string strText)
+//   void system::on_os_text(e_os_text etext, const ::scoped_string & scopedstrText)
 //   {
 //
 //      if (get_session() == nullptr || ::is_null(get_session()->m_puserinteractionHost))

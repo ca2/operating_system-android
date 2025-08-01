@@ -74,7 +74,7 @@ namespace write_text_android
             //::e_status estatus = 
             __construct_new(putilities);
 
-            const_char_pointer  pszSystemFonts = strSystemFonts;
+            const_char_pointer pszSystemFonts = strSystemFonts;
 
             bool bOk = true;
 

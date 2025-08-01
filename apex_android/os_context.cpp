@@ -527,7 +527,7 @@ namespace apex_android
             if(keyLink.QueryValue(nullptr, strFormat))
             {
 
-               const_char_pointer  psz = strFormat;
+               const_char_pointer psz = strFormat;
 
                try
                {

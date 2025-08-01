@@ -7,7 +7,7 @@
 //
 //extern "C" {
 //	/* This trivial function returns the platform ABI for which this dynamic native library is compiled.*/
-//	const_char_pointer  acme_android::getPlatformABI()
+//	const_char_pointer acme_android::getPlatformABI()
 //	{
 //	#if defined(__arm__)
 //	#if defined(__ARM_ARCH_7A__)

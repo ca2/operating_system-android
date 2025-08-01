@@ -97,7 +97,7 @@ namespace apex_android
 
 
 
-   // void rx::receiver::on_ipc_receive(rx * prx,const_char_pointer  pszMessage)
+   // void rx::receiver::on_ipc_receive(rx * prx,const_char_pointer pszMessage)
    // {
    // }
 
@@ -111,7 +111,7 @@ namespace apex_android
 
 
 
-   //void * interprocess_target::on_interprocess_receive(rx * prx,const_char_pointer  pszMessage)
+   //void * interprocess_target::on_interprocess_receive(rx * prx,const_char_pointer pszMessage)
    //{
 
    //   if(m_preceiver != nullptr)

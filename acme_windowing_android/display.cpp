@@ -1371,7 +1371,7 @@ namespace android
 //   }
 //
 //
-//   bool display::set_os_desktop_theme(string strTheme)
+//   bool display::set_os_desktop_theme(const ::scoped_string & scopedstrTheme)
 //   {
 //
 //      return impl_set_os_desktop_theme(strTheme);
@@ -1379,7 +1379,7 @@ namespace android
 //   }
 //
 //
-//   bool display::impl_set_os_desktop_theme(string strTheme)
+//   bool display::impl_set_os_desktop_theme(const ::scoped_string & scopedstrTheme)
 //   {
 //
 //      return false;
@@ -1388,7 +1388,7 @@ namespace android
 //
 //
 //   // todo color:// gradient:// if the operating system doesn't have this, create the file, please.
-//   bool display::impl_set_wallpaper(::collection::index, string strWallpaper)
+//   bool display::impl_set_wallpaper(::collection::index, const ::scoped_string & scopedstrWallpaper)
 //   {
 //
 //      //return "";
@@ -1396,7 +1396,7 @@ namespace android
 //
 //   }
 //
-//   bool display::set_wallpaper(::collection::index iScreen, string strWallpaper)
+//   bool display::set_wallpaper(::collection::index iScreen, const ::scoped_string & scopedstrWallpaper)
 //   {
 //
 //      //return "";

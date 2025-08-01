@@ -324,9 +324,9 @@ namespace android
 //                  //
 //                  //         string strApplicationServerName = psystem->get_application_server_name();
 //                  //
-//                  //         pupdate->res_class = (char *) (const_char_pointer  ) strApplicationServerName;
+//                  //         pupdate->res_class = (char *) (const_char_pointer )strApplicationServerName;
 //                  //
-//                  //         pupdate->res_name = (char *) (const_char_pointer  ) strApplicationServerName;
+//                  //         pupdate->res_name = (char *) (const_char_pointer )strApplicationServerName;
 //                  //
 //                  //         XSetClassHint(display, window, pupdate);
 //                  //
@@ -783,7 +783,7 @@ namespace android
 //            }
 
 
-            //int window::store_name(const_char_pointer  psz)
+            //int window::store_name(const_char_pointer psz)
             //{
 
             //   windowing_output_debug_string("\nwindow::store_name");
@@ -1617,7 +1617,7 @@ namespace android
                //   ixa,
                //   8,
                //   PropModeReplace,
-               //   (const unsigned char *)(const_char_pointer  )path,
+               //   (const unsigned char *)(const_char_pointer )path,
                //   path.get_length());
 
                //output_debug_string("\nfreebsd::interaction_impl::bamf_set_icon END");
@@ -2141,7 +2141,7 @@ namespace android
             //   }
 
 
-            //void window::set_window_text(const_char_pointer  pszString)
+            //void window::set_window_text(const_char_pointer pszString)
             //{
 
             //   //      m_strWindowText = pszString;
@@ -2193,7 +2193,7 @@ namespace android
             //   //   ixa,
             //   //   8,
             //   //   PropModeReplace,
-            //   //   (const unsigned char *)(const_char_pointer  )path,
+            //   //   (const unsigned char *)(const_char_pointer )path,
             //   //   path.get_length());
 
             //   //output_debug_string("\nfreebsd::interaction_impl::bamf_set_icon END");
@@ -2844,7 +2844,7 @@ namespace android
             //}
 
 
-            //int window::wm_test_state_raw(const_char_pointer  pszNetStateFlag)
+            //int window::wm_test_state_raw(const_char_pointer pszNetStateFlag)
             //{
 
             //   synchronous_lock synchronouslock(synchronization());
@@ -2876,7 +2876,7 @@ namespace android
             //}
 
 
-            //int window::wm_test_state(const_char_pointer  pszNetStateFlag)
+            //int window::wm_test_state(const_char_pointer pszNetStateFlag)
             //{
 
             //   synchronous_lock synchronouslock(synchronization());
@@ -3097,7 +3097,7 @@ namespace android
 
 
             ///// should be run in user thread
-            //::e_status window::x11_store_name(const_char_pointer  pszName)
+            //::e_status window::x11_store_name(const_char_pointer pszName)
             //{
 
             //   synchronous_lock synchronouslock(synchronization());
