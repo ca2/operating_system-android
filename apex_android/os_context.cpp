@@ -410,7 +410,7 @@ namespace apex_android
    }
 
    
-   void os_context::file_extension_get_open_with_list_keys(string_array & straKey, const string & strExtension)
+   void os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::scoped_string & scopedstrExtension)
    {
 
       throw ::interface_only();

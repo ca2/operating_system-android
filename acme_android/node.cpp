@@ -37,7 +37,7 @@ namespace acme_android
 
    }
 
-   void node::set_last_run_application_path(const ::string& strAppId)
+   void node::set_last_run_application_path(const ::scoped_string & scopedstrAppId)
    {
 
 

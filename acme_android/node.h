@@ -22,7 +22,7 @@ namespace acme_android
       void system_main() override;
 
 
-      void set_last_run_application_path(const ::string& strAppId) override;
+      void set_last_run_application_path(const ::scoped_string & scopedstrAppId) override;
 
       
       string audio_get_default_implementation_name() override;

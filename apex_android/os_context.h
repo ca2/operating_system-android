@@ -32,10 +32,10 @@
 //      virtual ::payload connection_settings_get_auto_config_url() override;
 //
 //
-//      void local_machine_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void current_user_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
+//      void local_machine_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void current_user_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
 //      void defer_register_ca2_plugin_for_mozilla() override;
 //
 //      void file_extension_get_open_with_list_keys(string_array & straKey, const ::scoped_string & scopedstrExtension) override;

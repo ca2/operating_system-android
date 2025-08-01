@@ -1352,7 +1352,7 @@ namespace acme_android
 
 
 
-   bool directory_context::is_inside(const ::file::path & pathDir, const ::file::path & path)
+   bool directory_context::is_inside(const ::file::path & pathFolder, const ::file::path & path)
    {
 
       return pszDir.case_insensitive_begins(pszPath);
@@ -1360,7 +1360,7 @@ namespace acme_android
    }
 
 
-   //bool directory_context::has_subdir(const ::file::path & pathDir)
+   //bool directory_context::has_subdir(const ::file::path & pathFolder)
    //{
 
    //   ::file::listing ls;

@@ -111,7 +111,7 @@ virtual public ::android::acme::driver,
 //   virtual ::pointer < ::message_box > pick_message_box();
 
 //
-//   virtual void open_url(const ::string& strOpenUrl);
+//   virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
 
         void exchange1() override;

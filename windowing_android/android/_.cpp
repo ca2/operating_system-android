@@ -203,7 +203,7 @@ void android_exchange()
 }
 
 
-void android_edit_on_set_focus(int l, int t, int r, int b, const ::string & pszText, int iBeg, int iEnd)
+void android_edit_on_set_focus(int l, int t, int r, int b, const ::scoped_string & scopedstrText, int iBeg, int iEnd)
 {
 
    synchronous_lock synchronouslock(osmutex());
