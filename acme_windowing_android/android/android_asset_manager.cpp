@@ -46,7 +46,7 @@ namespace android
 #define AASSET_MANAGER_ACCESS_BUFFER 3
 
 
-    ::pointer<::acme::asset> asset_manager::get_asset(const char *path)
+    ::pointer<::acme::asset> asset_manager::get_asset(const_char_pointer path)
     {
 
        auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);

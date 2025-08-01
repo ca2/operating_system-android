@@ -14,7 +14,7 @@
 //#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
-typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
+typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const_char_pointer p1, const_char_pointer p2);
 
 extern ::particle_pointer g_pmutexOs;
 
@@ -34,7 +34,7 @@ int SetMainScreenRect(const ::int_rectangle &rect);
 void set_jni_context(JNIEnv * penv);
 
 
-const char * this_argv[] =
+const_char_pointer this_argv[] =
 {
    "app",
    nullptr
@@ -50,12 +50,12 @@ public:
    pthread_t         m_pthread;
    PFN_MAIN          m_pfnMain;
    char ** m_ppszArg;
-   const char * m_pszResourceStart;
-   const char * m_pszResourceEnd;
+   const_char_pointer m_pszResourceStart;
+   const_char_pointer m_pszResourceEnd;
    ::e_status        m_estatus;
 
 
-   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const char * pszResourceStart, const char * pszResourceEnd)
+   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const_char_pointer pszResourceStart, const_char_pointer pszResourceEnd)
    {
 
       m_pfnMain = pfnMain;
@@ -210,8 +210,8 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
 
          PFN_MAIN pfnMain = (PFN_MAIN)dlsym(pLibrary, strMain);
 
-         const char * pResourceStart = nullptr;
-         const char * pResourceEnd = nullptr;
+         const_char_pointer pResourceStart = nullptr;
+         const_char_pointer pResourceEnd = nullptr;
          //auto pfactory = __allocate ::factory::factory();
          pdriver->m_passetResourceFolder->get_pointers(
             pResourceStart,

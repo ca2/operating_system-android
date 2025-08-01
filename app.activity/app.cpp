@@ -8,7 +8,7 @@
 extern "C"
 void android_set_cache_dir(const ::scoped_string & scopedstrDir);
 extern "C"
-const char * android_get_cache_dir();
+const_char_pointer android_get_cache_dir();
 
 
 PFN_android_fill_plasma g_android_fill_plasma = NULL;
@@ -219,15 +219,15 @@ void start(int iScreenWidth, int iScreenHeight, const ::scoped_string & scopedst
 
 int g_iScreenW = 0;
 int g_iScreenH = 0;
-const char * g_pszCommandLine = NULL;
-const char * g_pszCacheDir = NULL;
+const_char_pointer g_pszCommandLine = NULL;
+const_char_pointer g_pszCacheDir = NULL;
 
-const char * jstrdup(JNIEnv * env, jstring jstr)
+const_char_pointer jstrdup(JNIEnv * env, jstring jstr)
 {
    
-   const char * nativeString = env->GetStringUTFChars(jstr, NULL);
+   const_char_pointer nativeString = env->GetStringUTFChars(jstr, NULL);
 
-   const char * psz = strdup(nativeString);
+   const_char_pointer psz = strdup(nativeString);
 
    env->ReleaseStringUTFChars(jstr, nativeString);
 

@@ -453,7 +453,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//CLASS_DECL_AURA void _android_os_message_box(const ::string & pText, const ::string & lpCaption, const ::e_message_box & emessagebox)
+//CLASS_DECL_AURA void _android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::e_message_box & emessagebox)
 //{
 //
 //   while (::operating_system_driver::get()->m_iMessageBoxResult > 0)
@@ -563,7 +563,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//CLASS_DECL_AURA void android_os_message_box(const ::string & pText, const ::string & lpCaption, const ::e_message_box & emessageboxParam, const ::future & processParam)
+//CLASS_DECL_AURA void android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::e_message_box & emessageboxParam, const ::future & processParam)
 //{
 //
 //   string strText(pText);
