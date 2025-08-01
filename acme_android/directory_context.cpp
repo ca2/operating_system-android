@@ -1128,7 +1128,7 @@ namespace acme_android
    }
 
 
-   //::file::path directory_context::trash_that_is_not_trash(const ::file::path & pszParam)
+   //::file::path directory_context::trash_that_is_not_trash(const ::file::path & pathParam)
    //{
 
    //   if (pszParam == nullptr)
@@ -1343,7 +1343,7 @@ namespace acme_android
    }
 
 
-   bool directory_context::is_inside_time(const ::file::path & pszPath)
+   bool directory_context::is_inside_time(const ::file::path & path)
    {
 
       return is_inside(time(), pszPath);
@@ -1352,7 +1352,7 @@ namespace acme_android
 
 
 
-   bool directory_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
+   bool directory_context::is_inside(const ::file::path & pathDir, const ::file::path & path)
    {
 
       return pszDir.case_insensitive_begins(pszPath);
@@ -1360,7 +1360,7 @@ namespace acme_android
    }
 
 
-   //bool directory_context::has_subdir(const ::file::path & pszDir)
+   //bool directory_context::has_subdir(const ::file::path & pathDir)
    //{
 
    //   ::file::listing ls;

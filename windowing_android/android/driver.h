@@ -96,7 +96,7 @@ virtual public ::android::acme::driver,
 
         void set_editor_selection(character_count iStart, character_count iEnd) override;
 
-        void set_editor_text(const ::string &strText) override;
+        void set_editor_text(const ::scoped_string & scopedstrText) override;
 
         void show_software_keyboard() override;
 

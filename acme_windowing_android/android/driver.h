@@ -100,7 +100,7 @@ namespace android
 
             //void set_editor_selection(character_count iStart, character_count iEnd) override;
 
-            //void set_editor_text(const ::string &strText) override;
+            //void set_editor_text(const ::scoped_string & scopedstrText) override;
 
             //void show_software_keyboard() override;
 
@@ -117,7 +117,7 @@ namespace android
             //virtual ::pointer<::message_box> pick_message_box();
 
 
-            //virtual void open_url(const ::string &strOpenUrl);
+            //virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
 
             void exchange1() override;
