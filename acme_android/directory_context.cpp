@@ -223,7 +223,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
+   //bool directory_context::rls(const_char_pointer  lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
    //{
 
    //   if(::file::system_dir::rls(papp,lpcsz,pstraPath,pstraTitle,pstraRelative,eextract))
@@ -238,7 +238,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls_pattern(const_char_pointer lpcsz, const_char_pointer pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, long_long_array * piaSize, enum_extract eextract)
+   //bool directory_context::rls_pattern(const_char_pointer  lpcsz, const_char_pointer  pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, long_long_array * piaSize, enum_extract eextract)
    //{
 
 
@@ -372,7 +372,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls_dir(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
+   //bool directory_context::rls_dir(const_char_pointer  lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
    //{
 
    //   if(::file::system_dir::rls_dir(papp,lpcsz,pstraPath,pstraTitle,pstraRelative))
@@ -412,7 +412,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const_char_pointer ) stra[i]);
+   //         pstraPath->add((const_char_pointer  ) stra[i]);
 
    //      }
 
@@ -460,7 +460,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls_dir(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_dir(const_char_pointer  lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_dir(papp,lpcsz,pstraPath,pstraTitle))
@@ -500,7 +500,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const_char_pointer ) stra[i]);
+   //         pstraPath->add((const_char_pointer  ) stra[i]);
 
    //      }
 
@@ -518,7 +518,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls_file(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_file(const_char_pointer  lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_file(papp,lpcsz,pstraPath,pstraTitle))
@@ -559,7 +559,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const_char_pointer ) stra[i]);
+   //         pstraPath->add((const_char_pointer  ) stra[i]);
 
    //      }
 
@@ -577,7 +577,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, long_long_array * piaSize)
+   //bool directory_context::ls(const_char_pointer  lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, long_long_array * piaSize)
    //{
 
 
@@ -616,7 +616,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const_char_pointer ) stra[i]);
+   //         pstraPath->add((const_char_pointer  ) stra[i]);
 
    //      }
 
@@ -795,7 +795,7 @@ namespace acme_android
 
       }
 
-      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !case_insensitive_ansi_count_compare(&((const_char_pointer )str)[iLast - 3], ".zip", 4))
+      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !case_insensitive_ansi_count_compare(&((const_char_pointer  )str)[iLast - 3], ".zip", 4))
       {
 
          return true;

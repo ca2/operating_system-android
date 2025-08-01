@@ -115,7 +115,7 @@ namespace apex_android
 
    //   system()->open_link(m_strBaseChannel + "://" + message, "", "");
 
-   //   //const_char_pointer pszMessage = (const_char_pointer )pdata;
+   //   //const_char_pointer  pszMessage = (const_char_pointer  )pdata;
 
    //   //::collection::count c = len;
 

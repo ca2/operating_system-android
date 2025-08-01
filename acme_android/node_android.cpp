@@ -54,7 +54,7 @@ string android_backtrace()
    for (int idx = 0; idx < count; idx++)
    {
       const void * addr = buffer[idx];
-      const_char_pointer symbol = "";
+      const_char_pointer  symbol = "";
 
       Dl_info info;
       if (dladdr(addr, &info) && info.dli_sname)

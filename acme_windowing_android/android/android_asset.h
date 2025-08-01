@@ -21,7 +21,7 @@ namespace android
         ~asset() override;
 
 
-        void get_pointers(const_char_pointer &pstart, const_char_pointer &pend) override;
+        void get_pointers(const_char_pointer  &pstart, const_char_pointer  &pend) override;
 
 
     };

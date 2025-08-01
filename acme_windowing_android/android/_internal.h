@@ -69,9 +69,9 @@ extern int g_iScreenW;
 
 extern int g_iScreenH;
 
-extern const_char_pointer g_pszCommandLine;
+extern const_char_pointer  g_pszCommandLine;
 
-extern const_char_pointer g_pszCacheDir;
+extern const_char_pointer  g_pszCacheDir;
 
 class asset_manager;
 

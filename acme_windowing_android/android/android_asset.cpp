@@ -28,7 +28,7 @@ namespace android
     }
 
 
-    void asset::get_pointers(const_char_pointer &pstart, const_char_pointer &pend)
+    void asset::get_pointers(const_char_pointer  &pstart, const_char_pointer  &pend)
     {
 
        if(!m_passet)
@@ -38,7 +38,7 @@ namespace android
 
        }
 
-       pstart = (const_char_pointer ) AAsset_getBuffer(m_passet);
+       pstart = (const_char_pointer  ) AAsset_getBuffer(m_passet);
 
        auto len = AAsset_getLength(m_passet);
 

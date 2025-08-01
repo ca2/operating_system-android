@@ -167,7 +167,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
 
             string str(wstr);
 
-            const_char_pointer pszCommittingText = str;
+            const_char_pointer  pszCommittingText = str;
 
             bReturn = pelementFocus->InputConnectionCommitText(str, newCursorPosition, bSuper);
 
@@ -296,7 +296,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
 
             string str(wstr);
 
-            const_char_pointer pszComposingText = str;
+            const_char_pointer  pszComposingText = str;
 
             bReturn = pelementFocus->InputConnectionSetComposingText(str, newCursorPosition, bSuper);
 

@@ -33,7 +33,7 @@ namespace android
                                           jobjectAssetManager);
 
 
-    ::pointer <::acme::asset> get_asset(const_char_pointer path) override;
+    ::pointer <::acme::asset> get_asset(const_char_pointer  path) override;
 
 
 };
