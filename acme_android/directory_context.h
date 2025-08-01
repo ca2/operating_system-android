@@ -56,7 +56,7 @@ namespace acme_android
       //virtual ::file::path module();
       //virtual ::file::path ca2module();
       virtual ::file::path time_square() override;
-      virtual ::file::path time_log(const ::string & strId) override;
+      virtual ::file::path time_log(const ::scoped_string & scopedstrId) override;
 
 
       //virtual ::file::path trash_that_is_not_trash(const ::file::path & path) override;

@@ -707,7 +707,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::is(const ::string & strPath)
+   //bool directory_context::is(const ::scoped_string & scopedstrPath)
    //{
 
    //   if(::file::system_dir::is(strPath))
@@ -880,7 +880,7 @@ namespace acme_android
    }
 
 
-   ::file::path directory_context::time_log(const ::string & strId)
+   ::file::path directory_context::time_log(const ::scoped_string & scopedstrId)
    {
 
       return appdata() / "log";

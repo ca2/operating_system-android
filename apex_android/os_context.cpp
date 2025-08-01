@@ -111,7 +111,7 @@ namespace apex_android
    }
 
 
-   void os_context::terminate_processes_by_title(const ::string & strName)
+   void os_context::terminate_processes_by_title(const ::scoped_string & scopedstrName)
    {
       
       throw ::interface_only();
@@ -162,7 +162,7 @@ namespace apex_android
    //}
 
 
-   //bool os_context::title_pid(unsigned int & dwPid, const ::string & strName)
+   //bool os_context::title_pid(unsigned int & dwPid, const ::scoped_string & scopedstrName)
    //{
    //   ::unsigned_int_array dwa;
    //   get_all_processes(dwa);
@@ -299,7 +299,7 @@ namespace apex_android
    }
 
 
-   void os_context::local_machine_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
+   void os_context::local_machine_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet)
    {
 
 //      throw ::interface_only();
@@ -317,7 +317,7 @@ namespace apex_android
    }
 
 
-   void os_context::local_machine_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
+   void os_context::local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet)
    {
 
 
@@ -334,7 +334,7 @@ namespace apex_android
    }
 
 
-   void os_context::current_user_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
+   void os_context::current_user_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet)
    {
 
       throw ::interface_only();
@@ -352,7 +352,7 @@ namespace apex_android
    }
 
 
-   void os_context::current_user_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string & strArguments, bool bSet)
+   void os_context::current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet)
    {
 
       throw ::interface_only();
@@ -437,7 +437,7 @@ namespace apex_android
    }
 
 
-   void os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & strExtension)
+   void os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::scoped_string & scopedstrExtension)
    {
 
       string_array straKey;
@@ -452,7 +452,7 @@ namespace apex_android
    }
 
    
-   void os_context::file_association_set_default_icon(const ::string & strExtension, const ::string & strExtensionNamingClass, const ::string & strIconPath)
+   void os_context::file_association_set_default_icon(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::scoped_string & scopedstrIconPath)
    {
 
       throw ::interface_only();
@@ -470,7 +470,7 @@ namespace apex_android
    }
 
 
-   void os_context::file_association_set_shell_open_command(const ::string & strExtension, const ::string & strExtensionNamingClass, const ::string & strCommand, const ::string & strParam)
+   void os_context::file_association_set_shell_open_command(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::scoped_string & scopedstrCommand, const ::scoped_string & scopedstrParam)
    {
 
       throw ::interface_only();
@@ -505,7 +505,7 @@ namespace apex_android
    }
 
    
-   void os_context::file_association_get_shell_open_command(const ::string & strExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
+   void os_context::file_association_get_shell_open_command(const ::scoped_string & scopedstrExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
    {
 
       throw ::interface_only();
@@ -550,7 +550,7 @@ namespace apex_android
    }
 
 
-   void os_context::native_modern_web_browser(const ::string & str)
+   void os_context::native_modern_web_browser(const ::scoped_string & scopedstr)
    {
 
       throw ::interface_only();
@@ -559,7 +559,7 @@ namespace apex_android
    }
 
 
-   void os_context::native_full_web_browser(const ::string & str)
+   void os_context::native_full_web_browser(const ::scoped_string & scopedstr)
    {
 
       throw ::interface_only();

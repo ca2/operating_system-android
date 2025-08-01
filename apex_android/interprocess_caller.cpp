@@ -60,7 +60,7 @@ namespace apex_android
    }
 
 
-   void interprocess_caller::call(const ::string & strUri, const class time & timeTimeout)
+   void interprocess_caller::call(const ::scoped_string & scopedstrUri, const class time & timeTimeout)
    {
 
       //data_struct data;

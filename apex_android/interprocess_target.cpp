@@ -21,7 +21,7 @@ namespace apex_android
    }
 
 
-   void interprocess_target::create(const ::string & strChannel)
+   void interprocess_target::create(const ::scoped_string & scopedstrChannel)
    {
       /*
       m_key = ftok(".", 'c');

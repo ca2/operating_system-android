@@ -38,7 +38,7 @@ namespace node_android
    }
 
 
-   void node::report_exception_to_user(::particle * pparticle, ::exception & exception, const ::string & strMoreDetails)
+   void node::report_exception_to_user(::particle * pparticle, ::exception & exception, const ::scoped_string & scopedstrMoreDetails)
    {
 
       if (system()->m_bIsReadyForUserInteraction)

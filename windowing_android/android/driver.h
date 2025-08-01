@@ -119,7 +119,7 @@ virtual public ::android::acme::driver,
         //void after_exchange() override;
 
 
-//   void list_file_enumerate(const ::string & strListFileEnumerate) override;
+//   void list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate) override;
 
 
     };
