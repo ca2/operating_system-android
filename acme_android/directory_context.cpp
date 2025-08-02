@@ -1346,7 +1346,7 @@ namespace acme_android
    bool directory_context::is_inside_time(const ::file::path & path)
    {
 
-      return is_inside(time(), pszPath);
+      return is_inside(time(), path);
 
    }
 
@@ -1355,7 +1355,7 @@ namespace acme_android
    bool directory_context::is_inside(const ::file::path & pathFolder, const ::file::path & path)
    {
 
-      return pszDir.case_insensitive_begins(pszPath);
+      return pathFolder.case_insensitive_begins(path);
 
    }
 
