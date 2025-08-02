@@ -40,7 +40,7 @@ namespace acme_android
       //virtual bool has_subdir(const ::file::path & lpcsz) override;
 
       //virtual void create(const ::file::path & lpcsz) override;
-      //virtual void erase(const ::file::path & psz, bool bRecursive = true) override;
+      //virtual void erase(const ::file::path & path, bool bRecursive = true) override;
 
 
 
@@ -56,10 +56,10 @@ namespace acme_android
       //virtual ::file::path module();
       //virtual ::file::path ca2module();
       virtual ::file::path time_square() override;
-      virtual ::file::path time_log(const ::string & strId) override;
+      virtual ::file::path time_log(const ::scoped_string & scopedstrId) override;
 
 
-      //virtual ::file::path trash_that_is_not_trash(const ::file::path & psz) override;
+      //virtual ::file::path trash_that_is_not_trash(const ::file::path & path) override;
 
       //virtual ::file::path appdata() override;
       virtual ::file::path commonappdata() override;

@@ -46,7 +46,7 @@ void jni_object::set_jni_object(jobject jobject)
 }
 
 
-jfieldID jni_object::field_str(const char * psz)
+jfieldID jni_object::field_str(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
@@ -54,7 +54,7 @@ jfieldID jni_object::field_str(const char * psz)
 }
 
 
-jfieldID jni_object::field_b(const char * psz)
+jfieldID jni_object::field_b(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "Z");
@@ -62,7 +62,7 @@ jfieldID jni_object::field_b(const char * psz)
 }
 
 
-jfieldID jni_object::field_uch(const char * psz)
+jfieldID jni_object::field_uch(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "B");
@@ -70,7 +70,7 @@ jfieldID jni_object::field_uch(const char * psz)
 }
 
 
-jfieldID jni_object::field_ch(const char * psz)
+jfieldID jni_object::field_ch(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "C");
@@ -78,7 +78,7 @@ jfieldID jni_object::field_ch(const char * psz)
 }
 
 
-jfieldID jni_object::field_sh(const char * psz)
+jfieldID jni_object::field_sh(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "S");
@@ -86,7 +86,7 @@ jfieldID jni_object::field_sh(const char * psz)
 }
 
 
-jfieldID jni_object::field_i(const char * psz)
+jfieldID jni_object::field_i(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "I");
@@ -94,7 +94,7 @@ jfieldID jni_object::field_i(const char * psz)
 }
 
 
-jfieldID jni_object::field_l(const char * psz)
+jfieldID jni_object::field_l(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "J");
@@ -103,7 +103,7 @@ jfieldID jni_object::field_l(const char * psz)
 
 
 
-jfieldID jni_object::field_f(const char * psz)
+jfieldID jni_object::field_f(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "F");
@@ -111,7 +111,7 @@ jfieldID jni_object::field_f(const char * psz)
 }
 
 
-jfieldID jni_object::field_d(const char * psz)
+jfieldID jni_object::field_d(const_char_pointer psz)
 {
 
    return t_pjnienv1->GetFieldID(m_jclass, psz, "D");
@@ -119,7 +119,7 @@ jfieldID jni_object::field_d(const char * psz)
 }
 
 
-void jni_object::set_str(const char * pszField, const char * psz)
+void jni_object::set_str(const_char_pointer pszField, const_char_pointer psz)
 {
 
    set_str(field_str(pszField), psz);
@@ -127,7 +127,7 @@ void jni_object::set_str(const char * pszField, const char * psz)
 }
 
 
-string jni_object::get_str(const char * pszField)
+string jni_object::get_str(const_char_pointer pszField)
 {
 
    return get_str(field_str(pszField));
@@ -135,7 +135,7 @@ string jni_object::get_str(const char * pszField)
 }
 
 
-void jni_object::set_b(const char * pszField, bool b)
+void jni_object::set_b(const_char_pointer pszField, bool b)
 {
 
    set_b(field_b(pszField), b);
@@ -143,7 +143,7 @@ void jni_object::set_b(const char * pszField, bool b)
 }
 
 
-bool jni_object::get_b(const char * pszField)
+bool jni_object::get_b(const_char_pointer pszField)
 {
 
    return get_b(field_b(pszField));
@@ -152,7 +152,7 @@ bool jni_object::get_b(const char * pszField)
 
 
 
-void jni_object::set_uch(const char * pszField, unsigned char b)
+void jni_object::set_uch(const_char_pointer pszField, unsigned char b)
 {
 
    set_uch(field_uch(pszField), b);
@@ -160,7 +160,7 @@ void jni_object::set_uch(const char * pszField, unsigned char b)
 }
 
 
-unsigned char jni_object::get_uch(const char * pszField)
+unsigned char jni_object::get_uch(const_char_pointer pszField)
 {
 
    return get_uch(field_uch(pszField));
@@ -169,7 +169,7 @@ unsigned char jni_object::get_uch(const char * pszField)
 
 
 
-void jni_object::set_ch(const char * pszField, char ch)
+void jni_object::set_ch(const_char_pointer pszField, char ch)
 {
 
    set_ch(field_ch(pszField), ch);
@@ -177,7 +177,7 @@ void jni_object::set_ch(const char * pszField, char ch)
 }
 
 
-char jni_object::get_ch(const char * pszField)
+char jni_object::get_ch(const_char_pointer pszField)
 {
 
    return get_ch(field_ch(pszField));
@@ -186,7 +186,7 @@ char jni_object::get_ch(const char * pszField)
 
 
 
-void jni_object::set_sh(const char * pszField, short sh)
+void jni_object::set_sh(const_char_pointer pszField, short sh)
 {
 
    set_sh(field_sh(pszField), sh);
@@ -194,7 +194,7 @@ void jni_object::set_sh(const char * pszField, short sh)
 }
 
 
-short jni_object::get_sh(const char * pszField)
+short jni_object::get_sh(const_char_pointer pszField)
 {
 
    return get_sh(field_sh(pszField));
@@ -203,7 +203,7 @@ short jni_object::get_sh(const char * pszField)
 
 
 
-void jni_object::set_i(const char * pszField, int i)
+void jni_object::set_i(const_char_pointer pszField, int i)
 {
 
    set_i(field_i(pszField), i);
@@ -212,7 +212,7 @@ void jni_object::set_i(const char * pszField, int i)
 
 
 
-int jni_object::get_i(const char * pszField)
+int jni_object::get_i(const_char_pointer pszField)
 {
 
    return get_i(field_i(pszField));
@@ -221,7 +221,7 @@ int jni_object::get_i(const char * pszField)
 
 
 
-void jni_object::set_l(const char * pszField, long long hi)
+void jni_object::set_l(const_char_pointer pszField, long long hi)
 {
 
    set_l(field_l(pszField), hi);
@@ -230,7 +230,7 @@ void jni_object::set_l(const char * pszField, long long hi)
 
 
 
-long long jni_object::get_l(const char * pszField)
+long long jni_object::get_l(const_char_pointer pszField)
 {
 
    return get_l(field_l(pszField));
@@ -238,7 +238,7 @@ long long jni_object::get_l(const char * pszField)
 }
 
 
-void jni_object::set_f(const char * pszField, float f)
+void jni_object::set_f(const_char_pointer pszField, float f)
 {
 
    set_f(field_f(pszField), f);
@@ -246,7 +246,7 @@ void jni_object::set_f(const char * pszField, float f)
 }
 
 
-float jni_object::get_f(const char * pszField)
+float jni_object::get_f(const_char_pointer pszField)
 {
 
    return get_f(field_f(pszField));
@@ -254,7 +254,7 @@ float jni_object::get_f(const char * pszField)
 }
 
 
-void jni_object::set_d(const char * pszField, double d)
+void jni_object::set_d(const_char_pointer pszField, double d)
 {
 
    set_d(field_d(pszField), d);
@@ -262,7 +262,7 @@ void jni_object::set_d(const char * pszField, double d)
 }
 
 
-double jni_object::get_d(const char * pszField)
+double jni_object::get_d(const_char_pointer pszField)
 {
 
    return get_d(field_d(pszField));
@@ -270,7 +270,7 @@ double jni_object::get_d(const char * pszField)
 }
 
 
-void jni_object::set_str(jfieldID jfieldid, const char * psz)
+void jni_object::set_str(jfieldID jfieldid, const_char_pointer psz)
 {
 
    jstring jstring = t_pjnienv1->NewStringUTF(psz);

@@ -96,7 +96,7 @@ virtual public ::android::acme::driver,
 
         void set_editor_selection(character_count iStart, character_count iEnd) override;
 
-        void set_editor_text(const ::string &strText) override;
+        void set_editor_text(const ::scoped_string & scopedstrText) override;
 
         void show_software_keyboard() override;
 
@@ -111,7 +111,7 @@ virtual public ::android::acme::driver,
 //   virtual ::pointer < ::message_box > pick_message_box();
 
 //
-//   virtual void open_url(const ::string& strOpenUrl);
+//   virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
 
         void exchange1() override;
@@ -119,7 +119,7 @@ virtual public ::android::acme::driver,
         //void after_exchange() override;
 
 
-//   void list_file_enumerate(const ::string & strListFileEnumerate) override;
+//   void list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate) override;
 
 
     };

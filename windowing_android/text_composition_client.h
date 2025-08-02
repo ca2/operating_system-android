@@ -30,7 +30,7 @@ namespace windowing_android
 
       void on_text_composition_done() override;
 
-      void on_text_composition(string strMessage) override;
+      void on_text_composition(const ::scoped_string & scopedstrMessage) override;
 
       void insert_text(const ::scoped_string & scopedstr, bool bForceNewStep, const ::action_context& context) override;
 
@@ -78,9 +78,9 @@ namespace windowing_android
    //
    //   virtual void on_text_composition_done() override;
    //
-   //   virtual void on_text_composition(string strMessage);
+   //   virtual void on_text_composition(const ::scoped_string & scopedstrMessage);
    //
-   //   virtual void insert_text(string str, bool bForceNewStep, const ::action_context & context) override;
+   //   virtual void insert_text(const ::scoped_string & scopedstr, bool bForceNewStep, const ::action_context & context) override;
    //
    //   virtual bool is_text_composition_active() const;
    //

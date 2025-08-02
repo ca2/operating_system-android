@@ -40,7 +40,7 @@ namespace android
       string m_strArtist;
 
 
-      audio_item(long long iId, const ::string& strTitle, const ::string& strArtist) :
+      audio_item(long long iId, const ::scoped_string & scopedstrTitle, const ::scoped_string & scopedstrArtist) :
          library_item(iId),
          m_strTitle(strTitle),
          m_strArtist(strArtist)
@@ -66,7 +66,7 @@ namespace android
 
       string m_strTitle;
 
-      images_item(long long iId, const ::string& strTitle) :
+      images_item(long long iId, const ::scoped_string & scopedstrTitle) :
          library_item(iId),
          m_strTitle(strTitle)
       {
@@ -92,7 +92,7 @@ namespace android
       string m_strTitle;
       string m_strArtist;
 
-      video_item(long long iId, const ::string& strTitle, const ::string& strArtist) :
+      video_item(long long iId, const ::scoped_string & scopedstrTitle, const ::scoped_string & scopedstrArtist) :
          library_item(iId),
          m_strTitle(strTitle),
          m_strArtist(strArtist)

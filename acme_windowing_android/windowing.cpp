@@ -1000,7 +1000,7 @@ namespace user
 //}
 //
 //
-//int oswindow_data::store_name(const ::string & psz)
+//int oswindow_data::store_name(const ::scoped_string & scopedstr)
 //{
 //
 //   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());

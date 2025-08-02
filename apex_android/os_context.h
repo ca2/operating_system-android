@@ -21,7 +21,7 @@
 //      void reboot() override;
 //      void shutdown(bool bPowerOff) override;
 //
-//      void terminate_processes_by_title(const ::string & strName) override;
+//      void terminate_processes_by_title(const ::scoped_string & scopedstrName) override;
 //      //process_identifier_array module_path_processes_identifiers(const ::scoped_string & scopedstr) override;
 //      //process_identifier_array title_processes_identifiers(const ::scoped_string & scopedstr) override;
 //      process_identifier current_process_identifier() override;
@@ -32,22 +32,22 @@
 //      virtual ::payload connection_settings_get_auto_config_url() override;
 //
 //
-//      void local_machine_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void local_machine_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void current_user_set_run(const ::string & strKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
-//      void current_user_set_run_once(const ::string & strKey, const ::file::path & pathExecutable, const ::string& strArguments, bool bSet) override;
+//      void local_machine_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void current_user_set_run(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
+//      void current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::file::path & pathExecutable, const ::scoped_string & scopedstrArguments, bool bSet) override;
 //      void defer_register_ca2_plugin_for_mozilla() override;
 //
-//      void file_extension_get_open_with_list_keys(string_array & straKey, const ::string & strExtension) override;
-//      void file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & strExtension) override;
+//      void file_extension_get_open_with_list_keys(string_array & straKey, const ::scoped_string & scopedstrExtension) override;
+//      void file_extension_get_open_with_list_commands(string_array & straCommand, const ::scoped_string & scopedstrExtension) override;
 //
-//      void file_association_set_default_icon(const ::string & strExtension, const ::string & strExtensionNamingClass, const ::string & strIconPath) override;
-//      void file_association_set_shell_open_command(const ::string & strExtension, const ::string & strExtensionNamingClass, const ::string & strCommand, const ::string & strParam) override;
-//      void file_association_get_shell_open_command(const ::string & strExtension, string & strExtensionNamingClass, string & strCommand, string & strParam) override;
+//      void file_association_set_default_icon(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::scoped_string & scopedstrIconPath) override;
+//      void file_association_set_shell_open_command(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::scoped_string & scopedstrCommand, const ::scoped_string & scopedstrParam) override;
+//      void file_association_get_shell_open_command(const ::scoped_string & scopedstrExtension, string & strExtensionNamingClass, string & strCommand, string & strParam) override;
 //
 //
-//      void native_full_web_browser(const ::string & str) override;
-//      void native_modern_web_browser(const ::string & str) override;
+//      void native_full_web_browser(const ::scoped_string & scopedstr) override;
+//      void native_modern_web_browser(const ::scoped_string & scopedstr) override;
 //
 //      void enable_service() override;
 //      void disable_service() override;

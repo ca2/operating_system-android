@@ -593,7 +593,7 @@ namespace windowing_android
 //   }
 
 
-   void text_composition_client::on_text_composition(string str)
+   void text_composition_client::on_text_composition(const ::scoped_string & scopedstr)
    {
 
       //text_composition_client::on_text_composition(str);

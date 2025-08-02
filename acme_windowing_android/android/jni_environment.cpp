@@ -46,7 +46,7 @@ int get_mem_free_available_kb()
 string as_string(const jstring & jstring)
 {
 
-   const char* nativeString = t_pjnienv1->GetStringUTFChars(jstring, 0);
+   const_char_pointer nativeString = t_pjnienv1->GetStringUTFChars(jstring, 0);
 
    string str = nativeString;
 

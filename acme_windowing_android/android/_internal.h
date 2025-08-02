@@ -19,7 +19,7 @@
 #include "driver.h"
 
 
-CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails);
+CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::scoped_string & scopedstrMoreDetails);
 
 
 #include <android/log.h>
@@ -69,9 +69,9 @@ extern int g_iScreenW;
 
 extern int g_iScreenH;
 
-extern const char* g_pszCommandLine;
+extern const_char_pointer g_pszCommandLine;
 
-extern const char* g_pszCacheDir;
+extern const_char_pointer g_pszCacheDir;
 
 class asset_manager;
 

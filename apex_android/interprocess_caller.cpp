@@ -60,7 +60,7 @@ namespace apex_android
    }
 
 
-   void interprocess_caller::call(const ::string & strUri, const class time & timeTimeout)
+   void interprocess_caller::call(const ::scoped_string & scopedstrUri, const class time & timeTimeout)
    {
 
       //data_struct data;
@@ -115,7 +115,7 @@ namespace apex_android
 
    //   system()->open_link(m_strBaseChannel + "://" + message, "", "");
 
-   //   //const char * pszMessage = (const char *)pdata;
+   //   //const_char_pointer pszMessage = (const_char_pointer )pdata;
 
    //   //::collection::count c = len;
 

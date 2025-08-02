@@ -26,11 +26,11 @@ namespace apex_android
       ~interprocess_caller() override;
 
 
-      void open(const ::string & strChannel, ::launcher * plauncher = nullptr) override;
+      void open(const ::scoped_string & scopedstrChannel, ::launcher * plauncher = nullptr) override;
       void close() override;
 
 
-      void call(const ::string & strMessage, const class time & timeTimeout) override;
+      void call(const ::scoped_string & scopedstrMessage, const class time & timeTimeout) override;
       //void send(int message, void * pdata, int len, const class time & timeTimeout) override;
 
 

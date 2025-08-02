@@ -15,7 +15,7 @@ namespace android {
 
 
 
-  //void message_box::initialize_conversation(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox, const ::string& strDetails)
+  //void message_box::initialize_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::e_message_box& emessagebox, const ::scoped_string & scopedstrDetails)
   //{
 
   //   m_strMessage = strMessage;
@@ -29,7 +29,7 @@ namespace android {
   //}
 
 
-  //void message_box::do_conversation(const ::string & strMessage, const ::string & strTitle, const ::e_message_box & emessagebox, const ::string & strDetails)
+  //void message_box::do_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::e_message_box & emessagebox, const ::scoped_string & scopedstrDetails)
   //{
 
   //   initialize_conversation(strMessage, strTitle, emessagebox, strDetails);

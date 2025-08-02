@@ -12,14 +12,14 @@
 //#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
-//typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const char * p1, const char * p2);
+//typedef int(*PFN_MAIN)(int argc, char * argv[], char * envp[], const_char_pointer p1, const_char_pointer p2);
 
 
 extern "C"
 {
 
     typedef void (*PFN_CREATE_SYSTEM)();
-    typedef void (*PFN_INITIALIZE_SYSTEM)(int argc, char *argv[], char *envp[], const char *p1, const char *p2);
+    typedef void (*PFN_INITIALIZE_SYSTEM)(int argc, char *argv[], char *envp[], const_char_pointer p1, const_char_pointer p2);
     typedef int (*PFN_MAIN)();
 
 }
@@ -43,7 +43,7 @@ int SetMainScreenRect(const ::int_rectangle &rect);
 void set_jni_context(JNIEnv * penv);
 
 
-const char * this_argv[] =
+const_char_pointer this_argv[] =
 {
    "app",
    nullptr
@@ -59,12 +59,12 @@ public:
    pthread_t         m_pthread;
    PFN_MAIN          m_pfnMain;
    char ** m_ppszArg;
-   const char * m_pszResourceStart;
-   const char * m_pszResourceEnd;
+   const_char_pointer m_pszResourceStart;
+   const_char_pointer m_pszResourceEnd;
    ::e_status        m_estatus;
 
 
-   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const char * pszResourceStart, const char * pszResourceEnd)
+   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const_char_pointer pszResourceStart, const_char_pointer pszResourceEnd)
    {
 
       m_pfnMain = pfnMain;
@@ -209,8 +209,8 @@ set_jni_context(penv);
 
          PFN_MAIN pfnMain = (PFN_MAIN)dlsym(pLibrary, strMain);
 
-         const char * pResourceStart = nullptr;
-         const char * pResourceEnd = nullptr;
+         const_char_pointer pResourceStart = nullptr;
+         const_char_pointer pResourceEnd = nullptr;
          //auto pfactory = __allocate ::factory::factory();
          pdriver->m_passetResourceFolder->get_pointers(
             pResourceStart,
@@ -287,7 +287,7 @@ set_jni_context(penv);
 
 }
 
-char * c_application_library_main_name(const char * pszApplicationNamespace, const char * p)
+char * c_application_library_main_name(const_char_pointer pszApplicationNamespace, const_char_pointer p)
 {
 
     int iLen1 = strlen(pszApplicationNamespace);
@@ -339,7 +339,7 @@ char * c_to_library_name(char * p)
 }
 
 
-::string cpp_application_library_main_name(const char * pszApplicationNamespace, const char * p)
+::string cpp_application_library_main_name(const_char_pointer pszApplicationNamespace, const_char_pointer p)
 {
 
     string str1(pszApplicationNamespace);
@@ -362,7 +362,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIE
     {
 
         // Convert Java string to C string
-        const char *arg = (*penv)->GetStringUTFChars(penv, jstrAppId, NULL);
+        const_char_pointer arg = (*penv)->GetStringUTFChars(penv, jstrAppId, NULL);
 
 
         if (arg == NULL)
@@ -495,8 +495,8 @@ auto pLibrary = dlopen(strLibrary, 0);
 
 PFN_MAIN pfnMain = (PFN_MAIN)dlsym(pLibrary, strMain);
 
-const char * pResourceStart = nullptr;
-const char * pResourceEnd = nullptr;
+const_char_pointer pResourceStart = nullptr;
+const_char_pointer pResourceEnd = nullptr;
 //auto pfactory = __allocate ::factory::factory();
 pdriver->m_passetResourceFolder->get_pointers(
         pResourceStart,

@@ -223,7 +223,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
+   //bool directory_context::rls(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, enum_extract eextract)
    //{
 
    //   if(::file::system_dir::rls(papp,lpcsz,pstraPath,pstraTitle,pstraRelative,eextract))
@@ -238,7 +238,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls_pattern(const char * lpcsz, const char * pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, long_long_array * piaSize, enum_extract eextract)
+   //bool directory_context::rls_pattern(const_char_pointer lpcsz, const_char_pointer pszPattern, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative, bool_array * pbaIsDir, long_long_array * piaSize, enum_extract eextract)
    //{
 
 
@@ -372,7 +372,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::rls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
+   //bool directory_context::rls_dir(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, string_array * pstraRelative)
    //{
 
    //   if(::file::system_dir::rls_dir(papp,lpcsz,pstraPath,pstraTitle,pstraRelative))
@@ -412,7 +412,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const char *) stra[i]);
+   //         pstraPath->add((const_char_pointer )stra[i]);
 
    //      }
 
@@ -460,7 +460,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls_dir(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_dir(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_dir(papp,lpcsz,pstraPath,pstraTitle))
@@ -500,7 +500,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const char *) stra[i]);
+   //         pstraPath->add((const_char_pointer )stra[i]);
 
    //      }
 
@@ -518,7 +518,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls_file(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle)
+   //bool directory_context::ls_file(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle)
    //{
 
    //   if(::file::system_dir::ls_file(papp,lpcsz,pstraPath,pstraTitle))
@@ -559,7 +559,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const char *) stra[i]);
+   //         pstraPath->add((const_char_pointer )stra[i]);
 
    //      }
 
@@ -577,7 +577,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::ls(const char * lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, long_long_array * piaSize)
+   //bool directory_context::ls(const_char_pointer lpcsz, string_array * pstraPath, string_array * pstraTitle, bool_array * pbaIsDir, long_long_array * piaSize)
    //{
 
 
@@ -616,7 +616,7 @@ namespace acme_android
    //      if(pstraPath != nullptr)
    //      {
 
-   //         pstraPath->add((const char *) stra[i]);
+   //         pstraPath->add((const_char_pointer )stra[i]);
 
    //      }
 
@@ -707,7 +707,7 @@ namespace acme_android
    //}
 
 
-   //bool directory_context::is(const ::string & strPath)
+   //bool directory_context::is(const ::scoped_string & scopedstrPath)
    //{
 
    //   if(::file::system_dir::is(strPath))
@@ -795,7 +795,7 @@ namespace acme_android
 
       }
 
-      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !case_insensitive_ansi_count_compare(&((const char *)str)[iLast - 3], ".zip", 4))
+      if (task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3 && !case_insensitive_ansi_count_compare(&((const_char_pointer )str)[iLast - 3], ".zip", 4))
       {
 
          return true;
@@ -880,7 +880,7 @@ namespace acme_android
    }
 
 
-   ::file::path directory_context::time_log(const ::string & strId)
+   ::file::path directory_context::time_log(const ::scoped_string & scopedstrId)
    {
 
       return appdata() / "log";
@@ -1128,7 +1128,7 @@ namespace acme_android
    }
 
 
-   //::file::path directory_context::trash_that_is_not_trash(const ::file::path & pszParam)
+   //::file::path directory_context::trash_that_is_not_trash(const ::file::path & pathParam)
    //{
 
    //   if (pszParam == nullptr)
@@ -1343,7 +1343,7 @@ namespace acme_android
    }
 
 
-   bool directory_context::is_inside_time(const ::file::path & pszPath)
+   bool directory_context::is_inside_time(const ::file::path & path)
    {
 
       return is_inside(time(), pszPath);
@@ -1352,7 +1352,7 @@ namespace acme_android
 
 
 
-   bool directory_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
+   bool directory_context::is_inside(const ::file::path & pathFolder, const ::file::path & path)
    {
 
       return pszDir.case_insensitive_begins(pszPath);
@@ -1360,7 +1360,7 @@ namespace acme_android
    }
 
 
-   //bool directory_context::has_subdir(const ::file::path & pszDir)
+   //bool directory_context::has_subdir(const ::file::path & pathFolder)
    //{
 
    //   ::file::listing ls;

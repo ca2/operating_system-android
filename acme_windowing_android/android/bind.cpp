@@ -7,7 +7,7 @@
 operating_system_bind * g_pandroiddirect;
 
 
-CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails)
+CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::scoped_string & scopedstrMoreDetails)
 {
 
    string strMessage;

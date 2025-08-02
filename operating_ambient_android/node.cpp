@@ -39,7 +39,7 @@ namespace operating_ambient_android
    }
 
 
-   void node::report_exception_to_user(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails)
+   void node::report_exception_to_user(::particle * pparticle, ::exception& exception, const ::scoped_string & scopedstrMoreDetails)
    {
 
       if (system()->m_bIsReadyForUserInteraction)
@@ -101,7 +101,7 @@ namespace operating_ambient_android
    //}
 
 
-   //pointer< ::sequence < ::conversation > > node::message_box(const ::string& strMessage, const ::string& strTitle, const ::e_message_box& emessagebox)
+   //pointer< ::sequence < ::conversation > > node::message_box(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::e_message_box& emessagebox)
    //{
 
    //   return nullptr;

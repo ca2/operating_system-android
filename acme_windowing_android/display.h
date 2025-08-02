@@ -131,7 +131,7 @@ namespace android {
 //
 //
 //      virtual string get_wallpaper(::collection::index iScreen);
-//      virtual bool set_wallpaper(::collection::index iScreen, string strWallpaper);
+//      virtual bool set_wallpaper(::collection::index iScreen, const ::scoped_string & scopedstrWallpaper);
 //
 //
 //      virtual string_array get_wallpaper();
@@ -139,15 +139,15 @@ namespace android {
 //
 //
 //      virtual string impl_get_wallpaper(::collection::index iScreen);
-//      virtual bool impl_set_wallpaper(::collection::index iScreen, string strWallpaper);
+//      virtual bool impl_set_wallpaper(::collection::index iScreen, const ::scoped_string & scopedstrWallpaper);
 //
 //
 //      virtual string os_get_user_theme();
-//      virtual bool set_os_desktop_theme(string strTheme);
+//      virtual bool set_os_desktop_theme(const ::scoped_string & scopedstrTheme);
 //
 //
 //      virtual string impl_get_os_desktop_theme();
-//      virtual bool impl_set_os_desktop_theme(string strTheme);
+//      virtual bool impl_set_os_desktop_theme(const ::scoped_string & scopedstrTheme);
 //
 //
 //      virtual void enable_wallpaper_change_notification();

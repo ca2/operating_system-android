@@ -86,7 +86,7 @@ namespace android
     }
 
 
-    void driver::set_editor_text(const ::string &strText)
+    void driver::set_editor_text(const ::scoped_string & scopedstrText)
     {
 
        m_strEditorText = strText;
@@ -149,7 +149,7 @@ namespace android
 //    }
 
 
-//    void driver::open_url(const ::string &strOpenUrl)
+//    void driver::open_url(const ::scoped_string & scopedstrOpenUrl)
 //    {
 //
 //       synchronous_lock lock(synchronization());
@@ -377,7 +377,7 @@ namespace android
     }
 
 //
-//    void driver::list_file_enumerate(const ::string &strListFileEnumerate)
+//    void driver::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
 //    {
 //
 //       synchronous_lock lock(m_pparticleMutexListFileEnumerate);
