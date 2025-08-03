@@ -2,7 +2,7 @@
 
 
 //#include "acme/prototype/geometry2d/_geometry2d.h"
-#include "acme/platform/driver.h"
+#include "acme/platform/application_state.h"
 
 
 namespace android
@@ -19,8 +19,8 @@ namespace android
         class asset;
 
 
-        class driver :
-            virtual public ::acme::driver
+        class application_state :
+            virtual public ::platform::application_state
         {
         public:
 
@@ -78,6 +78,9 @@ namespace android
 //
 //        ::pointer <asset> m_passetResourceFolder;
 
+
+          void on_initialize_particle() override;
+
             ::particle_pointer m_pparticleMutexMessageBoxSequencer;
             ::pointer_array<::message_box> m_messageboxa;
 
@@ -86,9 +89,9 @@ namespace android
             ::string_array m_straListFileEnumerate;
 
 
-            driver();
+            application_state();
 
-            ~driver() override;
+            ~application_state() override;
 
             // windowing::text_editor_interface
             //void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd,

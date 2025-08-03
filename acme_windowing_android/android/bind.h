@@ -12,7 +12,6 @@ public:
 
    using jni_object::jni_object;
 
-
    //String m_strApplicationName;
    JX(str, ApplicationName);
    //String m_strApplicationIdentifier;
@@ -90,6 +89,8 @@ public:
    //String m_strListFileEnumerate;
    JX(str, ListFileEnumerate);
    JX(str, Uri);
+
+
 
    
    static operating_system_bind* get();

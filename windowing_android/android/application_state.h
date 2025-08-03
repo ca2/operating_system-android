@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "acme_windowing_android/android/driver.h"
+#include "acme_windowing_android/android/application_state.h"
 #include "aura/windowing/text_editor_interface.h"
 
 
@@ -12,8 +12,8 @@ class asset;
 namespace android
 {
 
-    class driver :
-virtual public ::android::acme::driver,
+    class application_state :
+virtual public ::android::acme::application_state,
             virtual public ::windowing::text_editor_interface
     {
     public:
@@ -82,9 +82,9 @@ virtual public ::android::acme::driver,
         //::string_array                                  m_straListFileEnumerate;
 
 
-        driver();
+        application_state();
 
-        ~driver() override;
+        ~application_state() override;
 
         // windowing::text_editor_interface
         void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd,

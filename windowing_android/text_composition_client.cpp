@@ -598,7 +598,7 @@ namespace windowing_android
 
       //text_composition_client::on_text_composition(str);
 
-      m_puserinteraction->on_text_composition(str);
+      m_puserinteraction->on_text_composition(scopedstr);
 
    }
 

@@ -42,8 +42,8 @@ namespace android
 
       audio_item(long long iId, const ::scoped_string & scopedstrTitle, const ::scoped_string & scopedstrArtist) :
          library_item(iId),
-         m_strTitle(strTitle),
-         m_strArtist(strArtist)
+         m_strTitle(scopedstrTitle),
+         m_strArtist(scopedstrArtist)
       {
 
       }
@@ -68,7 +68,7 @@ namespace android
 
       images_item(long long iId, const ::scoped_string & scopedstrTitle) :
          library_item(iId),
-         m_strTitle(strTitle)
+         m_strTitle(scopedstrTitle)
       {
 
       }
@@ -94,8 +94,8 @@ namespace android
 
       video_item(long long iId, const ::scoped_string & scopedstrTitle, const ::scoped_string & scopedstrArtist) :
          library_item(iId),
-         m_strTitle(strTitle),
-         m_strArtist(strArtist)
+         m_strTitle(scopedstrTitle),
+         m_strArtist(scopedstrArtist)
       {
 
       }

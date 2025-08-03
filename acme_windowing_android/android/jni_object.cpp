@@ -49,7 +49,9 @@ void jni_object::set_jni_object(jobject jobject)
 jfieldID jni_object::field_str(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
+   auto jfieldid = t_pjnienv1->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
+
+   return jfieldid;
 
 }
 

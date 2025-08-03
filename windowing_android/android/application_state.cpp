@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "driver.h"
+#include "application_state.h"
 #include "acme/constant/id.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
@@ -14,13 +14,13 @@ namespace android
 //int e_message_box_to_button(const ::e_message_box& emessagebox);
 
 
-//::pointer<driver>g_pandroiddriver;
+//::pointer<application_state>g_pandroiddriver;
 
 
-    driver::driver()
+    application_state::application_state()
     {
 
-       defer_create_synchronization();
+       //defer_create_synchronization();
 
        m_passetmanager = nullptr;
 
@@ -29,7 +29,7 @@ namespace android
     }
 
 
-    driver::~driver()
+    application_state::~application_state()
     {
 
        if (::is_set(m_passetmanager)) {
@@ -41,7 +41,7 @@ namespace android
     }
 
 
-    void driver::set_input_method_manager_selection(character_count iSelBeg,
+    void application_state::set_input_method_manager_selection(character_count iSelBeg,
                                                                      character_count iSelEnd,
                                                                      character_count iCandidateBeg,
                                                                      character_count iCandidateEnd)
@@ -64,7 +64,7 @@ namespace android
     }
 
 
-    void driver::synchronize_input_method_manager_with_selection_end()
+    void application_state::synchronize_input_method_manager_with_selection_end()
     {
 
        m_iInputMethodManagerCandidateStart = m_iInputMethodManagerSelectionEnd;
@@ -74,7 +74,7 @@ namespace android
     }
 
 
-    void driver::set_editor_selection(character_count iStart, character_count iEnd)
+    void application_state::set_editor_selection(character_count iStart, character_count iEnd)
     {
 
        m_iEditorSelectionStart = iStart;
@@ -86,17 +86,17 @@ namespace android
     }
 
 
-    void driver::set_editor_text(const ::scoped_string & scopedstrText)
+    void application_state::set_editor_text(const ::scoped_string & scopedstrText)
     {
 
-       m_strEditorText = strText;
+       m_strEditorText = scopedstrText;
 
        m_bEditorTextUpdated = true;
 
     }
 
 
-    void driver::show_software_keyboard()
+    void application_state::show_software_keyboard()
     {
 
        m_bShowKeyboard = true;
@@ -106,7 +106,7 @@ namespace android
     }
 
 
-    void driver::hide_software_keyboard()
+    void application_state::hide_software_keyboard()
     {
 
        m_bHideKeyboard = true;
@@ -118,7 +118,7 @@ namespace android
 
 //
 //
-//    void driver::queue_message_box(::message_box *psequencer)
+//    void application_state::queue_message_box(::message_box *psequencer)
 //    {
 //
 //       //synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
@@ -128,7 +128,7 @@ namespace android
 //    }
 //
 //
-//    ::pointer<::message_box> driver::pick_message_box()
+//    ::pointer<::message_box> application_state::pick_message_box()
 //    {
 //
 //       synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
@@ -149,7 +149,7 @@ namespace android
 //    }
 
 
-//    void driver::open_url(const ::scoped_string & scopedstrOpenUrl)
+//    void application_state::open_url(const ::scoped_string & scopedstrOpenUrl)
 //    {
 //
 //       synchronous_lock lock(synchronization());
@@ -159,7 +159,7 @@ namespace android
 //    }
 
 
-    void driver::exchange1()
+    void application_state::exchange1()
     {
 
        {
@@ -176,7 +176,7 @@ namespace android
 
           }
 
-          ::acme::driver::exchange1();
+          ::platform::application_state::exchange1();
 
 //          string strOpenUrl;
 //
@@ -377,7 +377,7 @@ namespace android
     }
 
 //
-//    void driver::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
+//    void application_state::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
 //    {
 //
 //       synchronous_lock lock(m_pparticleMutexListFileEnumerate);

@@ -50,87 +50,87 @@ const_char_pointer this_argv[] =
 };
 
 
-class main_os_thread :
-   virtual public ::particle
-{
-public:
-
-
-   pthread_t         m_pthread;
-   PFN_MAIN          m_pfnMain;
-   char ** m_ppszArg;
-   const_char_pointer m_pszResourceStart;
-   const_char_pointer m_pszResourceEnd;
-   ::e_status        m_estatus;
-
-
-   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const_char_pointer pszResourceStart, const_char_pointer pszResourceEnd)
-   {
-
-      m_pfnMain = pfnMain;
-      m_ppszArg = ppszArg;
-      m_pszResourceStart = pszResourceStart;
-      m_pszResourceEnd = pszResourceEnd;
-
-   }
-
-
-   void start()
-   {
-
-      pthread_attr_t taskAttr;
-
-      pthread_attr_init(&taskAttr);
-
-      pthread_attr_setdetachstate(&taskAttr, PTHREAD_CREATE_DETACHED); // Set task to detached state. No need for pthread_join
-
-      pthread_create(&m_pthread, &taskAttr, &main_os_thread::s_run, (void *)this);
-
-   }
-
-
-   static void * s_run(void * ptr)
-   {
-
-      auto pmainosthread = (main_os_thread *)ptr;
-
-      pmainosthread->run();
-
-      return (void *)(iptr)pmainosthread->m_estatus.exit_code();
-
-   }
-
-
-   void run() override
-   {
-
-      try
-      {
-
-         m_estatus = ::success;
-
-         m_pfnMain(1, (char **)m_ppszArg, nullptr, m_pszResourceStart, m_pszResourceEnd);
-
-      }
-      catch (const ::exception & exception)
-      {
-
-         string strMessage = exception.m_strMessage;
-
-         string strDetails = exception.m_strDetails;
-
-         auto psequencer = system()->nano()->message_box(
-            "Failed to load library?",
-            "Failed to Load Library?",
-            e_message_box_ok);
-
-         pmessagebox->async();
-
-      }
-
-   }
-
-};
+//class main_os_thread :
+//   virtual public ::particle
+//{
+//public:
+//
+//
+//   pthread_t         m_pthread;
+//   PFN_MAIN          m_pfnMain;
+//   char ** m_ppszArg;
+//   const_char_pointer m_pszResourceStart;
+//   const_char_pointer m_pszResourceEnd;
+//   ::e_status        m_estatus;
+//
+//
+//   main_os_thread(PFN_MAIN pfnMain, char ** ppszArg, const_char_pointer pszResourceStart, const_char_pointer pszResourceEnd)
+//   {
+//
+//      m_pfnMain = pfnMain;
+//      m_ppszArg = ppszArg;
+//      m_pszResourceStart = pszResourceStart;
+//      m_pszResourceEnd = pszResourceEnd;
+//
+//   }
+//
+//
+//   void start()
+//   {
+//
+//      pthread_attr_t taskAttr;
+//
+//      pthread_attr_init(&taskAttr);
+//
+//      pthread_attr_setdetachstate(&taskAttr, PTHREAD_CREATE_DETACHED); // Set task to detached state. No need for pthread_join
+//
+//      pthread_create(&m_pthread, &taskAttr, &main_os_thread::s_run, (void *)this);
+//
+//   }
+//
+//
+//   static void * s_run(void * ptr)
+//   {
+//
+//      auto pmainosthread = (main_os_thread *)ptr;
+//
+//      pmainosthread->run();
+//
+//      return (void *)(iptr)pmainosthread->m_estatus.exit_code();
+//
+//   }
+//
+//
+//   void run() override
+//   {
+//
+//      try
+//      {
+//
+//         m_estatus = ::success;
+//
+//         m_pfnMain(1, (char **)m_ppszArg, nullptr, m_pszResourceStart, m_pszResourceEnd);
+//
+//      }
+//      catch (const ::exception & exception)
+//      {
+//
+//         string strMessage = exception.m_strMessage;
+//
+//         string strDetails = exception.m_strDetails;
+//
+//         auto psequencer = system()->nano()->message_box(
+//            "Failed to load library?",
+//            "Failed to Load Library?",
+//            e_message_box_ok);
+//
+//         pmessagebox->async();
+//
+//      }
+//
+//   }
+//
+//};
 
 
 extern "C"
@@ -140,12 +140,12 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
    try
    {
 
-set_jni_context(penv);
+      set_jni_context(penv);
 
       if (!g_pmutexOs)
       {
 
-         g_pmutexOs = this->platform()->system()->node()->create_mutex();
+         g_pmutexOs = ::system()->node()->create_mutex();
 
       }
 
@@ -351,7 +351,7 @@ char * c_to_library_name(char * p)
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIEnv *penv, jclass clazz, jstring jstrAppId, jobject jobjectAssetManager)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIEnv *penv, jclass clazz, jstring jstrAppId)
 {
 
     // Attention!!

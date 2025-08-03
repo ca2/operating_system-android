@@ -22,7 +22,7 @@ namespace apex_android
    }
 
 
-   void interprocess_caller::open(const::string & pszChannel, ::launcher * plauncher)
+   void interprocess_caller::open(const::scoped_string & scopedstrChannel, ::launcher * plauncher)
    {
 
       //if(m_iQueue >= 0)
@@ -38,7 +38,7 @@ namespace apex_android
          return false;
          }*/
 
-         m_strBaseChannel = pszChannel;
+         m_strBaseChannel = scopedstrChannel;
 
       //return true;
 
@@ -73,7 +73,7 @@ namespace apex_android
 
       //system()->open_link(m_strBaseChannel + "://" + strUri, "", "");
 
-      system()->open_internet_link(strUri);
+      system()->open_internet_link(scopedstrUri);
 
 
       ///* The length is essentially the int_size of the structure minus sizeof(mtype) */

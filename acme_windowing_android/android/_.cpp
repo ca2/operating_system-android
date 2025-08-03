@@ -7,9 +7,9 @@ void android_aura_main()
 {
 
 
-   auto pdirect = operating_system_bind::get();
+   auto pbind = operating_system_bind::get();
 
-   auto pdriver = ::acme::driver::get();
+   auto papplicationstate = ::platform::application_state::get();
 
    //string strApplicationIdentifier = pdriver->m_strApplicationIdentifier;
 
@@ -194,11 +194,11 @@ namespace android
 void android_exchange()
 {
 
-   auto pdriver = ::acme::driver::get();
+   auto papplicationstate = ::platform::application_state::get();
 
-   pdriver->exchange1();
+   papplicationstate->exchange1();
 
-   pdriver->after_exchange();
+   papplicationstate->after_exchange();
 
 }
 

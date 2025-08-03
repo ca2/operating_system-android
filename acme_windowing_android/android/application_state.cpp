@@ -16,13 +16,12 @@ namespace android
         int e_message_box_to_button(const ::e_message_box &emessagebox);
 
 
-        ::pointer<::acme::driver> g_pandroiddriver;
+        //::pointer<::acme::driver> g_pandroiddriver;
 
 
-        driver::driver()
+        application_state::application_state()
         {
 
-           defer_create_synchronization();
 
            m_passetmanager = nullptr;
 
@@ -31,7 +30,7 @@ namespace android
         }
 
 
-        driver::~driver()
+        application_state::~application_state() noexcept
         {
 
            if (::is_set(m_passetmanager)) {
@@ -41,6 +40,14 @@ namespace android
            }
 
         }
+
+
+       void application_state::on_initialize_particle()
+       {
+
+          defer_create_synchronization();
+
+       }
 
 
 //    void driver::set_input_method_manager_selection(character_count iSelBeg,
@@ -136,7 +143,7 @@ namespace android
 
 
 
-        void driver::exchange1()
+        void application_state::exchange1()
         {
 
            {
@@ -337,7 +344,7 @@ namespace android
         }
 
 
-        void driver::after_exchange()
+        void application_state::after_exchange()
         {
 
            {

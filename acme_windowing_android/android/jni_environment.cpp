@@ -36,7 +36,7 @@ thread_local JNIEnv* t_pjnienv1;
 int get_mem_free_available_kb()
 {
 
-   return ::acme::driver::get()->m_lMemFreeAvailableKb;
+   return ::platform::application_state::get()->m_lMemFreeAvailableKb;
 
 }
 

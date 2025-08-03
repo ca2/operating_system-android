@@ -29,10 +29,10 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle
    strDetails += "PID: " + ::as_string(pparticle->node()->current_process_identifier()) + "\n";
    //strDetails += "Working Directory: " + string(GetCurrentDirectory()) + "\n\n";
 
-   if (strMoreDetails.has_character())
+   if (scopedstrMoreDetails.has_character())
    {
 
-      strDetails += strMoreDetails + "\n";
+      strDetails += scopedstrMoreDetails + "\n";
 
    }
 
@@ -53,6 +53,10 @@ pmessagebox->sync();
    __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);
 
 }
+
+
+
+
 
 
 operating_system_bind* operating_system_bind::get()

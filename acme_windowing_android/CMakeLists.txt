@@ -9,14 +9,14 @@ list(APPEND library_source
         android/android_asset.cpp
         android/android_asset_manager.cpp
         android/android_asset_manager.h
+   android/application_state.cpp
+   android/application_state.h
         android/bind.cpp
         android/bind.h
         #android/com_ace_enumerate.cpp
         #android/com_ace_impact.cpp
         #android/com_ace_InputConnection.cpp
         #android/com_ace_main_activity.cpp
-        android/driver.cpp
-        android/driver.h
         android/jni_environment.cpp
         android/jni_object.cpp
         android/jni_object.h
@@ -24,6 +24,7 @@ list(APPEND library_source
         android/media_library.h
         android/message_box.cpp
         android/message_box.h
+   #android/platform_platform_main_activity.cpp
         _.cpp
         _.h
         _windowing_android.h

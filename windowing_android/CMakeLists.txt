@@ -3,8 +3,8 @@ project(windowing_android CXX)
 
 
 list(APPEND library_source
-        android/driver.cpp
-        android/driver.h
+        android/application_state.cpp
+        android/application_state.h
         android/platform_platform_enumerate.cpp
         android/platform_platform_impact.cpp
         android/platform_platform_InputConnection.cpp

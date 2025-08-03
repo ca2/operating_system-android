@@ -607,7 +607,7 @@ namespace windowing_android
    ::windowing::text_editor_interface * windowing::get_text_editor_interface()
    {
 
-      ::cast < ::windowing::text_editor_interface> ptexteditorinterface=::acme::driver::get();
+      ::cast < ::windowing::text_editor_interface> ptexteditorinterface=::platform::application_state::get();
 
       return ptexteditorinterface;
 

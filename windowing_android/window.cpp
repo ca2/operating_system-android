@@ -17,7 +17,7 @@
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
 #include "acme_windowing_android/android/_internal.h"
-#include "android/driver.h"
+#include "android/application_state.h"
 
 //void on_sn_launch_context(void * pSnContext, Window window);
 //void on_sn_launch_complete(void * pSnContext);
@@ -3494,16 +3494,16 @@ namespace windowing_android
    float window::get_dpi_for_window()
    {
 
-      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+      ::cast < ::android::application_state > papplicationstate = ::platform::application_state::get();
 
-      if(!pdriver)
+      if(!papplicationstate)
       {
 
          return ::windowing::window::get_dpi_for_window();
 
       }
 
-      return pdriver->m_fDpiX;
+      return papplicationstate->m_fDpiX;
 
    }
 
@@ -3511,16 +3511,16 @@ namespace windowing_android
    float window::get_density_for_window()
    {
 
-      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+      ::cast < ::android::application_state > papplicationstate = ::platform::application_state::get();
 
-      if(!pdriver)
+      if(!papplicationstate)
       {
 
          return ::windowing::window::get_density_for_window();
 
       }
 
-      return pdriver->m_fDensity;
+      return papplicationstate->m_fDensity;
 
    }
 

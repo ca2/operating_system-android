@@ -3,7 +3,7 @@
 #include "node.h"
 #include "acme/platform/session.h"
 #include "aura/windowing/windowing.h"
-#include "windowing_android/android/driver.h"
+#include "windowing_android/android/application_state.h"
 #include "acme_windowing_android/android/_internal.h"
 //
 //
@@ -30,9 +30,9 @@ namespace operating_ambient_android
    void node::on_initialize_particle()
    {
 
-      ::cast < ::android::acme::driver > pdriver = ::acme::driver::get();
+      ::cast < ::android::acme::application_state > papplicationstate = ::platform::application_state::get();
 
-      system()->m_pathCacheDirectory = pdriver->m_pathCacheDirectory;
+      system()->m_pathCacheDirectory = papplicationstate->m_pathCacheDirectory;
 
       ::aura_android::node::on_initialize_particle();
 
@@ -45,13 +45,13 @@ namespace operating_ambient_android
       if (system()->m_bIsReadyForUserInteraction)
       {
 
-         ::aura_android::node::report_exception_to_user(pparticle, exception, strMoreDetails);
+         ::aura_android::node::report_exception_to_user(pparticle, exception, scopedstrMoreDetails);
 
       }
       else
       {
 
-         operating_system_log_exception(pparticle, exception, strMoreDetails);
+         operating_system_log_exception(pparticle, exception, scopedstrMoreDetails);
 
       }
 
@@ -61,14 +61,14 @@ namespace operating_ambient_android
    void node::on_start_system()
    {
 
-      auto pdriver = ::acme::driver::get();
+      auto papplicationstate = ::platform::application_state::get();
 
       ::int_rectangle rectangle;
 
       rectangle.left() = 0;
       rectangle.top() = 0;
-      rectangle.right() = pdriver->m_iWidth;
-      rectangle.bottom() = pdriver->m_iHeight;
+      rectangle.right() = papplicationstate->m_iWidth;
+      rectangle.bottom() = papplicationstate->m_iHeight;
 
       //auto psession = session();
 
@@ -117,7 +117,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_music_library))
       {
 
-         ::acme::driver::get()->list_file_enumerate("music");
+         ::platform::application_state::get()->list_file_enumerate("music");
 
       }
 
@@ -125,7 +125,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_image_library))
       {
 
-         ::acme::driver::get()->list_file_enumerate("image");
+         ::platform::application_state::get()->list_file_enumerate("image");
 
       }
 
@@ -133,7 +133,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_video_library))
       {
 
-         ::acme::driver::get()->list_file_enumerate("video");
+         ::platform::application_state::get()->list_file_enumerate("video");
 
       }
 

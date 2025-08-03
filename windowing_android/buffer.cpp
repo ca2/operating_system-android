@@ -154,7 +154,7 @@ namespace windowing_android
    void buffer::on_update_screen(::graphics::buffer_item * pbufferitem)
    {
 
-      auto pdriver = ::acme::driver::get();
+      auto pdriver = ::platform::application_state::get();
 
       LOGI("m_bRedraw = true");
 
