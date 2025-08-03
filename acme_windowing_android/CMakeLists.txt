@@ -117,6 +117,9 @@ elseif (${ANDROID})
 endif ()
 
 
+add_dependencies(${PROJECT_NAME} PRIVATE nano_graphics_cairo)
+
+
 list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR})
 list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/..)
 list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/../..)

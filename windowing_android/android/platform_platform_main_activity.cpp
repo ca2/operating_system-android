@@ -176,6 +176,23 @@ auto pbind = ::operating_system_bind::get();
 ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 
 
+   papplicationstate->
+      m_iWidth = pbind->getWidth();
+
+   papplicationstate->
+      m_iHeight = pbind->getHeight();
+
+   papplicationstate->
+      m_fDpiX = pbind->getDpiX();
+
+   papplicationstate->
+      m_fDpiY = pbind->getDpiY();
+
+   papplicationstate->
+      m_fDensity = pbind->getDensity();
+
+
+
 string strLibrary;
 
 //int main(int argc, char* argv[], char* envp[])
@@ -215,11 +232,11 @@ return;
 
 }
 
-auto strCreateSystem = cpp_application_library_main_name(strLibrary, "create_system");
+auto strMain = cpp_application_library_main_name(strLibrary, "main");
 
-auto pfnCreateSystem = (PFN_CREATE_SYSTEM) dlsym(handle, strCreateSystem);
+auto pfnMain = (PFN_MAIN) dlsym(handle, strMain);
 
-if (!pfnCreateSystem)
+if (!pfnMain)
 {
 
 __android_log_print(ANDROID_LOG_ERROR,
@@ -235,7 +252,9 @@ return;
 
 }
 
-pfnCreateSystem();
+int iExitCode = pfnMain();
+
+
 
 
 }
@@ -691,20 +710,6 @@ m_strCommandLineParameters = pbind->getCommandLineParameters();
 papplicationstate->
 m_pathCacheDirectory = pbind->getCacheDirectory();
 
-papplicationstate->
-m_iWidth = pbind->getWidth();
-
-papplicationstate->
-m_iHeight = pbind->getHeight();
-
-papplicationstate->
-m_fDpiX = pbind->getDpiX();
-
-papplicationstate->
-m_fDpiY = pbind->getDpiY();
-
-papplicationstate->
-m_fDensity = pbind->getDensity();
 
 papplicationstate->
 m_bShowKeyboard = false;
@@ -842,14 +847,16 @@ __android_log_write(ANDROID_LOG_WARN,
 //
 //}
 
-//
-//extern "C"
-//JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_aura_1is_1started(JNIEnv * env, jobject obj)
-//{
-//
-//return g_bAuraStart;
-//
-//}
+
+extern "C"
+JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_application_1is_1started(JNIEnv * env, jobject obj)
+{
+
+   return g_bAuraStart;
+
+}
+
+
 //
 //
 //extern "C"

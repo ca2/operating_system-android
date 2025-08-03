@@ -57,6 +57,7 @@ list(APPEND library_references
         aura_posix
         aura_android
         windowing_android
+   node_android
 )
 
 
