@@ -4,60 +4,58 @@
 #include <android/asset_manager_jni.h>
 #include "android_asset_manager.h"
 #include "android_asset.h"
+#include "jni_object_impl.h"
 
 
 namespace android
 {
 
 
-    //extern thread_local JNIEnv * t_pjnienv;
+   //extern thread_local JNIEnv * t_pjnienv;
 
 
-    asset_manager::asset_manager()
-    {
+   asset_manager::asset_manager(jni_object_interface * pjniobjectinterfaceAssetManager):
+      jni_object(pjniobjectinterfaceAssetManager)
+   {
 
-         m_pmanager = nullptr;
+      ::cast < ::jni_object_impl > pjniobjectimplAssetManager = pjniobjectinterfaceAssetManager;
 
-    }
+      m_pmanager = AAssetManager_fromJava(get_jni_env(), pjniobjectimplAssetManager->m_jobject);
 
-
-    asset_manager::~asset_manager()
-    {
-
-       get_jni_env()->DeleteGlobalRef(m_jobject);
-
-       get_jni_env()->DeleteGlobalRef(m_jclass);
-
-    }
-
-    void asset_manager::set_AAssetManager(jobject
-    jobjectAssetManager)
-{
-
-    set_jni_object(jobjectAssetManager);
+   }
 
 
-    m_pmanager = AAssetManager_fromJava(get_jni_env(), jobjectAssetManager);
+   asset_manager::~asset_manager()
+   {
+
+   }
 
 
-}
+//   void asset_manager::set_AAssetManager(jobject jobjectAssetManager)
+//   {
+//
+//      m_pjniobjectImpl = __allocate jni_object_impl(jobjectAssetManager);
+//
+//
+//
+//   }
 
 
 #define AASSET_MANAGER_ACCESS_BUFFER 3
 
 
-    ::pointer<::acme::asset> asset_manager::get_asset(const_char_pointer path)
-    {
+   ::pointer<::acme::asset> asset_manager::get_asset(const_char_pointer path)
+   {
 
-       auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);
+      auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);
 
-       auto passet = __allocate asset();
+      auto passet = __allocate asset();
 
-       passet->m_passet = paasset;
+      passet->m_passet = paasset;
 
-       return passet;
+      return passet;
 
-    }
+   }
 
 
 } // namespace android

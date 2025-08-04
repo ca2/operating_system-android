@@ -4,6 +4,7 @@
 #include "display.h"
 #include "window.h"
 #include "windowing.h"
+#include "host_interaction.h"
 //#include "text_composition_client.h"
 //#include "node.h"
 //#include "aura/windowing/desktop_environment.h"
@@ -25,6 +26,7 @@ __FACTORY_EXPORT void acme_windowing_android_factory(::factory::factory * pfacto
    pfactory->add_factory_item < ::android::acme::windowing::display, ::acme::windowing::display > ();
    pfactory->add_factory_item < ::android::acme::windowing::window, ::acme::windowing::window > ();
    pfactory->add_factory_item < ::android::acme::windowing::windowing, ::acme::windowing::windowing > ();
+   pfactory->add_factory_item < ::android::acme::windowing::host_interaction, ::acme::sandbox_windowing::host_interaction >();
    //pfactory->add_factory_item < ::windowing_android::text_composition_client, ::user::text_composition_client > ();
 
    //pfactory->add_factory_item < ::windowing_android::icon, ::windowing::icon > ();
@@ -33,7 +35,6 @@ __FACTORY_EXPORT void acme_windowing_android_factory(::factory::factory * pfacto
    //pfactory->add_factory_item < ::windowing_android::node, ::platform::node >();
 
    //pfactory->add_factory_item < ::windowing::desktop_environment >();
-
 }
 
 

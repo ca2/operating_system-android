@@ -3,7 +3,7 @@
 // Adapted by Camilo for android 2022-01-05 04:35 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #pragma once
 
-
+#include "acme_windowing_android/window.h"
 #include "aura/windowing/sandbox/window.h"
 
 
@@ -12,6 +12,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_WINDOWING_ANDROID window :
+virtual public ::android::acme::windowing::window,
       virtual public ::sandbox_windowing::window
    {
    public:
@@ -51,6 +52,10 @@ namespace windowing_android
       void create_window() override;
 
 
+      void _set_oswindow(::oswindow oswindow) override;
+      ::oswindow oswindow() const override;
+
+
       //static Atom get_window_long_atom(int nIndex);
 
 
@@ -74,6 +79,8 @@ namespace windowing_android
       void exit_zoomed() override;
 
       void set_user_interaction(::acme::user::interaction * pacmeuserinteraction) override;
+
+      void set_user_thread(::user::thread * puserthread) override;
 
       void post_nc_destroy() override;
 
@@ -243,7 +250,9 @@ namespace windowing_android
       //virtual void on_touch_drag(int x, int y);
       //virtual void on_touch_up(int x, int y);
 
+      bool is_child(::oswindow window) override; // or descendant
 
+void _main_send(const ::procedure & procedure) override;
    };
 
 

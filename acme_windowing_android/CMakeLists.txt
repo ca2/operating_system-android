@@ -18,8 +18,12 @@ list(APPEND library_source
         #android/com_ace_InputConnection.cpp
         #android/com_ace_main_activity.cpp
         android/jni_environment.cpp
+   android/jni_object_impl.cpp
+   android/jni_object_impl.h
         android/jni_object.cpp
         android/jni_object.h
+   android/jni_object_interface.cpp
+   android/jni_object_interface.h
         android/media_library.cpp
         android/media_library.h
         android/message_box.cpp
@@ -50,7 +54,8 @@ list(APPEND library_source
 #        file_system.h
         framework.cpp
         framework.h
-
+host_interaction.cpp
+host_interaction.h
         #integration_context.cpp
         #integration_context.h
 #        node.cpp

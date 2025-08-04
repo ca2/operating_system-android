@@ -61,24 +61,27 @@ namespace operating_ambient_android
    void node::on_start_system()
    {
 
-      auto papplicationstate = ::platform::application_state::get();
+      ::node_android::node::on_start_system();
 
-      ::int_rectangle rectangle;
-
-      rectangle.left() = 0;
-      rectangle.top() = 0;
-      rectangle.right() = papplicationstate->m_iWidth;
-      rectangle.bottom() = papplicationstate->m_iHeight;
-
-      //auto psession = session();
-
-      auto psystem = system();
-
-      auto pwindowing = psystem->windowing();
-
-      pwindowing->defer_initialize_host_window(&rectangle);
-
-      //system()->aaa_post_initial_request();
+//
+//      auto papplicationstate = ::platform::application_state::get();
+//
+//      ::int_rectangle rectangle;
+//
+//      rectangle.left() = 0;
+//      rectangle.top() = 0;
+//      rectangle.right() = papplicationstate->m_iWidth;
+//      rectangle.bottom() = papplicationstate->m_iHeight;
+//
+//      //auto psession = session();
+//
+//      auto psystem = system();
+//
+//      auto pwindowing = psystem->windowing();
+//
+//      pwindowing->defer_initialize_host_window(&rectangle);
+//
+//      //system()->aaa_post_initial_request();
 
    }
 

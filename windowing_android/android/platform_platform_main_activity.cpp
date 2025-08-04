@@ -12,6 +12,7 @@
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
+#include "acme_windowing_android/android/jni_object_impl.h"
 //#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
@@ -165,47 +166,45 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_application_1main(J
                                                                                jobject obj)
 {
 
-try
-{
+   try {
 
-set_jni_context(penv);
-
-
-auto pbind = ::operating_system_bind::get();
-
-::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
+      set_jni_context(penv);
 
 
-   papplicationstate->
-      m_iWidth = pbind->getWidth();
+      auto pbind = ::operating_system_bind::get();
 
-   papplicationstate->
-      m_iHeight = pbind->getHeight();
-
-   papplicationstate->
-      m_fDpiX = pbind->getDpiX();
-
-   papplicationstate->
-      m_fDpiY = pbind->getDpiY();
-
-   papplicationstate->
-      m_fDensity = pbind->getDensity();
+      ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 
 
+      papplicationstate->
+         m_iWidth = pbind->getWidth();
 
-string strLibrary;
+      papplicationstate->
+         m_iHeight = pbind->getHeight();
+
+      papplicationstate->
+         m_fDpiX = pbind->getDpiX();
+
+      papplicationstate->
+         m_fDpiY = pbind->getDpiY();
+
+      papplicationstate->
+         m_fDensity = pbind->getDensity();
+
+
+      string strLibrary;
 
 //int main(int argc, char* argv[], char* envp[])
 
-strLibrary = papplicationstate->m_strApplicationIdentifier;
+      strLibrary = papplicationstate->m_strApplicationIdentifier;
 
-strLibrary = cpp_to_library_name(strLibrary);
+      strLibrary = cpp_to_library_name(strLibrary);
 
 //papplicationstate->m_strApplicationIdentifier = pbind->getApplicationIdentifier();
 
 ///auto pszLibraryName = c_to_library_name(pszAppId);
 
-auto strAppLibrary = "lib" + strLibrary + ".so";
+      auto strAppLibrary = "lib" + strLibrary + ".so";
 
 //strcpy(pszAppLibrary, "lib");
 //strcat(pszAppLibrary, pszLibraryName);
@@ -216,55 +215,50 @@ auto strAppLibrary = "lib" + strLibrary + ".so";
 
 // When done, release it
 
-void * handle = dlopen(strAppLibrary, RTLD_NOW);
+      void * handle = dlopen(strAppLibrary, RTLD_NOW);
 
-if (!handle)
-{
+      if (!handle) {
 
-__android_log_print(ANDROID_LOG_ERROR,
-"MyApp", "dlopen failed: %s",
+         __android_log_print(ANDROID_LOG_ERROR,
+                             "MyApp", "dlopen failed: %s",
 
-dlerror()
+                             dlerror()
 
-);
+         );
 
-return;
+         return;
 
-}
+      }
 
-auto strMain = cpp_application_library_main_name(strLibrary, "main");
+      auto strMain = cpp_application_library_main_name(strLibrary, "main");
 
-auto pfnMain = (PFN_MAIN) dlsym(handle, strMain);
+      auto pfnMain = (PFN_MAIN) dlsym(handle, strMain);
 
-if (!pfnMain)
-{
+      if (!pfnMain) {
 
-__android_log_print(ANDROID_LOG_ERROR,
-"MyApp", "dlsym failed: %s",
+         __android_log_print(ANDROID_LOG_ERROR,
+                             "MyApp", "dlsym failed: %s",
 
-dlerror()
+                             dlerror()
 
-);
+         );
 
-dlclose(handle);
+         dlclose(handle);
 
-return;
+         return;
 
-}
+      }
 
-int iExitCode = pfnMain();
+      int iExitCode = pfnMain();
 
 
+   }
+   catch (...) {
 
+      __android_log_write(ANDROID_LOG_WARN,
+                          "com.ace.ace(native)", "aura_init exception");
 
-}
-catch (...)
-{
-
-__android_log_write(ANDROID_LOG_WARN,
-"com.ace.ace(native)", "aura_init exception");
-
-}
+   }
 
 }
 
@@ -304,18 +298,18 @@ __android_log_write(ANDROID_LOG_WARN,
 extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1aura_1message_1box_1response(
    JNIEnv * penv, jobject obj,
-jlong jlMicromessagebox, jlong
-jlResponse)
+   jlong jlMicromessagebox, jlong
+   jlResponse)
 {
 
-auto pmessagebox = ::pointer_transfer((::message_box *) (::iptr) jlMicromessagebox);
+   auto pmessagebox = ::pointer_transfer((::message_box *) (::iptr) jlMicromessagebox);
 
-pmessagebox->
-m_payloadResult = (enum_dialog_result) jlResponse;
+   pmessagebox->
+      m_payloadResult = (enum_dialog_result) jlResponse;
 
-pmessagebox->
+   pmessagebox->
 
-on_sequence();
+      on_sequence();
 
 }
 
@@ -325,8 +319,8 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_aura_1is_1start
                                                                                    jobject obj)
 {
 
-return
-g_bAuraStart;
+   return
+      g_bAuraStart;
 
 }
 
@@ -336,22 +330,20 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1av
    JNIEnv * env, jobject obj)
 {
 
-try
-{
+   try {
 
-set_jni_context(env);
+      set_jni_context(env);
 
-::platform::application_state::get()->
-m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
+      ::platform::application_state::get()->
+         m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
 
-}
-catch (...)
-{
+   }
+   catch (...) {
 
-__android_log_write(ANDROID_LOG_WARN,
-"com.ace.ace(native)", "sync_mem_free_available exception");
+      __android_log_write(ANDROID_LOG_WARN,
+                          "com.ace.ace(native)", "sync_mem_free_available exception");
 
-}
+   }
 
 }
 
@@ -539,17 +531,13 @@ char * c_to_library_name(char * p)
 
    auto pos = p2;
 
-   while (*pos)
-   {
+   while (*pos) {
 
-      if (*pos == '/')
-      {
+      if (*pos == '/') {
 
          *pos = '_';
 
-      }
-      else if (*pos == '-')
-      {
+      } else if (*pos == '-') {
 
          *pos = '_';
 
@@ -567,101 +555,97 @@ char * c_to_library_name(char * p)
 extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIEnv * penv,
                                                                             jclass clazz,
-jstring jstrAppId
+                                                                            jstring jstrAppId
 )
 {
 
 // Attention!!
 // When this function starts, platform::system doesn't exist yet.
 
-char * pszAppId = nullptr;
+   char * pszAppId = nullptr;
 
-{
+   {
 
 // Convert Java string to C string
-const_char_pointer arg = penv->GetStringUTFChars(jstrAppId, NULL);
+      const_char_pointer arg = penv->GetStringUTFChars(jstrAppId, NULL);
 
 
-if (arg == NULL)
-{
+      if (arg == NULL) {
 
 // Out of memory
-return;
+         return;
 
-}
+      }
 
-__android_log_print(ANDROID_LOG_INFO,
-"MyApp", "Got string from Java: %s", pszAppId);
+      __android_log_print(ANDROID_LOG_INFO,
+                          "MyApp", "Got string from Java: %s", pszAppId);
 
-pszAppId = strdup(arg);
+      pszAppId = strdup(arg);
 
-penv->
-ReleaseStringUTFChars(jstrAppId, arg
-);
+      penv->
+         ReleaseStringUTFChars(jstrAppId, arg
+      );
 
-}
+   }
 
-auto pszLibraryName = c_to_library_name(pszAppId);
+   auto pszLibraryName = c_to_library_name(pszAppId);
 
-auto pszAppLibrary = (char *) malloc(strlen(pszLibraryName) + 256);
+   auto pszAppLibrary = (char *) malloc(strlen(pszLibraryName) + 256);
 
-strcpy(pszAppLibrary,
-"lib");
-strcat(pszAppLibrary, pszLibraryName
-);
-strcat(pszAppLibrary,
-".so");
+   strcpy(pszAppLibrary,
+          "lib");
+   strcat(pszAppLibrary, pszLibraryName
+   );
+   strcat(pszAppLibrary,
+          ".so");
 
 // ---- Do something with 'arg' ----
 // e.g., pass it to your C main loop
 
 // When done, release it
 
-void * handle = dlopen(pszAppLibrary, RTLD_NOW);
+   void * handle = dlopen(pszAppLibrary, RTLD_NOW);
 
-if (!handle)
-{
+   if (!handle) {
 
-__android_log_print(ANDROID_LOG_ERROR,
-"MyApp", "dlopen failed: %s",
+      __android_log_print(ANDROID_LOG_ERROR,
+                          "MyApp", "dlopen failed: %s",
 
-dlerror()
+                          dlerror()
 
-);
+      );
 
-return;
+      return;
 
-}
+   }
 
-auto pszCreateSystem = c_application_library_main_name(pszLibraryName, "create_system");
+   auto pszCreateSystem = c_application_library_main_name(pszLibraryName, "create_system");
 
-auto pfnCreateSystem = (PFN_CREATE_SYSTEM) dlsym(handle, pszCreateSystem);
+   auto pfnCreateSystem = (PFN_CREATE_SYSTEM) dlsym(handle, pszCreateSystem);
 
-if (!pfnCreateSystem)
-{
+   if (!pfnCreateSystem) {
 
-__android_log_print(ANDROID_LOG_ERROR,
-"MyApp", "dlsym failed: %s",
+      __android_log_print(ANDROID_LOG_ERROR,
+                          "MyApp", "dlsym failed: %s",
 
-dlerror()
+                          dlerror()
 
-);
+      );
 
-dlclose(handle);
+      dlclose(handle);
 
-return;
+      return;
 
-}
+   }
 
-pfnCreateSystem();
+   pfnCreateSystem();
 
-if(!::system())
-{
+   if (!::system()) {
 
-__android_log_print(ANDROID_LOG_ERROR,
-"MyApp", "system creation failed");
+      __android_log_print(ANDROID_LOG_ERROR,
+                          "MyApp", "system creation failed");
 
-}
+   }
 
 
 }
@@ -670,60 +654,58 @@ __android_log_print(ANDROID_LOG_ERROR,
 extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(JNIEnv * penv,
                                                                                 jobject obj,
-jobject jobjectBind, jobject
-jobjectAssetManager)
+                                                                                jobject jobjectBind,
+                                                                                jobject
+                                                                                jobjectAssetManager)
 {
 
 
-set_jni_context(penv);
+   set_jni_context(penv);
 
-if (::operating_system_bind::get())
-{
+   if (::operating_system_bind::get()) {
 
-delete ::operating_system_bind::get();
+      delete ::operating_system_bind::get();
 
-}
+   }
 
-auto pbind = ___new operating_system_bind(jobjectBind);
+   auto pbind = __øjni<::operating_system_bind>(jobjectBind);
+//
+//pbind->m_pjniobjectImpl = __allocate jni_object_impl(jobjectBind);
 
-::operating_system_bind::set (pbind);
+   ::operating_system_bind::set(pbind);
 
-if (!::platform::application_state::get())
-{
+   if (!::platform::application_state::get()) {
 
-::platform::application_state::set (___new
+      ::platform::application_state::set(___new
 
-android::application_state()
+                                               android::application_state()
 
-);
+      );
 
-auto pbind = ::operating_system_bind::get();
+      auto pbind = ::operating_system_bind::get();
 
-::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
+      ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 
-papplicationstate->
-m_strApplicationIdentifier = pbind->getApplicationIdentifier();
+      papplicationstate->
+         m_strApplicationIdentifier = pbind->getApplicationIdentifier();
 
-papplicationstate->
-m_strCommandLineParameters = pbind->getCommandLineParameters();
+      papplicationstate->
+         m_strCommandLineParameters = pbind->getCommandLineParameters();
 
-papplicationstate->
-m_pathCacheDirectory = pbind->getCacheDirectory();
+      papplicationstate->
+         m_pathCacheDirectory = pbind->getCacheDirectory();
 
 
-papplicationstate->
-m_bShowKeyboard = false;
+      papplicationstate->
+         m_bShowKeyboard = false;
 
-auto passetmanager = ___new ::android::asset_manager();
+      auto passetmanager = __øjni < ::android::asset_manager>(jobjectAssetManager);
 
-passetmanager->
-set_AAssetManager(jobjectAssetManager);
+      papplicationstate->
+         m_passetmanager = passetmanager;
 
-papplicationstate->
-m_passetmanager = passetmanager;
-
-papplicationstate->
-m_passetResourceFolder = papplicationstate->m_passetmanager->get_asset("_matter.zip");
+      papplicationstate->
+         m_passetResourceFolder = papplicationstate->m_passetmanager->get_asset("_matter.zip");
 
 //string strLibrary;
 //
@@ -743,14 +725,14 @@ m_passetResourceFolder = papplicationstate->m_passetmanager->get_asset("_matter.
 //
 //PFN_MAIN pfnMain = (PFN_MAIN) dlsym(pLibrary, strMain);
 
-const_char_pointer pResourceStart = nullptr;
-const_char_pointer pResourceEnd = nullptr;
+      const_char_pointer pResourceStart = nullptr;
+      const_char_pointer pResourceEnd = nullptr;
 //auto pfactory = __allocate ::factory::factory();
-papplicationstate->m_passetResourceFolder->
-get_pointers(
-   pResourceStart,
-   pResourceEnd
-);
+      papplicationstate->m_passetResourceFolder->
+         get_pointers(
+         pResourceStart,
+         pResourceEnd
+      );
 
 
 //auto pmainosthread = __initialize_new main_os_thread(
@@ -795,7 +777,7 @@ get_pointers(
 //   g_psystem->m_pathCacheDirectory = papplicationstate->m_pathCacheDirectory;
 
 //papp->m_bConsole = false;
-}
+   }
 
 
 }
@@ -806,30 +788,27 @@ extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1start(JNIEnv * penv, jobject obj)
 {
 
-try
-{
+   try {
 
-set_jni_context(penv);
+      set_jni_context(penv);
 
-if (g_bAuraStart)
-{
+      if (g_bAuraStart) {
 
-return;
+         return;
 
-}
+      }
 
-g_bAuraStart = true;
+      g_bAuraStart = true;
 
-android_aura_main();
+      android_aura_main();
 
-}
-catch (...)
-{
+   }
+   catch (...) {
 
-__android_log_write(ANDROID_LOG_WARN,
-"com.ace.ace(native)", "aura_start exception");
+      __android_log_write(ANDROID_LOG_WARN,
+                          "com.ace.ace(native)", "aura_start exception");
 
-}
+   }
 
 
 }
@@ -849,7 +828,8 @@ __android_log_write(ANDROID_LOG_WARN,
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_application_1is_1started(JNIEnv * env, jobject obj)
+JNIEXPORT jboolean JNICALL
+Java_platform_platform_main_1activity_application_1is_1started(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;

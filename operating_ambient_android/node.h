@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include "aura_android/node.h"
+#include "node_android/node.h"
 
 
 namespace operating_ambient_android
@@ -10,7 +10,7 @@ namespace operating_ambient_android
 
 
    class CLASS_DECL_OPERATING_AMBIENT_ANDROID node :
-      virtual public ::aura_android::node
+      virtual public ::node_android::node
    {
    public:
 

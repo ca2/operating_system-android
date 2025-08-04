@@ -7,12 +7,22 @@
 #pragma once
 
 
-namespace windowing_android
+#include "acme/windowing/sandbox/host_interaction.h"
+
+
+namespace android
 {
+
+   namespace acme
+   {
+
+      namespace windowing
+      {
+
 
 
    class host_interaction :
-      virtual public ::user::interaction
+      virtual public ::acme::sandbox_windowing::host_interaction
    {
    public:
 
@@ -22,28 +32,28 @@ namespace windowing_android
 
 
       
-      ::sandbox_windowing::windowing* windowing();
+      ::android::acme::windowing::windowing* windowing();
 
 
 
-      void install_message_routing(::channel* pchannel) override;
+      //void install_message_routing(::channel* pchannel) override;
 
 
-      void _001DrawThis(::draw2d::graphics_pointer & pgraphics) override;
-      void _001DrawChildren(::draw2d::graphics_pointer & pgraphics) override;
-      void _000OnDraw(::draw2d::graphics_pointer & pgraphics) override;
-      void _001OnNcDraw(::draw2d::graphics_pointer & pgraphics) override;
-      void _001OnDraw(::draw2d::graphics_pointer & pgraphics) override;
+//      void _001DrawThis(::draw2d::graphics_pointer & pgraphics) override;
+//      void _001DrawChildren(::draw2d::graphics_pointer & pgraphics) override;
+//      void _000OnDraw(::draw2d::graphics_pointer & pgraphics) override;
+//      void _001OnNcDraw(::draw2d::graphics_pointer & pgraphics) override;
+//      void _001OnDraw(::draw2d::graphics_pointer & pgraphics) override;
 
       
-      DECLARE_MESSAGE_HANDLER(on_message_create);
+      //DECLARE_MESSAGE_HANDLER(on_message_create);
 
 
-      void post_redraw(bool bAscendants = true) override;
+      ///void post_redraw(bool bAscendants = true) override;
       //virtual bool is_this_visible() override;
 
 
-      void on_layout(::draw2d::graphics_pointer& pgraphics) override;
+      //void on_layout(::draw2d::graphics_pointer& pgraphics) override;
 
 
 
@@ -51,7 +61,14 @@ namespace windowing_android
    };
 
 
-} // namespace windowing_android
+      } // namespace windowing
+
+
+   } // namespace acme
+
+
+} // namespace android
+
 
 
 

@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include "acme/filesystem/filesystem/file_context.h"
+#include "acme_posix/file_context.h"
 
 
 namespace acme_android
@@ -10,7 +10,7 @@ namespace acme_android
 
 
    class CLASS_DECL_ACME_ANDROID file_context :
-      virtual public ::file_context
+virtual public ::acme_posix::file_context
    {
    public:
 

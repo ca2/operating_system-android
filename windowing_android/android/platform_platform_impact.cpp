@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "display.h"
 #include "acme/constant/message.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/system.h"
@@ -10,6 +11,7 @@
 #include "acme_windowing_android/android/_internal.h"
 #include <android/log.h>
 #include <android/bitmap.h>
+#include "aura/windowing/monitor.h"
 
 
 #define LOG_TAG "ace.impact(native)"
@@ -197,6 +199,53 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
       }
 
+
+      try {
+
+         auto psystem = system();
+
+         if (psystem)
+         {
+
+            if (psystem->m_pacmewindowing)
+            {
+
+               auto pwindowing = system()->windowing();
+
+               auto pdisplay = pwindowing->display();
+
+               auto pmonitor = psystem->__create_new<::windowing::monitor>();
+
+               pmonitor->m_pdisplay = pdisplay;
+
+               auto pbind = ::operating_system_bind::get();
+
+               int w = pbind->getWidth();
+
+               int h = pbind->getHeight();
+
+               ::int_rectangle r(0, 0, w, h);
+
+               pmonitor->
+                  m_rectangle = r;
+               pmonitor->
+                  m_rectangleFixedWorkspace = r;
+               pmonitor->
+                  m_rectangleWorkspace = r;
+
+               pdisplay->m_monitora.set_at_grow(0, pmonitor);
+
+            }
+
+
+         }
+
+      }
+      catch(...)
+      {
+
+
+      }
 
    }
    catch (...)

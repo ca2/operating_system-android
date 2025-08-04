@@ -2,10 +2,12 @@
 #include "framework.h"
 #include "node.h"
 #include "acme/platform/system.h"
+#include "acme/windowing/windowing.h"
 #include "apex/platform/session.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "windowing_android/android/application_state.h"
 #include "acme_windowing_android/android/message_box.h"
+#include "acme_windowing_android/windowing.h"
 
 
 namespace node_android
@@ -90,6 +92,12 @@ namespace node_android
 
    void node::on_start_system()
    {
+
+      auto psystem = system();
+
+      auto pacmewindowing = psystem->acme_windowing();
+
+      pacmewindowing->on_start_system();
 
       auto pdriver = ::platform::application_state::get();
 

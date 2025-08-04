@@ -427,7 +427,9 @@ namespace android
                ////if(strName.is_empty())
                ////{
 
-               string strWindowText = m_pacmeuserinteraction->get_window_text();
+               auto pacmeuserinteraction = m_pacmeuserinteraction;
+
+               string strWindowText = pacmeuserinteraction->get_window_text();
 
                //if (strWindowText.has_character())
                //{

@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include "acme/filesystem/filesystem/directory_context.h"
+#include "acme_posix/directory_context.h"
 
 
 namespace acme_android
@@ -10,7 +10,7 @@ namespace acme_android
 
 
    class CLASS_DECL_ACME_ANDROID directory_context :
-      virtual public ::directory_context
+virtual public ::acme_posix::directory_context
    {
    public:
 

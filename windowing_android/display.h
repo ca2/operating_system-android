@@ -39,6 +39,9 @@ namespace windowing_android
       ~display() override;
 
 
+      ::int_point _get_mouse_cursor_position() override;
+
+
 //      virtual void initialize_display(::windowing::windowing* pwindowing);
 //
 //      virtual iptr get_os_data() const;

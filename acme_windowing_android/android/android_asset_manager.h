@@ -10,33 +10,32 @@
 namespace android
 {
 
-    class asset;
+
+   class asset;
 
 
-    class CLASS_DECL_ACME asset_manager
-
-    :
-    virtual public ::acme::asset_manager,
-    public jni_object
-{
-    public:
+   class CLASS_DECL_ACME asset_manager :
+      virtual public ::acme::asset_manager,
+      virtual public jni_object
+   {
+   public:
 
 
-    AAssetManager *m_pmanager;
+      AAssetManager * m_pmanager;
 
 
-    asset_manager();
-    ~asset_manager() override;
+      asset_manager(jni_object_interface * pjniobjectinterfaceAssetManager);
+      ~asset_manager() override;
 
 
-    void set_AAssetManager(jobject
-                                          jobjectAssetManager);
+      //void set_AAssetManager(jobject
+        //                     jobjectAssetManager);
 
 
-    ::pointer <::acme::asset> get_asset(const_char_pointer path) override;
+      ::pointer<::acme::asset> get_asset(const_char_pointer path) override;
 
 
-};
+   };
 
 
 } // namespace android

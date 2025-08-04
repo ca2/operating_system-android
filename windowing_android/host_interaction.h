@@ -7,12 +7,17 @@
 #pragma once
 
 
+#include "acme_windowing_android/host_interaction.h"
+#include "aura/windowing/sandbox/host_interaction.h"
+
+
 namespace windowing_android
 {
 
 
    class host_interaction :
-      virtual public ::user::interaction
+      virtual public ::android::acme::windowing::host_interaction,
+      virtual public ::sandbox_windowing::host_interaction
    {
    public:
 
@@ -25,8 +30,13 @@ namespace windowing_android
       ::sandbox_windowing::windowing* windowing();
 
 
-
       void install_message_routing(::channel* pchannel) override;
+
+
+      DECLARE_MESSAGE_HANDLER(on_message_create);
+
+
+      //void install_message_routing(::channel* pchannel) override;
 
 
       void _001DrawThis(::draw2d::graphics_pointer & pgraphics) override;
@@ -36,14 +46,14 @@ namespace windowing_android
       void _001OnDraw(::draw2d::graphics_pointer & pgraphics) override;
 
       
-      DECLARE_MESSAGE_HANDLER(on_message_create);
+      //DECLARE_MESSAGE_HANDLER(on_message_create);
 
 
-      void post_redraw(bool bAscendants = true) override;
+      ///void post_redraw(bool bAscendants = true) override;
       //virtual bool is_this_visible() override;
 
 
-      void on_layout(::draw2d::graphics_pointer& pgraphics) override;
+//      void on_layout(::draw2d::graphics_pointer& pgraphics) override;
 
 
 

@@ -79,14 +79,35 @@ namespace windowing_android
    }
 
 
+   void window::_set_oswindow(::oswindow oswindow)
+   {
+
+
+   }
+
+
+   ::oswindow window::oswindow() const
+   {
+
+      return (::windowing_android::window *)this;
+
+   }
+
+
    void window::create_window()
    {
+
+      ::sandbox_windowing::window::create_window();
+
+      return;
 
       synchronous_lock synchronouslock(synchronization());
 
       bool bOk = true;
 
       //auto pusersystem = puserinteraction->m_pusersystem;
+
+      install_message_routing(this);
 
       ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
@@ -553,12 +574,21 @@ namespace windowing_android
 
       }
 
+      if(bOk)
+      {
+
+         _create_window();
+
+      }
+
       if (!bOk)
       {
 
          throw ::exception(error_failed);
 
       }
+
+      on_finished_window_creation();
 
    }
 
@@ -883,12 +913,31 @@ namespace windowing_android
 
       ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
-      m_pmessagequeue = puserinteraction->user_thread()->get_message_queue();
+//      auto puserthread = puserinteraction->user_thread();
+//
+//      m_pmessagequeue = puserthread->get_message_queue();
 
       //oswindow_assign(this, pimpl);
 
    }
 
+
+   void window::set_user_thread(::user::thread * puserthread)
+   {
+
+      ::windowing::window::set_user_thread(puserthread);
+
+      m_pmessagequeue = puserthread->get_message_queue();
+
+   }
+
+
+   void window::_main_send(const ::procedure & procedure)
+   {
+
+      m_puserthread->_send(procedure);
+
+   }
 
 //   bool window::is_child(::windowing::window * oswindow)
 //   {
@@ -3521,6 +3570,14 @@ namespace windowing_android
       }
 
       return papplicationstate->m_fDensity;
+
+   }
+
+
+   bool window::is_child(::oswindow window)  // or descendant
+   {
+
+      return ::android::acme::windowing::window::is_child(window);
 
    }
 

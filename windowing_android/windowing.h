@@ -3,7 +3,7 @@
 // Adapted by Camilo for android 2022-01-05 04:34 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #pragma once
 
-
+#include "acme_windowing_android/windowing.h"
 #include "aura/windowing/sandbox/windowing.h"
 
 
@@ -12,6 +12,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_WINDOWING_ANDROID windowing :
+      virtual public ::android::acme::windowing::windowing,
       virtual public ::sandbox_windowing::windowing
    {
    public:
@@ -154,6 +155,11 @@ namespace windowing_android
 
       ::pointer<::windowing::cursor>get_cursor(enum_cursor ecursor) override;
 
+      bool defer_release_mouse_capture(::thread *pthread,
+                                       ::acme::windowing::window *pwindow) override;
+
+
+      void windowing_application_main_loop() override;
 
    };
 

@@ -267,7 +267,7 @@ void android_exchange()
 //void set_operating_system_direct(operating_system_bind* pdirect)
 //{
 //
-//   g_pandroiddirect = pdirect;
+//   g_pandroidbind = pdirect;
 //
 //}
 //
@@ -275,7 +275,7 @@ void android_exchange()
 //operating_system_bind* operating_system_bind::get()
 //{
 //
-//   return g_pandroiddirect;
+//   return g_pandroidbind;
 //
 //}
 //

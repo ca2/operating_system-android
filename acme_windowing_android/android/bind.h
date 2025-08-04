@@ -12,6 +12,7 @@ public:
 
    using jni_object::jni_object;
 
+
    //String m_strApplicationName;
    JX(str, ApplicationName);
    //String m_strApplicationIdentifier;
@@ -34,6 +35,12 @@ public:
    JX(b, ShowKeyboard);
    //boolean m_bHideKeyboard;
    JX(b, HideKeyboard);
+   //boolean m_bApplicationReady;
+   JX(b, ApplicationReady);
+   //boolean m_bFpsRedraw;
+   JX(b, FpsRedraw);
+   //boolean m_fRequestFps;
+   JX(f, RequestFps);
    //String m_strOpenUrl;
    JX(str, OpenUrl);
    //String m_strUserWallpaper;

@@ -34,6 +34,8 @@ list(APPEND library_source
         #   file_system.h
         framework.cpp
         framework.h
+   host_interaction.cpp
+   host_interaction.h
         #integration_context.cpp
         #integration_context.h
         monitor.cpp

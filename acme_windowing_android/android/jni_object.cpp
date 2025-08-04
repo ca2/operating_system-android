@@ -2,24 +2,10 @@
 #include "_internal.h"
 
 
-extern thread_local JNIEnv* t_pjnienv1;
-
-
-jni_object::jni_object()
+jni_object::jni_object(jni_object_interface * pjniobjectinterface) :
+m_pjniobjectinterface(pjniobjectinterface)
 {
 
-   m_jobject = nullptr;
-
-   m_jclass = nullptr;
-
-}
-
-
-
-jni_object::jni_object(jobject jobject)
-{
-
-   set_jni_object(jobject);
 
 }
 
@@ -27,417 +13,374 @@ jni_object::jni_object(jobject jobject)
 jni_object::~jni_object()
 {
 
-   t_pjnienv1->DeleteGlobalRef(m_jobject);
+}
 
-   t_pjnienv1->DeleteGlobalRef(m_jclass);
+
+
+jni_field * jni_object::field_str(const_char_pointer psz)
+{
+
+   return m_pjniobjectinterface->field_str(psz);
 
 }
 
 
-void jni_object::set_jni_object(jobject jobject)
+jni_field * jni_object::field_b(const_char_pointer psz)
 {
 
-   ::jclass jclass = t_pjnienv1->GetObjectClass(jobject);
-
-   m_jclass = (::jclass) t_pjnienv1->NewGlobalRef(jclass);
-
-   m_jobject = t_pjnienv1->NewGlobalRef(jobject);
+   return m_pjniobjectinterface->field_b(psz);
 
 }
 
 
-jfieldID jni_object::field_str(const_char_pointer psz)
+jni_field * jni_object::field_uch(const_char_pointer psz)
 {
 
-   auto jfieldid = t_pjnienv1->GetFieldID(m_jclass, psz, "Ljava/lang/String;");
-
-   return jfieldid;
+   return m_pjniobjectinterface->field_uch(psz);
 
 }
 
 
-jfieldID jni_object::field_b(const_char_pointer psz)
+jni_field * jni_object::field_ch(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "Z");
+   return m_pjniobjectinterface->field_ch(psz);
 
 }
 
 
-jfieldID jni_object::field_uch(const_char_pointer psz)
+jni_field * jni_object::field_sh(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "B");
+   return m_pjniobjectinterface->field_sh(psz);
 
 }
 
 
-jfieldID jni_object::field_ch(const_char_pointer psz)
+jni_field * jni_object::field_i(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "C");
+   return m_pjniobjectinterface->field_i(psz);
 
 }
 
 
-jfieldID jni_object::field_sh(const_char_pointer psz)
+jni_field * jni_object::field_l(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "S");
-
-}
-
-
-jfieldID jni_object::field_i(const_char_pointer psz)
-{
-
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "I");
-
-}
-
-
-jfieldID jni_object::field_l(const_char_pointer psz)
-{
-
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "J");
+   return m_pjniobjectinterface->field_l(psz);
 
 }
 
 
 
-jfieldID jni_object::field_f(const_char_pointer psz)
+jni_field * jni_object::field_f(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "F");
+   return m_pjniobjectinterface->field_f(psz);
 
 }
 
 
-jfieldID jni_object::field_d(const_char_pointer psz)
+jni_field * jni_object::field_d(const_char_pointer psz)
 {
 
-   return t_pjnienv1->GetFieldID(m_jclass, psz, "D");
+   return m_pjniobjectinterface->field_d(psz);
 
 }
 
 
-void jni_object::set_str(const_char_pointer pszField, const_char_pointer psz)
+//void jni_object::set_str(const_char_pointer pszField, const_char_pointer psz)
+//{
+//
+//   set_str(field_str(pszField), psz);
+//
+//}
+//
+//
+//string jni_object::get_str(const_char_pointer pszField)
+//{
+//
+//   return get_str(field_str(pszField));
+//
+//}
+//
+//
+//void jni_object::set_b(const_char_pointer pszField, bool b)
+//{
+//
+//   set_b(field_b(pszField), b);
+//
+//}
+//
+//
+//bool jni_object::get_b(const_char_pointer pszField)
+//{
+//
+//   return get_b(field_b(pszField));
+//
+//}
+//
+//
+//
+//void jni_object::set_uch(const_char_pointer pszField, unsigned char b)
+//{
+//
+//   set_uch(field_uch(pszField), b);
+//
+//}
+//
+//
+//unsigned char jni_object::get_uch(const_char_pointer pszField)
+//{
+//
+//   return get_uch(field_uch(pszField));
+//
+//}
+//
+//
+//
+//void jni_object::set_ch(const_char_pointer pszField, char ch)
+//{
+//
+//   set_ch(field_ch(pszField), ch);
+//
+//}
+//
+//
+//char jni_object::get_ch(const_char_pointer pszField)
+//{
+//
+//   return get_ch(field_ch(pszField));
+//
+//}
+//
+//
+//
+//void jni_object::set_sh(const_char_pointer pszField, short sh)
+//{
+//
+//   set_sh(field_sh(pszField), sh);
+//
+//}
+//
+//
+//short jni_object::get_sh(const_char_pointer pszField)
+//{
+//
+//   return get_sh(field_sh(pszField));
+//
+//}
+//
+//
+//
+//void jni_object::set_i(const_char_pointer pszField, int i)
+//{
+//
+//   set_i(field_i(pszField), i);
+//
+//}
+//
+//
+//
+//int jni_object::get_i(const_char_pointer pszField)
+//{
+//
+//   return get_i(field_i(pszField));
+//
+//}
+//
+//
+//
+//void jni_object::set_l(const_char_pointer pszField, long long hi)
+//{
+//
+//   set_l(field_l(pszField), hi);
+//
+//}
+//
+//
+//
+//long long jni_object::get_l(const_char_pointer pszField)
+//{
+//
+//   return get_l(field_l(pszField));
+//
+//}
+//
+//
+//void jni_object::set_f(const_char_pointer pszField, float f)
+//{
+//
+//   set_f(field_f(pszField), f);
+//
+//}
+//
+//
+//float jni_object::get_f(const_char_pointer pszField)
+//{
+//
+//   return get_f(field_f(pszField));
+//
+//}
+//
+//
+//void jni_object::set_d(const_char_pointer pszField, double d)
+//{
+//
+//   set_d(field_d(pszField), d);
+//
+//}
+//
+//
+//double jni_object::get_d(const_char_pointer pszField)
+//{
+//
+//   return get_d(field_d(pszField));
+//
+//}
+
+
+void jni_object::set_str(jni_field * pfield, const_char_pointer psz)
 {
 
-   set_str(field_str(pszField), psz);
+   return m_pjniobjectinterface->set_str(pfield, psz);
 
 }
 
 
-string jni_object::get_str(const_char_pointer pszField)
+string jni_object::get_str(jni_field * pfield)
 {
 
-   return get_str(field_str(pszField));
+   return m_pjniobjectinterface->get_str(pfield);
 
 }
 
 
-void jni_object::set_b(const_char_pointer pszField, bool b)
+void jni_object::set_b(jni_field * pfield, bool b)
 {
 
-   set_b(field_b(pszField), b);
+   return m_pjniobjectinterface->set_b(pfield, b);
 
 }
 
 
-bool jni_object::get_b(const_char_pointer pszField)
+bool jni_object::get_b(jni_field * pfield)
 {
 
-   return get_b(field_b(pszField));
+   return m_pjniobjectinterface->get_b(pfield);
 
 }
 
 
-
-void jni_object::set_uch(const_char_pointer pszField, unsigned char b)
+void jni_object::set_uch(jni_field * pfield, unsigned char uch)
 {
 
-   set_uch(field_uch(pszField), b);
+   return m_pjniobjectinterface->set_uch(pfield, uch);
 
 }
 
 
-unsigned char jni_object::get_uch(const_char_pointer pszField)
+unsigned char jni_object::get_uch(jni_field * pfield)
 {
 
-   return get_uch(field_uch(pszField));
+   return m_pjniobjectinterface->get_uch(pfield);
 
 }
 
 
-
-void jni_object::set_ch(const_char_pointer pszField, char ch)
+void jni_object::set_ch(jni_field * pfield, char ch)
 {
 
-   set_ch(field_ch(pszField), ch);
+   return m_pjniobjectinterface->set_ch(pfield, ch);
 
 }
 
 
-char jni_object::get_ch(const_char_pointer pszField)
+char jni_object::get_ch(jni_field * pfield)
 {
 
-   return get_ch(field_ch(pszField));
+   return m_pjniobjectinterface->get_ch(pfield);
 
 }
 
 
-
-void jni_object::set_sh(const_char_pointer pszField, short sh)
+void jni_object::set_sh(jni_field * pfield, short sh)
 {
 
-   set_sh(field_sh(pszField), sh);
+   return m_pjniobjectinterface->set_sh(pfield, sh);
 
 }
 
 
-short jni_object::get_sh(const_char_pointer pszField)
+short jni_object::get_sh(jni_field * pfield)
 {
 
-   return get_sh(field_sh(pszField));
+   return m_pjniobjectinterface->get_sh(pfield);
 
 }
 
 
-
-void jni_object::set_i(const_char_pointer pszField, int i)
+void jni_object::set_i(jni_field * pfield, int i)
 {
 
-   set_i(field_i(pszField), i);
+   return m_pjniobjectinterface->set_i(pfield, i);
 
 }
 
 
-
-int jni_object::get_i(const_char_pointer pszField)
+int jni_object::get_i(jni_field * pfield)
 {
 
-   return get_i(field_i(pszField));
+   return m_pjniobjectinterface->get_i(pfield);
 
 }
 
 
-
-void jni_object::set_l(const_char_pointer pszField, long long hi)
+void jni_object::set_l(jni_field * pfield, long long l)
 {
 
-   set_l(field_l(pszField), hi);
+   return m_pjniobjectinterface->set_l(pfield, l);
 
 }
 
 
-
-long long jni_object::get_l(const_char_pointer pszField)
+long long jni_object::get_l(jni_field * pfield)
 {
 
-   return get_l(field_l(pszField));
+   return m_pjniobjectinterface->get_l(pfield);
 
 }
 
 
-void jni_object::set_f(const_char_pointer pszField, float f)
+void jni_object::set_f(jni_field * pfield, float f)
 {
 
-   set_f(field_f(pszField), f);
+   return m_pjniobjectinterface->set_f(pfield, f);
 
 }
 
 
-float jni_object::get_f(const_char_pointer pszField)
+float jni_object::get_f(jni_field * pfield)
 {
 
-   return get_f(field_f(pszField));
+   return m_pjniobjectinterface->get_f(pfield);
 
 }
 
 
-void jni_object::set_d(const_char_pointer pszField, double d)
+void jni_object::set_d(jni_field * pfield, double d)
 {
 
-   set_d(field_d(pszField), d);
+   return m_pjniobjectinterface->set_d(pfield, d);
 
 }
 
 
-double jni_object::get_d(const_char_pointer pszField)
+double jni_object::get_d(jni_field * pfield)
 {
 
-   return get_d(field_d(pszField));
-
-}
-
-
-void jni_object::set_str(jfieldID jfieldid, const_char_pointer psz)
-{
-
-   jstring jstring = t_pjnienv1->NewStringUTF(psz);
-
-   if (!jstring)
-   {
-
-      return;
-
-   }
-
-   t_pjnienv1->SetObjectField(m_jobject, jfieldid, jstring);
-
-   t_pjnienv1->DeleteLocalRef(jstring);
-
-}
-
-
-string jni_object::get_str(jfieldID jfieldid)
-{
-
-   jstring jstring = (::jstring) t_pjnienv1->GetObjectField(m_jobject, jfieldid);
-
-   string str;
-   
-   if (jstring)
-   {
-
-      str = ::as_string(jstring);
-
-      t_pjnienv1->DeleteLocalRef(jstring);
-
-   }
-
-   return str;
-
-}
-
-
-void jni_object::set_b(jfieldID fid, bool b)
-{
-
-   t_pjnienv1->SetBooleanField(m_jobject, fid, b);
-
-}
-
-
-bool jni_object::get_b(jfieldID fid)
-{
-
-   return t_pjnienv1->GetBooleanField(m_jobject, fid);
-
-}
-
-
-void jni_object::set_uch(jfieldID fid, unsigned char b)
-{
-
-   t_pjnienv1->SetByteField(m_jobject, fid, b);
-
-}
-
-
-unsigned char jni_object::get_uch(jfieldID fid)
-{
-
-   return t_pjnienv1->GetByteField(m_jobject, fid);
-
-}
-
-
-void jni_object::set_ch(jfieldID fid, char ch)
-{
-
-   t_pjnienv1->SetCharField(m_jobject, fid, ch);
-
-}
-
-
-char jni_object::get_ch(jfieldID fid)
-{
-
-   return t_pjnienv1->GetCharField(m_jobject, fid);
-
-}
-
-
-void jni_object::set_sh(jfieldID fid, short sh)
-{
-
-   t_pjnienv1->SetShortField(m_jobject, fid, sh);
-
-}
-
-
-short jni_object::get_sh(jfieldID fid)
-{
-
-   return t_pjnienv1->GetShortField(m_jobject, fid);
-
-}
-
-
-void jni_object::set_i(jfieldID fid, int i)
-{
-
-   t_pjnienv1->SetIntField(m_jobject, fid, i);
-
-}
-
-
-int jni_object::get_i(jfieldID fid)
-{
-
-   return t_pjnienv1->GetIntField(m_jobject, fid);
-
-}
-
-
-
-void jni_object::set_l(jfieldID fid, long long hi)
-{
-
-   t_pjnienv1->SetLongField(m_jobject, fid, hi);
-
-}
-
-
-long long jni_object::get_l(jfieldID fid)
-{
-
-   return t_pjnienv1->GetLongField(m_jobject, fid);
-
-}
-
-
-void jni_object::set_f(jfieldID fid, float f)
-{
-
-   t_pjnienv1->SetFloatField(m_jobject, fid, f);
-
-}
-
-
-float jni_object::get_f(jfieldID fid)
-{
-
-   return t_pjnienv1->GetFloatField(m_jobject, fid);
-
-}
-
-
-
-void jni_object::set_d(jfieldID fid, double d)
-{
-
-   t_pjnienv1->SetDoubleField(m_jobject, fid, d);
-
-}
-
-
-double jni_object::get_d(jfieldID fid)
-{
-
-   return t_pjnienv1->GetDoubleField(m_jobject, fid);
+   return m_pjniobjectinterface->get_d(pfield);
 
 }
 

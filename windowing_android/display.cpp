@@ -1408,6 +1408,14 @@ namespace windowing_android
 //   }
 
 
+   ::int_point display::_get_mouse_cursor_position()
+   {
+
+      return m_pointCursor2;
+
+   }
+
+
 } // namespace windowing_display
 
 

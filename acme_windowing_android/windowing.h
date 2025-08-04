@@ -78,6 +78,11 @@ namespace android
 
                 //void windowing_post_quit() override;
 
+                void on_start_system() override;
+
+
+                void on_start_windowing_application() override;
+
 
                 //void release_mouse_capture(::thread * pthread) override;
                 bool defer_release_mouse_capture(::thread *pthread,

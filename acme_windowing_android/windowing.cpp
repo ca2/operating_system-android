@@ -10,6 +10,7 @@
 #include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/windowing/sandbox/host_interaction.h"
+#include "android/bind.h"
 //#include "aura/user/user/interaction_impl.h"
 //#include "aura/windowing/sandbox/host_interaction.h"
 //#include "android/_internal.h"
@@ -53,6 +54,26 @@ namespace android
             windowing::~windowing()
             {
 
+
+            }
+
+
+            void windowing::on_start_system()
+            {
+
+               system()->on_branch_system_from_main_thread_startup(this);
+
+            }
+
+
+            void windowing::on_start_windowing_application()
+            {
+
+               auto pbind = ::operating_system_bind::get();
+
+               pbind->setApplicationReady(true);
+
+               ::acme::sandbox_windowing::windowing::on_start_windowing_application();
 
             }
 
@@ -172,26 +193,28 @@ namespace android
             void windowing::defer_initialize_host_window(const ::int_rectangle *lpcrect)
             {
 
-               if (::is_set(m_phostinteraction)) {
+               ::acme::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
 
-                  return;
-
-               }
-
-               __construct_new(m_phostinteraction);
-
-               m_phostinteraction->set_rectangle(*lpcrect);
-
-               //m_phostinteraction->create_host(e_parallelization_synchronous);
-               m_phostinteraction->create_window();
-
-               m_phostinteraction->display();
-
-               //m_phostinteraction->set_need_layout();
-
-               m_phostinteraction->set_need_redraw();
-
-               m_phostinteraction->post_redraw();
+//               if (::is_set(m_phostinteraction)) {
+//
+//                  return;
+//
+//               }
+//
+//               __construct_new(m_phostinteraction);
+//
+//               m_phostinteraction->set_rectangle(*lpcrect);
+//
+//               //m_phostinteraction->create_host(e_parallelization_synchronous);
+//               m_phostinteraction->create_window();
+//
+//               m_phostinteraction->display();
+//
+//               //m_phostinteraction->set_need_layout();
+//
+//               m_phostinteraction->set_need_redraw();
+//
+//               m_phostinteraction->post_redraw();
 
             }
 
@@ -218,10 +241,7 @@ namespace android
 
                 //system()->defer_post_initial_request();
 
-
-                system()->post_application_start();
-                system()->defer_post_file_open();
-                system()->post_application_started();
+                on_start_windowing_application();
 
                 ::string strAppId = m_papplication->m_strAppId;
 //

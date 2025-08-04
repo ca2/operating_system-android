@@ -2,20 +2,40 @@
 
 
 #include "jni_object_interface.h"
+#include "_internal.h"
 
 
-class CLASS_DECL_ACME jni_object :
-   virtual public ::jni_object_interface
+class CLASS_DECL_ACME jni_field_impl :
+   virtual public ::jni_field
+{
+public:
+
+   jfieldID m_jfieldid;
+
+};
+
+
+class CLASS_DECL_ACME jni_object_impl :
+   virtual public jni_object_interface
 {
 public:
 
 
-   ::pointer < jni_object_interface > m_pjniobjectinterface;
+   jobject     m_jobject;
+   jclass      m_jclass;
+
+   ::string_map < ::pointer < jni_field > > m_mapField;
 
 
-   jni_object(jni_object_interface * pjniobjectinterface);
-   ~jni_object() override;
+   jni_object_impl();
+   jni_object_impl(jobject jobject);
+   ~jni_object_impl() override;
 
+
+   void set_jni_object(jobject jobject);
+
+
+   virtual jni_field * _field(const_char_pointer psz, const_char_pointer pszType);
 
    jni_field * field_str(const_char_pointer psz) override;
    jni_field * field_b(const_char_pointer psz) override;
@@ -105,3 +125,20 @@ public:
 
 
 
+inline ::pointer < ::jni_object_interface > __as_jni_object(jobject jobject)
+{
+
+   return __allocate jni_object_impl(jobject);
+
+}
+
+
+template < typename TYPE >
+inline ::pointer < TYPE > __øjni(jobject jobject)
+{
+
+   auto pjniobjectinterface = __as_jni_object(jobject);
+
+   return __allocate TYPE(pjniobjectinterface);
+
+}

@@ -99,7 +99,7 @@ namespace android
 //
                 //virtual ::Window get_parent_handle() const;
 
-                virtual ::android::acme::windowing::windowing *android_windowing();
+                ::android::acme::windowing::windowing *android_windowing();
                 //::windowing_android::display * x11_display() const { return (::windowing_android::display *)m_pdisplay->m_pDisplay; }
 
                 //void set_parent(::windowing::window *pwindowNewParent) override;
