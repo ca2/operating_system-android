@@ -214,26 +214,30 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
                auto pdisplay = pwindowing->display();
 
-               auto pmonitor = psystem->__create_new<::windowing::monitor>();
+               if(pdisplay) {
 
-               pmonitor->m_pdisplay = pdisplay;
+                  auto pmonitor = psystem->__create_new<::windowing::monitor>();
 
-               auto pbind = ::operating_system_bind::get();
+                  pmonitor->m_pdisplay = pdisplay;
 
-               int w = pbind->getWidth();
+                  auto pbind = ::operating_system_bind::get();
 
-               int h = pbind->getHeight();
+                  int w = pbind->getWidth();
 
-               ::int_rectangle r(0, 0, w, h);
+                  int h = pbind->getHeight();
 
-               pmonitor->
-                  m_rectangle = r;
-               pmonitor->
-                  m_rectangleFixedWorkspace = r;
-               pmonitor->
-                  m_rectangleWorkspace = r;
+                  ::int_rectangle r(0, 0, w, h);
 
-               pdisplay->m_monitora.set_at_grow(0, pmonitor);
+                  pmonitor->
+                     m_rectangle = r;
+                  pmonitor->
+                     m_rectangleFixedWorkspace = r;
+                  pmonitor->
+                     m_rectangleWorkspace = r;
+
+                  pdisplay->m_monitora.set_at_grow(0, pmonitor);
+
+               }
 
             }
 
