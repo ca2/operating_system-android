@@ -371,7 +371,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //   }
 //
 //
-//} // namespace base
+//} // namespace berg
 
 
 CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
