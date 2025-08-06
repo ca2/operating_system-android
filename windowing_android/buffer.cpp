@@ -7,7 +7,7 @@
 //#include <native_window.h>
 
 
-#define LOG_TAG "buffer(native)"
+#define LOG_TAG "windowing_android::buffer"
 
 
 namespace windowing_android
@@ -159,6 +159,18 @@ namespace windowing_android
       LOGI("m_bRedraw = true");
 
       pdriver->m_bRedraw = true;
+
+
+//      auto pbind = ::operating_system_bind::get();
+//
+//      if(!pbind->getApplicationReady())
+//      {
+//
+//         pbind->setApplicationReady(true);
+//
+//      }
+
+
 
       //ANativeWindow_Buffer buffer;
 

@@ -69,10 +69,6 @@ namespace android
             void windowing::on_start_windowing_application()
             {
 
-               auto pbind = ::operating_system_bind::get();
-
-               pbind->setApplicationReady(true);
-
                ::acme::sandbox_windowing::windowing::on_start_windowing_application();
 
             }

@@ -18,6 +18,8 @@ virtual public ::android::acme::windowing::window,
    public:
 
 
+
+      bool m_bSetApplicationReady = true;
       //bool                                         m_bMessageOnlyWindow;
       //::pointer<::windowing::window>    m_pimpl;
       //::pointer<::message_queue>             m_pmessagequeue;
@@ -236,6 +238,9 @@ virtual public ::android::acme::windowing::window,
 
       //void update_screen() override;
       //void window_show() override;
+
+
+      void __update_graphics_buffer() override;
 
       //bool is_active_window() const override;
 

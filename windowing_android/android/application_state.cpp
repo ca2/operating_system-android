@@ -166,11 +166,11 @@ namespace android
 
           synchronous_lock synchronouslock(synchronization());
 
-          auto pdirect = ::operating_system_bind::get();
+          auto pbind = ::operating_system_bind::get();
 
           if (m_bHideKeyboard) {
 
-             pdirect->setHideKeyboard(true);
+             pbind->setHideKeyboard(true);
 
              m_bHideKeyboard = false;
 
@@ -200,14 +200,14 @@ namespace android
 //
 //          if (strOpenUrl.has_character()) {
 //
-//             pdirect->setOpenUrl(strOpenUrl);
+//             pbind->setOpenUrl(strOpenUrl);
 //
 //          }
 
           //if (m_bMessageBoxOn)
           //{
 
-          //   int iResult = pdirect->getMessageBoxResult();
+          //   int iResult = pbind->getMessageBoxResult();
 
           //   if (iResult > 0)
           //   {
@@ -226,19 +226,19 @@ namespace android
 //
 //             pmessagebox->increment_reference_count();
 //
-//             pdirect->setMessageBoxSequence((::iptr) pmessagebox.m_p);
+//             pbind->setMessageBoxSequence((::iptr) pmessagebox.m_p);
 //
-//             pdirect->setMessageBox(pmessagebox->m_strMessage);
+//             pbind->setMessageBox(pmessagebox->m_strMessage);
 //
-//             pdirect->setMessageBoxCaption(pmessagebox->m_strTitle);
+//             pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
 //
-//             pdirect->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
+//             pbind->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
 //
 //          }
 
           if (m_strSetUserWallpaper.has_character()) {
 
-             pdirect->setUserWallpaper(m_strSetUserWallpaper);
+             pbind->setUserWallpaper(m_strSetUserWallpaper);
 
              m_strSetUserWallpaper.empty();
 
@@ -246,7 +246,7 @@ namespace android
 
           if (m_bGetUserWallpaper) {
 
-             m_strGetUserWallpaper = pdirect->getUserWallpaper();
+             m_strGetUserWallpaper = pbind->getUserWallpaper();
 
              m_bGetUserWallpaper = false;
 
@@ -256,11 +256,11 @@ namespace android
 
              m_bEditorSelectionUpdated = false;
 
-             pdirect->setEditorSelectionStart(m_iEditorSelectionStart);
+             pbind->setEditorSelectionStart(m_iEditorSelectionStart);
 
-             pdirect->setEditorSelectionEnd(m_iEditorSelectionEnd);
+             pbind->setEditorSelectionEnd(m_iEditorSelectionEnd);
 
-             pdirect->setEditorSelectionUpdated(true);
+             pbind->setEditorSelectionUpdated(true);
 
           }
 
@@ -268,9 +268,9 @@ namespace android
 
              m_bEditorTextUpdated = false;
 
-             pdirect->setEditorText(m_strEditorText);
+             pbind->setEditorText(m_strEditorText);
 
-             pdirect->setEditorTextUpdated(true);
+             pbind->setEditorTextUpdated(true);
 
           }
 
@@ -278,15 +278,15 @@ namespace android
 
              m_bEditFocusSet = false;
 
-             pdirect->setEditFocusSet(true);
+             pbind->setEditFocusSet(true);
 
-             pdirect->setEditFocusLeft(m_rectangleEditFocus.left());
+             pbind->setEditFocusLeft(m_rectangleEditFocus.left());
 
-             pdirect->setEditFocusTop(m_rectangleEditFocus.top());
+             pbind->setEditFocusTop(m_rectangleEditFocus.top());
 
-             pdirect->setEditFocusRight(m_rectangleEditFocus.right());
+             pbind->setEditFocusRight(m_rectangleEditFocus.right());
 
-             pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom());
+             pbind->setEditFocusBottom(m_rectangleEditFocus.bottom());
 
           }
 
@@ -294,7 +294,7 @@ namespace android
 
              m_bEditFocusKill = false;
 
-             pdirect->setEditFocusKill(true);
+             pbind->setEditFocusKill(true);
 
           }
 
@@ -302,7 +302,7 @@ namespace android
 //
 //             m_bRedraw = false;
 //
-//             pdirect->setRedraw(true);
+//             pbind->setRedraw(true);
 //
 //          }
 
@@ -310,22 +310,22 @@ namespace android
 
              m_bInputMethodManagerUpdateSelection = false;
 
-             pdirect->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
+             pbind->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
 
-             pdirect->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
+             pbind->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
 
-             pdirect->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
+             pbind->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
 
-             pdirect->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
+             pbind->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
 
-             pdirect->setInputMethodManagerUpdateSelection(true);
+             pbind->setInputMethodManagerUpdateSelection(true);
 
           }
 
 
           if (m_bShowKeyboard) {
 
-             pdirect->setShowKeyboard(true);
+             pbind->setShowKeyboard(true);
 
              m_bShowKeyboard = false;
 
@@ -340,17 +340,17 @@ namespace android
 
           if (m_straListFileEnumerate.has_element()) {
 
-             auto pdirect = ::operating_system_bind::get();
+             auto pbind = ::operating_system_bind::get();
 
-             auto bLock = pdirect->getLockListFileEnumerate();
+             auto bLock = pbind->getLockListFileEnumerate();
 
              if (!bLock) {
 
                 string strEnumerate = m_straListFileEnumerate.pick_first();
 
-                pdirect->setListFileEnumerate(strEnumerate);
+                pbind->setListFileEnumerate(strEnumerate);
 
-                pdirect->setLockListFileEnumerate(true);
+                pbind->setLockListFileEnumerate(true);
 
              }
 
@@ -358,15 +358,33 @@ namespace android
 
        }
 
+
+       {
+
+          //synchronous_lock sl(m_pparticleMutexListFileEnumerate);
+          synchronous_lock sl(this->synchronization());
+
+          if (m_bSetApplicationReady) {
+
+             m_bSetApplicationReady = false;
+
+             auto pbind = ::operating_system_bind::get();
+
+             pbind->setApplicationReady(true);
+
+          }
+
+       }
+
 //       {
 //
-//          auto pdirect = ::operating_system_bind::get();
+//          auto pbind = ::operating_system_bind::get();
 //
-//          string strUri = pdirect->getUri();
+//          string strUri = pbind->getUri();
 //
 //          if (strUri.has_character()) {
 //
-//             pdirect->setUri("");
+//             pbind->setUri("");
 //
 //             system()->handle_uri(strUri);
 //

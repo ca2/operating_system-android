@@ -21,7 +21,7 @@
 
 //void on_sn_launch_context(void * pSnContext, Window window);
 //void on_sn_launch_complete(void * pSnContext);
-
+#define LOG_TAG "windowing_android::window"
 
 ::particle * synchronization();
 
@@ -3674,6 +3674,35 @@ namespace windowing_android
    //}
 
 
+   void window::__update_graphics_buffer()
+   {
+
+
+      if(m_bSetApplicationReady)
+      {
+
+         m_bSetApplicationReady = false;
+
+         auto pdriver = ::platform::application_state::get();
+
+         LOGI("pdriver->m_bSetApplicationReady = true");
+
+         pdriver->m_bSetApplicationReady =   true;
+
+      }
+
+
+//      auto pbind = ::operating_system_bind::get();
+//
+//      if(!pbind->getApplicationReady())
+//      {
+//
+//         pbind->setApplicationReady(true);
+//
+//      }
+
+   }
+
    //void window::set_mouse_capture()
    //{
 
@@ -3872,6 +3901,8 @@ namespace windowing_android
 
 
    //}
+
+
 
 
    float window::get_dpi_for_window()
