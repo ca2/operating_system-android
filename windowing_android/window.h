@@ -50,6 +50,7 @@ virtual public ::android::acme::windowing::window,
       //void create_window(::windowing::window * pimpl) override;
 
       void create_window() override;
+      void _create_window() override;
 
 
       void _set_oswindow(::oswindow oswindow) override;

@@ -4,6 +4,7 @@
 #pragma once
 
 
+#include "acme_windowing_android/display.h"
 #include "aura/windowing/display.h"
 
 
@@ -13,6 +14,7 @@ namespace windowing_android
    // X11 contribution : a display may contain more than one monitor
 
    class CLASS_DECL_AURA display :
+      virtual public ::android::acme::windowing::display,
       virtual public ::windowing::display
    {
    public:

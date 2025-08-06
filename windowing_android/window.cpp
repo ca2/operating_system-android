@@ -94,12 +94,346 @@ namespace windowing_android
    }
 
 
+   //void window::create_window(::windowing::window * pimpl)
    void window::create_window()
    {
 
       ::sandbox_windowing::window::create_window();
 
-      return;
+   }
+
+
+//   void window::_create_window()
+//   {
+//
+//      auto pwindowing = this->windowing();
+//
+//      //auto pimpl = m_pwindow;
+//
+//      //m_pimpl2 = m_pImpl2;
+//
+//      wstring wstrClassName;
+//
+//      auto puserinteraction = user_interaction();
+//
+//      wstrClassName = pwindowing->_windows_get_user_interaction_window_class(puserinteraction);
+//
+//      //if (!puserinteraction->m_pusersystem)
+//      //{
+//
+//      //   puserinteraction->m_pusersystem = __allocate ::user::system();
+//
+//      //}
+//
+//      ::pointer<::user::system> pusersystem;
+//
+//      if (user_interaction()->is_system_message_window())
+//      {
+//
+//         pusersystem = __allocate::user::system();
+//
+//      }
+//      else
+//      {
+//
+//         if (user_interaction()->m_pusersystem)
+//         {
+//
+//            pusersystem = user_interaction()->m_pusersystem;
+//
+//         }
+//         else
+//         {
+//
+//            pusersystem = __allocate ::user::system();
+//
+//         }
+//
+//      }
+//
+//      if (!puserinteraction->pre_create_window(puserinteraction->m_pusersystem))
+//      {
+//
+//         //return false;
+//
+//         throw ::exception(error_failed);
+//
+//      }
+//
+//      //m_pwindow = pimpl;
+//
+//      //m_pwindow = this;
+//
+//      //puserinteraction->m_pwindow = this;
+//
+//      if (puserinteraction->m_bMessageOnlyWindow)
+//      {
+//
+//         puserinteraction->m_ewindowflag -= e_window_flag_graphical;
+//
+//      }
+//
+//      //install_message_routing(puserinteraction);
+//
+//      wstring wstrWindowName;
+//
+//#if 0
+//
+//      WCHAR szTitle[256];
+//      WCHAR szWindowClass[256];
+//
+//      wcscpy(szTitle, L"123");
+//      wcscpy(szWindowClass, L"WindowsDestkop1");
+//
+//      //HWND hwnd = CreateWindowExW(pusersystem->m_createstruct.dwExStyle, szWindowClass, wstrWindowName, pusersystem->m_createstruct.style,
+//        // pusersystem->m_createstruct.x(), pusersystem->m_createstruct.y(), pusersystem->m_createstruct.cx(), pusersystem->m_createstruct.cy(), pusersystem->m_createstruct.hwndParent, pusersystem->m_createstruct.hMenu, pusersystem->m_createstruct.hInstance, pusersystem->m_createstruct.lpCreateParams);
+//      HWND hwnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPED,
+//         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, pusersystem->m_createstruct.hInstance, nullptr);
+//      //if (!hwnd)
+//      //{
+//         //return false;
+//      //}
+//
+//      ::ShowWindow(hwnd, SW_SHOWNORMAL);
+//      ::UpdateWindow(hwnd);
+//
+//#if 0
+//
+//      MSG msg;
+//
+//      // Main message loop:
+//      while (mq_get_message(&msg, nullptr, 0, 0))
+//      {
+//         //if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+//         {
+//            TranslateMessage(&msg);
+//            DispatchMessage(&msg);
+//         }
+//      }
+//
+//#else
+//
+//      m_puserthread->run();
+//
+//#endif
+//
+//      //return true;
+//
+//#else
+//
+//      unsigned int dwExStyle = 0;
+//
+//      unsigned int dwStyle = 0;
+//
+//      //auto pusersystem = puserinteraction->m_pusersystem.get();
+//
+//      wstrWindowName = puserinteraction->m_strWindowText2;
+//
+//      int x = 0;
+//      int y = 0;
+//      int cx = 0;
+//      int cy = 0;
+//
+//      HWND hwndParent = nullptr;
+//
+//      if (user_interaction()->m_bMessageOnlyWindow)
+//      {
+//
+//         hwndParent = HWND_MESSAGE;
+//         dwExStyle = 0;
+//         dwStyle = 0;
+//
+//      }
+//      else
+//      {
+//
+//         win32_windowing()->__synthesizes_creates_styles(puserinteraction, dwExStyle, dwStyle);
+//
+//         x = puserinteraction->const_layout().sketch().origin().x();
+//         y = puserinteraction->const_layout().sketch().origin().y();
+//         cx = puserinteraction->const_layout().sketch().size().cx();
+//         cy = puserinteraction->const_layout().sketch().size().cy();
+//
+//      }
+//
+//      //pusersystem->m_pwindow = this;
+//
+//      HMENU hmenu = nullptr;
+//
+//      HINSTANCE hinstance = windows::get_window_procedure_hinstance();
+//
+//      void * lpCreateParams = (::windows::window*)this;
+//
+//      bool bWsChildStyle = dwStyle & WS_CHILD;
+//
+//      DWORD dwLastErrorPreCreateWindow = ::GetLastError();
+//
+//      auto edisplaySketch = user_interaction()->const_layout().sketch().display();
+//
+//      if (is_equivalent_in_equivalence_sink(edisplaySketch, e_display_normal))
+//      {
+//
+//         ::int_rectangle rectangleRequest;
+//
+//         rectangleRequest.left() = x;
+//         rectangleRequest.top() = y;
+//         rectangleRequest.set_size({ cx, cy });
+//
+//         user_interaction()->set_window_normal_stored_rectangle(rectangleRequest);
+//
+//      }
+//
+//
+//      //dwStyle = WS_VISIBLE | WS_POPUP;
+//
+//      //dwExStyle = 0;
+//
+//      //dwExStyle &=~ WS_EX_TRANSPARENT | WS_EX_LAYERED | WS_EX_TOPMOST; // Using WS_EX_LAYERED loses the GPU-friendliness
+//      //dwExStyle &=  ~WS_EX_LAYERED ; // Using WS_EX_LAYERED loses the GPU-friendliness
+//      //dwStyle |= WS_EX_NOREDIRECTIONBITMAP;
+//      //dwExStyle |= WS_EX_NOREDIRECTIONBITMAP;
+//      //dwExStyle |= WS_EX_LAYERED;
+//
+//      if (dwExStyle & WS_EX_LAYERED)
+//      {
+//
+//         warning() << "layered";
+//
+//      }
+//
+//      HWND hwnd = ::CreateWindowExW(
+//         dwExStyle,
+//         wstrClassName,
+//         wstrWindowName,
+//         dwStyle,
+//         x,
+//         y,
+//         cx,
+//         cy,
+//         hwndParent,
+//         hmenu,
+//         hinstance,
+//         lpCreateParams);
+//
+//      m_hwnd = hwnd;
+//
+//      if (::is_set(hwnd) && ::is_set(hwndParent))
+//      {
+//
+//         ::cast < ::windows::windowing > pwindowing = system()->acme_windowing();
+//
+//         pwindowing->m_windowmap[(::oswindow)hwnd] = this;
+//
+//      }
+//
+//#endif
+//
+//      if (m_hwnd == nullptr)
+//      {
+//
+//         unsigned int dwLastError = ::GetLastError();
+//
+//         string strLastError = ::windows::last_error_message(dwLastError);
+//
+//         string strMessage;
+//
+//         strMessage.formatf("%s\n\nSystem Error Code: %d", strLastError.c_str(), dwLastError);
+//
+//         warning()(e_trace_category_appmsg) << "Warning: Window creation failed: get_last_error returned:";
+//
+//         warning()(e_trace_category_appmsg) << strMessage;
+//
+//         if (dwLastError == 0x0000057e)
+//         {
+//
+//            informationf("Cannot create a top-level child window.");
+//
+//         }
+//         else
+//         {
+//
+//            informationf("%s", strMessage);
+//
+//         }
+//
+//         throw ::exception(error_failed);
+//
+//      }
+//
+//      if (puserinteraction->is_graphical())
+//      {
+//
+//         draw2d()->on_create_window(this);
+//
+//      }
+//
+//      //SendMessage(m_hwnd, e_message_after_create, 0, 0);
+//
+//      if (puserinteraction->m_bEdgeGestureDisableTouchWhenFullscreen)
+//      {
+//
+//         SetTouchDisableProperty(m_hwnd, true);
+//
+//      }
+//
+//      puserinteraction->m_ewindowflag += ::e_window_flag_is_window;
+//
+//      bool bUnicode = ::IsWindowUnicode(m_hwnd) != false;
+//
+//      if (bUnicode)
+//      {
+//
+//         output_debug_string("window is unicode");
+//
+//      }
+//      else
+//      {
+//
+//         output_debug_string("window is ANSI");
+//
+//      }
+//
+//      if (m_hwnd != get_hwnd())
+//      {
+//
+//         set_hwnd(m_hwnd);
+//
+//      }
+//
+//
+//      if (_get_ex_style() & WS_EX_LAYERED)
+//      {
+//
+//
+//         m_uExtraFlagsSetWindowPos =
+//            SWP_NOZORDER |
+//            SWP_ASYNCWINDOWPOS
+//            //| SWP_FRAMECHANGED
+//            //| SWP_NOSENDCHANGING
+//            | SWP_NOREDRAW
+//            | SWP_NOCOPYBITS
+//            //| SWP_DEFERERASE
+//            | SWP_NOACTIVATE;
+//         //| SWP_SHOWWINDOW;
+//      }
+//
+//
+//
+//      ////puserinteraction->increment_reference_count();
+//
+//      //puserinteraction->on_finished_window_creation();
+//
+//      ////puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+//
+//   }
+
+
+   void window::_create_window()
+   {
+
+//      ::sandbox_windowing::window::create_window();
+//
+//      return;
 
       synchronous_lock synchronouslock(synchronization());
 
@@ -107,7 +441,7 @@ namespace windowing_android
 
       //auto pusersystem = puserinteraction->m_pusersystem;
 
-      install_message_routing(this);
+      //install_message_routing(this);
 
       ::cast <::user::interaction > puserinteraction = m_pacmeuserinteraction;
 
@@ -568,19 +902,19 @@ namespace windowing_android
 
          }
 
-         puserinteraction->m_ewindowflag |= e_window_flag_window_created;
-
-         puserinteraction->set_flag(e_flag_task_started);
-
-      }
-
-      if(bOk)
-      {
-
-         _create_window();
+//         puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+//
+//         puserinteraction->set_flag(e_flag_task_started);
 
       }
 
+//      if(bOk)
+//      {
+//
+//         _create_window();
+//
+//      }
+//
       if (!bOk)
       {
 
@@ -588,7 +922,7 @@ namespace windowing_android
 
       }
 
-      on_finished_window_creation();
+//      on_finished_window_creation();
 
    }
 

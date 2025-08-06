@@ -23,7 +23,7 @@ __FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
 
    pfactory->add_factory_item < ::windowing_android::monitor, ::windowing::monitor >();
 
-   pfactory->add_factory_item < ::windowing_android::display, ::windowing::display > ();
+   pfactory->add_factory_item < ::windowing_android::display, ::acme::windowing::display > ();
    pfactory->add_factory_item < ::windowing_android::window, ::acme::windowing::window > ();
    pfactory->add_factory_item < ::windowing_android::windowing, ::acme::windowing::windowing > ();
    pfactory->add_factory_item < ::windowing_android::text_composition_client, ::user::text_composition_client > ();

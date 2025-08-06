@@ -150,7 +150,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env
 
             pwindow->android_fill_plasma(pixels, info.width, info.height, info.stride, time_ms);
 
-            LOGE("render_impact: %lld ms time=%f ms", time_ms, time.elapsed().floating_millisecond());
+            LOGE("render_impact: %ld ms time=%f ms", time_ms, time.elapsed().floating_millisecond());
 
          }
 

@@ -46,6 +46,8 @@ namespace windowing_android
    void host_interaction::on_message_create(::message::message* pmessage)
    {
 
+      display(e_display_normal);
+
       pmessage->previous();
 
    }

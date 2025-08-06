@@ -237,6 +237,8 @@ public:
 
       }
 
+      m_pHandle = pHandle;
+
       return m_pHandle;
 
    }
