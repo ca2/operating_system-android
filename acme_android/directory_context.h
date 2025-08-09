@@ -28,8 +28,8 @@ virtual public ::acme_posix::directory_context
       virtual void init_system() override;
       virtual void init_context() override;
 
-      //virtual bool enumerate(::file::listing & listing) override;
-      virtual ::file::listing & root_ones(::file::listing & listing) override;
+      //virtual bool enumerate(::file::listing_base & listing) override;
+      virtual ::file::listing_base & root_ones(::file::listing_base & listing) override;
 
 
       //virtual bool  is(const ::file::path & path, bool bRequired = false, bool bBypassCache = false);

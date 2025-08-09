@@ -76,7 +76,7 @@ namespace acme_android
    }
 
 
-   ::file::listing & directory_context::root_ones(::file::listing & listing)
+   ::file::listing_base & directory_context::root_ones(::file::listing_base & listing)
    {
 
       ::file::path path;
@@ -94,7 +94,7 @@ namespace acme_android
    }
 
 
-   //bool directory_context::enumerate(::file::listing & listing)
+   //bool directory_context::enumerate(::file::listing_base & listing)
    //{
 
    //   if (::directory_context::ls( listing))
@@ -116,7 +116,7 @@ namespace acme_android
 
    //         scoped_restore(listing.m_eextract);
 
-   //         ::file::listing straDir;
+   //         ::file::listing_base straDir;
 
    //         ls_dir(straDir, listing.m_pathFinal);
 
@@ -173,7 +173,7 @@ namespace acme_android
    //   {
 
 
-   //      ::file::path_array stra;
+   //      ::file::path_array_base stra;
 
    //      ::dir::ls(stra, listing.m_pathFinal);
 
@@ -893,7 +893,7 @@ namespace acme_android
    //   if (is(lpcsz))
    //      return true;
 
-   //   ::file::path_array stra;
+   //   ::file::path_array_base stra;
 
    //   lpcsz.ascendants_path(stra);
 
@@ -972,7 +972,7 @@ namespace acme_android
    //   if (bRecursive)
    //   {
 
-   //      ::file::listing straPath;
+   //      ::file::listing_base straPath;
 
    //      straPath.m_pathFinal = path;
 
@@ -1363,7 +1363,7 @@ namespace acme_android
    //bool directory_context::has_subdir(const ::file::path & pathFolder)
    //{
 
-   //   ::file::listing ls;
+   //   ::file::listing_base ls;
 
    //   ls_dir(ls, pszDir);
 

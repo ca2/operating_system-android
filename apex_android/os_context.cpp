@@ -784,7 +784,7 @@ namespace apex_android
 //      if (dAndroid >= 8.0)
 //      {
 //
-//         ::file::path_array patha;
+//         ::file::path_array_base patha;
 //
 //         ::dir::ls(patha, "/system/fonts");
 //
