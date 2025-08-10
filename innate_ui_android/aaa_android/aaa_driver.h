@@ -28,7 +28,7 @@ public:
    float                      m_fDensity;
    bool                       m_bShowKeyboard;
    bool                       m_bHideKeyboard;
-   string_array               m_straOpenUrl;
+   string_array_base               m_straOpenUrl;
    
    string                     m_strSetUserWallpaper;
    string                     m_strGetUserWallpaper;
@@ -77,7 +77,7 @@ public:
 
 
    ::particle_pointer                        m_pparticleMutexListFileEnumerate;
-   ::string_array                                  m_straListFileEnumerate;
+   ::string_array_base                                  m_straListFileEnumerate;
 
 
    operating_system_driver();

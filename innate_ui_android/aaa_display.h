@@ -123,8 +123,8 @@ namespace windowing_android
 //      virtual bool set_wallpaper(::collection::index iScreen, string strWallpaper);
 //
 //
-//      virtual string_array get_wallpaper();
-//      virtual void set_wallpaper(const string_array& strWallpaper);
+//      virtual string_array_base get_wallpaper();
+//      virtual void set_wallpaper(const string_array_base& strWallpaper);
 //
 //
 //      virtual string impl_get_wallpaper(::collection::index iScreen);

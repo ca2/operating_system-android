@@ -410,7 +410,7 @@ namespace apex_android
    }
 
    
-   void os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::scoped_string & scopedstrExtension)
+   void os_context::file_extension_get_open_with_list_keys(string_array_base & straKey, const ::scoped_string & scopedstrExtension)
    {
 
       throw ::interface_only();
@@ -437,10 +437,10 @@ namespace apex_android
    }
 
 
-   void os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::scoped_string & scopedstrExtension)
+   void os_context::file_extension_get_open_with_list_commands(string_array_base & straCommand, const ::scoped_string & scopedstrExtension)
    {
 
-      string_array straKey;
+      string_array_base straKey;
 
       //if(!
       file_extension_get_open_with_list_keys(straKey, strExtension);
