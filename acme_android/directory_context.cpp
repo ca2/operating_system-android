@@ -717,7 +717,7 @@ namespace acme_android
 
    //   unsigned int dwLastError;
 
-   //   if(m_isdirmap.lookup(strPath, bIsDir, dwLastError))
+   //   if(m_isdirmap.find(strPath, bIsDir, dwLastError))
    //   {
 
    //      if(!bIsDir)
