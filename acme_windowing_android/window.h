@@ -260,7 +260,7 @@ namespace android
             };
 
 
-            //using window_map = map < ::Window, ::pointer<window >>
+            //using window_map = map_base < ::Window, ::pointer<window >>
 
         } // namespace windowing
 

@@ -91,7 +91,7 @@ namespace windowing_android
 //         if(pimage->size().area() > sizeWindow.area())
 //         {
 //
-//            pimage->map();
+//            pimage->map_base();
 //
 //            pimage->m_iScan = sizeWindow.width() * sizeof(::color32_t);
 //

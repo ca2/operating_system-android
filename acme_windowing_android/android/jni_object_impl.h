@@ -24,7 +24,7 @@ public:
    jobject     m_jobject;
    jclass      m_jclass;
 
-   ::string_map < ::pointer < jni_field > > m_mapField;
+   ::string_map_base < ::pointer < jni_field > > m_mapField;
 
 
    jni_object_impl();

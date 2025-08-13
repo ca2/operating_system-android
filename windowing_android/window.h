@@ -262,7 +262,7 @@ void _main_send(const ::procedure & procedure) override;
    };
 
 
-   //using window_map = map < ::Window, ::pointer<window >>
+   //using window_map = map_base < ::Window, ::pointer<window >>
 
 
 } // namespace windowing_android

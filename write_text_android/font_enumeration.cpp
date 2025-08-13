@@ -131,9 +131,9 @@ namespace write_text_android
 
                         itema.add(pitem);
 
-                        auto & map = pwritetext->m_mapFontKeyFaceName;
+                        auto & map_base = pwritetext->m_mapFontKeyFaceName;
 
-                        auto & map2 = map[strName];
+                        auto & map2 = map_base[strName];
 
                         map2[iKey] = path.c_str();
 
@@ -155,9 +155,9 @@ namespace write_text_android
 
                            itema.add(pitem);
 
-                           auto & map = pwritetext->m_mapFontKeyFaceName;
+                           auto & map_base = pwritetext->m_mapFontKeyFaceName;
 
-                           auto & map2 = map[strName];
+                           auto & map2 = map_base[strName];
 
                            map2[pair.m_element1] = pair.m_element2;
 
@@ -295,9 +295,9 @@ namespace write_text_android
 
                            }
 
-                           auto & map = pwritetext->m_mapFontKeyFaceName;
+                           auto & map_base = pwritetext->m_mapFontKeyFaceName;
 
-                           auto & map2 = map[strFamily];
+                           auto & map2 = map_base[strFamily];
 
                            map2[iKey] = path.c_str();
 
