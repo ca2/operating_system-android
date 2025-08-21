@@ -58,7 +58,7 @@ jni_field * jni_object_impl::_field(const_char_pointer psz, const_char_pointer p
 
    }
 
-   auto pfieldImpl = __allocate jni_field_impl();
+   auto pfieldImpl = øallocate jni_field_impl();
 
    pfieldImpl->m_jfieldid = t_pjnienv1->GetFieldID(m_jclass, psz, pszType);
 

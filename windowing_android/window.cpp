@@ -121,7 +121,7 @@ namespace windowing_android
 //      //if (!puserinteraction->m_pusersystem)
 //      //{
 //
-//      //   puserinteraction->m_pusersystem = __allocate ::user::system();
+//      //   puserinteraction->m_pusersystem = øallocate ::user::system();
 //
 //      //}
 //
@@ -130,7 +130,7 @@ namespace windowing_android
 //      if (user_interaction()->is_system_message_window())
 //      {
 //
-//         pusersystem = __allocate::user::system();
+//         pusersystem = øallocate::user::system();
 //
 //      }
 //      else
@@ -145,7 +145,7 @@ namespace windowing_android
 //         else
 //         {
 //
-//            pusersystem = __allocate ::user::system();
+//            pusersystem = øallocate ::user::system();
 //
 //         }
 //
@@ -546,7 +546,7 @@ namespace windowing_android
       //if (m_px11data.is_null())
       //{
 
-      //   m_px11data = __allocate x11data();
+      //   m_px11data = øallocate x11data();
 
       //}
 

@@ -34,7 +34,7 @@ namespace android
 //   void asset_manager::set_AAssetManager(jobject jobjectAssetManager)
 //   {
 //
-//      m_pjniobjectImpl = __allocate jni_object_impl(jobjectAssetManager);
+//      m_pjniobjectImpl = øallocate jni_object_impl(jobjectAssetManager);
 //
 //
 //
@@ -49,7 +49,7 @@ namespace android
 
       auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);
 
-      auto passet = __allocate asset();
+      auto passet = øallocate asset();
 
       passet->m_passet = paasset;
 

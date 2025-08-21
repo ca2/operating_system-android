@@ -43,7 +43,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle
 
    }
 
-    auto pmessagebox = __allocate ::message_box(strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
+    auto pmessagebox = øallocate ::message_box(strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
 
    pmessagebox->initialize(pparticle);
 

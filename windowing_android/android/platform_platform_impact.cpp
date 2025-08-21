@@ -216,7 +216,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
                if(pdisplay) {
 
-                  auto pmonitor = psystem->__create_new<::windowing::monitor>();
+                  auto pmonitor = psystem->øcreate_new<::windowing::monitor>();
 
                   pmonitor->m_pdisplay = pdisplay;
 

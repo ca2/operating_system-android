@@ -133,7 +133,7 @@ namespace android
 
                initialize_windowing();
 
-               auto pdisplay = __øcreate<::acme::windowing::display>();
+               auto pdisplay = øcreate<::acme::windowing::display>();
 
                //      if(!pdisplay)
                //      {
@@ -197,7 +197,7 @@ namespace android
 //
 //               }
 //
-//               __construct_new(m_phostinteraction);
+//               øconstruct_new(m_phostinteraction);
 //
 //               m_phostinteraction->set_rectangle(*lpcrect);
 //
@@ -420,7 +420,7 @@ namespace android
 //                  //auto estatus =
 //                  //
 //                  //
-//                  __construct_new(m_pcursormanager);
+//                  øconstruct_new(m_pcursormanager);
 //
 //                  //         if (!estatus)
 //                  //         {
