@@ -30,7 +30,7 @@ namespace android
         }
 
 
-        application_state::~application_state() noexcept
+        application_state::~application_state()
         {
 
            if (::is_set(m_passetmanager)) {
