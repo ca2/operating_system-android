@@ -264,40 +264,42 @@ namespace android
       void application_state::post_media_store_operation(::data::block * pdatablock)
       {
 
-         auto pbind = ::jni_bind::get();
+           ::platform::application_state::post_media_store_operation(pdatablock);
 
-//         auto pdatablock = øcreate_new<::data::block>();
+//         auto pbind = ::jni_bind::get();
 //
-//         pdatablock->m_bWrite = true;
+////         auto pdatablock = øcreate_new<::data::block>();
+////
+////         pdatablock->m_bWrite = true;
+////
+////         pdatablock->m_strPath = scopedstrPath;
+////
+////         pdatablock->m_strMime = "text/plain";
+////
+////         pdatablock->m_memory = block;
 //
-//         pdatablock->m_strPath = scopedstrPath;
+////         manual_reset_happening happening;
+////
+////         pdatablock->m_procedureOnFinished=[&happening]()
+////         {
+////
+////            happening.set_happening();
+////
+////         };
 //
-//         pdatablock->m_strMime = "text/plain";
+//         pbind->post_media_store_operation(pdatablock);
 //
-//         pdatablock->m_memory = block;
-
-//         manual_reset_happening happening;
+////         if(happening.wait(1_min).succeeded()) {
+////
+////pdatablock->m_estatus = success;
+////
+////         } else{
+////
+////            pdatablock->m_estatus = error_timeout;
+////
+////         }
 //
-//         pdatablock->m_procedureOnFinished=[&happening]()
-//         {
-//
-//            happening.set_happening();
-//
-//         };
-
-         pbind->post_media_store_operation(pdatablock);
-
-//         if(happening.wait(1_min).succeeded()) {
-//
-//pdatablock->m_estatus = success;
-//
-//         } else{
-//
-//            pdatablock->m_estatus = error_timeout;
-//
-//         }
-
-         //return pdatablock;
+//         //return pdatablock;
 
       }
 

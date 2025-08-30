@@ -81,9 +81,6 @@ void jni_bind::set(jni_bind* pdirect)
 void jni_bind::post_media_store_operation(::data::block * pdatablock)
 {
 
-   ASSERT(pdatablock->m_bWrite);
-   //{
-
    auto pbind = ::jni_bind::get();
 
    ::cast < jni_object_impl > pjni = m_pjniobjectinterface;
