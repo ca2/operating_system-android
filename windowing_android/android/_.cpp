@@ -7,7 +7,7 @@ void android_aura_main()
 {
 
 
-   auto pdirect = operating_system_bind::get();
+   auto pdirect = jni_bind::get();
 
    auto pdriver = operating_system_driver::get();
 
@@ -264,7 +264,7 @@ void android_edit_on_kill_focus()
 //
 //
 //
-//void set_operating_system_direct(operating_system_bind* pdirect)
+//void set_operating_system_direct(jni_bind* pdirect)
 //{
 //
 //   g_pandroidbind = pdirect;
@@ -272,7 +272,7 @@ void android_edit_on_kill_focus()
 //}
 //
 //
-//operating_system_bind* operating_system_bind::get()
+//jni_bind* jni_bind::get()
 //{
 //
 //   return g_pandroidbind;

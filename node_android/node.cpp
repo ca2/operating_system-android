@@ -185,6 +185,30 @@ namespace node_android
    }
 
 
+   ::file::path node::synchronously_request_document_folder()
+   {
+      return ::platform::application_state::get()->synchronously_getDocumentFolder(1_min);
+
+   }
+
+
+   ::pointer < ::data::block > node::media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block)
+   {
+
+      return ::platform::application_state::get()->media_store_set_data(scopedstrPath, block);
+
+   }
+
+
+   ::pointer < ::data::block > node::media_store_get_data(const ::scoped_string & scopedstrPath)
+   {
+
+      return ::platform::application_state::get()->media_store_get_data(scopedstrPath);
+
+   }
+
+
+
 } // namespace windowing_android
 
 

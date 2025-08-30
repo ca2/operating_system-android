@@ -32,6 +32,11 @@ namespace android
             float m_fDpiX;
             float m_fDpiY;
             float m_fDensity;
+            int m_iDocumentFolderRequest;
+           int m_iDocumentFolderRequestSent = 0;
+           int m_iDocumentFolderResponse;
+            ::file::path m_pathDocumentFolder;
+
             //bool m_bShowKeyboard;
             //bool m_bHideKeyboard;
             //string_array_base m_straOpenUrl;
@@ -122,12 +127,18 @@ namespace android
 
             //virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
+          void on_write_input_output_data_block(::data::block * pdatablock) override;
+          void on_read_input_output_data_block(::data::block * pdatablock) override;
 
             void exchange1() override;
             void after_exchange() override;
 
 
+            ::file::path synchronously_getDocumentFolder(const class ::time & timeOut) override;
 
+
+          ::pointer < ::data::block > media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block) override;
+          ::pointer < ::data::block > media_store_get_data(const ::scoped_string & scopedstrPath) override;
 
 
         };

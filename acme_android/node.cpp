@@ -62,6 +62,20 @@ namespace acme_android
 //
 //#endif
 
+//   void node::media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block)
+//   {
+//
+//
+//   }
+//
+//
+//   ::memory node::media_store_get_data(const ::scoped_string & scopedstrPath)
+//   {
+//
+//
+//   }
+
+
 
 } // namespace acme_android
 

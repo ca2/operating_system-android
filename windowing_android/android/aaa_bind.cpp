@@ -4,7 +4,7 @@
 #include "acme/platform/node.h"
 
 
-operating_system_bind * g_pandroidbind;
+jni_bind * g_pandroidbind;
 
 
 CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::string& strMoreDetails)
@@ -59,7 +59,7 @@ CLASS_DECL_WINDOWING_ANDROID void operating_system_log_exception(::particle * pp
 }
 
 
-operating_system_bind* operating_system_bind::get()
+jni_bind* jni_bind::get()
 {
 
    return g_pandroidbind;
@@ -68,7 +68,7 @@ operating_system_bind* operating_system_bind::get()
 
 
 
-void operating_system_bind::set(operating_system_bind* pdirect)
+void jni_bind::set(jni_bind* pdirect)
 {
 
    g_pandroidbind = pdirect;

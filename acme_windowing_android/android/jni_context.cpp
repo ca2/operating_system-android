@@ -70,7 +70,7 @@ void set_jni_context(JNIEnv* penv)
 }
 
 
-JNIEnv* get_jni_env()
+JNIEnv* get_jni_context()
 {
 
    return t_pjnienv1;

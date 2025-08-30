@@ -3692,7 +3692,7 @@ namespace windowing_android
       }
 
 
-//      auto pbind = ::operating_system_bind::get();
+//      auto pbind = ::jni_bind::get();
 //
 //      if(!pbind->getApplicationReady())
 //      {

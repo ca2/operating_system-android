@@ -42,7 +42,7 @@ virtual public ::acme_posix::directory_context
       //virtual void create(const ::file::path & lpcsz) override;
       //virtual void erase(const ::file::path & path, bool bRecursive = true) override;
 
-
+      ::file::path document() override;
 
       //virtual string warehouse();
       virtual ::file::path time() override;

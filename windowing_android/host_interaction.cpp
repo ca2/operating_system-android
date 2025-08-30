@@ -10,7 +10,7 @@
 #include "display.h"
 #include "host_interaction.h"
 #include "windowing.h"
-#include "acme_windowing_android/android/bind.h"
+#include "acme_windowing_android/android/jni_bind.h"
 #include "aura/windowing/monitor.h"
 
 

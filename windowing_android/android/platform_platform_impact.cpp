@@ -220,7 +220,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
                   pmonitor->m_pdisplay = pdisplay;
 
-                  auto pbind = ::operating_system_bind::get();
+                  auto pbind = ::jni_bind::get();
 
                   int w = pbind->getWidth();
 
@@ -571,11 +571,11 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv 
 
       //rectangle.left() = 0;
       //rectangle.top() = 0;
-      //rectangle.right() = ::operating_system_bind::get()->getWidth();
-      //rectangle.bottom() = ::operating_system_bind::get()->getHeight();
+      //rectangle.right() = ::jni_bind::get()->getWidth();
+      //rectangle.bottom() = ::jni_bind::get()->getHeight();
 
-      auto w = ::operating_system_bind::get()->getWidth();
-      auto h = ::operating_system_bind::get()->getHeight();
+      auto w = ::jni_bind::get()->getWidth();
+      auto h = ::jni_bind::get()->getHeight();
 
       //android_on_size(0, 0, w, h);
 

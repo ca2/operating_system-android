@@ -172,7 +172,7 @@ void operating_system_driver::exchange()
 
       synchronous_lock synchronouslock(synchronization());
 
-      auto pdirect = ::operating_system_bind::get();
+      auto pdirect = ::jni_bind::get();
 
       if (m_bHideKeyboard)
       {
@@ -358,7 +358,7 @@ void operating_system_driver::exchange()
       if (m_straListFileEnumerate.has_element())
       {
 
-         auto pdirect = ::operating_system_bind::get();
+         auto pdirect = ::jni_bind::get();
 
          auto bLock = pdirect->getLockListFileEnumerate();
 
@@ -379,7 +379,7 @@ void operating_system_driver::exchange()
 
    {
 
-      auto pdirect = ::operating_system_bind::get();
+      auto pdirect = ::jni_bind::get();
 
       string strUri = pdirect->getUri();
 

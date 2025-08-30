@@ -4,7 +4,7 @@
 #include "object.h"
 
 
-class operating_system_bind :
+class jni_bind :
    public jni_object
 {
 public:
@@ -92,8 +92,8 @@ public:
    JX(str, Uri);
 
    
-   static operating_system_bind* get();
-   static void set(operating_system_bind* pdirect);
+   static jni_bind* get();
+   static void set(jni_bind* pdirect);
 
 
  

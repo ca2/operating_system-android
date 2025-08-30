@@ -7,7 +7,7 @@ void android_aura_main()
 {
 
 
-   auto pbind = operating_system_bind::get();
+   auto pbind = jni_bind::get();
 
    auto papplicationstate = ::platform::application_state::get();
 
@@ -264,7 +264,7 @@ void android_exchange()
 //
 //
 //
-//void set_operating_system_direct(operating_system_bind* pdirect)
+//void set_operating_system_direct(jni_bind* pdirect)
 //{
 //
 //   g_pandroidbind = pdirect;
@@ -272,7 +272,7 @@ void android_exchange()
 //}
 //
 //
-//operating_system_bind* operating_system_bind::get()
+//jni_bind* jni_bind::get()
 //{
 //
 //   return g_pandroidbind;

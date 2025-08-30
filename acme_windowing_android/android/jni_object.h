@@ -28,6 +28,9 @@ public:
    jni_field * field_d(const_char_pointer psz) override;
 
 
+   jni_field * field_ba(const_char_pointer psz) override;
+
+
    void set_str(jni_field * jfieldid, const_char_pointer psz) override;
 
    string get_str(jni_field * jfieldid) override;
@@ -63,6 +66,11 @@ public:
    void set_d(jni_field * jfieldid, double d) override;
 
    double get_d(jni_field * jfieldid) override;
+
+   void set_ba(jni_field * jfieldid, const ::block & block) override;
+
+   memory get_ba(jni_field * jfieldid) override;
+
 
 //   void set_str(const_char_pointer pszField, const_char_pointer psz) override;
 //

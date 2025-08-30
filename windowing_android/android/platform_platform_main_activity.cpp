@@ -13,7 +13,9 @@
 #include "acme/platform/system_setup.h"
 #include "acme/prototype/string/c_string.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
+#include "acme_windowing_android/android/jni_data_block.h"
 #include "acme_windowing_android/android/jni_object_impl.h"
+
 //#include "acme/user/nano/nano.h"
 //typedef void(*PFN_factory)(::factory::factory* pfactory);
 
@@ -323,7 +325,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1av
       set_jni_context(env);
 
       ::platform::application_state::get()->
-         m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
+         m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
 
    }
    catch (...) {
@@ -391,15 +393,15 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
    set_jni_context(penv);
 
-   if (::operating_system_bind::get()) {
+   if (::jni_bind::get()) {
 
-      delete ::operating_system_bind::get();
+      delete ::jni_bind::get();
 
    }
 
-   auto pbind = __øjni<::operating_system_bind>(jobjectBind);
+   auto pbind = __øjni<::jni_bind>(jobjectBind);
 
-   ::operating_system_bind::set(pbind);
+   ::jni_bind::set(pbind);
 
    if (!::platform::application_state::get())
 {
@@ -410,7 +412,7 @@ android::application_state()
 
 );
 
-auto pbind = ::operating_system_bind::get();
+auto pbind = ::jni_bind::get();
 
 ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 
@@ -454,6 +456,29 @@ pfnInitializeSystem(0, nullptr, nullptr, pResourceStart, pResourceEnd);
 }
 
 }
+extern "C"
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_return_1read_1data_1block(JNIEnv * penv,
+                                                                               jobject obj,
+                                                                                       jobject jobjectDataBlock)
+{
+
+   try {
+
+      set_jni_context(penv);
+
+      jni_data_block jnidatablock(øallocate jni_object_impl(jobjectDataBlock));
+
+      auto pdatablock = (::data::block *) jnidatablock.getDataBlock();
+
+
+   }
+   catch(...)
+   {
+
+
+   }
+
+}
 
 
 extern "C"
@@ -466,7 +491,7 @@ try
 
 set_jni_context(penv);
 
-auto pbind = ::operating_system_bind::get();
+auto pbind = ::jni_bind::get();
 
 ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 

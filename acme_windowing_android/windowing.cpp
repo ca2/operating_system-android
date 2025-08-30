@@ -10,7 +10,7 @@
 #include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/windowing/sandbox/host_interaction.h"
-#include "android/bind.h"
+#include "android/jni_bind.h"
 //#include "aura/user/user/interaction_impl.h"
 //#include "aura/windowing/sandbox/host_interaction.h"
 //#include "android/_internal.h"

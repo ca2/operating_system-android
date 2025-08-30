@@ -107,6 +107,16 @@ jni_field * jni_object_interface::field_d(const_char_pointer psz)
 }
 
 
+jni_field * jni_object_interface::field_ba(const_char_pointer psz)
+{
+
+   throw ::interface_only();
+
+   return nullptr;
+
+}
+
+
 void jni_object_interface::set_str(const_char_pointer pszField, const_char_pointer psz)
 {
 
@@ -254,6 +264,22 @@ double jni_object_interface::get_d(const_char_pointer pszField)
 {
 
    return get_d(field_d(pszField));
+
+}
+
+
+void jni_object_interface::set_ba(const_char_pointer pszField, const ::block & block)
+{
+
+   set_ba(field_ba(pszField), block);
+
+}
+
+
+memory jni_object_interface::get_ba(const_char_pointer pszField)
+{
+
+   return get_ba(field_ba(pszField));
 
 }
 
@@ -439,3 +465,20 @@ double jni_object_interface::get_d(jni_field * fid)
 
 
 
+void jni_object_interface::set_ba(jni_field * fid, const ::block & block)
+{
+
+   throw ::interface_only();
+
+}
+
+
+
+memory jni_object_interface::get_ba(jni_field * fid)
+{
+
+   throw ::interface_only();
+
+   return {};
+
+}

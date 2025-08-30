@@ -29,6 +29,8 @@ public:
    virtual jni_field * field_f(const_char_pointer psz);
    virtual jni_field * field_d(const_char_pointer psz);
 
+   virtual jni_field * field_ba(const_char_pointer psz);
+
 
    virtual void set_str(jni_field * jfieldid, const_char_pointer psz);
 
@@ -66,6 +68,10 @@ public:
 
    virtual double get_d(jni_field * jfieldid);
 
+   virtual void set_ba(jni_field * jfieldid, const ::block & block);
+
+   virtual memory get_ba(jni_field * jfieldid);
+
    virtual void set_str(const_char_pointer pszField, const_char_pointer psz);
 
    virtual string get_str(const_char_pointer pszField);
@@ -102,6 +108,9 @@ public:
 
    virtual double get_d(const_char_pointer pszField);
 
+   virtual void set_ba(const_char_pointer pszField, const ::block & block);
+
+   virtual memory get_ba(const_char_pointer pszField);
 
 };
 

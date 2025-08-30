@@ -15,7 +15,7 @@
 #include "jni_object.h"
 
 
-#include "bind.h"
+#include "jni_bind.h"
 #include "application_state.h"
 
 
@@ -75,7 +75,7 @@ extern const_char_pointer g_pszCacheDir;
 
 class asset_manager;
 
-//extern ::pointer<operating_system_bind>g_pandroidcontext;
+//extern ::pointer<jni_bind>g_pandroidcontext;
 
 //extern ::pointer<operating_system_driver>g_pandroiddriver;
 
@@ -83,7 +83,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID string as_string(const jstring & jstring);
 
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void set_jni_context(JNIEnv* penv);
-CLASS_DECL_ACME_WINDOWING_ANDROID JNIEnv* get_jni_env();
+CLASS_DECL_ACME_WINDOWING_ANDROID JNIEnv* get_jni_context();
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void android_exchange();
 

@@ -11,13 +11,18 @@ list(APPEND library_source
         android/android_asset_manager.h
    android/application_state.cpp
    android/application_state.h
-        android/bind.cpp
-        android/bind.h
+   android/application_state_jni.cpp
+        android/jni_bind.cpp
+        android/jni_bind.h
+   android/jni_data_block.cpp
+   android/jni_data_block.h
         #android/com_ace_enumerate.cpp
         #android/com_ace_impact.cpp
         #android/com_ace_InputConnection.cpp
         #android/com_ace_main_activity.cpp
-        android/jni_environment.cpp
+        android/jni_context.cpp
+   android/jni_local.cpp
+   android/jni_local.h
    android/jni_object_impl.cpp
    android/jni_object_impl.h
         android/jni_object.cpp

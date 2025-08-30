@@ -149,21 +149,21 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
 
       }
 
-      if (::operating_system_bind::get())
+      if (::jni_bind::get())
       {
 
-         delete ::operating_system_bind::get();
+         delete ::jni_bind::get();
 
       }
 
-      ::operating_system_bind::set(___new operating_system_bind(jobjectDirect));
+      ::jni_bind::set(___new jni_bind(jobjectDirect));
 
       if (!::operating_system_driver::get())
       {
 
          ::operating_system_driver::set(___new operating_system_driver());
 
-         auto pdirect = ::operating_system_bind::get();
+         auto pdirect = ::jni_bind::get();
 
          auto pdriver = ::operating_system_driver::get();
 
@@ -261,7 +261,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_aura_1init(JNIEnv *
       else
       {
 
-         auto pdirect = ::operating_system_bind::get();
+         auto pdirect = ::jni_bind::get();
 
          ::int_rectangle r;
 
@@ -437,21 +437,21 @@ extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
 {
 
-    if (::operating_system_bind::get())
+    if (::jni_bind::get())
     {
 
-        delete ::operating_system_bind::get();
+        delete ::jni_bind::get();
 
     }
 
-    ::operating_system_bind::set(___new operating_system_bind(jobjectDirect));
+    ::jni_bind::set(___new jni_bind(jobjectDirect));
 
     if (!::operating_system_driver::get())
     {
 
         ::operating_system_driver::set(___new operating_system_driver());
 
-        auto pdirect = ::operating_system_bind::get();
+        auto pdirect = ::jni_bind::get();
 
         auto pdriver = ::operating_system_driver::get();
 
@@ -613,7 +613,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1av
 
       set_jni_context(env);
 
-      ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::operating_system_bind::get()->getMemFreeAvailableKb();
+      ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
 
    }
    catch (...)

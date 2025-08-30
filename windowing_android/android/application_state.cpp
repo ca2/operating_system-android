@@ -166,7 +166,7 @@ namespace android
 
           synchronous_lock synchronouslock(synchronization());
 
-          auto pbind = ::operating_system_bind::get();
+          auto pbind = ::jni_bind::get();
 
           if (m_bHideKeyboard) {
 
@@ -176,7 +176,7 @@ namespace android
 
           }
 
-          ::platform::application_state::exchange1();
+          ::android::acme::application_state::exchange1();
 
 //          string strOpenUrl;
 //
@@ -340,7 +340,7 @@ namespace android
 
           if (m_straListFileEnumerate.has_element()) {
 
-             auto pbind = ::operating_system_bind::get();
+             auto pbind = ::jni_bind::get();
 
              auto bLock = pbind->getLockListFileEnumerate();
 
@@ -368,7 +368,7 @@ namespace android
 
              m_bSetApplicationReady = false;
 
-             auto pbind = ::operating_system_bind::get();
+             auto pbind = ::jni_bind::get();
 
              pbind->setApplicationReady(true);
 
@@ -378,7 +378,7 @@ namespace android
 
 //       {
 //
-//          auto pbind = ::operating_system_bind::get();
+//          auto pbind = ::jni_bind::get();
 //
 //          string strUri = pbind->getUri();
 //

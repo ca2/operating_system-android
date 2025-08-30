@@ -7,7 +7,9 @@
 #include "acme/parallelization/single_lock.h"
 #include "acme/parallelization/task_flag.h"
 #include "acme/platform/acme.h"
+#include "acme/platform/node.h"
 #include "acme/platform/system.h"
+
 
 
 namespace acme_android
@@ -1002,8 +1004,23 @@ namespace acme_android
 
    //}
 
+   ::file::path directory_context::document()
+   {
 
-   void directory_context::init_system()
+      if (m_pathDocument.is_empty()) {
+
+         //m_pathDocument = node()->synchronously_request_document_folder();
+
+         m_pathDocument = "mediastore://";
+
+      }
+
+      return m_pathDocument;
+
+   }
+
+
+      void directory_context::init_system()
    {
 
       //auto estatus = 

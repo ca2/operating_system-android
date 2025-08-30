@@ -3,8 +3,8 @@
 
 #include "jni_object.h"
 
-
-class operating_system_bind :
+namespace data { class block;}
+class jni_bind :
    public jni_object
 {
 public:
@@ -96,15 +96,20 @@ public:
    //String m_strListFileEnumerate;
    JX(str, ListFileEnumerate);
    JX(str, Uri);
+   JX(i, DocumentFolderRequest);
+   JX(i, DocumentFolderResponse);
+   JX(str, DocumentFolder);
 
 
 
-   
-   static operating_system_bind* get();
-   static void set(operating_system_bind* pdirect);
+
+   static jni_bind* get();
+   static void set(jni_bind* pdirect);
 
 
- 
+   void media_store_schedule_data_block_operation(::data::block * pdatablock);
+
+
 };
 
 

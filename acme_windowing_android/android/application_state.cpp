@@ -3,8 +3,10 @@
 #include "_internal.h"
 #include "android_asset_manager.h"
 //#include "acme/platform/sequencer.h"
+#include "acme/parallelization/manual_reset_happening.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
+
 
 namespace android
 {
@@ -50,97 +52,6 @@ namespace android
        }
 
 
-//    void driver::set_input_method_manager_selection(character_count iSelBeg,
-//    {
-//
-//       m_iInputMethodManagerSelectionStart = iSelBeg;
-//
-//       m_iInputMethodManagerSelectionEnd = iSelEnd;
-//
-//       m_iInputMethodManagerCandidateStart = iCandidateBeg;
-//
-//       m_iInputMethodManagerCandidateEnd = iCandidateEnd;
-//
-//       m_bInputMethodManagerUpdateSelection = true;
-//
-//       __android_log_print(ANDROID_LOG_INFO, "TextInput",
-//                           "set_input_method_manager_selection:Sel(%d, %d),Composing:(%d, %d)",
-//                           iSelBeg, iSelEnd, iCandidateBeg, iCandidateEnd);
-//
-//    }
-
-
-//    void driver::synchronize_input_method_manager_with_selection_end()
-//    {
-//
-//       m_iInputMethodManagerCandidateStart = m_iInputMethodManagerSelectionEnd;
-//
-//       m_iInputMethodManagerCandidateEnd = m_iInputMethodManagerSelectionEnd;
-//
-//    }
-
-
-//    void driver::set_editor_selection(character_count iStart, character_count iEnd)
-//    {
-//
-//       m_iEditorSelectionStart = iStart;
-//
-//       m_iEditorSelectionEnd = iEnd;
-//
-//       m_bEditorTextUpdated = true;
-//
-//    }
-
-
-//    void driver::set_editor_text(const ::scoped_string & scopedstrText)
-//    {
-//
-//       m_strEditorText = strText;
-//
-//       m_bEditorTextUpdated = true;
-//
-//    }
-
-
-//    void driver::show_software_keyboard()
-//    {
-//
-//       m_bShowKeyboard = true;
-//
-//       m_bLastShowSoftwareKeyboard = true;
-//
-//    }
-
-
-//    void driver::hide_software_keyboard()
-//    {
-//
-//       m_bHideKeyboard = true;
-//
-//       m_bLastShowSoftwareKeyboard = false;
-//
-//    }
-
-
-//    driver *driver::get()
-//    {
-//
-//       return g_pandroiddriver;
-//
-//    }
-//
-//
-//    void driver::set(driver *pdriver)
-//    {
-//
-//       g_pandroiddriver = pdriver;
-//
-//    }
-
-
-
-
-
 
 
         void application_state::exchange1()
@@ -150,15 +61,8 @@ namespace android
 
               synchronous_lock synchronouslock(synchronization());
 
-              auto pdirect = ::operating_system_bind::get();
+              auto pbind = ::jni_bind::get();
 
-//          if (m_bHideKeyboard) {
-//
-//             pdirect->setHideKeyboard(true);
-//
-//             m_bHideKeyboard = false;
-//
-//          }
 
               string strOpenUrl;
 
@@ -182,14 +86,23 @@ namespace android
 
               if (strOpenUrl.has_character()) {
 
-                 pdirect->setOpenUrl(strOpenUrl);
+                 pbind->setOpenUrl(strOpenUrl);
+
+              }
+
+              if(m_iDocumentFolderRequestSent < m_iDocumentFolderRequest)
+              {
+
+                 m_iDocumentFolderRequestSent = m_iDocumentFolderRequest;
+
+                 pbind->setDocumentFolderRequest(m_iDocumentFolderRequestSent);
 
               }
 
               //if (m_bMessageBoxOn)
               //{
 
-              //   int iResult = pdirect->getMessageBoxResult();
+              //   int iResult = pbind->getMessageBoxResult();
 
               //   if (iResult > 0)
               //   {
@@ -208,113 +121,20 @@ namespace android
 
                  pmessagebox->increment_reference_count();
 
-                 pdirect->setMessageBoxSequence((::iptr) pmessagebox.m_p);
+                 pbind->setMessageBoxSequence((::iptr) pmessagebox.m_p);
 
-                 pdirect->setMessageBox(pmessagebox->m_strMessage);
+                 pbind->setMessageBox(pmessagebox->m_strMessage);
 
-                 pdirect->setMessageBoxCaption(pmessagebox->m_strTitle);
+                 pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
 
-                 pdirect->setMessageBoxButton(
+                 pbind->setMessageBoxButton(
                          e_message_box_to_button(pmessagebox->m_emessagebox));
 
               }
 
-//          if (m_strSetUserWallpaper.has_character()) {
-//
-//             pdirect->setUserWallpaper(m_strSetUserWallpaper);
-//
-//             m_strSetUserWallpaper.empty();
-//
-//          }
-//
-//          if (m_bGetUserWallpaper) {
-//
-//             m_strGetUserWallpaper = pdirect->getUserWallpaper();
-//
-//             m_bGetUserWallpaper = false;
-//
-//          }
-//
-//          if (m_bEditorSelectionUpdated) {
-//
-//             m_bEditorSelectionUpdated = false;
-//
-//             pdirect->setEditorSelectionStart(m_iEditorSelectionStart);
-//
-//             pdirect->setEditorSelectionEnd(m_iEditorSelectionEnd);
-//
-//             pdirect->setEditorSelectionUpdated(true);
-//
-//          }
-//
-//          if (m_bEditorTextUpdated) {
-//
-//             m_bEditorTextUpdated = false;
-//
-//             pdirect->setEditorText(m_strEditorText);
-//
-//             pdirect->setEditorTextUpdated(true);
-//
-//          }
-//
-//          if (m_bEditFocusSet) {
-//
-//             m_bEditFocusSet = false;
-//
-//             pdirect->setEditFocusSet(true);
-//
-//             pdirect->setEditFocusLeft(m_rectangleEditFocus.left());
-//
-//             pdirect->setEditFocusTop(m_rectangleEditFocus.top());
-//
-//             pdirect->setEditFocusRight(m_rectangleEditFocus.right());
-//
-//             pdirect->setEditFocusBottom(m_rectangleEditFocus.bottom());
-//
-//          }
-//
-//          if (m_bEditFocusKill) {
-//
-//             m_bEditFocusKill = false;
-//
-//             pdirect->setEditFocusKill(true);
-//
-//          }
-//
-//          if (m_bRedraw) {
-//
-//             m_bRedraw = false;
-//
-//             pdirect->setRedraw(true);
-//
-//          }
+              defer_post_all_input_output_data_blocks();
 
-//          if (m_bInputMethodManagerUpdateSelection) {
-//
-//             m_bInputMethodManagerUpdateSelection = false;
-//
-//             pdirect->setInputMethodManagerSelectionStart(m_iInputMethodManagerSelectionStart);
-//
-//             pdirect->setInputMethodManagerSelectionEnd(m_iInputMethodManagerSelectionEnd);
-//
-//             pdirect->setInputMethodManagerCandidateStart(m_iInputMethodManagerCandidateStart);
-//
-//             pdirect->setInputMethodManagerCandidateEnd(m_iInputMethodManagerCandidateEnd);
-//
-//             pdirect->setInputMethodManagerUpdateSelection(true);
-//
-//          }
-//
-//
-//          if (m_bShowKeyboard) {
-//
-//             pdirect->setShowKeyboard(true);
-//
-//             m_bShowKeyboard = false;
-//
-//          }
-//
-//       }
+
 //
 //       {
 //
@@ -322,17 +142,17 @@ namespace android
 //
 //          if (m_straListFileEnumerate.has_element()) {
 //
-//             auto pdirect = ::operating_system_bind::get();
+//             auto pbind = ::jni_bind::get();
 //
-//             auto bLock = pdirect->getLockListFileEnumerate();
+//             auto bLock = pbind->getLockListFileEnumerate();
 //
 //             if (!bLock) {
 //
 //                string strEnumerate = m_straListFileEnumerate.pick_first();
 //
-//                pdirect->setListFileEnumerate(strEnumerate);
+//                pbind->setListFileEnumerate(strEnumerate);
 //
-//                pdirect->setLockListFileEnumerate(true);
+//                pbind->setLockListFileEnumerate(true);
 //
 //             }
 //
@@ -344,20 +164,85 @@ namespace android
         }
 
 
+        ::file::path application_state::synchronously_getDocumentFolder(
+           const class ::time & timeOut)
+        {
+
+           m_iDocumentFolderRequest++;
+
+           int iDocumentFolderRequest = m_iDocumentFolderRequest;
+
+           bool bRequestSentThisCall = false;
+
+           class ::time timeAroundLastSentRequest;
+
+           int iTry = 0;
+
+           while(true)
+           {
+
+              if(m_iDocumentFolderResponse >= iDocumentFolderRequest)
+              {
+
+                 return m_pathDocumentFolder;
+
+              }
+
+              if(iTry < 3 && (!bRequestSentThisCall || timeAroundLastSentRequest.elapsed() > 20_s))
+              {
+
+                 m_iDocumentFolderRequest++;
+
+                 iDocumentFolderRequest = m_iDocumentFolderRequest;
+
+                 timeAroundLastSentRequest.Now();
+
+                 iTry++;
+
+              }
+
+              preempt(200_ms);
+
+              if(timeOut.elapsed() > timeOut)
+              {
+
+                 break;
+
+              }
+
+           }
+
+           return {};
+
+        }
+
         void application_state::after_exchange()
         {
 
            {
 
-              auto pdirect = ::operating_system_bind::get();
+              auto pbind = ::jni_bind::get();
 
-              string strUri = pdirect->getUri();
+              string strUri = pbind->getUri();
 
               if (strUri.has_character()) {
 
-                 pdirect->setUri("");
+                 pbind->setUri("");
 
                  system()->handle_uri(strUri);
+
+              }
+
+              if (m_iDocumentFolderResponse < m_iDocumentFolderRequestSent) {
+
+                 m_iDocumentFolderResponse = pbind->getDocumentFolderResponse();
+
+                 if (m_iDocumentFolderResponse == m_iDocumentFolderRequestSent)
+                 {
+
+                    m_pathDocumentFolder = pbind->getDocumentFolder();
+
+                 }
 
               }
 
@@ -374,6 +259,86 @@ namespace android
 //       m_straListFileEnumerate.add(strListFileEnumerate);
 //
 //    }
+
+
+      ::pointer < ::data::block > application_state::media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block)
+      {
+
+         auto pbind = ::jni_bind::get();
+
+         auto pdatablock = øcreate_new<::data::block>();
+
+         pdatablock->m_bWrite = true;
+
+         pdatablock->m_strPath = scopedstrPath;
+
+         pdatablock->m_strMime = "text/plain";
+
+         pdatablock->m_memory = block;
+
+         manual_reset_happening happening;
+
+         pdatablock->m_procedureOnFinished=[&happening]()
+         {
+
+            happening.set_happening();
+
+         };
+
+         pbind->media_store_schedule_data_block_operation(pdatablock);
+
+         if(happening.wait(1_min).succeeded()) {
+
+pdatablock->m_estatus = success;
+
+         } else{
+
+            pdatablock->m_estatus = error_timeout;
+
+         }
+
+         return pdatablock;
+
+      }
+
+
+      ::pointer < ::data::block > application_state::media_store_get_data(const ::scoped_string & scopedstrPath)
+      {
+
+         auto pbind = ::jni_bind::get();
+
+         auto pdatablock = øcreate_new<::data::block>();
+
+         pdatablock->m_bWrite = false;
+
+         pdatablock->m_strPath = scopedstrPath;
+
+         pdatablock->m_strMime = "text/plain";
+
+         manual_reset_happening happening;
+
+         pdatablock->m_procedureOnFinished=[&happening]()
+         {
+
+            happening.set_happening();
+
+         };
+
+         pbind->media_store_schedule_data_block_operation(pdatablock);
+
+         if(happening.wait(1_min).succeeded()) {
+
+            pdatablock->m_estatus = success;
+
+         } else{
+
+            pdatablock->m_estatus = error_timeout;
+
+         }
+
+         return pdatablock;
+
+      }
 
 
     } // namespace acme

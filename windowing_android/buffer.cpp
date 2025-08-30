@@ -161,7 +161,7 @@ namespace windowing_android
       pdriver->m_bRedraw = true;
 
 
-//      auto pbind = ::operating_system_bind::get();
+//      auto pbind = ::jni_bind::get();
 //
 //      if(!pbind->getApplicationReady())
 //      {

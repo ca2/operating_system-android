@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "jni_object_impl.h"
+#include "jni_local.h"
 
 
 extern thread_local JNIEnv* t_pjnienv1;
@@ -141,6 +142,14 @@ jni_field * jni_object_impl::field_d(const_char_pointer psz)
 
 }
 
+
+
+jni_field * jni_object_impl::field_ba(const_char_pointer psz)
+{
+
+   return _field(psz, "[B");
+
+}
 
 //void jni_object_impl::set_str(const_char_pointer pszField, const_char_pointer psz)
 //{
@@ -498,5 +507,50 @@ double jni_object_impl::get_d(jni_field * pfield)
 }
 
 
+
+void jni_object_impl::set_ba(jni_field * pfield, const ::block & block)
+{
+
+::cast < ::jni_field_impl > pfieldImpl = pfield;
+
+jni_local_byte_array ba(block);
+
+t_pjnienv1->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, ba.m_jobject);
+
+}
+
+
+::memory jni_object_impl::get_ba(jni_field * pfield)
+{
+
+   ::cast < ::jni_field_impl > pfieldImpl = pfield;
+
+   // 3. Get the byte[] object from the field
+   jbyteArray byteArray = (jbyteArray) t_pjnienv1->GetObjectField(m_jobject, pfieldImpl->m_jfieldid);
+   if (byteArray == nullptr)  {}; // field is null
+
+   // 4. Get the length of the array
+   jsize length = t_pjnienv1->GetArrayLength(byteArray);
+
+   // 5. Allocate a native buffer
+   jbyte* buffer = t_pjnienv1->GetByteArrayElements(byteArray, nullptr);
+
+
+   ::memory memory;
+
+   memory.assign(buffer, length);
+
+//   // 6. Use the data (example: print each byte)
+//   for (jsize i = 0; i < length; ++i) {
+//      printf("Byte %d = %d\n", i, buffer[i]);
+//   }
+
+   // 7. Release the array
+   t_pjnienv1->ReleaseByteArrayElements(byteArray, buffer, JNI_ABORT); // JNI_ABORT = no changes copied back
+
+
+   return memory;
+
+}
 
 
