@@ -107,7 +107,7 @@ public:
    static void set(jni_bind* pdirect);
 
 
-   void media_store_schedule_data_block_operation(::data::block * pdatablock);
+   virtual void post_media_store_operation(::data::block * pdatablock);
 
 
 };

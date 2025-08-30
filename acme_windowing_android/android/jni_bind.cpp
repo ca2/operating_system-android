@@ -78,7 +78,7 @@ void jni_bind::set(jni_bind* pdirect)
 }
 
 
-void jni_bind::media_store_schedule_data_block_operation(::data::block * pdatablock)
+void jni_bind::post_media_store_operation(::data::block * pdatablock)
 {
 
    ASSERT(pdatablock->m_bWrite);
@@ -98,9 +98,9 @@ void jni_bind::media_store_schedule_data_block_operation(::data::block * pdatabl
    //jclass cls = p->GetObjectClass(javaObj);
 
    // 2. Find method IDs
-   jmethodID methodMediaStoreScheduleInputOutputDataBlockOperation = pcontext->GetMethodID(jclassBind, "media_store_schedule_input_output_data_block_operation", "(Lplatform/platform/data_block)V");
+   jmethodID methodPostMediaStoreOperation = pcontext->GetMethodID(jclassBind, "post_media_store_operation", "(Lplatform/platform/data_block)V");
 
-   if (methodMediaStoreScheduleInputOutputDataBlockOperation == nullptr) {
+   if (methodPostMediaStoreOperation == nullptr) {
       error() << "method not found";
       return; // method not found
    }
@@ -143,7 +143,7 @@ jboolean jbWrite = pdatablock->m_bWrite ? 1 : 0;
 
    }
 
-   pcontext->CallVoidMethod(jobjectBind, methodMediaStoreScheduleInputOutputDataBlockOperation, objDataBlock.m_jobject);
+   pcontext->CallVoidMethod(jobjectBind, methodPostMediaStoreOperation, objDataBlock.m_jobject);
 
 
 

@@ -192,21 +192,12 @@ namespace node_android
    }
 
 
-   ::pointer < ::data::block > node::media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block)
+   void node::post_media_store_operation(::data::block * pdatablock)
    {
 
-      return ::platform::application_state::get()->media_store_set_data(scopedstrPath, block);
+      return ::platform::application_state::get()->post_media_store_operation(pdatablock);
 
    }
-
-
-   ::pointer < ::data::block > node::media_store_get_data(const ::scoped_string & scopedstrPath)
-   {
-
-      return ::platform::application_state::get()->media_store_get_data(scopedstrPath);
-
-   }
-
 
 
 } // namespace windowing_android

@@ -261,84 +261,84 @@ namespace android
 //    }
 
 
-      ::pointer < ::data::block > application_state::media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block)
+      void application_state::post_media_store_operation(::data::block * pdatablock)
       {
 
          auto pbind = ::jni_bind::get();
 
-         auto pdatablock = øcreate_new<::data::block>();
+//         auto pdatablock = øcreate_new<::data::block>();
+//
+//         pdatablock->m_bWrite = true;
+//
+//         pdatablock->m_strPath = scopedstrPath;
+//
+//         pdatablock->m_strMime = "text/plain";
+//
+//         pdatablock->m_memory = block;
 
-         pdatablock->m_bWrite = true;
+//         manual_reset_happening happening;
+//
+//         pdatablock->m_procedureOnFinished=[&happening]()
+//         {
+//
+//            happening.set_happening();
+//
+//         };
 
-         pdatablock->m_strPath = scopedstrPath;
+         pbind->post_media_store_operation(pdatablock);
 
-         pdatablock->m_strMime = "text/plain";
+//         if(happening.wait(1_min).succeeded()) {
+//
+//pdatablock->m_estatus = success;
+//
+//         } else{
+//
+//            pdatablock->m_estatus = error_timeout;
+//
+//         }
 
-         pdatablock->m_memory = block;
-
-         manual_reset_happening happening;
-
-         pdatablock->m_procedureOnFinished=[&happening]()
-         {
-
-            happening.set_happening();
-
-         };
-
-         pbind->media_store_schedule_data_block_operation(pdatablock);
-
-         if(happening.wait(1_min).succeeded()) {
-
-pdatablock->m_estatus = success;
-
-         } else{
-
-            pdatablock->m_estatus = error_timeout;
-
-         }
-
-         return pdatablock;
-
-      }
-
-
-      ::pointer < ::data::block > application_state::media_store_get_data(const ::scoped_string & scopedstrPath)
-      {
-
-         auto pbind = ::jni_bind::get();
-
-         auto pdatablock = øcreate_new<::data::block>();
-
-         pdatablock->m_bWrite = false;
-
-         pdatablock->m_strPath = scopedstrPath;
-
-         pdatablock->m_strMime = "text/plain";
-
-         manual_reset_happening happening;
-
-         pdatablock->m_procedureOnFinished=[&happening]()
-         {
-
-            happening.set_happening();
-
-         };
-
-         pbind->media_store_schedule_data_block_operation(pdatablock);
-
-         if(happening.wait(1_min).succeeded()) {
-
-            pdatablock->m_estatus = success;
-
-         } else{
-
-            pdatablock->m_estatus = error_timeout;
-
-         }
-
-         return pdatablock;
+         //return pdatablock;
 
       }
+
+
+//      ::pointer < ::data::block > application_state::media_store_get_data(const ::scoped_string & scopedstrPath)
+//      {
+//
+//         auto pbind = ::jni_bind::get();
+//
+//         auto pdatablock = øcreate_new<::data::block>();
+//
+//         pdatablock->m_bWrite = false;
+//
+//         pdatablock->m_strPath = scopedstrPath;
+//
+//         pdatablock->m_strMime = "text/plain";
+//
+//         manual_reset_happening happening;
+//
+//         pdatablock->m_procedureOnFinished=[&happening]()
+//         {
+//
+//            happening.set_happening();
+//
+//         };
+//
+//         pbind->media_store_schedule_data_block_operation(pdatablock);
+//
+//         if(happening.wait(1_min).succeeded()) {
+//
+//            pdatablock->m_estatus = success;
+//
+//         } else{
+//
+//            pdatablock->m_estatus = error_timeout;
+//
+//         }
+//
+//         return pdatablock;
+//
+//      }
 
 
     } // namespace acme

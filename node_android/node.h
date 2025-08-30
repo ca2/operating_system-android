@@ -36,9 +36,10 @@ namespace node_android
       ::file::path synchronously_request_document_folder() override;
 
 
-      ::pointer < ::data::block > media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block) override;
-      ::pointer < ::data::block > media_store_get_data(const ::scoped_string & scopedstrPath) override;
+      //::pointer < ::data::block > media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block) override;
+      //::pointer < ::data::block > media_store_get_data(const ::scoped_string & scopedstrPath) override;
 
+      void post_media_store_operation(::data::block * pdatablock) override;
 
    };
 
