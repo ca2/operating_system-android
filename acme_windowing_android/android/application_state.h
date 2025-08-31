@@ -127,8 +127,8 @@ namespace android
 
             //virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
-          void on_write_input_output_data_block(::data::block * pdatablock) override;
-          void on_read_input_output_data_block(::data::block * pdatablock) override;
+          void on_media_store_operation(::data::block * pdatablock) override;
+          //void on_read_input_output_data_block(::data::block * pdatablock) override;
 
             void exchange1() override;
             void after_exchange() override;

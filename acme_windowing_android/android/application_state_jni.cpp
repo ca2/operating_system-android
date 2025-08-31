@@ -14,23 +14,22 @@ namespace android
    namespace acme
    {
 
-      void application_state::on_write_input_output_data_block(::data::block * pdatablock)
+      void application_state::on_media_store_operation(::data::block * pdatablock)
       {
 
+         auto pbind = ::jni_bind::get();
 
-
-            //}
-            //
-            //
-            }
-
-      void application_state::on_read_input_output_data_block(::data::block * pdatablock)
-      {
-
-         ASSERT(pdatablock->m_bWrite);
-         //{
+         pbind->post_media_store_operation(pdatablock);
 
       }
+
+//      void application_state::on_read_input_output_data_block(::data::block * pdatablock)
+//      {
+//
+//         ASSERT(pdatablock->m_bWrite);
+//         //{
+//
+//      }
 
    } // namespace acme
 

@@ -132,7 +132,7 @@ namespace android
 
               }
 
-              defer_post_all_input_output_data_blocks();
+              defer_post_all_media_store_operations();
 
 
 //
