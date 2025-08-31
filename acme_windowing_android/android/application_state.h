@@ -32,10 +32,10 @@ namespace android
             float m_fDpiX;
             float m_fDpiY;
             float m_fDensity;
-            int m_iDocumentFolderRequest;
-           int m_iDocumentFolderRequestSent = 0;
-           int m_iDocumentFolderResponse;
-            ::file::path m_pathDocumentFolder;
+            //int m_iDocumentFolderRequest;
+           //int m_iDocumentFolderRequestSent = 0;
+           //int m_iDocumentFolderResponse;
+            //::file::path m_pathDocumentFolder;
 
             //bool m_bShowKeyboard;
             //bool m_bHideKeyboard;
@@ -134,7 +134,7 @@ namespace android
             void after_exchange() override;
 
 
-            ::file::path synchronously_getDocumentFolder(const class ::time & timeOut) override;
+            //::file::path synchronously_getDocumentFolder(const class ::time & timeOut) override;
 
 
           void post_media_store_operation(::data::block * pdatablock) override;

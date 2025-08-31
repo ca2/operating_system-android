@@ -185,11 +185,11 @@ namespace node_android
    }
 
 
-   ::file::path node::synchronously_request_document_folder()
-   {
-      return ::platform::application_state::get()->synchronously_getDocumentFolder(1_min);
-
-   }
+//   ::file::path node::synchronously_request_document_folder()
+//   {
+//      return ::platform::application_state::get()->synchronously_getDocumentFolder(1_min);
+//
+//   }
 
 
    void node::post_media_store_operation(::data::block * pdatablock)

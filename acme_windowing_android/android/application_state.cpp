@@ -90,14 +90,14 @@ namespace android
 
               }
 
-              if(m_iDocumentFolderRequestSent < m_iDocumentFolderRequest)
-              {
-
-                 m_iDocumentFolderRequestSent = m_iDocumentFolderRequest;
-
-                 pbind->setDocumentFolderRequest(m_iDocumentFolderRequestSent);
-
-              }
+//              if(m_iDocumentFolderRequestSent < m_iDocumentFolderRequest)
+//              {
+//
+//                 m_iDocumentFolderRequestSent = m_iDocumentFolderRequest;
+//
+//                 pbind->setDocumentFolderRequest(m_iDocumentFolderRequestSent);
+//
+//              }
 
               //if (m_bMessageBoxOn)
               //{
@@ -164,57 +164,57 @@ namespace android
         }
 
 
-        ::file::path application_state::synchronously_getDocumentFolder(
-           const class ::time & timeOut)
-        {
-
-           m_iDocumentFolderRequest++;
-
-           int iDocumentFolderRequest = m_iDocumentFolderRequest;
-
-           bool bRequestSentThisCall = false;
-
-           class ::time timeAroundLastSentRequest;
-
-           int iTry = 0;
-
-           while(true)
-           {
-
-              if(m_iDocumentFolderResponse >= iDocumentFolderRequest)
-              {
-
-                 return m_pathDocumentFolder;
-
-              }
-
-              if(iTry < 3 && (!bRequestSentThisCall || timeAroundLastSentRequest.elapsed() > 20_s))
-              {
-
-                 m_iDocumentFolderRequest++;
-
-                 iDocumentFolderRequest = m_iDocumentFolderRequest;
-
-                 timeAroundLastSentRequest.Now();
-
-                 iTry++;
-
-              }
-
-              preempt(200_ms);
-
-              if(timeOut.elapsed() > timeOut)
-              {
-
-                 break;
-
-              }
-
-           }
-
-           return {};
-
-        }
+//        ::file::path application_state::synchronously_getDocumentFolder(
+//           const class ::time & timeOut)
+//        {
+//
+//           m_iDocumentFolderRequest++;
+//
+//           int iDocumentFolderRequest = m_iDocumentFolderRequest;
+//
+//           bool bRequestSentThisCall = false;
+//
+//           class ::time timeAroundLastSentRequest;
+//
+//           int iTry = 0;
+//
+//           while(true)
+//           {
+//
+//              if(m_iDocumentFolderResponse >= iDocumentFolderRequest)
+//              {
+//
+//                 return m_pathDocumentFolder;
+//
+//              }
+//
+//              if(iTry < 3 && (!bRequestSentThisCall || timeAroundLastSentRequest.elapsed() > 20_s))
+//              {
+//
+//                 m_iDocumentFolderRequest++;
+//
+//                 iDocumentFolderRequest = m_iDocumentFolderRequest;
+//
+//                 timeAroundLastSentRequest.Now();
+//
+//                 iTry++;
+//
+//              }
+//
+//              preempt(200_ms);
+//
+//              if(timeOut.elapsed() > timeOut)
+//              {
+//
+//                 break;
+//
+//              }
+//
+//           }
+//
+//           return {};
+//
+//        }
 
         void application_state::after_exchange()
         {
@@ -233,18 +233,18 @@ namespace android
 
               }
 
-              if (m_iDocumentFolderResponse < m_iDocumentFolderRequestSent) {
-
-                 m_iDocumentFolderResponse = pbind->getDocumentFolderResponse();
-
-                 if (m_iDocumentFolderResponse == m_iDocumentFolderRequestSent)
-                 {
-
-                    m_pathDocumentFolder = pbind->getDocumentFolder();
-
-                 }
-
-              }
+//              if (m_iDocumentFolderResponse < m_iDocumentFolderRequestSent) {
+//
+//                 m_iDocumentFolderResponse = pbind->getDocumentFolderResponse();
+//
+//                 if (m_iDocumentFolderResponse == m_iDocumentFolderRequestSent)
+//                 {
+//
+//                    m_pathDocumentFolder = pbind->getDocumentFolder();
+//
+//                 }
+//
+//              }
 
            }
 

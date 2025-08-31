@@ -96,9 +96,9 @@ public:
    //String m_strListFileEnumerate;
    JX(str, ListFileEnumerate);
    JX(str, Uri);
-   JX(i, DocumentFolderRequest);
-   JX(i, DocumentFolderResponse);
-   JX(str, DocumentFolder);
+   //JX(i, DocumentFolderRequest);
+   //JX(i, DocumentFolderResponse);
+   //JX(str, DocumentFolder);
 
 
 

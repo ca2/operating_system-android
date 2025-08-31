@@ -33,7 +33,7 @@ namespace node_android
       void open_internet_link(const ::scoped_string & strUrl, const ::scoped_string & strProfile = {},
                               const ::scoped_string & strTarget = {}) override;
 
-      ::file::path synchronously_request_document_folder() override;
+      //::file::path synchronously_request_document_folder() override;
 
 
       //::pointer < ::data::block > media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block) override;
