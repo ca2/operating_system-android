@@ -3,9 +3,6 @@
 #include "jni_local.h"
 
 
-extern thread_local JNIEnv* t_pjnienv1;
-
-
 jni_object_impl::jni_object_impl()
 {
 
@@ -27,10 +24,12 @@ jni_object_impl::jni_object_impl(jobject jobject)
 
 jni_object_impl::~jni_object_impl()
 {
+   
+   auto pcontext = get_jni_context();
 
-   t_pjnienv1->DeleteGlobalRef(m_jobject);
+   pcontext->DeleteGlobalRef(m_jobject);
 
-   t_pjnienv1->DeleteGlobalRef(m_jclass);
+   pcontext->DeleteGlobalRef(m_jclass);
 
 }
 
@@ -38,11 +37,13 @@ jni_object_impl::~jni_object_impl()
 void jni_object_impl::set_jni_object(jobject jobject)
 {
 
-   ::jclass jclass = t_pjnienv1->GetObjectClass(jobject);
+   auto pcontext = get_jni_context();
 
-   m_jclass = (::jclass) t_pjnienv1->NewGlobalRef(jclass);
+   ::jclass jclass = pcontext->GetObjectClass(jobject);
 
-   m_jobject = t_pjnienv1->NewGlobalRef(jobject);
+   m_jclass = (::jclass) pcontext->NewGlobalRef(jclass);
+
+   m_jobject = pcontext->NewGlobalRef(jobject);
 
 }
 
@@ -59,9 +60,11 @@ jni_field * jni_object_impl::_field(const_char_pointer psz, const_char_pointer p
 
    }
 
+   auto pcontext = get_jni_context();
+
    auto pfieldImpl = øallocate jni_field_impl();
 
-   pfieldImpl->m_jfieldid = t_pjnienv1->GetFieldID(m_jclass, psz, pszType);
+   pfieldImpl->m_jfieldid = pcontext->GetFieldID(m_jclass, psz, pszType);
 
    pfield = pfieldImpl;
 
@@ -151,174 +154,17 @@ jni_field * jni_object_impl::field_ba(const_char_pointer psz)
 
 }
 
-//void jni_object_impl::set_str(const_char_pointer pszField, const_char_pointer psz)
-//{
-//
-//   set_str(field_str(pszField), psz);
-//
-//}
-//
-//
-//string jni_object_impl::get_str(const_char_pointer pszField)
-//{
-//
-//   return get_str(field_str(pszField));
-//
-//}
-//
-//
-//void jni_object_impl::set_b(const_char_pointer pszField, bool b)
-//{
-//
-//   set_b(field_b(pszField), b);
-//
-//}
-//
-//
-//bool jni_object_impl::get_b(const_char_pointer pszField)
-//{
-//
-//   return get_b(field_b(pszField));
-//
-//}
-//
-//
-//
-//void jni_object_impl::set_uch(const_char_pointer pszField, unsigned char b)
-//{
-//
-//   set_uch(field_uch(pszField), b);
-//
-//}
-//
-//
-//unsigned char jni_object_impl::get_uch(const_char_pointer pszField)
-//{
-//
-//   return get_uch(field_uch(pszField));
-//
-//}
-//
-//
-//
-//void jni_object_impl::set_ch(const_char_pointer pszField, char ch)
-//{
-//
-//   set_ch(field_ch(pszField), ch);
-//
-//}
-//
-//
-//char jni_object_impl::get_ch(const_char_pointer pszField)
-//{
-//
-//   return get_ch(field_ch(pszField));
-//
-//}
-//
-//
-//
-//void jni_object_impl::set_sh(const_char_pointer pszField, short sh)
-//{
-//
-//   set_sh(field_sh(pszField), sh);
-//
-//}
-//
-//
-//short jni_object_impl::get_sh(const_char_pointer pszField)
-//{
-//
-//   return get_sh(field_sh(pszField));
-//
-//}
-//
-//
-//
-//void jni_object_impl::set_i(const_char_pointer pszField, int i)
-//{
-//
-//   set_i(field_i(pszField), i);
-//
-//}
-//
-//
-//
-//int jni_object_impl::get_i(const_char_pointer pszField)
-//{
-//
-//   return get_i(field_i(pszField));
-//
-//}
-//
-//
-//
-//void jni_object_impl::set_l(const_char_pointer pszField, long long hi)
-//{
-//
-//   set_l(field_l(pszField), hi);
-//
-//}
-//
-//
-//
-//long long jni_object_impl::get_l(const_char_pointer pszField)
-//{
-//
-//   return get_l(field_l(pszField));
-//
-//}
-//
-//
-//void jni_object_impl::set_f(const_char_pointer pszField, float f)
-//{
-//
-//   set_f(field_f(pszField), f);
-//
-//}
-//
-//
-//float jni_object_impl::get_f(const_char_pointer pszField)
-//{
-//
-//   return get_f(field_f(pszField));
-//
-//}
-//
-//
-//void jni_object_impl::set_d(const_char_pointer pszField, double d)
-//{
-//
-//   set_d(field_d(pszField), d);
-//
-//}
-//
-//
-//double jni_object_impl::get_d(const_char_pointer pszField)
-//{
-//
-//   return get_d(field_d(pszField));
-//
-//}
-//
 
 void jni_object_impl::set_str(jni_field * pfield, const_char_pointer psz)
 {
 
-   jstring jstring = t_pjnienv1->NewStringUTF(psz);
+   auto pcontext = get_jni_context();
 
-   if (!jstring)
-   {
+   jni_local_string jnistring(psz);
 
-      return;
-
-   }
-   
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, jstring);
-
-   t_pjnienv1->DeleteLocalRef(jstring);
+   pcontext->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, jnistring.m_jstring);
 
 }
 
@@ -328,18 +174,11 @@ string jni_object_impl::get_str(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   jstring jstring = (::jstring) t_pjnienv1->GetObjectField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
 
-   string str;
-   
-   if (jstring)
-   {
+   jni_local_string jnistring(pcontext->GetObjectField(m_jobject, pfieldImpl->m_jfieldid));
 
-      str = ::as_string(jstring);
-
-      t_pjnienv1->DeleteLocalRef(jstring);
-
-   }
+   auto str = jnistring.as_string();
 
    return str;
 
@@ -351,7 +190,9 @@ void jni_object_impl::set_b(jni_field * pfield, bool b)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetBooleanField(m_jobject, pfieldImpl->m_jfieldid, b);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetBooleanField(m_jobject, pfieldImpl->m_jfieldid, b);
 
 }
 
@@ -361,7 +202,9 @@ bool jni_object_impl::get_b(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetBooleanField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetBooleanField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -371,7 +214,9 @@ void jni_object_impl::set_uch(jni_field * pfield, unsigned char b)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetByteField(m_jobject, pfieldImpl->m_jfieldid, b);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetByteField(m_jobject, pfieldImpl->m_jfieldid, b);
 
 }
 
@@ -381,7 +226,9 @@ unsigned char jni_object_impl::get_uch(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetByteField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetByteField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -391,7 +238,9 @@ void jni_object_impl::set_ch(jni_field * pfield, char ch)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetCharField(m_jobject, pfieldImpl->m_jfieldid, ch);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetCharField(m_jobject, pfieldImpl->m_jfieldid, ch);
 
 }
 
@@ -401,7 +250,9 @@ char jni_object_impl::get_ch(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetCharField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetCharField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -411,7 +262,9 @@ void jni_object_impl::set_sh(jni_field * pfield, short sh)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetShortField(m_jobject, pfieldImpl->m_jfieldid, sh);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetShortField(m_jobject, pfieldImpl->m_jfieldid, sh);
 
 }
 
@@ -421,7 +274,9 @@ short jni_object_impl::get_sh(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetShortField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetShortField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -431,7 +286,9 @@ void jni_object_impl::set_i(jni_field * pfield, int i)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetIntField(m_jobject, pfieldImpl->m_jfieldid, i);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetIntField(m_jobject, pfieldImpl->m_jfieldid, i);
 
 }
 
@@ -441,7 +298,9 @@ int jni_object_impl::get_i(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetIntField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetIntField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -451,7 +310,9 @@ void jni_object_impl::set_l(jni_field * pfield, long long hi)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetLongField(m_jobject, pfieldImpl->m_jfieldid, hi);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetLongField(m_jobject, pfieldImpl->m_jfieldid, hi);
 
 }
 
@@ -461,7 +322,9 @@ long long jni_object_impl::get_l(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetLongField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetLongField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
 
@@ -471,7 +334,9 @@ void jni_object_impl::set_f(jni_field * pfield, float f)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetFloatField(m_jobject, pfieldImpl->m_jfieldid, f);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetFloatField(m_jobject, pfieldImpl->m_jfieldid, f);
 
 }
 
@@ -481,10 +346,11 @@ float jni_object_impl::get_f(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetFloatField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetFloatField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
-
 
 
 void jni_object_impl::set_d(jni_field * pfield, double d)
@@ -492,7 +358,9 @@ void jni_object_impl::set_d(jni_field * pfield, double d)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   t_pjnienv1->SetDoubleField(m_jobject, pfieldImpl->m_jfieldid, d);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetDoubleField(m_jobject, pfieldImpl->m_jfieldid, d);
 
 }
 
@@ -502,20 +370,23 @@ double jni_object_impl::get_d(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   return t_pjnienv1->GetDoubleField(m_jobject, pfieldImpl->m_jfieldid);
+   auto pcontext = get_jni_context();
+
+   return pcontext->GetDoubleField(m_jobject, pfieldImpl->m_jfieldid);
 
 }
-
 
 
 void jni_object_impl::set_ba(jni_field * pfield, const ::block & block)
 {
 
-::cast < ::jni_field_impl > pfieldImpl = pfield;
+   ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-jni_local_byte_array ba(block);
+   jni_local_byte_array ba(block);
 
-t_pjnienv1->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, ba.m_jobject);
+   auto pcontext = get_jni_context();
+
+   pcontext->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, ba.m_jobject);
 
 }
 
@@ -525,29 +396,11 @@ t_pjnienv1->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, ba.m_jobject);
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   // 3. Get the byte[] object from the field
-   jbyteArray byteArray = (jbyteArray) t_pjnienv1->GetObjectField(m_jobject, pfieldImpl->m_jfieldid);
-   if (byteArray == nullptr)  {}; // field is null
+   auto pcontext = get_jni_context();
 
-   // 4. Get the length of the array
-   jsize length = t_pjnienv1->GetArrayLength(byteArray);
+   jni_local_byte_array jnibytea(pcontext->GetObjectField(m_jobject, pfieldImpl->m_jfieldid));
 
-   // 5. Allocate a native buffer
-   jbyte* buffer = t_pjnienv1->GetByteArrayElements(byteArray, nullptr);
-
-
-   ::memory memory;
-
-   memory.assign(buffer, length);
-
-//   // 6. Use the data (example: print each byte)
-//   for (jsize i = 0; i < length; ++i) {
-//      printf("Byte %d = %d\n", i, buffer[i]);
-//   }
-
-   // 7. Release the array
-   t_pjnienv1->ReleaseByteArrayElements(byteArray, buffer, JNI_ABORT); // JNI_ABORT = no changes copied back
-
+   auto memory = jnibytea.as_memory();
 
    return memory;
 

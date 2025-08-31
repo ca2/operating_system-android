@@ -11,9 +11,6 @@ namespace android
 {
 
 
-   //extern thread_local JNIEnv * t_pjnienv;
-
-
    asset_manager::asset_manager(jni_object_interface * pjniobjectinterfaceAssetManager):
       jni_object(pjniobjectinterfaceAssetManager)
    {
@@ -29,16 +26,6 @@ namespace android
    {
 
    }
-
-
-//   void asset_manager::set_AAssetManager(jobject jobjectAssetManager)
-//   {
-//
-//      m_pjniobjectImpl = øallocate jni_object_impl(jobjectAssetManager);
-//
-//
-//
-//   }
 
 
 #define AASSET_MANAGER_ACCESS_BUFFER 3

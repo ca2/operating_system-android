@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "jni_local.h"
 
-extern thread_local JNIEnv* t_pjnienv1;
+
 jni_local::jni_local()
 {
    m_jobject=nullptr;
@@ -16,7 +16,9 @@ jni_local::jni_local(jobject jobject)
 jni_local::~jni_local()
 {
    if (m_jobject) {
-      t_pjnienv1->DeleteLocalRef(m_jobject);
+      
+      auto pcontext = get_jni_context();
+      pcontext->DeleteLocalRef(m_jobject);
       m_jobject = nullptr;
 
    }
@@ -24,20 +26,74 @@ jni_local::~jni_local()
 jni_local_byte_array::jni_local_byte_array(const ::block & block)
 {
 
-   m_jbytearray = t_pjnienv1->NewByteArray(block.size());
+   auto pcontext = get_jni_context();
 
-   t_pjnienv1->SetByteArrayRegion(m_jbytearray, 0, block.size(), (const jbyte *)  block.data());
+   m_jbytearray = pcontext->NewByteArray(block.size());
+
+   pcontext->SetByteArrayRegion(m_jbytearray, 0, block.size(), (const jbyte *)  block.data());
 
 }
 
 jni_local_string::jni_local_string(const ::scoped_string & scopedstr)
 {
+
+   auto pcontext = get_jni_context();
    if(*scopedstr.m_end == '\0') {
-      m_jstring = t_pjnienv1->NewStringUTF(scopedstr.m_begin);
+      m_jstring = pcontext->NewStringUTF(scopedstr.m_begin);
    } else
    {
 ::string str(scopedstr);
-      m_jstring = t_pjnienv1->NewStringUTF(str);
+      m_jstring = pcontext->NewStringUTF(str);
    }
+
+}
+
+::string jni_local_string::as_string()
+{
+
+   if(!m_jstring)
+   {
+
+      return {};
+
+   }
+
+   auto pcontext = get_jni_context();
+
+   const_char_pointer nativeString = pcontext->GetStringUTFChars(m_jstring, 0);
+
+   string str = nativeString;
+
+   pcontext->ReleaseStringUTFChars(m_jstring, nativeString);
+
+   return str;
+
+}
+
+
+::memory jni_local_byte_array::as_memory()
+{
+   auto pcontext = get_jni_context();
+
+   jbyte* buffer = pcontext->GetByteArrayElements(m_jbytearray, NULL);
+   jsize length =pcontext->GetArrayLength(m_jbytearray);
+
+   memory memory;
+
+   memory.assign(buffer, length);
+
+
+//// Now you can use 'buffer' as a C array of signed bytes (jbyte).
+//// Example: cast to unsigned char if needed
+//   for (int i = 0; i < length; i++) {
+//      unsigned char c = (unsigned char) buffer[i];
+//      // process c
+//   }
+
+// When done, release
+   pcontext->ReleaseByteArrayElements(m_jbytearray, buffer, 0);
+
+   return ::transfer(memory);
+
 
 }

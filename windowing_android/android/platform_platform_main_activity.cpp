@@ -8,12 +8,15 @@
 #include "acme/platform/acme.h"
 #include "acme/platform/node.h"
 //#include "acme/platform/sequencer.h"
+#include "acme/parallelization/manual_reset_happening.h"
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "acme/platform/system_setup.h"
 #include "acme/prototype/string/c_string.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
+#include "acme_windowing_android/android/jni_application_message.h"
 #include "acme_windowing_android/android/jni_data_block.h"
+#include "acme_windowing_android/android/jni_local.h"
 #include "acme_windowing_android/android/jni_object_impl.h"
 
 //#include "acme/user/nano/nano.h"
@@ -393,83 +396,119 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
    set_jni_context(penv);
 
-   if (::jni_bind::get()) {
+   if (::jni_bind::get())
+   {
 
       delete ::jni_bind::get();
 
    }
 
-   auto pbind = __øjni<::jni_bind>(jobjectBind);
+   auto pbind = øjni<::jni_bind>(jobjectBind);
 
    ::jni_bind::set(pbind);
 
    if (!::platform::application_state::get())
-{
+   {
 
-::platform::application_state::set (___new
+      ::platform::application_state::set (___new android::application_state());
 
-android::application_state()
+      auto pbind = ::jni_bind::get();
 
-);
+      ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
 
-auto pbind = ::jni_bind::get();
+      papplicationstate->m_strApplicationIdentifier = pbind->getApplicationIdentifier();
 
-::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
+      papplicationstate->m_strCommandLineParameters = pbind->getCommandLineParameters();
 
-papplicationstate->
-m_strApplicationIdentifier = pbind->getApplicationIdentifier();
+      papplicationstate->m_pathCacheDirectory = pbind->getCacheDirectory();
 
-papplicationstate->
-m_strCommandLineParameters = pbind->getCommandLineParameters();
+      papplicationstate->m_bShowKeyboard = false;
 
-papplicationstate->
-m_pathCacheDirectory = pbind->getCacheDirectory();
+      auto passetmanager = øjni<::android::asset_manager>(jobjectAssetManager);
 
+      papplicationstate->m_passetmanager = passetmanager;
 
-papplicationstate->
-m_bShowKeyboard = false;
+      auto passet = papplicationstate->m_passetmanager->get_asset("_matter.zip");
 
-auto passetmanager = __øjni<::android::asset_manager>(jobjectAssetManager);
+      papplicationstate->m_passetResourceFolder = passet;
 
-papplicationstate->
-m_passetmanager = passetmanager;
+      const_char_pointer pResourceStart = nullptr;
 
-papplicationstate->
-m_passetResourceFolder = papplicationstate->m_passetmanager->get_asset("_matter.zip");
+      const_char_pointer pResourceEnd = nullptr;
 
-const_char_pointer pResourceStart = nullptr;
-const_char_pointer pResourceEnd = nullptr;
+      papplicationstate->m_passetResourceFolder->get_pointers(
+         pResourceStart,
+         pResourceEnd
+      );
 
-papplicationstate->m_passetResourceFolder->
-get_pointers(
-   pResourceStart,
-   pResourceEnd
-);
+      c_application_namespace_library library(papplicationstate->m_strApplicationIdentifier.c_str());
 
-c_application_namespace_library library(papplicationstate->
-   m_strApplicationIdentifier.c_str());
+      auto pfnInitializeSystem = library.main_function<PFN_INITIALIZE_SYSTEM>("initialize_system");
 
-auto pfnInitializeSystem = library.main_function<PFN_INITIALIZE_SYSTEM>("initialize_system");
+      pfnInitializeSystem(0, nullptr, nullptr, pResourceStart, pResourceEnd);
 
-pfnInitializeSystem(0, nullptr, nullptr, pResourceStart, pResourceEnd);
+   }
 
 }
 
-}
+
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_return_1read_1data_1block(JNIEnv * penv,
-                                                                               jobject obj,
-                                                                                       jobject jobjectDataBlock)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1message(
+   JNIEnv * penv,
+   jobject obj,
+   jobject jobjectApplicationMessage)
 {
 
-   try {
+   try
+   {
 
       set_jni_context(penv);
 
-      jni_data_block jnidatablock(øallocate jni_object_impl(jobjectDataBlock));
+      jni_application_message jniapplicationmessage(øjni_object(jobjectApplicationMessage));
 
-      auto pdatablock = (::data::block *) jnidatablock.getDataBlock();
+      auto papplicationmessage = jniapplicationmessage.as_application_message();
 
+      ::system()->m_papplication->on_application_message(papplicationmessage);
+
+   }
+   catch(...)
+   {
+
+   }
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_return_1read_1data_1block(
+   JNIEnv * penv,
+   jobject obj,
+   jobject jobjectDataBlock)
+{
+
+   try
+   {
+
+      set_jni_context(penv);
+
+      jni_data_block jnidatablock(øjni_object(jobjectDataBlock));
+
+      ::pointer < ::data::block > pdatablock
+      {
+         transfer_t{},
+         (::data::block *)(void *)(::uptr) jnidatablock.getDataBlock()
+      };
+
+      jni_local_byte_array jnilocalbytea(jnidatablock.getData());
+
+      pdatablock->m_memory = ::transfer(jnilocalbytea.as_memory());
+
+      if(pdatablock->m_pmanualresethappening)
+      {
+
+         pdatablock->m_pmanualresethappening->set_happening();
+
+      }
 
    }
    catch(...)

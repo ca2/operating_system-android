@@ -2,22 +2,8 @@
 #include "_internal.h"
 
 
-//extern operating_system_driver* g_pandroiddriver;
+thread_local JNIEnv* t_pjnipcontextContext;
 
-
-thread_local JNIEnv* t_pjnienv1;
-
-//JNIEnv * task_jnienv()
-//{
-//
-//   return t_pjnienv1;
-//}
-
-//void set_task_jnienv(JNIEnv * pjnienv1)
-//{
-//
-//   t_pjnienv1 = pjnienv1;
-//}
 
 ::particle_pointer g_pmutexOs;
 
@@ -30,9 +16,6 @@ thread_local JNIEnv* t_pjnienv1;
 }
 
 
-//extern thread_local JNIEnv* t_pjnienv;
-
-
 int get_mem_free_available_kb()
 {
 
@@ -41,31 +24,24 @@ int get_mem_free_available_kb()
 }
 
 
-
-
 string as_string(const jstring & jstring)
 {
 
-   const_char_pointer nativeString = t_pjnienv1->GetStringUTFChars(jstring, 0);
+   const_char_pointer nativeString = t_pjnipcontextContext->GetStringUTFChars(jstring, 0);
 
    string str = nativeString;
 
-   t_pjnienv1->ReleaseStringUTFChars(jstring, nativeString);
+   t_pjnipcontextContext->ReleaseStringUTFChars(jstring, nativeString);
 
    return str;
 
 }
 
 
-
-
-
-
-
-void set_jni_context(JNIEnv* penv)
+void set_jni_context(JNIEnv* ppcontext)
 {
 
-   t_pjnienv1 = penv;
+   t_pjnipcontextContext = ppcontext;
 
 }
 
@@ -73,7 +49,7 @@ void set_jni_context(JNIEnv* penv)
 JNIEnv* get_jni_context()
 {
 
-   return t_pjnienv1;
+   return t_pjnipcontextContext;
 
 }
 
@@ -81,9 +57,9 @@ JNIEnv* get_jni_context()
 ::string __string(const jstring& jstring)
 {
 
-   auto env = t_pjnienv1;
+   auto pcontext = t_pjnipcontextContext;
 
-   const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(jstring, NULL);
+   const ::wd16_character* utf16 = (::wd16_character*)pcontext->GetStringChars(jstring, NULL);
 
    if (utf16 == NULL)
    {
@@ -92,13 +68,13 @@ JNIEnv* get_jni_context()
 
    }
 
-   size_t length = (size_t)env->GetStringLength(jstring);
+   size_t length = (size_t)pcontext->GetStringLength(jstring);
 
    wd16_string wstr(utf16, length);
 
    string str(wstr);
 
-   env->ReleaseStringChars(jstring, (jchar*)utf16);
+   pcontext->ReleaseStringChars(jstring, (jchar*)utf16);
 
    return str;
 
