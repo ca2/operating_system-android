@@ -350,6 +350,8 @@ include_directories(${WORKSPACE_FOLDER}/operating_system/operating_system-${OPER
 include_directories(${WORKSPACE_FOLDER}/operating_system/operating_system-${OPERATING_SYSTEM_NAME}/include/configuration_selection/${CMAKE_BUILD_TYPE})
 include_directories(${WORKSPACE_FOLDER}/operating_system/operating_system-${OPERATING_SYSTEM_NAME}/operating_system/${SLASHED_OPERATING_SYSTEM})
 include_directories(${WORKSPACE_FOLDER}/operating_system/operating_system-${OPERATING_SYSTEM_NAME}/operating_system/${DISTRO})
+include_directories(${ANDROID_NDK_ROOT}/sources/android/cpufeatures)
+
 
 set(INCLUDE_DRAW2D_CAIRO TRUE)
 set(INCLUDE_IMAGING_FREEIMAGE TRUE)
@@ -363,3 +365,5 @@ set(JNI_LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
 
 # Add to global library search path
 link_directories(${JNI_LIBS_DIR})
+
+
