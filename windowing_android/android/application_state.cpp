@@ -11,7 +11,7 @@
 namespace android
 {
 
-//int ::user::e_message_box_to_button(const ::::user::e_message_box& emessagebox);
+//int ::user::e_message_box_to_button(const ::user::e_message_box& emessagebox);
 
 
 //::pointer<application_state>g_pandroiddriver;

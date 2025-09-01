@@ -665,7 +665,7 @@ namespace apex_android
    }
 
 
-   //void os_context::post_to_all_threads(::enum_message emessage, ::wparam wparam, ::lparam lparam)
+   //void os_context::post_to_all_threads(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam)
    //{
 
    //   throw ::interface_only();

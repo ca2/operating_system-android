@@ -6,7 +6,7 @@
 #include "windowing.h"
 #include "window.h"
 #include "display.h"
-#include "acme/constant/message.h"
+#include "acme/constant/user_message.h"
 #include "acme/parallelization/synchronous_lock.h"
 //#include "aura/user/user/interaction_impl.h"
 #include "aura/windowing/sandbox/host_interaction.h"

@@ -5,7 +5,7 @@
 #include "display.h"
 #include "window.h"
 #include "windowing.h"
-#include "acme/constant/message.h"
+#include "acme/constant/user_message.h"
 #include "acme/parallelization/synchronous_lock.h"
 //#include "apex/platform/system.h"
 //#include "aura/user/user/interaction_graphics_thread.h"
@@ -1810,13 +1810,13 @@ namespace android
             //   if (message.m_emessage == ::user::e_message_left_button_down)
             //   {
 
-            //      output_debug_string("post_ui_message::::user::e_message_left_button_down\n");
+            //      output_debug_string("post_ui_message::user::e_message_left_button_down\n");
 
             //   }
             //   else if (message.m_emessage == ::user::e_message_left_button_up)
             //   {
 
-            //      output_debug_string("post_ui_message::::user::e_message_left_button_up\n");
+            //      output_debug_string("post_ui_message::user::e_message_left_button_up\n");
 
             //   }
 

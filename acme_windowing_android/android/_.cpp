@@ -69,7 +69,7 @@ namespace android
     namespace acme
     {
 
-        int ::user::e_message_box_to_button(const ::::user::e_message_box &emessagebox)
+        int ::user::e_message_box_to_button(const ::user::e_message_box &emessagebox)
         {
 
            auto emessageboxType = emessagebox & ::user::e_message_box_type_mask;
