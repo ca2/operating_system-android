@@ -2,6 +2,13 @@
 #include "_internal.h"
 
 
+jni_object::jni_object()
+{
+
+
+}
+
+
 jni_object::jni_object(jni_object_interface * pjniobjectinterface) :
 m_pjniobjectinterface(pjniobjectinterface)
 {
@@ -96,156 +103,6 @@ jni_field * jni_object::field_ba(const_char_pointer psz)
    return m_pjniobjectinterface->field_ba(psz);
 
 }
-
-//void jni_object::set_str(const_char_pointer pszField, const_char_pointer psz)
-//{
-//
-//   set_str(field_str(pszField), psz);
-//
-//}
-//
-//
-//string jni_object::get_str(const_char_pointer pszField)
-//{
-//
-//   return get_str(field_str(pszField));
-//
-//}
-//
-//
-//void jni_object::set_b(const_char_pointer pszField, bool b)
-//{
-//
-//   set_b(field_b(pszField), b);
-//
-//}
-//
-//
-//bool jni_object::get_b(const_char_pointer pszField)
-//{
-//
-//   return get_b(field_b(pszField));
-//
-//}
-//
-//
-//
-//void jni_object::set_uch(const_char_pointer pszField, unsigned char b)
-//{
-//
-//   set_uch(field_uch(pszField), b);
-//
-//}
-//
-//
-//unsigned char jni_object::get_uch(const_char_pointer pszField)
-//{
-//
-//   return get_uch(field_uch(pszField));
-//
-//}
-//
-//
-//
-//void jni_object::set_ch(const_char_pointer pszField, char ch)
-//{
-//
-//   set_ch(field_ch(pszField), ch);
-//
-//}
-//
-//
-//char jni_object::get_ch(const_char_pointer pszField)
-//{
-//
-//   return get_ch(field_ch(pszField));
-//
-//}
-//
-//
-//
-//void jni_object::set_sh(const_char_pointer pszField, short sh)
-//{
-//
-//   set_sh(field_sh(pszField), sh);
-//
-//}
-//
-//
-//short jni_object::get_sh(const_char_pointer pszField)
-//{
-//
-//   return get_sh(field_sh(pszField));
-//
-//}
-//
-//
-//
-//void jni_object::set_i(const_char_pointer pszField, int i)
-//{
-//
-//   set_i(field_i(pszField), i);
-//
-//}
-//
-//
-//
-//int jni_object::get_i(const_char_pointer pszField)
-//{
-//
-//   return get_i(field_i(pszField));
-//
-//}
-//
-//
-//
-//void jni_object::set_l(const_char_pointer pszField, long long hi)
-//{
-//
-//   set_l(field_l(pszField), hi);
-//
-//}
-//
-//
-//
-//long long jni_object::get_l(const_char_pointer pszField)
-//{
-//
-//   return get_l(field_l(pszField));
-//
-//}
-//
-//
-//void jni_object::set_f(const_char_pointer pszField, float f)
-//{
-//
-//   set_f(field_f(pszField), f);
-//
-//}
-//
-//
-//float jni_object::get_f(const_char_pointer pszField)
-//{
-//
-//   return get_f(field_f(pszField));
-//
-//}
-//
-//
-//void jni_object::set_d(const_char_pointer pszField, double d)
-//{
-//
-//   set_d(field_d(pszField), d);
-//
-//}
-//
-//
-//double jni_object::get_d(const_char_pointer pszField)
-//{
-//
-//   return get_d(field_d(pszField));
-//
-//}
 
 
 void jni_object::set_str(jni_field * pfield, const_char_pointer psz)

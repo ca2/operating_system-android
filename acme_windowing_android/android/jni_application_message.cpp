@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "jni_application_message.h"
 #include "jni_local.h"
+#include "jni_object_impl.h"
 #include "acme/platform/application_message.h"
 #include "_internal.h"
 
@@ -14,11 +15,12 @@ jni_application_message::jni_application_message(::platform::application_message
    auto pcontext = get_jni_context();
 
    jclass  jclassApplicationMessage = pcontext->FindClass("platform/platform/application_message");
+
    jmethodID jmethodApplicationMessageConstructor = pcontext->GetMethodID(
       jclassApplicationMessage,
       "<init>", "()V");
 
-   m_pjniinterface = øjni_object(pcontext->NewObject(
+   m_pjniobjectinterface = øjni_object(pcontext->NewObject(
       jclassApplicationMessage,
       jmethodApplicationMessageConstructor,
       (jint) (int) papplicationmessage->m_emessage,
@@ -28,17 +30,14 @@ jni_application_message::jni_application_message(::platform::application_message
    if(papplicationmessage->m_memory.has_data())
    {
 
-      jni_local_byte_array jnibytearrayData(papplicationmessage->m_memory);
-
-      setData(jnibytearrayData);
+      setData(papplicationmessage->m_memory);
 
    }
-
 
 }
 
 
-::pointer < ::platform::application_message >jni_application_message::as_application_message()
+::pointer < ::platform::application_message > jni_application_message::as_application_message()
 {
 
    auto papplicationmessage = ::system()->øcreate_new<::platform::application_message>();
@@ -49,7 +48,7 @@ jni_application_message::jni_application_message(::platform::application_message
    ::memory memory = getData();
 
    papplicationmessage->initialize_application_message(
-      iMessage,
+      (::platform::application_message::enum_message) iMessage,
       llWparam,
       llLparam,
       memory);

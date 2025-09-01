@@ -453,7 +453,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1message(
+JNIEXPORT void JNICALL Java_platform_platform_messaging_1activity_on_1message(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectApplicationMessage)

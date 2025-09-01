@@ -219,34 +219,34 @@ namespace android
         void application_state::after_exchange()
         {
 
-           {
-
-              auto pbind = ::jni_bind::get();
-
-              string strUri = pbind->getUri();
-
-              if (strUri.has_character()) {
-
-                 pbind->setUri("");
-
-                 system()->handle_uri(strUri);
-
-              }
-
-//              if (m_iDocumentFolderResponse < m_iDocumentFolderRequestSent) {
+//           {
 //
-//                 m_iDocumentFolderResponse = pbind->getDocumentFolderResponse();
+//              auto pbind = ::jni_bind::get();
 //
-//                 if (m_iDocumentFolderResponse == m_iDocumentFolderRequestSent)
-//                 {
+//              string strUri = pbind->getUri();
 //
-//                    m_pathDocumentFolder = pbind->getDocumentFolder();
+//              if (strUri.has_character()) {
 //
-//                 }
+//                 pbind->setUri("");
+//
+//                 system()->handle_uri(strUri);
 //
 //              }
-
-           }
+//
+////              if (m_iDocumentFolderResponse < m_iDocumentFolderRequestSent) {
+////
+////                 m_iDocumentFolderResponse = pbind->getDocumentFolderResponse();
+////
+////                 if (m_iDocumentFolderResponse == m_iDocumentFolderRequestSent)
+////                 {
+////
+////                    m_pathDocumentFolder = pbind->getDocumentFolder();
+////
+////                 }
+////
+////              }
+//
+//           }
 
         }
 

@@ -12,6 +12,8 @@ list(APPEND library_source
    android/application_state.cpp
    android/application_state.h
    android/application_state_jni.cpp
+   android/jni_application_message.cpp
+   android/jni_application_message.h
         android/jni_bind.cpp
         android/jni_bind.h
    android/jni_data_block.cpp

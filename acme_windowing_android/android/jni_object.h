@@ -13,6 +13,7 @@ public:
    ::pointer < jni_object_interface > m_pjniobjectinterface;
 
 
+   jni_object();
    jni_object(jni_object_interface * pjniobjectinterface);
    ~jni_object() override;
 

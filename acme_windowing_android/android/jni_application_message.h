@@ -25,7 +25,7 @@ public:
    //long m_lWparam;
    JX(l, Wparam);
    //long m_lLpaam;
-   JX(str, Lparam);
+   JX(l, Lparam);
    //byte[] m_baData;
    JX(ba, Data);
 

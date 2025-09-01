@@ -200,57 +200,57 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
       }
 
 
-      try {
-
-         auto psystem = system();
-
-         if (psystem)
-         {
-
-            if (psystem->m_pacmewindowing)
-            {
-
-               auto pwindowing = system()->windowing();
-
-               auto pdisplay = pwindowing->display();
-
-               if(pdisplay) {
-
-                  auto pmonitor = psystem->øcreate_new<::windowing::monitor>();
-
-                  pmonitor->m_pdisplay = pdisplay;
-
-                  auto pbind = ::jni_bind::get();
-
-                  int w = pbind->getWidth();
-
-                  int h = pbind->getHeight();
-
-                  ::int_rectangle r(0, 0, w, h);
-
-                  pmonitor->
-                     m_rectangle = r;
-                  pmonitor->
-                     m_rectangleFixedWorkspace = r;
-                  pmonitor->
-                     m_rectangleWorkspace = r;
-
-                  pdisplay->m_monitora.set_at_grow(0, pmonitor);
-
-               }
-
-            }
-
-
-         }
-
-      }
-      catch(...)
-      {
-
-
-      }
-
+//      try {
+//
+//         auto psystem = system();
+//
+//         if (psystem)
+//         {
+//
+//            if (psystem->m_pacmewindowing)
+//            {
+//
+//               auto pwindowing = system()->windowing();
+//
+//               auto pdisplay = pwindowing->display();
+//
+//               if(pdisplay) {
+//
+//                  auto pmonitor = psystem->øcreate_new<::windowing::monitor>();
+//
+//                  pmonitor->m_pdisplay = pdisplay;
+//
+//                  auto pbind = ::jni_bind::get();
+//
+//                  int w = pbind->getWidth();
+//
+//                  int h = pbind->getHeight();
+//
+//                  ::int_rectangle r(0, 0, w, h);
+//
+//                  pmonitor->
+//                     m_rectangle = r;
+//                  pmonitor->
+//                     m_rectangleFixedWorkspace = r;
+//                  pmonitor->
+//                     m_rectangleWorkspace = r;
+//
+//                  pdisplay->m_monitora.set_at_grow(0, pmonitor);
+//
+//               }
+//
+//            }
+//
+//
+//         }
+//
+//      }
+//      catch(...)
+//      {
+//
+//
+//      }
+//
    }
    catch (...)
    {
@@ -557,117 +557,117 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobjec
 }
 
 
-extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
-{
-
-
-   try
-   {
-
-      set_jni_context(env);
-
-      //::int_rectangle rectangle;
-
-      //rectangle.left() = 0;
-      //rectangle.top() = 0;
-      //rectangle.right() = ::jni_bind::get()->getWidth();
-      //rectangle.bottom() = ::jni_bind::get()->getHeight();
-
-      auto w = ::jni_bind::get()->getWidth();
-      auto h = ::jni_bind::get()->getHeight();
-
-      //android_on_size(0, 0, w, h);
-
-      //try
-   //   {
-
-      auto pwindowApplicationHost = __get_host_window();
-
-      if (::is_set(pwindowApplicationHost))
-      {
-
-         pwindowApplicationHost->on_size(w, h);
-
-      }
-      //      android_on_text(os_text_keyboard, utf16, length);
-
-
-
-   }
-   catch (...)
-   {
-
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "aura_size_changed exception");
-
-   }
-
-
-   //try
-   //{
-
-      //g_psystem->m_puser->(rectangle);
-
-   //}
-   //catch (...)
-   //{
-
-   //}
-
-   //auto pimpl = puserinteraction->m_pimpl.cast < ::windowing::window >();
-
-   //if (pimpl)
-   //{
-
-   //   pimpl->m_pprodevian->prodevian_update_buffer(true);
-
-   //   //operating_system_driver::get()->m_bRedraw = true;
-
-   //}
-
-   //auto puserinteractionpointeraChild = puserinteraction->m_puserinteractionpointeraChild;
-
-   //if (puserinteractionpointeraChild)
-   //{
-
-   //   for (auto & puserinteractionChild : puserinteractionpointeraChild->interactiona())
-   //   {
-
-   //      try
-   //      {
-
-   //         puserinteractionChild->send_message(e_message_display_change);
-
-   //         //::pointer<::windowing::window>pimpl = puserinteraction->m_pimpl;
-
-   //         //if (pimpl)
-   //         //{
-
-   //         //   pimpl->m_puserthread->do_events();
-
-   //         //   pimpl->m_pprodevian->do_events();
-
-   //         //   pimpl->m_puserthread->do_events();
-
-   //         //   pimpl->m_pprodevian->do_events();
-
-   //         //   pimpl->m_puserthread->do_events();
-
-   //         //   pimpl->m_pprodevian->do_events();
-
-   //         //}
-
-   //      }
-   //      catch (...)
-   //      {
-
-   //      }
-
-   //   }
-
-   //}
-
-}
+//extern "C"
+//JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+//{
+//
+//
+//   try
+//   {
+//
+//      set_jni_context(env);
+//
+//      //::int_rectangle rectangle;
+//
+//      //rectangle.left() = 0;
+//      //rectangle.top() = 0;
+//      //rectangle.right() = ::jni_bind::get()->getWidth();
+//      //rectangle.bottom() = ::jni_bind::get()->getHeight();
+//
+//      auto w = ::jni_bind::get()->getWidth();
+//      auto h = ::jni_bind::get()->getHeight();
+//
+//      //android_on_size(0, 0, w, h);
+//
+//      //try
+//   //   {
+//
+//      auto pwindowApplicationHost = __get_host_window();
+//
+//      if (::is_set(pwindowApplicationHost))
+//      {
+//
+//         pwindowApplicationHost->on_size(w, h);
+//
+//      }
+//      //      android_on_text(os_text_keyboard, utf16, length);
+//
+//
+//
+//   }
+//   catch (...)
+//   {
+//
+//      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "aura_size_changed exception");
+//
+//   }
+//
+//
+//   //try
+//   //{
+//
+//      //g_psystem->m_puser->(rectangle);
+//
+//   //}
+//   //catch (...)
+//   //{
+//
+//   //}
+//
+//   //auto pimpl = puserinteraction->m_pimpl.cast < ::windowing::window >();
+//
+//   //if (pimpl)
+//   //{
+//
+//   //   pimpl->m_pprodevian->prodevian_update_buffer(true);
+//
+//   //   //operating_system_driver::get()->m_bRedraw = true;
+//
+//   //}
+//
+//   //auto puserinteractionpointeraChild = puserinteraction->m_puserinteractionpointeraChild;
+//
+//   //if (puserinteractionpointeraChild)
+//   //{
+//
+//   //   for (auto & puserinteractionChild : puserinteractionpointeraChild->interactiona())
+//   //   {
+//
+//   //      try
+//   //      {
+//
+//   //         puserinteractionChild->send_message(e_message_display_change);
+//
+//   //         //::pointer<::windowing::window>pimpl = puserinteraction->m_pimpl;
+//
+//   //         //if (pimpl)
+//   //         //{
+//
+//   //         //   pimpl->m_puserthread->do_events();
+//
+//   //         //   pimpl->m_pprodevian->do_events();
+//
+//   //         //   pimpl->m_puserthread->do_events();
+//
+//   //         //   pimpl->m_pprodevian->do_events();
+//
+//   //         //   pimpl->m_puserthread->do_events();
+//
+//   //         //   pimpl->m_pprodevian->do_events();
+//
+//   //         //}
+//
+//   //      }
+//   //      catch (...)
+//   //      {
+//
+//   //      }
+//
+//   //   }
+//
+//   //}
+//
+//}
 
 
 
