@@ -22,17 +22,17 @@ namespace android {
 
       //string                  m_strMessage;
       //string                  m_strTitle;
-      //e_message_box           m_emessagebox;
+      //::user::e_message_box           m_emessagebox;
       //string                  m_strDetails;
 
 
-      //void initialize_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::e_message_box & emessagebox, const ::scoped_string & scopedstrDetails) override;
-      //void do_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::e_message_box& emessagebox, const ::scoped_string & scopedstrDetails) override;
+      //void initialize_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::::user::e_message_box & emessagebox, const ::scoped_string & scopedstrDetails) override;
+      //void do_conversation(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrTitle, const ::::user::e_message_box& emessagebox, const ::scoped_string & scopedstrDetails) override;
 
 
       //::string get_conversation_message() override;
       //::string get_conversation_title() override;
-      //::e_message_box get_conversation_flags() override;
+      //::::user::e_message_box get_conversation_flags() override;
 
 
       //void do_asynchronously() override;

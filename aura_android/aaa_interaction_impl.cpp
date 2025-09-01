@@ -310,7 +310,7 @@ namespace aura_android
    //   //
    //   //         m_puserinteraction->m_bMessageWindow = true;
    //   //
-   //   //         //send_message(e_message_create, 0, (LPARAM) &cs);
+   //   //         //send_message(::user::e_message_create, 0, (LPARAM) &cs);
    //   //
    //   //      }
    //   //      else
@@ -355,7 +355,7 @@ namespace aura_android
    //   //      if(bOk)
    //   //      {
    //   //
-   //   //         m_puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
+   //   //         m_puserinteraction->send_message(::user::e_message_create, 0, (lparam) &pusersystem->m_createstruct);
    //   //
    //   //         m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
    //   //
@@ -544,11 +544,11 @@ namespace aura_android
 //
 //      }
 //
-//      output_debug_string("android_interaction_impl send e_message_create");
+//      output_debug_string("android_interaction_impl send ::user::e_message_create");
 //
-//      m_puserinteraction->send_message(e_message_create, 0, (::lparam)&pusersystem->m_createstruct);
+//      m_puserinteraction->send_message(::user::e_message_create, 0, (::lparam)&pusersystem->m_createstruct);
 //
-//      m_puserinteraction->send_message(e_message_size);
+//      m_puserinteraction->send_message(::user::e_message_size);
 //
 //      if(m_oswindow != get_handle())
 //      {
@@ -587,13 +587,13 @@ namespace aura_android
 
    //   m_puserinteraction->ModifyStyle(0, WS_VISIBLE);
 
-   //   m_puserinteraction->send_message(e_message_create);
+   //   m_puserinteraction->send_message(::user::e_message_create);
 
-   //   m_puserinteraction->send_message(e_message_size);
+   //   m_puserinteraction->send_message(::user::e_message_size);
 
-   //   m_puserinteraction->send_message(e_message_move);
+   //   m_puserinteraction->send_message(::user::e_message_move);
 
-   //   m_puserinteraction->send_message(e_message_show_window, 1);
+   //   m_puserinteraction->send_message(::user::e_message_show_window, 1);
 
    //   output_debug_string("android_interaction_impl on _create_window");
 
@@ -673,25 +673,25 @@ namespace aura_android
 
       if(!m_puserinteraction->m_bMessageWindow)
       {
-         MESSAGE_LINK(e_message_paint, pchannel, this,&interaction_impl::_001OnPaint);
-         //MESSAGE_LINK(e_message_print, pchannel, this,&interaction_impl::_001OnPrint);
+         MESSAGE_LINK(::user::e_message_paint, pchannel, this,&interaction_impl::_001OnPaint);
+         //MESSAGE_LINK(::user::e_message_print, pchannel, this,&interaction_impl::_001OnPrint);
       }
       m_puserinteraction->install_message_routing(pchannel);
-      MESSAGE_LINK(e_message_create, pchannel, this,&interaction_impl::on_message_create);
+      MESSAGE_LINK(::user::e_message_create, pchannel, this,&interaction_impl::on_message_create);
       if(!m_puserinteraction->m_bMessageWindow)
       {
 
-         //MESSAGE_LINK(e_message_set_cursor, pchannel, this,&interaction_impl::on_message_set_cursor);
+         //MESSAGE_LINK(::user::e_message_set_cursor, pchannel, this,&interaction_impl::on_message_set_cursor);
 
-         //MESSAGE_LINK(e_message_erase_background, pchannel, this,&interaction_impl::_001OnEraseBkgnd);
+         //MESSAGE_LINK(::user::e_message_erase_background, pchannel, this,&interaction_impl::_001OnEraseBkgnd);
 
-         MESSAGE_LINK(e_message_size, pchannel, this,&interaction_impl::on_message_size);
+         MESSAGE_LINK(::user::e_message_size, pchannel, this,&interaction_impl::on_message_size);
 
-         //MESSAGE_LINK(e_message_window_position_changing, pchannel, this,&interaction_impl::_001OnWindowPosChanging);
-         //MESSAGE_LINK(e_message_window_position_changed, pchannel, this,&interaction_impl::_001OnWindowPosChanged);
+         //MESSAGE_LINK(::user::e_message_window_position_changing, pchannel, this,&interaction_impl::_001OnWindowPosChanging);
+         //MESSAGE_LINK(::user::e_message_window_position_changed, pchannel, this,&interaction_impl::_001OnWindowPosChanged);
          //MESSAGE_LINK(WM_GETMINMAXINFO, pchannel, this,&interaction_impl::_001OnGetMinMaxInfo);
 
-//         MESSAGE_LINK(e_message_show_window, pchannel, this,&interaction_impl::on_message_show_window);
+//         MESSAGE_LINK(::user::e_message_show_window, pchannel, this,&interaction_impl::on_message_show_window);
 
          //MESSAGE_LINK(ca2m_PRODEVIAN_SYNCH, pchannel, this,&interaction_impl::_001OnProdevianSynch);
 
@@ -699,9 +699,9 @@ namespace aura_android
 
       }
 
-      MESSAGE_LINK(e_message_destroy, pchannel, this,&interaction_impl::on_message_destroy);
+      MESSAGE_LINK(::user::e_message_destroy, pchannel, this,&interaction_impl::on_message_destroy);
 
-      //MESSAGE_LINK(e_message_non_client_calc_size, pchannel, this,&interaction_impl::on_message_non_client_calculate_size);
+      //MESSAGE_LINK(::user::e_message_non_client_calc_size, pchannel, this,&interaction_impl::on_message_non_client_calculate_size);
 
    }
 
@@ -943,26 +943,26 @@ namespace aura_android
 
       return;
 
-//      if(pmessage->m_emessage == e_message_size || pmessage->m_emessage == e_message_move)
+//      if(pmessage->m_emessage == ::user::e_message_size || pmessage->m_emessage == ::user::e_message_move)
 //      {
 //
 //         //win_update_graphics();
 //
 //      }
 //
-//      if(pmessage->m_emessage == e_message_key_down ||
-//            pmessage->m_emessage == e_message_key_up ||
-//            pmessage->m_emessage == e_message_char ||
-//            pmessage->m_emessage == e_message_sys_key_down ||
-//            pmessage->m_emessage == e_message_sys_key_up ||
-//            pmessage->m_emessage == e_message_sys_char)
+//      if(pmessage->m_emessage == ::user::e_message_key_down ||
+//            pmessage->m_emessage == ::user::e_message_key_up ||
+//            pmessage->m_emessage == ::user::e_message_char ||
+//            pmessage->m_emessage == ::user::e_message_sys_key_down ||
+//            pmessage->m_emessage == ::user::e_message_sys_key_up ||
+//            pmessage->m_emessage == ::user::e_message_sys_char)
 //      {
 //
 //         auto pkey = pmessage->m_union.m_pkey;
 //
 //         
 //
-//         if(pmessage->m_emessage == e_message_key_down || pmessage->m_emessage == e_message_sys_key_down)
+//         if(pmessage->m_emessage == ::user::e_message_key_down || pmessage->m_emessage == ::user::e_message_sys_key_down)
 //         {
 //            try
 //            {
@@ -972,7 +972,7 @@ namespace aura_android
 //            {
 //            }
 //         }
-//         else if(pmessage->m_emessage == e_message_key_up || pmessage->m_emessage == e_message_sys_key_up)
+//         else if(pmessage->m_emessage == ::user::e_message_key_up || pmessage->m_emessage == ::user::e_message_sys_key_up)
 //         {
 //            try
 //            {
@@ -1007,11 +1007,11 @@ namespace aura_android
 //
 //      
 //
-//      if(pmessage->m_emessage == e_message_timer)
+//      if(pmessage->m_emessage == ::user::e_message_timer)
 //      {
 ////         m_puserinteraction->get_app()->step_timer();
 //      }
-//      else if(pmessage->m_emessage == e_message_left_button_down)
+//      else if(pmessage->m_emessage == ::user::e_message_left_button_down)
 //      {
 //         //::int_rectangle rectangleX;
 //         //::this->rectangle(get_handle(),rectangleX);
@@ -1045,7 +1045,7 @@ namespace aura_android
 //      }*/
 //      pmessage->set_lresult(0);
 //
-//      if(pmessage->m_emessage == e_message_mouse_leave)
+//      if(pmessage->m_emessage == ::user::e_message_mouse_leave)
 //      {
 //
 //         _000OnMouseLeave(pmessage);
@@ -1054,16 +1054,16 @@ namespace aura_android
 //
 //      }
 //
-//      if(pmessage->m_emessage == e_message_left_button_down ||
-//            pmessage->m_emessage == e_message_left_button_up ||
-//            pmessage->m_emessage == e_message_middle_button_down ||
-//            pmessage->m_emessage == e_message_middle_button_up ||
-//            pmessage->m_emessage == e_message_right_button_down ||
-//            pmessage->m_emessage == e_message_right_button_up ||
-//            pmessage->m_emessage == e_message_left_button_double_click ||
-//            pmessage->m_emessage == e_message_mouse_move ||
-//            pmessage->m_emessage == e_message_non_client_mouse_move ||
-//            pmessage->m_emessage == e_message_mouse_wheel)
+//      if(pmessage->m_emessage == ::user::e_message_left_button_down ||
+//            pmessage->m_emessage == ::user::e_message_left_button_up ||
+//            pmessage->m_emessage == ::user::e_message_middle_button_down ||
+//            pmessage->m_emessage == ::user::e_message_middle_button_up ||
+//            pmessage->m_emessage == ::user::e_message_right_button_down ||
+//            pmessage->m_emessage == ::user::e_message_right_button_up ||
+//            pmessage->m_emessage == ::user::e_message_left_button_double_click ||
+//            pmessage->m_emessage == ::user::e_message_mouse_move ||
+//            pmessage->m_emessage == ::user::e_message_non_client_mouse_move ||
+//            pmessage->m_emessage == ::user::e_message_mouse_wheel)
 //      {
 //
 //         message::mouse * pmouse = (::message::mouse *) pmessage->m_union.m_pmouse;
@@ -1101,7 +1101,7 @@ namespace aura_android
 //            pmouse->m_point.y += (int)rectangleWindow.top();
 //         }
 //
-//         if(pmessage->m_emessage == e_message_mouse_move)
+//         if(pmessage->m_emessage == ::user::e_message_mouse_move)
 //         {
 //            // We are at the message handler procedure.
 //            // mouse messages originated from message handler and that are mouse move happenings should end up with the correct cursor.
@@ -1111,7 +1111,7 @@ namespace aura_android
 //            //pmouse->m_ecursor = cursor_default;
 //            //pmouse->m_pcursor = cursor_default;
 //         }
-//         else if(pmessage->m_emessage == e_message_non_client_mouse_move)
+//         else if(pmessage->m_emessage == ::user::e_message_non_client_mouse_move)
 //         {
 //            // We are at the message handler procedure.
 //            // mouse messages originated from message handler and that are mouse move happenings should end up with the correct cursor.
@@ -1153,12 +1153,12 @@ namespace aura_android
 //      //   }
 //      //   return;
 //      //}
-//      if(pmessage->m_emessage == e_message_key_down ||
-//            pmessage->m_emessage == e_message_key_up ||
-//            pmessage->m_emessage == e_message_char ||
-//            pmessage->m_emessage == e_message_sys_key_down ||
-//            pmessage->m_emessage == e_message_sys_key_up ||
-//            pmessage->m_emessage == e_message_sys_char)
+//      if(pmessage->m_emessage == ::user::e_message_key_down ||
+//            pmessage->m_emessage == ::user::e_message_key_up ||
+//            pmessage->m_emessage == ::user::e_message_char ||
+//            pmessage->m_emessage == ::user::e_message_sys_key_down ||
+//            pmessage->m_emessage == ::user::e_message_sys_key_up ||
+//            pmessage->m_emessage == ::user::e_message_sys_char)
 //      {
 //
 //         message::key * pkey = (::message::key *) pmessage->m_union.m_pkey;
@@ -1196,7 +1196,7 @@ namespace aura_android
 //         return;
 //
 //      }
-//      //if(pmessage->m_emessage == e_message_event)
+//      //if(pmessage->m_emessage == ::user::e_message_event)
 //      //{
 //      //   if(m_puserinteraction != nullptr)
 //      //   {

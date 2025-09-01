@@ -11,7 +11,7 @@
 namespace android
 {
 
-//int e_message_box_to_button(const ::e_message_box& emessagebox);
+//int ::user::e_message_box_to_button(const ::::user::e_message_box& emessagebox);
 
 
 //::pointer<application_state>g_pandroiddriver;
@@ -232,7 +232,7 @@ namespace android
 //
 //             pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
 //
-//             pbind->setMessageBoxButton(e_message_box_to_button(pmessagebox->m_emessagebox));
+//             pbind->setMessageBoxButton(::user::e_message_box_to_button(pmessagebox->m_emessagebox));
 //
 //          }
 
@@ -264,15 +264,15 @@ namespace android
 
           }
 
-          if (m_bEditorTextUpdated) {
-
-             m_bEditorTextUpdated = false;
-
-             pbind->setEditorText(m_strEditorText);
-
-             pbind->setEditorTextUpdated(true);
-
-          }
+//          if (m_bEditorTextUpdated) {
+//
+//             m_bEditorTextUpdated = false;
+//
+//             pbind->setEditorText(m_strEditorText);
+//
+//             pbind->setEditorTextUpdated(true);
+//
+//          }
 
           if (m_bEditFocusSet) {
 

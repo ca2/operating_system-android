@@ -557,7 +557,7 @@ namespace windowing_android
 
             pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 
-            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 
          }
 
@@ -566,7 +566,7 @@ namespace windowing_android
          if (puserinteraction)
          {
 
-            puserinteraction->post_message(e_message_kill_focus);
+            puserinteraction->post_message(::user::e_message_kill_focus);
 
          }
 
@@ -575,7 +575,7 @@ namespace windowing_android
 
          //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
 
-         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 
          //}
 
@@ -1795,7 +1795,7 @@ namespace user
 //// void android_l_button_down(float x, float y)
 //// {
 //
-////    android_mouse(e_message_left_button_down, x, y);
+////    android_mouse(::user::e_message_left_button_down, x, y);
 //
 //// }
 //
@@ -1807,7 +1807,7 @@ namespace user
 //// void android_mouse_move(float x, float y)
 //// {
 //
-////    android_mouse(e_message_mouse_move, x, y);
+////    android_mouse(::user::e_message_mouse_move, x, y);
 //
 //// }
 //
@@ -1819,7 +1819,7 @@ namespace user
 // void android_l_button_up(float x, float y)
 // {
 
-//    android_mouse(e_message_left_button_up, x, y);
+//    android_mouse(::user::e_message_left_button_up, x, y);
 
 // }
 

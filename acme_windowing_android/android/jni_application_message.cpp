@@ -9,10 +9,12 @@
 #include "_internal.h"
 
 
-jni_application_message::jni_application_message(::platform::application_message * papplicationmessage)
+jni_application_message::jni_application_message(::application_message * papplicationmessage)
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    jclass  jclassApplicationMessage = pcontext->FindClass("platform/platform/application_message");
 
@@ -23,7 +25,7 @@ jni_application_message::jni_application_message(::platform::application_message
    m_pjniobjectinterface = øjni_object(pcontext->NewObject(
       jclassApplicationMessage,
       jmethodApplicationMessageConstructor,
-      (jint) (int) papplicationmessage->m_emessage,
+      (jint) (int) papplicationmessage->m_eapplicationmessage,
       (jlong) papplicationmessage->m_llWparam,
       (jlong) papplicationmessage->m_llLparam));
 
@@ -37,10 +39,10 @@ jni_application_message::jni_application_message(::platform::application_message
 }
 
 
-::pointer < ::platform::application_message > jni_application_message::as_application_message()
+::pointer < ::application_message > jni_application_message::as_application_message()
 {
 
-   auto papplicationmessage = ::system()->øcreate_new<::platform::application_message>();
+   auto papplicationmessage = ::system()->øcreate_new<::application_message>();
 
    int iMessage = getMessage();
    long long llWparam = getWparam();
@@ -48,7 +50,7 @@ jni_application_message::jni_application_message(::platform::application_message
    ::memory memory = getData();
 
    papplicationmessage->initialize_application_message(
-      (::platform::application_message::enum_message) iMessage,
+      (::enum_application_message) iMessage,
       llWparam,
       llLparam,
       memory);

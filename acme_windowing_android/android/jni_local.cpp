@@ -3,6 +3,7 @@
 //
 #include "framework.h"
 #include "jni_local.h"
+#include "jni_object_impl.h"
 
 
 jni_local::jni_local()
@@ -26,8 +27,10 @@ jni_local::~jni_local()
 
    if (m_jobject)
    {
-      
-      auto pcontext = get_jni_context();
+
+      ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+      auto pcontext = pjnicontext->m_pjnicontext;
 
       pcontext->DeleteLocalRef(m_jobject);
 
@@ -41,7 +44,9 @@ jni_local::~jni_local()
 jni_local_byte_array::jni_local_byte_array(const ::block & block)
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    m_jbytearray = pcontext->NewByteArray(block.size());
 
@@ -53,7 +58,9 @@ jni_local_byte_array::jni_local_byte_array(const ::block & block)
 jni_local_string::jni_local_string(const ::scoped_string & scopedstr)
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    if(*scopedstr.m_end == '\0')
    {
@@ -83,7 +90,9 @@ jni_local_string::jni_local_string(const ::scoped_string & scopedstr)
 
    }
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    const_char_pointer nativeString = pcontext->GetStringUTFChars(m_jstring, 0);
 
@@ -99,7 +108,9 @@ jni_local_string::jni_local_string(const ::scoped_string & scopedstr)
 ::memory jni_local_byte_array::as_memory()
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    jbyte* buffer = pcontext->GetByteArrayElements(m_jbytearray, NULL);
 

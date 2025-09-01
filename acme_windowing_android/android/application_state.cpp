@@ -1,11 +1,11 @@
 #include "framework.h"
-#include "acme/constant/id.h"
-#include "_internal.h"
 #include "android_asset_manager.h"
-//#include "acme/platform/sequencer.h"
+#include "jni_message_sink.h"
+#include "acme/constant/id.h"
 #include "acme/parallelization/manual_reset_happening.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
+#include "_internal.h"
 
 
 namespace android
@@ -15,7 +15,7 @@ namespace android
     {
 
 
-        int e_message_box_to_button(const ::e_message_box &emessagebox);
+        int ::user::e_message_box_to_button(const ::::user::e_message_box &emessagebox);
 
 
         //::pointer<::acme::driver> g_pandroiddriver;
@@ -64,31 +64,31 @@ namespace android
               auto pbind = ::jni_bind::get();
 
 
-              string strOpenUrl;
-
-              {
-
-                 //synchronous_lock lock(synchronization());
-
-                 while (m_straOpenUrl.has_element()) {
-
-                    strOpenUrl = m_straOpenUrl.pick_first();
-
-                    if (strOpenUrl.has_character()) {
-
-                       break;
-
-                    }
-
-                 }
-
-              }
-
-              if (strOpenUrl.has_character()) {
-
-                 pbind->setOpenUrl(strOpenUrl);
-
-              }
+//              string strOpenUrl;
+//
+//              {
+//
+//                 //synchronous_lock lock(synchronization());
+//
+//                 while (m_straOpenUrl.has_element()) {
+//
+//                    strOpenUrl = m_straOpenUrl.pick_first();
+//
+//                    if (strOpenUrl.has_character()) {
+//
+//                       break;
+//
+//                    }
+//
+//                 }
+//
+//              }
+//
+//              if (strOpenUrl.has_character()) {
+//
+//                 pbind->setOpenUrl(strOpenUrl);
+//
+//              }
 
 //              if(m_iDocumentFolderRequestSent < m_iDocumentFolderRequest)
 //              {
@@ -128,7 +128,7 @@ namespace android
                  pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
 
                  pbind->setMessageBoxButton(
-                         e_message_box_to_button(pmessagebox->m_emessagebox));
+                         ::user::e_message_box_to_button(pmessagebox->m_emessagebox));
 
               }
 
@@ -341,6 +341,18 @@ namespace android
 //         return pdatablock;
 //
 //      }
+
+      void application_state::on_main_task_iteration()
+      {
+
+           if(m_pjnimessagesink)
+           {
+
+              m_pjnimessagesink->dispatch_posted_messages();
+
+           }
+
+      }
 
 
     } // namespace acme

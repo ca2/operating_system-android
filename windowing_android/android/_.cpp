@@ -65,18 +65,18 @@ void android_aura_main()
 }
 
 
-int e_message_box_to_button(const ::e_message_box& emessagebox)
+int ::user::e_message_box_to_button(const ::::user::e_message_box& emessagebox)
 {
 
-   auto emessageboxType = emessagebox & e_message_box_type_mask;
+   auto emessageboxType = emessagebox & ::user::e_message_box_type_mask;
 
-//   e_message_box_ok = 0x00000000L,
-  //    e_message_box_ok_cancel = 0x00000001L,
-    //  e_message_box_abort_retry_ignore = 0x00000002L,
-      //e_message_box_yes_no_cancel = 0x00000003L,
-      //e_message_box_yes_no = 0x00000004L,
-      //e_message_box_retry_cancel = 0x00000005L,
-      //e_message_box_cancel_try_continue = 0x00000006L,
+//   ::user::e_message_box_ok = 0x00000000L,
+  //    ::user::e_message_box_ok_cancel = 0x00000001L,
+    //  ::user::e_message_box_abort_retry_ignore = 0x00000002L,
+      //::user::e_message_box_yes_no_cancel = 0x00000003L,
+      //::user::e_message_box_yes_no = 0x00000004L,
+      //::user::e_message_box_retry_cancel = 0x00000005L,
+      //::user::e_message_box_cancel_try_continue = 0x00000006L,
 
    bool bOk = false; // 16
    bool bYes = false; // 32
@@ -90,29 +90,29 @@ int e_message_box_to_button(const ::e_message_box& emessagebox)
 
    switch (emessageboxType)
    {
-   case e_message_box_ok_cancel:
+   case ::user::e_message_box_ok_cancel:
       bOk = true;
       bCancel = true;
       break;
-   case e_message_box_abort_retry_ignore:
+   case ::user::e_message_box_abort_retry_ignore:
       bAbort = true;
       bRetry = true;
       bIgnore = true;
       break;
-   case e_message_box_yes_no_cancel:
+   case ::user::e_message_box_yes_no_cancel:
       bYes = true;
       bNo = true;
       bCancel = true;
       break;
-   case e_message_box_yes_no:
+   case ::user::e_message_box_yes_no:
       bYes = true;
       bNo = true;
       break;
-   case e_message_box_retry_cancel:
+   case ::user::e_message_box_retry_cancel:
       bRetry = true;
       bCancel = true;
       break;
-   case e_message_box_cancel_try_continue:
+   case ::user::e_message_box_cancel_try_continue:
       bCancel = true;
       bTry = true;
       bContinue = true;

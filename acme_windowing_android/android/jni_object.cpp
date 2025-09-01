@@ -1,3 +1,4 @@
+// Created by camilo on 2025-07~08 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "_internal.h"
 
@@ -104,6 +105,19 @@ jni_field * jni_object::field_ba(const_char_pointer psz)
 
 }
 
+jni_method * jni_object::method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature)
+{
+
+   return m_pjniobjectinterface->method(ecall, pszName, pszSignature);
+
+}
+
+void jni_object::call_args(::jni_method * pmethod, va_list args)
+{
+
+   return m_pjniobjectinterface->call_args(pmethod, args);
+
+}
 
 void jni_object::set_str(jni_field * pfield, const_char_pointer psz)
 {

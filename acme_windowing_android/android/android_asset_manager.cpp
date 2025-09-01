@@ -17,7 +17,9 @@ namespace android
 
       ::cast < ::jni_object_impl > pjniobjectimplAssetManager = pjniobjectinterfaceAssetManager;
 
-      m_pmanager = AAssetManager_fromJava(get_jni_context(), pjniobjectimplAssetManager->m_jobject);
+      ::cast < ::jni_context_impl > pcontext = ::jni_context::get();
+
+      m_pmanager = AAssetManager_fromJava(pcontext->m_pjnicontext, pjniobjectimplAssetManager->m_jobject);
 
    }
 

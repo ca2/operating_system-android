@@ -8,6 +8,7 @@
 #include "acme/constant/message.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
+#include "acme/platform/application_state.h"
 #include "acme/platform/node.h"
 #include "acme/windowing/sandbox/host_interaction.h"
 #include "android/jni_bind.h"
@@ -213,6 +214,24 @@ namespace android
 //               m_phostinteraction->post_redraw();
 
             }
+
+
+          bool windowing::task_iteration()
+          {
+             if(!::acme::sandbox_windowing::windowing::task_iteration())
+             {
+
+                return false;
+
+             }
+
+             auto papplicationstate = ::platform::application_state::get();
+
+             papplicationstate->on_main_task_iteration();
+
+             return true;
+
+          }
 
 
             void windowing::windowing_application_main_loop()
@@ -643,7 +662,7 @@ namespace android
 //
 //                     pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 //
-//                     //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//                     //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 //
 //                  }
 //
@@ -651,7 +670,7 @@ namespace android
 //
 //                  if (puserinteraction) {
 //
-//                     puserinteraction->post_message(e_message_kill_focus);
+//                     puserinteraction->post_message(::user::e_message_kill_focus);
 //
 //                  }
 //
@@ -660,7 +679,7 @@ namespace android
 //
 //                  //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
 //
-//                  //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//                  //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 //
 //                  //}
 //
@@ -1886,7 +1905,7 @@ namespace user
 //// void android_l_button_down(float x, float y)
 //// {
 //
-////    android_mouse(e_message_left_button_down, x, y);
+////    android_mouse(::user::e_message_left_button_down, x, y);
 //
 //// }
 //
@@ -1898,7 +1917,7 @@ namespace user
 //// void android_mouse_move(float x, float y)
 //// {
 //
-////    android_mouse(e_message_mouse_move, x, y);
+////    android_mouse(::user::e_message_mouse_move, x, y);
 //
 //// }
 //
@@ -1910,7 +1929,7 @@ namespace user
 // void android_l_button_up(float x, float y)
 // {
 
-//    android_mouse(e_message_left_button_up, x, y);
+//    android_mouse(::user::e_message_left_button_up, x, y);
 
 // }
 

@@ -122,7 +122,7 @@ const_char_pointer this_argv[] =
 //         auto psequencer = system()->nano()->message_box(
 //            "Failed to load library?",
 //            "Failed to Load Library?",
-//            e_message_box_ok);
+//            ::user::e_message_box_ok);
 //
 //         pmessagebox->async();
 //

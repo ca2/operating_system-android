@@ -115,7 +115,29 @@ jni_field * jni_object_interface::field_ba(const_char_pointer psz)
    return nullptr;
 
 }
+void jni_object_interface::call(::jni_method * pmethod, ...)
+{
+   va_list args;
+   va_start(args, pmethod);
+   call_args(pmethod, args);
+   va_end(args);
 
+}
+void jni_object_interface::call_args(::jni_method * pmethod, va_list args)
+{
+
+
+}
+
+jni_method * jni_object_interface::method(jni_method::enum_call ecall, const_char_pointer pszName,
+                                         const_char_pointer pszSignature)
+{
+
+   throw ::interface_only();
+
+   return nullptr;
+
+}
 
 void jni_object_interface::set_str(const_char_pointer pszField, const_char_pointer psz)
 {

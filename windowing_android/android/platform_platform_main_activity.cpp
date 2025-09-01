@@ -17,6 +17,7 @@
 #include "acme_windowing_android/android/jni_application_message.h"
 #include "acme_windowing_android/android/jni_data_block.h"
 #include "acme_windowing_android/android/jni_local.h"
+#include "acme_windowing_android/android/jni_message_sink.h"
 #include "acme_windowing_android/android/jni_object_impl.h"
 
 //#include "acme/user/nano/nano.h"
@@ -295,6 +296,8 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1aura_1message_1
    jlResponse)
 {
 
+   set_jni_context(penv);
+
    auto pmessagebox = ::pointer_transfer((::message_box *) (::iptr) jlMicromessagebox);
 
    pmessagebox->
@@ -390,6 +393,7 @@ extern "C"
 JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(JNIEnv * penv,
                                                                                 jobject obj,
                                                                                 jobject jobjectBind,
+                                                                                jobject jobjectMessageSink,
                                                                                 jobject
                                                                                 jobjectAssetManager)
 {
@@ -424,6 +428,10 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
       papplicationstate->m_bShowKeyboard = false;
 
+      auto pmessagesink = øjni<::jni_message_sink>(jobjectMessageSink);
+
+      papplicationstate->m_pjnimessagesink = pmessagesink;
+
       auto passetmanager = øjni<::android::asset_manager>(jobjectAssetManager);
 
       papplicationstate->m_passetmanager = passetmanager;
@@ -453,7 +461,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_messaging_1activity_on_1message(
+JNIEXPORT void JNICALL Java_platform_platform_message_1sender_on_1message(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectApplicationMessage)
@@ -468,7 +476,11 @@ JNIEXPORT void JNICALL Java_platform_platform_messaging_1activity_on_1message(
 
       auto papplicationmessage = jniapplicationmessage.as_application_message();
 
-      ::system()->m_papplication->on_application_message(papplicationmessage);
+      auto psystem = ::system();
+
+      auto papplication = psystem->m_papplication;
+
+      papplication->on_application_message(papplicationmessage);
 
    }
    catch(...)

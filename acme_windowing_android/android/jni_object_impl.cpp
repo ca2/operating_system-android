@@ -1,3 +1,4 @@
+// Created by camilo on 2025-07~08 <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "jni_object_impl.h"
 #include "jni_local.h"
@@ -24,8 +25,10 @@ jni_object_impl::jni_object_impl(jobject jobject)
 
 jni_object_impl::~jni_object_impl()
 {
-   
-   auto pcontext = get_jni_context();
+
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    pcontext->DeleteGlobalRef(m_jobject);
 
@@ -37,7 +40,9 @@ jni_object_impl::~jni_object_impl()
 void jni_object_impl::set_jni_object(jobject jobject)
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    ::jclass jclass = pcontext->GetObjectClass(jobject);
 
@@ -60,7 +65,9 @@ jni_field * jni_object_impl::_field(const_char_pointer psz, const_char_pointer p
 
    }
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    auto pfieldImpl = øallocate jni_field_impl();
 
@@ -155,10 +162,77 @@ jni_field * jni_object_impl::field_ba(const_char_pointer psz)
 }
 
 
+void jni_object_impl::call_args(::jni_method * pmethod, va_list args)
+{
+
+   ::cast < jni_context_impl > pcontextimpl = jni_context::get();
+
+   ::cast < jni_method_impl > pjnimethod = pmethod;
+
+   if(pmethod->m_ecall == jni_method::e_call_void_method) {
+
+      pcontextimpl->m_pjnicontext->CallVoidMethodV(m_jobject,
+                                                   pjnimethod->m_jmethodid,
+                                                   args);
+
+   } else{
+
+      throw ::exception(error_failed, "bad ecall");
+
+   }
+
+
+}
+
+
+jni_method * jni_object_impl::method(jni_method::enum_call ecall, const_char_pointer pszName,const_char_pointer pszSignature)
+{
+
+   ::string strKey;
+
+   strKey = pszName;
+
+   strKey += "::";
+
+   strKey += pszSignature;
+
+   auto & pmethod = m_mapMethod[strKey];
+
+   if(pmethod)
+   {
+
+      return pmethod;
+
+   }
+
+   auto pmethodNew = øcreate_new<jni_method_impl>();
+
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
+
+   jmethodID jmethodid = pcontext->GetMethodID(
+      m_jclass,
+      pszName,
+      pszSignature);
+
+   pmethodNew->m_jmethodid = jmethodid;
+
+   pmethodNew->m_ecall = ecall;
+
+   pmethod = pmethodNew;
+
+   return pmethod;
+
+}
+
+
 void jni_object_impl::set_str(jni_field * pfield, const_char_pointer psz)
 {
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    jni_local_string jnistring(psz);
 
@@ -174,7 +248,9 @@ string jni_object_impl::get_str(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    jni_local_string jnistring(pcontext->GetObjectField(m_jobject, pfieldImpl->m_jfieldid));
 
@@ -190,7 +266,9 @@ void jni_object_impl::set_b(jni_field * pfield, bool b)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    pcontext->SetBooleanField(m_jobject, pfieldImpl->m_jfieldid, b);
 
@@ -202,7 +280,9 @@ bool jni_object_impl::get_b(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    return pcontext->GetBooleanField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -214,7 +294,9 @@ void jni_object_impl::set_uch(jni_field * pfield, unsigned char b)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    pcontext->SetByteField(m_jobject, pfieldImpl->m_jfieldid, b);
 
@@ -226,7 +308,9 @@ unsigned char jni_object_impl::get_uch(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    return pcontext->GetByteField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -238,7 +322,9 @@ void jni_object_impl::set_ch(jni_field * pfield, char ch)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    pcontext->SetCharField(m_jobject, pfieldImpl->m_jfieldid, ch);
 
@@ -250,7 +336,9 @@ char jni_object_impl::get_ch(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    return pcontext->GetCharField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -262,7 +350,10 @@ void jni_object_impl::set_sh(jni_field * pfield, short sh)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetShortField(m_jobject, pfieldImpl->m_jfieldid, sh);
 
@@ -274,7 +365,10 @@ short jni_object_impl::get_sh(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    return pcontext->GetShortField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -286,7 +380,10 @@ void jni_object_impl::set_i(jni_field * pfield, int i)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetIntField(m_jobject, pfieldImpl->m_jfieldid, i);
 
@@ -298,7 +395,10 @@ int jni_object_impl::get_i(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    return pcontext->GetIntField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -310,7 +410,10 @@ void jni_object_impl::set_l(jni_field * pfield, long long hi)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetLongField(m_jobject, pfieldImpl->m_jfieldid, hi);
 
@@ -322,7 +425,10 @@ long long jni_object_impl::get_l(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    return pcontext->GetLongField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -334,7 +440,10 @@ void jni_object_impl::set_f(jni_field * pfield, float f)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetFloatField(m_jobject, pfieldImpl->m_jfieldid, f);
 
@@ -346,7 +455,10 @@ float jni_object_impl::get_f(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    return pcontext->GetFloatField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -358,7 +470,10 @@ void jni_object_impl::set_d(jni_field * pfield, double d)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetDoubleField(m_jobject, pfieldImpl->m_jfieldid, d);
 
@@ -370,7 +485,10 @@ double jni_object_impl::get_d(jni_field * pfield)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    return pcontext->GetDoubleField(m_jobject, pfieldImpl->m_jfieldid);
 
@@ -384,7 +502,10 @@ void jni_object_impl::set_ba(jni_field * pfield, const ::block & block)
 
    jni_local_byte_array ba(block);
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    pcontext->SetObjectField(m_jobject, pfieldImpl->m_jfieldid, ba.m_jobject);
 
@@ -396,7 +517,10 @@ void jni_object_impl::set_ba(jni_field * pfield, const ::block & block)
 
    ::cast < ::jni_field_impl > pfieldImpl = pfield;
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+   
+   auto pcontext = pjnicontext->m_pjnicontext;
+
 
    jni_local_byte_array jnibytea(pcontext->GetObjectField(m_jobject, pfieldImpl->m_jfieldid));
 

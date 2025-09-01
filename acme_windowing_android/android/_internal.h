@@ -83,7 +83,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID string as_string(const jstring & jstring);
 
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void set_jni_context(JNIEnv* penv);
-CLASS_DECL_ACME_WINDOWING_ANDROID JNIEnv* get_jni_context();
+//CLASS_DECL_ACME_WINDOWING_ANDROID JNIEnv* get_jni_context();
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void android_exchange();
 

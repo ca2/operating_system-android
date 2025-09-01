@@ -77,8 +77,8 @@ public:
    JX(i, EditorSelectionStart);
    //int m_iEditorSelectionEnd;
    JX(i, EditorSelectionEnd);
-   //boolean m_bEditorTextUpdated;
-   JX(b, EditorTextUpdated);
+   ////boolean m_bEditorTextUpdated;
+   //JX(b, EditorTextUpdated);
    //int m_strEditorText;
    JX(str, EditorText);
    //boolean m_bInputMethodManagerUpdateSelection;

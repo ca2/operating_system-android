@@ -45,7 +45,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle
 
    }
 
-    auto pmessagebox = øallocate ::message_box(strMessage, strTitle, e_message_box_ok | e_message_box_icon_exclamation, strDetails);
+    auto pmessagebox = øallocate ::message_box(strMessage, strTitle, ::user::e_message_box_ok | ::user::e_message_box_icon_exclamation, strDetails);
 
    pmessagebox->initialize(pparticle);
 
@@ -89,7 +89,9 @@ void jni_bind::post_media_store_operation(::data::block * pdatablock)
    jclass      jclassBind = pjni->m_jclass;
 
 
-   auto pcontext = get_jni_context();
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   auto pcontext = pjnicontext->m_pjnicontext;
 
    // 1. Get the class of the object
    //jclass cls = p->GetObjectClass(javaObj);
@@ -161,7 +163,10 @@ jboolean jbWrite = pdatablock->m_bWrite ? 1 : 0;
 //   jclass      jclassBind = pjni->m_jclass;
 //
 //
-//   auto pcontext = get_jni_context();
+//   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+//
+//   auto pcontext = pjnicontext->m_pjnicontext;
+//
 //
 //   // 1. Get the class of the object
 //   //jclass cls = p->GetObjectClass(javaObj);

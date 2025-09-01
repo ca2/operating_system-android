@@ -139,7 +139,7 @@ void _android_size(float xDummy, float yDummy, float cx, float cy)
 
 //    output_debug_string("here???555");
 
-//    android_key(e_message_key_down, keyCode, iUni);
+//    android_key(::user::e_message_key_down, keyCode, iUni);
 
 // }
 
@@ -209,7 +209,7 @@ void android_on_size(float xScreen, float yScreen, float pikachu, float yBitmap)
 // {
 //    output_debug_string("here???444");
 
-//    android_key(e_message_key_up, keyCode, iUni);
+//    android_key(::user::e_message_key_up, keyCode, iUni);
 
 // }
 
@@ -336,7 +336,7 @@ void android_on_text(enum_os_text etext, const wchar_t* pwch, size_t len)
 //
 //      ::pointer<::message::key>pkey = øallocate ::message::key();
 //
-//      pkey->m_emessage = e_message_key_down;
+//      pkey->m_emessage = ::user::e_message_key_down;
 //
 //      pkey->m_ekey = ::user::e_key_refer_to_text_member;
 //
@@ -453,7 +453,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//CLASS_DECL_AURA void _android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::e_message_box & emessagebox)
+//CLASS_DECL_AURA void _android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::::user::e_message_box & emessagebox)
 //{
 //
 //   while (::operating_system_driver::get()->m_iMessageBoxResult > 0)
@@ -473,25 +473,25 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //
 //   switch (emessagebox & 7)
 //   {
-//   case e_message_box_ok:
+//   case ::user::e_message_box_ok:
 //      iButton = 1;
 //      break;
-//   case e_message_box_ok_cancel:
+//   case ::user::e_message_box_ok_cancel:
 //      iButton = 1 | 2;
 //      break;
-//   case e_message_box_abort_retry_ignore:
+//   case ::user::e_message_box_abort_retry_ignore:
 //      iButton = 2 | 4 | 8;
 //      break;
-//   case e_message_box_yes_no_cancel:
+//   case ::user::e_message_box_yes_no_cancel:
 //      iButton = 2 | 4 | 8;
 //      break;
-//   case e_message_box_yes_no:
+//   case ::user::e_message_box_yes_no:
 //      iButton = 4 | 8;
 //      break;
-//   case e_message_box_retry_cancel:
+//   case ::user::e_message_box_retry_cancel:
 //      iButton = 2 | 4;
 //      break;
-//   case e_message_box_cancel_try_continue:
+//   case ::user::e_message_box_cancel_try_continue:
 //      iButton = 1 | 2 | 4;
 //      break;
 //
@@ -563,14 +563,14 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//CLASS_DECL_AURA void android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::e_message_box & emessageboxParam, const ::future & processParam)
+//CLASS_DECL_AURA void android_os_message_box(const ::scoped_string & scopedstrText, const ::string & lpCaption, const ::::user::e_message_box & emessageboxParam, const ::future & processParam)
 //{
 //
 //   string strText(pText);
 //
 //   string strCaption(lpCaption);
 //
-//   e_message_box emessagebox(emessageboxParam);
+//   ::user::e_message_box emessagebox(emessageboxParam);
 //
 //   ::future process = processParam;
 //

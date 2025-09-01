@@ -25,6 +25,8 @@ list(APPEND library_source
         android/jni_context.cpp
    android/jni_local.cpp
    android/jni_local.h
+   android/jni_message_sink.cpp
+   android/jni_message_sink.h
    android/jni_object_impl.cpp
    android/jni_object_impl.h
         android/jni_object.cpp

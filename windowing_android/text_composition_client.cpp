@@ -28,8 +28,8 @@ namespace windowing_android
 
       m_puserinteraction = puserinteraction;
 
-      //MESSAGE_LINK(e_message_set_focus, pchannel, this, &::text_composition_client::on_message_set_focus);
-      //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &::text_composition_client::on_message_kill_focus);
+      //MESSAGE_LINK(::user::e_message_set_focus, pchannel, this, &::text_composition_client::on_message_set_focus);
+      //MESSAGE_LINK(::user::e_message_kill_focus, pchannel, this, &::text_composition_client::on_message_kill_focus);
       //MESSAGE_LINK(WM_IME_SETCONTEXT, pchannel, this, &::text_composition_client::_001OnIme);
       //MESSAGE_LINK(WM_IME_STARTCOMPOSITION, pchannel, this, &::text_composition_client::_001OnIme);
       //MESSAGE_LINK(WM_IME_COMPOSITION, pchannel, this, &::text_composition_client::_001OnIme);
@@ -40,10 +40,10 @@ namespace windowing_android
       //MESSAGE_LINK(WM_IME_SELECT, pchannel, this, &::text_composition_client::_001OnIme);
       //MESSAGE_LINK(WM_INPUTLANGCHANGE, pchannel, this, &::text_composition_client::_001OnIme);
 
-      //MESSAGE_LINK(e_message_char, pchannel, this, &::text_composition_client::_011OnChar);
+      //MESSAGE_LINK(::user::e_message_char, pchannel, this, &::text_composition_client::_011OnChar);
       //MESSAGE_LINK(WM_IME_CHAR, pchannel, this, &::text_composition_client::_011OnChar);
 
-      //MESSAGE_LINK(e_message_key_down, pchannel, this, &::text_composition_client::on_message_key_down);
+      //MESSAGE_LINK(::user::e_message_key_down, pchannel, this, &::text_composition_client::on_message_key_down);
 
 
    }
@@ -71,7 +71,7 @@ namespace windowing_android
 
    //   ::pointer<::user::message>pusermessage(pmessage);
 
-   //   if (pmessage->m_emessage == e_message_char)
+   //   if (pmessage->m_emessage == ::user::e_message_char)
    //   {
 
    //      auto psession = m_puserinteraction->get_session();

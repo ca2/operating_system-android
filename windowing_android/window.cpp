@@ -367,7 +367,7 @@ namespace windowing_android
 //
 //      }
 //
-//      //SendMessage(m_hwnd, e_message_after_create, 0, 0);
+//      //SendMessage(m_hwnd, ::user::e_message_after_create, 0, 0);
 //
 //      if (puserinteraction->m_bEdgeGestureDisableTouchWhenFullscreen)
 //      {
@@ -891,9 +891,9 @@ namespace windowing_android
       if (bOk)
       {
 
-         //auto lresult = puserinteraction->send_message(e_message_create, 0, (lparam) &pusersystem->m_createstruct);
+         //auto lresult = puserinteraction->send_message(::user::e_message_create, 0, (lparam) &pusersystem->m_createstruct);
 
-         auto lresult = puserinteraction->send_message(e_message_create, 0, 0);
+         auto lresult = puserinteraction->send_message(::user::e_message_create, 0, 0);
 
          if (lresult == -1)
          {
@@ -2156,7 +2156,7 @@ namespace windowing_android
    //   if (pmessagequeue == nullptr)
    //   {
 
-   //      if (message.m_emessage == e_message_quit)
+   //      if (message.m_emessage == ::user::e_message_quit)
    //      {
 
    //         return false;
@@ -2176,23 +2176,23 @@ namespace windowing_android
 
    //   synchronous_lock ml(pmessagequeue->synchronization());
 
-   //   if (message.m_emessage == e_message_quit)
+   //   if (message.m_emessage == ::user::e_message_quit)
    //   {
 
-   //      output_debug_string("e_message_quit thread");
+   //      output_debug_string("::user::e_message_quit thread");
 
    //   }
 
-   //   if (message.m_emessage == e_message_left_button_down)
+   //   if (message.m_emessage == ::user::e_message_left_button_down)
    //   {
 
-   //      output_debug_string("post_ui_message::e_message_left_button_down\n");
+   //      output_debug_string("post_ui_message::::user::e_message_left_button_down\n");
 
    //   }
-   //   else if (message.m_emessage == e_message_left_button_up)
+   //   else if (message.m_emessage == ::user::e_message_left_button_up)
    //   {
 
-   //      output_debug_string("post_ui_message::e_message_left_button_up\n");
+   //      output_debug_string("post_ui_message::::user::e_message_left_button_up\n");
 
    //   }
 
@@ -3077,11 +3077,11 @@ namespace windowing_android
    //      if (pinteraction.is_set())
    //      {
 
-   //         pinteraction->send_message(e_message_destroy, 0, 0);
+   //         pinteraction->send_message(::user::e_message_destroy, 0, 0);
 
    //         //mq_remove_window_from_all_queues();
 
-   //         pinteraction->send_message(e_message_non_client_destroy, 0, 0);
+   //         pinteraction->send_message(::user::e_message_non_client_destroy, 0, 0);
 
    //      }
    //      else
@@ -3823,7 +3823,7 @@ namespace windowing_android
    //      if (puserinteraction)
    //      {
 
-   //         puserinteraction->post_message(e_message_set_focus);
+   //         puserinteraction->post_message(::user::e_message_set_focus);
 
    //      }
 

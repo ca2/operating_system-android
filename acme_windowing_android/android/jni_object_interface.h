@@ -1,10 +1,26 @@
+// Created by camilo on 2025-07~08 <3ThomasBorregaardSorensen!!
 #pragma once
 
+class jni_context;
 
 class CLASS_DECL_ACME jni_field :
    virtual public ::particle
 {
 public:
+
+};
+
+class CLASS_DECL_ACME jni_method :
+   virtual public ::particle
+{
+public:
+
+   enum enum_call {
+e_call_none,
+e_call_void_method,
+   };
+
+   enum_call m_ecall = e_call_none;
 
 };
 
@@ -30,6 +46,12 @@ public:
    virtual jni_field * field_d(const_char_pointer psz);
 
    virtual jni_field * field_ba(const_char_pointer psz);
+
+virtual jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature);
+
+
+   void call(::jni_method * pmethod, ...);
+   virtual void call_args(::jni_method * pmethod, va_list args);
 
 
    virtual void set_str(jni_field * jfieldid, const_char_pointer psz);

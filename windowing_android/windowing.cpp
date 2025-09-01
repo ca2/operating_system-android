@@ -563,7 +563,7 @@ namespace windowing_android
 //
 //            pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pelementGainingFocusIfAny;
 //
-//            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//            //pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 //
 //         }
 //
@@ -572,7 +572,7 @@ namespace windowing_android
 //         if (puserinteraction)
 //         {
 //
-//            puserinteraction->post_message(e_message_kill_focus);
+//            puserinteraction->post_message(::user::e_message_kill_focus);
 //
 //         }
 //
@@ -581,7 +581,7 @@ namespace windowing_android
 //
 //         //   pwindow->m_puserinteractionKeyboardGainingFocusIfAny = pwindowGainingFocusIfAny;
 //
-//         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(e_message_kill_focus);
+//         //   pwindow->aaa_m_pacmeuserinteractionKeyboardFocus->post_message(::user::e_message_kill_focus);
 //
 //         //}
 //

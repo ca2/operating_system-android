@@ -320,7 +320,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env,
       try
       {
 
-         android_key(e_message_key_down, keyCode, iUni);
+         android_key(::user::e_message_key_down, keyCode, iUni);
 
       }
       catch (...)
@@ -351,7 +351,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, j
 
       set_jni_context(env);
 
-      android_key(e_message_key_up, keyCode, iUni);
+      android_key(::user::e_message_key_up, keyCode, iUni);
 
    }
    catch (...)
@@ -636,7 +636,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobjec
 //   //      try
 //   //      {
 //
-//   //         puserinteractionChild->send_message(e_message_display_change);
+//   //         puserinteractionChild->send_message(::user::e_message_display_change);
 //
 //   //         //::pointer<::windowing::window>pimpl = puserinteraction->m_pimpl;
 //

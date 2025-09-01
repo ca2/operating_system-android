@@ -42,4 +42,5 @@ namespace android
 } // namespace aura
 
 
+class jni_message_sink;
 

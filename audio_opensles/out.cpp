@@ -52,8 +52,8 @@ namespace multimedia
 
          ::wave::out::install_message_routing(pchannel);
 
-         //IGUI_WIN_MSG_LINK(e_message_ready, pchannel, this, &out::OnReady);
-         //IGUI_WIN_MSG_LINK(e_message_free, pchannel, this, &out::OnFree);
+         //IGUI_WIN_MSG_LINK(::user::e_message_ready, pchannel, this, &out::OnReady);
+         //IGUI_WIN_MSG_LINK(::user::e_message_free, pchannel, this, &out::OnFree);
 
       }
 

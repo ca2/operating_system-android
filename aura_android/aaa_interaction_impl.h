@@ -301,7 +301,7 @@
 //
 //      //virtual bool FlashWindow(bool bInvert);
 //
-//      //virtual int message_box(const ::string & lpszText, const ::string & lpszCaption = nullptr,unsigned int nType = e_message_box_ok) override;
+//      //virtual int message_box(const ::string & lpszText, const ::string & lpszCaption = nullptr,unsigned int nType = ::user::e_message_box_ok) override;
 //
 ////
 ////#if(WINVER >= 0x0500)

@@ -18,7 +18,7 @@ public:
    using jni_object::jni_object;
 
 
-   jni_application_message(::platform::application_message * papplicationmessage);
+   jni_application_message(::application_message * papplicationmessage);
 
    //int m_iMessage;
    JX(i, Message);
@@ -30,8 +30,7 @@ public:
    JX(ba, Data);
 
 
-   ::pointer < ::platform::application_message > as_application_message();
-
+   ::pointer < ::application_message > as_application_message();
 
 };
 

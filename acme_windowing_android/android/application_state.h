@@ -83,6 +83,8 @@ namespace android
 //
 //        ::pointer <asset> m_passetResourceFolder;
 
+::pointer <::jni_message_sink> m_pjnimessagesink;
+
 
           void on_initialize_particle() override;
 
@@ -138,6 +140,9 @@ namespace android
 
 
           void post_media_store_operation(::data::block * pdatablock) override;
+
+          void on_main_task_iteration() override;
+
 
 
         };

@@ -1,9 +1,21 @@
+// Created by camilo on 2025-07~08 <3ThomasBorregaardSorensen!!
 #pragma once
 
 
 #include "jni_object_interface.h"
 #include "_internal.h"
+#include "jni_context.h"
 
+
+class CLASS_DECL_ACME jni_context_impl :
+   virtual public ::jni_context
+{
+public:
+
+   JNIEnv * m_pjnicontext = nullptr;
+
+
+};
 
 class CLASS_DECL_ACME jni_field_impl :
    virtual public ::jni_field
@@ -14,6 +26,14 @@ public:
 
 };
 
+class CLASS_DECL_ACME jni_method_impl :
+   virtual public ::jni_method
+{
+public:
+
+   jmethodID m_jmethodid;
+
+};
 
 class CLASS_DECL_ACME jni_object_impl :
    virtual public jni_object_interface
@@ -25,6 +45,7 @@ public:
    jclass      m_jclass;
 
    ::string_map_base < ::pointer < jni_field > > m_mapField;
+   ::string_map_base < ::pointer < jni_method > > m_mapMethod;
 
 
    jni_object_impl();
@@ -48,6 +69,9 @@ public:
    jni_field * field_d(const_char_pointer psz) override;
    jni_field * field_ba(const_char_pointer psz) override;
 
+   jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature) override;
+
+   void call_args(::jni_method * pmethod, va_list args) override;
 
    void set_str(jni_field * jfieldid, const_char_pointer psz) override;
 

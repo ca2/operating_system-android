@@ -31,7 +31,7 @@ public:
 
    jni_field * field_ba(const_char_pointer psz) override;
 
-
+   jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature) override;
    void set_str(jni_field * jfieldid, const_char_pointer psz) override;
 
    string get_str(jni_field * jfieldid) override;
@@ -71,6 +71,8 @@ public:
    void set_ba(jni_field * jfieldid, const ::block & block) override;
 
    memory get_ba(jni_field * jfieldid) override;
+
+   void call_args(::jni_method * pmethod, va_list args) override;
 
 
 //   void set_str(const_char_pointer pszField, const_char_pointer psz) override;
