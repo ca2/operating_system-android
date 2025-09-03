@@ -13,7 +13,7 @@ void input_connection_synchronize_selection(::user::element* pelementFocus);
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_BeginBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -67,7 +67,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_EndBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -130,7 +130,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_CommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -205,7 +205,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurroundingText(JNIEnv * env, jobject  obj, jint beforeLength, jint afterLength, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_DeleteSurroundingText(JNIEnv * env, jobject  obj, jint beforeLength, jint afterLength, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -259,7 +259,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurround
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_SetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -336,7 +336,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_SetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -390,7 +390,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRe
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_SetSelection(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -445,7 +445,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(J
 
 // This behaves like calling setComposingText(text, newCursorPosition) then finishComposingText().
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_FinishComposingText(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_FinishComposingText(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;

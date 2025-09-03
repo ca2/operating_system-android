@@ -1,11 +1,13 @@
 #include "framework.h"
-#include "application_state.h"
+#include "application_sink.h"
 #include "acme/constant/id.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
 //#include "acme/platform/sequencer.h"
 #include "acme/parallelization/synchronous_lock.h"
+#include "acme/platform/application.h"
 #include "acme/platform/system.h"
+#include "aura/windowing/window.h"
 
 
 namespace android
@@ -14,10 +16,10 @@ namespace android
 //int ::user::e_message_box_to_button(const ::user::e_message_box& emessagebox);
 
 
-//::pointer<application_state>g_pandroiddriver;
+//::pointer<application_sink>g_pandroiddriver;
 
 
-    application_state::application_state()
+    application_sink::application_sink()
     {
 
        //defer_create_synchronization();
@@ -29,7 +31,7 @@ namespace android
     }
 
 
-    application_state::~application_state()
+    application_sink::~application_sink()
     {
 
        if (::is_set(m_passetmanager)) {
@@ -41,7 +43,7 @@ namespace android
     }
 
 
-    void application_state::set_input_method_manager_selection(character_count iSelBeg,
+    void application_sink::set_input_method_manager_selection(character_count iSelBeg,
                                                                      character_count iSelEnd,
                                                                      character_count iCandidateBeg,
                                                                      character_count iCandidateEnd)
@@ -64,7 +66,7 @@ namespace android
     }
 
 
-    void application_state::synchronize_input_method_manager_with_selection_end()
+    void application_sink::synchronize_input_method_manager_with_selection_end()
     {
 
        m_iInputMethodManagerCandidateStart = m_iInputMethodManagerSelectionEnd;
@@ -74,7 +76,7 @@ namespace android
     }
 
 
-    void application_state::set_editor_selection(character_count iStart, character_count iEnd)
+    void application_sink::set_editor_selection(character_count iStart, character_count iEnd)
     {
 
        m_iEditorSelectionStart = iStart;
@@ -86,7 +88,7 @@ namespace android
     }
 
 
-    void application_state::set_editor_text(const ::scoped_string & scopedstrText)
+    void application_sink::set_editor_text(const ::scoped_string & scopedstrText)
     {
 
        m_strEditorText = scopedstrText;
@@ -96,7 +98,7 @@ namespace android
     }
 
 
-    void application_state::show_software_keyboard()
+    void application_sink::show_software_keyboard()
     {
 
        m_bShowKeyboard = true;
@@ -106,7 +108,7 @@ namespace android
     }
 
 
-    void application_state::hide_software_keyboard()
+    void application_sink::hide_software_keyboard()
     {
 
        m_bHideKeyboard = true;
@@ -118,7 +120,7 @@ namespace android
 
 //
 //
-//    void application_state::queue_message_box(::message_box *psequencer)
+//    void application_sink::queue_message_box(::message_box *psequencer)
 //    {
 //
 //       //synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
@@ -128,7 +130,7 @@ namespace android
 //    }
 //
 //
-//    ::pointer<::message_box> application_state::pick_message_box()
+//    ::pointer<::message_box> application_sink::pick_message_box()
 //    {
 //
 //       synchronous_lock synchronouslock(m_pparticleMutexMessageBoxSequencer);
@@ -149,7 +151,7 @@ namespace android
 //    }
 
 
-//    void application_state::open_url(const ::scoped_string & scopedstrOpenUrl)
+//    void application_sink::open_url(const ::scoped_string & scopedstrOpenUrl)
 //    {
 //
 //       synchronous_lock lock(synchronization());
@@ -159,7 +161,7 @@ namespace android
 //    }
 
 
-    void application_state::exchange1()
+    void application_sink::exchange1()
     {
 
        {
@@ -176,7 +178,7 @@ namespace android
 
           }
 
-          ::android::acme::application_state::exchange1();
+          ::android::acme::application_sink::exchange1();
 
 //          string strOpenUrl;
 //
@@ -359,22 +361,22 @@ namespace android
        }
 
 
-       {
-
-          //synchronous_lock sl(m_pparticleMutexListFileEnumerate);
-          synchronous_lock sl(this->synchronization());
-
-          if (m_bSetApplicationReady) {
-
-             m_bSetApplicationReady = false;
-
-             auto pbind = ::jni_bind::get();
-
-             pbind->setApplicationReady(true);
-
-          }
-
-       }
+//       {
+//
+//          //synchronous_lock sl(m_pparticleMutexListFileEnumerate);
+//          synchronous_lock sl(this->synchronization());
+//
+//          if (m_bSetApplicationReady) {
+//
+//             m_bSetApplicationReady = false;
+//
+//             auto pbind = ::jni_bind::get();
+//
+//             pbind->setApplicationReady(true);
+//
+//          }
+//
+//       }
 
 //       {
 //
@@ -395,7 +397,7 @@ namespace android
     }
 
 //
-//    void application_state::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
+//    void application_sink::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
 //    {
 //
 //       synchronous_lock lock(m_pparticleMutexListFileEnumerate);
@@ -403,6 +405,124 @@ namespace android
 //       m_straListFileEnumerate.add(strListFileEnumerate);
 //
 //    }
+
+//extern "C"
+//JNIEXPORT void JNICALL Java_platform_platform_user_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+void application_sink::context_on_size_changed()
+{
+
+
+   try
+   {
+
+  //    set_jni_context(env);
+
+      //::int_rectangle rectangle;
+
+      //rectangle.left() = 0;
+      //rectangle.top() = 0;
+      //rectangle.right() = ::jni_bind::get()->getWidth();
+      //rectangle.bottom() = ::jni_bind::get()->getHeight();
+
+      auto w = ::jni_bind::get()->getWidth();
+      auto h = ::jni_bind::get()->getHeight();
+
+      //android_on_size(0, 0, w, h);
+
+      //try
+   //   {
+
+      auto pwindowApplicationHost = ::system()->get_main_host_window();
+
+      if (::is_set(pwindowApplicationHost))
+      {
+
+         ::system()->m_papplication->post([this, pwindowApplicationHost, w, h]()
+                                          {
+
+                                             pwindowApplicationHost->on_size(w, h);
+
+                                          });
+
+      }
+      //      android_on_text(os_text_keyboard, utf16, length);
+
+
+
+   }
+   catch (...)
+   {
+
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "aura_size_changed exception");
+
+   }
+
+
+   //try
+   //{
+
+      //g_psystem->m_puser->(rectangle);
+
+   //}
+   //catch (...)
+   //{
+
+   //}
+
+   //auto pimpl = puserinteraction->m_pimpl.cast < ::windowing::window >();
+
+   //if (pimpl)
+   //{
+
+   //   pimpl->m_pprodevian->prodevian_update_buffer(true);
+
+   //   //operating_system_driver::get()->m_bRedraw = true;
+
+   //}
+
+   //auto puserinteractionpointeraChild = puserinteraction->m_puserinteractionpointeraChild;
+
+   //if (puserinteractionpointeraChild)
+   //{
+
+   //   for (auto & puserinteractionChild : puserinteractionpointeraChild->interactiona())
+   //   {
+
+   //      try
+   //      {
+
+   //         puserinteractionChild->send_message(::user::e_message_display_change);
+
+   //         //::pointer<::windowing::window>pimpl = puserinteraction->m_pimpl;
+
+   //         //if (pimpl)
+   //         //{
+
+   //         //   pimpl->m_puserthread->do_events();
+
+   //         //   pimpl->m_pprodevian->do_events();
+
+   //         //   pimpl->m_puserthread->do_events();
+
+   //         //   pimpl->m_pprodevian->do_events();
+
+   //         //   pimpl->m_puserthread->do_events();
+
+   //         //   pimpl->m_pprodevian->do_events();
+
+   //         //}
+
+   //      }
+   //      catch (...)
+   //      {
+
+   //      }
+
+   //   }
+
+   //}
+
+}
 
 
 } // namespace android

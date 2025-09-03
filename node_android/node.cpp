@@ -5,7 +5,7 @@
 #include "acme/windowing/windowing.h"
 #include "apex/platform/session.h"
 #include "acme_windowing_android/android/_internal.h"
-#include "windowing_android/android/application_state.h"
+#include "windowing_android/android/application_sink.h"
 #include "acme_windowing_android/android/message_box.h"
 #include "acme_windowing_android/windowing.h"
 
@@ -31,9 +31,11 @@ namespace node_android
    void node::on_initialize_particle()
    {
 
-      ::cast < ::android::acme::application_state > papplicationstate = ::platform::application_state::get();
+      ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
 
-      system()->m_pathCacheDirectory = papplicationstate->m_pathCacheDirectory;
+      papplicationsink->initialize(this);
+
+      system()->m_pathCacheDirectory = papplicationsink->m_pathCacheDirectory;
 
       ::aura_android::node::on_initialize_particle();
 
@@ -67,7 +69,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_music_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("music");
+         ::platform::application_sink::get()->list_file_enumerate("music");
 
       }
 
@@ -75,7 +77,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_image_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("image");
+         ::platform::application_sink::get()->list_file_enumerate("image");
 
       }
 
@@ -83,7 +85,7 @@ namespace node_android
       if (has_application_capability(e_application_capability_video_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("video");
+         ::platform::application_sink::get()->list_file_enumerate("video");
 
       }
 
@@ -99,7 +101,7 @@ namespace node_android
 
       pacmewindowing->on_start_system();
 
-      auto pdriver = ::platform::application_state::get();
+      auto pdriver = ::platform::application_sink::get();
 
       ::int_rectangle rectangle;
 
@@ -180,14 +182,14 @@ namespace node_android
                                  const ::scoped_string & scopedstrTarget)
    {
 
-      ::platform::application_state::get()->open_url(scopedstrUrl);
+      ::platform::application_sink::get()->open_url(scopedstrUrl);
 
    }
 
 
 //   ::file::path node::synchronously_request_document_folder()
 //   {
-//      return ::platform::application_state::get()->synchronously_getDocumentFolder(1_min);
+//      return ::platform::application_sink::get()->synchronously_getDocumentFolder(1_min);
 //
 //   }
 
@@ -195,7 +197,7 @@ namespace node_android
    void node::post_media_store_operation(::data::block * pdatablock)
    {
 
-      return ::platform::application_state::get()->post_media_store_operation(pdatablock);
+      return ::platform::application_sink::get()->post_media_store_operation(pdatablock);
 
    }
 

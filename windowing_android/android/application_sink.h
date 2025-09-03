@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "acme_windowing_android/android/application_state.h"
+#include "acme_windowing_android/android/application_sink.h"
 #include "aura/windowing/text_editor_interface.h"
 
 
@@ -12,8 +12,8 @@ class asset;
 namespace android
 {
 
-    class application_state :
-virtual public ::android::acme::application_state,
+    class application_sink :
+virtual public ::android::acme::application_sink,
             virtual public ::windowing::text_editor_interface
     {
     public:
@@ -82,9 +82,9 @@ virtual public ::android::acme::application_state,
         //::string_array_base                                  m_straListFileEnumerate;
 
 
-        application_state();
+        application_sink();
 
-        ~application_state() override;
+        ~application_sink() override;
 
         // windowing::text_editor_interface
         void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd,
@@ -120,6 +120,8 @@ virtual public ::android::acme::application_state,
 
 
 //   void list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate) override;
+
+        void context_on_size_changed() override;
 
 
     };

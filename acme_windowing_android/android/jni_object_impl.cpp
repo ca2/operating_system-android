@@ -9,7 +9,7 @@ jni_object_impl::jni_object_impl()
 
    m_jobject = nullptr;
 
-   m_jclass = nullptr;
+   //m_jclass = nullptr;
 
 }
 
@@ -32,10 +32,23 @@ jni_object_impl::~jni_object_impl()
 
    pcontext->DeleteGlobalRef(m_jobject);
 
-   pcontext->DeleteGlobalRef(m_jclass);
+   //pcontext->DeleteGlobalRef(m_jclass);
 
 }
 
+
+::jni_class  *jni_object_impl:: class_interface()
+{
+
+   return m_pjniclass;
+
+}
+
+
+void * jni_class_impl::p_jclass()
+{
+   return (void*) m_jclass;
+}
 
 void jni_object_impl::set_jni_object(jobject jobject)
 {
@@ -43,188 +56,213 @@ void jni_object_impl::set_jni_object(jobject jobject)
    ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
 
    auto pcontext = pjnicontext->m_pjnicontext;
+//
+//   ::jclass jclass = pcontext->GetObjectClass(jobject);
+//
+//   ::string strClassName = ::jni_get_class_name(jclass);
+//
+//   m_pjniclass = ::jni_get_class(strClassName);
 
-   ::jclass jclass = pcontext->GetObjectClass(jobject);
-
-   m_jclass = (::jclass) pcontext->NewGlobalRef(jclass);
+//   if(!m_pjniclass)
+//   {
+//
+//      m_pjniclass = class_interface();
+//
+//   }
 
    m_jobject = pcontext->NewGlobalRef(jobject);
 
 }
-
-
-jni_field * jni_object_impl::_field(const_char_pointer psz, const_char_pointer pszType)
+void jni_object_impl::set_class_interface(::jni_class * pjniclass)
 {
 
-   auto & pfield = m_mapField[psz];
-
-   if(pfield)
-   {
-
-      return pfield;
-
-   }
-
-   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
-
-   auto pcontext = pjnicontext->m_pjnicontext;
-
-   auto pfieldImpl = øallocate jni_field_impl();
-
-   pfieldImpl->m_jfieldid = pcontext->GetFieldID(m_jclass, psz, pszType);
-
-   pfield = pfieldImpl;
-
-   return pfield;
+   m_pjniclass = pjniclass;
 
 }
 
+//jni_field * jni_object_impl::_field(const_char_pointer psz, const_char_pointer pszType)
+//{
+//
+//   auto & pfield = m_mapField[psz];
+//
+//   if(pfield)
+//   {
+//
+//      return pfield;
+//
+//   }
+//
+//   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+//
+//   auto pcontext = pjnicontext->m_pjnicontext;
+//
+//   auto pfieldImpl = øallocate jni_field_impl();
+//
+//   pfieldImpl->m_jfieldid = pcontext->GetFieldID(m_jclass, psz, pszType);
+//
+//   pfield = pfieldImpl;
+//
+//   return pfield;
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_str(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "Ljava/lang/String;");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_b(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "Z");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_uch(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "B");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_ch(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "C");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_sh(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "S");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_i(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "I");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_l(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "J");
+//
+//}
+//
+//
+//
+//jni_field * jni_object_impl::field_f(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "F");
+//
+//}
+//
+//
+//jni_field * jni_object_impl::field_d(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "D");
+//
+//}
+//
+//
+//
+//jni_field * jni_object_impl::field_ba(const_char_pointer psz)
+//{
+//
+//   return _field(psz, "[B");
+//
+//}
 
-jni_field * jni_object_impl::field_str(const_char_pointer psz)
+
+::pointer < ::jni_object_interface >  jni_object_impl::call_args(::jni_method * pmethod, va_list args)
 {
 
-   return _field(psz, "Ljava/lang/String;");
-
-}
-
-
-jni_field * jni_object_impl::field_b(const_char_pointer psz)
-{
-
-   return _field(psz, "Z");
-
-}
-
-
-jni_field * jni_object_impl::field_uch(const_char_pointer psz)
-{
-
-   return _field(psz, "B");
-
-}
-
-
-jni_field * jni_object_impl::field_ch(const_char_pointer psz)
-{
-
-   return _field(psz, "C");
-
-}
-
-
-jni_field * jni_object_impl::field_sh(const_char_pointer psz)
-{
-
-   return _field(psz, "S");
-
-}
-
-
-jni_field * jni_object_impl::field_i(const_char_pointer psz)
-{
-
-   return _field(psz, "I");
-
-}
-
-
-jni_field * jni_object_impl::field_l(const_char_pointer psz)
-{
-
-   return _field(psz, "J");
-
-}
-
-
-
-jni_field * jni_object_impl::field_f(const_char_pointer psz)
-{
-
-   return _field(psz, "F");
-
-}
-
-
-jni_field * jni_object_impl::field_d(const_char_pointer psz)
-{
-
-   return _field(psz, "D");
-
-}
-
-
-
-jni_field * jni_object_impl::field_ba(const_char_pointer psz)
-{
-
-   return _field(psz, "[B");
-
-}
-
-
-void jni_object_impl::call_args(::jni_method * pmethod, va_list args)
-{
-
-   ::cast < jni_context_impl > pcontextimpl = jni_context::get();
+   ::cast < jni_context_impl > pcontextimpl = ::jni_context::get();
 
    ::cast < jni_method_impl > pjnimethod = pmethod;
 
-   if(pmethod->m_ecall == jni_method::e_call_void_method) {
+   if(pmethod->m_ejnicall == ::e_jni_call_void_method)
+   {
 
       pcontextimpl->m_pjnicontext->CallVoidMethodV(m_jobject,
                                                    pjnimethod->m_jmethodid,
                                                    args);
 
-   } else{
+      return {};
+
+   }
+   else
+   {
 
       throw ::exception(error_failed, "bad ecall");
 
    }
 
-
 }
 
 
-jni_method * jni_object_impl::method(jni_method::enum_call ecall, const_char_pointer pszName,const_char_pointer pszSignature)
+void * jni_object_impl::p_jobject()
 {
 
-   ::string strKey;
-
-   strKey = pszName;
-
-   strKey += "::";
-
-   strKey += pszSignature;
-
-   auto & pmethod = m_mapMethod[strKey];
-
-   if(pmethod)
-   {
-
-      return pmethod;
-
-   }
-
-   auto pmethodNew = øcreate_new<jni_method_impl>();
-
-   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
-
-   auto pcontext = pjnicontext->m_pjnicontext;
-
-   jmethodID jmethodid = pcontext->GetMethodID(
-      m_jclass,
-      pszName,
-      pszSignature);
-
-   pmethodNew->m_jmethodid = jmethodid;
-
-   pmethodNew->m_ecall = ecall;
-
-   pmethod = pmethodNew;
-
-   return pmethod;
+   return m_jobject;
 
 }
+
+//jni_method * jni_object_impl::method(jni_method::enum_call ecall, const_char_pointer pszName,const_char_pointer pszSignature)
+//{
+//
+//   ::string strKey;
+//
+//   strKey = pszName;
+//
+//   strKey += "::";
+//
+//   strKey += pszSignature;
+//
+//   auto & pmethod = m_mapMethod[strKey];
+//
+//   if(pmethod)
+//   {
+//
+//      return pmethod;
+//
+//   }
+//
+//   auto pmethodNew = øcreate_new<jni_method_impl>();
+//
+//   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+//
+//   auto pcontext = pjnicontext->m_pjnicontext;
+//
+//   jmethodID jmethodid = pcontext->GetMethodID(
+//      m_jclass,
+//      pszName,
+//      pszSignature);
+//
+//   pmethodNew->m_jmethodid = jmethodid;
+//
+//   pmethodNew->m_ecall = ecall;
+//
+//   pmethod = pmethodNew;
+//
+//   return pmethod;
+//
+//}
 
 
 void jni_object_impl::set_str(jni_field * pfield, const_char_pointer psz)

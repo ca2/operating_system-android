@@ -2,8 +2,8 @@
 
 
 //#include "acme/prototype/geometry2d/_geometry2d.h"
-#include "acme/platform/application_state.h"
-
+#include "acme/platform/application_sink.h"
+class jni_class;
 
 namespace android
 {
@@ -19,8 +19,8 @@ namespace android
         class asset;
 
 
-        class application_state :
-            virtual public ::platform::application_state
+        class application_sink :
+            virtual public ::platform::application_sink
         {
         public:
 
@@ -83,10 +83,8 @@ namespace android
 //
 //        ::pointer <asset> m_passetResourceFolder;
 
-::pointer <::jni_message_sink> m_pjnimessagesink;
 
 
-          void on_initialize_particle() override;
 
             ::particle_pointer m_pparticleMutexMessageBoxSequencer;
             ::pointer_array<::message_box> m_messageboxa;
@@ -94,13 +92,17 @@ namespace android
 
             ::particle_pointer m_pparticleMutexListFileEnumerate;
             ::string_array_base m_straListFileEnumerate;
+::string_map < ::pointer < jni_class > > m_mapClass;
+
+            application_sink();
+
+            ~application_sink() override;
 
 
-            application_state();
+          void on_initialize_particle() override;
 
-            ~application_state() override;
 
-            // windowing::text_editor_interface
+          // windowing::text_editor_interface
             //void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd,
             //                                      character_count iCandidateBeg,
             //                                    character_count iCandidateEnd) override;
@@ -122,7 +124,7 @@ namespace android
 //        static void set(operating_system_driver *pdriver);
 
 
-            //virtual void queue_message_box(::message_box *psequencer);
+            //void post_message_box(::message_box *pmessagebox) override;
 
             //virtual ::pointer<::message_box> pick_message_box();
 
@@ -143,7 +145,7 @@ namespace android
 
           void on_main_task_iteration() override;
 
-
+         virtual void get_jni_class_impl(jni_class * pjniclassInterface, const_char_pointer pszClassName);
 
         };
 

@@ -3,12 +3,12 @@ project(windowing_android CXX)
 
 
 list(APPEND library_source
-        android/application_state.cpp
-        android/application_state.h
+        android/application_sink.cpp
+        android/application_sink.h
         android/platform_platform_enumerate.cpp
-        android/platform_platform_impact.cpp
-        android/platform_platform_InputConnection.cpp
-        android/platform_platform_main_activity.cpp
+        android/platform_platform_platform_application.cpp
+   android/platform_platform_user_impact.cpp
+   android/platform_platform_user_InputConnection.cpp
         _.cpp
         _.h
         _windowing_android.h

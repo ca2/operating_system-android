@@ -11,9 +11,10 @@ namespace android
 {
 
 
-   asset_manager::asset_manager(jni_object_interface * pjniobjectinterfaceAssetManager):
-      jni_object(pjniobjectinterfaceAssetManager)
+   asset_manager::asset_manager(jni_object_interface * pjniobjectinterfaceAssetManager)
    {
+
+      initialize_jni_object(pjniobjectinterfaceAssetManager);
 
       ::cast < ::jni_object_impl > pjniobjectimplAssetManager = pjniobjectinterfaceAssetManager;
 

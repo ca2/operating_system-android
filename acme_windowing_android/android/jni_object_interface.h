@@ -2,6 +2,14 @@
 #pragma once
 
 class jni_context;
+class jni_class;
+
+
+enum enum_jni_call : int {
+   e_jni_call_none,
+   e_jni_call__init__,
+   e_jni_call_void_method,
+};
 
 class CLASS_DECL_ACME jni_field :
    virtual public ::particle
@@ -15,16 +23,13 @@ class CLASS_DECL_ACME jni_method :
 {
 public:
 
-   enum enum_call {
-e_call_none,
-e_call_void_method,
-   };
 
-   enum_call m_ecall = e_call_none;
+
+   enum_jni_call m_ejnicall = e_jni_call_none;
 
 };
 
-
+class jni_object;
 class CLASS_DECL_ACME jni_object_interface :
    virtual public ::particle
 {
@@ -34,25 +39,16 @@ public:
    jni_object_interface();
    ~jni_object_interface();
 
+   virtual ::jni_class  * class_interface();
+   virtual void set_class_interface(::jni_class * pjniclass);
 
-   virtual jni_field * field_str(const_char_pointer psz);
-   virtual jni_field * field_b(const_char_pointer psz);
-   virtual jni_field * field_uch(const_char_pointer psz);
-   virtual jni_field * field_ch(const_char_pointer psz);
-   virtual jni_field * field_sh(const_char_pointer psz);
-   virtual jni_field * field_i(const_char_pointer psz);
-   virtual jni_field * field_l(const_char_pointer psz);
-   virtual jni_field * field_f(const_char_pointer psz);
-   virtual jni_field * field_d(const_char_pointer psz);
+   virtual void initialize_jni_object();
+   virtual void initialize_jni_object(jni_object_interface * pjniobjectinterface);
 
-   virtual jni_field * field_ba(const_char_pointer psz);
+   ::pointer < ::jni_object_interface > call(::jni_method * pmethod, ...);
+   virtual ::pointer < ::jni_object_interface > call_args(::jni_method * pmethod, va_list args);
 
-virtual jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature);
-
-
-   void call(::jni_method * pmethod, ...);
-   virtual void call_args(::jni_method * pmethod, va_list args);
-
+   virtual void * p_jobject();
 
    virtual void set_str(jni_field * jfieldid, const_char_pointer psz);
 
@@ -135,13 +131,5 @@ virtual jni_method * method(jni_method::enum_call ecall, const_char_pointer pszN
    virtual memory get_ba(const_char_pointer pszField);
 
 };
-
-
-#define JX(type, name) \
-::pointer < jni_field > m_pfield##name = field_##type("m_" # type # name); \
-template < typename T > \
-inline void set##name(T && t) { set_##type(m_pfield##name, t); } \
-inline auto get##name() { return get_##type(m_pfield##name); }
-
 
 

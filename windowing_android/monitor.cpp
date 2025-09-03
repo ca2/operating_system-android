@@ -2,7 +2,7 @@
 // created by Camilo 2021-01-31 05:16 BRT <3CamiloSasukeThomasBorregaardSoerensen
 #include "framework.h"
 #include "monitor.h"
-#include "acme/platform/application_state.h"
+#include "acme/platform/application_sink.h"
 
 
 namespace windowing_android
@@ -84,8 +84,8 @@ namespace windowing_android
 
       m_rectangle.left() = 0;
       m_rectangle.top() = 0;
-      m_rectangle.right() = ::platform::application_state::get()->m_iWidth;
-      m_rectangle.bottom() = ::platform::application_state::get()->m_iHeight;
+      m_rectangle.right() = ::platform::application_sink::get()->m_iWidth;
+      m_rectangle.bottom() = ::platform::application_sink::get()->m_iHeight;
 
       return ::success;
 

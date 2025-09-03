@@ -255,7 +255,7 @@ namespace android
                 //virtual void on_touch_down(int x, int y);
                 //virtual void on_touch_drag(int x, int y);
                 //virtual void on_touch_up(int x, int y);
-
+                ::int_rectangle get_window_rectangle() override;
 
             };
 

@@ -9,7 +9,7 @@ void android_aura_main()
 
    auto pbind = jni_bind::get();
 
-   auto papplicationstate = ::platform::application_state::get();
+   auto papplicationsink = ::platform::application_sink::get();
 
    //string strApplicationIdentifier = pdriver->m_strApplicationIdentifier;
 
@@ -69,7 +69,7 @@ namespace android
     namespace acme
     {
 
-        int ::user::e_message_box_to_button(const ::user::e_message_box &emessagebox)
+        int e_message_box_to_button(const ::user::e_message_box &emessagebox)
         {
 
            auto emessageboxType = emessagebox & ::user::e_message_box_type_mask;
@@ -194,11 +194,11 @@ namespace android
 void android_exchange()
 {
 
-   auto papplicationstate = ::platform::application_state::get();
+   auto papplicationsink = ::platform::application_sink::get();
 
-   papplicationstate->exchange1();
+   papplicationsink->exchange1();
 
-   papplicationstate->after_exchange();
+   papplicationsink->after_exchange();
 
 }
 

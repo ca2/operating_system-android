@@ -16,7 +16,7 @@
 
 
 #include "jni_bind.h"
-#include "application_state.h"
+#include "application_sink.h"
 
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::scoped_string & scopedstrMoreDetails);
@@ -88,4 +88,20 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void set_jni_context(JNIEnv* penv);
 CLASS_DECL_ACME_WINDOWING_ANDROID void android_exchange();
 
 
+// Initialize class cache with a reference ClassLoader
+void class_cache_init(JNIEnv *env, jobject loader);
 
+// Cleanup all cached classes
+void class_cache_destroy(JNIEnv *env);
+
+// Get cached class by name (dot notation, eg. "platform.platform.message.Message")
+jclass class_cache_get(JNIEnv *env, const char *className);
+
+
+
+
+
+
+
+CLASS_DECL_ACME_WINDOWING_ANDROID jstring _jni_get_class_name(JNIEnv *env, jclass cls);
+CLASS_DECL_ACME_WINDOWING_ANDROID  ::string jni_get_class_name(jclass jclass);

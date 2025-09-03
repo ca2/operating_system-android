@@ -9,13 +9,15 @@ list(APPEND library_source
         android/android_asset.cpp
         android/android_asset_manager.cpp
         android/android_asset_manager.h
-   android/application_state.cpp
-   android/application_state.h
-   android/application_state_jni.cpp
-   android/jni_application_message.cpp
-   android/jni_application_message.h
+   android/application_sink.cpp
+   android/application_sink.h
+   #android/application_sink_jni.cpp
+   android/jni_message.cpp
+   android/jni_message.h
         android/jni_bind.cpp
         android/jni_bind.h
+   android/jni_class.cpp
+   android/jni_class.h
    android/jni_data_block.cpp
    android/jni_data_block.h
         #android/com_ace_enumerate.cpp

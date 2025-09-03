@@ -8,7 +8,8 @@
 #include "acme/constant/user_message.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
-#include "acme/platform/application_state.h"
+#include "acme/platform/application_sink.h"
+#include "acme/platform/message_sink.h"
 #include "acme/platform/node.h"
 #include "acme/windowing/sandbox/host_interaction.h"
 #include "android/jni_bind.h"
@@ -225,9 +226,9 @@ namespace android
 
              }
 
-             auto papplicationstate = ::platform::application_state::get();
+             auto papplicationsink = ::platform::application_sink::get();
 
-             papplicationstate->on_main_task_iteration();
+             papplicationsink->on_main_task_iteration();
 
              return true;
 
@@ -255,6 +256,12 @@ namespace android
                 on_activate();
 
                 //system()->defer_post_initial_request();
+
+                auto papplicationsink = ::platform::application_sink::get();
+
+                papplicationsink->m_pmessagesink->post_simple_message(::e_message_application_about_to_start);
+
+                papplicationsink->context_on_size_changed();
 
                 on_start_windowing_application();
 

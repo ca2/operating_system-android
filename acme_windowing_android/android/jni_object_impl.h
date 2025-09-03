@@ -5,6 +5,7 @@
 #include "jni_object_interface.h"
 #include "_internal.h"
 #include "jni_context.h"
+#include "jni_class.h"
 
 
 class CLASS_DECL_ACME jni_context_impl :
@@ -35,6 +36,19 @@ public:
 
 };
 
+class CLASS_DECL_ACME jni_class_impl :
+   virtual public jni_class
+{
+public:
+
+jclass      m_jclass;
+
+
+void * p_jclass() override;
+
+};
+
+
 class CLASS_DECL_ACME jni_object_impl :
    virtual public jni_object_interface
 {
@@ -42,36 +56,34 @@ public:
 
 
    jobject     m_jobject;
-   jclass      m_jclass;
-
-   ::string_map_base < ::pointer < jni_field > > m_mapField;
-   ::string_map_base < ::pointer < jni_method > > m_mapMethod;
-
+::pointer < jni_class > m_pjniclass;
 
    jni_object_impl();
    jni_object_impl(jobject jobject);
    ~jni_object_impl() override;
 
-
+   void set_class_interface(::jni_class * pjniclass) override;
    void set_jni_object(jobject jobject);
+    ::jni_class  * class_interface() override;
 
+   //virtual jni_field * _field(const_char_pointer psz, const_char_pointer pszType);
 
-   virtual jni_field * _field(const_char_pointer psz, const_char_pointer pszType);
+//   jni_field * field_str(const_char_pointer psz) override;
+//   jni_field * field_b(const_char_pointer psz) override;
+//   jni_field * field_uch(const_char_pointer psz) override;
+//   jni_field * field_ch(const_char_pointer psz) override;
+//   jni_field * field_sh(const_char_pointer psz) override;
+//   jni_field * field_i(const_char_pointer psz) override;
+//   jni_field * field_l(const_char_pointer psz) override;
+//   jni_field * field_f(const_char_pointer psz) override;
+//   jni_field * field_d(const_char_pointer psz) override;
+//   jni_field * field_ba(const_char_pointer psz) override;
+//
+//   jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature) override;
 
-   jni_field * field_str(const_char_pointer psz) override;
-   jni_field * field_b(const_char_pointer psz) override;
-   jni_field * field_uch(const_char_pointer psz) override;
-   jni_field * field_ch(const_char_pointer psz) override;
-   jni_field * field_sh(const_char_pointer psz) override;
-   jni_field * field_i(const_char_pointer psz) override;
-   jni_field * field_l(const_char_pointer psz) override;
-   jni_field * field_f(const_char_pointer psz) override;
-   jni_field * field_d(const_char_pointer psz) override;
-   jni_field * field_ba(const_char_pointer psz) override;
+   ::pointer < ::jni_object_interface > call_args(::jni_method * pmethod, va_list args) override;
 
-   jni_method * method(jni_method::enum_call ecall, const_char_pointer pszName, const_char_pointer pszSignature) override;
-
-   void call_args(::jni_method * pmethod, va_list args) override;
+   void * p_jobject() override;
 
    void set_str(jni_field * jfieldid, const_char_pointer psz) override;
 
@@ -168,6 +180,14 @@ inline ::pointer < TYPE > øjni(jobject jobject)
 
    auto pjniobjectinterface = øjni_object(jobject);
 
-   return øallocate TYPE(pjniobjectinterface);
+   auto p = øallocate TYPE(pjniobjectinterface);
+
+   p->initialize_jni_object();
+
+   auto papplicationsink = ::platform::application_sink::get();
+
+   p->initialize(papplicationsink);
+
+   return p;
 
 }

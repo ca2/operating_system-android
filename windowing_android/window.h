@@ -19,7 +19,7 @@ virtual public ::android::acme::windowing::window,
 
 
 
-      bool m_bSetApplicationReady = true;
+      //bool m_bSetApplicationReady = true;
       //bool                                         m_bMessageOnlyWindow;
       //::pointer<::windowing::window>    m_pimpl;
       //::pointer<::message_queue>             m_pmessagequeue;

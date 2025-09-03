@@ -3,7 +3,7 @@
 #include "node.h"
 #include "acme/platform/session.h"
 #include "aura/windowing/windowing.h"
-#include "windowing_android/android/application_state.h"
+#include "windowing_android/android/application_sink.h"
 #include "acme_windowing_android/android/_internal.h"
 //
 //
@@ -30,11 +30,7 @@ namespace operating_ambient_android
    void node::on_initialize_particle()
    {
 
-      ::cast < ::android::acme::application_state > papplicationstate = ::platform::application_state::get();
-
-      system()->m_pathCacheDirectory = papplicationstate->m_pathCacheDirectory;
-
-      ::aura_android::node::on_initialize_particle();
+      ::node_android::node::on_initialize_particle();
 
    }
 
@@ -64,14 +60,14 @@ namespace operating_ambient_android
       ::node_android::node::on_start_system();
 
 //
-//      auto papplicationstate = ::platform::application_state::get();
+//      auto papplicationsink = ::platform::application_sink::get();
 //
 //      ::int_rectangle rectangle;
 //
 //      rectangle.left() = 0;
 //      rectangle.top() = 0;
-//      rectangle.right() = papplicationstate->m_iWidth;
-//      rectangle.bottom() = papplicationstate->m_iHeight;
+//      rectangle.right() = papplicationsink->m_iWidth;
+//      rectangle.bottom() = papplicationsink->m_iHeight;
 //
 //      //auto psession = session();
 //
@@ -120,7 +116,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_music_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("music");
+         ::platform::application_sink::get()->list_file_enumerate("music");
 
       }
 
@@ -128,7 +124,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_image_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("image");
+         ::platform::application_sink::get()->list_file_enumerate("image");
 
       }
 
@@ -136,7 +132,7 @@ namespace operating_ambient_android
       if (has_application_capability(e_application_capability_video_library))
       {
 
-         ::platform::application_state::get()->list_file_enumerate("video");
+         ::platform::application_sink::get()->list_file_enumerate("video");
 
       }
 

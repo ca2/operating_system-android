@@ -16,133 +16,181 @@ jni_object_interface::~jni_object_interface()
 
 }
 
-
-jni_field * jni_object_interface::field_str(const_char_pointer psz)
+::jni_class  * jni_object_interface::class_interface()
 {
 
-   throw ::interface_only();
-
-   return nullptr;
+return nullptr;
 
 }
 
 
-jni_field * jni_object_interface::field_b(const_char_pointer psz)
+void jni_object_interface::initialize_jni_object()
 {
 
-   throw ::interface_only();
-
-   return nullptr;
 
 }
 
 
-jni_field * jni_object_interface::field_uch(const_char_pointer psz)
+void jni_object_interface::initialize_jni_object(jni_object_interface * pjniobjectinterface)
 {
 
-   throw ::interface_only();
-
-   return nullptr;
 
 }
 
 
-jni_field * jni_object_interface::field_ch(const_char_pointer psz)
+void jni_object_interface::set_class_interface(::jni_class * pjniclass)
 {
 
-   throw ::interface_only();
-
-   return nullptr;
 
 }
 
+//jni_field * jni_object_interface::field_str(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_b(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_uch(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_ch(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_sh(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_i(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_l(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_f(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_d(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
+//
+//jni_field * jni_object_interface::field_ba(const_char_pointer psz)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
 
-jni_field * jni_object_interface::field_sh(const_char_pointer psz)
+
+::pointer < ::jni_object_interface > jni_object_interface::call(::jni_method * pmethod, ...)
 {
 
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-
-
-jni_field * jni_object_interface::field_i(const_char_pointer psz)
-{
-
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-
-
-jni_field * jni_object_interface::field_l(const_char_pointer psz)
-{
-
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-
-
-jni_field * jni_object_interface::field_f(const_char_pointer psz)
-{
-
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-
-
-jni_field * jni_object_interface::field_d(const_char_pointer psz)
-{
-
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-
-
-jni_field * jni_object_interface::field_ba(const_char_pointer psz)
-{
-
-   throw ::interface_only();
-
-   return nullptr;
-
-}
-void jni_object_interface::call(::jni_method * pmethod, ...)
-{
    va_list args;
+
    va_start(args, pmethod);
-   call_args(pmethod, args);
+
+   auto p = call_args(pmethod, args);
+
    va_end(args);
 
-}
-void jni_object_interface::call_args(::jni_method * pmethod, va_list args)
-{
-
+   return p;
 
 }
 
-jni_method * jni_object_interface::method(jni_method::enum_call ecall, const_char_pointer pszName,
-                                         const_char_pointer pszSignature)
+
+::pointer < ::jni_object_interface > jni_object_interface::call_args(::jni_method * pmethod, va_list args)
 {
 
-   throw ::interface_only();
+   return {};
+
+}
+
+
+void * jni_object_interface::p_jobject()
+{
 
    return nullptr;
 
 }
+
+
+//jni_method * jni_object_interface::method(::enum_jni_call ejnicall, const_char_pointer pszName,
+//                                         const_char_pointer pszSignature)
+//{
+//
+//   throw ::interface_only();
+//
+//   return nullptr;
+//
+//}
+//
 
 void jni_object_interface::set_str(const_char_pointer pszField, const_char_pointer psz)
 {
 
-   set_str(field_str(pszField), psz);
+   set_str(class_interface()->field_str(pszField), psz);
 
 }
 
@@ -150,7 +198,7 @@ void jni_object_interface::set_str(const_char_pointer pszField, const_char_point
 string jni_object_interface::get_str(const_char_pointer pszField)
 {
 
-   return get_str(field_str(pszField));
+   return get_str(class_interface()->field_str(pszField));
 
 }
 
@@ -158,7 +206,7 @@ string jni_object_interface::get_str(const_char_pointer pszField)
 void jni_object_interface::set_b(const_char_pointer pszField, bool b)
 {
 
-   set_b(field_b(pszField), b);
+   set_b(class_interface()->field_b(pszField), b);
 
 }
 
@@ -166,7 +214,7 @@ void jni_object_interface::set_b(const_char_pointer pszField, bool b)
 bool jni_object_interface::get_b(const_char_pointer pszField)
 {
 
-   return get_b(field_b(pszField));
+   return get_b(class_interface()->field_b(pszField));
 
 }
 
@@ -175,7 +223,7 @@ bool jni_object_interface::get_b(const_char_pointer pszField)
 void jni_object_interface::set_uch(const_char_pointer pszField, unsigned char b)
 {
 
-   set_uch(field_uch(pszField), b);
+   set_uch(class_interface()->field_uch(pszField), b);
 
 }
 
@@ -183,7 +231,7 @@ void jni_object_interface::set_uch(const_char_pointer pszField, unsigned char b)
 unsigned char jni_object_interface::get_uch(const_char_pointer pszField)
 {
 
-   return get_uch(field_uch(pszField));
+   return get_uch(class_interface()->field_uch(pszField));
 
 }
 
@@ -192,7 +240,7 @@ unsigned char jni_object_interface::get_uch(const_char_pointer pszField)
 void jni_object_interface::set_ch(const_char_pointer pszField, char ch)
 {
 
-   set_ch(field_ch(pszField), ch);
+   set_ch(class_interface()->field_ch(pszField), ch);
 
 }
 
@@ -200,7 +248,7 @@ void jni_object_interface::set_ch(const_char_pointer pszField, char ch)
 char jni_object_interface::get_ch(const_char_pointer pszField)
 {
 
-   return get_ch(field_ch(pszField));
+   return get_ch(class_interface()->field_ch(pszField));
 
 }
 
@@ -209,7 +257,7 @@ char jni_object_interface::get_ch(const_char_pointer pszField)
 void jni_object_interface::set_sh(const_char_pointer pszField, short sh)
 {
 
-   set_sh(field_sh(pszField), sh);
+   set_sh(class_interface()->field_sh(pszField), sh);
 
 }
 
@@ -217,7 +265,7 @@ void jni_object_interface::set_sh(const_char_pointer pszField, short sh)
 short jni_object_interface::get_sh(const_char_pointer pszField)
 {
 
-   return get_sh(field_sh(pszField));
+   return get_sh(class_interface()->field_sh(pszField));
 
 }
 
@@ -226,7 +274,7 @@ short jni_object_interface::get_sh(const_char_pointer pszField)
 void jni_object_interface::set_i(const_char_pointer pszField, int i)
 {
 
-   set_i(field_i(pszField), i);
+   set_i(class_interface()->field_i(pszField), i);
 
 }
 
@@ -235,7 +283,7 @@ void jni_object_interface::set_i(const_char_pointer pszField, int i)
 int jni_object_interface::get_i(const_char_pointer pszField)
 {
 
-   return get_i(field_i(pszField));
+   return get_i(class_interface()->field_i(pszField));
 
 }
 
@@ -244,7 +292,7 @@ int jni_object_interface::get_i(const_char_pointer pszField)
 void jni_object_interface::set_l(const_char_pointer pszField, long long hi)
 {
 
-   set_l(field_l(pszField), hi);
+   set_l(class_interface()->field_l(pszField), hi);
 
 }
 
@@ -253,7 +301,7 @@ void jni_object_interface::set_l(const_char_pointer pszField, long long hi)
 long long jni_object_interface::get_l(const_char_pointer pszField)
 {
 
-   return get_l(field_l(pszField));
+   return get_l(class_interface()->field_l(pszField));
 
 }
 
@@ -261,7 +309,7 @@ long long jni_object_interface::get_l(const_char_pointer pszField)
 void jni_object_interface::set_f(const_char_pointer pszField, float f)
 {
 
-   set_f(field_f(pszField), f);
+   set_f(class_interface()->field_f(pszField), f);
 
 }
 
@@ -269,7 +317,7 @@ void jni_object_interface::set_f(const_char_pointer pszField, float f)
 float jni_object_interface::get_f(const_char_pointer pszField)
 {
 
-   return get_f(field_f(pszField));
+   return get_f(class_interface()->field_f(pszField));
 
 }
 
@@ -277,7 +325,7 @@ float jni_object_interface::get_f(const_char_pointer pszField)
 void jni_object_interface::set_d(const_char_pointer pszField, double d)
 {
 
-   set_d(field_d(pszField), d);
+   set_d(class_interface()->field_d(pszField), d);
 
 }
 
@@ -285,7 +333,7 @@ void jni_object_interface::set_d(const_char_pointer pszField, double d)
 double jni_object_interface::get_d(const_char_pointer pszField)
 {
 
-   return get_d(field_d(pszField));
+   return get_d(class_interface()->field_d(pszField));
 
 }
 
@@ -293,7 +341,7 @@ double jni_object_interface::get_d(const_char_pointer pszField)
 void jni_object_interface::set_ba(const_char_pointer pszField, const ::block & block)
 {
 
-   set_ba(field_ba(pszField), block);
+   set_ba(class_interface()->field_ba(pszField), block);
 
 }
 
@@ -301,7 +349,7 @@ void jni_object_interface::set_ba(const_char_pointer pszField, const ::block & b
 memory jni_object_interface::get_ba(const_char_pointer pszField)
 {
 
-   return get_ba(field_ba(pszField));
+   return get_ba(class_interface()->field_ba(pszField));
 
 }
 

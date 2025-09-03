@@ -4,34 +4,46 @@
 #pragma once
 
 
-#include "jni_object.h"
-#include "acme/platform/application_message.h"
-#include "_internal.h"
+#include "jni_class.h"
+#include "jni_object_interface.h"
+#include "acme/platform/message.h"
+#include "acme/platform/message_sink.h"
+//#include "_internal.h"
+
+#define JNI_MESSAGE_SINK_CLASS(JXDATA, JXFUNC) \
+JXFUNC(post_application_message, ::e_jni_call_void_method, "(Lplatform/platform/message_sink)V")
+
+
+BEGIN_JNI_CLASS(JNI_MESSAGE_SINK_CLASS, jni_message_sink)
+END_JNI_CLASS()
 
 
 class CLASS_DECL_ACME_WINDOWING_ANDROID jni_message_sink :
-   public jni_object
+   virtual public ::message_sink,
+   virtual public jni_object
 {
 public:
 
-   ::pointer < jni_method > m_pmethodPostApplicationMessage;
 
-   ::pointer_array_base<application_message> m_applicationmessagea;
+   IMPL_JNI_OBJECT(JNI_MESSAGE_SINK_CLASS, jni_message_sink, "platform.platform.message.message_sink")
+
+
+   //::pointer_array_base<::platform::message> m_messagea;
 
    using jni_object::jni_object;
 
    void on_initialize_particle() override;
 
 
-   virtual void post_simple_application_message(enum_application_message eapplicationmessage);
-   virtual void post_application_message(::application_message * papplicationmessage);
+   //virtual void post_simple_message(::enum_message emessage);
+   //virtual void post_message(::platform::message * pmessage);
 
 
-   ::pointer < application_message > pick_application_message_to_post();
+   //::pointer < platform::message > pick_message_to_post();
 
 
-   virtual void dispatch_posted_messages();
-   virtual void dispatch_application_message(::application_message * papplicationmessage);
+   //virtual void dispatch_posted_messages();
+   void dispatch_message(::platform::message * pmessage) override;
 
 
 };

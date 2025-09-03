@@ -10,6 +10,7 @@
 //#include "apex/platform/system.h"
 //#include "aura/user/user/interaction_graphics_thread.h"
 #include "acme/user/user/interaction.h"
+#include "android/application_sink.h"
 #include "windowing.h"
 //#include "aura/platform/message_queue.h"
 //#include "aura/graphics/image/context.h"
@@ -2292,7 +2293,21 @@ namespace android
             //   return ::x11_get_window_rect(Display(), Window(), prectangle);
 
             //}
+            ::int_rectangle window::get_window_rectangle()
+            {
 
+               auto papplicationsink = ::platform::application_sink::get();
+
+               int_rectangle  r;
+
+               r.left() = 0;
+               r.top() = 0;
+               r.right() = papplicationsink->m_iWidth;
+               r.top() = papplicationsink->m_iHeight;
+
+               return r;
+
+            }
 
             //::e_status window::window_rectangle(::int_rectangle * prectangle)
             //{

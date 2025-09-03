@@ -96,8 +96,8 @@ void set_jni_context(JNIEnv* penv);
 
 
 extern "C"
-//JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+//JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -178,7 +178,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -264,7 +264,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    try
@@ -272,7 +272,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobje
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_impact_keyDown");
+      LOGI("%s\n", "Java_platform_platform_user_impact_keyDown");
 
 
    }
@@ -287,7 +287,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobje
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
    try
    {
@@ -295,7 +295,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_impact_keyUp");
+      LOGI("%s\n", "Java_platform_platform_user_impact_keyUp");
 
 
    }
@@ -310,7 +310,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
    try
    {
@@ -343,7 +343,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    try
@@ -365,7 +365,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -385,7 +385,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -407,7 +407,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -437,7 +437,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -467,7 +467,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -496,7 +496,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
 {
 
    try
@@ -558,7 +558,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobjec
 
 
 //extern "C"
-//JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+//JNIEXPORT void JNICALL Java_platform_platform_user_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
 //{
 //
 //

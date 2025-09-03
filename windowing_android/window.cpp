@@ -17,7 +17,7 @@
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
 #include "acme_windowing_android/android/_internal.h"
-#include "android/application_state.h"
+#include "android/application_sink.h"
 
 //void on_sn_launch_context(void * pSnContext, Window window);
 //void on_sn_launch_complete(void * pSnContext);
@@ -3678,18 +3678,18 @@ namespace windowing_android
    {
 
 
-      if(m_bSetApplicationReady)
-      {
-
-         m_bSetApplicationReady = false;
-
-         auto pdriver = ::platform::application_state::get();
-
-         LOGI("pdriver->m_bSetApplicationReady = true");
-
-         pdriver->m_bSetApplicationReady =   true;
-
-      }
+//      if(m_bSetApplicationReady)
+//      {
+//
+//         m_bSetApplicationReady = false;
+//
+//         auto pdriver = ::platform::application_sink::get();
+//
+//         LOGI("pdriver->m_bSetApplicationReady = true");
+//
+//         pdriver->m_bSetApplicationReady =   true;
+//
+//      }
 
 
 //      auto pbind = ::jni_bind::get();
@@ -3908,16 +3908,16 @@ namespace windowing_android
    float window::get_dpi_for_window()
    {
 
-      ::cast < ::android::application_state > papplicationstate = ::platform::application_state::get();
+      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
 
-      if(!papplicationstate)
+      if(!papplicationsink)
       {
 
          return ::windowing::window::get_dpi_for_window();
 
       }
 
-      return papplicationstate->m_fDpiX;
+      return papplicationsink->m_fDpiX;
 
    }
 
@@ -3925,16 +3925,16 @@ namespace windowing_android
    float window::get_density_for_window()
    {
 
-      ::cast < ::android::application_state > papplicationstate = ::platform::application_state::get();
+      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
 
-      if(!papplicationstate)
+      if(!papplicationsink)
       {
 
          return ::windowing::window::get_density_for_window();
 
       }
 
-      return papplicationstate->m_fDensity;
+      return papplicationsink->m_fDensity;
 
    }
 

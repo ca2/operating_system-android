@@ -5,6 +5,7 @@
 #include "acme/parallelization/manual_reset_happening.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
+#include "jni_object_impl.h"
 #include "_internal.h"
 
 
@@ -15,13 +16,13 @@ namespace android
     {
 
 
-        int ::user::e_message_box_to_button(const ::user::e_message_box &emessagebox);
+        int e_message_box_to_button(const ::user::e_message_box &emessagebox);
 
 
         //::pointer<::acme::driver> g_pandroiddriver;
 
 
-        application_state::application_state()
+        application_sink::application_sink()
         {
 
 
@@ -32,7 +33,7 @@ namespace android
         }
 
 
-        application_state::~application_state()
+        application_sink::~application_sink()
         {
 
            if (::is_set(m_passetmanager)) {
@@ -44,7 +45,7 @@ namespace android
         }
 
 
-       void application_state::on_initialize_particle()
+       void application_sink::on_initialize_particle()
        {
 
           defer_create_synchronization();
@@ -54,7 +55,7 @@ namespace android
 
 
 
-        void application_state::exchange1()
+        void application_sink::exchange1()
         {
 
            {
@@ -115,22 +116,22 @@ namespace android
               //else
               //{
 
-              auto pmessagebox = pick_message_box();
-
-              if (::is_set(pmessagebox)) {
-
-                 pmessagebox->increment_reference_count();
-
-                 pbind->setMessageBoxSequence((::iptr) pmessagebox.m_p);
-
-                 pbind->setMessageBox(pmessagebox->m_strMessage);
-
-                 pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
-
-                 pbind->setMessageBoxButton(
-                         ::user::e_message_box_to_button(pmessagebox->m_emessagebox));
-
-              }
+//              auto pmessagebox = pick_message_box();
+//
+//              if (::is_set(pmessagebox)) {
+//
+//                 pmessagebox->increment_reference_count();
+//
+//                 pbind->setMessageBoxSequence((::iptr) pmessagebox.m_p);
+//
+//                 pbind->setMessageBox(pmessagebox->m_strMessage);
+//
+//                 pbind->setMessageBoxCaption(pmessagebox->m_strTitle);
+//
+//                 pbind->setMessageBoxButton(
+//                         e_message_box_to_button(pmessagebox->m_emessagebox));
+//
+//              }
 
               defer_post_all_media_store_operations();
 
@@ -164,7 +165,7 @@ namespace android
         }
 
 
-//        ::file::path application_state::synchronously_getDocumentFolder(
+//        ::file::path application_sink::synchronously_getDocumentFolder(
 //           const class ::time & timeOut)
 //        {
 //
@@ -216,7 +217,7 @@ namespace android
 //
 //        }
 
-        void application_state::after_exchange()
+        void application_sink::after_exchange()
         {
 
 //           {
@@ -261,10 +262,10 @@ namespace android
 //    }
 
 
-      void application_state::post_media_store_operation(::data::block * pdatablock)
+      void application_sink::post_media_store_operation(::data::block * pdatablock)
       {
 
-           ::platform::application_state::post_media_store_operation(pdatablock);
+           ::platform::application_sink::post_media_store_operation(pdatablock);
 
 //         auto pbind = ::jni_bind::get();
 //
@@ -304,7 +305,7 @@ namespace android
       }
 
 
-//      ::pointer < ::data::block > application_state::media_store_get_data(const ::scoped_string & scopedstrPath)
+//      ::pointer < ::data::block > application_sink::media_store_get_data(const ::scoped_string & scopedstrPath)
 //      {
 //
 //         auto pbind = ::jni_bind::get();
@@ -342,20 +343,59 @@ namespace android
 //
 //      }
 
-      void application_state::on_main_task_iteration()
+      void application_sink::on_main_task_iteration()
       {
 
-           if(m_pjnimessagesink)
+           if(m_pmessagesink)
            {
 
-              m_pjnimessagesink->dispatch_posted_messages();
+              m_pmessagesink->dispatch_posted_messages();
 
            }
 
       }
 
 
-    } // namespace acme
+      void application_sink::on_media_store_operation(::data::block * pdatablock)
+      {
+
+         auto pbind = ::jni_bind::get();
+
+         pbind->post_media_store_operation(pdatablock);
+
+      }
+
+      void application_sink::get_jni_class_impl(jni_class * pjniclassInterface, const_char_pointer pszClassName)
+      {
+           _synchronous_lock synchronouslock(this->synchronization());
+           auto & pjniclass = m_mapClass[pszClassName];
+
+           if(!pjniclass)
+           {
+            ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
+
+            auto pjniclassimpl =øallocate jni_class_impl;
+            pjniclass = pjniclassInterface;
+
+            pjniclass->m_pjniclassImpl = pjniclassimpl;
+
+            pjniclass->initialize(this);
+
+            ::cast < jni_context_impl > pjnicontextimpl = ::jni_context::get();
+
+            jclass jclass = class_cache_get(pjnicontextimpl->m_pjnicontext, pszClassName);
+
+            pjniclassimpl->m_jclass = jclass;
+
+//pjniclass->on_initialize_jni_class();
+
+         }
+
+           //return pjniclass;
+
+      }
+
+   } // namespace acme
 
 
 

@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "application_state.h"
+#include "application_sink.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
 #include "acme_windowing_android/android/android_asset.h"
@@ -14,7 +14,7 @@
 #include "acme/platform/system_setup.h"
 #include "acme/prototype/string/c_string.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
-#include "acme_windowing_android/android/jni_application_message.h"
+#include "acme_windowing_android/android/jni_message.h"
 #include "acme_windowing_android/android/jni_data_block.h"
 #include "acme_windowing_android/android/jni_local.h"
 #include "acme_windowing_android/android/jni_message_sink.h"
@@ -290,7 +290,7 @@ const_char_pointer this_argv[] =
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1aura_1message_1box_1response(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_on_1aura_1message_1box_1response(
    JNIEnv * penv, jobject obj,
    jlong jlMicromessagebox, jlong
    jlResponse)
@@ -311,7 +311,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_on_1aura_1message_1
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_aura_1is_1started(JNIEnv * env,
+JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_aura_1is_1started(JNIEnv * env,
                                                                                    jobject obj)
 {
 
@@ -322,7 +322,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_aura_1is_1start
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1available(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_sync_1mem_1free_1available(
    JNIEnv * env, jobject obj)
 {
 
@@ -330,7 +330,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1av
 
       set_jni_context(env);
 
-      ::platform::application_state::get()->
+      ::platform::application_sink::get()->
          m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
 
    }
@@ -347,7 +347,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_sync_1mem_1free_1av
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_create_1system(JNIEnv * penv,
                                                                             jclass clazz,
                                                                             jstring jstrAppId
 )
@@ -390,12 +390,13 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_create_1system(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(JNIEnv * penv,
-                                                                                jobject obj,
-                                                                                jobject jobjectBind,
-                                                                                jobject jobjectMessageSink,
-                                                                                jobject
-                                                                                jobjectAssetManager)
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_initialize_1system(
+   JNIEnv * penv,
+   jobject obj,
+   jobject jobjectBind,
+   jobject jobjectMessageSink,
+   jobject jobjectMessageSinkMediaStore,
+   jobject jobjectAssetManager)
 {
 
    set_jni_context(penv);
@@ -407,49 +408,65 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
    }
 
+   bool bApplicationSinkCreated = false;
+
+   if (!::platform::application_sink::get()) {
+
+      auto papplicationsink = ___new android::application_sink();
+
+      papplicationsink->initialize(nullptr);
+
+      ::platform::application_sink::set(papplicationsink);
+
+      bApplicationSinkCreated = true;
+
+   }
+
    auto pbind = øjni<::jni_bind>(jobjectBind);
 
    ::jni_bind::set(pbind);
 
-   if (!::platform::application_state::get())
+   if (bApplicationSinkCreated)
    {
-
-      ::platform::application_state::set (___new android::application_state());
 
       auto pbind = ::jni_bind::get();
 
-      ::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
+      ::cast<::android::application_sink> papplicationsink = ::platform::application_sink::get();
 
-      papplicationstate->m_strApplicationIdentifier = pbind->getApplicationIdentifier();
+      papplicationsink->m_strApplicationIdentifier = pbind->getApplicationIdentifier();
 
-      papplicationstate->m_strCommandLineParameters = pbind->getCommandLineParameters();
+      papplicationsink->m_strCommandLineParameters = pbind->getCommandLineParameters();
 
-      papplicationstate->m_pathCacheDirectory = pbind->getCacheDirectory();
+      papplicationsink->m_pathCacheDirectory = pbind->getCacheDirectory();
 
-      papplicationstate->m_bShowKeyboard = false;
+      papplicationsink->m_bShowKeyboard = false;
 
       auto pmessagesink = øjni<::jni_message_sink>(jobjectMessageSink);
 
-      papplicationstate->m_pjnimessagesink = pmessagesink;
+      papplicationsink->m_pmessagesink = pmessagesink;
+
+      auto pmessagesinkMediaStore = øjni<::jni_message_sink>(jobjectMessageSinkMediaStore);
+
+      papplicationsink->m_pmessagesinkMediaStore = pmessagesinkMediaStore;
 
       auto passetmanager = øjni<::android::asset_manager>(jobjectAssetManager);
 
-      papplicationstate->m_passetmanager = passetmanager;
+      papplicationsink->m_passetmanager = passetmanager;
 
-      auto passet = papplicationstate->m_passetmanager->get_asset("_matter.zip");
+      auto passet = papplicationsink->m_passetmanager->get_asset("_matter.zip");
 
-      papplicationstate->m_passetResourceFolder = passet;
+      papplicationsink->m_passetResourceFolder = passet;
 
       const_char_pointer pResourceStart = nullptr;
 
       const_char_pointer pResourceEnd = nullptr;
 
-      papplicationstate->m_passetResourceFolder->get_pointers(
+      papplicationsink->m_passetResourceFolder->get_pointers(
          pResourceStart,
          pResourceEnd
       );
 
-      c_application_namespace_library library(papplicationstate->m_strApplicationIdentifier.c_str());
+      c_application_namespace_library library(papplicationsink->m_strApplicationIdentifier.c_str());
 
       auto pfnInitializeSystem = library.main_function<PFN_INITIALIZE_SYSTEM>("initialize_system");
 
@@ -461,10 +478,10 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_initialize_1system(
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_message_1sender_on_1message(
+JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_on_1message(
    JNIEnv * penv,
    jobject obj,
-   jobject jobjectApplicationMessage)
+   jobject jobjectMessage)
 {
 
    try
@@ -472,15 +489,15 @@ JNIEXPORT void JNICALL Java_platform_platform_message_1sender_on_1message(
 
       set_jni_context(penv);
 
-      jni_application_message jniapplicationmessage(øjni_object(jobjectApplicationMessage));
+      jni_message message(øjni_object(jobjectMessage));
 
-      auto papplicationmessage = jniapplicationmessage.as_application_message();
+      auto pmessage = message.as_message();
 
       auto psystem = ::system();
 
       auto papplication = psystem->m_papplication;
 
-      papplication->on_application_message(papplicationmessage);
+      papplication->on_application_message(pmessage);
 
    }
    catch(...)
@@ -492,7 +509,7 @@ JNIEXPORT void JNICALL Java_platform_platform_message_1sender_on_1message(
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_return_1read_1data_1block(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_return_1read_1data_1block(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectDataBlock)
@@ -533,7 +550,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_return_1read_1data_
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_application_1main(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_application_1main(JNIEnv * penv,
                                                                                jobject obj)
 {
 
@@ -544,25 +561,25 @@ set_jni_context(penv);
 
 auto pbind = ::jni_bind::get();
 
-::cast<::android::application_state> papplicationstate = ::platform::application_state::get();
+::cast<::android::application_sink> papplicationsink = ::platform::application_sink::get();
 
 
-papplicationstate->
+papplicationsink->
 m_iWidth = pbind->getWidth();
 
-papplicationstate->
+papplicationsink->
 m_iHeight = pbind->getHeight();
 
-papplicationstate->
+papplicationsink->
 m_fDpiX = pbind->getDpiX();
 
-papplicationstate->
+papplicationsink->
 m_fDpiY = pbind->getDpiY();
 
-papplicationstate->
+papplicationsink->
 m_fDensity = pbind->getDensity();
 
-auto strAppId = papplicationstate->m_strApplicationIdentifier;
+auto strAppId = papplicationsink->m_strApplicationIdentifier;
 
 c_application_namespace_library library(strAppId.c_str());
 
@@ -583,7 +600,7 @@ catch(...)
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_platform_platform_main_1activity_application_1is_1started(JNIEnv * env, jobject obj)
+Java_platform_platform_platform_application_application_1is_1started(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;
