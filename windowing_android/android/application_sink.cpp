@@ -8,6 +8,7 @@
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
+#include "acme/windowing/message/types.h"
 #include "aura/windowing/window.h"
 
 
@@ -86,6 +87,23 @@ namespace android
 
        m_bEditorTextUpdated = true;
 
+       auto pmessage = øcreate_new<::platform::message>();
+
+       pmessage->m_emessage = ::e_message_set_editor_selection;
+
+       ::message::set_editor_selection selection;
+
+       selection.m_iSelectionStart = iStart;
+
+       selection.m_iSelectionEnd = iEnd;
+
+       ::output_byte2_stream stream(pmessage->m_memory);
+
+       stream << selection;
+
+       m_pmessagesink->post_message(pmessage);
+
+
     }
 
 
@@ -95,6 +113,20 @@ namespace android
        m_strEditorText = scopedstrText;
 
        m_bEditorTextUpdated = true;
+
+       auto pmessage = øcreate_new<::platform::message>();
+
+       pmessage->m_emessage = ::e_message_editor_text_updated;
+
+       ::message::editor_text_updated updated;
+
+       updated.m_strEditorText = scopedstrText;
+
+       ::output_byte2_stream stream(pmessage->m_memory);
+
+       stream << updated;
+
+       m_pmessagesink->post_message(pmessage);
 
     }
 
