@@ -12,57 +12,55 @@
 namespace android
 {
 
-    namespace acme
-    {
+   namespace acme
+   {
 
 
-        int e_message_box_to_button(const ::user::e_message_box &emessagebox);
+      int e_message_box_to_button(const ::user::e_message_box & emessagebox);
 
 
-        //::pointer<::acme::driver> g_pandroiddriver;
+      //::pointer<::acme::driver> g_pandroiddriver;
 
 
-        application_sink::application_sink()
-        {
+      application_sink::application_sink()
+      {
 
 
-           m_passetmanager = nullptr;
+         m_passetmanager = nullptr;
 
-           //m_bLastShowSoftwareKeyboard = false;
+         //m_bLastShowSoftwareKeyboard = false;
 
-        }
-
-
-        application_sink::~application_sink()
-        {
-
-           if (::is_set(m_passetmanager)) {
-
-              delete m_passetmanager;
-
-           }
-
-        }
+      }
 
 
-       void application_sink::on_initialize_particle()
-       {
+      application_sink::~application_sink()
+      {
 
-          defer_create_synchronization();
+         if (::is_set(m_passetmanager)) {
 
-       }
+            delete m_passetmanager;
+
+         }
+
+      }
 
 
+      void application_sink::on_initialize_particle()
+      {
+
+         defer_create_synchronization();
+
+      }
 
 
-        void application_sink::exchange1()
-        {
+      void application_sink::exchange1()
+      {
 
-           {
+         {
 
-              synchronous_lock synchronouslock(synchronization());
+            synchronous_lock synchronouslock(synchronization());
 
-              auto pbind = ::jni_bind::get();
+            auto pbind = ::jni_bind::get();
 
 
 //              string strOpenUrl;
@@ -100,21 +98,21 @@ namespace android
 //
 //              }
 
-              //if (m_bMessageBoxOn)
-              //{
+            //if (m_bMessageBoxOn)
+            //{
 
-              //   int iResult = pbind->getMessageBoxResult();
+            //   int iResult = pbind->getMessageBoxResult();
 
-              //   if (iResult > 0)
-              //   {
+            //   if (iResult > 0)
+            //   {
 
-              //      m_bMessageBoxOn = false;
+            //      m_bMessageBoxOn = false;
 
-              //   }
+            //   }
 
-              //}
-              //else
-              //{
+            //}
+            //else
+            //{
 
 //              auto pmessagebox = pick_message_box();
 //
@@ -133,7 +131,7 @@ namespace android
 //
 //              }
 
-              defer_post_all_media_store_operations();
+            //defer_post_all_media_store_operations();
 
 
 //
@@ -159,10 +157,10 @@ namespace android
 //
 //          }
 
-           }
+         }
 
 
-        }
+      }
 
 
 //        ::file::path application_sink::synchronously_getDocumentFolder(
@@ -217,8 +215,8 @@ namespace android
 //
 //        }
 
-        void application_sink::after_exchange()
-        {
+      void application_sink::after_exchange()
+      {
 
 //           {
 //
@@ -249,7 +247,7 @@ namespace android
 //
 //           }
 
-        }
+      }
 
 
 //    void driver::list_file_enumerate(const ::scoped_string & scopedstrListFileEnumerate)
@@ -265,7 +263,7 @@ namespace android
       void application_sink::post_media_store_operation(::data::block * pdatablock)
       {
 
-           ::platform::application_sink::post_media_store_operation(pdatablock);
+         ::platform::application_sink::post_media_store_operation(pdatablock);
 
 //         auto pbind = ::jni_bind::get();
 //
@@ -305,83 +303,53 @@ namespace android
       }
 
 
-//      ::pointer < ::data::block > application_sink::media_store_get_data(const ::scoped_string & scopedstrPath)
+//      void application_sink::on_main_task_iteration()
+//      {
+//
+//         if (m_pmessagesink)
+//         {
+//
+//            m_pmessagesink->dispatch_posted_messages();
+//
+//         }
+//
+//         if (m_pmessagesinkMediaStore)
+//         {
+//
+//            m_pmessagesinkMediaStore->dispatch_posted_messages();
+//
+//         }
+//
+//      }
+
+
+//      void application_sink::on_media_store_operation(::data::block * pdatablock)
 //      {
 //
 //         auto pbind = ::jni_bind::get();
 //
-//         auto pdatablock = øcreate_new<::data::block>();
-//
-//         pdatablock->m_bWrite = false;
-//
-//         pdatablock->m_strPath = scopedstrPath;
-//
-//         pdatablock->m_strMime = "text/plain";
-//
-//         manual_reset_happening happening;
-//
-//         pdatablock->m_procedureOnFinished=[&happening]()
-//         {
-//
-//            happening.set_happening();
-//
-//         };
-//
-//         pbind->media_store_schedule_data_block_operation(pdatablock);
-//
-//         if(happening.wait(1_min).succeeded()) {
-//
-//            pdatablock->m_estatus = success;
-//
-//         } else{
-//
-//            pdatablock->m_estatus = error_timeout;
-//
-//         }
-//
-//         return pdatablock;
+//         pbind->post_media_store_operation(pdatablock);
 //
 //      }
 
-      void application_sink::on_main_task_iteration()
+
+      void application_sink::get_jni_class_impl(jni_class * pjniclassInterface,
+                                                const_char_pointer pszClassName)
       {
+         _synchronous_lock synchronouslock(this->synchronization());
+         auto & pjniclass = m_mapClass[pszClassName];
 
-           if(m_pmessagesink)
-           {
+         if (!pjniclass) {
+            ::cast<::android::acme::application_sink> papplicationsink = ::platform::application_sink::get();
 
-              m_pmessagesink->dispatch_posted_messages();
-
-           }
-
-      }
-
-
-      void application_sink::on_media_store_operation(::data::block * pdatablock)
-      {
-
-         auto pbind = ::jni_bind::get();
-
-         pbind->post_media_store_operation(pdatablock);
-
-      }
-
-      void application_sink::get_jni_class_impl(jni_class * pjniclassInterface, const_char_pointer pszClassName)
-      {
-           _synchronous_lock synchronouslock(this->synchronization());
-           auto & pjniclass = m_mapClass[pszClassName];
-
-           if(!pjniclass)
-           {
-            ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
-
-            auto pjniclassimpl =øallocate jni_class_impl;
+            auto pjniclassimpl = øallocate jni_class_impl;
             pjniclass = pjniclassInterface;
 
             pjniclass->m_pjniclassImpl = pjniclassimpl;
 
             pjniclass->initialize(this);
 
-            ::cast < jni_context_impl > pjnicontextimpl = ::jni_context::get();
+            ::cast<jni_context_impl> pjnicontextimpl = ::jni_context::get();
 
             jclass jclass = class_cache_get(pjnicontextimpl->m_pjnicontext, pszClassName);
 
@@ -391,7 +359,7 @@ namespace android
 
          }
 
-           //return pjniclass;
+         //return pjniclass;
 
       }
 

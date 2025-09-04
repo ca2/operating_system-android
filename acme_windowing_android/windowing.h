@@ -90,7 +90,7 @@ namespace android
 
 
                 //void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
-                bool task_iteration() override;
+                //bool task_iteration() override;
             void windowing_application_main_loop() override;
                 //virtual void x11_main();
 
@@ -172,7 +172,10 @@ namespace android
                 //::pointer<::windowing::cursor> get_cursor(enum_cursor ecursor) override;
 
 
-            };
+                void _main_post(const ::procedure& procedure) override;
+
+
+           };
 
 
         } // namespace windowing

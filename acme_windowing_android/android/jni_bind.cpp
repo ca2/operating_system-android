@@ -79,81 +79,81 @@ void jni_bind::set(jni_bind* pdirect)
 }
 
 
-void jni_bind::post_media_store_operation(::data::block * pdatablock)
-{
-
-   auto pbind = ::jni_bind::get();
-
-   ::cast < jni_object_impl > pjni = m_pjniobjectinterface;
-
-   jobject     jobjectBind = pjni->m_jobject;
-   //jclass      jclassBind = pjni->m_jclass;
-
-
-   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
-
-   auto pcontext = pjnicontext->m_pjnicontext;
-
-   // 1. Get the class of the object
-   //jclass cls = p->GetObjectClass(javaObj);
-
-   // 2. Find method IDs
-   //auto pmethod;
-
-   ::jni_data_block datablock(pdatablock);
-
-   post_media_store_operation(pjnicontext, datablock.p_jobject());
-
-//   jmethodID methodPostMediaStoreOperation = pcontext->GetMethodID(jclassBind, "post_media_store_operation", "(Lplatform/platform/data_block)V");
+//void jni_bind::post_media_store_operation(::data::block * pdatablock)
+//{
 //
-//   if (methodPostMediaStoreOperation == nullptr) {
-//      error() << "method not found";
-//      return; // method not found
-//   }
+//   auto pbind = ::jni_bind::get();
 //
-//   jni_local_string jnistringPath(pdatablock->m_strPath);
-//   jni_local_string jnistringMime(pdatablock->m_strPath);
+//   ::cast < jni_object_impl > pjni = m_pjniobjectinterface;
 //
-//   jclass  jclassDataBlock= pcontext->FindClass("platform/platform/data_block");
-//   jmethodID jmethodDataBlockConstructor = pcontext->GetMethodID(jclassDataBlock, "<init>",
-//                                                                 "(Ljava/lang/String;Ljava/lang/String;[B)V");
-//
-//// Prepare args
-//   //jstring jname = (*pcontext)->NewStringUTF(pcontext, "example");
-//   //jstring jmime = (*pcontext)->NewStringUTF(pcontext, "application/octet-stream");
-//
-//   //jbyte data[3] = {1, 2, 3};
-//   //jbyteArray jdata = (*pcontext)->NewByteArray(pcontext, 3);
-//   //(*pcontext)->SetByteArrayRegion(pcontext, jdata, 0, 3, data);
-//
-//// Create object
-//pdatablock->increment_reference_count();
-//jlong jlDataBlock = (long)(::uptr)(void*)(::data::block*)pdatablock;
-//jboolean jbWrite = pdatablock->m_bWrite ? 1 : 0;
-//   jni_local objDataBlock(pcontext->NewObject(jclassDataBlock, jmethodDataBlockConstructor,
-//                                     jlDataBlock,
-//                                     jbWrite,
-//                                     jnistringPath.m_jstring,
-//                                     jnistringMime.m_jstring));
-//
-//   if(pdatablock->m_bWrite && pdatablock->m_memory.has_data())
-//   {
-//
-//      jni_local_byte_array jnibytearrayData(pdatablock->m_memory);
+//   jobject     jobjectBind = pjni->m_jobject;
+//   //jclass      jclassBind = pjni->m_jclass;
 //
 //
-//      jmethodID jmethodDataBlockSetData = pcontext->GetMethodID(jclassDataBlock, "set_data",
-//                                                                    "([B)V");
+//   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
 //
-//      pcontext->CallVoidMethod(objDataBlock.m_jobject, jmethodDataBlockSetData, jnibytearrayData.m_jobject);
+//   auto pcontext = pjnicontext->m_pjnicontext;
 //
-//   }
+//   // 1. Get the class of the object
+//   //jclass cls = p->GetObjectClass(javaObj);
 //
-//   pcontext->CallVoidMethod(jobjectBind, methodPostMediaStoreOperation, objDataBlock.m_jobject);
+//   // 2. Find method IDs
+//   //auto pmethod;
 //
-//   pbind->call("post_media_store_operation", objDataBlock.m_jobject);
-
-}
+//   ::jni_data_block datablock(pdatablock);
+//
+//   post_media_store_operation(pjnicontext, datablock.p_jobject());
+//
+////   jmethodID methodPostMediaStoreOperation = pcontext->GetMethodID(jclassBind, "post_media_store_operation", "(Lplatform/platform/data_block)V");
+////
+////   if (methodPostMediaStoreOperation == nullptr) {
+////      error() << "method not found";
+////      return; // method not found
+////   }
+////
+////   jni_local_string jnistringPath(pdatablock->m_strPath);
+////   jni_local_string jnistringMime(pdatablock->m_strPath);
+////
+////   jclass  jclassDataBlock= pcontext->FindClass("platform/platform/data_block");
+////   jmethodID jmethodDataBlockConstructor = pcontext->GetMethodID(jclassDataBlock, "<init>",
+////                                                                 "(Ljava/lang/String;Ljava/lang/String;[B)V");
+////
+////// Prepare args
+////   //jstring jname = (*pcontext)->NewStringUTF(pcontext, "example");
+////   //jstring jmime = (*pcontext)->NewStringUTF(pcontext, "application/octet-stream");
+////
+////   //jbyte data[3] = {1, 2, 3};
+////   //jbyteArray jdata = (*pcontext)->NewByteArray(pcontext, 3);
+////   //(*pcontext)->SetByteArrayRegion(pcontext, jdata, 0, 3, data);
+////
+////// Create object
+////pdatablock->increment_reference_count();
+////jlong jlDataBlock = (long)(::uptr)(void*)(::data::block*)pdatablock;
+////jboolean jbWrite = pdatablock->m_bWrite ? 1 : 0;
+////   jni_local objDataBlock(pcontext->NewObject(jclassDataBlock, jmethodDataBlockConstructor,
+////                                     jlDataBlock,
+////                                     jbWrite,
+////                                     jnistringPath.m_jstring,
+////                                     jnistringMime.m_jstring));
+////
+////   if(pdatablock->m_bWrite && pdatablock->m_memory.has_data())
+////   {
+////
+////      jni_local_byte_array jnibytearrayData(pdatablock->m_memory);
+////
+////
+////      jmethodID jmethodDataBlockSetData = pcontext->GetMethodID(jclassDataBlock, "set_data",
+////                                                                    "([B)V");
+////
+////      pcontext->CallVoidMethod(objDataBlock.m_jobject, jmethodDataBlockSetData, jnibytearrayData.m_jobject);
+////
+////   }
+////
+////   pcontext->CallVoidMethod(jobjectBind, methodPostMediaStoreOperation, objDataBlock.m_jobject);
+////
+////   pbind->call("post_media_store_operation", objDataBlock.m_jobject);
+//
+//}
 
 
 

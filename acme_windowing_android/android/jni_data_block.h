@@ -15,7 +15,7 @@ JXDATA(str, Path) \
 JXDATA(str, Mime) \
 JXDATA(ba, Data) \
 JXDATA(l, DataBlock)                  \
-JXFUNC(construct_JZStrStr, ::e_jni_call__init__, "(JZLjava/lang/StringLjava/lang/StringLjava/lang/StringLjava/lang/String)V")
+JXFUNC(construct_JZStrStr, ::e_jni_call__init__, "(JZLjava/lang/String;Ljava/lang/String;)V")
 
 //#define JNI_DATA_BLOCK_CLASS_FUNC(JX)
 

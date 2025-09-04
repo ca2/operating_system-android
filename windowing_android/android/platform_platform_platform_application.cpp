@@ -290,7 +290,7 @@ const_char_pointer this_argv[] =
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_on_1aura_1message_1box_1response(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1on_1aura_1message_1box_1response(
    JNIEnv * penv, jobject obj,
    jlong jlMicromessagebox, jlong
    jlResponse)
@@ -311,7 +311,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_on_1aura_1mes
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_aura_1is_1started(JNIEnv * env,
+JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_jni_1aura_1is_1started(JNIEnv * env,
                                                                                    jobject obj)
 {
 
@@ -322,7 +322,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_aura_1is_
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_sync_1mem_1free_1available(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1sync_1mem_1free_1available(
    JNIEnv * env, jobject obj)
 {
 
@@ -347,7 +347,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_sync_1mem_1fr
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_create_1system(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1create_1system(JNIEnv * penv,
                                                                             jclass clazz,
                                                                             jstring jstrAppId
 )
@@ -390,7 +390,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_create_1syste
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_initialize_1system(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1initialize_1system(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectBind,
@@ -478,7 +478,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_initialize_1s
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_on_1message(
+JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_jni_1on_1message(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectMessage)
@@ -509,7 +509,7 @@ JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_on_1messag
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_return_1read_1data_1block(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1return_1read_1data_1block(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectDataBlock)
@@ -550,52 +550,102 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_return_1read_
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_application_1main(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1application_1main(JNIEnv * penv,
                                                                                jobject obj)
 {
 
-try
+   try
+   {
+
+      set_jni_context(penv);
+
+      auto pbind = ::jni_bind::get();
+
+      ::cast<::android::application_sink> papplicationsink = ::platform::application_sink::get();
+
+      papplicationsink->m_iWidth = pbind->getWidth();
+
+      papplicationsink->m_iHeight = pbind->getHeight();
+
+      papplicationsink->m_fDpiX = pbind->getDpiX();
+
+      papplicationsink->m_fDpiY = pbind->getDpiY();
+
+      papplicationsink->m_fDensity = pbind->getDensity();
+
+      auto strAppId = papplicationsink->m_strApplicationIdentifier;
+
+      c_application_namespace_library library(strAppId.c_str());
+
+      auto pfnMain = library.main_function<PFN_MAIN>("main");
+
+      int iExitCode = pfnMain();
+
+      ::information("application main exited (already?!?)");
+
+   }
+   catch(...)
+   {
+
+      ::error("application main exited with exception");
+
+   }
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_platform_platform_platform_application_jni_1on_1media_1store_1output_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback)
 {
 
-set_jni_context(penv);
+   set_jni_context(env);
 
-auto pbind = ::jni_bind::get();
+   ::pointer < ::data::block > pdatablock
+   {
+      transfer_t{},
+      (::data::block *)(void *)(::uptr) lCallback
+   };
 
-::cast<::android::application_sink> papplicationsink = ::platform::application_sink::get();
+   if(pdatablock->m_pmanualresethappening)
+   {
 
+      pdatablock->m_pmanualresethappening->set_happening();
 
-papplicationsink->
-m_iWidth = pbind->getWidth();
-
-papplicationsink->
-m_iHeight = pbind->getHeight();
-
-papplicationsink->
-m_fDpiX = pbind->getDpiX();
-
-papplicationsink->
-m_fDpiY = pbind->getDpiY();
-
-papplicationsink->
-m_fDensity = pbind->getDensity();
-
-auto strAppId = papplicationsink->m_strApplicationIdentifier;
-
-c_application_namespace_library library(strAppId.c_str());
-
-
-auto pfnMain = library.main_function<PFN_MAIN>("main");
-
-int iExitCode = pfnMain();
+   }
 
 }
-catch(...)
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_platform_platform_platform_application_jni_1on_1media_1store_1input_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
 {
 
-}
+   set_jni_context(env);
+
+   ::pointer < ::data::block > pdatablock
+      {
+         transfer_t{},
+         (::data::block *)(void *)(::uptr) lCallback
+      };
+
+   if(jbytea)
+   {
+
+      jni_local_byte_array jnilocalbytea(jbytea);
+
+      pdatablock->m_memory = ::transfer(jnilocalbytea.as_memory());
+
+   }
+
+   if(pdatablock->m_pmanualresethappening)
+   {
+
+      pdatablock->m_pmanualresethappening->set_happening();
+
+   }
 
 }
-
 
 
 extern "C"

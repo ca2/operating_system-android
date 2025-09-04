@@ -129,7 +129,7 @@ JXDATA(i, InputMethodManagerCandidateEnd);  \
 JXDATA(b, LockListFileEnumerate);  \
 JXDATA(str, ListFileEnumerate);  \
 JXDATA(str, Uri);                      \
-JXFUNC(post_media_store_operation, ::e_jni_call_void_method, "(Lplatform/platform/platform/data_block)V");
+JXFUNC(post_media_store_operation, ::e_jni_call_void_method, "(Lplatform/platform/platform/data_block;)V");
 
 
 
@@ -155,9 +155,6 @@ public:
 
    static jni_bind* get();
    static void set(jni_bind* pdirect);
-
-
-   virtual void post_media_store_operation(::data::block * pdatablock);
 
 
 };

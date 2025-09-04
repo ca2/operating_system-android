@@ -217,22 +217,22 @@ namespace android
             }
 
 
-          bool windowing::task_iteration()
-          {
-             if(!::acme::sandbox_windowing::windowing::task_iteration())
-             {
-
-                return false;
-
-             }
-
-             auto papplicationsink = ::platform::application_sink::get();
-
-             papplicationsink->on_main_task_iteration();
-
-             return true;
-
-          }
+//          bool windowing::task_iteration()
+//          {
+//             if(!::acme::sandbox_windowing::windowing::task_iteration())
+//             {
+//
+//                return false;
+//
+//             }
+//
+//             auto papplicationsink = ::platform::application_sink::get();
+//
+//             papplicationsink->on_main_task_iteration();
+//
+//             return true;
+//
+//          }
 
 
             void windowing::windowing_application_main_loop()
@@ -727,6 +727,14 @@ namespace android
 //
 //            }
 //
+
+          void windowing::_main_post(const ::procedure& procedure)
+          {
+
+             ::task::_post(procedure);
+
+          }
+
 
         } // namespace windowing
 

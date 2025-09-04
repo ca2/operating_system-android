@@ -40,6 +40,8 @@ namespace node_android
       //::pointer < ::data::block > media_store_get_data(const ::scoped_string & scopedstrPath) override;
 
       void post_media_store_operation(::data::block * pdatablock) override;
+      void root_ones(::file::listing_base &listing) override;
+      bool defer_enumerate_protocol(::file::listing_base& listing) override;
 
    };
 

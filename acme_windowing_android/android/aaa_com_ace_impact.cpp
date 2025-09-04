@@ -109,7 +109,7 @@ void set_jni_context(JNIEnv* penv);
 
 extern "C"
 //JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -190,7 +190,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1native_1on_1timer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -225,7 +225,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_native_1on_1timer(JNIEnv * 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    try
@@ -233,7 +233,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobje
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_impact_keyDown");
+      LOGI("%s\n", "Java_platform_platform_impact_jniKeyDown");
 
 
    }
@@ -248,7 +248,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyDown(JNIEnv * env, jobje
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
    try
    {
@@ -256,7 +256,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_impact_keyUp");
+      LOGI("%s\n", "Java_platform_platform_impact_jniKeyUp");
 
 
    }
@@ -271,7 +271,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyUp(JNIEnv * env, jobject
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
    try
    {
@@ -304,7 +304,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeDown(JNIEnv * env,
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    try
@@ -326,7 +326,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_keyPreImeUp(JNIEnv * env, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -338,7 +338,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIE
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onReceivedShowKeyboard exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnReceivedShowKeyboard exception");
 
    }
 
@@ -346,7 +346,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedShowKeyboard(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnReceivedHideKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -358,7 +358,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIE
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onReceivedShowKeyboard exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnReceivedShowKeyboard exception");
 
    }
 
@@ -368,7 +368,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onReceivedHideKeyboard(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniMouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -389,7 +389,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, job
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "mouseMove exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniMouseMove exception");
 
    }
 
@@ -398,7 +398,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_mouseMove(JNIEnv * env, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniLButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -419,7 +419,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, j
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonDown exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniLButtonDown exception");
 
    }
 
@@ -428,7 +428,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonDown(JNIEnv * env, j
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniLButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -449,7 +449,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, job
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonUp exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniLButtonUp exception");
 
    }
 
@@ -457,7 +457,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_lButtonUp(JNIEnv * env, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnText(JNIEnv * env, jobject  obj, jstring bytes)
 {
 
    try
@@ -510,7 +510,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobjec
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onText exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnText exception");
 
    }
 
@@ -519,7 +519,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_onText(JNIEnv * env, jobjec
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_aura_1size_1changed(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1aura_1size_1changed(JNIEnv * env, jobject  obj)
 {
 
 

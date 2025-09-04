@@ -92,14 +92,14 @@ namespace android
 
             ::particle_pointer m_pparticleMutexListFileEnumerate;
             ::string_array_base m_straListFileEnumerate;
-::string_map < ::pointer < jni_class > > m_mapClass;
+            ::string_map < ::pointer < jni_class > > m_mapClass;
 
             application_sink();
 
             ~application_sink() override;
 
 
-          void on_initialize_particle() override;
+            void on_initialize_particle() override;
 
 
           // windowing::text_editor_interface
@@ -131,8 +131,8 @@ namespace android
 
             //virtual void open_url(const ::scoped_string & scopedstrOpenUrl);
 
-          void on_media_store_operation(::data::block * pdatablock) override;
-          //void on_read_input_output_data_block(::data::block * pdatablock) override;
+            //void on_media_store_operation(::data::block * pdatablock) override;
+            //void on_read_input_output_data_block(::data::block * pdatablock) override;
 
             void exchange1() override;
             void after_exchange() override;
@@ -141,11 +141,11 @@ namespace android
             //::file::path synchronously_getDocumentFolder(const class ::time & timeOut) override;
 
 
-          void post_media_store_operation(::data::block * pdatablock) override;
+            void post_media_store_operation(::data::block * pdatablock) override;
 
-          void on_main_task_iteration() override;
+            //void on_main_task_iteration() override;
 
-         virtual void get_jni_class_impl(jni_class * pjniclassInterface, const_char_pointer pszClassName);
+            virtual void get_jni_class_impl(jni_class * pjniclassInterface, const_char_pointer pszClassName);
 
         };
 

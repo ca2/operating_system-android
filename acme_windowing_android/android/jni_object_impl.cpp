@@ -199,9 +199,14 @@ void jni_object_impl::set_class_interface(::jni_class * pjniclass)
    if(pmethod->m_ejnicall == ::e_jni_call_void_method)
    {
 
-      pcontextimpl->m_pjnicontext->CallVoidMethodV(m_jobject,
-                                                   pjnimethod->m_jmethodid,
-                                                   args);
+      auto jobject = m_jobject;
+
+      auto jmethod = pjnimethod->m_jmethodid;
+
+      pcontextimpl->m_pjnicontext->CallVoidMethodV(
+         jobject,
+         jmethod,
+         args);
 
       return {};
 

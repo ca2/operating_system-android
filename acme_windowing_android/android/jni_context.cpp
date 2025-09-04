@@ -184,7 +184,7 @@ void class_cache_destroy(JNIEnv *env) {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_platform_platform_platform_application_init_1class_1cache(JNIEnv *env, jclass clazz, jobject loader)
+Java_platform_platform_platform_application_jni_1init_1class_1cache(JNIEnv *env, jclass clazz, jobject loader)
 {
 
    class_cache_init(env, loader);

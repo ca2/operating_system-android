@@ -97,7 +97,7 @@ void set_jni_context(JNIEnv* penv);
 
 extern "C"
 //JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -170,7 +170,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv 
    catch (...)
    {
 
-      LOGW("render_impact exception");
+      LOGW("jni_render_impact exception");
 
    }
 
@@ -178,7 +178,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1native_1on_1timer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -255,7 +255,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_native_1on_1timer(JNIE
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "native_on_timer exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jni_native_on_timer exception");
 
    }
 
@@ -264,7 +264,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_native_1on_1timer(JNIE
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyDown(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniKeyDown(JNIEnv * env, jobject  obj, jint keyCode)
 {
 
    try
@@ -272,14 +272,14 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyDown(JNIEnv * env, 
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_user_impact_keyDown");
+      LOGI("%s\n", "Java_platform_platform_user_impact_jniKeyDown");
 
 
    }
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "keyDown exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniKeyDown exception");
 
    }
 
@@ -287,7 +287,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyDown(JNIEnv * env, 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyUp(JNIEnv * env, jobject  obj, jint keyCode)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniKeyUp(JNIEnv * env, jobject  obj, jint keyCode)
 {
    try
    {
@@ -295,14 +295,14 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyUp(JNIEnv * env, jo
 
       set_jni_context(env);
 
-      LOGI("%s\n", "Java_platform_platform_user_impact_keyUp");
+      LOGI("%s\n", "Java_platform_platform_user_impact_jniKeyUp");
 
 
    }
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "keyUp exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniKeyUp exception");
 
    }
 
@@ -310,7 +310,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyUp(JNIEnv * env, jo
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniKeyPreImeDown(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
    try
    {
@@ -328,13 +328,11 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeDown(JNIEnv *
 
       }
 
-
-
    }
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "keyPreImeDown");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniKeyPreImeDown");
 
    }
 
@@ -343,7 +341,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeDown(JNIEnv *
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniKeyPreImeUp(JNIEnv * env, jobject  obj, jint keyCode, jint iUni)
 {
 
    try
@@ -357,7 +355,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeUp(JNIEnv * e
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "keyPreImeUp exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniKeyPreImeUp exception");
 
    }
 
@@ -365,7 +363,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_keyPreImeUp(JNIEnv * e
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedShowKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniOnReceivedShowKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -377,7 +375,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedShowKeyboard
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onReceivedShowKeyboard exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnReceivedShowKeyboard exception");
 
    }
 
@@ -385,7 +383,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedShowKeyboard
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedHideKeyboard(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniOnReceivedHideKeyboard(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -397,7 +395,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedHideKeyboard
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onReceivedShowKeyboard exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnReceivedShowKeyboard exception");
 
    }
 
@@ -407,7 +405,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_onReceivedHideKeyboard
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_mouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniMouseMove(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -428,7 +426,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_mouseMove(JNIEnv * env
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "mouseMove exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniMouseMove exception");
 
    }
 
@@ -437,7 +435,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_mouseMove(JNIEnv * env
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniLButtonDown(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -458,7 +456,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonDown(JNIEnv * e
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonDown exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniLButtonDown exception");
 
    }
 
@@ -467,7 +465,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonDown(JNIEnv * e
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniLButtonUp(JNIEnv * env, jobject  obj, jfloat x, jfloat y)
 {
 
    try
@@ -488,7 +486,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonUp(JNIEnv * env
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "lButtonUp exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniLButtonUp exception");
 
    }
 
@@ -496,11 +494,12 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_lButtonUp(JNIEnv * env
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_onText(JNIEnv * env, jobject  obj, jstring bytes)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniOnText(JNIEnv * env, jobject  obj, jstring bytes)
 {
 
    try
    {
+
       set_jni_context(env);
 
       if (bytes == NULL)
@@ -543,13 +542,11 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_onText(JNIEnv * env, j
 
       env->ReleaseStringChars(bytes, (jchar*)utf16);
 
-
-
    }
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "onText exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniOnText exception");
 
    }
 

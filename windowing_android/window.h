@@ -259,6 +259,7 @@ virtual public ::android::acme::windowing::window,
       bool is_child(::oswindow window) override; // or descendant
 
 void _main_send(const ::procedure & procedure) override;
+      void pick_media(const_char_pointer pszMediaType)override;
    };
 
 

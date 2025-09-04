@@ -5,7 +5,7 @@
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_announce(JNIEnv * env, jobject obj, jlong id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_jni_1announce(JNIEnv * env, jobject obj, jlong id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
 {
 
    try
@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_announce(JNIEnv * 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_jni_1announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title)
 {
 
    try
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_announce(JNIEnv * 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_enumerate_video_announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
+JNIEXPORT void JNICALL Java_platform_platform_enumerate_video_jni_1announce(JNIEnv * env, jobject  obj, jlong  id, jstring display_name, jstring full_path, jstring mime_type, jstring title, jstring artist)
 {
 
    try

@@ -3,6 +3,7 @@
 #include "acme/constant/id.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
+#include "acme_windowing_android/android/jni_message_sink.h"
 //#include "acme/platform/sequencer.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
@@ -105,6 +106,8 @@ namespace android
 
        m_bLastShowSoftwareKeyboard = true;
 
+       message_sink()->post_simple_message(e_message_show_software_keyboard);
+
     }
 
 
@@ -114,6 +117,8 @@ namespace android
        m_bHideKeyboard = true;
 
        m_bLastShowSoftwareKeyboard = false;
+
+       message_sink()->post_simple_message(e_message_hide_software_keyboard);
 
     }
 

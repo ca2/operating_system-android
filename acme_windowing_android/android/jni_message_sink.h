@@ -8,10 +8,10 @@
 #include "jni_object_interface.h"
 #include "acme/platform/message.h"
 #include "acme/platform/message_sink.h"
-//#include "_internal.h"
+
 
 #define JNI_MESSAGE_SINK_CLASS(JXDATA, JXFUNC) \
-JXFUNC(post_application_message, ::e_jni_call_void_method, "(Lplatform/platform/message_sink)V")
+JXFUNC(post_application_message, ::e_jni_call_void_method, "(Lplatform/platform/message/message;)V")
 
 
 BEGIN_JNI_CLASS(JNI_MESSAGE_SINK_CLASS, jni_message_sink)
@@ -28,21 +28,11 @@ public:
    IMPL_JNI_OBJECT(JNI_MESSAGE_SINK_CLASS, jni_message_sink, "platform.platform.message.message_sink")
 
 
-   //::pointer_array_base<::platform::message> m_messagea;
-
    using jni_object::jni_object;
 
    void on_initialize_particle() override;
 
 
-   //virtual void post_simple_message(::enum_message emessage);
-   //virtual void post_message(::platform::message * pmessage);
-
-
-   //::pointer < platform::message > pick_message_to_post();
-
-
-   //virtual void dispatch_posted_messages();
    void dispatch_message(::platform::message * pmessage) override;
 
 

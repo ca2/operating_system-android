@@ -1,6 +1,9 @@
 // Created by camilo on 2022-10-18 20:32 <3ThomasBorregaardSorensen
 #include "framework.h"
 #include "node.h"
+#include "acme/filesystem/filesystem/file_system_options.h"
+#include "acme/filesystem/filesystem/listing.h"
+#include "acme/handler/request.h"
 #include "acme/platform/system.h"
 #include "acme/windowing/windowing.h"
 #include "apex/platform/session.h"
@@ -200,7 +203,80 @@ namespace node_android
       return ::platform::application_sink::get()->post_media_store_operation(pdatablock);
 
    }
+   void node::root_ones(::file::listing_base &listing)
+   {
 
+      ::aura_android::node::root_ones(listing);
+
+      if(application()->m_pfilesystemoptions->m_straFileSystemExtension.contains("mediastore.image"))
+      {
+
+         auto iPickAudioMedia = listing.size();
+
+         auto & path = listing.insert_at(iPickAudioMedia, "mediastore.image://");
+
+         path.m_etype = ::file::e_type_existent_folder;
+
+         listing.m_straTitle.insert_at(iPickAudioMedia, "Google Photos");
+
+      }
+      else
+      {
+
+         auto iPickBrowse = listing.size();
+
+         auto & path = listing.insert_at(iPickBrowse, "pick-browse://");
+
+         path.m_etype = ::file::e_type_existent_folder;
+
+         listing.m_straTitle.insert_at(iPickBrowse, "Pick Browse...");
+
+
+      }
+
+   }
+
+   bool node::defer_enumerate_protocol(::file::listing_base& listing)
+   {
+
+      ::file::path pathFinal = listing.m_pathFinal;
+
+      if(pathFinal.is_empty())
+      {
+
+         pathFinal = application()->defer_process_path(listing.m_pathUser);
+
+      }
+
+      if(pathFinal.begins_eat("pick-browse://"))
+      {
+
+         auto callback = [this](const ::file::path & path)
+         {
+
+            auto prequest = øcreate_new <::request>();
+
+            prequest->m_payloadFile = path;
+
+            prequest->m_ecommand = ::e_command_file_open;
+
+            application()->request(prequest);
+
+         };
+
+         application()->pick_browse(callback);
+
+      }
+      else if(pathFinal.begins_eat("mediastore.image://"))
+      {
+
+         application()->pick_media("image");
+
+      }
+
+      return ::aura_android::node::defer_enumerate_protocol(listing);
+
+   }
 
 } // namespace windowing_android
 

@@ -10,7 +10,10 @@ virtual public ::particle
 public:
 
 
-
 static jni_context * get();
 
+
 };
+
+
+

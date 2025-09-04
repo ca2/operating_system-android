@@ -18,7 +18,7 @@
 #include "aura/user/user/interaction_thread.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "android/application_sink.h"
-
+#include "acme/platform/message_sink.h"
 //void on_sn_launch_context(void * pSnContext, Window window);
 //void on_sn_launch_complete(void * pSnContext);
 #define LOG_TAG "windowing_android::window"
@@ -3946,7 +3946,16 @@ namespace windowing_android
 
    }
 
+   void window::pick_media(const_char_pointer pszMediaType)
+   {
+      ::string strMediaType(pszMediaType);
 
+      if(strMediaType == "image") {
+         ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+
+         papplicationsink->m_pmessagesink->post_simple_message(::e_message_pick_image);
+      }
+   }
 } // namespace windowing_android
 
 

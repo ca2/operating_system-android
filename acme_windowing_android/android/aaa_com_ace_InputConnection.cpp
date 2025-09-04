@@ -13,7 +13,7 @@ void input_connection_synchronize_selection(::user::element* pelementFocus);
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniBeginBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -35,13 +35,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit
 
             bReturn = pelementFocus->InputConnectionBeginBatchEdit(bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "BeginBatchEdit-(%d-%d)", bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniBeginBatchEdit-(%d-%d)", bSuper, bReturn);
 
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "BeginBatchEdit(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniBeginBatchEdit(NullFocus)");
 
          }
 
@@ -49,7 +49,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "BeginBatchEdit(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniBeginBatchEdit(NullInteraction)");
 
       }
 
@@ -57,7 +57,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "BeginBatchEdit(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniBeginBatchEdit(Exception)");
 
    }
 
@@ -67,7 +67,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_BeginBatchEdit
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniEndBatchEdit(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -89,7 +89,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
 
             bReturn = pelementFocus->InputConnectionEndBatchEdit(bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "EndBatchEdit-(%d-%d)", bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniEndBatchEdit-(%d-%d)", bSuper, bReturn);
 
             //::pointer<::user::plain_edit>pedit = pelementFocus;
 
@@ -104,7 +104,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "EndBatchEdit(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniEndBatchEdit(NullFocus)");
 
          }
 
@@ -112,7 +112,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "EndBatchEdit(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniEndBatchEdit(NullInteraction)");
 
       }
 
@@ -120,7 +120,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "EndBatchEdit(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniEndBatchEdit(Exception)");
 
    }
 
@@ -130,7 +130,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_EndBatchEdit(J
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniCommitText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -145,7 +145,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
       if (utf16 == NULL)
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "CommitText(Null Text)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniCommitText(Null Text)");
 
          return false;
 
@@ -171,13 +171,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
 
             bReturn = pelementFocus->InputConnectionCommitText(str, newCursorPosition, bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "CommitText(\"%s\", %d)-(%d-%d)", pszCommittingText, newCursorPosition, bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniCommitText(\"%s\", %d)-(%d-%d)", pszCommittingText, newCursorPosition, bSuper, bReturn);
 
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "CommitText(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniCommitText(NullFocus)");
 
          }
 
@@ -185,7 +185,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "CommitText(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniCommitText(NullInteraction)");
 
       }
 
@@ -195,7 +195,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "CommitText(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniCommitText(Exception)");
 
    }
 
@@ -205,7 +205,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_CommitText(JNI
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurroundingText(JNIEnv * env, jobject  obj, jint beforeLength, jint afterLength, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniDeleteSurroundingText(JNIEnv * env, jobject  obj, jint beforeLength, jint afterLength, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -227,13 +227,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurround
 
             bReturn = pelementFocus->InputConnectionDeleteSurroundingText(beforeLength, afterLength, bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "DeleteSurroundingText(%d, %d)-(%d-%d)", beforeLength, afterLength, bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniDeleteSurroundingText(%d, %d)-(%d-%d)", beforeLength, afterLength, bSuper, bReturn);
 
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "DeleteSurroundingText(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniDeleteSurroundingText(NullFocus)");
 
          }
 
@@ -241,7 +241,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurround
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "DeleteSurroundingText(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniDeleteSurroundingText(NullInteraction)");
 
       }
 
@@ -249,7 +249,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurround
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "DeleteSurroundingText(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniDeleteSurroundingText(Exception)");
 
    }
 
@@ -259,7 +259,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_DeleteSurround
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetComposingText(JNIEnv * env, jobject  obj, jstring text, jint newCursorPosition, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -274,7 +274,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
       if (utf16 == NULL)
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetComposingText(Null Text)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetComposingText(Null Text)");
 
          return false;
 
@@ -300,7 +300,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
 
             bReturn = pelementFocus->InputConnectionSetComposingText(str, newCursorPosition, bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "SetComposingText(\"%s\", %d)-(%d-%d)", pszComposingText, newCursorPosition, bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniSetComposingText(\"%s\", %d)-(%d-%d)", pszComposingText, newCursorPosition, bSuper, bReturn);
 
             //input_connection_synchronize_selection(pelementFocus);
 
@@ -308,7 +308,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingText(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingText(NullFocus)");
 
          }
 
@@ -316,7 +316,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingText(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingText(NullInteraction)");
 
       }
 
@@ -326,7 +326,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingText(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingText(Exception)");
 
    }
 
@@ -336,7 +336,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingTe
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetComposingRegion(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -358,13 +358,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRe
 
             bReturn = pelementFocus->InputConnectionSetComposingRegion(start, end, bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "SetComposingRegion(%d, %d)-(%d-%d)", start, end, bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniSetComposingRegion(%d, %d)-(%d-%d)", start, end, bSuper, bReturn);
 
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingRegion(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingRegion(NullFocus)");
 
          }
 
@@ -372,7 +372,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRe
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingRegion(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingRegion(NullInteraction)");
 
       }
 
@@ -380,7 +380,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRe
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetCompositingRegion(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetCompositingRegion(Exception)");
 
    }
 
@@ -390,7 +390,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetComposingRe
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetSelection(JNIEnv * env, jobject obj, jint start, jint end, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -412,13 +412,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(J
 
             bReturn = pelementFocus->InputConnectionSetSelection(start, end, bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "SetSelection(%d, %d)-(%d-%d)", start, end, bSuper, bReturn);
-
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniSetSelection(%d, %d)-(%d-%d)", start, end, bSuper, bReturn);
+jni
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetSelection(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetSelection(NullFocus)");
 
          }
 
@@ -426,7 +426,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(J
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetSelection(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetSelection(NullInteraction)");
 
       }
 
@@ -434,7 +434,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(J
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "SetSelection(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniSetSelection(Exception)");
 
    }
 
@@ -445,7 +445,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_SetSelection(J
 
 // This behaves like calling setComposingText(text, newCursorPosition) then finishComposingText().
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_FinishComposingText(JNIEnv * env, jobject  obj, jboolean bSuper)
+JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniFinishComposingText(JNIEnv * env, jobject  obj, jboolean bSuper)
 {
 
    bool bReturn = true;
@@ -467,13 +467,13 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_FinishComposin
 
             bReturn = pelementFocus->InputConnectionFinishComposingText(bSuper);
 
-            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "FinishComposingText-(%d-%d)", bSuper, bReturn);
+            __android_log_print(ANDROID_LOG_INFO, LOG_PREFIX, "jniFinishComposingText-(%d-%d)", bSuper, bReturn);
 
          }
          else
          {
 
-            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "FinishComposingText(NullFocus)");
+            __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniFinishComposingText(NullFocus)");
 
          }
 
@@ -481,7 +481,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_FinishComposin
       else
       {
 
-         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "FinishComposingText(NullInteraction)");
+         __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniFinishComposingText(NullInteraction)");
 
       }
 
@@ -489,7 +489,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_InputConnection_FinishComposin
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "FinishComposingText(Exception)");
+      __android_log_write(ANDROID_LOG_WARN, LOG_PREFIX, "jniFinishComposingText(Exception)");
 
    }
 
