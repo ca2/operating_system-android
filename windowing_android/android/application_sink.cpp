@@ -131,6 +131,32 @@ namespace android
     }
 
 
+   void application_sink::set_editor_text_and_selection(const ::scoped_string & scopedstrText, character_count iStart, character_count iEnd)
+   {
+
+      m_bEditorTextUpdated = true;
+
+      auto pmessage = øcreate_new<::platform::message>();
+
+      pmessage->m_emessage = ::e_message_editor_text_and_selection;
+
+      ::message::editor_text_and_selection textandselection;
+
+      textandselection.m_strEditorText = scopedstrText;
+
+      textandselection.m_iSelectionStart = iStart;
+
+      textandselection.m_iSelectionEnd = iEnd;
+
+      ::output_byte2_stream stream(pmessage->m_memory);
+
+      stream << textandselection;
+
+      m_pmessagesink->post_message(pmessage);
+
+   }
+
+
     void application_sink::show_software_keyboard()
     {
 

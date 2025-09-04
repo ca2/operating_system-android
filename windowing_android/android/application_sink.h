@@ -98,6 +98,8 @@ virtual public ::android::acme::application_sink,
 
         void set_editor_text(const ::scoped_string & scopedstrText) override;
 
+        void set_editor_text_and_selection(const ::scoped_string & scopedstrText, character_count iStart, character_count iEnd) override;
+
         void show_software_keyboard() override;
 
         void hide_software_keyboard() override;
