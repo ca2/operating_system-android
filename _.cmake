@@ -45,6 +45,19 @@ set(OPERATING_SYSTEM_TOOL_FOLDER "tool-android")
 set(OPERATING_SYSTEM_LOWERED_NAME "android")
 set(HAS_PKGCONFIG FALSE)
 
+
+set(USE_PORT_JPEG TRUE)
+add_compile_definitions(USE_PORT_JPEG)
+
+
+set(USE_PORT_PNG TRUE)
+add_compile_definitions(USE_PORT_PNG)
+
+
+set(USE_PORT_FREEIMAGE TRUE)
+add_compile_definitions(USE_PORT_FREEIMAGE)
+
+
 add_compile_definitions(TOOL_FOLDER_OPERATING_SYSTEM_NAME="${TOOL_RELEASE_NAME}")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frtti")

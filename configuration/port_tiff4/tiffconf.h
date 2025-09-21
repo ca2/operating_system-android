@@ -177,6 +177,20 @@
 /* Set the native cpu bit order (FILLORDER_LSB2MSB or FILLORDER_MSB2LSB) */
 #undef HOST_FILLORDER
 
+/* Set the native cpu bit order (FILLORDER_LSB2MSB or FILLORDER_MSB2LSB) */
+#undef HOST_FILLORDER
+
+#if defined(__AARCH64EB__) || defined(__ARMEB__)
+#  define HOST_FILLORDER FILLORDER_MSB2LSB
+#elif defined(__x86_64__) || defined(__i386__) || defined(_M_X64) || defined(_M_IX86) \
+ || defined(__aarch64__) || defined(_M_ARM64) || defined(__arm__) || defined(_M_ARM)
+/* All of these are little-endian by default */
+#  define HOST_FILLORDER FILLORDER_LSB2MSB
+#else
+/* Fallback – assume big-endian */
+#  define HOST_FILLORDER FILLORDER_MSB2LSB
+#endif
+
 /* Support ISO JBIG compression (requires JBIG-KIT library) */
 #undef JBIG_SUPPORT
 
@@ -387,3 +401,15 @@
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 #undef size_t
+
+
+#include <stdint.h>
+#define TIFF_INT8_T   int8_t
+#define TIFF_INT16_T  int16_t
+#define TIFF_INT32_T  int32_t
+#define TIFF_INT64_T  int64_t
+#define TIFF_UINT8_T  uint8_t
+#define TIFF_UINT16_T uint16_t
+#define TIFF_UINT32_T uint32_t
+#define TIFF_UINT64_T uint64_t
+#define TIFF_SSIZE_T ssize_t
