@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(audio_aaudio CXX)
+project(audio_opensles CXX)
 
 
 list(APPEND library_source
@@ -7,16 +7,16 @@ list(APPEND library_source
    #_library.h
    _factory.cpp
    audio_mmsystem_wave_in.h
+   engine.cpp
+   engine.h
    framework.cpp
    framework.h
-   stream.cpp
-   stream.h
+   in.cpp
+   in.h
+   out.cpp
+   out.h
    translation.cpp
    translation.h
-   wave_in.cpp
-   wave_in.h
-   wave_out.cpp
-   wave_out.h
    )
 
 
@@ -71,7 +71,7 @@ elseif (${LINUX} OR ${__BSD__} OR ${ANDROID})
    target_link_options(static_${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_PKGCONFIG_LDFLAGS})
    target_link_libraries(${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_PKGCONFIG_LIBRARIES})
    target_link_libraries(static_${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_PKGCONFIG_LIBRARIES})
-   target_link_libraries(${PROJECT_NAME} PRIVATE aaudio ${library_references} ${global_library_references})
+   target_link_libraries(${PROJECT_NAME} PRIVATE OpenSLES ${library_references} ${global_library_references})
    target_link_options(${PROJECT_NAME} PRIVATE -Wl,-z,defs)
    ## target_link_options(static_${PROJECT_NAME} PRIVATE --whole-archive)
 

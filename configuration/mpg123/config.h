@@ -519,6 +519,8 @@
 #define HAVE_WINDOWS_H 1
 #define HAVE_STRDUP 1
 #define HAVE_UNISTD_H 1
+#define _write write
+#define _read read
 #elif defined(LINUX)
 #define HAVE_STRING_H 1
 #define HAVE_STRERROR 1

@@ -374,7 +374,7 @@ namespace multimedia
                // get the buffer queue interface
                result = (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_ANDROIDSIMPLEBUFFERQUEUE,
                   &(bqPlayerBufferQueue));
-               ::system()->platform()->informationf("bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue));
+               information() << "bqPlayerBufferQueue=" + ::as_string((uptr) bqPlayerBufferQueue);
                //ASSERT(!result);
                if (result != SL_RESULT_SUCCESS) goto end_openaudio;
 
@@ -732,7 +732,7 @@ namespace multimedia
       }
 
 
-      void out::out_free(int iBuffer)
+      void out::out_free(::collection::index iBuffer)
       {
 
          //post_message(message_free, ibuffer);
@@ -742,7 +742,7 @@ namespace multimedia
       }
 
 
-      void out::out_filled(int iBuffer)
+      void out::out_filled(::collection::index iBuffer)
       {
 
 //         post_message(message_ready, iBuffer);
@@ -780,7 +780,7 @@ namespace multimedia
       }
 
 
-      void out::opensles_out_filled(int iBuffer)
+      void out::opensles_out_filled(::collection::index iBuffer)
       {
 
          synchronous_lock sLock(synchronization());
@@ -946,7 +946,7 @@ namespace multimedia
       }
 
 
-      void out::opensles_out_free(int iBuffer)
+      void out::opensles_out_free(::collection::index iBuffer)
       {
 
          ::wave::out::out_free(iBuffer);

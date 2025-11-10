@@ -65,10 +65,10 @@ namespace multimedia
          virtual void * get_os_data();
 
          virtual void out_on_playback_end() override;
-         void out_filled(int iBuffer) override;
-         virtual void opensles_out_filled(int iBuffer);
-         virtual void out_free(int iBuffer) override;
-         virtual void opensles_out_free(int iBuffer);
+         void out_filled(::collection::index iBuffer) override;
+         virtual void opensles_out_filled(::collection::index iBuffer);
+         virtual void out_free(::collection::index iBuffer) override;
+         virtual void opensles_out_free(::collection::index iBuffer);
 
          //virtual bool initialize_thread() override;
          //virtual int32_t exit_thread() override;
