@@ -345,13 +345,13 @@ namespace android
 
              pbind->setEditFocusSet(true);
 
-             pbind->setEditFocusLeft(m_rectangleEditFocus.left());
+             pbind->setEditFocusLeft(m_rectangleEditFocus.left);
 
-             pbind->setEditFocusTop(m_rectangleEditFocus.top());
+             pbind->setEditFocusTop(m_rectangleEditFocus.top);
 
-             pbind->setEditFocusRight(m_rectangleEditFocus.right());
+             pbind->setEditFocusRight(m_rectangleEditFocus.right);
 
-             pbind->setEditFocusBottom(m_rectangleEditFocus.bottom());
+             pbind->setEditFocusBottom(m_rectangleEditFocus.bottom);
 
           }
 
@@ -482,10 +482,10 @@ void application_sink::context_on_size_changed()
 
       //::int_rectangle rectangle;
 
-      //rectangle.left() = 0;
-      //rectangle.top() = 0;
-      //rectangle.right() = ::jni_bind::get()->getWidth();
-      //rectangle.bottom() = ::jni_bind::get()->getHeight();
+      //rectangle.left = 0;
+      //rectangle.top = 0;
+      //rectangle.right = ::jni_bind::get()->getWidth();
+      //rectangle.bottom = ::jni_bind::get()->getHeight();
 
       auto w = ::jni_bind::get()->getWidth();
       auto h = ::jni_bind::get()->getHeight();

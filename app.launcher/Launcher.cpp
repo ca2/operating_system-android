@@ -223,10 +223,10 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
    ::user::native_window_initialize initialize;
 
-   initialize.m_rectangle.left() = 0;
-   initialize.m_rectangle.top() = 0;
-   initialize.m_rectangle.right() = pinitdata->m_iScreenWidth;
-   initialize.m_rectangle.bottom() = pinitdata->m_iScreenHeight;
+   initialize.m_rectangle.left = 0;
+   initialize.m_rectangle.top = 0;
+   initialize.m_rectangle.right = pinitdata->m_iScreenWidth;
+   initialize.m_rectangle.bottom = pinitdata->m_iScreenHeight;
 
 	::user::system_struct createstruct;
 

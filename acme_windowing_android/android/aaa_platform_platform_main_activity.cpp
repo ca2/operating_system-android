@@ -265,13 +265,13 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1init(JNI
 
          ::int_rectangle r;
 
-         r.left() = 0;
+         r.left = 0;
 
-         r.top() = 0;
+         r.top = 0;
 
-         r.right() = pdirect->getWidth();
+         r.right = pdirect->getWidth();
 
-         r.bottom() = pdirect->getHeight();
+         r.bottom = pdirect->getHeight();
 
          SetMainScreenRect(r);
 

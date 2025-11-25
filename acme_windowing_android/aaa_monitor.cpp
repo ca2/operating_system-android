@@ -90,12 +90,12 @@ namespace android
    ::e_status monitor::_get_monitor_rectangle()
    {
 
-      m_rectangle.left() = 0;
-      m_rectangle.top() = 0;
-      m_rectangle.right() = 0;
-      m_rectangle.bottom() = 0;
-      //m_rectangle.right() = ::operating_system_driver::get()->m_iWidth;
-      //m_rectangle.bottom() = ::operating_system_driver::get()->m_iHeight;
+      m_rectangle.left = 0;
+      m_rectangle.top = 0;
+      m_rectangle.right = 0;
+      m_rectangle.bottom = 0;
+      //m_rectangle.right = ::operating_system_driver::get()->m_iWidth;
+      //m_rectangle.bottom = ::operating_system_driver::get()->m_iHeight;
 
       return ::success;
 

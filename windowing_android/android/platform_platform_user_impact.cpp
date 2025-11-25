@@ -566,10 +566,10 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniOnText(JNIEnv * env
 //
 //      //::int_rectangle rectangle;
 //
-//      //rectangle.left() = 0;
-//      //rectangle.top() = 0;
-//      //rectangle.right() = ::jni_bind::get()->getWidth();
-//      //rectangle.bottom() = ::jni_bind::get()->getHeight();
+//      //rectangle.left = 0;
+//      //rectangle.top = 0;
+//      //rectangle.right = ::jni_bind::get()->getWidth();
+//      //rectangle.bottom = ::jni_bind::get()->getHeight();
 //
 //      auto w = ::jni_bind::get()->getWidth();
 //      auto h = ::jni_bind::get()->getHeight();

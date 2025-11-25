@@ -82,10 +82,10 @@ namespace windowing_android
    ::e_status monitor::_get_monitor_rectangle()
    {
 
-      m_rectangle.left() = 0;
-      m_rectangle.top() = 0;
-      m_rectangle.right() = ::platform::application_sink::get()->m_iWidth;
-      m_rectangle.bottom() = ::platform::application_sink::get()->m_iHeight;
+      m_rectangle.left = 0;
+      m_rectangle.top = 0;
+      m_rectangle.right = ::platform::application_sink::get()->m_iWidth;
+      m_rectangle.bottom = ::platform::application_sink::get()->m_iHeight;
 
       return ::success;
 

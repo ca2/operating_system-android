@@ -212,10 +212,10 @@ void android_exchange()
 //
 //   pdriver->m_bEditFocusKill = false;
 //
-//   pdriver->m_rectangleEditFocus.left() = l;
-//   pdriver->m_rectangleEditFocus.top() = t;
-//   pdriver->m_rectangleEditFocus.right() = r;
-//   pdriver->m_rectangleEditFocus.bottom() = b;
+//   pdriver->m_rectangleEditFocus.left = l;
+//   pdriver->m_rectangleEditFocus.top = t;
+//   pdriver->m_rectangleEditFocus.right = r;
+//   pdriver->m_rectangleEditFocus.bottom = b;
 //
 //   pdriver->m_iEditorSelectionStart = iBeg;
 //   pdriver->m_iEditorSelectionEnd = iEnd;

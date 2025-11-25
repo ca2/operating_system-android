@@ -560,7 +560,7 @@ namespace android
 //
 //      double dMargin = psystem->m_dDpi;
 //
-//      if (ZONEING_COMPARE::is_equal(rectangle.top(), rectangleWorkspace.top(), dMargin, !(edisplayPrevious & e_display_top)))
+//      if (ZONEING_COMPARE::is_equal(rectangle.top, rectangleWorkspace.top, dMargin, !(edisplayPrevious & e_display_top)))
 //      {
 //
 //         edisplay |= e_display_top;
@@ -568,18 +568,18 @@ namespace android
 //         if (bPreserveSize)
 //         {
 //
-//            rectangle.move_top_to(rectangleWorkspace.top());
+//            rectangle.move_top_to(rectangleWorkspace.top);
 //
 //         }
 //         else
 //         {
 //
-//            rectangle.top() = rectangleWorkspace.top();
+//            rectangle.top = rectangleWorkspace.top;
 //
 //         }
 //
 //      }
-//      else if (ZONEING_COMPARE::is_equal(rectangle.bottom(), rectangleWorkspace.bottom(), dMargin, !(edisplayPrevious & e_display_bottom)))
+//      else if (ZONEING_COMPARE::is_equal(rectangle.bottom, rectangleWorkspace.bottom, dMargin, !(edisplayPrevious & e_display_bottom)))
 //      {
 //
 //         edisplay |= e_display_bottom;
@@ -587,19 +587,19 @@ namespace android
 //         if (bPreserveSize)
 //         {
 //
-//            rectangle.move_bottom_to(rectangleWorkspace.bottom());
+//            rectangle.move_bottom_to(rectangleWorkspace.bottom);
 //
 //         }
 //         else
 //         {
 //
-//            rectangle.bottom() = rectangleWorkspace.bottom();
+//            rectangle.bottom = rectangleWorkspace.bottom;
 //
 //         }
 //
 //      }
 //
-//      if (ZONEING_COMPARE::is_equal(rectangleRequest.left(), rectangleWorkspace.left(), dMargin, !(edisplayPrevious & e_display_left)))
+//      if (ZONEING_COMPARE::is_equal(rectangleRequest.left, rectangleWorkspace.left, dMargin, !(edisplayPrevious & e_display_left)))
 //      {
 //
 //         edisplay |= e_display_left;
@@ -607,18 +607,18 @@ namespace android
 //         if (bPreserveSize)
 //         {
 //
-//            rectangle.move_left_to(rectangleWorkspace.left());
+//            rectangle.move_left_to(rectangleWorkspace.left);
 //
 //         }
 //         else
 //         {
 //
-//            rectangle.left() = rectangleWorkspace.left();
+//            rectangle.left = rectangleWorkspace.left;
 //
 //         }
 //
 //      }
-//      else if (ZONEING_COMPARE::is_equal(rectangleRequest.right(), rectangleWorkspace.right(), dMargin, !(edisplayPrevious & e_display_right)))
+//      else if (ZONEING_COMPARE::is_equal(rectangleRequest.right, rectangleWorkspace.right, dMargin, !(edisplayPrevious & e_display_right)))
 //      {
 //
 //         edisplay |= e_display_right;
@@ -626,13 +626,13 @@ namespace android
 //         if (bPreserveSize)
 //         {
 //
-//            rectangle.move_right_to(rectangleWorkspace.right());
+//            rectangle.move_right_to(rectangleWorkspace.right);
 //
 //         }
 //         else
 //         {
 //
-//            rectangle.right() = rectangleWorkspace.right();
+//            rectangle.right = rectangleWorkspace.right;
 //
 //         }
 //
@@ -642,16 +642,16 @@ namespace android
 //         && is_different(edisplay & e_display_left, edisplay & e_display_right))
 //      {
 //
-//         if (ZONEING_COMPARE::is_centered(rectangleWorkspace.top(), rectangle.top(), rectangle.bottom(), rectangleWorkspace.bottom()))
+//         if (ZONEING_COMPARE::is_centered(rectangleWorkspace.top, rectangle.top, rectangle.bottom, rectangleWorkspace.bottom))
 //         {
 //
 //            edisplay |= e_display_bottom;
 //
 //            edisplay |= e_display_top;
 //
-//            rectangle.bottom() = rectangleWorkspace.bottom();
+//            rectangle.bottom = rectangleWorkspace.bottom;
 //
-//            rectangle.top() = rectangleWorkspace.top();
+//            rectangle.top = rectangleWorkspace.top;
 //
 //         }
 //
@@ -661,16 +661,16 @@ namespace android
 //         && is_different(edisplay & e_display_top, edisplay & e_display_bottom))
 //      {
 //
-//         if (ZONEING_COMPARE::is_centered(rectangleWorkspace.left(), rectangle.left(), rectangle.right(), rectangleWorkspace.right()))
+//         if (ZONEING_COMPARE::is_centered(rectangleWorkspace.left, rectangle.left, rectangle.right, rectangleWorkspace.right))
 //         {
 //
 //            edisplay |= e_display_left;
 //
 //            edisplay |= e_display_right;
 //
-//            rectangle.left() = rectangleWorkspace.left();
+//            rectangle.left = rectangleWorkspace.left;
 //
-//            rectangle.right() = rectangleWorkspace.right();
+//            rectangle.right = rectangleWorkspace.right;
 //
 //         }
 //
@@ -788,14 +788,14 @@ namespace android
 //      //      strP += "B";
 //
 //      //   ::output_debug_string(
-//      //      "w" + __string(rectangleWorkspace.left()) + ","
-//      //      + __string(rectangleWorkspace.top()) + ","
-//      //      + __string(rectangleWorkspace.right()) + ","
-//      //      + __string(rectangleWorkspace.bottom()) + " " +
-//      //      "r" + __string(prectangle->left()) + ","
-//      //      + __string(prectangle->top()) + ","
-//      //      + __string(prectangle->right()) + ","
-//      //      + __string(prectangle->bottom()) + " " +
+//      //      "w" + __string(rectangleWorkspace.left) + ","
+//      //      + __string(rectangleWorkspace.top) + ","
+//      //      + __string(rectangleWorkspace.right) + ","
+//      //      + __string(rectangleWorkspace.bottom) + " " +
+//      //      "r" + __string(prectangle->left) + ","
+//      //      + __string(prectangle->top) + ","
+//      //      + __string(prectangle->right) + ","
+//      //      + __string(prectangle->bottom) + " " +
 //      //      strE + " " + strP + "\n");
 //
 //      //}
@@ -803,10 +803,10 @@ namespace android
 //
 //      //g_i_get_best_zoneing++;
 //
-//      //   rectangleWorkspace.left(),
-//      //   rectangleWorkspace.top(),
-//      //   rectangleWorkspace.right(),
-//      //   rectangleWorkspace.bottom(),
+//      //   rectangleWorkspace.left,
+//      //   rectangleWorkspace.top,
+//      //   rectangleWorkspace.right,
+//      //   rectangleWorkspace.bottom,
 //      //   (edisplay & e_display_left)?'L':' ',
 //      //   (edisplay & e_display_top) ? 'T':' ',
 //      //   (edisplay & e_display_right) ? 'R':' ',
@@ -986,13 +986,13 @@ namespace android
 //
 //      index iMatchingMonitor = get_best_monitor(rectangleMonitor, rectangleParam);
 //
-//      prectangle->left() = rectangleMonitor.left();
+//      prectangle->left = rectangleMonitor.left;
 //
-//      prectangle->top() = rectangleMonitor.top();
+//      prectangle->top = rectangleMonitor.top;
 //
-//      prectangle->right() = rectangleMonitor.left();
+//      prectangle->right = rectangleMonitor.left;
 //
-//      prectangle->bottom() = rectangleMonitor.top();
+//      prectangle->bottom = rectangleMonitor.top;
 //
 //      return iMatchingMonitor;
 //
@@ -1060,25 +1060,25 @@ namespace android
 //         else
 //         {
 //
-//            rectangleRestore.left() = rectangleMonitor.left() + rectangleMonitor.width() / 7;
+//            rectangleRestore.left = rectangleMonitor.left + rectangleMonitor.width() / 7;
 //
-//            rectangleRestore.top() = rectangleMonitor.top() + rectangleMonitor.height() / 7;
+//            rectangleRestore.top = rectangleMonitor.top + rectangleMonitor.height() / 7;
 //
-//            rectangleRestore.right() = rectangleRestore.left() + maximum(sizeMin.cx, rectangleMonitor.width() * 2 / 5);
+//            rectangleRestore.right = rectangleRestore.left + maximum(sizeMin.cx, rectangleMonitor.width() * 2 / 5);
 //
-//            rectangleRestore.bottom() = rectangleRestore.top() + maximum(sizeMin.cy, rectangleMonitor.height() * 2 / 5);
+//            rectangleRestore.bottom = rectangleRestore.top + maximum(sizeMin.cy, rectangleMonitor.height() * 2 / 5);
 //
-//            if (rectangleRestore.right() > rectangleMonitor.right() - rectangleMonitor.width() / 7)
+//            if (rectangleRestore.right > rectangleMonitor.right - rectangleMonitor.width() / 7)
 //            {
 //
-//               rectangleRestore.offset(rectangleMonitor.right() - rectangleMonitor.width() / 7 - rectangleRestore.right(), 0);
+//               rectangleRestore.offset(rectangleMonitor.right - rectangleMonitor.width() / 7 - rectangleRestore.right, 0);
 //
 //            }
 //
-//            if (rectangleRestore.bottom() > rectangleMonitor.bottom() - rectangleMonitor.height() / 7)
+//            if (rectangleRestore.bottom > rectangleMonitor.bottom - rectangleMonitor.height() / 7)
 //            {
 //
-//               rectangleRestore.offset(0, rectangleMonitor.bottom() - rectangleMonitor.height() / 7 - rectangleRestore.bottom());
+//               rectangleRestore.offset(0, rectangleMonitor.bottom - rectangleMonitor.height() / 7 - rectangleRestore.bottom);
 //
 //            }
 //

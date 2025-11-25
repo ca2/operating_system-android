@@ -1384,10 +1384,10 @@ namespace user
 //
 //   pdata->m_pimpl->m_puserinteraction->rectangle(prectangle);
 //
-//   //prectangle->right() -= prectangle->left();
-//   //prectangle->bottom() -= prectangle->top();
-//   //prectangle->left() = 0;
-//   //prectangle->top() = 0;
+//   //prectangle->right -= prectangle->left;
+//   //prectangle->bottom -= prectangle->top;
+//   //prectangle->left = 0;
+//   //prectangle->top = 0;
 //
 //   return true;
 //
