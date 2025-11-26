@@ -4314,7 +4314,7 @@ namespace aura_android
 
       ::int_size size = m_puserinteraction->get_client_size();
 
-      int iSoftwareKeyboardTop = size.cy() / 2;
+      int iSoftwareKeyboardTop = size.cy / 2;
 
       if (r1.top > iSoftwareKeyboardTop)
       {

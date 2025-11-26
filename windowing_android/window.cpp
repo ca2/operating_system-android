@@ -186,7 +186,7 @@ namespace windowing_android
 //      wcscpy(szWindowClass, L"WindowsDestkop1");
 //
 //      //HWND hwnd = CreateWindowExW(pusersystem->m_createstruct.dwExStyle, szWindowClass, wstrWindowName, pusersystem->m_createstruct.style,
-//        // pusersystem->m_createstruct.x(), pusersystem->m_createstruct.y(), pusersystem->m_createstruct.cx(), pusersystem->m_createstruct.cy(), pusersystem->m_createstruct.hwndParent, pusersystem->m_createstruct.hMenu, pusersystem->m_createstruct.hInstance, pusersystem->m_createstruct.lpCreateParams);
+//        // pusersystem->m_createstruct.x(), pusersystem->m_createstruct.y(), pusersystem->m_createstruct.cx, pusersystem->m_createstruct.cy, pusersystem->m_createstruct.hwndParent, pusersystem->m_createstruct.hMenu, pusersystem->m_createstruct.hInstance, pusersystem->m_createstruct.lpCreateParams);
 //      HWND hwnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPED,
 //         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, pusersystem->m_createstruct.hInstance, nullptr);
 //      //if (!hwnd)
@@ -251,8 +251,8 @@ namespace windowing_android
 //
 //         x = puserinteraction->const_layout().sketch().origin().x();
 //         y = puserinteraction->const_layout().sketch().origin().y();
-//         cx = puserinteraction->const_layout().sketch().size().cx();
-//         cy = puserinteraction->const_layout().sketch().size().cy();
+//         cx = puserinteraction->const_layout().sketch().size().cx;
+//         cy = puserinteraction->const_layout().sketch().size().cy;
 //
 //      }
 //
