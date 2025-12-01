@@ -16,7 +16,7 @@
 //
 //
 //      string                                    m_strWindowText;
-//      ::user::primitive *                       m_pbasewnd;
+//      ::user::prototype *                       m_pbasewnd;
 //      bool                                      m_bUpdateGraphics;
 //      int_size                                      m_size;
 //      int_point                                     m_point;
@@ -85,10 +85,10 @@
 //      //bool ExecuteDlgInit(LPVOID lpResource);
 //
 //      // for child windows, views, panes etc
-//      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest = nullptr) override;
+//      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::prototype * pParentWnd, atom atom, ::request * prequest = nullptr) override;
 //
 //      // for top level windows and/or special features
-//      //virtual bool create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::primitive * puiParent = nullptr, ::atom atom = ::atom()) override;
+//      //virtual bool create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::prototype * puiParent = nullptr, ::atom atom = ::atom()) override;
 //
 //      // for top level windows and/or special features
 //      //virtual bool _native_create_window_ex(::pointer<::user::system>pusersystem) override;

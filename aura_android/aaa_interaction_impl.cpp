@@ -375,7 +375,7 @@ namespace aura_android
    //}
 
 
-//   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::primitive * puiParent, atom atom)
+//   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::prototype * puiParent, atom atom)
 //   {
 //
 //      auto oswindow = puiParent ? puiParent->get_safe_handle() : nullptr;
@@ -613,7 +613,7 @@ namespace aura_android
    }
 
 
-   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::primitive * pParentWnd, atom atom, ::request * prequest)
+   //bool interaction_impl::create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::prototype * pParentWnd, atom atom, ::request * prequest)
    //{
 
    //   // can't use for desktop or pop-up android (use create_window_ex instead)
