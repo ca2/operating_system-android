@@ -60,7 +60,7 @@ namespace android
             }
 
 
-            void windowing::on_start_system()
+            void windowing::windowing_application_on_system_start()
             {
 
                system()->on_branch_system_from_main_thread_startup(this);
@@ -68,10 +68,10 @@ namespace android
             }
 
 
-            void windowing::on_start_windowing_application()
+            void windowing::windowing_application_on_start()
             {
 
-               ::acme::sandbox_windowing::windowing::on_start_windowing_application();
+               ::acme::sandbox_windowing::windowing::windowing_application_on_start();
 
             }
 
@@ -263,7 +263,7 @@ namespace android
 
                 papplicationsink->context_on_size_changed();
 
-                on_start_windowing_application();
+                windowing_application_on_start();
 
                 ::string strAppId = m_papplication->m_strAppId;
 //
@@ -617,22 +617,22 @@ namespace android
             //void windowing::release_mouse_capture(::thread *pthread)
             //{
 
-               if (!m_pwindowMouseCapture) {
+               if (!m_pacmewindowingwindowMouseCapture) {
 
                   return false;
 
                }
 
-               auto pacmeuserinteractionCapture = m_pwindowMouseCapture->m_pacmeuserinteractionMouseCapture;
+               auto pacmeuserinteractionCapture = m_pacmewindowingwindowMouseCapture->m_pacmeuserinteractionMouseCapture;
 
                if (pacmeuserinteractionCapture)
                {
 
-                  m_pwindowMouseCapture->m_pacmeuserinteractionMouseCapture.release();
+                  m_pacmewindowingwindowMouseCapture->m_pacmeuserinteractionMouseCapture.release();
 
                }
 
-               m_pwindowMouseCapture.release();
+               m_pacmewindowingwindowMouseCapture.release();
 
                //auto estatus =
                //

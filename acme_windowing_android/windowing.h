@@ -78,10 +78,10 @@ namespace android
 
                 //void windowing_post_quit() override;
 
-                void on_start_system() override;
+                void windowing_application_on_system_start() override;
 
 
-                void on_start_windowing_application() override;
+                void windowing_application_on_start() override;
 
 
                 //void release_mouse_capture(::thread * pthread) override;

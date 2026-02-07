@@ -102,7 +102,7 @@ namespace node_android
 
       auto pacmewindowing = psystem->acme_windowing();
 
-      pacmewindowing->on_start_system();
+      pacmewindowing->windowing_application_on_system_start();
 
       auto pdriver = ::platform::application_sink::get();
 

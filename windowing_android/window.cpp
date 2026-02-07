@@ -469,9 +469,9 @@ namespace windowing_android
 
       //display_lock displaylock(pdisplayx11->Display());
 
-      int x = puserinteraction->const_layout().sketch().origin().x();
+      int x = puserinteraction->const_layout().sketch().origin().x;
 
-      int y = puserinteraction->const_layout().sketch().origin().y();
+      int y = puserinteraction->const_layout().sketch().origin().y;
 
       int cx = puserinteraction->const_layout().sketch().width();
 
@@ -1026,7 +1026,7 @@ namespace windowing_android
 
       ::cast < ::user::interaction> puserinteraction= m_pacmeuserinteraction;
 
-      memory m(puserinteraction->get_app());
+      memory m;
 
       int length = 2 + d1->area();
 

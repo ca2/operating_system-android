@@ -1,6 +1,7 @@
 
 message(STATUS "including operating_system/operating_system-android/_.cmake")
 
+set(WITH_TEXT_TO_SPEECH TRUE)
 set(RELEASE_WITH_DEBUG FALSE)
 
 if(${RELEASE_WITH_DEBUG})

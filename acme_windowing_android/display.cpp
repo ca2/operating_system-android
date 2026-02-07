@@ -46,6 +46,13 @@ namespace android
 
 
 
+       bool display::is_display_opened() const
+       {
+
+           return true;
+
+       }
+
 //   void display::initialize_display(::windowing::windowing* pwindowing)
 //   {
 //

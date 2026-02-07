@@ -152,7 +152,7 @@ namespace android {
 //
 //      virtual void enable_wallpaper_change_notification();
 
-
+bool is_display_opened() const override;
 
         };
 
