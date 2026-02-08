@@ -188,10 +188,12 @@ namespace android
             }
 
 
-            void windowing::defer_initialize_host_window(const ::int_rectangle *lpcrect)
+            ::particle * windowing::defer_initialize_host_window(const ::int_rectangle *lpcrect)
             {
 
-               ::acme::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
+               auto pparticleAcmeWindowingWindow = ::acme::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
+
+               return pparticleAcmeWindowingWindow;
 
 //               if (::is_set(m_phostinteraction)) {
 //

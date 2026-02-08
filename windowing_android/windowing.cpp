@@ -81,10 +81,12 @@ namespace windowing_android
    }
 
 
-   void windowing::defer_initialize_host_window(const ::int_rectangle* lpcrect)
+   ::particle * windowing::defer_initialize_host_window(const ::int_rectangle* lpcrect)
    {
 
-      ::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
+      auto pparticleAcmeWindowingWindow = ::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
+
+      return pparticleAcmeWindowingWindow;
 
    }
 
