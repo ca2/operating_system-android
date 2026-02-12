@@ -869,7 +869,7 @@ namespace windowing_android
    }
 
 
-   bool window::is_child(::oswindow oswindow)
+   bool window::is_child(::::acme::windowing::window * pacmewindowingwindow)
    {
 
       if (oswindow == nullptr || oswindow->m_pwindow == nullptr || oswindow->m_pwindow->m_puserinteraction == nullptr)
@@ -1730,7 +1730,7 @@ namespace windowing_android
    //::e_status window::post_ui_message(const MESSAGE & message)
    //{
 
-   //   oswindow oswindow = message.oswindow;
+   //   ::acme::windowing::window * pacmewindowingwindow = message.oswindow;
 
    //   ASSERT(oswindow != nullptr);
 
@@ -2129,7 +2129,7 @@ namespace windowing_android
 
    //         //fflush(stdout);
 
-   //         //x11_store_name(m_oswindow, m_strWindowText);
+   //         //x11_store_name(m_pacmewindowingwindow, m_strWindowText);
 
    //   //x11_store_name(pszString);
 

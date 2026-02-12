@@ -51,7 +51,7 @@ CLASS_DECL_AURA int32_t IsWindowVisible(oswindow window);
 
 
 
-CLASS_DECL_AURA int_bool IsWindow(oswindow oswindow);
+CLASS_DECL_AURA int_bool IsWindow(::acme::windowing::window * pacmewindowingwindow);
 
 
 

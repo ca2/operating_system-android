@@ -126,11 +126,11 @@ namespace windowing_android
       int h;
 
 
-      //w = ANativeWindow_getWidth(m_pimpl->m_oswindow->m_engine.app->window);
+      //w = ANativeWindow_getWidth(m_pimpl->m_pacmewindowingwindow->m_engine.app->window);
 
-      //h = ANativeWindow_getHeight(m_pimpl->m_oswindow->m_engine.app->window);
+      //h = ANativeWindow_getHeight(m_pimpl->m_pacmewindowingwindow->m_engine.app->window);
 
-      //ANativeWindow_setBuffersGeometry(m_pimpl->m_oswindow->m_engine.app->window, w, h, WINDOW_FORMAT_RGBA_8888);
+      //ANativeWindow_setBuffersGeometry(m_pimpl->m_pacmewindowingwindow->m_engine.app->window, w, h, WINDOW_FORMAT_RGBA_8888);
 
       ::graphics::double_buffer::update_buffer(pbufferitem);
 
@@ -183,7 +183,7 @@ namespace windowing_android
 
       //zero(buffer);
 
-      //ANativeWindow_lock(m_pimpl->m_oswindow->m_engine.app->window, &buffer, rectangle);
+      //ANativeWindow_lock(m_pimpl->m_pacmewindowingwindow->m_engine.app->window, &buffer, rectangle);
 
       ///**
       //* Unlock the window's drawing surface after previously locking it,
@@ -193,7 +193,7 @@ namespace windowing_android
 
       //::copy_image32(pimage->width(), pimage->height(), (color32_t *)buffer.bits, pimage->width() * sizeof(color32_t), pimage->get_data(), pimage->scan_size());
 
-      //ANativeWindow_unlockAndPost(m_pimpl->m_oswindow->m_engine.app->window);
+      //ANativeWindow_unlockAndPost(m_pimpl->m_pacmewindowingwindow->m_engine.app->window);
 
       //return true;
 

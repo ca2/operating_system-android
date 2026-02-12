@@ -553,7 +553,7 @@ namespace android
 //            }
 
 //
-//            ::windowing::window *windowing::window(oswindow oswindow)
+//            ::windowing::window *windowing::window(::acme::windowing::window * pacmewindowingwindow)
 //            {
 //
 //               return oswindow;
@@ -605,7 +605,7 @@ namespace android
             //}
 
 
-            //::windowing::window * windowing::window(oswindow oswindow)
+            //::windowing::window * windowing::window(::acme::windowing::window * pacmewindowingwindow)
             //{
 
             //   return oswindow;
@@ -1014,7 +1014,7 @@ namespace user
 //oswindow oswindow_defer_get(::windowing::window * pimpl)
 //{
 //
-//   return pimpl->m_oswindow;
+//   return pimpl->m_pacmewindowingwindow;
 //
 //}
 //
@@ -1236,7 +1236,7 @@ namespace user
 //
 //
 //
-//bool oswindow_data::is_child(::oswindow oswindow)
+//bool oswindow_data::is_child(::::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   synchronous_lock synchronouslock(m_pimpl == nullptr || m_pimpl->m_puserinteraction ? nullptr : m_pimpl->m_puserinteraction->synchronization());
@@ -1264,7 +1264,7 @@ namespace user
 //}
 //
 //
-//oswindow oswindow_data::set_parent(oswindow oswindow)
+//oswindow oswindow_data::set_parent(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   return nullptr;
@@ -1425,7 +1425,7 @@ namespace user
 //
 //}
 
-//oswindow set_capture(oswindow oswindow)
+//oswindow set_capture(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   synchronous_lock synchronouslock(::aura::g_pmutexWindowing);
@@ -1451,7 +1451,7 @@ namespace user
 //}
 //
 //
-//oswindow set_focus(oswindow oswindow)
+//oswindow set_focus(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   synchronous_lock synchronouslock(::aura::g_pmutexWindowing);
@@ -1465,7 +1465,7 @@ namespace user
 //}
 
 
-//bool erase_focus(oswindow oswindow)
+//bool erase_focus(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   synchronous_lock synchronouslock(::aura::g_pmutexWindowing);
@@ -1630,7 +1630,7 @@ namespace user
 //}
 //
 //
-//oswindow set_active_window(oswindow oswindow)
+//oswindow set_active_window(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   ::oswindow oswindowPrevious = g_oswindowActive;
@@ -1693,7 +1693,7 @@ namespace user
 //}
 //
 //
-////bool IsWindow(oswindow oswindow)
+////bool IsWindow(::acme::windowing::window * pacmewindowingwindow)
 ////{
 ////
 ////   return oswindow->get_user_interaction() != nullptr && !oswindow->is_destroying();
@@ -1755,7 +1755,7 @@ namespace user
 //
 //
 
-//bool IsWindow(oswindow oswindow)
+//bool IsWindow(::acme::windowing::window * pacmewindowingwindow)
 //{
 //   return (oswindow->get_user_interaction() == nullptr && oswindow->display() != nullptr && oswindow->window() != None)
 //      || (oswindow->get_user_interaction() != nullptr && !oswindow->is_destroying());
@@ -1822,7 +1822,7 @@ namespace user
 //}
 //
 //
-//::windowing::window * window_from_handle(oswindow oswindow)
+//::windowing::window * window_from_handle(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   if (oswindow == nullptr)

@@ -28,7 +28,7 @@ namespace aura_android
    {
 
       m_bScreenRelativeMouseMessagePosition = true;
-      //m_oswindow           = nullptr;
+      //m_pacmewindowingwindow           = nullptr;
       //m_bMouseHover        = false;
       m_bUpdateGraphics    = false;
       //m_bEnabled           = true;
@@ -45,11 +45,11 @@ namespace aura_android
 
 
 
-   //void interaction_impl::construct(oswindow oswindow)
+   //void interaction_impl::construct(::acme::windowing::window * pacmewindowingwindow)
    //{
 
    //   m_bScreenRelativeMouseMessagePosition = true;
-   //   m_oswindow           = nullptr;
+   //   m_pacmewindowingwindow           = nullptr;
    //   //m_bMouseHover        = false;
    //   m_bUpdateGraphics    = false;
    //   m_bEnabled           = true;
@@ -68,7 +68,7 @@ namespace aura_android
    //{
    //   m_bScreenRelativeMouseMessagePosition = true;
    //   //  m_bScreenRelativeMouseMessagePosition = false;
-   //   m_oswindow           = nullptr;
+   //   m_pacmewindowingwindow           = nullptr;
    //   m_bUpdateGraphics    = false;
    //   m_bIgnoreSizeEvent   = false;
    //   m_bIgnoreMoveEvent   = false;
@@ -118,7 +118,7 @@ namespace aura_android
 
    // Change a interaction_impl's style
 
-   //__STATIC bool CLASS_DECL_AURA __modify_style(oswindow oswindow,int nStyleOffset,
+   //__STATIC bool CLASS_DECL_AURA __modify_style(::acme::windowing::window * pacmewindowingwindow,int nStyleOffset,
    //      unsigned int dwRemove,unsigned int dwAdd,unsigned int nFlags)
    //{
    //   ASSERT(oswindow != nullptr);
@@ -136,7 +136,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::ModifyStyle(oswindow oswindow,unsigned int dwRemove,unsigned int dwAdd,unsigned int nFlags)
+   //bool interaction_impl::ModifyStyle(::acme::windowing::window * pacmewindowingwindow,unsigned int dwRemove,unsigned int dwAdd,unsigned int nFlags)
    //{
 
    //   //return __modify_style(oswindow,GWL_STYLE,dwRemove,dwAdd,nFlags);
@@ -146,7 +146,7 @@ namespace aura_android
    //}
 
 
-   //bool interaction_impl::ModifyStyleEx(oswindow oswindow,unsigned int dwRemove,unsigned int dwAdd,unsigned int nFlags)
+   //bool interaction_impl::ModifyStyleEx(::acme::windowing::window * pacmewindowingwindow,unsigned int dwRemove,unsigned int dwAdd,unsigned int nFlags)
    //{
 
    //   return __modify_style(oswindow,GWL_EXSTYLE,dwRemove,dwAdd,nFlags);
@@ -162,7 +162,7 @@ namespace aura_android
    //}
 
 
-   //::user::interaction * interaction_impl::FromHandlePermanent(oswindow oswindow)
+   //::user::interaction * interaction_impl::FromHandlePermanent(::acme::windowing::window * pacmewindowingwindow)
    //{
 
    //   if (oswindow->get_impl() == nullptr)
@@ -185,7 +185,7 @@ namespace aura_android
    //   if (hWndNew == nullptr)
    //      return false;
 
-   //   m_oswindow = hWndNew;
+   //   m_pacmewindowingwindow = hWndNew;
 
    //   return true;
 
@@ -200,7 +200,7 @@ namespace aura_android
    //   if (hwnd != nullptr)
    //   {
 
-   //      m_oswindow = nullptr;
+   //      m_pacmewindowingwindow = nullptr;
 
    //   }
 
@@ -306,7 +306,7 @@ namespace aura_android
    //   //
    //   //         auto pwindowing = m_pwindowwindowing();
    //   //
-   //   //         m_oswindow = pwindowing->new_message_window(this);
+   //   //         m_pacmewindowingwindow = pwindowing->new_message_window(this);
    //   //
    //   //         m_puserinteraction->m_bMessageWindow = true;
    //   //
@@ -434,7 +434,7 @@ namespace aura_android
 //
 //         m_puserinteraction->m_bMessageWindow = false;
 //
-//         m_oswindow = oswindow_get(this);
+//         m_pacmewindowingwindow = oswindow_get(this);
 //
 //         m_puserinteraction->ModifyStyle(0, WS_VISIBLE);
 //
@@ -457,13 +457,13 @@ namespace aura_android
 //
 //         //m_pgraphics->initialize_graphics_graphics(this);
 //         
-//         m_oswindow->m_pimpl = this;
+//         m_pacmewindowingwindow->m_pimpl = this;
 //
 //      }
 //
-//      set_handle(m_oswindow);
+//      set_handle(m_pacmewindowingwindow);
 //
-//      if(m_oswindow == nullptr)
+//      if(m_pacmewindowingwindow == nullptr)
 //      {
 //
 //         if (get_app() == nullptr)
@@ -515,7 +515,7 @@ namespace aura_android
 //
 //      }
 //
-//      if(m_oswindow == nullptr)
+//      if(m_pacmewindowingwindow == nullptr)
 //      {
 //
 //         post_non_client_destroy();
@@ -550,7 +550,7 @@ namespace aura_android
 //
 //      m_puserinteraction->send_message(::user::e_message_size);
 //
-//      if(m_oswindow != get_handle())
+//      if(m_pacmewindowingwindow != get_handle())
 //      {
 //
 //         ASSERT(false); // should have been set in send msg hook
@@ -569,9 +569,9 @@ namespace aura_android
    //bool interaction_impl::create_native_window(::user::native_window_initialize * pinitialize)
    //{
 
-   //   m_oswindow = oswindow_get(this);
+   //   m_pacmewindowingwindow = oswindow_get(this);
 
-   //   m_oswindow->set_impl(this);
+   //   m_pacmewindowingwindow->set_impl(this);
 
    //   install_message_routing(this);
 
@@ -1289,7 +1289,7 @@ namespace aura_android
 
    //::user::interaction * interaction_impl::get_safe_owner(::user::interaction * pParent,oswindow* pWndTop)
    //{
-   //   oswindow oswindow = get_safe_owner(pParent->get_handle(),pWndTop);
+   //   ::acme::windowing::window * pacmewindowingwindow = get_safe_owner(pParent->get_handle(),pWndTop);
    //   return ::android::interaction_impl::from_handle(oswindow);
    //}
 
@@ -1338,7 +1338,7 @@ namespace aura_android
    //{
    //   ASSERT(lpScrollInfo != nullptr);
 
-   //   oswindow oswindow = get_handle();
+   //   ::acme::windowing::window * pacmewindowingwindow = get_handle();
    //   lpScrollInfo->cbSize = sizeof(*lpScrollInfo);
    //   ::SetScrollInfo(oswindow,nBar,lpScrollInfo,bRedraw);
    //   return true;
@@ -1349,7 +1349,7 @@ namespace aura_android
    //   __UNREFERENCED_PARAMETER(nMask);
    //   ASSERT(lpScrollInfo != nullptr);
 
-   //   oswindow oswindow = get_handle();
+   //   ::acme::windowing::window * pacmewindowingwindow = get_handle();
    //   return ::GetScrollInfo(oswindow,nBar,lpScrollInfo) != false;
    //}
 
@@ -2044,7 +2044,7 @@ namespace aura_android
    //oswindow interaction_impl::get_handle() const
    //{
 
-   //   return m_oswindow;
+   //   return m_pacmewindowingwindow;
 
    //}
 
@@ -2058,7 +2058,7 @@ namespace aura_android
 //
 //      //      single_lock synchronouslock(&user_mutex(), true);
 //
-//      //xdisplay d(m_oswindow->display());
+//      //xdisplay d(m_pacmewindowingwindow->display());
 //
 //      ::int_rectangle rectangleScreen;
 //
@@ -2114,8 +2114,8 @@ namespace aura_android
 //            //hints.flags = PSize;
 //            //hints.width = cx;
 //            //hints.height = cy;
-//            //XResizeWindow(m_oswindow->display(), m_oswindow->window(), cx, cy);
-//            //            XClearWindow(m_oswindow->display(), m_oswindow->interaction_impl());
+//            //XResizeWindow(m_pacmewindowingwindow->display(), m_pacmewindowingwindow->window(), cx, cy);
+//            //            XClearWindow(m_pacmewindowingwindow->display(), m_pacmewindowingwindow->interaction_impl());
 //         }
 //      }
 //      else
@@ -2125,7 +2125,7 @@ namespace aura_android
 //      if (!is_window_visible())
 //      {
 //
-//         /*XSetNormalHints(m_oswindow->display(), m_oswindow->window(), &hints);*/
+//         /*XSetNormalHints(m_pacmewindowingwindow->display(), m_pacmewindowingwindow->window(), &hints);*/
 //
 //      }
 //
@@ -2141,7 +2141,7 @@ namespace aura_android
 //         if (!is_window_visible())
 //         {
 //
-//            /*XMapWindow(m_oswindow->display(), m_oswindow->window());*/
+//            /*XMapWindow(m_pacmewindowingwindow->display(), m_pacmewindowingwindow->window());*/
 //
 //            ::show_window(get_handle(), e_display_normal);
 //
@@ -2758,9 +2758,9 @@ namespace aura_android
 
    //   ::draw2d::graphics_pointer g(e_create);
 
-   //   //xdisplay d(m_oswindow->display());
+   //   //xdisplay d(m_pacmewindowingwindow->display());
 
-   //   oswindow oswindow;
+   //   ::acme::windowing::window * pacmewindowingwindow;
 
    //   if (get_handle() == nullptr)
    //   {
@@ -4251,7 +4251,7 @@ namespace aura_android
 
 
 
-   //::windowing::window * interaction_impl::from_handle(oswindow oswindow)
+   //::windowing::window * interaction_impl::from_handle(::acme::windowing::window * pacmewindowingwindow)
    //{
 
    //   return oswindow_interaction_impl(oswindow);
@@ -4259,7 +4259,7 @@ namespace aura_android
    //}
 
 
-   //::user::interaction * interaction_impl::ui_from_handle(oswindow oswindow)
+   //::user::interaction * interaction_impl::ui_from_handle(::acme::windowing::window * pacmewindowingwindow)
    //{
 
    //   return oswindow_interaction(oswindow);

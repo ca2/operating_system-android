@@ -95,7 +95,7 @@ namespace windowing_android
 
       //virtual ::windowing_android::window * _window(Window window);
 
-      ::windowing::window* window(oswindow oswindow) override;
+      ::windowing::window* window(::acme::windowing::window * pacmewindowingwindow) override;
 
       virtual void _message_handler(void * p) override;
 
@@ -129,7 +129,7 @@ namespace windowing_android
 
       bool x11_runnable_step() override;
 
-      //virtual ::windowing::window * window(oswindow oswindow) override;
+      //virtual ::windowing::window * window(::acme::windowing::window * pacmewindowingwindow) override;
 
       //virtual void _libsn_start_context() override;
 

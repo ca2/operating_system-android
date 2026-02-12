@@ -69,12 +69,12 @@
 //      //virtual ::windowing::window * from_os_data(void * pdata) override;
 //      //virtual void * get_os_data() const override;
 //
-//      //static ::windowing::window * from_handle(oswindow oswindow);
-//      //static ::user::interaction * ui_from_handle(oswindow oswindow);
+//      //static ::windowing::window * from_handle(::acme::windowing::window * pacmewindowingwindow);
+//      //static ::user::interaction * ui_from_handle(::acme::windowing::window * pacmewindowingwindow);
 //
 //      // subclassing/unsubclassing functions
 //      virtual void pre_subclass_window() override;
-//      //bool subclass_window(oswindow oswindow);
+//      //bool subclass_window(::acme::windowing::window * pacmewindowingwindow);
 //      //bool SubclassDlgItem(unsigned int nID,::user::interaction * pParent);
 //      //oswindow unsubclass_window();
 //
@@ -520,7 +520,7 @@
 //
 //
 //      //virtual bool CheckAutoCenter() override;
-//      //virtual bool GrayCtlColor(HDC hDC,oswindow oswindow,unsigned int nCtlColor,
+//      //virtual bool GrayCtlColor(HDC hDC,::acme::windowing::window * pacmewindowingwindow,unsigned int nCtlColor,
 //      //                          HBRUSH hbrGray,color32_t clrText);
 //
 //
@@ -576,7 +576,7 @@
 //
 //      //void on_set_parent(::user::interaction * pinteraction);
 //
-//      //::user::interaction * FromHandlePermanent(oswindow oswindow);
+//      //::user::interaction * FromHandlePermanent(::acme::windowing::window * pacmewindowingwindow);
 //
 //      //bool Attach(oswindow hWndNew);
 //      //virtual oswindow Detach();

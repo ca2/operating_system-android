@@ -386,7 +386,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 }
 
 
-//CLASS_DECL_AURA ::windowing::window * oswindow_get(oswindow oswindow)
+//CLASS_DECL_AURA ::windowing::window * oswindow_get(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   if (oswindow == nullptr)
@@ -430,7 +430,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//int_bool is_window(oswindow oswindow)
+//int_bool is_window(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   if (::oswindow_data::s_pdataptra->find_first(oswindow) < 0)
@@ -596,7 +596,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 //
 //
-//int_bool is_window_occluded(oswindow oswindow)
+//int_bool is_window_occluded(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   return false;
@@ -604,7 +604,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 //
 //
-//double _001GetWindowTopLeftWeightedOccludedOpaqueRate(oswindow oswindow)
+//double _001GetWindowTopLeftWeightedOccludedOpaqueRate(::acme::windowing::window * pacmewindowingwindow)
 //{
 //
 //   return 0.0;
