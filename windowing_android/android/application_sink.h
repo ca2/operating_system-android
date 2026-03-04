@@ -110,7 +110,7 @@ virtual public ::android::acme::application_sink,
 
 //
 //   virtual void queue_message_box(::message_box* psequencer);
-//   virtual ::pointer < ::message_box > pick_message_box();
+//   virtual ::pointer < ::message_box_payload > pick_message_box();
 
 //
 //   virtual void open_url(const ::scoped_string & scopedstrOpenUrl);

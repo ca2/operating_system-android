@@ -169,7 +169,7 @@ public:
 inline ::pointer < ::jni_object_interface > øjni_object(jobject jobject)
 {
 
-   return øallocate jni_object_impl(jobject);
+   return allocateø jni_object_impl(jobject);
 
 }
 
@@ -180,7 +180,7 @@ inline ::pointer < TYPE > øjni(jobject jobject)
 
    auto pjniobjectinterface = øjni_object(jobject);
 
-   auto p = øallocate TYPE(pjniobjectinterface);
+   auto p = allocateø TYPE(pjniobjectinterface);
 
    p->initialize_jni_object();
 

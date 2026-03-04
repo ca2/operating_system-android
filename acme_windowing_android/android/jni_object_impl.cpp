@@ -96,7 +96,7 @@ void jni_object_impl::set_class_interface(::jni_class * pjniclass)
 //
 //   auto pcontext = pjnicontext->m_pjnicontext;
 //
-//   auto pfieldImpl = øallocate jni_field_impl();
+//   auto pfieldImpl = allocateø jni_field_impl();
 //
 //   pfieldImpl->m_jfieldid = pcontext->GetFieldID(m_jclass, psz, pszType);
 //

@@ -142,7 +142,7 @@ template < typename JNICLASSINTERFACE >
 inline JNICLASSINTERFACE * jni_get_class(const_char_pointer pszClassName)
 {
 
-   auto pjniclassinterface = øallocate JNICLASSINTERFACE();
+   auto pjniclassinterface = allocateø JNICLASSINTERFACE();
 
    jni_get_class_impl(pjniclassinterface, pszClassName);
 

@@ -125,7 +125,7 @@ namespace node_android
 //   ::pointer<::acme::user::message_box>node::create_new_message_box()
 //   {
 //
-//      return øallocate class ::windowing_android::message_box();
+//      return allocateø class ::windowing_android::message_box();
 //
 //   }
 //
@@ -134,7 +134,7 @@ namespace node_android
    ////pointer< ::sequence < ::conversation > > node::get_new_conversation_sequence()
    ////{
 
-   ////   auto psequence = øallocate windowing_android::message_box();
+   ////   auto psequence = allocateø windowing_android::message_box();
 
    ////   return psequence;
 

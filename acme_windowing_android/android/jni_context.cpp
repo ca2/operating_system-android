@@ -58,7 +58,7 @@ void set_jni_context(JNIEnv* pcontext)
    if(!t_pjnipcontextContext)
    {
 
-      t_pjnipcontextContext = øallocate jni_context_impl;
+      t_pjnipcontextContext = allocateø jni_context_impl;
 
    }
 

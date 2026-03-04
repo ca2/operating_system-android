@@ -86,7 +86,7 @@ jni_field * jni_class::_field(const_char_pointer psz, const_char_pointer pszType
 
    auto pcontext = pjnicontext->m_pjnicontext;
 
-   auto pfieldImpl = øallocate jni_field_impl();
+   auto pfieldImpl = allocateø jni_field_impl();
 
    ::cast < ::jni_class_impl > pimpl = m_pjniclassImpl;
 

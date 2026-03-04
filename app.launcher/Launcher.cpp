@@ -181,7 +181,7 @@ void native_activity_android_start(node_data_exchange * pinitdata)
 
 	int32_t nReturnCode = 0;
 
-	auto pmaindata = øallocate aura_main_data(pinitdata->m_pszCommandLine);
+	auto pmaindata = allocateø aura_main_data(pinitdata->m_pszCommandLine);
 
    if (pinitdata != NULL)
    {

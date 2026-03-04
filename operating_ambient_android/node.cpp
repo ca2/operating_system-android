@@ -85,7 +85,7 @@ namespace operating_ambient_android
    //::pointer<::conversation>node::create_new_message_box_conversation()
    //{
 
-   //   return øallocate ::windowing_android::message_box();
+   //   return allocateø ::windowing_android::message_box();
 
    //}
 
@@ -93,7 +93,7 @@ namespace operating_ambient_android
    //pointer< ::sequence < ::conversation > > node::get_new_conversation_sequence()
    //{
 
-   //   auto psequence = øallocate windowing_android::message_box();
+   //   auto psequence = allocateø windowing_android::message_box();
 
    //   return psequence;
 

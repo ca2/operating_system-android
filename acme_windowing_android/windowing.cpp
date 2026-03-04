@@ -201,7 +201,7 @@ namespace android
 //
 //               }
 //
-//               øconstruct_new(m_phostinteraction);
+//               construct_newø(m_phostinteraction);
 //
 //               m_phostinteraction->set_rectangle(*lpcrect);
 //
@@ -271,7 +271,7 @@ namespace android
 //
                 //session()->get_application(strAppId, true);
 
-                //m_papplication->_post([this]()
+                //m_papplication->postø() << [this]()
                 //   {
 
                 //      m_papplication->m_bReadyToAttendRequests = true;
@@ -448,7 +448,7 @@ namespace android
 //                  //auto estatus =
 //                  //
 //                  //
-//                  øconstruct_new(m_pcursormanager);
+//                  construct_newø(m_pcursormanager);
 //
 //                  //         if (!estatus)
 //                  //         {

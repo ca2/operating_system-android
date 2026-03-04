@@ -114,7 +114,7 @@ namespace windowing_android
       if (!m_pcursormanager)
       {
 
-         øconstruct_new(m_pcursormanager);
+         construct_newø(m_pcursormanager);
 
       }
 

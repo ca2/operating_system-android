@@ -39,7 +39,7 @@ namespace android
 
       auto paasset = AAssetManager_open(m_pmanager, path, AASSET_MANAGER_ACCESS_BUFFER);
 
-      auto passet = øallocate asset();
+      auto passet = allocateø asset();
 
       passet->m_passet = paasset;
 

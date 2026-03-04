@@ -25,7 +25,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_jni_1announce(JNIE
 
       ::string strArtist = ::as_string(artist);
 
-      auto pitem = øallocate ::android::audio_item(id, strTitle, strArtist);
+      auto pitem = allocateø ::android::audio_item(id, strTitle, strArtist);
 
       pitem->m_strDisplayName = strDisplayName;
 
@@ -65,7 +65,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_jni_1announce(JNIE
 
       ::string strTitle = ::as_string(title);
 
-      auto pitem = øallocate ::android::images_item(id, strTitle);
+      auto pitem = allocateø ::android::images_item(id, strTitle);
 
       pitem->m_strDisplayName = strDisplayName;
 
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_video_jni_1announce(JNIE
 
       ::string strArtist = ::as_string(artist);
 
-      auto pitem = øallocate ::android::video_item(id, strTitle, strArtist);
+      auto pitem = allocateø ::android::video_item(id, strTitle, strArtist);
 
       pitem->m_strDisplayName = strDisplayName;
 

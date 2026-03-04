@@ -46,11 +46,11 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle
 
    }
 
-    auto pmessagebox = øallocate ::message_box(strMessage, strTitle, ::user::e_message_box_ok | ::user::e_message_box_icon_exclamation, strDetails);
+    auto pmessagebox = allocateø ::message_box(strMessage, strTitle, ::user::e_message_box_ok | ::user::e_message_box_icon_exclamation, strDetails);
 
    pmessagebox->initialize(pparticle);
 
-pmessagebox->sync();
+send(pmessageboxpayload);
 
 
    __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);

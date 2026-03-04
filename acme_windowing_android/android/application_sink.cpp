@@ -342,7 +342,7 @@ namespace android
          if (!pjniclass) {
             ::cast<::android::acme::application_sink> papplicationsink = ::platform::application_sink::get();
 
-            auto pjniclassimpl = øallocate jni_class_impl;
+            auto pjniclassimpl = allocateø jni_class_impl;
             pjniclass = pjniclassInterface;
 
             pjniclass->m_pjniclassImpl = pjniclassimpl;
