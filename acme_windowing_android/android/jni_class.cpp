@@ -208,7 +208,7 @@ jni_method * jni_class::method(enum_jni_call ejnicall, const_char_pointer pszNam
 
    }
 
-   auto pmethodNew = øcreate_new<jni_method_impl>();
+   auto pmethodNew = create_newø<jni_method_impl>();
 
    ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
 

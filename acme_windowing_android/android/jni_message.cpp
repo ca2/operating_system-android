@@ -37,7 +37,7 @@ jni_message::jni_message(::platform::message * pmessage)
 ::pointer < ::platform::message > jni_message::as_message()
 {
 
-   auto pmessage = ::system()->øcreate_new<::platform::message>();
+   auto pmessage = ::system()->create_newø<::platform::message>();
 
    int iMessage = getMessage();
    long long llWparam = getWparam();

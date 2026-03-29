@@ -267,7 +267,7 @@ namespace android
 
 //         auto pbind = ::jni_bind::get();
 //
-////         auto pdatablock = øcreate_new<::data::block>();
+////         auto pdatablock = create_newø<::data::block>();
 ////
 ////         pdatablock->m_bWrite = true;
 ////

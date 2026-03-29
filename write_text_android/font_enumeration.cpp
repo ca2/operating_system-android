@@ -37,7 +37,7 @@ namespace write_text_android
 
       //synchronous_lock ml(cairo_mutex());
 
-      ødefer_construct_new(m_pfontenumerationitema);
+      defer_construct_newø(m_pfontenumerationitema);
 
       m_pfontenumerationitema->erase_all();
 
@@ -67,7 +67,7 @@ namespace write_text_android
 
             }
 
-            auto pxmldocument = øcreate_new < ::xml::document >();
+            auto pxmldocument = create_newø < ::xml::document >();
 
             ::pointer<true_type_font_utilities>putilities;
 

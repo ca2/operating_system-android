@@ -74,7 +74,7 @@ namespace windowing_android
 
       initialize_windowing();
 
-      auto pdisplay = øcreate < ::acme::windowing::display >();
+      auto pdisplay = createø < ::acme::windowing::display >();
 
       m_pdisplay = pdisplay;
 

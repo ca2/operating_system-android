@@ -248,7 +248,7 @@ void * jni_object_impl::p_jobject()
 //
 //   }
 //
-//   auto pmethodNew = øcreate_new<jni_method_impl>();
+//   auto pmethodNew = create_newø<jni_method_impl>();
 //
 //   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
 //

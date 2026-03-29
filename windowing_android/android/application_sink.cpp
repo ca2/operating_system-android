@@ -87,7 +87,7 @@ namespace android
 
        m_bEditorTextUpdated = true;
 
-       auto pmessage = øcreate_new<::platform::message>();
+       auto pmessage = create_newø<::platform::message>();
 
        pmessage->m_emessage = ::e_message_set_editor_selection;
 
@@ -114,7 +114,7 @@ namespace android
 
        m_bEditorTextUpdated = true;
 
-       auto pmessage = øcreate_new<::platform::message>();
+       auto pmessage = create_newø<::platform::message>();
 
        pmessage->m_emessage = ::e_message_editor_text_updated;
 
@@ -136,7 +136,7 @@ namespace android
 
       m_bEditorTextUpdated = true;
 
-      auto pmessage = øcreate_new<::platform::message>();
+      auto pmessage = create_newø<::platform::message>();
 
       pmessage->m_emessage = ::e_message_editor_text_and_selection;
 

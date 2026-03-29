@@ -254,7 +254,7 @@ namespace node_android
          auto callback = [this](const ::file::path & path)
          {
 
-            auto prequest = øcreate_new <::request>();
+            auto prequest = create_newø <::request>();
 
             prequest->m_payloadFile = path;
 
