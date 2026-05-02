@@ -331,7 +331,7 @@ namespace windowing_android
 //      if (m_hwnd == nullptr)
 //      {
 //
-//         unsigned int dwLastError = ::GetLastError();
+//         auto lasterror = ::windows::get_last_error();
 //
 //         string strLastError = ::windows::last_error_message(dwLastError);
 //
