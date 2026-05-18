@@ -270,7 +270,7 @@ namespace write_text_android
 
                            iFontCount++;
 
-                           int iWeight = pnodeFont->attribute("weight").as_int();
+                           int iWeight = pnodeFont->attribute("weight").as_i32();
 
                            int iItalic = pnodeFont->attribute("style").case_insensitive_equals("italic");
 
