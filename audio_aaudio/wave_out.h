@@ -29,7 +29,7 @@ namespace multimedia
          class ::time            m_timeStart;
 
          ::pointer < ::memory_file > m_pmemoryfile;
-         //::int_array_base             m_iaSent;
+         //::i32_array_base             m_iaSent;
 
          //snd_async_handler_t *   m_pcm_callback;
 
