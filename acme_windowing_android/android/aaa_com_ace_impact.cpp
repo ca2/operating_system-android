@@ -528,7 +528,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1aura_1size_1changed(JN
 
       set_jni_context(env);
 
-      //::int_rectangle rectangle;
+      //::i32_rectangle rectangle;
 
       //rectangle.left = 0;
       //rectangle.top = 0;

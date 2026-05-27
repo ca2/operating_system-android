@@ -609,7 +609,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 //
 
-int GetMainScreenRect(::int_rectangle* lprect)
+int GetMainScreenRect(::i32_rectangle* lprect)
 {
 
    auto psystem = this->platform()->system();
@@ -630,7 +630,7 @@ int GetMainScreenRect(::int_rectangle* lprect)
 }
 
 
-int SetMainScreenRect(const ::int_rectangle &rect)
+int SetMainScreenRect(const ::i32_rectangle &rect)
 {
 
    auto psystem = this->platform()->system();

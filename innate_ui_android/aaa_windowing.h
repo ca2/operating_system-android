@@ -52,7 +52,7 @@ namespace windowing_android
       void terminate_windowing() override;
 
 
-      void defer_initialize_host_window(const ::int_rectangle* lpcrect) override;
+      void defer_initialize_host_window(const ::i32_rectangle* lpcrect) override;
 
       ::windowing::window* get_application_host_window() override;
 

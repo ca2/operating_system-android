@@ -706,7 +706,7 @@ namespace windowing_android
          //int y = (iLine)* m_iLineHeight - get_context_offset().y;
          //int y2 = y + m_iLineHeight;
          // ::int_point point(x, y);
-         //::int_rectangle r;
+         //::i32_rectangle r;
          //this->rectangle(rectangle);
          //rectangle.left = x;
          //rectangle.top = y;
@@ -730,7 +730,7 @@ namespace windowing_android
 
          }
 
-         ::int_rectangle rectangle;
+         ::i32_rectangle rectangle;
 
          m_puserinteraction->get_text_composition_area(rectangle);
 
@@ -742,7 +742,7 @@ namespace windowing_android
 
          com.ptCurrentPos.y -= 100;
 
-         ::int_rectangle rect2(rectangle);
+         ::i32_rectangle rect2(rectangle);
 
          rect2.offset_y(-100);
 

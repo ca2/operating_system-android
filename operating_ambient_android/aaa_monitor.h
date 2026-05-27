@@ -17,8 +17,8 @@ namespace windowing_android
 
 
       //::collection::index                                               m_iIndex;
-      //::int_rectangle                                       m_rectangle;
-      //::int_rectangle                                       m_rectangleWorkspace;
+      //::i32_rectangle                                       m_rectangle;
+      //::i32_rectangle                                       m_rectangleWorkspace;
       //::pointer<::windowing::display>                      m_pdisplay;
 
 
@@ -32,9 +32,9 @@ namespace windowing_android
       //virtual bool adjust_monitor(unsigned int dwTemperature, double dBrightness, double dwGamma);
 
 
-      //virtual void get_monitor_rectangle(::int_rectangle* prectangle);
-      //virtual void get_workspace_rectangle(::int_rectangle* prectangle);
-      ::int_rectangle monitor_rectangle() override;
+      //virtual void get_monitor_rectangle(::i32_rectangle* prectangle);
+      //virtual void get_workspace_rectangle(::i32_rectangle* prectangle);
+      ::i32_rectangle monitor_rectangle() override;
       ::e_status _get_monitor_rectangle();
 
    };

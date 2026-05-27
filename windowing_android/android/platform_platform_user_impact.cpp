@@ -226,7 +226,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1native_1on_1timer
 //
 //                  int h = pbind->getHeight();
 //
-//                  ::int_rectangle r(0, 0, w, h);
+//                  ::i32_rectangle r(0, 0, w, h);
 //
 //                  pmonitor->
 //                     m_rectangle = r;
@@ -564,7 +564,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniOnText(JNIEnv * env
 //
 //      set_jni_context(env);
 //
-//      //::int_rectangle rectangle;
+//      //::i32_rectangle rectangle;
 //
 //      //rectangle.left = 0;
 //      //rectangle.top = 0;

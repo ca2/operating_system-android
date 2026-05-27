@@ -56,7 +56,7 @@
 //
 //      auto pdriver = ::operating_system_driver::get();
 //
-//      ::int_rectangle rectangle;
+//      ::i32_rectangle rectangle;
 //
 //      rectangle.left = 0;
 //      rectangle.top = 0;

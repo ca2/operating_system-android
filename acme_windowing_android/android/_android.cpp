@@ -612,7 +612,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 //
 
-int GetMainScreenRect(::int_rectangle* lprect)
+int GetMainScreenRect(::i32_rectangle* lprect)
 {
 
    auto psystem = ::system();
@@ -633,7 +633,7 @@ int GetMainScreenRect(::int_rectangle* lprect)
 }
 
 
-int SetMainScreenRect(const ::int_rectangle &rect)
+int SetMainScreenRect(const ::i32_rectangle &rect)
 {
 
    auto psystem = ::system();

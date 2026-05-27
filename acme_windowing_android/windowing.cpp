@@ -188,7 +188,7 @@ namespace android
             }
 
 
-            ::particle * windowing::defer_initialize_host_window(const ::int_rectangle *lpcrect)
+            ::particle * windowing::defer_initialize_host_window(const ::i32_rectangle *lpcrect)
             {
 
                auto pparticleAcmeWindowingWindow = ::acme::sandbox_windowing::windowing::defer_initialize_host_window(lpcrect);
@@ -1506,7 +1506,7 @@ namespace user
 //}
 
 
-//int_bool this->rectangle(oswindow_data * pdata, ::int_rectangle * prectangle)
+//int_bool this->rectangle(oswindow_data * pdata, ::i32_rectangle * prectangle)
 //{
 //
 //   pdata->m_pimpl->m_puserinteraction->rectangle(prectangle);
@@ -1521,7 +1521,7 @@ namespace user
 //}
 
 
-//int_bool window_rectangle(oswindow_data * pdata, ::int_rectangle * prectangle)
+//int_bool window_rectangle(oswindow_data * pdata, ::i32_rectangle * prectangle)
 //{
 //
 //   pdata->m_pimpl->m_puserinteraction->window_rectangle(prectangle);

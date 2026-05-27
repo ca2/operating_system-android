@@ -85,7 +85,7 @@
 //      //bool ExecuteDlgInit(LPVOID lpResource);
 //
 //      // for child windows, views, panes etc
-//      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::int_rectangle & rectangle, ::user::prototype * pParentWnd, atom atom, ::request * prequest = nullptr) override;
+//      //virtual bool create_window(::user::interaction * pinteraction, const ::string & lpszClassName, const ::string & lpszWindowName, unsigned int dwStyle, const ::i32_rectangle & rectangle, ::user::prototype * pParentWnd, atom atom, ::request * prequest = nullptr) override;
 //
 //      // for top level windows and/or special features
 //      //virtual bool create_window_ex(::user::interaction * pinteraction, ::pointer<::user::system>pusersystem, ::user::prototype * puiParent = nullptr, ::atom atom = ::atom()) override;
@@ -95,12 +95,12 @@
 //
 //      //virtual bool DestroyWindow() override;
 //
-//      // special pre-creation and interaction_impl int_rectangle adjustment hooks
+//      // special pre-creation and interaction_impl i32_rectangle adjustment hooks
 //      virtual bool pre_create_window(::user::system * pusersystem) override;
 //
 //      // Advanced: virtual AdjustWindowRect
 //      //enum AdjustType { adjustBorder = 0,adjustOutside = 1 };
-//      //virtual void CalcWindowRect(::int_rectangle * lpClientRect,unsigned int nAdjustType = adjustBorder) override;
+//      //virtual void CalcWindowRect(::i32_rectangle * lpClientRect,unsigned int nAdjustType = adjustBorder) override;
 //
 //      virtual void edit_on_set_focus(::user::interaction* pinteraction) override;
 //
@@ -156,11 +156,11 @@
 //      //using ::windowing::window::this->rectangle;
 //      //virtual bool this->rectangle(::i64_rectangle * lpRect);
 //
-//      //virtual bool client_to_screen(::int_rectangle * lprect);
+//      //virtual bool client_to_screen(::i32_rectangle * lprect);
 //      //virtual bool client_to_screen(::int_point * lppoint);
 //      //virtual bool client_to_screen(::i64_rectangle * lprect);
 //      //virtual bool client_to_screen(::long_long_point * lppoint);
-//      //virtual bool screen_to_client(::int_rectangle * lprect);
+//      //virtual bool screen_to_client(::i32_rectangle * lprect);
 //      //virtual bool screen_to_client(::int_point * lppoint);
 //      //virtual bool screen_to_client(::i64_rectangle * lprect);
 //      //virtual bool screen_to_client(::long_long_point * lppoint);
@@ -169,19 +169,19 @@
 //      //virtual bool SetWindowPlacement(const WINDOWPLACEMENT* lpuserinteractionpl);
 //
 //      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::int_point * lpPoint,unsigned int nCount);
-//      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::int_rectangle * lpRect);
+//      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::i32_rectangle * lpRect);
 //
 //      //virtual void Print(::draw2d::graphics_pointer & pgraphics,unsigned int dwFlags) const;
 //      //virtual void PrintClient(::draw2d::graphics_pointer & pgraphics,unsigned int dwFlags) const;
 //
 //      //virtual void UpdateWindow();
 //      //virtual void SetRedraw(bool bRedraw = true);
-//      //virtual bool GetUpdateRect(::int_rectangle * lpRect,bool bErase = false);
+//      //virtual bool GetUpdateRect(::i32_rectangle * lpRect,bool bErase = false);
 //      //virtual int GetUpdateRgn(::draw2d::region* pRgn,bool bErase = false);
 //      //virtual void Invalidate(bool bErase = true);
-//      //virtual void InvalidateRect(const ::int_rectangle * lpRect,bool bErase = true);
+//      //virtual void InvalidateRect(const ::i32_rectangle * lpRect,bool bErase = true);
 //      //virtual void InvalidateRgn(::draw2d::region* pRgn,bool bErase = true);
-//      //virtual void ValidateRect(const ::int_rectangle * lpRect);
+//      //virtual void ValidateRect(const ::i32_rectangle * lpRect);
 //      //virtual void ValidateRgn(::draw2d::region* pRgn);
 //      //virtual bool show_window(const ::e_display & edisplay) override;
 ////      virtual void _001WindowMinimize();
@@ -198,13 +198,13 @@
 //      //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip,unsigned int flags);
 //      //virtual bool LockWindowUpdate() override;
 //      //virtual void UnlockWindowUpdate() override;
-//      //virtual bool RedrawWindow(const ::int_rectangle * lpRectUpdate = nullptr,
+//      //virtual bool RedrawWindow(const ::i32_rectangle * lpRectUpdate = nullptr,
 //        //                        ::draw2d::region* prgnUpdate = nullptr,
 //          //                      unsigned int flags = RDW_INVALIDATE | RDW_ERASE);
 //      //virtual bool EnableScrollBar(int nSBFlags,unsigned int nArrowFlags = 0);
 //
-//      //virtual bool DrawAnimatedRects(int idAni,const ::int_rectangle *lprcFrom,const ::int_rectangle *lprcTo);
-//      //virtual bool DrawCaption(::draw2d::graphics_pointer & pgraphics,const ::int_rectangle * lprc,unsigned int uFlags);
+//      //virtual bool DrawAnimatedRects(int idAni,const ::i32_rectangle *lprcFrom,const ::i32_rectangle *lprcTo);
+//      //virtual bool DrawCaption(::draw2d::graphics_pointer & pgraphics,const ::i32_rectangle * lprc,unsigned int uFlags);
 //
 //
 //
@@ -257,15 +257,15 @@
 //      // Scrolling Functions
 //      //virtual int GetScrollPos(int nBar) const override;
 //      //virtual void GetScrollRange(int nBar,LPINT lpMinPos,LPINT lpMaxPos) const override;
-//      //virtual void ScrollWindow(int xAmount,int yAmount, const ::int_rectangle * lpRect = nullptr, const ::int_rectangle * lpClipRect = nullptr) override;
+//      //virtual void ScrollWindow(int xAmount,int yAmount, const ::i32_rectangle * lpRect = nullptr, const ::i32_rectangle * lpClipRect = nullptr) override;
 //      //virtual int SetScrollPos(int nBar,int nPos,bool bRedraw = true) override;
 //      //virtual void SetScrollRange(int nBar,int nMinPos,int nMaxPos, bool bRedraw = true) override;
 //      //virtual void ShowScrollBar(unsigned int nBar,bool bShow = true) override;
 //      //virtual void EnableScrollBarCtrl(int nBar,bool bEnable = true) override;
 //
 //      //virtual int ScrollWindowEx(int dx,int dy,
-//        //                         const ::int_rectangle * lpRectScroll,const ::int_rectangle * lpRectClip,
-//          //                       ::draw2d::region* prgnUpdate,::int_rectangle * lpRectUpdate,unsigned int flags) override;
+//        //                         const ::i32_rectangle * lpRectScroll,const ::i32_rectangle * lpRectClip,
+//          //                       ::draw2d::region* prgnUpdate,::i32_rectangle * lpRectUpdate,unsigned int flags) override;
 //      //virtual bool SetScrollInfo(int nBar,LPSCROLLINFO lpScrollInfo,
 //      //   bool bRedraw = true);
 //      //virtual bool GetScrollInfo(int nBar,LPSCROLLINFO lpScrollInfo,unsigned int nMask = SIF_ALL);
@@ -482,8 +482,8 @@
 //      //// Win4 messages
 //      ////void OnStyleChanged(int nStyleType,LPSTYLESTRUCT lpStyleStruct);
 //      ////void OnStyleChanging(int nStyleType,LPSTYLESTRUCT lpStyleStruct);
-//      //void OnSizing(unsigned int nSide,::int_rectangle * lpRect);
-//      //void OnMoving(unsigned int nSide,::int_rectangle * lpRect);
+//      //void OnSizing(unsigned int nSide,::i32_rectangle * lpRect);
+//      //void OnMoving(unsigned int nSide,::i32_rectangle * lpRect);
 //      //void OnCaptureChanged(::user::interaction * pwindow);
 //      //bool OnDeviceChange(unsigned int nEventType,uptr dwData);
 //
@@ -580,7 +580,7 @@
 //
 //      //bool Attach(oswindow hWndNew);
 //      //virtual oswindow Detach();
-//      //virtual bool get_rect_normal(::int_rectangle * lprect);
+//      //virtual bool get_rect_normal(::i32_rectangle * lprect);
 //      //virtual oswindow UnsubclassWindow();
 ////      virtual void register_drop_target();
 //
@@ -590,7 +590,7 @@
 //      //virtual oswindow get_handle() const override;
 //
 //      //virtual void MoveWindow(int x, int y, int nWidth, int nHeight, bool bRepaint);
-//      //virtual void MoveWindow(const ::int_rectangle * lpRect, bool bRepaint = true);
+//      //virtual void MoveWindow(const ::i32_rectangle * lpRect, bool bRepaint = true);
 //
 //      //virtual atom SetDlgCtrlId(atom atom) override;
 //      //virtual atom GetDlgCtrlId();

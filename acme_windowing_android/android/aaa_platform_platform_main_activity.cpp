@@ -37,7 +37,7 @@ bool g_bAuraStart = false;
 void os_on_finish_launching();
 
 
-int SetMainScreenRect(const ::int_rectangle &rect);
+int SetMainScreenRect(const ::i32_rectangle &rect);
 
 
 void set_jni_context(JNIEnv * penv);
@@ -263,7 +263,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1init(JNI
 
          auto pdirect = ::jni_bind::get();
 
-         ::int_rectangle r;
+         ::i32_rectangle r;
 
          r.left = 0;
 

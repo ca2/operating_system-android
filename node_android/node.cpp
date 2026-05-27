@@ -106,7 +106,7 @@ namespace node_android
 
       auto pdriver = ::platform::application_sink::get();
 
-      ::int_rectangle rectangle;
+      ::i32_rectangle rectangle;
 
       rectangle.left = 0;
       rectangle.top = 0;

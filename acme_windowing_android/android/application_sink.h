@@ -57,7 +57,7 @@ namespace android
 
 
             //bool m_bEditFocusSet;
-            //int_rectangle m_rectangleEditFocus;
+            //i32_rectangle m_rectangleEditFocus;
             //bool m_bEditFocusKill;
 
             //bool m_bRedraw;

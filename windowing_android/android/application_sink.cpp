@@ -480,7 +480,7 @@ void application_sink::context_on_size_changed()
 
   //    set_jni_context(env);
 
-      //::int_rectangle rectangle;
+      //::i32_rectangle rectangle;
 
       //rectangle.left = 0;
       //rectangle.top = 0;

@@ -275,7 +275,7 @@ bool g_bAuraStart = false;
 void os_on_finish_launching();
 
 
-int SetMainScreenRect(const ::int_rectangle & rect);
+int SetMainScreenRect(const ::i32_rectangle & rect);
 
 
 void set_jni_context(JNIEnv * penv);
