@@ -164,7 +164,7 @@ namespace apex_android
 
    //bool os_context::title_pid(unsigned int & dwPid, const ::scoped_string & scopedstrName)
    //{
-   //   ::unsigned_int_array dwa;
+   //   ::u32_array dwa;
    //   get_all_processes(dwa);
    //   for(int i = 0; i < dwa.get_count(); i++)
    //   {
