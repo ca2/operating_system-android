@@ -122,7 +122,7 @@ namespace node_android
    }
 
 //
-//   ::pointer<::acme::user::message_box>node::create_new_message_box()
+//   ::pointer<::user_interface::message_box>node::create_new_message_box()
 //   {
 //
 //      return allocateø class ::windowing_android::message_box();
