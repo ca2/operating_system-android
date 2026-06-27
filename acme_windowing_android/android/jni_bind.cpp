@@ -2,6 +2,7 @@
 #include "acme/constant/id.h"
 #include "_internal.h"
 #include "acme/platform/node.h"
+#include "acme/user/interface/message_box.h"
 #include "jni_data_block.h"
 #include "jni_local.h"
 #include "jni_object_impl.h"
@@ -46,11 +47,13 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle
 
    }
 
-   auto pmessageboxpayload = allocateø ::message_box_payload(strMessage, strTitle, ::user::e_message_box_ok | ::user::e_message_box_icon_exclamation, strDetails);
+   auto pmessagebox = pparticle->createø<::user_interface::message_box>();
 
-   pmessageboxpayload->initialize(pparticle);
+   pmessagebox->initialize_message_box(strMessage, strTitle, ::user::e_message_box_ok | ::user::e_message_box_icon_exclamation, strDetails);
 
-   pparticle->send(pmessageboxpayload);
+   pmessagebox->display(e_display_normal, {});
+
+   pmessagebox->wait_for_dialog_response();
 
    __android_log_write(ANDROID_LOG_WARN, "com.ca2", strDetails);
 

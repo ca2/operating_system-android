@@ -298,12 +298,9 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1on_1aura
 
    set_jni_context(penv);
 
-   auto pmessagebox = ::pointer_transfer((::message_box_payload *) (::iptr) jlMicromessagebox);
+   auto pmessagebox = ::pointer_transfer((::user_interface::message_box *) (::iptr) jlMicromessagebox);
 
-
-   pmessagebox->
-
-      on_dialog_result((enum_dialog_result) jlResponse);
+   pmessagebox->on_dialog_response((enum_dialog_result) jlResponse);
 
 }
 

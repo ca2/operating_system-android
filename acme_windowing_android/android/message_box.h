@@ -3,7 +3,7 @@
 
 
 //#include "aura/user/micro/message_box.h"
-#include "acme/platform/message_box.h"
+#include "acme/user/implementation/message_box_implementation.h"
 
 namespace android {
 
@@ -15,12 +15,12 @@ namespace android {
 
 
    class CLASS_DECL_ACME_WINDOWING_ANDROID message_box :
-      //virtual public ::message_box
-        virtual public ::particle
+      virtual public ::user_interface::message_box_implementation
+      //  virtual public ::particle
    {
    public:
 
-   ::pointer < ::message_box_payload > m_pmessageboxpayload;
+   //::pointer < ::user_interface;message_box> m_pmessageboxpayload;
       //string                  m_strMessage;
       //string                  m_strTitle;
       //::user::e_message_box           m_emessagebox;
