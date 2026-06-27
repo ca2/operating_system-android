@@ -35,12 +35,12 @@ void android_key(unsigned int message, int keyCode, int iUni)
    {
 
       puserinteraction->postø() << [=]()
-         {
+      {
 
 
             _android_key(message, keyCode, iUni);
 
-      });
+      };
 
    }
 
@@ -588,7 +588,7 @@ CLASS_DECL_ACME_WINDOWING_ANDROID void defer_dock_application(int_bool bDock)
 //}
 
 
-//int_bool point_is_window_origin(::int_point ptHitTest, oswindow oswindowExclude, int iMargin)
+//int_bool point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin)
 //{
 //
 //   return abs(ptHitTest.x) < iMargin && abs(ptHitTest.y) < iMargin;
@@ -687,7 +687,7 @@ int SetMainScreenRect(const ::i32_rectangle &rect)
 }
 
 
-CLASS_DECL_ACME_WINDOWING_ANDROID int32_t IsWindowVisible(oswindow window)
+CLASS_DECL_ACME_WINDOWING_ANDROID int32_t IsWindowVisible(::operating_system::window & operatingsystemwindow)
 {
 
    return true;

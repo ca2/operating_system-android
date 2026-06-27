@@ -585,7 +585,7 @@ CLASS_DECL_AURA void defer_dock_application(int_bool bDock)
 //}
 
 
-//int_bool point_is_window_origin(::int_point ptHitTest, oswindow oswindowExclude, int iMargin)
+//int_bool point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin)
 //{
 //
 //   return abs(ptHitTest.x) < iMargin && abs(ptHitTest.y) < iMargin;

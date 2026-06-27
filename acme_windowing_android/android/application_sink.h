@@ -87,7 +87,7 @@ namespace android
 
 
             ::particle_pointer m_pparticleMutexMessageBoxSequencer;
-            ::pointer_array<::message_box> m_messageboxa;
+            ::pointer_array<::message_box_payload> m_messageboxpayloada;
 
 
             ::particle_pointer m_pparticleMutexListFileEnumerate;

@@ -15,11 +15,12 @@ namespace android {
 
 
    class CLASS_DECL_ACME_WINDOWING_ANDROID message_box :
-      virtual public ::message_box
+      //virtual public ::message_box
+        virtual public ::particle
    {
    public:
 
-
+   ::pointer < ::message_box_payload > m_pmessageboxpayload;
       //string                  m_strMessage;
       //string                  m_strTitle;
       //::user::e_message_box           m_emessagebox;

@@ -129,7 +129,7 @@
 //      //bool SendNotifyMessage(::enum_message emessage, ::wparam wparam, ::lparam lparam) override;
 //      //bool SendChildNotifyLastMsg(LRESULT* pResult = nullptr);
 //
-//      //bool DragDetect(::int_point pt) const;
+//      //bool DragDetect(::i32_point pt) const;
 //
 //      //virtual void RedrawWindow(unsigned int nFlags = 0) override;
 //
@@ -157,18 +157,18 @@
 //      //virtual bool this->rectangle(::i64_rectangle * lpRect);
 //
 //      //virtual bool client_to_screen(::i32_rectangle * lprect);
-//      //virtual bool client_to_screen(::int_point * lppoint);
+//      //virtual bool client_to_screen(::i32_point * lppoint);
 //      //virtual bool client_to_screen(::i64_rectangle * lprect);
 //      //virtual bool client_to_screen(::long_long_point * lppoint);
 //      //virtual bool screen_to_client(::i32_rectangle * lprect);
-//      //virtual bool screen_to_client(::int_point * lppoint);
+//      //virtual bool screen_to_client(::i32_point * lppoint);
 //      //virtual bool screen_to_client(::i64_rectangle * lprect);
 //      //virtual bool screen_to_client(::long_long_point * lppoint);
 //
 //      //virtual bool GetWindowPlacement(WINDOWPLACEMENT* lpuserinteractionpl);
 //      //virtual bool SetWindowPlacement(const WINDOWPLACEMENT* lpuserinteractionpl);
 //
-//      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::int_point * lpPoint,unsigned int nCount);
+//      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::i32_point * lpPoint,unsigned int nCount);
 //      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo,::i32_rectangle * lpRect);
 //
 //      //virtual void Print(::draw2d::graphics_pointer & pgraphics,unsigned int dwFlags) const;
@@ -278,8 +278,8 @@
 ////#endif   // WINVER >= 0x0500
 ////
 ////      // Window Access Functions
-////      virtual ::user::interaction * ChildWindowFromPoint(::int_point int_point);
-////      virtual ::user::interaction * ChildWindowFromPoint(::int_point point,unsigned int nFlags);
+////      virtual ::user::interaction * ChildWindowFromPoint(::i32_point int_point);
+////      virtual ::user::interaction * ChildWindowFromPoint(::i32_point point,unsigned int nFlags);
 ////      static ::user::interaction * FindWindow(const ::string & lpszClassName, const ::string & lpszWindowName);
 ////      static ::user::interaction * FindWindowEx(oswindow oswindowParent,oswindow oswindowChildAfter, const ::string & lpszClass, const ::string & lpszWindow);
 //
@@ -293,7 +293,7 @@
 //      //virtual ::user::interaction * get_parent();
 //      //using ::windowing::window::SetParent;
 //      //::user::interaction * SetParent(::user::interaction * pWndNewParent);
-//      //static::user::interaction * PASCAL oswindowFromPoint(::int_point int_point);
+//      //static::user::interaction * PASCAL oswindowFromPoint(::i32_point int_point);
 //
 //
 //      //virtual ::user::interaction * SetOwner(::user::interaction * pWndNewParent);
@@ -320,7 +320,7 @@
 //
 //
 //      //static int_point GetCaretPos();
-//      //static void SetCaretPos(::int_point int_point);
+//      //static void SetCaretPos(::i32_point int_point);
 //      //virtual void HideCaret() override;
 //      //virtual void ShowCaret() override;
 //
@@ -394,18 +394,18 @@
 //      //bool OnNcCreate(::user::system * lpCreateStruct);
 //
 //      //DECLARE_MESSAGE_HANDLER(on_message_non_client_calculate_size);
-//      //LRESULT OnNcHitTest(::int_point point);
-//      //void OnNcLButtonDblClk(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcLButtonDown(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcLButtonUp(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcMButtonDblClk(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcMButtonDown(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcMButtonUp(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcMouseMove(unsigned int nHitTest, const ::int_point & point);
+//      //LRESULT OnNcHitTest(::i32_point point);
+//      //void OnNcLButtonDblClk(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcLButtonDown(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcLButtonUp(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcMButtonDblClk(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcMButtonDown(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcMButtonUp(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcMouseMove(unsigned int nHitTest, const ::i32_point & point);
 //      //void OnNcPaint();
-//      //void OnNcRButtonDblClk(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcRButtonDown(unsigned int nHitTest, const ::int_point & point);
-//      //void OnNcRButtonUp(unsigned int nHitTest, const ::int_point & point);
+//      //void OnNcRButtonDblClk(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcRButtonDown(unsigned int nHitTest, const ::i32_point & point);
+//      //void OnNcRButtonUp(unsigned int nHitTest, const ::i32_point & point);
 //
 //      // ::auraacmesystem() message handler member functions
 //      //void OnDropFiles(HDROP hDropInfo);
@@ -432,19 +432,19 @@
 //      //    void OnVScroll(unsigned int nSBCode, unsigned int nPos, CScrollBar* pScrollBar);
 //      //void OnKeyDown(unsigned int nChar,unsigned int nRepCnt,unsigned int nFlags);
 //      //void OnKeyUp(unsigned int nChar,unsigned int nRepCnt,unsigned int nFlags);
-//      //void OnLButtonDblClk(unsigned int nFlags, const ::int_point & point);
-//      //void OnLButtonDown(unsigned int nFlags, const ::int_point & point);
-//      //void OnLButtonUp(unsigned int nFlags, const ::int_point & point);
-//      //void OnMButtonDblClk(unsigned int nFlags, const ::int_point & point);
-//      //void OnMButtonDown(unsigned int nFlags, const ::int_point & point);
-//      //void OnMButtonUp(unsigned int nFlags, const ::int_point & point);
+//      //void OnLButtonDblClk(unsigned int nFlags, const ::i32_point & point);
+//      //void OnLButtonDown(unsigned int nFlags, const ::i32_point & point);
+//      //void OnLButtonUp(unsigned int nFlags, const ::i32_point & point);
+//      //void OnMButtonDblClk(unsigned int nFlags, const ::i32_point & point);
+//      //void OnMButtonDown(unsigned int nFlags, const ::i32_point & point);
+//      //void OnMButtonUp(unsigned int nFlags, const ::i32_point & point);
 //      //int OnMouseActivate(::user::interaction * pDesktopWnd,unsigned int nHitTest,const ::atom & atom);
-//      //void OnMouseMove(unsigned int nFlags, const ::int_point & point);
-//      //bool OnMouseWheel(unsigned int nFlags,short zDelta, const ::int_point & point);
+//      //void OnMouseMove(unsigned int nFlags, const ::i32_point & point);
+//      //bool OnMouseWheel(unsigned int nFlags,short zDelta, const ::i32_point & point);
 //      //LRESULT OnRegisteredMouseWheel(WPARAM wParam,LPARAM lParam);
-//      //void OnRButtonDblClk(unsigned int nFlags, const ::int_point & point);
-//      //void OnRButtonDown(unsigned int nFlags, const ::int_point & point);
-//      //void OnRButtonUp(unsigned int nFlags, const ::int_point & point);
+//      //void OnRButtonDblClk(unsigned int nFlags, const ::i32_point & point);
+//      //void OnRButtonDown(unsigned int nFlags, const ::i32_point & point);
+//      //void OnRButtonUp(unsigned int nFlags, const ::i32_point & point);
 //      //////DECLARE_MESSAGE_HANDLER(on_message_set_cursor);
 //      //void OnTimer(uptr uEvent);
 //

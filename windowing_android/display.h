@@ -41,7 +41,7 @@ namespace windowing_android
       ~display() override;
 
 
-      ::int_point _get_mouse_cursor_position() override;
+      ::i32_point _get_mouse_cursor_position() override;
 
 
 //      virtual void initialize_display(::windowing::windowing* pwindowing);
@@ -101,9 +101,9 @@ namespace windowing_android
 //      virtual void enum_display_monitors();
 //
 //      virtual ::collection::index get_main_monitor(::i32_rectangle* prectangle = nullptr);
-//      virtual ::int_size get_main_monitor_size();
+//      virtual ::i32_size get_main_monitor_size();
 //
-//      virtual ::int_size get_monitor_union_size();
+//      virtual ::i32_size get_monitor_union_size();
 //
 //      virtual ::collection::count get_monitor_count();
 //      virtual bool  get_monitor_rectangle(::collection::index iMonitor, ::i32_rectangle* prectangle);

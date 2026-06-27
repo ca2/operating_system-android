@@ -81,17 +81,18 @@ namespace android
                 void windowing_application_on_system_start() override;
 
 
-                void windowing_application_on_start() override;
+                //void windowing_application_on_start() override;
 
 
                 //void release_mouse_capture(::thread * pthread) override;
                 bool defer_release_mouse_capture(::thread *pthread,
                                                  ::acme::windowing::window *pwindow) override;
 
+          void each_window(const ::function < void(::acme::windowing::window*) > & function);
 
-                //void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
+          //void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
                 //bool task_iteration() override;
-            void windowing_application_main_loop() override;
+            void run() override;
                 //virtual void x11_main();
 
                 //virtual HCURSOR load_default_cursor(e_cursor ecursor) override;
@@ -172,7 +173,7 @@ namespace android
                 //::pointer<::windowing::cursor> get_cursor(enum_cursor ecursor) override;
 
 
-                void _main_post(const ::procedure& procedure) override;
+                void main_post(const ::procedure& procedure) override;
 
 
            };

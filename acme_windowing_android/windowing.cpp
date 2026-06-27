@@ -68,12 +68,12 @@ namespace android
             }
 
 
-            void windowing::windowing_application_on_start()
-            {
+            //void windowing::windowing_application_on_start()
+            //{
 
-               ::acme::sandbox_windowing::windowing::windowing_application_on_start();
+              // ::acme::sandbox_windowing::windowing::windowing_application_on_start();
 
-            }
+            //}
 
 
             bool windowing::is_branch_current() const
@@ -236,16 +236,21 @@ namespace android
 //
 //          }
 
+          void windowing::each_window(const ::function < void(::acme::windowing::window*) > & function)
+          {
 
-            void windowing::windowing_application_main_loop()
+          }
+
+
+            void windowing::run()
             {
 
                 node()->notify_system_started();
 
-                __task_init();
+                //__task_init();
 
 
-                init_task();
+                //init_task();
 
                 //set_current_handles();
 
@@ -265,7 +270,7 @@ namespace android
 
                 papplicationsink->context_on_size_changed();
 
-                windowing_application_on_start();
+                //windowing_application_on_start();
 
                 ::string strAppId = m_papplication->m_strAppId;
 //
@@ -278,7 +283,9 @@ namespace android
 
                 //   });
 
-                main();
+                ::task::run();
+
+///                main();//
 
                 //while (true)
                 //{
@@ -730,10 +737,10 @@ namespace android
 //            }
 //
 
-          void windowing::_main_post(const ::procedure& procedure)
+          void windowing::main_post(const ::procedure& procedure)
           {
 
-             ::task::_post(procedure);
+             ::task::post(procedure);
 
           }
 
@@ -1313,7 +1320,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::client_to_screen(::int_point * pp)
+//bool oswindow_data::client_to_screen(::i32_point * pp)
 //{
 //
 //   return true;
@@ -1321,7 +1328,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::screen_to_client(::int_point * pp)
+//bool oswindow_data::screen_to_client(::i32_point * pp)
 //{
 //
 //   return true;
@@ -1392,7 +1399,7 @@ namespace user
 //*/
 //
 //
-//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array_base & stra, bool_array  & baTab, ::i32_array_base  & ya, ::int_size * psize)
+//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array_base & stra, bool_array  & baTab, ::i32_array_base  & ya, ::i32_size * psize)
 //{
 //
 //   pgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
@@ -1733,17 +1740,17 @@ namespace user
 //}
 //
 //
-//::int_point g_pointCursor;
+//::i32_point g_pointCursor;
 //
 //
-//int_bool SetCursorPos(::int_point * lppt)
+//int_bool SetCursorPos(::i32_point * lppt)
 //{
 //   g_pointCursor = *lppt;
 //   return true;
 //}
 //
 //
-//int_bool GetCursorPos(::int_point * lppt)
+//int_bool GetCursorPos(::i32_point * lppt)
 //{
 //   *lppt = g_pointCursor;
 //   return true;

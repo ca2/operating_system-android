@@ -176,7 +176,7 @@ namespace windowing_android
 //   }
 //
 //
-//   ::int_size display::get_main_monitor_size()
+//   ::i32_size display::get_main_monitor_size()
 //   {
 //
 //      ::i32_rectangle rectangle;
@@ -188,10 +188,10 @@ namespace windowing_android
 //   }
 //
 //
-//   ::int_size display::get_monitor_union_size()
+//   ::i32_size display::get_monitor_union_size()
 //   {
 //
-//      ::int_size size;
+//      ::i32_size size;
 //
 //      size.cx = 0;
 //
@@ -831,9 +831,9 @@ namespace windowing_android
 //      if (useractivation & ::user::e_activation_under_mouse_cursor || rectangle.is_null())
 //      {
 //
-//         ::int_point pointCursor = m_pwindowing->get_cursor_position();
+//         ::i32_point pointCursor = m_pwindowing->get_cursor_position();
 //
-//         rectangle.set(pointCursor - ::int_size(5, 5), ::int_size(10, 10));
+//         rectangle.set(pointCursor - ::i32_size(5, 5), ::i32_size(10, 10));
 //
 //      }
 //
@@ -910,9 +910,9 @@ namespace windowing_android
 //      if (useractivation & ::user::e_activation_under_mouse_cursor || rectangle.is_null())
 //      {
 //
-//         ::int_point pointCursor = m_pwindowing->get_cursor_position();
+//         ::i32_point pointCursor = m_pwindowing->get_cursor_position();
 //
-//         rectangle.set(pointCursor - ::int_size(5, 5), ::int_size(10, 10));
+//         rectangle.set(pointCursor - ::i32_size(5, 5), ::i32_size(10, 10));
 //
 //      }
 //
@@ -1004,7 +1004,7 @@ namespace windowing_android
 //
 //      index iMatchingMonitor = get_best_monitor(rectangleMonitor, rectangleParam);
 //
-//      ::int_size sizeMin;
+//      ::i32_size sizeMin;
 //
 //      if (pinteraction != nullptr)
 //      {
@@ -1109,13 +1109,13 @@ namespace windowing_android
 //
 //      ::i32_rectangle rectangleWorkspace;
 //
-//      ::int_size sizeMin;
+//      ::i32_size sizeMin;
 //
-//      ::int_size sizeBroad;
+//      ::i32_size sizeBroad;
 //
-//      ::int_size sizeCompact;
+//      ::i32_size sizeCompact;
 //
-//      ::int_size sizeNormal;
+//      ::i32_size sizeNormal;
 //
 //      index iMatchingWorkspace;
 //
@@ -1164,7 +1164,7 @@ namespace windowing_android
 //
 //      }
 //
-//      ::int_size sizeRestore;
+//      ::i32_size sizeRestore;
 //
 //      if (edisplay == e_display_broad)
 //      {
@@ -1408,7 +1408,7 @@ namespace windowing_android
 //   }
 
 
-   ::int_point display::_get_mouse_cursor_position()
+   ::i32_point display::_get_mouse_cursor_position()
    {
 
       return m_pointCursor2;
