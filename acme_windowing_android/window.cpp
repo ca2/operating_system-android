@@ -639,7 +639,7 @@ namespace android
 //
 //                  ::image::image_source imagesource(pimage->g(), pimage->rectangle());
 //
-//                  double_rectangle rectangle(d1->rectangle());
+//                  ::f64_rectangle rectangle(d1->rectangle());
 //
 //                  ::image::image_drawing_options imagedrawingoptions(rectangle);
 //
@@ -878,23 +878,10 @@ namespace android
 //            }
 
 
-            bool window::is_child(::::acme::windowing::window * pacmewindowingwindow)
+            bool window::is_child(::user::element * puserelement)
             {
 
-               if (oswindow == nullptr || oswindow->m_pacmeuserinteraction) {
-
-                  return false;
-
-               }
-
-               if (m_pacmeuserinteraction == nullptr) {
-
-                  return false;
-
-               }
-
-               return m_pacmeuserinteraction->is_child(
-                       oswindow->m_pacmeuserinteraction);
+               return m_pacmeuserinteraction->is_child(puserelement);
 
             }
 //
@@ -916,7 +903,7 @@ namespace android
 //            }
 //
 
-            //::int_point window::get_mouse_cursor_position()
+            //::i32_point window::get_mouse_cursor_position()
             //{
 
             //   return m_pointCursor;
@@ -1408,7 +1395,7 @@ namespace android
             //   }
 
 
-            bool window::client_to_screen(::int_point *ppoint)
+            bool window::client_to_screen(::i32_point *ppoint)
             {
 
                return true;
@@ -1416,7 +1403,7 @@ namespace android
             }
 
 
-            bool window::screen_to_client(::int_point *ppoint)
+            bool window::screen_to_client(::i32_point *ppoint)
             {
 
                return true;

@@ -98,7 +98,7 @@ namespace windowing_android
 
       //virtual ::windowing_android::window * _window(Window window);
 
-      ::acme::windowing::window* window(::acme::windowing::window * pacmewindowingwindow) override;
+      //::acme::windowing::window* window(::acme::windowing::window * pacmewindowingwindow) override;
 
       virtual void _message_handler(void * p) override;
 
@@ -159,7 +159,7 @@ namespace windowing_android
                                        ::acme::windowing::window *pwindow) override;
 
 
-      void windowing_application_main_loop() override;
+      void run() override;
 
    };
 

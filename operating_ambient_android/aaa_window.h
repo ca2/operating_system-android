@@ -27,7 +27,7 @@ namespace windowing_android
       //::i32_rectangle                              m_rect;
       ////string                                       m_strWMClass;
       ////int                                          m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
-      //::int_point                                  m_pointCursor;
+      //::i32_point                                  m_pointCursor;
       ////static oswindow_dataptra *                 s_pdataptra;
       ////static::mutex *                            s_pmutex;
 
@@ -83,7 +83,7 @@ namespace windowing_android
       //virtual ::Window get_parent_handle();
       ::oswindow get_parent_oswindow() const override;
 
-  //    ::int_point get_mouse_cursor_position() override;
+  //    ::i32_point get_mouse_cursor_position() override;
 //
       //virtual ::Window get_parent_handle() const;
 
@@ -98,9 +98,9 @@ namespace windowing_android
       //void show_window(const ::e_display & edisplay, const ::user::e_activation & useractivation) override;
       //virtual iptr get_window_long_ptr(int nIndex);
       //virtual iptr set_window_long_ptr(int nIndex, iptr l);
-      virtual bool client_to_screen(::int_point * ppoint) override;
+      virtual bool client_to_screen(::i32_point * ppoint) override;
 
-      virtual bool screen_to_client(::int_point * ppoint) override;
+      virtual bool screen_to_client(::i32_point * ppoint) override;
 
 
       //virtual bool set_window_pos(class::zorder zorder, int x, int y, int cx, int cy,unsigned int nFlags);

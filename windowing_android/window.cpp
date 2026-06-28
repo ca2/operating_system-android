@@ -17,6 +17,7 @@
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
 #include "acme_windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/jni_bind.h"
 #include "android/application_sink.h"
 #include "acme/platform/message_sink.h"
 //void on_sn_launch_context(void * pSnContext, Window window);
@@ -79,19 +80,59 @@ namespace windowing_android
    }
 
 
-   void window::_set_oswindow(::::acme::windowing::window * pacmewindowingwindow)
+   void window::sync_graphical_output_purpose_to_bind()
    {
 
+      auto pbind = ::jni_bind::get();
+
+      if (::is_null(pbind))
+      {
+
+         return;
+
+      }
+
+      bool bFpsRedraw = has_fps_output_purpose();
+
+      pbind->setFpsRedraw(bFpsRedraw);
+      pbind->setRequestFps(30.f);
 
    }
 
 
-   ::oswindow window::oswindow() const
+   void window::add_graphical_output_purpose(::particle * pparticle, const ::graphics::e_output_purpose & epurpose)
    {
 
-      return (::windowing_android::window *)this;
+      ::sandbox_windowing::window::add_graphical_output_purpose(pparticle, epurpose);
+
+      sync_graphical_output_purpose_to_bind();
 
    }
+
+
+   void window::erase_graphical_output_purpose(::particle * pparticle)
+   {
+
+      ::sandbox_windowing::window::erase_graphical_output_purpose(pparticle);
+
+      sync_graphical_output_purpose_to_bind();
+
+   }
+
+
+//   void window::_set_oswindow(::::acme::windowing::window * pacmewindowingwindow)
+//   {
+//
+//
+//   }
+
+
+//   ::oswindow window::oswindow() const
+//   {
+//
+//      return (::windowing_android::window *)this;
+//
+//   }
 
 
    //void window::create_window(::windowing::window * pimpl)
@@ -102,6 +143,11 @@ namespace windowing_android
 
    }
 
+   void window::redraw()
+   {
+
+
+   }
 
 //   void window::_create_window()
 //   {
@@ -639,7 +685,7 @@ namespace windowing_android
 
       ///puserinteraction->m_pwindow = this;
 
-      set_oswindow(this);
+      //set_oswindow(this);
 
       //set_os_data((void *)window);
 
@@ -1012,7 +1058,7 @@ namespace windowing_android
 
          ::image::image_source imagesource(pimage->g(), pimage->rectangle());
 
-         double_rectangle rectangle(d1->rectangle());
+         ::f64_rectangle rectangle(d1->rectangle());
 
          ::image::image_drawing_options imagedrawingoptions(rectangle);
 
@@ -1043,7 +1089,7 @@ namespace windowing_android
       for (int i = 0; i < c; i++)
       {
 
-         pcr[i + 2] = d1->image32()[i].m_ui;
+         pcr[i + 2] = d1->image32()[i].m_u32;
 
       }
 
@@ -1266,10 +1312,10 @@ namespace windowing_android
    }
 
 
-   void window::_main_send(const ::procedure & procedure)
+   void window::main_send(const ::procedure & procedure)
    {
 
-      m_puserthread->_send(procedure);
+      m_puserthread->send(procedure);
 
    }
 
@@ -1312,7 +1358,7 @@ namespace windowing_android
 //   }
 
 
-   //::int_point window::get_mouse_cursor_position()
+   //::i32_point window::get_mouse_cursor_position()
    //{
 
    //   return m_pointCursor;
@@ -1794,7 +1840,7 @@ namespace windowing_android
    //   }
 
 
-   bool window::client_to_screen(::int_point * ppoint)
+   bool window::client_to_screen(::i32_point * ppoint)
    {
 
       return true;
@@ -1802,7 +1848,7 @@ namespace windowing_android
    }
 
 
-   bool window::screen_to_client(::int_point * ppoint)
+   bool window::screen_to_client(::i32_point * ppoint)
    {
 
       return true;
@@ -3939,10 +3985,10 @@ namespace windowing_android
    }
 
 
-   bool window::is_child(::oswindow window)  // or descendant
+   bool window::is_child(::user::element * puserelement)  // or descendant
    {
 
-      return ::android::acme::windowing::window::is_child(window);
+      return ::android::acme::windowing::window::is_child(puserelement);
 
    }
 

@@ -507,6 +507,7 @@
 #define strcasecmp _stricmp
 #define strncasecmp _strnicmp
 #elif defined(__ANDROID__)
+#define ASMALIGN_BALIGN 1
 #define HAVE_STRING_H 1
 #define HAVE_STRERROR 1
 #define HAVE_INTTYPES_H 1

@@ -6,10 +6,17 @@
 //#include "acme/operating_system.h"
 
 
+<<<<<<< HEAD
 #if defined(_write_text_win32_project)
 #define CLASS_DECL_WRITE_TEXT_WIN32  CLASS_DECL_EXPORT
 #else
 #define CLASS_DECL_WRITE_TEXT_WIN32  CLASS_DECL_IMPORT
+=======
+#if defined(_write_text_afont_project)
+#define CLASS_DECL_WRITE_TEXT_AFONT  CLASS_DECL_EXPORT
+#else
+#define CLASS_DECL_WRITE_TEXT_AFONT  CLASS_DECL_IMPORT
+>>>>>>> origin/main
 #endif
 
 

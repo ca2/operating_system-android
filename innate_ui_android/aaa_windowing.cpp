@@ -1186,7 +1186,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::client_to_screen(::int_point * pp)
+//bool oswindow_data::client_to_screen(::i32_point * pp)
 //{
 //
 //   return true;
@@ -1194,7 +1194,7 @@ namespace user
 //}
 //
 //
-//bool oswindow_data::screen_to_client(::int_point * pp)
+//bool oswindow_data::screen_to_client(::i32_point * pp)
 //{
 //
 //   return true;
@@ -1265,7 +1265,7 @@ namespace user
 //*/
 //
 //
-//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array_base & stra, bool_array  & baTab, ::int_array  & ya, ::int_size * psize)
+//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array_base & stra, bool_array  & baTab, ::int_array  & ya, ::i32_size * psize)
 //{
 //
 //   pgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
@@ -1606,17 +1606,17 @@ namespace user
 //}
 //
 //
-//::int_point g_pointCursor;
+//::i32_point g_pointCursor;
 //
 //
-//int_bool SetCursorPos(::int_point * lppt)
+//int_bool SetCursorPos(::i32_point * lppt)
 //{
 //   g_pointCursor = *lppt;
 //   return true;
 //}
 //
 //
-//int_bool GetCursorPos(::int_point * lppt)
+//int_bool GetCursorPos(::i32_point * lppt)
 //{
 //   *lppt = g_pointCursor;
 //   return true;

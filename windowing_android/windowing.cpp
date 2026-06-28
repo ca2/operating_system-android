@@ -127,12 +127,12 @@ namespace windowing_android
    }
 
 
-   ::acme::windowing::window* windowing::window(::acme::windowing::window * pacmewindowingwindow)
-   {
-
-      return oswindow;
-
-   }
+//   ::acme::windowing::window* windowing::window(::acme::windowing::window * pacmewindowingwindow)
+//   {
+//
+//      return oswindow;
+//
+//   }
 
 
    void windowing::_message_handler(void * p)
@@ -167,10 +167,10 @@ namespace windowing_android
 
    }
 
-   void windowing::windowing_application_main_loop()
+   void windowing::run()
    {
 
-      ::android::acme::windowing::windowing::windowing_application_main_loop();
+      ::android::acme::windowing::windowing::run();
 
    }
 

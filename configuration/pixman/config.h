@@ -153,7 +153,9 @@
 /* use ARM SIMD assembly optimizations */
 #undef USE_ARM_SIMD
 
-#ifdef __ARM_ARCH_7A__
+/* The optional Pixman ARM assembly fast paths do not assemble reliably with
+   this Android NDK/Clang wrapper. Use the generic C paths for ARMv7. */
+#if defined(__ARM_ARCH_7A__) && !defined(__ANDROID__)
 #define USE_ARM_NEON 1
 #define USE_ARM_SIMD 1
 #endif

@@ -30,7 +30,7 @@ virtual public ::android::acme::windowing::window,
       //::i32_rectangle                              m_rect;
       ////string                                       m_strWMClass;
       ////int                                          m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
-      //::int_point                                  m_pointCursor;
+      //::i32_point                                  m_pointCursor;
       ////static oswindow_dataptra *                 s_pdataptra;
       ////static::mutex *                            s_pmutex;
 
@@ -55,8 +55,8 @@ virtual public ::android::acme::windowing::window,
       void _create_window() override;
 
 
-      void _set_oswindow(::::acme::windowing::window * pacmewindowingwindow) override;
-      ::::acme::windowing::window * pacmewindowingwindow() const override;
+      //void _set_oswindow(::::acme::windowing::window * pacmewindowingwindow) override;
+      //::::acme::windowing::window * pacmewindowingwindow() const override;
 
 
       //static Atom get_window_long_atom(int nIndex);
@@ -72,6 +72,11 @@ virtual public ::android::acme::windowing::window,
 
       //::windowing_android::windowing* windowing();
 
+
+      void redraw() override;
+      void add_graphical_output_purpose(::particle * pparticle, const ::graphics::e_output_purpose & epurpose) override;
+      void erase_graphical_output_purpose(::particle * pparticle) override;
+      void sync_graphical_output_purpose_to_bind();
 
       void exit_iconify() override;
 
@@ -96,7 +101,7 @@ virtual public ::android::acme::windowing::window,
 //       ::windowing::window * get_parent_oswindow() const override;
 
 //
-  //    ::int_point get_mouse_cursor_position() override;
+  //    ::i32_point get_mouse_cursor_position() override;
       //virtual ::Window get_parent_handle() const;
 
       ::windowing_android::windowing * android_windowing();
@@ -110,9 +115,9 @@ virtual public ::android::acme::windowing::window,
       //void show_window(const ::e_display & edisplay, const ::user::e_activation & useractivation) override;
       //virtual iptr get_window_long_ptr(int nIndex);
       //virtual iptr set_window_long_ptr(int nIndex, iptr l);
-      virtual bool client_to_screen(::int_point * ppoint) override;
+      virtual bool client_to_screen(::i32_point * ppoint) override;
 
-      virtual bool screen_to_client(::int_point * ppoint) override;
+      virtual bool screen_to_client(::i32_point * ppoint) override;
 
 
       //virtual bool set_window_pos(class::zorder zorder, int x, int y, int cx, int cy,unsigned int nFlags);
@@ -256,10 +261,11 @@ virtual public ::android::acme::windowing::window,
       //virtual void on_touch_drag(int x, int y);
       //virtual void on_touch_up(int x, int y);
 
-      bool is_child(::oswindow window) override; // or descendant
+      bool is_child(::user::element * puserelement) override; // or descendant
 
-void _main_send(const ::procedure & procedure) override;
-      void pick_media(const_char_pointer pszMediaType)override;
+      void main_send(const ::procedure & procedure) override;
+      void pick_media(const_char_pointer pszMediaType) override;
+
    };
 
 

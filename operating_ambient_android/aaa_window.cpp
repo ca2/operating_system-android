@@ -631,7 +631,7 @@ namespace windowing_android
 
          ::image::image_source imagesource(pimage->g(), pimage->rectangle());
 
-         double_rectangle rectangle(d1->rectangle());
+         ::f64_rectangle rectangle(d1->rectangle());
 
          ::image::image_drawing_options imagedrawingoptions(rectangle);
 
@@ -908,7 +908,7 @@ namespace windowing_android
    }
 
 
-   //::int_point window::get_mouse_cursor_position()
+   //::i32_point window::get_mouse_cursor_position()
    //{
 
    //   return m_pointCursor;
@@ -1390,7 +1390,7 @@ namespace windowing_android
    //   }
 
 
-   bool window::client_to_screen(::int_point * ppoint)
+   bool window::client_to_screen(::i32_point * ppoint)
    {
 
       return true;
@@ -1398,7 +1398,7 @@ namespace windowing_android
    }
 
 
-   bool window::screen_to_client(::int_point * ppoint)
+   bool window::screen_to_client(::i32_point * ppoint)
    {
 
       return true;

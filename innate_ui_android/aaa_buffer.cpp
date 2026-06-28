@@ -48,7 +48,7 @@ namespace windowing_android
          //         if(pimage->size().area() < sizeWindow.area())
          //         {
          //
-         //            ::int_size sizeImage(1920, 1080);
+         //            ::i32_size sizeImage(1920, 1080);
          //
          //            if(sizeWindow.area() > sizeImage.area())
          //            {
@@ -71,7 +71,7 @@ namespace windowing_android
          //
          //         }
 
-         //auto sizeMonitor = ::int_size(1920, 1080);
+         //auto sizeMonitor = ::i32_size(1920, 1080);
 
       
 

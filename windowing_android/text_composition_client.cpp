@@ -705,7 +705,7 @@ namespace windowing_android
 
          //int y = (iLine)* m_iLineHeight - get_context_offset().y;
          //int y2 = y + m_iLineHeight;
-         // ::int_point point(x, y);
+         // ::i32_point point(x, y);
          //::i32_rectangle r;
          //this->rectangle(rectangle);
          //rectangle.left = x;
