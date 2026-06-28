@@ -205,15 +205,15 @@ typedef int int_bool;
 #define static_inline inline
 
 
-#define FONT_MONO "mono"
+#define FONT_MONO "monospace"
 #define FONT_SANS "sans-serif"
-#define FONT_SERIF "FreeSerif"
+#define FONT_SERIF "serif"
 #define FONT_SANS_UI "sans-serif"
 #define FONT_SERIF_UI "serif"
-#define FONT_SANS_EX "Liberation Sans"
-#define FONT_SERIF_EX "Liberation Serif"
-#define FONT_SANS_FX "Ubuntu"
-#define FONT_SERIF_FX "Bitstream Charter"
+#define FONT_SANS_EX "sans-serif-condensed"
+#define FONT_SERIF_EX "serif"
+#define FONT_SANS_FX "sans-serif-medium"
+#define FONT_SERIF_FX "serif"
 
 
 

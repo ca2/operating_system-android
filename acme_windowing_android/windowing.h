@@ -88,7 +88,7 @@ namespace android
                 bool defer_release_mouse_capture(::thread *pthread,
                                                  ::acme::windowing::window *pwindow) override;
 
-          void each_window(const ::function < void(::acme::windowing::window*) > & function);
+          void each_window(const ::function < void(::acme::windowing::window*) > & function) override;
 
           //void clear_keyboard_focus(::user::element * pelementGainingFocusIfAny = nullptr) override;
                 //bool task_iteration() override;

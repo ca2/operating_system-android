@@ -26,6 +26,8 @@ namespace multimedia
          m_estatusWave = success;
          m_bWrite = false;
          m_bStarted = false;
+         m_iCurrentBuffer = -1;
+         m_iCurrentBufferOffset = 0;
 
       }
 
@@ -110,7 +112,7 @@ namespace multimedia
 
             m_iBufferCount = 8;
 
-            printf("::wave::purpose_playback %ld\n", m_frameCount);
+            printf("::wave::purpose_playback %d\n", m_frameCount);
 
          }
          else
@@ -124,7 +126,7 @@ namespace multimedia
 
             m_iBufferCount = 3;
 
-            printf("::wave::* %" PRIu64 "\n", m_frameCount);
+            printf("::wave::* %d\n", m_frameCount);
 
          }
 
@@ -147,6 +149,9 @@ namespace multimedia
          //m_pwaveformat->cbSize            = 0;
 
          m_pmemoryfile = create_memory_file();
+         m_listPendingBuffer.erase_all();
+         m_iCurrentBuffer = -1;
+         m_iCurrentBufferOffset = 0;
 
          this->open_output_stream();
 //         if(m_iBufferCount < m_iBufferCountEffective)
@@ -336,6 +341,9 @@ namespace multimedia
          close_stream();
 
          m_pstream = NULL;
+         m_listPendingBuffer.erase_all();
+         m_iCurrentBuffer = -1;
+         m_iCurrentBufferOffset = 0;
 
          ::wave::out::out_close();
 
@@ -660,12 +668,6 @@ namespace multimedia
 
          auto iFramesToWrite = m_frameCount;
 
-         //information() << "iFramesToWrite: " << iFramesToWrite;
-
-         int iBytesToWrite = -1;
-
-         ::e_status estatus = success;
-
          //snd_pcm_sframes_t iFrameFreeCount = 0;
 
 //         {
@@ -760,151 +762,23 @@ namespace multimedia
 //
 //         }
 //
-         unsigned char *pdata;
-
-         memory m;
-
-         ::wave::buffer::item *pbuffer = nullptr;
+         _synchronous_lock sl(synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
 
          if (iBuffer >= 0)
          {
 
-            pbuffer = m_pwavebuffer->m_buffera[iBuffer];
-
-            pdata = (unsigned char *) out_get_buffer_data(iBuffer);
+            m_listPendingBuffer.add_head(iBuffer);
 
          }
-         else
-         {
-
-            m.set_size(iBytesToWrite);
-
-            m.zero();
-
-            pdata = (unsigned char *) m.data();
-
-         }
-
-         _synchronous_lock sl(synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
 
          //m_iaSent.insert_at(0, iBuffer);
 
-         _synchronous_lock synchronouslockBuffer(pbuffer ? pbuffer->synchronization() : nullptr);
+         auto iBytesJustWritten = iFramesToWrite * m_pwaveformat->m_waveformat.nChannels *
+            m_pwaveformat->m_waveformat.wBitsPerSample / 8;
 
-         int iZero = 0;
-
-         int iFramesJustWritten = 0;
-
-         while (iBytesToWrite > 0)
-         {
-
-            //information() << "snd_pcm_writei iFramesToWrite " << iFramesToWrite;
-
-            //iFramesJustWritten = snd_pcm_writei(m_pstream, pdata, iFramesToWrite);
-            auto iBytesJustWritten = iFramesToWrite * m_pwaveformat->m_waveformat.nChannels *
-                                     m_pwaveformat->m_waveformat.wBitsPerSample/8;
-            m_pmemoryfile->write(pdata,iBytesJustWritten );
-
-            //information() << "snd_pcm_writei iFramesJustWritten " << iFramesJustWritten;
-
-//            if (!m_bStarted)
-//            {
-//
-//               m_timeStart.Now();
-//
-//               //gettimeofday(&m_timevalStart, nullptr);
-//
-//               m_bStarted = true;
-//
-//            }
-//
-////            if (iFramesJustWritten == -EINTR)
-////            {
-////
-////               informationf("snd_pcm_writei -EINTR");
-////
-////               continue;
-////
-////            }
-////            else if (iFramesJustWritten == -EAGAIN)
-////            {
-////
-////               informationf("snd_pcm_writei -EAGAIN");
-////
-////               sl.unlock();
-////
-////               //snd_pcm_wait(m_pstream, 10);
-////
-////               sl._lock();
-////
-////               continue;
-////
-////            }
-////            else if (iFramesJustWritten < 0)
-////            {
-////
-////               informationf("snd_pcm_writei Underrun");
-////
-////               //informationf("AAUDIO wave_out snd_pcm_writei error: %s (%d)\n", snd_strerror(iFramesJustWritten),
-////                               iFramesJustWritten);
-////
-////               iFramesJustWritten = defer_underrun_recovery(iFramesJustWritten);
-////
-////               if (iFramesJustWritten < 0 && iFramesJustWritten != -EAGAIN)
-////               {
-////
-////                  m_eoutstate = ::wave::e_out_state_opened;
-////
-////                  m_estatusWave = error_failed;
-////
-////                  informationf("AAUDIO wave_out snd_pcm_writei couldn't recover from error: %s\n",
-////                                  snd_strerror(iFramesJustWritten));
-////
-////                  return;
-////
-////               }
-////
-////               iFramesJustWritten = 0;
-////
-////               continue;
-////
-////            }
-//
-////            iFramesToWrite -= iFramesJustWritten;
-////
-////            int iBytesJustWritten = snd_pcm_frames_to_bytes(m_pstream, iFramesJustWritten);
-//
-//            //informationf("snd_pcm_frames_to_bytes iBytesJustWritten " << iBytesJustWritten);
-//
-//            //informationf("m_pwaveformat->m_waveformat.nSamplesPerSec " << m_pwaveformat->m_waveformat.nSamplesPerSec);
-
-            m_pprebuffer->m_iBytes += iBytesJustWritten;
-
-            pdata += iBytesJustWritten;
-
-            iBytesToWrite -= iBytesJustWritten;
-
-            //            if(iBytesToWrite > 0)
-            //            {
-            //
-            //               sl.unlock();
-            //
-            //               snd_pcm_wait(m_pstream, 100);
-            //
-            //               sl.lock();
-            //
-            //            }
-
-         }
+         m_pprebuffer->m_iBytes += iBytesJustWritten;
 
          m_iBufferedCount++;
-
-         if (iBuffer >= 0)
-         {
-
-            m_psynthtask->on_free(iBuffer);
-
-         }
 
       }
 
@@ -1089,20 +963,134 @@ namespace multimedia
       aaudio_data_callback_result_t wave_out::output_audio_callback(float * data, int numFrames)
       {
 
+         list_base < ::collection::index > listFinishedBuffer;
 
-         _synchronous_lock synchronouslock(this->synchronization());
+         {
+
+            _synchronous_lock synchronouslock(this->synchronization());
 
 
+            auto iChannelCount = maximum(1, (int) m_pwaveformat->m_waveformat.nChannels);
+            auto iSampleCount = numFrames * iChannelCount;
+            auto iBytesPerSample = maximum(1, (int) m_pwaveformat->m_waveformat.wBitsPerSample / 8);
+            auto iBufferSize = out_get_buffer_size();
 
-         for(int i = 0;i < numFrames; i+=2)
-         {   short sh1 = 0;
-            m_pmemoryfile->read(&sh1, sizeof(sh1));
+            for(int i = 0; i < iSampleCount; i++)
+            {
 
-            short sh2;
-            m_pmemoryfile->read(&sh2, sizeof(sh2));
+               data[i] = 0.f;
 
-            data[i] = sh1 / 32767.0f;
-            data[i+1] = sh2 / 32767.0f;
+               while (true)
+               {
+
+                  if (m_iCurrentBuffer < 0)
+                  {
+
+                     if (!m_listPendingBuffer.has_element())
+                     {
+
+                        break;
+
+                     }
+
+                     m_iCurrentBuffer = m_listPendingBuffer.pick_tail();
+                     m_iCurrentBufferOffset = 0;
+
+                  }
+
+                  if (iBufferSize <= 0 || m_iCurrentBufferOffset + iBytesPerSample > iBufferSize)
+                  {
+
+                     listFinishedBuffer.add_head(m_iCurrentBuffer);
+                     m_iCurrentBuffer = -1;
+                     m_iCurrentBufferOffset = 0;
+                     continue;
+
+                  }
+
+                  auto pdata = (const unsigned char *) out_get_buffer_data(m_iCurrentBuffer);
+
+                  if (::is_null(pdata))
+                  {
+
+                     listFinishedBuffer.add_head(m_iCurrentBuffer);
+                     m_iCurrentBuffer = -1;
+                     m_iCurrentBufferOffset = 0;
+                     continue;
+
+                  }
+
+                  pdata += m_iCurrentBufferOffset;
+
+                  if (iBytesPerSample == 1)
+                  {
+
+                     data[i] = ((int) pdata[0] - 128) / 128.0f;
+
+                  }
+                  else if (iBytesPerSample == 2)
+                  {
+
+                     int iSample = (pdata[0] | (pdata[1] << 8));
+
+                     if (iSample & 0x8000)
+                     {
+
+                        iSample |= ~0xffff;
+
+                     }
+
+                     data[i] = iSample / 32767.0f;
+
+                  }
+                  else if (iBytesPerSample == 3)
+                  {
+
+                     int iSample = (pdata[0] | (pdata[1] << 8) | (pdata[2] << 16));
+
+                     if (iSample & 0x800000)
+                     {
+
+                        iSample |= ~0xffffff;
+
+                     }
+
+                     data[i] = iSample / 8388607.0f;
+
+                  }
+                  else
+                  {
+
+                     int iSample = (pdata[0] | (pdata[1] << 8) | (pdata[2] << 16) | (pdata[3] << 24));
+                     data[i] = iSample / 2147483647.0f;
+
+                  }
+
+                  m_iCurrentBufferOffset += iBytesPerSample;
+
+                  if (m_iCurrentBufferOffset >= iBufferSize)
+                  {
+
+                     listFinishedBuffer.add_head(m_iCurrentBuffer);
+                     m_iCurrentBuffer = -1;
+                     m_iCurrentBufferOffset = 0;
+
+                  }
+
+                  break;
+
+               }
+
+            }
+
+         }
+
+         while (listFinishedBuffer.has_element())
+         {
+
+            auto iBuffer = listFinishedBuffer.pick_tail();
+
+            m_psynthtask->on_free(iBuffer);
 
          }
 

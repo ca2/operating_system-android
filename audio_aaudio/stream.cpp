@@ -117,7 +117,7 @@ return result;
 
          // Configure builder
          AAudioStreamBuilder_setFormat(builder, AAUDIO_FORMAT_PCM_FLOAT);
-         AAudioStreamBuilder_setChannelCount(builder, 1);
+         AAudioStreamBuilder_setChannelCount(builder, (int32_t) pformat->m_waveformat.nChannels);
          AAudioStreamBuilder_setSampleRate(builder, (int32_t) pformat->m_waveformat.nSamplesPerSec);
          AAudioStreamBuilder_setDirection(builder, AAUDIO_DIRECTION_OUTPUT);
          AAudioStreamBuilder_setDataCallback(builder, audioCallback, this);
@@ -215,7 +215,9 @@ return result;
 
 
 
-         for(int i = 0;i < numFrames; i++)
+         auto iChannelCount = maximum(1, (int) m_pwaveformat->m_waveformat.nChannels);
+
+         for(int i = 0; i < numFrames * iChannelCount; i++)
          {
 
             data[i] = 0.f;

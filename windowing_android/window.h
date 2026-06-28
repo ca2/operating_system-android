@@ -74,6 +74,9 @@ virtual public ::android::acme::windowing::window,
 
 
       void redraw() override;
+      void add_graphical_output_purpose(::particle * pparticle, const ::graphics::e_output_purpose & epurpose) override;
+      void erase_graphical_output_purpose(::particle * pparticle) override;
+      void sync_graphical_output_purpose_to_bind();
 
       void exit_iconify() override;
 

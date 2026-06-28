@@ -29,6 +29,9 @@ namespace multimedia
          class ::time            m_timeStart;
 
          ::pointer < ::memory_file > m_pmemoryfile;
+         list_base < ::collection::index > m_listPendingBuffer;
+         ::collection::index     m_iCurrentBuffer;
+         memsize                 m_iCurrentBufferOffset;
          //::i32_array_base             m_iaSent;
 
          //snd_async_handler_t *   m_pcm_callback;

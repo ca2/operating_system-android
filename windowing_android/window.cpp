@@ -17,6 +17,7 @@
 #include "aura/platform/application.h"
 #include "aura/user/user/interaction_thread.h"
 #include "acme_windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/jni_bind.h"
 #include "android/application_sink.h"
 #include "acme/platform/message_sink.h"
 //void on_sn_launch_context(void * pSnContext, Window window);
@@ -75,6 +76,46 @@ namespace windowing_android
 
    window::~window()
    {
+
+   }
+
+
+   void window::sync_graphical_output_purpose_to_bind()
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      if (::is_null(pbind))
+      {
+
+         return;
+
+      }
+
+      bool bFpsRedraw = has_fps_output_purpose();
+
+      pbind->setFpsRedraw(bFpsRedraw);
+      pbind->setRequestFps(30.f);
+
+   }
+
+
+   void window::add_graphical_output_purpose(::particle * pparticle, const ::graphics::e_output_purpose & epurpose)
+   {
+
+      ::sandbox_windowing::window::add_graphical_output_purpose(pparticle, epurpose);
+
+      sync_graphical_output_purpose_to_bind();
+
+   }
+
+
+   void window::erase_graphical_output_purpose(::particle * pparticle)
+   {
+
+      ::sandbox_windowing::window::erase_graphical_output_purpose(pparticle);
+
+      sync_graphical_output_purpose_to_bind();
 
    }
 
