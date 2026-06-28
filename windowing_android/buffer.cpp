@@ -4,6 +4,7 @@
 #include "acme_windowing_android/android/_internal.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "aura/graphics/image/image.h"
+#include <typeinfo>
 //#include <native_window.h>
 
 
@@ -31,16 +32,21 @@ namespace windowing_android
    }
 
 
-   bool buffer::_on_begin(::graphics::buffer_item *)
+   bool buffer::_on_begin(::graphics::buffer_item * pitem)
    {
-
-      auto pitem = get_buffer_item();
 
       //auto sizeWindow = window_size();
 
-      LOGI("on_begin_draw");
+      LOGI("on_begin_draw item=%p", pitem);
 
-      auto pimage = pitem->m_pimage2;
+      if (!pitem)
+      {
+
+         return false;
+
+      }
+
+      ::image::image_pointer pimage;
 
       //if (pimage->size() != sizeWindow)
       {
@@ -76,9 +82,63 @@ namespace windowing_android
       
 
 
-         //pimage->create(sizeWindow);
-         // 
-         pimage->create(pitem->m_sizeBufferItem);
+         try
+         {
+
+            pimage = pitem->m_pimage2;
+
+            LOGI("image pointer=%p", pimage.m_p);
+
+            if (!pimage)
+            {
+
+               return false;
+
+            }
+
+            LOGI("image before create type=%s buffer=(%d,%d)",
+               typeid(*pimage.m_p).name(),
+               pitem->m_sizeBufferItem.cx,
+               pitem->m_sizeBufferItem.cy);
+
+            pimage->create(pitem->m_sizeBufferItem);
+
+            pimage->map();
+
+            LOGI("image after create type=%s size=(%d,%d) scan=%d raw=%p data=%p",
+               typeid(*pimage.m_p).name(),
+               pimage->width(),
+               pimage->height(),
+               pimage->scan_size(),
+               pimage->m_pimage32Raw,
+               pimage->get_data());
+
+         }
+         catch (const ::exception & exception)
+         {
+
+            LOGI("image create exception: %s", exception.get_message().c_str());
+
+            throw;
+
+         }
+         catch (...)
+         {
+
+            LOGI("image create unknown exception");
+
+            throw;
+
+         }
+
+         auto pgraphics = pimage->g();
+
+         if (pgraphics)
+         {
+
+            pgraphics->resize(pitem->m_sizeBufferItem);
+
+         }
          //if (!pimage->create(sizeWindow))
          //{
 

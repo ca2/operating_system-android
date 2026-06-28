@@ -270,6 +270,8 @@ namespace android
 
                 papplicationsink->context_on_size_changed();
 
+                post_start_application_request_and_process_command_line_options();
+
                 //windowing_application_on_start();
 
                 ::string strAppId = m_papplication->m_strAppId;

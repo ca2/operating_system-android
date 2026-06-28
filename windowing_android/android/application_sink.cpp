@@ -363,13 +363,13 @@ namespace android
 
           }
 
-//          if (m_bRedraw) {
-//
-//             m_bRedraw = false;
-//
-//             pbind->setRedraw(true);
-//
-//          }
+          if (m_bRedraw) {
+
+             m_bRedraw = false;
+
+             pbind->setRedraw(true);
+
+          }
 
           if (m_bInputMethodManagerUpdateSelection) {
 
