@@ -5,11 +5,19 @@
 #include "aura/graphics/write_text/fonts.h"
 
 
+<<<<<<< HEAD
+namespace write_text_win32
+{
+
+
+   class CLASS_DECL_WRITE_TEXT_WIN32 fonts :
+=======
 namespace write_text_afont
 {
 
 
    class CLASS_DECL_WRITE_TEXT_AFONT fonts :
+>>>>>>> origin/main
       virtual public ::write_text::fonts
    {
    public:
@@ -28,7 +36,11 @@ namespace write_text_afont
    };
 
 
+<<<<<<< HEAD
+} // namespace write_text_win32
+=======
 } // namespace write_text_afont
+>>>>>>> origin/main
 
 
 
