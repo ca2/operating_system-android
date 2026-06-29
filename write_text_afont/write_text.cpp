@@ -3,11 +3,7 @@
 #include "write_text.h"
 
 
-<<<<<<< HEAD
-namespace write_text_win32
-=======
 namespace write_text_afont
->>>>>>> origin/main
 {
 
    
@@ -25,11 +21,7 @@ namespace write_text_afont
    }
 
 
-<<<<<<< HEAD
-} // namespace write_text_win32
-=======
 } // namespace write_text_afont
->>>>>>> origin/main
 
 
 

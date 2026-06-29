@@ -1,6 +1,6 @@
 // Created by camilo on 2021-06-05 21:17 BRT <3ThomasBS_!!
 #include "framework.h"
-#include "write_text_win32_gdi.h"
+#include "aaa_write_text_win32_gdi.h"
 
 
 #undef USUAL_OPERATING_SYSTEM_SUPPRESSIONS
