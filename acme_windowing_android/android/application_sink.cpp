@@ -45,6 +45,22 @@ namespace android
       }
 
 
+      ::f64 application_sink::get_physical_x_dpi()
+      {
+
+         return 160.0;
+
+      }
+
+
+      ::f64 application_sink::get_physical_y_dpi()
+      {
+
+         return 160.0;
+
+      }
+
+
       void application_sink::on_initialize_particle()
       {
 
@@ -62,8 +78,25 @@ namespace android
 
             auto pbind = ::jni_bind::get();
 
+            if(is_different(pbind->m_bFpsRedrawNew, pbind->m_bFpsRedraw))
+            {
 
-//              string strOpenUrl;
+               pbind->m_bFpsRedraw = pbind->m_bFpsRedrawNew;
+
+               pbind->setFpsRedraw(pbind->m_bFpsRedraw);
+
+            }
+
+            if(is_different(pbind->m_fRequestFpsNew, pbind->m_fRequestFps, 0.01f))
+            {
+
+               pbind->m_fRequestFps = pbind->m_fRequestFpsNew;
+
+               pbind->setRequestFps(pbind->m_fRequestFps);
+
+            }
+
+//                          string strOpenUrl;
 //
 //              {
 //

@@ -40,7 +40,7 @@ void os_on_finish_launching();
 int SetMainScreenRect(const ::i32_rectangle &rect);
 
 
-void set_jni_context(JNIEnv * penv);
+void set_jni_context(JNIEnv * penv, jobject jobj);
 
 
 const_char_pointer this_argv[] =
@@ -611,7 +611,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1sync_1mem_1fre
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
 

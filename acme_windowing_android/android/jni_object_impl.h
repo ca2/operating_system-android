@@ -13,7 +13,8 @@ class CLASS_DECL_ACME jni_context_impl :
 {
 public:
 
-   JNIEnv * m_pjnicontext = nullptr;
+   JNIEnv *    m_pjnicontext = nullptr;
+   jobject     m_jobjectContext = 0;
 
 
 };

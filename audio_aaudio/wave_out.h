@@ -27,6 +27,9 @@ namespace multimedia
          //snd_pcm_status_t *      m_pstatus;
          //timeval                 m_timevalStart;
          class ::time            m_timeStart;
+         class ::time            m_timeOutStart;
+         bool                    m_bLoggedFirstCallback;
+         bool                    m_bLoggedFirstAudio;
 
          ::pointer < ::memory_file > m_pmemoryfile;
          list_base < ::collection::index > m_listPendingBuffer;

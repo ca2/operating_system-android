@@ -18,7 +18,7 @@
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 
-void set_jni_context(JNIEnv* penv);
+void set_jni_context(JNIEnv* penv, jobject jobj);
 
 
 ::windowing::window* __get_host_window()
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1render_1impact(JNIEnv 
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       AndroidBitmapInfo    info = {};
 
@@ -196,7 +196,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1native_1on_1timer(JNIE
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       try
       {
@@ -231,7 +231,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyDown(JNIEnv * env, jo
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       LOGI("%s\n", "Java_platform_platform_impact_jniKeyDown");
 
@@ -254,7 +254,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyUp(JNIEnv * env, jobj
    {
 
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       LOGI("%s\n", "Java_platform_platform_impact_jniKeyUp");
 
@@ -276,7 +276,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyPreImeDown(JNIEnv * e
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       try
       {
@@ -310,7 +310,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniKeyPreImeUp(JNIEnv * env
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       android_key(::user::e_message_key_up, keyCode, iUni);
 
@@ -332,7 +332,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnReceivedShowKeyboard(J
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
    }
    catch (...)
@@ -352,7 +352,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnReceivedHideKeyboard(J
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
    }
    catch (...)
@@ -374,7 +374,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniMouseMove(JNIEnv * env, 
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pwindowApplicationHost = __get_host_window();
 
@@ -404,7 +404,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniLButtonDown(JNIEnv * env
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pwindowHost = __get_host_window();
 
@@ -434,7 +434,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniLButtonUp(JNIEnv * env, 
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pwindowApplicationHost = __get_host_window();
 
@@ -462,7 +462,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnText(JNIEnv * env, job
 
    try
    {
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       if (bytes == NULL)
       {
@@ -526,7 +526,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1aura_1size_1changed(JN
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       //::i32_rectangle rectangle;
 

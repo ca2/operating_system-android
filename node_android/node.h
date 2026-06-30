@@ -40,6 +40,13 @@ namespace node_android
       //::pointer < ::data::block > media_store_get_data(const ::scoped_string & scopedstrPath) override;
 
       void post_media_store_operation(::data::block * pdatablock) override;
+      void post_google_drive_appdata_operation(::data::block * pdatablock) override;
+      bool secure_app_storage_set(const ::scoped_string & scopedstrName, const ::scoped_string & scopedstrValue) override;
+      ::string secure_app_storage_get(const ::scoped_string & scopedstrName) override;
+      bool secure_app_storage_delete(const ::scoped_string & scopedstrName) override;
+      bool secure_app_storage_contains(const ::scoped_string & scopedstrName) override;
+      ::string get_google_access_token(const ::scoped_string & scopedstrScope) override;
+      void clear_google_access_token(const ::scoped_string & scopedstrScope, const ::scoped_string & scopedstrAccessToken) override;
       void root_ones(::file::listing_base &listing) override;
       bool defer_enumerate_protocol(::file::listing_base& listing) override;
 

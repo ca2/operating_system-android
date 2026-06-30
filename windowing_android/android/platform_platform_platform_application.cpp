@@ -278,7 +278,7 @@ void os_on_finish_launching();
 int SetMainScreenRect(const ::i32_rectangle & rect);
 
 
-void set_jni_context(JNIEnv * penv);
+void set_jni_context(JNIEnv * penv, jobject jobj);
 
 
 const_char_pointer this_argv[] =
@@ -296,7 +296,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1on_1aura
    jlResponse)
 {
 
-   set_jni_context(penv);
+   set_jni_context(penv, obj);
 
    auto pmessagebox = ::pointer_transfer((::user_interface::message_box *) (::iptr) jlMicromessagebox);
 
@@ -323,7 +323,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1sync_1me
 
    try {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       ::platform::application_sink::get()->
          m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
@@ -394,7 +394,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1initiali
    jobject jobjectAssetManager)
 {
 
-   set_jni_context(penv);
+   set_jni_context(penv, obj);
 
    if (::jni_bind::get())
    {
@@ -482,7 +482,7 @@ JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_jni_1on_1m
    try
    {
 
-      set_jni_context(penv);
+      set_jni_context(penv, obj);
 
       jni_message message(øjni_object(jobjectMessage));
 
@@ -513,7 +513,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1return_1
    try
    {
 
-      set_jni_context(penv);
+      set_jni_context(penv, obj);
 
       jni_data_block jnidatablock(øjni_object(jobjectDataBlock));
 
@@ -552,7 +552,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1applicat
    try
    {
 
-      set_jni_context(penv);
+      set_jni_context(penv, obj);
 
       auto pbind = ::jni_bind::get();
 
@@ -594,7 +594,7 @@ JNIEXPORT void JNICALL
 Java_platform_platform_platform_application_jni_1on_1media_1store_1output_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback)
 {
 
-   set_jni_context(env);
+   set_jni_context(env, obj);
 
    ::pointer < ::data::block > pdatablock
    {
@@ -616,7 +616,39 @@ JNIEXPORT void JNICALL
 Java_platform_platform_platform_application_jni_1on_1media_1store_1input_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
 {
 
-   set_jni_context(env);
+   set_jni_context(env, obj);
+
+   ::pointer < ::data::block > pdatablock
+      {
+         transfer_t{},
+         (::data::block *)(void *)(::uptr) lCallback
+      };
+
+   if(jbytea)
+   {
+
+      jni_local_byte_array jnilocalbytea(jbytea);
+
+      pdatablock->m_memory = ::transfer(jnilocalbytea.as_memory());
+
+   }
+
+   if(pdatablock->m_pmanualresethappening)
+   {
+
+      pdatablock->m_pmanualresethappening->set_happening();
+
+   }
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_platform_platform_platform_application_jni_1on_1google_1drive_1appdata_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
+{
+
+   set_jni_context(env, obj);
 
    ::pointer < ::data::block > pdatablock
       {

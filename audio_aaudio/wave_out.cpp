@@ -28,6 +28,8 @@ namespace multimedia
          m_bStarted = false;
          m_iCurrentBuffer = -1;
          m_iCurrentBufferOffset = 0;
+         m_bLoggedFirstCallback = false;
+         m_bLoggedFirstAudio = false;
 
       }
 
@@ -872,8 +874,33 @@ namespace multimedia
          //informationf("out_start: snd_pcm_prepare OK");
 
          m_bStarted = false;
+         m_timeOutStart = ::time::now();
+         m_bLoggedFirstCallback = false;
+         m_bLoggedFirstAudio = false;
 
-         ::wave::out::out_start(time);
+         {
+
+            synchronous_lock synchronouslock(this->synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
+
+            m_bEOS = false;
+            m_eoutstate = ::wave::e_out_state_playing;
+            m_iLostBytes = 0;
+            m_timeStart = 0_s;
+
+         }
+
+         auto iLaunchBufferCount = minimum(2, out_get_buffer()->GetBufferCount());
+
+         information() << "audio_aaudio::out_start low latency initial buffer count : " << iLaunchBufferCount;
+
+         for (int iBuffer = 0; iBuffer < iLaunchBufferCount; iBuffer++)
+         {
+
+            m_iBufferedCount++;
+
+            out_free(iBuffer);
+
+         }
 
          if (!m_estatusWave)
          {
@@ -969,6 +996,15 @@ namespace multimedia
 
             _synchronous_lock synchronouslock(this->synchronization());
 
+            if (!m_bLoggedFirstCallback)
+            {
+
+               m_bLoggedFirstCallback = true;
+               information() << "audio_aaudio timing first callback ms=" << m_timeOutStart.elapsed().integral_millisecond()
+                  << " numFrames=" << numFrames
+                  << " pendingBuffers=" << m_listPendingBuffer.get_count();
+
+            }
 
             auto iChannelCount = maximum(1, (int) m_pwaveformat->m_waveformat.nChannels);
             auto iSampleCount = numFrames * iChannelCount;
@@ -1063,6 +1099,16 @@ namespace multimedia
 
                      int iSample = (pdata[0] | (pdata[1] << 8) | (pdata[2] << 16) | (pdata[3] << 24));
                      data[i] = iSample / 2147483647.0f;
+
+                  }
+
+                  if (!m_bLoggedFirstAudio && (data[i] > 0.0001f || data[i] < -0.0001f))
+                  {
+
+                     m_bLoggedFirstAudio = true;
+                     information() << "audio_aaudio timing first nonzero sample ms=" << m_timeOutStart.elapsed().integral_millisecond()
+                        << " currentBuffer=" << m_iCurrentBuffer
+                        << " pendingBuffers=" << m_listPendingBuffer.get_count();
 
                   }
 

@@ -11,7 +11,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_music_jni_1announce(JNIE
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       long long iId = id;
 
@@ -53,7 +53,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_image_jni_1announce(JNIE
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       long long iId = id;
 
@@ -93,7 +93,7 @@ JNIEXPORT void JNICALL Java_platform_platform_enumerate_video_jni_1announce(JNIE
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       long long iId = id;
 

@@ -157,6 +157,20 @@ public:
    static void set(jni_bind* pdirect);
 
 
+   bool m_bFpsRedrawNew = false;
+   bool m_bFpsRedraw = true;
+   ::f32 m_fRequestFpsNew = 30.f;
+   ::f32 m_fRequestFps = 1.f;
+
+   bool secure_app_storage_set(const ::scoped_string & scopedstrName, const ::scoped_string & scopedstrValue);
+   ::string secure_app_storage_get(const ::scoped_string & scopedstrName);
+   bool secure_app_storage_delete(const ::scoped_string & scopedstrName);
+   bool secure_app_storage_contains(const ::scoped_string & scopedstrName);
+   ::string get_google_access_token(const ::scoped_string & scopedstrScope);
+   void clear_google_access_token(const ::scoped_string & scopedstrScope, const ::scoped_string & scopedstrAccessToken);
+
+
+
 };
 
 

@@ -18,7 +18,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniBeginB
 
    bool bReturn = true;
 
-   set_jni_context(env);
+   set_jni_context(env, obj);
 
    try
    {
@@ -72,7 +72,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniEndBat
 
    bool bReturn = true;
 
-   set_jni_context(env);
+   set_jni_context(env, obj);
 
    try
    {
@@ -138,7 +138,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniCommit
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(text, NULL);
 
@@ -213,7 +213,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniDelete
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pinteraction = __get_host_interaction();
 
@@ -267,7 +267,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetCom
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       const ::wd16_character* utf16 = (::wd16_character*)env->GetStringChars(text, NULL);
 
@@ -344,7 +344,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetCom
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pinteraction = __get_host_interaction();
 
@@ -398,7 +398,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniSetSel
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pinteraction = __get_host_interaction();
 
@@ -453,7 +453,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_user_InputConnection_jniFinish
    try
    {
 
-      set_jni_context(env);
+      set_jni_context(env, obj);
 
       auto pinteraction = __get_host_interaction();
 

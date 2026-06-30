@@ -207,11 +207,12 @@ namespace write_text_android
                            if (pfirstname && pfirstfile)
                            {
 
-                              string strName = pfirstname->get_value();
+                               string strName = pfirstname->get_value();
 
-                              string strFile = pfirstfile->get_value();
+                               string strFile = pfirstfile->get_value();
+                               strFile.trim();
 
-                              strFamily = strName;
+                               strFamily = strName;
 
                               ::file::path path = "/system/fonts";
 
@@ -274,11 +275,12 @@ namespace write_text_android
 
                            int iItalic = pnodeFont->attribute("style").case_insensitive_equals("italic");
 
-                           int iKey = iWeight * 10 + iItalic;
+                            int iKey = iWeight * 10 + iItalic;
 
-                           string strFile = pnodeFont->get_value();
+                            string strFile = pnodeFont->get_value();
+                            strFile.trim();
 
-                           ::file::path path = "/system/fonts";
+                            ::file::path path = "/system/fonts";
 
                            path /= strFile;
 

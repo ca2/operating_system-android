@@ -8,6 +8,7 @@
 #include "acme/windowing/windowing.h"
 #include "apex/platform/session.h"
 #include "acme_windowing_android/android/_internal.h"
+#include "acme_windowing_android/android/jni_bind.h"
 #include "windowing_android/android/application_sink.h"
 #include "acme_windowing_android/android/message_box.h"
 #include "acme_windowing_android/windowing.h"
@@ -203,6 +204,95 @@ namespace node_android
       return ::platform::application_sink::get()->post_media_store_operation(pdatablock);
 
    }
+
+
+   void node::post_google_drive_appdata_operation(::data::block * pdatablock)
+   {
+
+      return ::platform::application_sink::get()->post_google_drive_appdata_operation(pdatablock);
+
+   }
+
+
+   bool node::secure_app_storage_set(const ::scoped_string & scopedstrName, const ::scoped_string & scopedstrValue)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      return pbind && pbind->secure_app_storage_set(scopedstrName, scopedstrValue);
+
+   }
+
+
+   ::string node::secure_app_storage_get(const ::scoped_string & scopedstrName)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      if(!pbind)
+      {
+
+         return {};
+
+      }
+
+      return pbind->secure_app_storage_get(scopedstrName);
+
+   }
+
+
+   bool node::secure_app_storage_delete(const ::scoped_string & scopedstrName)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      return pbind && pbind->secure_app_storage_delete(scopedstrName);
+
+   }
+
+
+   bool node::secure_app_storage_contains(const ::scoped_string & scopedstrName)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      return pbind && pbind->secure_app_storage_contains(scopedstrName);
+
+   }
+
+
+   ::string node::get_google_access_token(const ::scoped_string & scopedstrScope)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      if(!pbind)
+      {
+
+         return {};
+
+      }
+
+      return pbind->get_google_access_token(scopedstrScope);
+
+   }
+
+
+   void node::clear_google_access_token(const ::scoped_string & scopedstrScope, const ::scoped_string & scopedstrAccessToken)
+   {
+
+      auto pbind = ::jni_bind::get();
+
+      if(pbind)
+      {
+
+         pbind->clear_google_access_token(scopedstrScope, scopedstrAccessToken);
+
+      }
+
+   }
+
+
    void node::root_ones(::file::listing_base &listing)
    {
 

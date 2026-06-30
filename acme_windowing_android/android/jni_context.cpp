@@ -52,7 +52,7 @@ string as_string(const jstring & jstring)
 }
 
 
-void set_jni_context(JNIEnv* pcontext)
+void set_jni_context(JNIEnv* pcontext, jobject jobject)
 {
 
    if(!t_pjnipcontextContext)
@@ -63,6 +63,7 @@ void set_jni_context(JNIEnv* pcontext)
    }
 
    t_pjnipcontextContext->m_pjnicontext = pcontext;
+   t_pjnipcontextContext->m_jobjectContext = jobject;
 
 }
 

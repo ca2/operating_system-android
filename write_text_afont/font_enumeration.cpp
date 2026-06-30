@@ -114,6 +114,100 @@ namespace
    }
 
 
+   void map_android_font_name_alias(::write_text::write_text * pwritetext, const ::scoped_string & scopedstrAlias, const ::scoped_string & scopedstrSource)
+   {
+
+      if (::is_null(pwritetext) || scopedstrAlias.is_empty() || scopedstrSource.is_empty())
+      {
+
+         return;
+
+      }
+
+      string strSource(scopedstrSource);
+
+      strSource.make_lower();
+
+      for (auto & pair : pwritetext->m_mapFontKeyFaceName[strSource])
+      {
+
+         map_font_name(pwritetext, scopedstrAlias, pair.m_element1, pair.m_element2);
+
+      }
+
+   }
+
+
+   void map_android_font_file(::particle * pparticle, ::write_text::write_text * pwritetext,
+      const ::scoped_string & scopedstrName, const ::file::path & path)
+   {
+
+      if (::is_null(pparticle) || ::is_null(pwritetext) || scopedstrName.is_empty() || path.is_empty())
+      {
+
+         return;
+
+      }
+
+      if (!pparticle->file_system()->exists(path))
+      {
+
+         return;
+
+      }
+
+      map_font_name(pwritetext, scopedstrName, 0, path);
+
+      for (int iWeight = 100; iWeight <= 900; iWeight += 100)
+      {
+
+         map_font_name(pwritetext, scopedstrName, font_key(iWeight, false), path);
+         map_font_name(pwritetext, scopedstrName, font_key(iWeight, true), path);
+
+      }
+
+   }
+
+
+   void map_android_system_font_files(::particle * pparticle, ::write_text::write_text * pwritetext)
+   {
+
+      ::file::path pathRoboto = "/system/fonts/Roboto-Regular.ttf";
+      ::file::path pathRobotoStatic = "/system/fonts/RobotoStatic-Regular.ttf";
+      ::file::path pathNotoSerif = "/system/fonts/NotoSerif-Regular.ttf";
+      ::file::path pathDroidSansMono = "/system/fonts/DroidSansMono.ttf";
+      ::file::path pathCutiveMono = "/system/fonts/CutiveMono.ttf";
+
+      map_android_font_file(pparticle, pwritetext, "Roboto", pathRoboto);
+      map_android_font_file(pparticle, pwritetext, "sans-serif", pathRoboto);
+      map_android_font_file(pparticle, pwritetext, "Noto Serif", pathNotoSerif);
+      map_android_font_file(pparticle, pwritetext, "serif", pathNotoSerif);
+      map_android_font_file(pparticle, pwritetext, "Droid Sans Mono", pathDroidSansMono);
+      map_android_font_file(pparticle, pwritetext, "monospace", pathDroidSansMono);
+      map_android_font_file(pparticle, pwritetext, "Cutive Mono", pathCutiveMono);
+
+      if (!pparticle->file_system()->exists(pathRoboto))
+      {
+
+         map_android_font_file(pparticle, pwritetext, "Roboto", pathRobotoStatic);
+         map_android_font_file(pparticle, pwritetext, "sans-serif", pathRobotoStatic);
+
+      }
+
+   }
+
+
+   void map_android_font_name_aliases(::write_text::write_text * pwritetext)
+   {
+
+      map_android_font_name_alias(pwritetext, "Roboto", "sans-serif");
+      map_android_font_name_alias(pwritetext, "Noto Serif", "serif");
+      map_android_font_name_alias(pwritetext, "Droid Sans Mono", "monospace");
+      map_android_font_name_alias(pwritetext, "Cutive Mono", "serif-monospace");
+
+   }
+
+
    void add_font_item(::write_text::font_enumeration_item_array & itema, ::write_text::write_text * pwritetext,
       const ::scoped_string & scopedstrName, const ::file::path & path, int iWeight, bool bItalic)
    {
@@ -327,6 +421,7 @@ namespace
 
                string strName = pfirstname->get_value();
                string strFile = pfirstfile->get_value();
+               strFile.trim();
                strFamily = strName;
 
                ::file::path path = "/system/fonts";
@@ -376,6 +471,7 @@ namespace
 
                bool bItalic = pnodeFont->attribute("style").case_insensitive_equals("italic");
                string strFile = pnodeFont->get_value();
+               strFile.trim();
 
                ::file::path path = "/system/fonts";
                path /= strFile;
@@ -471,6 +567,9 @@ namespace write_text_afont
       bool bAFontEnumerated = enumerate_afont(this, itema, pwritetext, putilities);
 
       enumerate_android_font_xml(this, itema, pwritetext);
+
+      map_android_font_name_aliases(pwritetext);
+      map_android_system_font_files(this, pwritetext);
 
       if (!bAFontEnumerated)
       {

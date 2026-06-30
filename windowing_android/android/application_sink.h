@@ -12,12 +12,24 @@ class asset;
 namespace android
 {
 
+   struct android_display_metrics
+   {
+      float density = 1.0f;      // logical scale factor, e.g. 2.0
+      int density_dpi = 160;     // logical dpi, e.g. 320
+      float xdpi = 160.0f;       // physical-ish X dpi
+      float ydpi = 160.0f;       // physical-ish Y dpi
+      float scaled_density = 1.0f;
+   };
+
+
     class application_sink :
 virtual public ::android::acme::application_sink,
             virtual public ::windowing::text_editor_interface
     {
     public:
 
+       bool m_bAndroidDisplayMetrics = false;
+       android_display_metrics m_androiddisplaymetrics;
 
         ::particle_pointer m_pparticleMainOsThread;
 //   string                     m_strApplicationIdentifier;
@@ -85,6 +97,10 @@ virtual public ::android::acme::application_sink,
         application_sink();
 
         ~application_sink() override;
+
+
+        ::f64 get_physical_x_dpi() override;
+        ::f64 get_physical_y_dpi() override;
 
         // windowing::text_editor_interface
         void set_input_method_manager_selection(character_count iSelBeg, character_count iSelEnd,

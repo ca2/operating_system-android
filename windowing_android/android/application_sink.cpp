@@ -4,6 +4,7 @@
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
 #include "acme_windowing_android/android/jni_message_sink.h"
+#include "acme_windowing_android/android/jni_object_impl.h"
 //#include "acme/platform/sequencer.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
@@ -12,8 +13,60 @@
 #include "aura/windowing/window.h"
 
 
+
 namespace android
 {
+
+
+   bool get_display_metrics(android_display_metrics & result, JNIEnv* env, jobject context)
+   {
+      //android_display_metrics result;
+
+      if (!env || !context)
+         return false;
+
+      jclass contextClass = env->GetObjectClass(context);
+
+      jmethodID getResources = env->GetMethodID(
+         contextClass,
+         "getResources",
+         "()Landroid/content/res/Resources;");
+
+      jobject resources = env->CallObjectMethod(context, getResources);
+
+      jclass resourcesClass = env->GetObjectClass(resources);
+
+      jmethodID getDisplayMetrics = env->GetMethodID(
+         resourcesClass,
+         "getDisplayMetrics",
+         "()Landroid/util/DisplayMetrics;");
+
+      jobject metrics = env->CallObjectMethod(resources, getDisplayMetrics);
+
+      jclass metricsClass = env->GetObjectClass(metrics);
+
+      jfieldID densityField = env->GetFieldID(metricsClass, "density", "F");
+      jfieldID densityDpiField = env->GetFieldID(metricsClass, "densityDpi", "I");
+      jfieldID xdpiField = env->GetFieldID(metricsClass, "xdpi", "F");
+      jfieldID ydpiField = env->GetFieldID(metricsClass, "ydpi", "F");
+      jfieldID scaledDensityField = env->GetFieldID(metricsClass, "scaledDensity", "F");
+
+      result.density = env->GetFloatField(metrics, densityField);
+      result.density_dpi = env->GetIntField(metrics, densityDpiField);
+      result.xdpi = env->GetFloatField(metrics, xdpiField);
+      result.ydpi = env->GetFloatField(metrics, ydpiField);
+      result.scaled_density = env->GetFloatField(metrics, scaledDensityField);
+
+      env->DeleteLocalRef(metrics);
+      env->DeleteLocalRef(metricsClass);
+      env->DeleteLocalRef(resources);
+      env->DeleteLocalRef(resourcesClass);
+      env->DeleteLocalRef(contextClass);
+
+      //return result;
+
+      return true;
+   }
 
 //int ::user::e_message_box_to_button(const ::user::e_message_box& emessagebox);
 
@@ -45,7 +98,23 @@ namespace android
     }
 
 
-    void application_sink::set_input_method_manager_selection(character_count iSelBeg,
+   ::f64 application_sink::get_physical_x_dpi()
+   {
+
+       return m_androiddisplaymetrics.xdpi;
+
+   }
+
+
+   ::f64 application_sink::get_physical_y_dpi()
+   {
+
+       return m_androiddisplaymetrics.ydpi;
+
+   }
+
+
+   void application_sink::set_input_method_manager_selection(character_count iSelBeg,
                                                                      character_count iSelEnd,
                                                                      character_count iCandidateBeg,
                                                                      character_count iCandidateEnd)
@@ -232,6 +301,21 @@ namespace android
           synchronous_lock synchronouslock(synchronization());
 
           auto pbind = ::jni_bind::get();
+
+          if(!m_bAndroidDisplayMetrics)
+          {
+
+             ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+             if(pjnicontext) {
+
+                m_bAndroidDisplayMetrics = get_display_metrics(m_androiddisplaymetrics,
+                                                               pjnicontext->m_pjnicontext,
+                                                               pjnicontext->m_jobjectContext);
+
+             }
+
+          }
 
           if (m_bHideKeyboard) {
 
@@ -478,7 +562,7 @@ void application_sink::context_on_size_changed()
    try
    {
 
-  //    set_jni_context(env);
+  //    set_jni_context(env, obj);
 
       //::i32_rectangle rectangle;
 

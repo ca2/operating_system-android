@@ -99,7 +99,11 @@ namespace android
             ~application_sink() override;
 
 
-            void on_initialize_particle() override;
+          virtual ::f64 get_physical_x_dpi();
+          virtual ::f64 get_physical_y_dpi();
+
+
+          void on_initialize_particle() override;
 
 
           // windowing::text_editor_interface

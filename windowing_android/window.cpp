@@ -94,8 +94,8 @@ namespace windowing_android
 
       bool bFpsRedraw = has_fps_output_purpose();
 
-      pbind->setFpsRedraw(bFpsRedraw);
-      pbind->setRequestFps(30.f);
+      pbind->m_bFpsRedrawNew = bFpsRedraw;
+      pbind->m_fRequestFpsNew = 30.f;
 
    }
 

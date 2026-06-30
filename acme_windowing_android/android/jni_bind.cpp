@@ -9,6 +9,22 @@
 
 
 ::pointer < jni_bind > g_pandroidbind;
+JavaVM * g_pjavavmBind = nullptr;
+
+
+static void jni_bind_remember_java_vm(JNIEnv * penv)
+{
+
+   if(!penv || g_pjavavmBind)
+   {
+
+      return;
+
+   }
+
+   penv->GetJavaVM(&g_pjavavmBind);
+
+}
 
 
 CLASS_DECL_ACME_WINDOWING_ANDROID void operating_system_log_exception(::particle * pparticle, ::exception& exception, const ::scoped_string & scopedstrMoreDetails)
@@ -77,6 +93,304 @@ void jni_bind::set(jni_bind* pdirect)
 {
 
    g_pandroidbind = pdirect;
+
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   if(pjnicontext)
+   {
+
+      jni_bind_remember_java_vm(pjnicontext->m_pjnicontext);
+
+   }
+
+}
+
+
+static JNIEnv * jni_bind_env()
+{
+
+   ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+
+   if(!pjnicontext)
+   {
+
+      if(!g_pjavavmBind)
+      {
+
+         return nullptr;
+
+      }
+
+      JNIEnv * penv = nullptr;
+
+      if(g_pjavavmBind->AttachCurrentThread(&penv, nullptr) != JNI_OK)
+      {
+
+         return nullptr;
+
+      }
+
+      set_jni_context(penv, 0);
+
+      return penv;
+
+   }
+
+   auto penv = pjnicontext->m_pjnicontext;
+
+   jni_bind_remember_java_vm(penv);
+
+   return penv;
+
+}
+
+
+static void jni_bind_clear_exception(JNIEnv * penv)
+{
+
+   if(penv && penv->ExceptionCheck())
+   {
+
+      penv->ExceptionDescribe();
+      penv->ExceptionClear();
+
+   }
+
+}
+
+
+bool jni_bind::secure_app_storage_set(const ::scoped_string & scopedstrName, const ::scoped_string & scopedstrValue)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return false;
+
+   }
+
+   jni_local_string jnistringName(scopedstrName);
+   jni_local_string jnistringValue(scopedstrValue);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "secure_app_storage_set", "(Ljava/lang/String;Ljava/lang/String;)Z");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return false;
+
+   }
+
+   auto bResult = penv->CallBooleanMethod(jobjectBind, jmethod, jnistringName.m_jstring, jnistringValue.m_jstring);
+
+   jni_bind_clear_exception(penv);
+
+   return bResult != 0;
+
+}
+
+
+::string jni_bind::secure_app_storage_get(const ::scoped_string & scopedstrName)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return {};
+
+   }
+
+   jni_local_string jnistringName(scopedstrName);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "secure_app_storage_get", "(Ljava/lang/String;)Ljava/lang/String;");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return {};
+
+   }
+
+   jni_local_string jnistringResult(penv->CallObjectMethod(jobjectBind, jmethod, jnistringName.m_jstring));
+
+   jni_bind_clear_exception(penv);
+
+   return jnistringResult.as_string();
+
+}
+
+
+bool jni_bind::secure_app_storage_delete(const ::scoped_string & scopedstrName)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return false;
+
+   }
+
+   jni_local_string jnistringName(scopedstrName);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "secure_app_storage_delete", "(Ljava/lang/String;)Z");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return false;
+
+   }
+
+   auto bResult = penv->CallBooleanMethod(jobjectBind, jmethod, jnistringName.m_jstring);
+
+   jni_bind_clear_exception(penv);
+
+   return bResult != 0;
+
+}
+
+
+bool jni_bind::secure_app_storage_contains(const ::scoped_string & scopedstrName)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return false;
+
+   }
+
+   jni_local_string jnistringName(scopedstrName);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "secure_app_storage_contains", "(Ljava/lang/String;)Z");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return false;
+
+   }
+
+   auto bResult = penv->CallBooleanMethod(jobjectBind, jmethod, jnistringName.m_jstring);
+
+   jni_bind_clear_exception(penv);
+
+   return bResult != 0;
+
+}
+
+
+::string jni_bind::get_google_access_token(const ::scoped_string & scopedstrScope)
+{
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token begin");
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      __android_log_print(ANDROID_LOG_ERROR, "jni_bind", "get_google_access_token no JNIEnv");
+
+      return {};
+
+   }
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token env=%p", penv);
+
+   jni_local_string jnistringScope(scopedstrScope);
+   auto jobjectBind = (jobject) p_jobject();
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token bind=%p", jobjectBind);
+
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+
+   if(!jclassBind.m_jobject)
+   {
+
+      __android_log_print(ANDROID_LOG_ERROR, "jni_bind", "get_google_access_token no bind class");
+      jni_bind_clear_exception(penv);
+      return {};
+
+   }
+
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "get_google_access_token", "(Ljava/lang/String;)Ljava/lang/String;");
+
+   if(!jmethod)
+   {
+
+      __android_log_print(ANDROID_LOG_ERROR, "jni_bind", "get_google_access_token no method");
+      jni_bind_clear_exception(penv);
+      return {};
+
+   }
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token before CallObjectMethod");
+
+   auto jobjectResult = penv->CallObjectMethod(jobjectBind, jmethod, jnistringScope.m_jstring);
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token after CallObjectMethod result=%p exception=%d",
+      jobjectResult,
+      penv->ExceptionCheck() ? 1 : 0);
+
+   jni_bind_clear_exception(penv);
+
+   jni_local_string jnistringResult(jobjectResult);
+
+   auto strResult = jnistringResult.as_string();
+
+   __android_log_print(ANDROID_LOG_INFO, "jni_bind", "get_google_access_token end result_length=%d", (int) strResult.length());
+
+   return strResult;
+
+}
+
+
+void jni_bind::clear_google_access_token(const ::scoped_string & scopedstrScope, const ::scoped_string & scopedstrAccessToken)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return;
+
+   }
+
+   jni_local_string jnistringScope(scopedstrScope);
+   jni_local_string jnistringAccessToken(scopedstrAccessToken);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "clear_google_access_token", "(Ljava/lang/String;Ljava/lang/String;)V");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return;
+
+   }
+
+   penv->CallVoidMethod(jobjectBind, jmethod, jnistringScope.m_jstring, jnistringAccessToken.m_jstring);
+
+   jni_bind_clear_exception(penv);
 
 }
 
