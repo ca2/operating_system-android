@@ -3,6 +3,7 @@
 #include "directory_context.h"
 #include "directory_system.h"
 #include "file_system.h"
+#include "node.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/single_lock.h"
 #include "acme/parallelization/task_flag.h"
@@ -1393,6 +1394,23 @@ namespace acme_android
    {
 
       return m_pdirectorysystem->m_strCommonAppData;
+
+   }
+
+
+   ::file::path directory_context::app_music()
+   {
+
+      if(m_pathAppMusic)
+      {
+
+         ::cast < ::acme_android::node > pnode = this->node();
+
+         m_pathAppMusic = pnode->_get_app_music_folder();
+
+      }
+
+      return m_pathAppMusic;
 
    }
 

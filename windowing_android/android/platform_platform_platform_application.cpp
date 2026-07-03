@@ -3,6 +3,7 @@
 #include "acme_windowing_android/android/_internal.h"
 #include "acme_windowing_android/android/android_asset_manager.h"
 #include "acme_windowing_android/android/android_asset.h"
+#include "acme/filesystem/filesystem/directory_context.h"
 #include "acme/inline/application/main.h"
 //#include "acme/user/nano/_nano.h"
 #include "acme/platform/acme.h"

@@ -99,8 +99,6 @@ namespace android
             ~application_sink() override;
 
 
-          virtual ::f64 get_physical_x_dpi();
-          virtual ::f64 get_physical_y_dpi();
 
 
           void on_initialize_particle() override;

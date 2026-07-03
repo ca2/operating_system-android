@@ -77,6 +77,23 @@ namespace acme_android
 //   }
 
 
+   bool node::set_process_priority(::enum_priority epriority)
+   {
+
+
+      return true;
+
+
+   }
+
+
+   ::file::path node::_get_app_music_folder()
+   {
+
+      return m_pathAppMusicFolder;
+
+   }
+
 
 } // namespace acme_android
 

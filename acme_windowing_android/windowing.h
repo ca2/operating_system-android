@@ -52,6 +52,8 @@ namespace android
 
                 bool is_branch_current() const override;
 
+                int open_file_descriptor(const ::file::path & path, ::file::e_open eopen) override;
+
 
                 void initialize_windowing() override;
 

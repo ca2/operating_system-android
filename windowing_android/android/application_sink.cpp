@@ -18,57 +18,114 @@ namespace android
 {
 
 
-   bool get_display_metrics(android_display_metrics & result, JNIEnv* env, jobject context)
-   {
-      //android_display_metrics result;
-
-      if (!env || !context)
-         return false;
-
-      jclass contextClass = env->GetObjectClass(context);
-
-      jmethodID getResources = env->GetMethodID(
-         contextClass,
-         "getResources",
-         "()Landroid/content/res/Resources;");
-
-      jobject resources = env->CallObjectMethod(context, getResources);
-
-      jclass resourcesClass = env->GetObjectClass(resources);
-
-      jmethodID getDisplayMetrics = env->GetMethodID(
-         resourcesClass,
-         "getDisplayMetrics",
-         "()Landroid/util/DisplayMetrics;");
-
-      jobject metrics = env->CallObjectMethod(resources, getDisplayMetrics);
-
-      jclass metricsClass = env->GetObjectClass(metrics);
-
-      jfieldID densityField = env->GetFieldID(metricsClass, "density", "F");
-      jfieldID densityDpiField = env->GetFieldID(metricsClass, "densityDpi", "I");
-      jfieldID xdpiField = env->GetFieldID(metricsClass, "xdpi", "F");
-      jfieldID ydpiField = env->GetFieldID(metricsClass, "ydpi", "F");
-      jfieldID scaledDensityField = env->GetFieldID(metricsClass, "scaledDensity", "F");
-
-      result.density = env->GetFloatField(metrics, densityField);
-      result.density_dpi = env->GetIntField(metrics, densityDpiField);
-      result.xdpi = env->GetFloatField(metrics, xdpiField);
-      result.ydpi = env->GetFloatField(metrics, ydpiField);
-      result.scaled_density = env->GetFloatField(metrics, scaledDensityField);
-
-      env->DeleteLocalRef(metrics);
-      env->DeleteLocalRef(metricsClass);
-      env->DeleteLocalRef(resources);
-      env->DeleteLocalRef(resourcesClass);
-      env->DeleteLocalRef(contextClass);
-
-      //return result;
-
-      return true;
-   }
-
-//int ::user::e_message_box_to_button(const ::user::e_message_box& emessagebox);
+//   bool get_display_metrics(android_display_metrics& result, JNIEnv* env, jobject context)
+//   {
+//      if (!env || !context)
+//         return false;
+//
+//      auto has_exception = [&]() -> bool
+//      {
+//         if (!env->ExceptionCheck())
+//            return false;
+//
+//         env->ExceptionDescribe(); // remove in production if too noisy
+//         env->ExceptionClear();
+//         return true;
+//      };
+//
+//      jclass contextClass = env->GetObjectClass(context);
+//      if (!contextClass || has_exception())
+//         return false;
+//
+//      jmethodID getResources = env->GetMethodID(
+//         contextClass,
+//         "getResources",
+//         "()Landroid/content/res/Resources;");
+//      if (!getResources || has_exception())
+//      {
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jobject resources = env->CallObjectMethod(context, getResources);
+//      if (!resources || has_exception())
+//      {
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jclass resourcesClass = env->GetObjectClass(resources);
+//      if (!resourcesClass || has_exception())
+//      {
+//         env->DeleteLocalRef(resources);
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jmethodID getDisplayMetrics = env->GetMethodID(
+//         resourcesClass,
+//         "getDisplayMetrics",
+//         "()Landroid/util/DisplayMetrics;");
+//      if (!getDisplayMetrics || has_exception())
+//      {
+//         env->DeleteLocalRef(resourcesClass);
+//         env->DeleteLocalRef(resources);
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jobject metrics = env->CallObjectMethod(resources, getDisplayMetrics);
+//      if (!metrics || has_exception())
+//      {
+//         env->DeleteLocalRef(resourcesClass);
+//         env->DeleteLocalRef(resources);
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jclass metricsClass = env->GetObjectClass(metrics);
+//      if (!metricsClass || has_exception())
+//      {
+//         env->DeleteLocalRef(metrics);
+//         env->DeleteLocalRef(resourcesClass);
+//         env->DeleteLocalRef(resources);
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      jfieldID densityField = env->GetFieldID(metricsClass, "density", "F");
+//      jfieldID densityDpiField = env->GetFieldID(metricsClass, "densityDpi", "I");
+//      jfieldID xdpiField = env->GetFieldID(metricsClass, "xdpi", "F");
+//      jfieldID ydpiField = env->GetFieldID(metricsClass, "ydpi", "F");
+//      jfieldID scaledDensityField = env->GetFieldID(metricsClass, "scaledDensity", "F");
+//
+//      if (!densityField || !densityDpiField || !xdpiField || !ydpiField || !scaledDensityField || has_exception())
+//      {
+//         env->DeleteLocalRef(metricsClass);
+//         env->DeleteLocalRef(metrics);
+//         env->DeleteLocalRef(resourcesClass);
+//         env->DeleteLocalRef(resources);
+//         env->DeleteLocalRef(contextClass);
+//         return false;
+//      }
+//
+//      result.density = env->GetFloatField(metrics, densityField);
+//      result.density_dpi = env->GetIntField(metrics, densityDpiField);
+//      result.xdpi = env->GetFloatField(metrics, xdpiField);
+//      result.ydpi = env->GetFloatField(metrics, ydpiField);
+//      result.scaled_density = env->GetFloatField(metrics, scaledDensityField);
+//
+//      bool ok = !has_exception();
+//
+//      env->DeleteLocalRef(metricsClass);
+//      env->DeleteLocalRef(metrics);
+//      env->DeleteLocalRef(resourcesClass);
+//      env->DeleteLocalRef(resources);
+//      env->DeleteLocalRef(contextClass);
+//
+//      return ok;
+//   }
+////int ::user::e_message_box_to_button(const ::user::e_message_box& emessagebox);
 
 
 //::pointer<application_sink>g_pandroiddriver;
@@ -98,20 +155,20 @@ namespace android
     }
 
 
-   ::f64 application_sink::get_physical_x_dpi()
-   {
-
-       return m_androiddisplaymetrics.xdpi;
-
-   }
-
-
-   ::f64 application_sink::get_physical_y_dpi()
-   {
-
-       return m_androiddisplaymetrics.ydpi;
-
-   }
+//   ::f64 application_sink::get_physical_x_dpi()
+//   {
+//
+//       return m_androiddisplaymetrics.xdpi;
+//
+//   }
+//
+//
+//   ::f64 application_sink::get_physical_y_dpi()
+//   {
+//
+//       return m_androiddisplaymetrics.ydpi;
+//
+//   }
 
 
    void application_sink::set_input_method_manager_selection(character_count iSelBeg,
@@ -302,20 +359,20 @@ namespace android
 
           auto pbind = ::jni_bind::get();
 
-          if(!m_bAndroidDisplayMetrics)
-          {
-
-             ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
-
-             if(pjnicontext) {
-
-                m_bAndroidDisplayMetrics = get_display_metrics(m_androiddisplaymetrics,
-                                                               pjnicontext->m_pjnicontext,
-                                                               pjnicontext->m_jobjectContext);
-
-             }
-
-          }
+//          if(!m_bAndroidDisplayMetrics)
+//          {
+//
+//             ::cast < ::jni_context_impl > pjnicontext = ::jni_context::get();
+//
+//             if(pjnicontext) {
+//
+//                m_bAndroidDisplayMetrics = get_display_metrics(m_androiddisplaymetrics,
+//                                                               pjnicontext->m_pjnicontext,
+//                                                               pjnicontext->m_jobjectContext);
+//
+//             }
+//
+//          }
 
           if (m_bHideKeyboard) {
 

@@ -81,6 +81,9 @@ virtual public ::acme_posix::directory_context
 
       virtual ::file::path commonappdata_root() override;
 
+
+      ::file::path app_music() override;
+
 //      virtual bool initialize();
 
    };

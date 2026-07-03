@@ -15,6 +15,8 @@ namespace acme_android
    public:
 
 
+      ::file::path m_pathAppMusicFolder;
+
       node();
       ~node() override;
 
@@ -34,6 +36,12 @@ namespace acme_android
 
 //      void media_store_set_data(const ::scoped_string & scopedstrPath, const ::block & block) override;
 //      ::memory media_store_get_data(const ::scoped_string & scopedstrPath) override;
+
+
+      bool set_process_priority(::enum_priority epriority) override;
+
+
+      virtual ::file::path _get_app_music_folder();
 
 
    };

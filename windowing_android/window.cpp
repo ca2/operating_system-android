@@ -3992,16 +3992,47 @@ namespace windowing_android
 
    }
 
+
    void window::pick_media(const_char_pointer pszMediaType)
    {
+
       ::string strMediaType(pszMediaType);
 
-      if(strMediaType == "image") {
+      if(strMediaType == "image")
+      {
+
          ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
 
          papplicationsink->m_pmessagesink->post_simple_message(::e_message_pick_image);
+
       }
+      else if(strMediaType == "music")
+      {
+
+         ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+
+         papplicationsink->m_pmessagesink->post_simple_message(::e_message_pick_music);
+
+      }
+      else if(strMediaType == "video")
+      {
+
+         ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+
+         papplicationsink->m_pmessagesink->post_simple_message(::e_message_pick_video);
+
+      }
+
    }
+
+
+   void window::show_task(bool bShow)
+   {
+
+
+   }
+
+
 } // namespace windowing_android
 
 

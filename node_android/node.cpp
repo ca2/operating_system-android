@@ -310,6 +310,30 @@ namespace node_android
          listing.m_straTitle.insert_at(iPickAudioMedia, "Google Photos");
 
       }
+      else if(application()->m_pfilesystemoptions->m_straFileSystemExtension.contains("mediastore.music"))
+      {
+
+         auto iPickAudioMedia = listing.size();
+
+         auto & path = listing.insert_at(iPickAudioMedia, "mediastore.music://");
+
+         path.m_etype = ::file::e_type_existent_folder;
+
+         listing.m_straTitle.insert_at(iPickAudioMedia, "Pick Music");
+
+      }
+      else if(application()->m_pfilesystemoptions->m_straFileSystemExtension.contains("mediastore.video"))
+      {
+
+         auto iPickAudioMedia = listing.size();
+
+         auto & path = listing.insert_at(iPickAudioMedia, "mediastore.video://");
+
+         path.m_etype = ::file::e_type_existent_folder;
+
+         listing.m_straTitle.insert_at(iPickAudioMedia, "Pick Video");
+
+      }
       else
       {
 
@@ -350,17 +374,33 @@ namespace node_android
 
             prequest->m_ecommand = ::e_command_file_open;
 
-            application()->request(prequest);
+            auto papplication = this->application();
+
+            papplication->request(prequest);
 
          };
 
-         application()->pick_browse(callback);
+         auto papplication = this->application();
+
+         papplication->pick_browse(callback);
 
       }
       else if(pathFinal.begins_eat("mediastore.image://"))
       {
 
          application()->pick_media("image");
+
+      }
+      else if(pathFinal.begins_eat("mediastore.music://"))
+      {
+
+         application()->pick_media("music");
+
+      }
+      else if(pathFinal.begins_eat("mediastore.video://"))
+      {
+
+         application()->pick_media("video");
 
       }
 

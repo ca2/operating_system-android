@@ -26,6 +26,8 @@ virtual public ::acme_posix::file_context
 
       void initialize(::particle * pparticle) override;
 
+      ::file_pointer defer_get_protocol_file(const ::scoped_string & scopedstrProtocol, const ::file::path & path, ::file::e_open eopen, ::pointer<::file::exception> * pfileexception = nullptr) override;
+
 
       //void update_module_path() override;
 

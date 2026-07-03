@@ -5,6 +5,7 @@
 #include "acme/parallelization/manual_reset_happening.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/system.h"
+#include "acme_android/node.h"
 #include "jni_object_impl.h"
 #include "_internal.h"
 
@@ -45,20 +46,20 @@ namespace android
       }
 
 
-      ::f64 application_sink::get_physical_x_dpi()
-      {
-
-         return 160.0;
-
-      }
-
-
-      ::f64 application_sink::get_physical_y_dpi()
-      {
-
-         return 160.0;
-
-      }
+//      ::f64 application_sink::get_physical_x_dpi()
+//      {
+//
+//         return 160.0;
+//
+//      }
+//
+//
+//      ::f64 application_sink::get_physical_y_dpi()
+//      {
+//
+//         return 160.0;
+//
+//      }
 
 
       void application_sink::on_initialize_particle()
@@ -93,6 +94,15 @@ namespace android
                pbind->m_fRequestFps = pbind->m_fRequestFpsNew;
 
                pbind->setRequestFps(pbind->m_fRequestFps);
+
+            }
+
+            ::cast < ::acme_android::node > pnode = this->node();
+
+            if(pnode->m_pathAppMusicFolder.is_empty())
+            {
+
+               pnode->m_pathAppMusicFolder = pbind->getAppMusicDirectory();
 
             }
 

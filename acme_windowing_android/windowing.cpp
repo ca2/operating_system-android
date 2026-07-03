@@ -87,6 +87,55 @@ namespace android
             }
 
 
+            int windowing::open_file_descriptor(const ::file::path & path, ::file::e_open eopen)
+            {
+
+               string strPath(path);
+
+               if(!strPath.case_insensitive_begins("content://"))
+               {
+
+                  return -1;
+
+               }
+
+               bool bRead = eopen & ::file::e_open_read;
+               bool bWrite = eopen & ::file::e_open_write;
+               string strMode;
+
+               if(bRead && bWrite)
+               {
+
+                  strMode = (eopen & (::file::e_open_truncate | ::file::e_open_create)) ? "rwt" : "rw";
+
+               }
+               else if(bWrite)
+               {
+
+                  strMode = (eopen & (::file::e_open_truncate | ::file::e_open_create)) ? "wt" : "w";
+
+               }
+               else
+               {
+
+                  strMode = "r";
+
+               }
+
+               auto pbind = ::jni_bind::get();
+
+               if(!pbind)
+               {
+
+                  return -1;
+
+               }
+
+               return pbind->open_content_file_descriptor(strPath, strMode);
+
+            }
+
+
 //            ::windowing::window *windowing::new_window(::windowing::window *pimpl)
 //            {
 //

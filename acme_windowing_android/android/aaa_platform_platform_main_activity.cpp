@@ -173,6 +173,8 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1init(JNI
 
          pdriver->m_pathCacheDirectory = pdirect->getCacheDirectory();
 
+         directory_context()->m_pathAppMusic = pdirect->getAppMusicDirectory();
+
          pdriver->m_iWidth = pdirect->getWidth();
 
          pdriver->m_iHeight = pdirect->getHeight();

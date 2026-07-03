@@ -4,6 +4,10 @@ message(STATUS "including operating_system/operating_system-android/_.cmake")
 set(WITH_TEXT_TO_SPEECH TRUE)
 set(RELEASE_WITH_DEBUG FALSE)
 
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0 -fno-omit-frame-pointer")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g -O0 -fno-omit-frame-pointer")
+
 if(${RELEASE_WITH_DEBUG})
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")

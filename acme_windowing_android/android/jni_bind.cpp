@@ -296,6 +296,41 @@ bool jni_bind::secure_app_storage_contains(const ::scoped_string & scopedstrName
 }
 
 
+int jni_bind::open_content_file_descriptor(const ::scoped_string & scopedstrUri, const ::scoped_string & scopedstrMode)
+{
+
+   auto penv = jni_bind_env();
+
+   if(!penv)
+   {
+
+      return -1;
+
+   }
+
+   jni_local_string jnistringUri(scopedstrUri);
+   jni_local_string jnistringMode(scopedstrMode);
+   auto jobjectBind = (jobject) p_jobject();
+   jni_local jclassBind(penv->GetObjectClass(jobjectBind));
+   auto jmethod = penv->GetMethodID((jclass) jclassBind.m_jobject, "open_content_file_descriptor", "(Ljava/lang/String;Ljava/lang/String;)I");
+
+   if(!jmethod)
+   {
+
+      jni_bind_clear_exception(penv);
+      return -1;
+
+   }
+
+   auto iDescriptor = penv->CallIntMethod(jobjectBind, jmethod, jnistringUri.m_jstring, jnistringMode.m_jstring);
+
+   jni_bind_clear_exception(penv);
+
+   return iDescriptor;
+
+}
+
+
 ::string jni_bind::get_google_access_token(const ::scoped_string & scopedstrScope)
 {
 

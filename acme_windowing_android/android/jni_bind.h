@@ -98,7 +98,8 @@
 JXDATA(str, ApplicationName); \
 JXDATA(str, ApplicationIdentifier); \
 JXDATA(str, CommandLineParameters); \
-JXDATA(str, CacheDirectory); \
+JXDATA(str, CacheDirectory);           \
+JXDATA(str, AppMusicDirectory); \
 JXDATA(i, Width); \
 JXDATA(i, Height); \
 JXDATA(f, DpiX); \
@@ -166,6 +167,7 @@ public:
    ::string secure_app_storage_get(const ::scoped_string & scopedstrName);
    bool secure_app_storage_delete(const ::scoped_string & scopedstrName);
    bool secure_app_storage_contains(const ::scoped_string & scopedstrName);
+   int open_content_file_descriptor(const ::scoped_string & scopedstrUri, const ::scoped_string & scopedstrMode);
    ::string get_google_access_token(const ::scoped_string & scopedstrScope);
    void clear_google_access_token(const ::scoped_string & scopedstrScope, const ::scoped_string & scopedstrAccessToken);
 
