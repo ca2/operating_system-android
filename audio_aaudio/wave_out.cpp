@@ -30,6 +30,7 @@ namespace multimedia
          m_iCurrentBufferOffset = 0;
          m_bLoggedFirstCallback = false;
          m_bLoggedFirstAudio = false;
+         m_iUnderrunCallbackCount = 0;
 
       }
 
@@ -875,8 +876,10 @@ namespace multimedia
 
          m_bStarted = false;
          m_timeOutStart = ::time::now();
+         m_timeLastUnderrunLog = 0_s;
          m_bLoggedFirstCallback = false;
          m_bLoggedFirstAudio = false;
+         m_iUnderrunCallbackCount = 0;
 
          {
 
@@ -889,9 +892,9 @@ namespace multimedia
 
          }
 
-         auto iLaunchBufferCount = minimum(2, out_get_buffer()->GetBufferCount());
+         auto iLaunchBufferCount = out_get_buffer()->GetBufferCount();
 
-         information() << "audio_aaudio::out_start low latency initial buffer count : " << iLaunchBufferCount;
+         information() << "audio_aaudio::out_start initial playback buffer count : " << iLaunchBufferCount;
 
          for (int iBuffer = 0; iBuffer < iLaunchBufferCount; iBuffer++)
          {
@@ -1010,6 +1013,7 @@ namespace multimedia
             auto iSampleCount = numFrames * iChannelCount;
             auto iBytesPerSample = maximum(1, (int) m_pwaveformat->m_waveformat.wBitsPerSample / 8);
             auto iBufferSize = out_get_buffer_size();
+            bool bUnderrunThisCallback = false;
 
             for(int i = 0; i < iSampleCount; i++)
             {
@@ -1025,6 +1029,7 @@ namespace multimedia
                      if (!m_listPendingBuffer.has_element())
                      {
 
+                        bUnderrunThisCallback = true;
                         break;
 
                      }
@@ -1124,6 +1129,26 @@ namespace multimedia
                   }
 
                   break;
+
+               }
+
+            }
+
+            if (bUnderrunThisCallback)
+            {
+
+               m_iUnderrunCallbackCount++;
+
+               if (m_timeLastUnderrunLog <= 0_s || m_timeLastUnderrunLog.elapsed() > 1_s)
+               {
+
+                  m_timeLastUnderrunLog = ::time::now();
+
+                  information() << "audio_aaudio underrun callback count=" << m_iUnderrunCallbackCount
+                     << " numFrames=" << numFrames
+                     << " pendingBuffers=" << m_listPendingBuffer.get_count()
+                     << " currentBuffer=" << m_iCurrentBuffer
+                     << " currentOffset=" << m_iCurrentBufferOffset;
 
                }
 

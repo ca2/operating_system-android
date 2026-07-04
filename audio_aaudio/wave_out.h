@@ -28,8 +28,10 @@ namespace multimedia
          //timeval                 m_timevalStart;
          class ::time            m_timeStart;
          class ::time            m_timeOutStart;
+         class ::time            m_timeLastUnderrunLog;
          bool                    m_bLoggedFirstCallback;
          bool                    m_bLoggedFirstAudio;
+         long long               m_iUnderrunCallbackCount;
 
          ::pointer < ::memory_file > m_pmemoryfile;
          list_base < ::collection::index > m_listPendingBuffer;
