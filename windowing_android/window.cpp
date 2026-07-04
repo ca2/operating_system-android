@@ -4033,6 +4033,14 @@ namespace windowing_android
    }
 
 
+   void window::main_post(const ::procedure& procedure)
+   {
+
+      user_interaction()->user_thread()->post(procedure);
+
+   }
+
+
 } // namespace windowing_android
 
 

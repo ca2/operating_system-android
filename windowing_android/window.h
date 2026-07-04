@@ -270,6 +270,9 @@ virtual public ::android::acme::windowing::window,
       void show_task(bool bShow) override;
 
 
+      void main_post(const ::procedure& procedure) override;
+
+
    };
 
 

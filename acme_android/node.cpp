@@ -47,8 +47,7 @@ namespace acme_android
    string node::audio_get_default_implementation_name()
    {
 
-      //return system()->implementation_name("audio", "opensles");
-      return system()->implementation_name("audio", "aaudio");
+      return system()->implementation_name("audio", "opensles");
 
    }
 

@@ -398,6 +398,12 @@ namespace multimedia
             uiBufferSize = period_size;
             
             iBufferSampleCount = period_size / (m_pwaveformat->m_waveformat.nChannels * 2);
+            
+            information() << "audio_opensles buffer config count=" << iBufferCount
+                          << " periodBytes=" << period_size
+                          << " sampleFrames=" << iBufferSampleCount
+                          << " sampleRate=" << m_pwaveformat->m_waveformat.nSamplesPerSec
+                          << " channels=" << m_pwaveformat->m_waveformat.nChannels;
 
             //uiAnalysisSize = 4 * 1 << uiBufferSizeLog2;
 
@@ -529,12 +535,14 @@ namespace multimedia
 
          synchronous_lock sLock(synchronization());
 
-         if (m_eoutstate != ::wave::e_out_state_playing && m_eoutstate != ::wave::e_out_state_paused)
+         if (m_eoutstate != ::wave::e_out_state_playing
+          && m_eoutstate != ::wave::e_out_state_paused
+          && m_eoutstate != ::wave::e_out_state_stopping)
          {
 
-            //return result_error;
+            warning() << "audio_opensles out_stop ignored state=" << (int) m_eoutstate;
 
-            throw ::exception(::error_failed);
+            return;
 
          }
 
@@ -549,7 +557,37 @@ namespace multimedia
          // waveform-audio_opensles output device and resets the current position
          // to zero. All pending playback buffers are marked as done and
          // returned to the application.
-         //m_mmr = translate_alsa(snd_pcm_drain(m_ppcm));
+
+         if (bqPlayerPlay != NULL)
+         {
+
+            SLresult result = (*bqPlayerPlay)->SetPlayState(bqPlayerPlay, SL_PLAYSTATE_STOPPED);
+
+            if (result != SL_RESULT_SUCCESS)
+            {
+
+               warning() << "audio_opensles SetPlayState(STOPPED) failed result=" << result;
+
+            }
+
+         }
+
+         if (bqPlayerBufferQueue != NULL)
+         {
+
+            SLresult result = (*bqPlayerBufferQueue)->Clear(bqPlayerBufferQueue);
+
+            if (result != SL_RESULT_SUCCESS)
+            {
+
+               warning() << "audio_opensles buffer queue clear failed result=" << result;
+
+            }
+
+         }
+
+         m_iPlayBuffer = 0;
+         m_iBufferedCount = 0;
 
 
          //if(m_mmr == result_success)
@@ -785,6 +823,8 @@ namespace multimedia
 
          synchronous_lock sLock(synchronization());
 
+         SLresult result = SL_RESULT_SUCCESS;
+
          if(m_eoutstate != ::wave::e_out_state_playing
          && m_eoutstate != ::wave::e_out_state_stopping)
          {
@@ -800,7 +840,25 @@ namespace multimedia
 
          //}
 
-         (*bqPlayerBufferQueue)->Enqueue(bqPlayerBufferQueue, out_get_buffer_data(iBuffer), out_get_buffer_size());
+         result = (*bqPlayerBufferQueue)->Enqueue(
+            bqPlayerBufferQueue,
+            out_get_buffer_data(iBuffer),
+            out_get_buffer_size());
+
+         if (result != SL_RESULT_SUCCESS)
+         {
+
+            SLAndroidSimpleBufferQueueState state{};
+
+            (*bqPlayerBufferQueue)->GetState(bqPlayerBufferQueue, &state);
+
+            warning() << "audio_opensles enqueue failed result=" << result
+                      << " buffer=" << iBuffer
+                      << " queueCount=" << state.count
+                      << " queueIndex=" << state.index
+                      << " outState=" << (int) m_eoutstate;
+
+         }
 
          //informationf("buffer_size"+__string((uint_ptr) wave_out_get_buffer_size()));
 
@@ -967,13 +1025,11 @@ void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
    
    multimedia::audio_opensles::out *p = (multimedia::audio_opensles::out *)context;
 
-   SLAndroidSimpleBufferQueueState s{};
+   auto iBuffer = p->m_iPlayBuffer;
 
-   (*bq)->GetState(bq, &s);
+   p->m_iPlayBuffer = (p->m_iPlayBuffer + 1) % p->m_iBufferCount;
 
-   //informationf("buffer_index" + __string(s.index % p->m_iBufferCount));
-
-   p->out_free(s.index % p->m_iBufferCount);
+   p->out_free(iBuffer);
 
 
    
