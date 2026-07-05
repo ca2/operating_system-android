@@ -326,8 +326,15 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1sync_1me
 
       set_jni_context(env, obj);
 
+      auto lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
+
       ::platform::application_sink::get()->
-         m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
+         m_lMemFreeAvailableKb = lMemFreeAvailableKb;
+
+      auto lMemTotalKb = ::jni_bind::get()->getMemTotalKb();
+
+      ::platform::application_sink::get()->m_lMemTotalKb = lMemTotalKb;
+
 
    }
    catch (...) {

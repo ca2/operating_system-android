@@ -110,7 +110,8 @@ JXDATA(b, HideKeyboard);  \
 JXDATA(b, FpsRedraw);  \
 JXDATA(f, RequestFps);  \
 JXDATA(str, UserWallpaper);  \
-JXDATA(l, MemFreeAvailableKb);  \
+JXDATA(l, MemFreeAvailableKb);         \
+JXDATA(l, MemTotalKb);         \
 JXDATA(b, EditFocusSet);  \
 JXDATA(i, EditFocusLeft);  \
 JXDATA(i, EditFocusTop);  \

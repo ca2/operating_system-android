@@ -617,6 +617,12 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1sync_1mem_1fre
 
       ::operating_system_driver::get()->m_lMemFreeAvailableKb = ::jni_bind::get()->getMemFreeAvailableKb();
 
+      auto lMemTotalKb = ::jni_bind::get()->getMemTotalKb();
+
+      ::operating_system_driver::get()->m_lMemTotalKb = lMemTotalKb;
+
+
+
    }
    catch (...)
    {
