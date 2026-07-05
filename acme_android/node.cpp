@@ -52,6 +52,14 @@ namespace acme_android
    }
 
 
+   string node::veriwell_multimedia_music_midi_get_default_implementation_name()
+   {
+
+      return system()->implementation_name("music_midi", "tinysoundfont");
+
+   }
+
+
 //#if defined(__clang__)
 //   ::string node::get_callstack()
 //   {
