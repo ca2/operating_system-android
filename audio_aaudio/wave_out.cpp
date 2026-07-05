@@ -990,7 +990,7 @@ namespace multimedia
 //
 //      }
 
-      aaudio_data_callback_result_t wave_out::output_audio_callback(float * data, int numFrames)
+      aaudio_data_callback_result_t wave_out::output_audio_callback(void * data, int numFrames)
       {
 
          list_base < ::collection::index > listFinishedBuffer;
@@ -1013,12 +1013,13 @@ namespace multimedia
             auto iSampleCount = numFrames * iChannelCount;
             auto iBytesPerSample = maximum(1, (int) m_pwaveformat->m_waveformat.wBitsPerSample / 8);
             auto iBufferSize = out_get_buffer_size();
+            auto pSampleData = (short *) data;
             bool bUnderrunThisCallback = false;
 
             for(int i = 0; i < iSampleCount; i++)
             {
 
-               data[i] = 0.f;
+               pSampleData[i] = 0;
 
                while (true)
                {
@@ -1066,7 +1067,7 @@ namespace multimedia
                   if (iBytesPerSample == 1)
                   {
 
-                     data[i] = ((int) pdata[0] - 128) / 128.0f;
+                     pSampleData[i] = (short) (((int) pdata[0] - 128) << 8);
 
                   }
                   else if (iBytesPerSample == 2)
@@ -1081,7 +1082,7 @@ namespace multimedia
 
                      }
 
-                     data[i] = iSample / 32767.0f;
+                     pSampleData[i] = (short) iSample;
 
                   }
                   else if (iBytesPerSample == 3)
@@ -1096,18 +1097,18 @@ namespace multimedia
 
                      }
 
-                     data[i] = iSample / 8388607.0f;
+                     pSampleData[i] = (short) (iSample >> 8);
 
                   }
                   else
                   {
 
                      int iSample = (pdata[0] | (pdata[1] << 8) | (pdata[2] << 16) | (pdata[3] << 24));
-                     data[i] = iSample / 2147483647.0f;
+                     pSampleData[i] = (short) (iSample >> 16);
 
                   }
 
-                  if (!m_bLoggedFirstAudio && (data[i] > 0.0001f || data[i] < -0.0001f))
+                  if (!m_bLoggedFirstAudio && pSampleData[i] != 0)
                   {
 
                      m_bLoggedFirstAudio = true;

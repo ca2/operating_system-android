@@ -35,7 +35,7 @@ namespace multimedia
          void close_stream();
 
 
-         virtual aaudio_data_callback_result_t output_audio_callback(float * data, int numFrames);
+         virtual aaudio_data_callback_result_t output_audio_callback(void * data, int numFrames);
 
       };
 

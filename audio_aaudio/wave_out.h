@@ -78,7 +78,7 @@ namespace multimedia
 
          //void send_buffer(int iBuffer);
 
-      aaudio_data_callback_result_t output_audio_callback(float * data, int numFrames) override;
+      aaudio_data_callback_result_t output_audio_callback(void * data, int numFrames) override;
 
 
       };

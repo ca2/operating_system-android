@@ -845,6 +845,13 @@ namespace multimedia
             out_get_buffer_data(iBuffer),
             out_get_buffer_size());
 
+         if (result == SL_RESULT_SUCCESS)
+         {
+
+            m_iBufferedCount++;
+
+         }
+
          if (result != SL_RESULT_SUCCESS)
          {
 
@@ -1029,7 +1036,7 @@ void bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
 
    p->m_iPlayBuffer = (p->m_iPlayBuffer + 1) % p->m_iBufferCount;
 
-   p->out_free(iBuffer);
+   p->m_psynthtask->on_free(iBuffer);
 
 
    
