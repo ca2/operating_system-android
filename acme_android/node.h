@@ -29,6 +29,8 @@ namespace acme_android
       
       string audio_get_default_implementation_name() override;
 
+      string veriwell_multimedia_music_midi_get_default_implementation_name() override;
+
 //#if defined(__clang__)
 //      ::string get_callstack() override;
 //#endif
