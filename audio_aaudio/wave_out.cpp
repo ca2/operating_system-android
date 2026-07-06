@@ -28,6 +28,7 @@ namespace multimedia
          m_bStarted = false;
          m_iCurrentBuffer = -1;
          m_iCurrentBufferOffset = 0;
+         m_iPlayedBytes = 0;
          m_bLoggedFirstCallback = false;
          m_bLoggedFirstAudio = false;
          m_iUnderrunCallbackCount = 0;
@@ -155,6 +156,7 @@ namespace multimedia
          m_listPendingBuffer.erase_all();
          m_iCurrentBuffer = -1;
          m_iCurrentBufferOffset = 0;
+         m_iPlayedBytes = 0;
 
          this->open_output_stream();
 //         if(m_iBufferCount < m_iBufferCountEffective)
@@ -501,9 +503,16 @@ namespace multimedia
 //
 //            snd_pcm_delay(m_pstream, &frames);
 
-            auto iBytes = m_pprebuffer->m_iBytes;
+            auto iBytes = m_iPlayedBytes;
 
             auto iFrameSize = wave_base_get_frame_size();
+
+            if (iFrameSize <= 0 || m_pwaveformat->m_waveformat.nSamplesPerSec <= 0)
+            {
+
+               return time;
+
+            }
 
             auto iFrame = iBytes / iFrameSize;
 
@@ -516,6 +525,8 @@ namespace multimedia
             time.m_iSecond = floor(dSecond);
 
             time.m_iNanosecond = fmod(dSecond, 1.0) * 1'000'000'000.0;
+
+            time += m_timeStart;
 
             //}
 
@@ -556,6 +567,33 @@ namespace multimedia
          }
 
          return time;
+
+      }
+
+
+      ::i64 wave_out::out_get_written_byte_count_for_synch()
+      {
+
+         synchronous_lock sl(synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
+
+         if (m_pprebuffer.is_null())
+         {
+
+            return 0;
+
+         }
+
+         return m_pprebuffer->m_iBytes;
+
+      }
+
+
+      ::i64 wave_out::out_get_played_byte_count_for_synch()
+      {
+
+         synchronous_lock sl(synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
+
+         return m_iPlayedBytes;
 
       }
 
@@ -889,6 +927,7 @@ namespace multimedia
             m_eoutstate = ::wave::e_out_state_playing;
             m_iLostBytes = 0;
             m_timeStart = 0_s;
+            m_iPlayedBytes = 0;
 
          }
 
@@ -1119,6 +1158,7 @@ namespace multimedia
                   }
 
                   m_iCurrentBufferOffset += iBytesPerSample;
+                  m_iPlayedBytes += iBytesPerSample;
 
                   if (m_iCurrentBufferOffset >= iBufferSize)
                   {
@@ -1178,6 +1218,4 @@ namespace multimedia
 
 
 } // namespace multimedia
-
-
 

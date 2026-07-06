@@ -37,6 +37,7 @@ namespace multimedia
          list_base < ::collection::index > m_listPendingBuffer;
          ::collection::index     m_iCurrentBuffer;
          memsize                 m_iCurrentBufferOffset;
+         ::i64                   m_iPlayedBytes;
          //::i32_array_base             m_iaSent;
 
          //snd_async_handler_t *   m_pcm_callback;
@@ -48,6 +49,8 @@ namespace multimedia
          void install_message_routing(::channel * pchannel) override;
 
          class ::time out_get_position() override;
+         ::i64 out_get_written_byte_count_for_synch() override;
+         ::i64 out_get_played_byte_count_for_synch() override;
          //imedia_position out_get_position();
 
          //virtual ::e_status wave_out_open(::thread * pthreadCallback, ::collection::count iBufferCount, ::collection::count iBufferSampleCount) override;
@@ -88,6 +91,5 @@ namespace multimedia
 
 
 } // namespace multimedia
-
 
 
