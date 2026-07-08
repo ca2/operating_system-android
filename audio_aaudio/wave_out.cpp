@@ -101,6 +101,10 @@ namespace multimedia
 
 //         m_iBufferCountEffective = 4;
 
+         m_epurpose = epurpose;
+
+
+
          if (epurpose == ::wave::e_purpose_playback)
          {
 
@@ -158,7 +162,7 @@ namespace multimedia
          m_iCurrentBufferOffset = 0;
          m_iPlayedBytes = 0;
 
-         this->open_output_stream();
+         this->open_output_stream(m_epurpose);
 //         if(m_iBufferCount < m_iBufferCountEffective)
 //         {
 //
@@ -308,8 +312,6 @@ namespace multimedia
          //m_psynthtask->m_iWaitBuffer = 1;
 
          m_eoutstate = ::wave::e_out_state_opened;
-
-         m_epurpose = epurpose;
 
          //return success;
 

@@ -89,7 +89,7 @@ return result;
 
       }
 
-      void stream::open_output_stream()
+      void stream::open_output_stream(::wave::enum_purpose epurpose)
 
       {
 
@@ -119,8 +119,16 @@ return result;
          AAudioStreamBuilder_setSampleRate(builder, (int32_t) pformat->m_waveformat.nSamplesPerSec);
          AAudioStreamBuilder_setDirection(builder, AAUDIO_DIRECTION_OUTPUT);
          AAudioStreamBuilder_setDataCallback(builder, audioCallback, this);
-         AAudioStreamBuilder_setUsage(builder, AAUDIO_USAGE_MEDIA);
-         AAudioStreamBuilder_setContentType(builder, AAUDIO_CONTENT_TYPE_MUSIC);
+         if(epurpose == ::wave::e_purpose_playback) {
+            AAudioStreamBuilder_setUsage(builder, AAUDIO_USAGE_MEDIA);
+            AAudioStreamBuilder_setContentType(builder, AAUDIO_CONTENT_TYPE_MUSIC);
+         } else
+         {
+            AAudioStreamBuilder_setUsage(builder, AAUDIO_USAGE_GAME);
+            AAudioStreamBuilder_setContentType(builder, AAUDIO_CONTENT_TYPE_SONIFICATION);
+         }
+
+
          AAudioStreamBuilder_setSharingMode(builder, AAUDIO_SHARING_MODE_SHARED);
          AAudioStreamBuilder_setPerformanceMode(builder, AAUDIO_PERFORMANCE_MODE_NONE);
 

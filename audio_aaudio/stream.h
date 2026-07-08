@@ -29,7 +29,7 @@ namespace multimedia
 
 
 
-         void open_output_stream();
+         void open_output_stream(::wave::enum_purpose epurpose);
          void open_input_stream();
 
          void close_stream();
