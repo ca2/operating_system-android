@@ -296,22 +296,22 @@ namespace android
 
                 node()->notify_system_started();
 
-                //__task_init();
-
-
-                //init_task();
-
-                //set_current_handles();
-
-                //::set_main_thread();
-
-                //system()->defer_post_initial_request();
-
-                //run();
-
-                on_activate();
-
-                //system()->defer_post_initial_request();
+//                //__task_init();
+//
+//
+//                //init_task();
+//
+//                //set_current_handles();
+//
+//                //::set_main_thread();
+//
+//                //system()->defer_post_initial_request();
+//
+//                //run();
+//
+//                on_activate();
+//
+//                //system()->defer_post_initial_request();
 
                 auto papplicationsink = ::platform::application_sink::get();
 
@@ -319,7 +319,8 @@ namespace android
 
                 papplicationsink->context_on_size_changed();
 
-                post_start_application_request_and_process_command_line_options();
+                //post_start_application_request_and_process_command_line_options();
+                m_papplication->post_request(nullptr);
 
                 //windowing_application_on_start();
 
