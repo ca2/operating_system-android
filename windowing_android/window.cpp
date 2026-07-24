@@ -1056,7 +1056,7 @@ namespace windowing_android
 
       {
 
-         ::image::image_source imagesource(pimage->g(), pimage->rectangle());
+         ::image::image_source imagesource(pgraphicsImage, pimage->rectangle());
 
          ::f64_rectangle rectangle(d1->rectangle());
 

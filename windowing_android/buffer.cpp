@@ -131,7 +131,7 @@ namespace windowing_android
 
          }
 
-         auto pgraphics = pimage->g();
+         auto pgraphics = pgraphicsImage;
 
          if (pgraphics)
          {
