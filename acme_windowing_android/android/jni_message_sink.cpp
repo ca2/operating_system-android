@@ -1,7 +1,7 @@
 //
 // Created by camilo on 2025-08-31 22:12 <3ThomasBorregaardSorensen!!
 //
-#include "framework.h"
+#include "platform.h"
 #include "jni_bind.h"
 #include "jni_message.h"
 #include "jni_context.h"

@@ -30,8 +30,8 @@ list(APPEND library_source
         font_enumeration.h
         fonts.cpp
         fonts.h
-        framework.cpp
-        framework.h
+        platform.cpp
+        platform.h
         #integration_context.cpp
         #integration_context.h
         #monitor.cpp
@@ -77,8 +77,8 @@ list(APPEND static_library_references ${library_references})
 list(TRANSFORM static_library_references PREPEND static_)
 
 
-target_precompile_headers(${PROJECT_NAME} PRIVATE framework.h)
-target_precompile_headers(static_${PROJECT_NAME} PRIVATE framework.h)
+target_precompile_headers(${PROJECT_NAME} PRIVATE platform.h)
+target_precompile_headers(static_${PROJECT_NAME} PRIVATE platform.h)
 
 
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)

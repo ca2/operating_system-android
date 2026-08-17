@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 #include "_.h"
 #include "buffer.h"
 #include "acme_windowing_android/android/_internal.h"
@@ -101,7 +101,7 @@ namespace windowing_android
                pitem->m_sizeBufferItem.cx,
                pitem->m_sizeBufferItem.cy);
 
-            pimage->create(pitem->m_sizeBufferItem);
+            pimage->create_as_descriptor(pitem->m_sizeBufferItem);
 
             pimage->map();
 
@@ -139,7 +139,7 @@ namespace windowing_android
             pgraphics->resize(pitem->m_sizeBufferItem);
 
          }
-         //if (!pimage->create(sizeWindow))
+         //if (!pimage->create_as_descriptor(sizeWindow))
          //{
 
          //   return nullptr;

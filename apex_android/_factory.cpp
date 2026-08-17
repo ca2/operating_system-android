@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 #include "interprocess_base.h"
 #include "interprocess_caller.h"
 #include "interprocess_target.h"

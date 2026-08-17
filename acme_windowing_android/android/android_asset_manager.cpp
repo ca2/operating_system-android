@@ -1,5 +1,5 @@
 // Created by camilo on 2022-05-06 03:45 <3ThomasBorregaardSorensen!!
-#include "framework.h"
+#include "platform.h"
 #include "_internal.h"
 #include <android/asset_manager_jni.h>
 #include "android_asset_manager.h"

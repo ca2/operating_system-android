@@ -1,5 +1,5 @@
 // From interprocess_communication.cpp by camilo on 2022-10-17 14:34 <3ThomasBorregaardSorensen!!
-#include "framework.h"
+#include "platform.h"
 #include "interprocess_base.h"
 
 

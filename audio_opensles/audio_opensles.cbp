@@ -90,8 +90,8 @@
 		<Unit filename="audio_alsa_wave_in.h" />
 		<Unit filename="audio_alsa_wave_out.cpp" />
 		<Unit filename="audio_alsa_wave_out.h" />
-		<Unit filename="framework.cpp" />
-		<Unit filename="framework.h" />
+		<Unit filename="platform.cpp" />
+		<Unit filename="platform.h" />
 		<Extensions>
 			<code_completion />
 			<debugger>

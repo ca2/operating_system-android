@@ -126,10 +126,10 @@
 		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/audio_mmsystem_wave_in.h">
 			<Option target="audio_aaudio"/>
 		</Unit>
-		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/framework.cpp">
+		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/platform.cpp">
 			<Option target="audio_aaudio"/>
 		</Unit>
-		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/framework.h">
+		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/platform.h">
 			<Option target="audio_aaudio"/>
 		</Unit>
 		<Unit filename="/home/camilo/solution/basis/operating_system/operating_system-posix/audio_aaudio/snd_pcm.cpp">

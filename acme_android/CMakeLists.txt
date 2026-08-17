@@ -26,8 +26,8 @@ list(APPEND library_source
    file_context.h
    file_system.cpp
    file_system.h
-   framework.cpp
-   framework.h
+   platform.cpp
+   platform.h
    #integration_context.cpp
    #integration_context.h
    node.cpp

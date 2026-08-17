@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 #include "_internal.h"
 #include "jni_local.h"
 #include "jni_object_impl.h"

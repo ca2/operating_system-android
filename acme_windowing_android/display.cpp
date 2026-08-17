@@ -1,7 +1,7 @@
 // created from windowing::display by camilo 2022-05-06 18:48 <3ThomasBorregaardSoerensen!!
 // created by Camilo <3CamiloSasukeThomasBorregaardSoerensen
 // recreated by Camilo 2021-01-28 22:20
-#include "framework.h"
+#include "platform.h"
 #include "display.h"
 //#include "_windowing.h"
 //#include "acme/prototype/geometry2d/_.h"

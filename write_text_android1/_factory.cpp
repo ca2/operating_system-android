@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 
 
 __FACTORY_EXPORT void write_text_android_factory(::factory::factory * pfactory)

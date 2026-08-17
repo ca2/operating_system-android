@@ -6,7 +6,7 @@
 //  (with refactorization: ui_interaction -> host_interaction to
 //  match OPERATING_SYSTEM_NAMESPACE::create_*host*_window() naming.)
 //
-#include "framework.h"
+#include "platform.h"
 #include "host_interaction.h"
 
 

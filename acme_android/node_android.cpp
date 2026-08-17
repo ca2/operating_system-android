@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 
 
 // https://stackoverflow.com/questions/8115192/android-ndk-getting-the-backtrace

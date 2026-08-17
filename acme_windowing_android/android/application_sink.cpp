@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "platform.h"
 #include "android_asset_manager.h"
 #include "jni_message_sink.h"
 #include "acme/constant/id.h"

@@ -1,7 +1,7 @@
 //
 // Created by camilo on 2025-09-02 18:05 <3ThomasBorregaardSorensen!!
 //
-#include "framework.h"
+#include "platform.h"
 #include "jni_class.h"
 #include "jni_object_impl.h"
 #include "_internal.h"
