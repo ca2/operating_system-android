@@ -131,12 +131,12 @@ namespace windowing_android
 
          }
 
-         auto pgraphics = pgraphicsImage;
+         auto pdraw2dgraphics = pgraphicsImage;
 
-         if (pgraphics)
+         if (pdraw2dgraphics)
          {
 
-            pgraphics->resize(pitem->m_sizeBufferItem);
+            pdraw2dgraphics->resize(pitem->m_sizeBufferItem);
 
          }
          //if (!pimage->create_as_descriptor(sizeWindow))

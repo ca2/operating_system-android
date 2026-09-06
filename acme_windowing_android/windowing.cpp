@@ -1451,10 +1451,10 @@ namespace user
 //*/
 //
 //
-//void message_box_paint(::draw2d::graphics_pointer & pgraphics, string_array_base & stra, bool_array  & baTab, ::i32_array_base  & ya, ::i32_size * psize)
+//void message_box_paint(::draw2d::graphics_pointer & pdraw2dgraphics, string_array_base & stra, bool_array  & baTab, ::i32_array_base  & ya, ::i32_size * psize)
 //{
 //
-//   pgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
+//   pdraw2dgraphics->fill_solid_rect_dim(0, 0, psize->cx, psize->cy, rgb(84, 90, 80));
 //
 //   draw2d::brush_pointer pen(e_create_new);
 //
@@ -1462,7 +1462,7 @@ namespace user
 //
 //   for (::collection::index i = 0; i < stra.get_count(); i++)
 //   {
-//      pgraphics->text_out(10.0 + 50.0 + (baTab[i] ? 25.0 : 0), 10.0 + 50.0 + ya[i], stra[i]);
+//      pdraw2dgraphics->text_out(10.0 + 50.0 + (baTab[i] ? 25.0 : 0), 10.0 + 50.0 + ya[i], stra[i]);
 //   }
 //
 //

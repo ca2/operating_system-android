@@ -54,48 +54,48 @@ namespace windowing_android
 
 
 
-   void host_interaction::_001DrawThis(::draw2d::graphics_pointer & pgraphics)
+   void host_interaction::_001DrawThis(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
-      //return ::user::interaction::_001DrawThis(pgraphics);
+      //return ::user::interaction::_001DrawThis(pdraw2dgraphics);
       
-      //pgraphics->fill_solid_rect_dim(10, 10, 100, 100, argb(255, 0, 0, 255));
+      //pdraw2dgraphics->fill_solid_rect_dim(10, 10, 100, 100, argb(255, 0, 0, 255));
       
 
    }
 
 
-   void host_interaction::_001DrawChildren(::draw2d::graphics_pointer & pgraphics)
+   void host_interaction::_001DrawChildren(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
-//      pgraphics->fill_solid_rect_dim(10, 110, 100, 100, argb(255, 100, 155, 255));
+//      pdraw2dgraphics->fill_solid_rect_dim(10, 110, 100, 100, argb(255, 100, 155, 255));
 //
-//      pgraphics->fill_solid_rect_dim(10, 210, 100, 100, argb(255, 200, 225, 255));
+//      pdraw2dgraphics->fill_solid_rect_dim(10, 210, 100, 100, argb(255, 200, 225, 255));
 
-      ::user::interaction::_001DrawChildren(pgraphics);
+      ::user::interaction::_001DrawChildren(pdraw2dgraphics);
       
 
    }
 
 
-   void host_interaction::_000OnDraw(::draw2d::graphics_pointer & pgraphics)
+   void host_interaction::_000OnDraw(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
-      ::user::interaction::_000OnDraw(pgraphics);
+      ::user::interaction::_000OnDraw(pdraw2dgraphics);
 
    }
 
 
-   void host_interaction::_001OnNcDraw(::draw2d::graphics_pointer & pgraphics)
+   void host_interaction::_001OnNcDraw(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
    }
 
 
-   void host_interaction::_001OnDraw(::draw2d::graphics_pointer & pgraphics)
+   void host_interaction::_001OnDraw(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
-      ::user::interaction::_001OnDraw(pgraphics);
+      ::user::interaction::_001OnDraw(pdraw2dgraphics);
 
    }
 

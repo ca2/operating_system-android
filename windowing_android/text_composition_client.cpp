@@ -752,7 +752,7 @@ namespace windowing_android
 
          //ShowCaret(get_handle());
 
-         //auto pstyle = get_style(pgraphics);
+         //auto pstyle = get_style(pdraw2dgraphics);
 
          //auto pfont = get_font(pstyle);
 
