@@ -131,7 +131,7 @@ namespace windowing_android
 
          }
 
-         auto pdraw2dgraphics = pgraphicsImage;
+         auto pdraw2dgraphics = pdraw2dgraphicsImage;
 
          if (pdraw2dgraphics)
          {
