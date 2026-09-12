@@ -42,7 +42,7 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
 			VALUE "CompanyName", "operating_system-android"
-			VALUE "FileDescription", "operating_system_android_acme_windowing_android"
+			VALUE "FileDescription", "operating_system_android__libc++_shared"
             VALUE "FileVersion", "2026.0912.0112.48"
             VALUE "LegalCopyright", "Copyright (C) 2026-09-12-01-12-48"
             VALUE "ProductVersion", "2026.0912.0112.48"
