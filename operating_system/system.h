@@ -185,9 +185,11 @@ typedef union _XEvent XEvent;
 
 #define MAX_DWORD_PTR ((dword_ptr)(-1))
 
+#ifndef __cplusplus
 #define true 1
 
 #define false 0
+#endif
 
 typedef unsigned char   u_char;
 typedef unsigned short  u_short;

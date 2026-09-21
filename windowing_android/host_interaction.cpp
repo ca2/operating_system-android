@@ -68,6 +68,15 @@ namespace windowing_android
    void host_interaction::_001DrawChildren(::draw2d::graphics_pointer & pdraw2dgraphics)
    {
 
+      static int s_iTraceCount = 0;
+      if (s_iTraceCount++ < 12)
+      {
+         auto pchild = first_child();
+         information() << "Android host child draw: child=" << (::iptr)pchild
+            << " visible=" << (pchild ? pchild->is_this_visible() : false)
+            << " window=" << (pchild ? pchild->is_window() : false);
+      }
+
 //      pdraw2dgraphics->fill_solid_rect_dim(10, 110, 100, 100, argb(255, 100, 155, 255));
 //
 //      pdraw2dgraphics->fill_solid_rect_dim(10, 210, 100, 100, argb(255, 200, 225, 255));

@@ -3,6 +3,7 @@
 #include "buffer.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme/parallelization/synchronous_lock.h"
+#include "aura/graphics/graphics/buffer_item.h"
 #include "aura/graphics/image/image.h"
 #include <typeinfo>
 //#include <native_window.h>
@@ -40,6 +41,15 @@ namespace windowing_android
       LOGI("on_begin_draw item=%p", pitem);
 
       if (!pitem)
+      {
+
+         return false;
+
+      }
+
+      // Set up the window render target before acquiring graphics for this
+      // frame. The descriptor below only describes the image buffer.
+      if (!::graphics::double_buffer_graphics::_on_begin(pitem))
       {
 
          return false;
@@ -85,7 +95,7 @@ namespace windowing_android
          try
          {
 
-            pimage = pitem->m_pimage2;
+            pimage = pitem->m_pimageBufferItem;
 
             LOGI("image pointer=%p", pimage.m_p);
 
@@ -101,17 +111,18 @@ namespace windowing_android
                pitem->m_sizeBufferItem.cx,
                pitem->m_sizeBufferItem.cy);
 
-            pimage->create_as_descriptor(pitem->m_sizeBufferItem);
+            pimage->update_as_render_target(pitem->m_sizeBufferItem,
+                                            m_pwindow->user_interaction());
 
-            pimage->map();
+            auto ppixmapImage = pimage->map();
 
             LOGI("image after create type=%s size=(%d,%d) scan=%d raw=%p data=%p",
-               typeid(*pimage.m_p).name(),
-               pimage->width(),
-               pimage->height(),
-               pimage->scan_size(),
-               pimage->m_pimage32Raw,
-               pimage->get_data());
+                  typeid(*pimage.m_p).name(),
+                  ppixmapImage->width(),
+                  ppixmapImage->height(),
+                  ppixmapImage->scan_size(),
+                  ppixmapImage->m_pimage32Raw,
+                  ppixmapImage->m_pimage32);
 
          }
          catch (const ::exception & exception)
@@ -131,12 +142,12 @@ namespace windowing_android
 
          }
 
-         auto pdraw2dgraphics = pdraw2dgraphicsImage;
+//         auto pdraw2dgraphics = pdraw2dgraphicsImage;
 
-         if (pdraw2dgraphics)
+  //       if (pdraw2dgraphics)
          {
 
-            pdraw2dgraphics->resize(pitem->m_sizeBufferItem);
+    //        pdraw2dgraphics->resize(pitem->m_sizeBufferItem);
 
          }
          //if (!pimage->create_as_descriptor(sizeWindow))
@@ -161,14 +172,16 @@ namespace windowing_android
 //
       }
 
-      if (!pimage)
+//      if (!pimage)
       {
 
-         return false;
+  //       return false;
 
       }
 
-      return pitem;
+    //  return pitem;
+
+      return true;
 
    }
 
@@ -192,7 +205,7 @@ namespace windowing_android
 
       //ANativeWindow_setBuffersGeometry(m_pimpl->m_pacmewindowingwindow->m_engine.app->window, w, h, WINDOW_FORMAT_RGBA_8888);
 
-      ::graphics::double_buffer::update_buffer(pbufferitem);
+      ::graphics::double_buffer_graphics::update_buffer(pbufferitem);
 
       return true;
 
@@ -205,7 +218,7 @@ namespace windowing_android
    void buffer::destroy_buffer()
    {
 
-      ::graphics::double_buffer::destroy_buffer();
+      ::graphics::double_buffer_graphics::destroy_buffer();
 
 
    }

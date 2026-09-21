@@ -9,7 +9,7 @@ namespace windowing_android
 
 
    class CLASS_DECL_AURA buffer :
-      virtual public ::graphics::double_buffer
+      virtual public ::graphics::double_buffer_graphics
    {
    public:
 

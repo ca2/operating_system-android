@@ -11,6 +11,7 @@
 #include "aura/user/user/interaction_graphics_thread.h"
 //#include "aura/user/user/interaction_impl.h"
 #include "aura/platform/message_queue.h"
+#include "aura/graphics/draw2d/graphics_lease.h"
 #include "aura/graphics/image/context.h"
 #include "aura/graphics/image/drawing.h"
 #include "aura/platform/context.h"
@@ -1043,22 +1044,24 @@ namespace windowing_android
 
 #elif 1
 
-      auto d1 = image()->create_image({ 32, 32 });
+      auto pimage1 = image()->create_image({ 32, 32 });
 
-      if (d1.nok())
+      if (pimage1.nok())
       {
 
          return false;
 
       }
 
-      d1->g()->set_interpolation_mode(::draw2d::e_interpolation_mode_high_quality_bicubic);
-
       {
 
-         ::image::image_source imagesource(pdraw2dgraphicsImage, pimage->rectangle());
+         auto pdraw2dgraphicsImage1 = pimage1->acquire_graphics();
 
-         ::f64_rectangle rectangle(d1->rectangle());
+         pdraw2dgraphicsImage1->set_interpolation_mode(::draw2d::e_interpolation_mode_high_quality_bicubic);
+
+         ::image::image_source imagesource(pimage1, pimage->rectangle());
+
+         ::f64_rectangle rectangle(pimage1->rectangle());
 
          ::image::image_drawing_options imagedrawingoptions(rectangle);
 
@@ -1066,7 +1069,7 @@ namespace windowing_android
 
          //getfileimage.m_iImage = m_pimagelist[16]->set(getfileimage.m_iImage, imagedrawing);
 
-         d1->g()->draw(imagedrawing);
+         pdraw2dgraphicsImage1->draw(imagedrawing);
 
       }
 
@@ -1074,22 +1077,26 @@ namespace windowing_android
 
       memory m;
 
-      int length = 2 + d1->area();
+      auto ppixmapImage1 = pimage1->map();
+
+      int length = 2 + ppixmapImage1->area();
 
       m.set_size(length * 4);
 
       unsigned int * pcr = (unsigned int *)m.data();
 
-      pcr[0] = d1->width();
+      pcr[0] = ppixmapImage1->width();
 
-      pcr[1] = d1->height();
+      pcr[1] = ppixmapImage1->height();
 
-      int c = d1->area();
+      int c = ppixmapImage1->area();
+
+      auto pimage32Image1 = ppixmapImage1->m_pimage32;
 
       for (int i = 0; i < c; i++)
       {
 
-         pcr[i + 2] = d1->image32()[i].m_u32;
+         pcr[i + 2] = pimage32Image1[i].m_u32;
 
       }
 
