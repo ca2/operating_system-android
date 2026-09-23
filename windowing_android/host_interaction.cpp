@@ -69,12 +69,30 @@ namespace windowing_android
    {
 
       static int s_iTraceCount = 0;
-      if (s_iTraceCount++ < 12)
+      auto pchild = first_child();
+      const bool bChildHidden = pchild && !pchild->is_this_visible();
+      // Include later startup frames without flooding Logcat during a stall.
+      const int iTrace = s_iTraceCount++;
+      if (iTrace < 12 || ((!pchild || bChildHidden) && iTrace % 120 == 0))
       {
-         auto pchild = first_child();
          information() << "Android host child draw: child=" << (::iptr)pchild
             << " visible=" << (pchild ? pchild->is_this_visible() : false)
             << " window=" << (pchild ? pchild->is_window() : false);
+         if (pchild)
+         {
+            synchronous_lock lock(pchild->synchronization());
+            information() << "Android host child layout: sketch=" << (int)pchild->const_layout().sketch().display()
+               << " lading=" << (int)pchild->const_layout().lading().display()
+               << " layout=" << (int)pchild->const_layout().layout().display()
+               << " design=" << (int)pchild->const_layout().design().display()
+               << " window=" << (int)pchild->const_layout().window().display()
+               << " created=" << !!(pchild->m_ewindowflag & ::e_window_flag_window_created)
+               << " not_visible=" << !!(pchild->m_ewindowflag & ::e_window_flag_not_visible)
+               << " graphics_locked=" << (bool)pchild->m_bLockGraphicalUpdate
+               << " layout_locked=" << (bool)pchild->m_bLockSketchToDesign
+               << " sketch_size=" << pchild->const_layout().sketch().size().cx << "x" << pchild->const_layout().sketch().size().cy
+               << " design_size=" << pchild->const_layout().design().size().cx << "x" << pchild->const_layout().design().size().cy;
+         }
       }
 
 //      pdraw2dgraphics->fill_solid_rect_dim(10, 110, 100, 100, argb(255, 100, 155, 255));
@@ -126,5 +144,4 @@ namespace windowing_android
 
 
 } // namespace windowing_android
-
 

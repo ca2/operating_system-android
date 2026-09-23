@@ -25,7 +25,7 @@ class CLASS_DECL_ACME_WINDOWING_ANDROID jni_message_sink :
 public:
 
 
-   IMPL_JNI_OBJECT(JNI_MESSAGE_SINK_CLASS, jni_message_sink, "platform.platform.message.message_sink")
+   IMPL_JNI_OBJECT(JNI_MESSAGE_SINK_CLASS, jni_message_sink, "platform.platform.message.messageSink")
 
 
    using jni_object::jni_object;

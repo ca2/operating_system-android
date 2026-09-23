@@ -102,9 +102,10 @@ JXDATA(str, CacheDirectory);           \
 JXDATA(str, AppMusicDirectory); \
 JXDATA(i, Width); \
 JXDATA(i, Height); \
-JXDATA(f, DpiX); \
-JXDATA(f, DpiY); \
-JXDATA(f, Density); \
+JXDATA(f, DensityDpi); \
+JXDATA(f, Density2);                   \
+JXDATA(f, FontScale);                   \
+JXDATA(f, TextScale);                   \
 JXDATA(b, ShowKeyboard);  \
 JXDATA(b, HideKeyboard);  \
 JXDATA(b, FpsRedraw);  \

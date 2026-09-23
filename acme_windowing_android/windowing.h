@@ -176,7 +176,7 @@ namespace android
 
 
                 void main_post(const ::procedure& procedure) override;
-
+                void user_post(const ::procedure& procedure) override;
 
            };
 

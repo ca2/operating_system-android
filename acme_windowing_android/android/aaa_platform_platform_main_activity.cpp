@@ -134,7 +134,7 @@ const_char_pointer this_argv[] =
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1init(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
+JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jniAuraInit(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
 {
 
    try
@@ -353,7 +353,7 @@ char * c_to_library_name(char * p)
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1create_1system(JNIEnv *penv, jclass clazz, jstring jstrAppId)
+JNIEXPORT void JNICALL Java_platform_platform_mainActivity_jniCreateSystem(JNIEnv *penv, jclass clazz, jstring jstrAppId)
 {
 
     // Attention!!
@@ -436,7 +436,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1create_1system
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1initialize_1system(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
+JNIEXPORT void JNICALL Java_platform_platform_mainActivity_jniInitializeSystem(JNIEnv * penv, jobject obj, jobject jobjectDirect, jobject jobjectAssetManager)
 {
 
     if (::jni_bind::get())
@@ -467,11 +467,15 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1initialize_1sy
 
         pdriver->m_iHeight = pdirect->getHeight();
 
-        pdriver->m_fDpiX = pdirect->getDpiX();
+        //pdriver->m_fDpiX = pdirect->getDpiX();
 
-        pdriver->m_fDpiY = pdirect->getDpiY();
+        //pdriver->m_fDpiY = pdirect->getDpiY();
 
-        pdriver->m_fDensity = pdirect->getDensity();
+        //pdriver->m_fDensity = pdirect->getDensity();
+
+        pdriver->m_fDensityDpi = pdirect->getDensityDpi();
+
+        pdriver->m_fDensity2 = pdirect->getDensity2();
 
         pdriver->m_bShowKeyboard = false;
 
@@ -553,7 +557,7 @@ pmainosthread->start();
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1start(JNIEnv * penv, jobject obj)
+JNIEXPORT void JNICALL Java_platform_platform_mainActivity_jniAuraStart(JNIEnv * penv, jobject obj)
 {
 
    try
@@ -585,7 +589,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1aura_1start(JN
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1on_1aura_1message_1box_1response(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
+JNIEXPORT void JNICALL Java_platform_platform_mainActivity_jniOnAuraMessageBoxResponse(JNIEnv * penv, jobject obj, jlong jlMicromessagebox, jlong jlResponse)
 {
 
    auto psequencer = ::pointer_transfer((::sequencer < ::conversation> *)(::iptr) jlMicromessagebox);
@@ -598,7 +602,7 @@ JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1on_1aura_1mess
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_jni_1aura_1is_1started(JNIEnv * env, jobject obj)
+JNIEXPORT jboolean JNICALL Java_platform_platform_mainActivity_jniAuraIsStarted(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;
@@ -607,7 +611,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_main_1activity_jni_1aura_1is_1
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_main_1activity_jni_1sync_1mem_1free_1available(JNIEnv * env, jobject obj)
+JNIEXPORT void JNICALL Java_platform_platform_mainActivity_jniSyncMemFreeAvailable(JNIEnv * env, jobject obj)
 {
 
    try

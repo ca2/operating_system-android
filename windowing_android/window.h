@@ -3,6 +3,7 @@
 // Adapted by Camilo for android 2022-01-05 04:35 <3TBS (Thomas likes number 5), Mummi and bilbo!!
 #pragma once
 
+
 #include "acme_windowing_android/window.h"
 #include "aura/windowing/sandbox/window.h"
 
@@ -12,33 +13,33 @@ namespace windowing_android
 
 
    class CLASS_DECL_WINDOWING_ANDROID window :
-virtual public ::android::acme::windowing::window,
+      virtual public ::android::acme::windowing::window,
       virtual public ::sandbox_windowing::window
    {
    public:
 
 
 
-      //bool m_bSetApplicationReady = true;
-      //bool                                         m_bMessageOnlyWindow;
-      //::pointer<::windowing::window>    m_pimpl;
-      //::pointer<::message_queue>             m_pmessagequeue;
-      //htask                                    m_htask;
-      ////Colormap                                     m_colormap;
-      //class ::time                                       m_timeLastMouseMove;
-      ////Window                                       m_parent;
-      //::i32_rectangle                              m_rect;
-      ////string                                       m_strWMClass;
-      ////int                                          m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
-      //::i32_point                                  m_pointCursor;
-      ////static oswindow_dataptra *                 s_pdataptra;
-      ////static::mutex *                            s_pmutex;
+      //bool                                          m_bSetApplicationReady = true;
+      //bool                                          m_bMessageOnlyWindow;
+      //::pointer<::windowing::window>                m_pimpl;
+      //::pointer<::message_queue>                    m_pmessagequeue;
+      //htask                                         m_htask;
+      ////Colormap                                    m_colormap;
+      //class ::time                                  m_timeLastMouseMove;
+      ////Window                                      m_parent;
+      //::i32_rectangle                               m_rect;
+      ////string                                      m_strWMClass;
+      ////int                                         m_iaNetWmState2[::x11::e_atom_net_wm_state_last - ::x11::e_atom_net_wm_state_first + 1];
+      //::i32_point                                   m_pointCursor;
+      ////static oswindow_dataptra *                  s_pdataptra;
+      ////static::mutex *                             s_pmutex;
 
-      ////static Atom                                s_atomLongType;
-      ////static Atom                                s_atomLongStyle;
-      ////static Atom                                s_atomLongStyleEx;
+      ////static Atom                                 s_atomLongType;
+      ////static Atom                                 s_atomLongStyle;
+      ////static Atom                                 s_atomLongStyleEx;
 
-      //::pointer<::xim::keyboard>                  m_pximkeyboard;
+      //::pointer<::xim::keyboard>                    m_pximkeyboard;
 
 
       window();
@@ -253,9 +254,11 @@ virtual public ::android::acme::windowing::window,
       //void bring_to_front() override;
 
 
-      float get_dpi_for_window() override;
-
-      float get_density_for_window() override;
+//      ::f32 get_density_dpi_for_window() override;
+//
+//      ::f32 get_density_for_window() override;
+//
+//      ::f32 get_font_scale_for_window() override;
       
       //virtual void on_touch_down(int x, int y);
       //virtual void on_touch_drag(int x, int y);

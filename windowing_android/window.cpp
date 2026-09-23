@@ -3956,40 +3956,55 @@ namespace windowing_android
    //}
 
 
-
-
-   float window::get_dpi_for_window()
-   {
-
-      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
-
-      if(!papplicationsink)
-      {
-
-         return ::windowing::window::get_dpi_for_window();
-
-      }
-
-      return papplicationsink->m_fDpiX;
-
-   }
-
-   
-   float window::get_density_for_window()
-   {
-
-      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
-
-      if(!papplicationsink)
-      {
-
-         return ::windowing::window::get_density_for_window();
-
-      }
-
-      return papplicationsink->m_fDensity;
-
-   }
+//   ::f32 window::get_density_dpi_for_window()
+//   {
+//
+//      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+//
+//      if(!papplicationsink)
+//      {
+//
+//         return ::windowing::window::get_density_dpi_for_window();
+//
+//      }
+//
+//      return papplicationsink->m_fDensityDpi;
+//
+//   }
+//
+//
+//   ::f32 window::get_density_for_window()
+//   {
+//
+//      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+//
+//      if(!papplicationsink)
+//      {
+//
+//         return ::windowing::window::get_density_for_window();
+//
+//      }
+//
+//      return papplicationsink->m_fDensity2;
+//
+//   }
+//
+//
+//   ::f32 window::get_font_scale_for_window()
+//   {
+//
+//      ::cast < ::android::application_sink > papplicationsink = ::platform::application_sink::get();
+//
+//      if(!papplicationsink)
+//      {
+//
+//         return ::windowing::window::get_font_scale_for_window();
+//
+//      }
+//
+//      return papplicationsink->m_fFontScale;
+//
+//   }
 
 
    bool window::is_child(::user::element * puserelement)  // or descendant

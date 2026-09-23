@@ -8,14 +8,14 @@ namespace windowing_android
 {
 
 
-   class CLASS_DECL_AURA buffer :
+   class CLASS_DECL_AURA graphics :
       virtual public ::graphics::double_buffer_graphics
    {
    public:
 
 
-      buffer();
-      ~buffer() override;
+      graphics();
+      ~graphics() override;
 
       bool _on_begin(::graphics::buffer_item * pbufferitem) override;
 

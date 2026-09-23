@@ -1,22 +1,23 @@
 #include "platform.h"
 #include "_.h"
-#include "buffer.h"
+#include "graphics.h"
 #include "acme_windowing_android/android/_internal.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "aura/graphics/graphics/buffer_item.h"
 #include "aura/graphics/image/image.h"
+#include "aura/windowing/window.h"
 #include <typeinfo>
 //#include <native_window.h>
 
 
-#define LOG_TAG "windowing_android::buffer"
+#define LOG_TAG "windowing_android::graphics"
 
 
 namespace windowing_android
 {
 
 
-   buffer::buffer()
+   graphics::graphics()
    {
 
       //m_cairoSource = nullptr;
@@ -25,7 +26,7 @@ namespace windowing_android
    }
 
 
-   buffer::~buffer()
+   graphics::~graphics()
    {
       
       destroy_buffer();
@@ -33,7 +34,7 @@ namespace windowing_android
    }
 
 
-   bool buffer::_on_begin(::graphics::buffer_item * pitem)
+   bool graphics::_on_begin(::graphics::buffer_item * pitem)
    {
 
       //auto sizeWindow = window_size();
@@ -48,7 +49,7 @@ namespace windowing_android
       }
 
       // Set up the window render target before acquiring graphics for this
-      // frame. The descriptor below only describes the image buffer.
+      // frame. The descriptor below only describes the image graphics.
       if (!::graphics::double_buffer_graphics::_on_begin(pitem))
       {
 
@@ -106,7 +107,7 @@ namespace windowing_android
 
             }
 
-            LOGI("image before create type=%s buffer=(%d,%d)",
+            LOGI("image before create type=%s graphics=(%d,%d)",
                typeid(*pimage.m_p).name(),
                pitem->m_sizeBufferItem.cx,
                pitem->m_sizeBufferItem.cy);
@@ -187,7 +188,7 @@ namespace windowing_android
 
 
 
-   bool buffer::update_buffer(::graphics::buffer_item * pbufferitem)
+   bool graphics::update_buffer(::graphics::buffer_item * pbufferitem)
    {
 
       //destroy_buffer();
@@ -215,7 +216,7 @@ namespace windowing_android
 
 
 
-   void buffer::destroy_buffer()
+   void graphics::destroy_buffer()
    {
 
       ::graphics::double_buffer_graphics::destroy_buffer();
@@ -224,7 +225,7 @@ namespace windowing_android
    }
 
 
-   void buffer::on_update_screen(::graphics::buffer_item * pbufferitem)
+   void graphics::on_update_screen(::graphics::buffer_item * pbufferitem)
    {
 
       auto pdriver = ::platform::application_sink::get();
@@ -245,7 +246,7 @@ namespace windowing_android
 
 
 
-      //ANativeWindow_Buffer buffer;
+      //ANativeWindow_Buffer graphics;
 
       //ARect r;
 
@@ -254,17 +255,17 @@ namespace windowing_android
       //rectangle.right = pimage->width();
       //rectangle.bottom = pimage->height();
 
-      //zero(buffer);
+      //zero(graphics);
 
-      //ANativeWindow_lock(m_pimpl->m_pacmewindowingwindow->m_engine.app->window, &buffer, rectangle);
+      //ANativeWindow_lock(m_pimpl->m_pacmewindowingwindow->m_engine.app->window, &graphics, rectangle);
 
       ///**
       //* Unlock the window's drawing surface after previously locking it,
-      //* posting the ___new buffer to the display.
+      //* posting the ___new graphics to the display.
       //*/
 
 
-      //::copy_image32(pimage->width(), pimage->height(), (color32_t *)buffer.bits, pimage->width() * sizeof(color32_t), pimage->get_data(), pimage->scan_size());
+      //::copy_image32(pimage->width(), pimage->height(), (color32_t *)graphics.bits, pimage->width() * sizeof(color32_t), pimage->get_data(), pimage->scan_size());
 
       //ANativeWindow_unlockAndPost(m_pimpl->m_pacmewindowingwindow->m_engine.app->window);
 

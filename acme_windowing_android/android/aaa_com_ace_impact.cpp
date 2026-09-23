@@ -109,7 +109,7 @@ void set_jni_context(JNIEnv* penv, jobject jobj);
 
 extern "C"
 //JNIEXPORT void JNICALL Java_platform_platform_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniRenderImpact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -190,7 +190,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1render_1impact(JNIEnv 
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniNativeOnTimer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -519,7 +519,7 @@ JNIEXPORT void JNICALL Java_platform_platform_impact_jniOnText(JNIEnv * env, job
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_impact_jni_1aura_1size_1changed(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_impact_jniAuraSizeChanged(JNIEnv * env, jobject  obj)
 {
 
 

@@ -194,11 +194,11 @@ set(USE_PORT_LIBFLUIDSYNTH TRUE)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 
-   set(ANDROID TRUE)
+   set(__ANDROID__ TRUE)
 
    add_compile_definitions(__ANDROID__)
 
-   message(STATUS "ANDROID has been set TRUE")
+   message(STATUS "__ANDROID__ has been set TRUE")
    message(STATUS "__ANDROID__ compile definition has been set")
 
    set(MPG123_PKG_MODULE "libmpg123")

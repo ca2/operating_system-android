@@ -29,7 +29,7 @@ class jni_data_block :
 public:
 
 
-   IMPL_JNI_OBJECT(JNI_DATA_BLOCK_CLASS, jni_data_block, "platform.platform.platform.data_block")
+   IMPL_JNI_OBJECT(JNI_DATA_BLOCK_CLASS, jni_data_block, "platform.platform.platform.dataBlock")
 
    using jni_object::jni_object;
 

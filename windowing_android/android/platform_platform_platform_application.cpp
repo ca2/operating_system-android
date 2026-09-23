@@ -291,7 +291,7 @@ const_char_pointer this_argv[] =
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1on_1aura_1message_1box_1response(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniOnAuraMessageBoxResponse(
    JNIEnv * penv, jobject obj,
    jlong jlMicromessagebox, jlong
    jlResponse)
@@ -307,7 +307,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1on_1aura
 
 
 extern "C"
-JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_jni_1aura_1is_1started(JNIEnv * env,
+JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_jniAuraIsStarted(JNIEnv * env,
                                                                                    jobject obj)
 {
 
@@ -318,7 +318,7 @@ JNIEXPORT jboolean JNICALL Java_platform_platform_platform_application_jni_1aura
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1sync_1mem_1free_1available(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniSyncMemFreeAvailable(
    JNIEnv * env, jobject obj)
 {
 
@@ -350,7 +350,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1sync_1me
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1create_1system(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniCreateSystem(JNIEnv * penv,
                                                                             jclass clazz,
                                                                             jstring jstrAppId
 )
@@ -393,7 +393,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1create_1
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1initialize_1system(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniInitializeSystem(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectBind,
@@ -481,7 +481,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1initiali
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_jni_1on_1message(
+JNIEXPORT void JNICALL Java_platform_platform_message_messageSender_jniOnMessage(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectMessage)
@@ -512,7 +512,7 @@ JNIEXPORT void JNICALL Java_platform_platform_message_message_1sender_jni_1on_1m
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1return_1read_1data_1block(
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniReturnReadDataBlock(
    JNIEnv * penv,
    jobject obj,
    jobject jobjectDataBlock)
@@ -553,7 +553,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1return_1
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1application_1main(JNIEnv * penv,
+JNIEXPORT void JNICALL Java_platform_platform_platform_application_jniApplicationMain(JNIEnv * penv,
                                                                                jobject obj)
 {
 
@@ -570,11 +570,17 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1applicat
 
       papplicationsink->m_iHeight = pbind->getHeight();
 
-      papplicationsink->m_fDpiX = pbind->getDpiX();
+      //papplicationsink->m_fDpiX = pbind->getDpiX();
 
-      papplicationsink->m_fDpiY = pbind->getDpiY();
+      //papplicationsink->m_fDpiY = pbind->getDpiY();
 
-      papplicationsink->m_fDensity = pbind->getDensity();
+      //papplicationsink->m_fDensity = pbind->getDensity();
+
+      papplicationsink->m_fDensityDpi = pbind->getDensityDpi();
+
+      papplicationsink->m_fDensity2 = pbind->getDensity2();
+
+      papplicationsink->m_fFontScale = pbind->getFontScale();
 
       auto strAppId = papplicationsink->m_strApplicationIdentifier;
 
@@ -599,7 +605,7 @@ JNIEXPORT void JNICALL Java_platform_platform_platform_application_jni_1applicat
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_platform_platform_platform_application_jni_1on_1media_1store_1output_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback)
+Java_platform_platform_platform_application_jniOnMediaStoreOutputOperationReady(JNIEnv * env, jobject obj, jlong lCallback)
 {
 
    set_jni_context(env, obj);
@@ -621,7 +627,7 @@ Java_platform_platform_platform_application_jni_1on_1media_1store_1output_1opera
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_platform_platform_platform_application_jni_1on_1media_1store_1input_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
+Java_platform_platform_platform_application_jniOnMediaStoreInputOperationReady(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
 {
 
    set_jni_context(env, obj);
@@ -653,7 +659,7 @@ Java_platform_platform_platform_application_jni_1on_1media_1store_1input_1operat
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_platform_platform_platform_application_jni_1on_1google_1drive_1appdata_1operation_1ready(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
+Java_platform_platform_platform_application_jniOnGoogleDriveAppdataOperationReady(JNIEnv * env, jobject obj, jlong lCallback, jbyteArray jbytea)
 {
 
    set_jni_context(env, obj);
@@ -685,7 +691,7 @@ Java_platform_platform_platform_application_jni_1on_1google_1drive_1appdata_1ope
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_platform_platform_platform_application_application_1is_1started(JNIEnv * env, jobject obj)
+Java_platform_platform_platform_application_applicationIsStarted(JNIEnv * env, jobject obj)
 {
 
    return g_bAuraStart;

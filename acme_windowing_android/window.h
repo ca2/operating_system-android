@@ -126,6 +126,9 @@ namespace android
                 virtual bool is_destroying() override;
 
 
+                //virtual void user_post(const ::procedure & procedure) override;
+
+
                 //virtual bool bamf_set_icon();
 
 
@@ -257,6 +260,11 @@ namespace android
                 //virtual void on_touch_drag(int x, int y);
                 //virtual void on_touch_up(int x, int y);
                 ::i32_rectangle get_window_rectangle() override;
+      ::f32 get_density_dpi_for_window() override;
+
+      ::f32 get_density_for_window() override;
+
+      ::f32 get_font_scale_for_window() override;
 
             };
 

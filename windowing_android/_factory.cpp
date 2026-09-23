@@ -1,5 +1,5 @@
 #include "platform.h"
-#include "buffer.h"
+#include "graphics.h"
 #include "monitor.h"
 #include "display.h"
 #include "window.h"
@@ -19,7 +19,7 @@ __FACTORY_EXPORT void windowing_android_factory(::factory::factory * pfactory)
 
    aura_android_factory(pfactory);
 
-   pfactory->add_factory_item < ::windowing_android::buffer, ::graphics::graphics > ();
+   pfactory->add_factory_item < ::windowing_android::graphics, ::graphics::graphics > ();
 
    pfactory->add_factory_item < ::windowing_android::monitor, ::windowing::monitor >();
 

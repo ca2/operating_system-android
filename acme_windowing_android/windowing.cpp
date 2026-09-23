@@ -797,6 +797,14 @@ namespace android
           }
 
 
+          void windowing::user_post(const ::procedure& procedure)
+          {
+
+             ::task::post(procedure);
+
+          }
+
+
         } // namespace windowing
 
 

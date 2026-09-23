@@ -408,7 +408,18 @@ namespace node_android
 
    }
 
-} // namespace windowing_android
+
+   void node::defer_innate_ui()
+   {
+
+      auto pfactory = system()->factory("innate_ui", "android");
+
+      pfactory->merge_to_global_factory();
+
+   }
+
+
+} // namespace node_android
 
 
 

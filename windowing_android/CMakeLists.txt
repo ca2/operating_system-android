@@ -15,8 +15,6 @@ list(APPEND library_source
         _factory.cpp
         #directory_system.cpp
         #directory_system.h
-        buffer.cpp
-        buffer.h
         display.cpp
         display.h
         #console.cpp
@@ -32,6 +30,8 @@ list(APPEND library_source
         #   file_context.h
         #   file_system.cpp
         #   file_system.h
+        graphics.cpp
+        graphics.h
         platform.cpp
         platform.h
    host_interaction.cpp
@@ -97,7 +97,7 @@ if (MSVC)
     target_link_libraries(${PROJECT_NAME} PRIVATE acme apex aqua aura Gdiplus)
 
 
-elseif (${ANDROID})
+elseif (${__ANDROID__})
 
 
     target_compile_options(${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fpermissive ${EXTRA_CXX_TARGET_COMPILER_OPTIONS}>)

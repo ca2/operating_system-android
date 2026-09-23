@@ -97,7 +97,7 @@ void set_jni_context(JNIEnv* penv, jobject jobj);
 
 extern "C"
 //JNIEXPORT void JNICALL Java_platform_platform_user_impact_render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms, jobject result)
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1render_1impact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniRenderImpact(JNIEnv * env, jobject  obj, jobject bitmap, jlong  time_ms)
 {
 
    try
@@ -185,7 +185,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1render_1impact(JN
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1native_1on_1timer(JNIEnv * env, jobject  obj)
+JNIEXPORT void JNICALL Java_platform_platform_user_impact_jniNativeOnTimer(JNIEnv * env, jobject  obj)
 {
 
    try
@@ -262,7 +262,7 @@ JNIEXPORT void JNICALL Java_platform_platform_user_impact_jni_1native_1on_1timer
    catch (...)
    {
 
-      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jni_native_on_timer exception");
+      __android_log_write(ANDROID_LOG_WARN, "com.ace.impact(native)", "jniNativeOnTimer exception");
 
    }
 

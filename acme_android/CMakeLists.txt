@@ -26,6 +26,8 @@ list(APPEND library_source
    file_context.h
    file_system.cpp
    file_system.h
+   logger.cpp
+   logger.h
    platform.cpp
    platform.h
    #integration_context.cpp
@@ -47,7 +49,9 @@ add_library(static_${PROJECT_NAME} STATIC ${library_source})
 
 list(APPEND library_references
    acme
-   acme_posix)
+   acme_posix
+   log
+)
 
 
 list(APPEND static_library_references ${library_references})
@@ -70,7 +74,7 @@ if (MSVC)
    target_link_options(${PROJECT_NAME} PRIVATE "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/acme_linux.def")
    target_link_libraries(${PROJECT_NAME} PRIVATE acme apex aqua aura Gdiplus)
 
-elseif (${ANDROID})
+elseif (${__ANDROID__})
 
    target_compile_options(${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fpermissive ${EXTRA_CXX_TARGET_COMPILER_OPTIONS}>)
    target_compile_options(static_${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fpermissive ${EXTRA_CXX_TARGET_COMPILER_OPTIONS}>)

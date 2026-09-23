@@ -24,7 +24,7 @@ __FACTORY_EXPORT void innate_ui_android_factory(::factory::factory * pfactory)
    pfactory->add_factory_item < ::innate_ui_android::still, ::innate_ui::still > ();
    pfactory->add_factory_item < ::innate_ui_android::window, ::innate_ui::window > ();
 
-   pfactory->add_factory_item < ::innate_ui_android::innate_ui, ::innate_ui::window > ();
+   pfactory->add_factory_item < ::innate_ui_android::innate_ui, ::innate_ui::innate_ui > ();
 
    //pfactory->add_factory_item < ::windowing_android::icon, ::windowing::icon > ();
    //pfactory->add_factory_item < ::windowing_android::cursor, ::windowing::cursor > ();

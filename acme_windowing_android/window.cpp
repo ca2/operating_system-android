@@ -1572,6 +1572,8 @@ namespace android
             }
 
 
+           //void user_post(const ::procedure & procedure) override;
+
 #undef SET_WINDOW_POS_LOG
 
 
@@ -3529,6 +3531,55 @@ namespace android
             }
 
 
+          ::f32 window::get_density_dpi_for_window()
+          {
+
+             ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
+
+             if(!papplicationsink)
+             {
+
+                return ::acme::windowing::window::get_density_dpi_for_window();
+
+             }
+
+             return papplicationsink->m_fDensityDpi;
+
+          }
+
+
+          ::f32 window::get_density_for_window()
+          {
+
+             ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
+
+             if(!papplicationsink)
+             {
+
+                return ::acme::windowing::window::get_density_for_window();
+
+             }
+
+             return papplicationsink->m_fDensity2;
+
+          }
+
+
+          ::f32 window::get_font_scale_for_window()
+          {
+
+             ::cast < ::android::acme::application_sink > papplicationsink = ::platform::application_sink::get();
+
+             if(!papplicationsink)
+             {
+
+                return ::acme::windowing::window::get_font_scale_for_window();
+
+             }
+
+             return papplicationsink->m_fFontScale;
+
+          }
 
 
         } // namespace windowing

@@ -1,8 +1,40 @@
 //
-// Created by Camilo Sasuke Thomas Borregaard Sørensen on 22/09/26.
+// Created by camilo on 2026-09-22 17:42 ThomasBorregaardSørensen!! Mummi!! bilbo!!
 //
+#pragma once
 
-#ifndef ANDROID_STUDIO_BUILD_ALL_LOGGER_H
-#define ANDROID_STUDIO_BUILD_ALL_LOGGER_H
 
-#endif //ANDROID_STUDIO_BUILD_ALL_LOGGER_H
+#include "acme/platform/simple_log.h"
+
+
+namespace acme_android
+{
+
+
+   class CLASS_DECL_ACME_ANDROID logger :
+      virtual public ::simple_log {
+   public:
+
+
+//CreatableFromBase(simple_log, logger);
+
+
+//bool m_bReallySimple;
+//bool m_bWithTimePrefix;
+//bool m_bDisplayRelativeTime;
+
+
+      logger();
+
+      ~logger() override;
+
+
+      void on_initialize_particle() override;
+
+      void print(::trace_statement & tracestatement, bool bFlush) override;
+
+
+   };
+
+
+} // namespace acme_android

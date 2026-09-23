@@ -29,9 +29,13 @@ namespace android
             string m_strApplicationIdentifier;
             string m_strCommandLineParameters;
             ::file::path m_pathCacheDirectory;
-            float m_fDpiX;
-            float m_fDpiY;
-            float m_fDensity;
+            //float m_fDpiX;
+            //float m_fDpiY;
+            //float m_fDensity;
+            float m_fDensityDpi;
+            float m_fDensity2;
+            float m_fFontScale;
+            float m_fTextScale;
             //int m_iDocumentFolderRequest;
            //int m_iDocumentFolderRequestSent = 0;
            //int m_iDocumentFolderResponse;

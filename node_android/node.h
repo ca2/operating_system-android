@@ -50,6 +50,9 @@ namespace node_android
       void root_ones(::file::listing_base &listing) override;
       bool defer_enumerate_protocol(::file::listing_base& listing) override;
 
+
+      void defer_innate_ui() override;
+
    };
 
 
